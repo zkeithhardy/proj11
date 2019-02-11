@@ -132,22 +132,26 @@ public class ToolbarController {
                             MainMainVisitor mainMainVisitor = new MainMainVisitor();
                             boolean hasMain = mainMainVisitor.hasMain(AST);
                             if(hasMain){
-                                this.console.writeToConsole("This file has a main method and class",
-                                        "Output");
+                                Platform.runLater(()->this.console.writeToConsole(
+                                        "This file has a main method and class\n",
+                                        "Output"));
                             }else{
-                                this.console.writeToConsole("This file does not have a main method and class",
-                                        "Error");
+                                Platform.runLater(()->this.console.writeToConsole(
+                                        "This file does not have a main method and class\n",
+                                        "Error"));
                             }
                             break;
                         case "stringFinder":
                             StringConstantsVisitor stringConstantsVisitor = new StringConstantsVisitor();
                             Map<String,String> stringMap = stringConstantsVisitor.getStringConstants();
-                            this.console.writeToConsole(stringMap.toString(),"Output");
+                            Platform.runLater(()->this.console.writeToConsole(stringMap.toString()+ "\n",
+                                    "Output"));
                             break;
                         default:
                             NumLocalVarsVisitor numLocalVarsVisitor = new NumLocalVarsVisitor();
                             Map<String,Integer> varMap = numLocalVarsVisitor.getNumLocalVars();
-                            this.console.writeToConsole(varMap.toString(),"Output");
+                            Platform.runLater(()->this.console.writeToConsole(varMap.toString()+"\n",
+                                    "Output"));
                             break;
                     }
                 }

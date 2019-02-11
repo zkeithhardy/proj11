@@ -4,7 +4,9 @@
     <list default="true" id="e0b7e47a-b2f2-481e-b29a-f6be511667fb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ToolbarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ToolbarController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/semant/MainMainVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/semant/MainMainVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bantam/semant/NumLocalVarsVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/semant/NumLocalVarsVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bantam/semant/StringConstantsVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/semant/StringConstantsVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/ParserTestLiLianKeithHardyZhou.btm" beforeDir="false" afterPath="$PROJECT_DIR$/test/ParserTestLiLianKeithHardyZhou.btm" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -189,26 +191,26 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="fxml" value="2" />
-          <entry key="java" value="44" />
+          <entry key="java" value="46" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="44" />
+          <entry key="JAVA" value="46" />
           <entry key="XML" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="fxml" value="313" />
-          <entry key="java" value="2154" />
-          <entry key="txt" value="43" />
+          <entry key="java" value="2412" />
+          <entry key="txt" value="65" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="2154" />
-          <entry key="PLAIN_TEXT" value="43" />
+          <entry key="JAVA" value="2412" />
+          <entry key="PLAIN_TEXT" value="65" />
           <entry key="XML" value="313" />
         </counts>
       </usages-collector>
@@ -219,7 +221,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bantam/semant/MainMainVisitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2">
+            <state relative-caret-position="9">
               <caret line="21" column="20" lean-forward="true" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -241,8 +243,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MasterController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-784">
-              <caret line="423" column="7" lean-forward="true" selection-start-line="423" selection-start-column="7" selection-end-line="423" selection-end-column="7" />
+            <state relative-caret-position="140">
+              <caret line="483" column="9" selection-start-line="483" selection-start-column="9" selection-end-line="483" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#16735#16736#0" expanded="true" />
@@ -257,8 +259,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ToolbarController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="149" column="59" selection-start-line="149" selection-start-column="59" selection-end-line="149" selection-end-column="59" />
+            <state relative-caret-position="-2232">
+              <caret line="103" column="27" selection-start-line="103" selection-start-column="12" selection-end-line="103" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#5397#5398#0" expanded="true" />
@@ -271,9 +273,35 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bantam/semant/NumLocalVarsVisitor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="19" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bantam/semant/StringConstantsVisitor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="20" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#240#241#0" expanded="true" />
+                <element signature="e#261#262#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bantam/parser/Parser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2618">
+            <state relative-caret-position="-10863">
               <caret line="29" column="13" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
             </state>
           </provider>
@@ -282,8 +310,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Console.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-306">
-              <caret line="29" column="13" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
+            <state relative-caret-position="174">
+              <caret line="62" column="33" selection-start-line="62" selection-start-column="33" selection-end-line="62" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -299,7 +327,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>mastercon</find>
       <find>updatestru</find>
       <find>parseBlock</find>
       <find>parseexp</find>
@@ -329,6 +356,7 @@
       <find>parsemult</find>
       <find>expecg</find>
       <find>parseprim</find>
+      <find>getting</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -360,8 +388,6 @@
         <option value="$PROJECT_DIR$/CodeTabPane.java" />
         <option value="$PROJECT_DIR$/CodeTab.java" />
         <option value="$PROJECT_DIR$/CodeAreaContextMenu.java" />
-        <option value="$PROJECT_DIR$/bantam/semant/NumLocalVarsVisitor.java" />
-        <option value="$PROJECT_DIR$/bantam/semant/StringConstantsVisitor.java" />
         <option value="$PROJECT_DIR$/bantam/ast/ASTNode.java" />
         <option value="$PROJECT_DIR$/bantam/ast/AssignExpr.java" />
         <option value="$PROJECT_DIR$/bantam/ast/ArrayExpr.java" />
@@ -387,6 +413,8 @@
         <option value="$PROJECT_DIR$/resources/Main.fxml" />
         <option value="$PROJECT_DIR$/MasterController.java" />
         <option value="$PROJECT_DIR$/bantam/semant/MainMainVisitor.java" />
+        <option value="$PROJECT_DIR$/bantam/semant/StringConstantsVisitor.java" />
+        <option value="$PROJECT_DIR$/bantam/semant/NumLocalVarsVisitor.java" />
         <option value="$PROJECT_DIR$/ToolbarController.java" />
       </list>
     </option>
@@ -461,7 +489,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549851504761" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549852531995" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
@@ -572,7 +600,14 @@
       <option name="project" value="LOCAL" />
       <updated>1549850337399</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="created finder methods">
+      <created>1549851524002</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1549851524002</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -589,7 +624,7 @@
       <window_info id="Favorites" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.053900708" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.18723404" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.14751773" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -649,7 +684,8 @@
     <MESSAGE value="working code" />
     <MESSAGE value="added visitors" />
     <MESSAGE value="added buttons" />
-    <option name="LAST_COMMIT_MESSAGE" value="added buttons" />
+    <MESSAGE value="created finder methods" />
+    <option name="LAST_COMMIT_MESSAGE" value="created finder methods" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Main.java">
@@ -737,24 +773,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bantam/semant/NumLocalVarsVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="48" selection-start-line="4" selection-start-column="48" selection-end-line="4" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bantam/treedrawer/LayoutVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-68">
           <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bantam/semant/StringConstantsVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="51" selection-start-line="4" selection-start-column="51" selection-end-line="4" selection-end-column="51" />
         </state>
       </provider>
     </entry>
@@ -978,9 +1000,35 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/bantam/ast/Method.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-624">
+          <caret line="39" column="13" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bantam/semant/StringConstantsVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="20" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#240#241#0" expanded="true" />
+            <element signature="e#261#262#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bantam/parser/Parser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-10863">
+          <caret line="29" column="13" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/bantam/semant/MainMainVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2">
+        <state relative-caret-position="9">
           <caret line="21" column="20" lean-forward="true" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -996,17 +1044,20 @@
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/bantam/ast/Method.java">
+    <entry file="file://$PROJECT_DIR$/bantam/semant/NumLocalVarsVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-624">
-          <caret line="39" column="13" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
+        <state relative-caret-position="170">
+          <caret line="10" column="19" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/MasterController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-784">
-          <caret line="423" column="7" lean-forward="true" selection-start-line="423" selection-start-column="7" selection-end-line="423" selection-end-column="7" />
+        <state relative-caret-position="140">
+          <caret line="483" column="9" selection-start-line="483" selection-start-column="9" selection-end-line="483" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#16735#16736#0" expanded="true" />
@@ -1019,22 +1070,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Console.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-306">
-          <caret line="29" column="13" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bantam/parser/Parser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2618">
-          <caret line="29" column="13" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
+        <state relative-caret-position="174">
+          <caret line="62" column="33" selection-start-line="62" selection-start-column="33" selection-end-line="62" selection-end-column="33" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ToolbarController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="149" column="59" selection-start-line="149" selection-start-column="59" selection-end-line="149" selection-end-column="59" />
+        <state relative-caret-position="-2232">
+          <caret line="103" column="27" selection-start-line="103" selection-start-column="12" selection-end-line="103" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#5397#5398#0" expanded="true" />
