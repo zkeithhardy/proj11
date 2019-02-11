@@ -54,6 +54,9 @@ public class MasterController {
 
     @FXML private Button scanButton;
     @FXML private Button scanParseButton;
+    @FXML private Button mainButton;
+    @FXML private Button stringButton;
+    @FXML private Button localVarButton;
     @FXML private TreeView<String> directoryTree;
     @FXML private TreeView<String> fileStructureTree;
 
@@ -124,6 +127,9 @@ public class MasterController {
         if(toolbarController.scanIsDone()) {
             this.scanButton.setDisable(false);
             this.scanParseButton.setDisable(false);
+            this.mainButton.setDisable(false);
+            this.localVarButton.setDisable(false);
+            this.stringButton.setDisable(false);
         }
         this.updateStructureView();
     }
@@ -140,6 +146,10 @@ public class MasterController {
         if(toolbarController.scanIsDone() && !this.codeTabPane.getTabs().isEmpty()) {
             this.scanButton.setDisable(false);
             this.scanParseButton.setDisable(false);
+            this.mainButton.setDisable(false);
+            this.localVarButton.setDisable(false);
+            this.stringButton.setDisable(false);
+
         }
         this.updateStructureView();
         this.createDirectoryTree();
@@ -415,6 +425,9 @@ public class MasterController {
     private void disableToolbar(){
       this.scanButton.setDisable(true);
       this.scanParseButton.setDisable(true);
+        this.mainButton.setDisable(false);
+        this.localVarButton.setDisable(false);
+        this.stringButton.setDisable(false);
    }
 
     /**
@@ -466,6 +479,22 @@ public class MasterController {
                     return;
             }
         }
+    }
+
+    @FXML
+    private void handleMainMethodFinder(){
+        this.handleScanOrScanParse("mainMethodFinder");
+
+    }
+
+    @FXML
+    private void handleStringFinder(){
+        this.handleScanOrScanParse("stringFinder");
+    }
+
+    @FXML
+    private void handleLocalVarFinder(){
+        this.handleScanOrScanParse("localVarFinder");
     }
 
 }

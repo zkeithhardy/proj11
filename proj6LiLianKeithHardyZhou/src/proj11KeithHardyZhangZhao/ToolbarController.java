@@ -19,6 +19,7 @@ package proj11KeithHardyZhangZhao;
 import javafx.application.Platform;
 import proj11KeithHardyZhangZhao.bantam.ast.Program;
 import proj11KeithHardyZhangZhao.bantam.parser.Parser;
+import proj11KeithHardyZhangZhao.bantam.semant.*;
 import proj11KeithHardyZhangZhao.bantam.treedrawer.Drawer;
 import proj11KeithHardyZhangZhao.bantam.util.CompilationException;
 import proj11KeithHardyZhangZhao.bantam.util.ErrorHandler;
@@ -28,6 +29,7 @@ import proj11KeithHardyZhangZhao.bantam.lexer.Token;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.*;
 
 /**
@@ -71,6 +73,8 @@ public class ToolbarController {
             this.handleScan();
         }else if(method.equals("scanParse")){
             this.handleScanAndParse();
+        }else{
+            this.handleFinders(method);
         }
     }
 
@@ -111,6 +115,51 @@ public class ToolbarController {
             }
         }).start();
 
+    }
+
+    public void handleFinders(String method){
+        this.parseIsDone = false;
+        new Thread (()->{
+            ParseTask parseTask = new ParseTask();
+            FutureTask<Program> curFutureTask = new FutureTask<Program>(parseTask);
+            ExecutorService curExecutor = Executors.newFixedThreadPool(1);
+            curExecutor.execute(curFutureTask);
+            try{
+                Program AST = curFutureTask.get();
+                if(AST != null){
+                    switch(method){
+                        case "mainMethodFinder":
+                            MainMainVisitor mainMainVisitor = new MainMainVisitor();
+                            boolean hasMain = mainMainVisitor.hasMain(AST);
+                            if(hasMain){
+                                Platform.runLater(()->this.console.writeToConsole(
+                                        "This file has a main method and class\n",
+                                        "Output"));
+                            }else{
+                                Platform.runLater(()->this.console.writeToConsole(
+                                        "This file does not have a main method and class\n",
+                                        "Error"));
+                            }
+                            break;
+                        case "stringFinder":
+                            StringConstantsVisitor stringConstantsVisitor = new StringConstantsVisitor();
+                            Map<String,String> stringMap = stringConstantsVisitor.getStringConstants(AST);
+                            Platform.runLater(()->this.console.writeToConsole(stringMap.toString()+ "\n",
+                                    "Output"));
+                            break;
+                        default:
+                            NumLocalVarsVisitor numLocalVarsVisitor = new NumLocalVarsVisitor();
+                            Map<String,Integer> varMap = numLocalVarsVisitor.getNumLocalVars(AST);
+                            Platform.runLater(()->this.console.writeToConsole(varMap.toString()+"\n",
+                                    "Output"));
+                            break;
+                    }
+                }
+                this.parseIsDone = true;
+            }catch(InterruptedException| ExecutionException e){
+                Platform.runLater(()-> this.console.writeToConsole("Parsing failed \n", "Error"));
+            }
+        }).start();
     }
 
     /**
