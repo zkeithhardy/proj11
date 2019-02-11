@@ -143,13 +143,13 @@ public class ToolbarController {
                             break;
                         case "stringFinder":
                             StringConstantsVisitor stringConstantsVisitor = new StringConstantsVisitor();
-                            Map<String,String> stringMap = stringConstantsVisitor.getStringConstants();
+                            Map<String,String> stringMap = stringConstantsVisitor.getStringConstants(AST);
                             Platform.runLater(()->this.console.writeToConsole(stringMap.toString()+ "\n",
                                     "Output"));
                             break;
                         default:
                             NumLocalVarsVisitor numLocalVarsVisitor = new NumLocalVarsVisitor();
-                            Map<String,Integer> varMap = numLocalVarsVisitor.getNumLocalVars();
+                            Map<String,Integer> varMap = numLocalVarsVisitor.getNumLocalVars(AST);
                             Platform.runLater(()->this.console.writeToConsole(varMap.toString()+"\n",
                                     "Output"));
                             break;
