@@ -1,15 +1,18 @@
-class Main {
+class Main extends B{
     int b = 2;
     boolean a = true;
     void main() {
-        var x = 3;
-        foo(x);
+	a[3] = 5;
+	x = a[3];
+        foo(x,y);
+	var y = a.b().length;
 	var z = new ban();
-	cast(int,a+b.foo().get().bar("ab));
+	cast(int,a+b.foo().get().bar(ab));
+	return;
     }
-    void bar(int y) {
+    void bar(int y, int z) {
         y = y + 3;
-	var z = 3;
+	var z = this.foo();
 	z = z * y;
 	for(i = 0; i < 2; i++){
 	    z = z + i;
@@ -20,8 +23,6 @@ class Main {
 	   this.counter ++;
 	   break;
 	}
-	// hi
-	foo(1).foo(2).fooo(3);
 	if(x == 3){
 	    z = z / 2;
 	}else{
@@ -42,4 +43,4 @@ class B{
 		(new A()).bar(car(a,cars(c),d,12),b);
 		(new A()).bar(car(a,cars(c)),b);
 	}
-}	
+}
