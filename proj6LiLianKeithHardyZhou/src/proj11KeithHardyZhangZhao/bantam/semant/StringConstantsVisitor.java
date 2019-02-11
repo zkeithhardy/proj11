@@ -23,7 +23,7 @@ import java.util.HashMap;
 * Visitor class that visits the nodes of an AST and logs all the string constants in a map
 */
 public class StringConstantsVisitor extends Visitor {
-    private int numStringConsts; //How many string constants have been counted so far, used for constants' map
+    private int numStringConsts; //How many string constants have been counted so far, used for constants' map values
     private Map<String, String> stringConstMap; //Map of all string constants to a string constant identifier
 
 
@@ -65,6 +65,7 @@ public class StringConstantsVisitor extends Visitor {
     * Method for the "visit" to FormalList nodes, which causes it to retreat from the node and skip its children
     * @param node is the FormalList node to be visited (and ignored)
     */
+    @Override
     public Object visit(FormalList node) {
         return null;
     }
@@ -74,6 +75,7 @@ public class StringConstantsVisitor extends Visitor {
      *Method for the "visit" to InstanceofExpr nodes, which causes it to retreat from the node and skip its children
      * @param node is the InstanceofExpr node to be visited (and ignored)
      */
+    @Override
     public Object visit(InstanceofExpr node) {
         return null;
     }
@@ -83,6 +85,7 @@ public class StringConstantsVisitor extends Visitor {
      *Method for the "visit" to NewExpr nodes, which causes it to retreat from the node and skip its children
      * @param node is the NewExpr node to be visited (and ignored)
      */
+    @Override
     public Object visit(NewExpr node) {
         return null;
     }
