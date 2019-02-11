@@ -66,15 +66,13 @@ public class ToolbarController {
 
     /**
      * Handles actions for scan or scanParse buttons
-     * @param method
+     * @param method type of button clicked on the toolbar
      */
     public void handleScanOrScanParse(String method){
         if(method.equals("scan")){
             this.handleScan();
-        }else if(method.equals("scanParse")){
-            this.handleScanAndParse();
         }else{
-            this.handleFinders(method);
+            this.handleParsing(method);
         }
     }
 
@@ -93,31 +91,12 @@ public class ToolbarController {
     }
 
     /**
-     * handles scanning and parsing in the code area.
-     * Draw the AST to a Java Swing window
+     * creates a new finder thread for parsing the AST.
+     * Once AST is parsed, checks the type of finder and then passes the AST to the correct one.
+     * default case draws the AST
+     * @param method type of finder being executed
      */
-    public void handleScanAndParse(){
-        this.parseIsDone = false;
-        new Thread (()->{
-            ParseTask parseTask = new ParseTask();
-            FutureTask<Program> curFutureTask = new FutureTask<Program>(parseTask);
-            ExecutorService curExecutor = Executors.newFixedThreadPool(1);
-            curExecutor.execute(curFutureTask);
-            try{
-                Program AST = curFutureTask.get();
-                if(AST != null){
-                    Drawer drawer = new Drawer();
-                    drawer.draw(this.codeTabPane.getFileName(),AST);
-                }
-                this.parseIsDone = true;
-            }catch(InterruptedException| ExecutionException e){
-                Platform.runLater(()-> this.console.writeToConsole("Parsing failed \n", "Error"));
-            }
-        }).start();
-
-    }
-
-    public void handleFinders(String method){
+    public void handleParsing(String method){
         this.parseIsDone = false;
         new Thread (()->{
             ParseTask parseTask = new ParseTask();
@@ -128,6 +107,8 @@ public class ToolbarController {
                 Program AST = curFutureTask.get();
                 if(AST != null){
                     switch(method){
+
+                        //main method button clicked
                         case "mainMethodFinder":
                             MainMainVisitor mainMainVisitor = new MainMainVisitor();
                             boolean hasMain = mainMainVisitor.hasMain(AST);
@@ -141,17 +122,27 @@ public class ToolbarController {
                                         "Error"));
                             }
                             break;
+
+                        //string finder clicked
                         case "stringFinder":
                             StringConstantsVisitor stringConstantsVisitor = new StringConstantsVisitor();
                             Map<String,String> stringMap = stringConstantsVisitor.getStringConstants(AST);
                             Platform.runLater(()->this.console.writeToConsole(stringMap.toString()+ "\n",
                                     "Output"));
                             break;
-                        default:
+
+                        //localVarFinder clicked
+                        case "localVarFinder":
                             NumLocalVarsVisitor numLocalVarsVisitor = new NumLocalVarsVisitor();
                             Map<String,Integer> varMap = numLocalVarsVisitor.getNumLocalVars(AST);
                             Platform.runLater(()->this.console.writeToConsole(varMap.toString()+"\n",
                                     "Output"));
+                            break;
+
+                        //scan and parse clicked, build AST image
+                        default:
+                            Drawer drawer = new Drawer();
+                            drawer.draw(this.codeTabPane.getFileName(),AST);
                             break;
                     }
                 }

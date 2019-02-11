@@ -481,17 +481,29 @@ public class MasterController {
         }
     }
 
+
+    /**
+     * handles the main method finder button
+     */
     @FXML
     private void handleMainMethodFinder(){
         this.handleScanOrScanParse("mainMethodFinder");
 
     }
 
+
+    /**
+     * handles the string constant finder button
+     */
     @FXML
     private void handleStringFinder(){
         this.handleScanOrScanParse("stringFinder");
     }
 
+
+    /**
+     * handles the local var finder button
+     */
     @FXML
     private void handleLocalVarFinder(){
         this.handleScanOrScanParse("localVarFinder");
