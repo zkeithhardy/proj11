@@ -38,7 +38,8 @@ public class MainMainVisitor extends Visitor {
 
     public Object visit(Method node){
         if(hasMainClass){
-            if(node.getName().equals("main")){
+            if(node.getName().equals("main") && node.getReturnType().equals("void")
+                    && node.getFormalList().getSize() == 0){
                 hasMainMethod = true;
             }
         }
