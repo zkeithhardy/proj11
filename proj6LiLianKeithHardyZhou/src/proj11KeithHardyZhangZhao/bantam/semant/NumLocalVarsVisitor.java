@@ -53,4 +53,8 @@ public class NumLocalVarsVisitor extends Visitor {
     public Object visit(CastExpr node){
         return null;
     }
+
+    public Object visit(VarExpr node){
+        return null;
+    }
 }
