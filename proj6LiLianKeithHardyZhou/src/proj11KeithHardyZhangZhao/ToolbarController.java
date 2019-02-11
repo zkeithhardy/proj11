@@ -12,6 +12,11 @@
  * Edited By: Zeb Keith-Hardy, Michael Li, Iris Lian, Kevin Zhou
  * Project 6/7/9
  * Date: October 26, 2018/ November 3, 2018/ November 20, 2018
+ *  ---------------------------
+ * Edited By: Zeb Keith-Hardy, Danqing Zhao, Tia Zhang
+ * Class: CS 461
+ * Project 11
+ * Date: February 13, 2019
  */
 
 package proj11KeithHardyZhangZhao;
