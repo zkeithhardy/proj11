@@ -67,7 +67,7 @@ public class BlockStmt extends Stmt {
      *
      * @param v bantam.visitor object
      * @return result of visiting this node
-     * @see proj10LiLianKeithHardyZhou.bantam.visitor.Visitor
+     * @see proj11KeithHardyZhangZhao.bantam.visitor.Visitor
      */
     public Object accept(Visitor v) {
         return v.visit(this);
