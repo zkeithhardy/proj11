@@ -35,24 +35,6 @@
     -fx-background-radius: 5em;
 }
 
-#compileButton {
-    -fx-font: 13 arial;
-    -fx-base: lightblue;
-    -fx-background-radius: 100;
-}
-
-#compileRunButton {
-    -fx-font: 13 arial;
-    -fx-base: lightgreen;
-    -fx-background-radius: 100;
-}
-
-#stopButton {
-    -fx-font: 13 arial;
-    -fx-base: pink;
-    -fx-background-radius: 100;
-}
-
 #scanParseButton {
     -fx-font: 13 arial;
     -fx-base: lightgreen;
@@ -62,6 +44,24 @@
 #scanButton{
     -fx-font: 13 arial;
     -fx-base: lightblue;
+    -fx-background-radius: 100;
+}
+
+#mainButton {
+    -fx-font: 13 arial;
+    -fx-base: pink;
+    -fx-background-radius: 100;
+}
+
+#stringButton {
+    -fx-font: 13 arial;
+    -fx-base: yellow;
+    -fx-background-radius: 100;
+}
+
+#localVarButton {
+    -fx-font: 13 arial;
+    -fx-base: orange;
     -fx-background-radius: 100;
 }
 
