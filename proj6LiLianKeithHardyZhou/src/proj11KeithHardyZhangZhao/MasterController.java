@@ -458,6 +458,13 @@ public class MasterController {
         this.handleScanOrScanParse("scanParse");
     }
 
+    /**
+    * Handles scanning and parsing on the current tab when a button is clicked
+    * Checks to make sure the current tab is saved first and if not, asks if you want to save
+    * If canceled, breaks. If no, works off saved file. If yes, saves first and then moves on to scanning/parsing
+    * @param method is the string that indicates whether it should be just scanning, scanning and parsing,
+    * or scanning and parsing followed by a visitor performing some action
+    */
     private void handleScanOrScanParse(String method){
         Tab curTab = this.codeTabPane.getSelectionModel().getSelectedItem();
         if(this.codeTabPane.getSaveStatus(curTab)) {
