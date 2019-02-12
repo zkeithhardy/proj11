@@ -15,10 +15,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class NumLocalVarsVisitor extends Visitor {
-    private String className;
-    private String methodName;
-    private int numLocalVars = 0;
-    private HashMap<String, Integer> varMap;
+    private String className; //Name of the current class the Visitor is visiting
+    private String methodName; //Name of the current method the Visitor is visiting
+    private int numLocalVars = 0; //Number of local vars in current method
+    private HashMap<String, Integer> varMap; //Map storing [Class].[Method] to number of local vars + params
 
 
     /**
