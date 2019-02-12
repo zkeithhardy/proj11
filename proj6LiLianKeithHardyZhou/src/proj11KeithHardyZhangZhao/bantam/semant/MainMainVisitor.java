@@ -13,6 +13,7 @@ import proj11KeithHardyZhangZhao.bantam.visitor.Visitor;
 
 public class MainMainVisitor extends Visitor {
     private boolean hasMainClassAndMethod; //tracks whether a Main class with a main method has been found yet
+    private ClassList classList; //for searching inherited classes
 
     /**
      * Takes in a Syntax Tree and searches the tree for a main class with a main method
@@ -21,6 +22,7 @@ public class MainMainVisitor extends Visitor {
      */
     public boolean hasMain(Program ast){
         hasMainClassAndMethod = false;
+        classList = ast.getClassList();
         ast.accept(this);
         return hasMainClassAndMethod;
     }
@@ -32,6 +34,16 @@ public class MainMainVisitor extends Visitor {
     public Object visit(Class_ node){
         if(node.getName().equals("Main")){
             node.getMemberList().accept(this);
+
+            //search inherited class
+            if(node.getParent() != null){
+                for(ASTNode cNode: classList){
+                    Class_ classNode = (Class_) cNode;
+                    if(classNode.getName().equals(node.getParent())){
+                        classNode.getMemberList().accept(this);
+                    }
+                }
+            }
         }
         return null;
     }

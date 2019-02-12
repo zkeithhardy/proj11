@@ -430,9 +430,9 @@ public class MasterController {
     private void disableToolbar(){
       this.scanButton.setDisable(true);
       this.scanParseButton.setDisable(true);
-        this.mainButton.setDisable(false);
-        this.localVarButton.setDisable(false);
-        this.stringButton.setDisable(false);
+        this.mainButton.setDisable(true);
+        this.localVarButton.setDisable(true);
+        this.stringButton.setDisable(true);
    }
 
     /**
