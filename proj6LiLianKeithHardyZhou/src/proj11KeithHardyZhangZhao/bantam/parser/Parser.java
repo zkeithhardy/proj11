@@ -682,57 +682,41 @@ public class Parser
                 tempExpr = this.parseStringConst();
                 break;
             case IDENTIFIER://Var Expr & DispatchExpr w/o prefix
-                identifier=parseIdentifier();
-
-                //varExpr case
-                //check if the varExpr has suffix
-                if(this.currentToken.kind == LBRACKET){
-                    updateCurrentToken();
-                    Expr varExprSuffix = this.parseExpression();
-                    this.checkToken(RBRACKET, "When parsing varExpr, \"]\" expected");
-                    tempExpr= new ArrayExpr(position, null, identifier, varExprSuffix);
-                }
-
-                //DispatchExpr
-                else if(this.currentToken.kind==LPAREN) {
-                    updateCurrentToken();
-                    ExprList argument = parseArguments();
-                    this.checkToken(RPAREN, "When parsing varExpr, \")\" expected");
-                    tempExpr = new DispatchExpr(position, null, identifier, argument);
-                }
-
-                else {
-                    tempExpr = new VarExpr(position, null, identifier);
-                }
+                tempExpr = this.parsePrefix(null);
                 break;
         }
 
         //--------------------------------------------End of cases------------------------------------------------------
         while(currentToken.kind == DOT ){
-
             updateCurrentToken();
-            identifier = parseIdentifier();
-
-
-            if(this.currentToken.kind == LBRACKET){
-                updateCurrentToken();
-                Expr varExprSuffix = this.parseExpression();
-                this.checkToken(RBRACKET, "When parsing varExpr, \"]\" expected");
-                tempExpr= new ArrayExpr(position, tempExpr, identifier, varExprSuffix);
-            }
-            else if(this.currentToken.kind==LPAREN) {
-                updateCurrentToken();
-                ExprList argument = parseArguments();
-                this.checkToken(RPAREN, "When parsing varExpr, \")\" expected");
-                tempExpr = new DispatchExpr(position, tempExpr, identifier, argument);
-            }
-            else{
-                tempExpr = new VarExpr( position, tempExpr, identifier);
-            }
-
+            tempExpr = this.parsePrefix(tempExpr);
         }
         return tempExpr;
 
+    }
+
+    private Expr parsePrefix(Expr prefix){
+        String identifier = parseIdentifier();
+        Expr tempExpr;
+
+
+        if(this.currentToken.kind == LBRACKET){
+            updateCurrentToken();
+            Expr varExprSuffix = this.parseExpression();
+            this.checkToken(RBRACKET, "When parsing varExpr, \"]\" expected");
+            tempExpr= new ArrayExpr(this.currentToken.position, prefix, identifier, varExprSuffix);
+        }
+        else if(this.currentToken.kind==LPAREN) {
+            updateCurrentToken();
+            ExprList argument = parseArguments();
+            this.checkToken(RPAREN, "When parsing varExpr, \")\" expected");
+            tempExpr = new DispatchExpr(this.currentToken.position, prefix, identifier, argument);
+        }
+        else{
+            tempExpr = new VarExpr( this.currentToken.position, prefix, identifier);
+        }
+
+        return tempExpr;
     }
 
 
