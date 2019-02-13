@@ -651,15 +651,14 @@ public class Parser
 
 
 
-    /*   <Primary> ::=  <IntegerConst>
-     *                  | <BooleanConst>
-     *                  | <StringConst> <Suffix>
-     *                  | <Identifier> <Suffix>
-     *                  | ( <Expression> ) <Suffix>
-     *   <Suffix> ::=   . <Identifier> <Suffix>
-     *                  | [ <Expression> ] <Suffix>
-     *                  | ( <Arguments> ) <Suffix>
-     *                  | EMPTY
+    /*
+     * <Primary> ::= ( <Expression> ) <ExprSuffix> | <IntegerConst> | <BooleanConst> |
+     *                               <StringConst> <IdSuffix> | <Identifier> <Suffix>
+     * <IdSuffix>    ::=  . <Identifier> <Suffix> | EMPTY
+     * <IndexSuffix> ::=  [ <Expression> ] <IdSuffix> | EMPTY
+     * <DispSuffix>  ::=  ( <Arguments> ) <IdSuffix> | EMPTY
+     * <ExprSuffix>  ::=  <IdSuffix> | <IndexSuffix>
+     * <Suffix>      ::=  <IdSuffix> | <DispSuffix> | <IndexSuffix>
      */
 
 	private Expr parsePrimary() {
