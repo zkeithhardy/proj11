@@ -5,7 +5,7 @@
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module-library">
+    <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
           <root url="jar://$MODULE_DIR$/proj6LiLianKeithHardyZhou/src/proj10LiLianKeithHardyZhou/include/antlr-4.7.1-complete.jar!/" />
@@ -14,7 +14,7 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="module-library">
+    <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
           <root url="jar://$MODULE_DIR$/proj6LiLianKeithHardyZhou/src/proj10LiLianKeithHardyZhou/include/richtextfx-fat-0.9.1.jar!/" />
