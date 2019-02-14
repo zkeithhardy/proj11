@@ -113,35 +113,9 @@ public class ToolbarController {
                 if(AST != null){
                     switch(method){
 
-                        //main method button clicked
-                        case "mainMethodFinder":
-                            MainMainVisitor mainMainVisitor = new MainMainVisitor();
-                            boolean hasMain = mainMainVisitor.hasMain(AST);
-                            if(hasMain){
-                                Platform.runLater(()->this.console.writeToConsole(
-                                        "This file has a main method and class\n",
-                                        "Output"));
-                            }else{
-                                Platform.runLater(()->this.console.writeToConsole(
-                                        "This file does not have a main method and class\n",
-                                        "Error"));
-                            }
-                            break;
+                        //checkerbutton clicked
+                        case "checker":
 
-                        //string finder clicked
-                        case "stringFinder":
-                            StringConstantsVisitor stringConstantsVisitor = new StringConstantsVisitor();
-                            Map<String,String> stringMap = stringConstantsVisitor.getStringConstants(AST);
-                            Platform.runLater(()->this.console.writeToConsole(stringMap.toString()+ "\n",
-                                    "Output"));
-                            break;
-
-                        //localVarFinder clicked
-                        case "localVarFinder":
-                            NumLocalVarsVisitor numLocalVarsVisitor = new NumLocalVarsVisitor();
-                            Map<String,Integer> varMap = numLocalVarsVisitor.getNumLocalVars(AST);
-                            Platform.runLater(()->this.console.writeToConsole(varMap.toString()+"\n",
-                                    "Output"));
                             break;
 
                         //scan and parse clicked, build AST image

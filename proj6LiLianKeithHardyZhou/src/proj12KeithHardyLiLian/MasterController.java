@@ -59,9 +59,7 @@ public class MasterController {
 
     @FXML private Button scanButton;
     @FXML private Button scanParseButton;
-    @FXML private Button mainButton;
-    @FXML private Button stringButton;
-    @FXML private Button localVarButton;
+    @FXML private Button checkButton;
     @FXML private TreeView<String> directoryTree;
     @FXML private TreeView<String> fileStructureTree;
 
@@ -132,9 +130,7 @@ public class MasterController {
         if(toolbarController.scanIsDone()) {
             this.scanButton.setDisable(false);
             this.scanParseButton.setDisable(false);
-            this.mainButton.setDisable(false);
-            this.localVarButton.setDisable(false);
-            this.stringButton.setDisable(false);
+            this.checkButton.setDisable(false);
         }
         this.updateStructureView();
     }
@@ -151,9 +147,7 @@ public class MasterController {
         if(toolbarController.scanIsDone() && !this.codeTabPane.getTabs().isEmpty()) {
             this.scanButton.setDisable(false);
             this.scanParseButton.setDisable(false);
-            this.mainButton.setDisable(false);
-            this.localVarButton.setDisable(false);
-            this.stringButton.setDisable(false);
+            this.checkButton.setDisable(false);
 
         }
         this.updateStructureView();
@@ -430,9 +424,7 @@ public class MasterController {
     private void disableToolbar(){
       this.scanButton.setDisable(true);
       this.scanParseButton.setDisable(true);
-        this.mainButton.setDisable(true);
-        this.localVarButton.setDisable(true);
-        this.stringButton.setDisable(true);
+      this.checkButton.setDisable(true);
    }
 
     /**
@@ -493,32 +485,9 @@ public class MasterController {
         }
     }
 
-
-    /**
-     * handles the main method finder button
-     */
     @FXML
-    private void handleMainMethodFinder(){
-        this.handleScanOrScanParse("mainMethodFinder");
-
-    }
-
-
-    /**
-     * handles the string constant finder button
-     */
-    @FXML
-    private void handleStringFinder(){
-        this.handleScanOrScanParse("stringFinder");
-    }
-
-
-    /**
-     * handles the local var finder button
-     */
-    @FXML
-    private void handleLocalVarFinder(){
-        this.handleScanOrScanParse("localVarFinder");
+    private void handleChecking(){
+        this.handleScanOrScanParse("checker");
     }
 
 }

@@ -47,21 +47,9 @@
     -fx-background-radius: 100;
 }
 
-#mainButton {
+#checkButton {
     -fx-font: 13 arial;
     -fx-base: pink;
-    -fx-background-radius: 100;
-}
-
-#stringButton {
-    -fx-font: 13 arial;
-    -fx-base: yellow;
-    -fx-background-radius: 100;
-}
-
-#localVarButton {
-    -fx-font: 13 arial;
-    -fx-base: orange;
     -fx-background-radius: 100;
 }
 

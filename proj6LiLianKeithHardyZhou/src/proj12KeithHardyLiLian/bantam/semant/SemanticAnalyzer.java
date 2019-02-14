@@ -30,7 +30,6 @@ package proj12KeithHardyLiLian.bantam.semant;
 
 import proj12KeithHardyLiLian.bantam.ast.*;
 import proj12KeithHardyLiLian.bantam.util.*;
-
 import java.util.*;
 
 /**
@@ -109,6 +108,7 @@ public class SemanticAnalyzer
     public ClassTreeNode analyze(Program program) {
         this.program = program;
         this.classMap.clear();
+
 
         // step 1:  add built-in classes to classMap
         addBuiltins();
