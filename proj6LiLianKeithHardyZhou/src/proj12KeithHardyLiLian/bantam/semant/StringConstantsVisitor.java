@@ -28,32 +28,33 @@ public class StringConstantsVisitor extends Visitor {
 
 
     /**
-    *Constructor for the StringConstantsVisitor
-    */
-    public StringConstantsVisitor(){
+     * Constructor for the StringConstantsVisitor
+     */
+    public StringConstantsVisitor() {
         numStringConsts = 0;
         stringConstMap = new HashMap<>();
     }
 
     /**
-    * Method that maps all the string constants in a program
-    * The keys in the maps are the constants and the values are an identifier in the form StringConst_[unique number]
-    * @param ast is the program whose string constants are to be returned. It must be a AST node of type Program
-    * @return the map of string constants
+     * Method that maps all the string constants in a program
+     * The keys in the maps are the constants and the values are an identifier in the form StringConst_[unique number]
+     *
+     * @param ast is the program whose string constants are to be returned. It must be a AST node of type Program
+     * @return the map of string constants
      */
-    public Map<String, String> getStringConstants(Program ast){
+    public Map<String, String> getStringConstants(Program ast) {
         ast.accept(this);
         return stringConstMap;
     }
 
 
     /**
-    * Method for visiting string constant nodes
-    * @param node is the ConstStringExpr node to be visited
-    */
+     * Method for visiting string constant nodes
+     *
+     * @param node is the ConstStringExpr node to be visited
+     */
     @Override
     public Object visit(ConstStringExpr node) {
-        //TODO double check that Dale doesn't care if the value is updated so long as it's unique
         stringConstMap.put(node.getConstant(), "StringConst_" + numStringConsts);
         //It's a terminal node, so there shouldn't be a need to call super.visit()
         numStringConsts += 1;
@@ -62,31 +63,12 @@ public class StringConstantsVisitor extends Visitor {
 
 
     /**
-    * Method for the "visit" to FormalList nodes, which causes it to retreat from the node and skip its children
-    * @param node is the FormalList node to be visited (and ignored)
-    */
+     * Method for the "visit" to FormalList nodes, which causes it to retreat from the node and skip its children
+     *
+     * @param node is the FormalList node to be visited (and ignored)
+     */
     @Override
     public Object visit(FormalList node) {
-        return null;
-    }
-
-
-    /**
-     *Method for the "visit" to InstanceofExpr nodes, which causes it to retreat from the node and skip its children
-     * @param node is the InstanceofExpr node to be visited (and ignored)
-     */
-    @Override
-    public Object visit(InstanceofExpr node) {
-        return null;
-    }
-
-
-    /**
-     *Method for the "visit" to NewExpr nodes, which causes it to retreat from the node and skip its children
-     * @param node is the NewExpr node to be visited (and ignored)
-     */
-    @Override
-    public Object visit(NewExpr node) {
         return null;
     }
 }

@@ -107,4 +107,42 @@ public class NumLocalVarsVisitor extends Visitor {
     public Object visit(VarExpr node){
         return null;
     }
+
+    /**
+     * skip for statements declaration
+     * @param node the variable expression node
+     */
+    public Object visit(ForStmt node){
+        node.getBodyStmt().accept(this);
+        return null;
+    }
+
+    /**
+     * skip while statements declaration
+     * @param node the variable expression node
+     */
+    public Object visit(WhileStmt node){
+        node.getBodyStmt().accept(this);
+        return null;
+    }
+
+    /**
+     * skip if statement declaration
+     * @param node the variable expression node
+     */
+    public Object visit(IfStmt node){
+        node.getThenStmt().accept(this);
+        if (node.getElseStmt() != null) {
+            node.getElseStmt().accept(this);
+        }
+        return null;
+    }
+
+    /**
+     * skip Expression statements
+     * @param node the variable expression node
+     */
+    public Object visit(ExprStmt node){
+        return null;
+    }
 }

@@ -681,20 +681,20 @@ public class Parser
                 tempExpr = this.parseStringConst();
                 break;
             case IDENTIFIER://Var Expr & DispatchExpr w/o prefix
-                tempExpr = this.parsePrefix(null);
+                tempExpr = this.parseSuffix(null);
                 break;
         }
 
         //--------------------------------------------End of cases------------------------------------------------------
         while(currentToken.kind == DOT ){
             updateCurrentToken();
-            tempExpr = this.parsePrefix(tempExpr);
+            tempExpr = this.parseSuffix(tempExpr);
         }
         return tempExpr;
 
     }
 
-    private Expr parsePrefix(Expr prefix){
+    private Expr parseSuffix(Expr prefix){
         String identifier = parseIdentifier();
         Expr tempExpr;
 

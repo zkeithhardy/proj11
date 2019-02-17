@@ -30,6 +30,9 @@ public class MainMainVisitor extends Visitor {
      * @param node the class node
      */
     public Object visit(Class_ node){
+        if(hasMainClassAndMethod){
+            return null;
+        }
         if(node.getName().equals("Main")){
             node.getMemberList().accept(this);
         }
