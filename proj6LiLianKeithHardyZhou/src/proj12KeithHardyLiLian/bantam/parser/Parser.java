@@ -669,7 +669,16 @@ public class Parser
                 updateCurrentToken();
                 Expr expr = this.parseExpression();
                 this.checkToken(RPAREN, "When parsing (Expr), \")\" expected");
-                tempExpr = expr;
+                if(currentToken.kind == LBRACKET){
+                    updateCurrentToken();
+                    Expr index = this.parseExpression();
+                    this.checkToken(RBRACKET, "When parsing (Expr), \"]\" expected");
+                    tempExpr = new ArrayExpr(this.currentToken.position,expr,null,index);
+                }else{
+                    tempExpr = expr;
+                }
+
+
                 break;
             case INTCONST: // <IntegerConst>
                 tempExpr = this.parseIntConst();
