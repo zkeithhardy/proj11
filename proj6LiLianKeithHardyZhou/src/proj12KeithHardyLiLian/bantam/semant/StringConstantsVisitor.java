@@ -26,15 +26,6 @@ public class StringConstantsVisitor extends Visitor {
     private int numStringConsts; //How many string constants have been counted so far, used for constants' map values
     private Map<String, String> stringConstMap; //Map of all string constants to a string constant identifier
 
-
-    /**
-     * Constructor for the StringConstantsVisitor
-     */
-    public StringConstantsVisitor() {
-        numStringConsts = 0;
-        stringConstMap = new HashMap<>();
-    }
-
     /**
      * Method that maps all the string constants in a program
      * The keys in the maps are the constants and the values are an identifier in the form StringConst_[unique number]
@@ -43,6 +34,8 @@ public class StringConstantsVisitor extends Visitor {
      * @return the map of string constants
      */
     public Map<String, String> getStringConstants(Program ast) {
+        numStringConsts = 0;
+        stringConstMap = new HashMap<>();
         ast.accept(this);
         return stringConstMap;
     }

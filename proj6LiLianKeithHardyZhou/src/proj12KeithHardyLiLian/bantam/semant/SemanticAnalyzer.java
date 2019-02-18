@@ -109,7 +109,6 @@ public class SemanticAnalyzer
         this.program = program;
         this.classMap.clear();
 
-
         // step 1:  add built-in classes to classMap
         addBuiltins();
 
