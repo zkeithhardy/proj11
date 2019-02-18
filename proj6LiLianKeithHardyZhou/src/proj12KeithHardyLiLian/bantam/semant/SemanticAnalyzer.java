@@ -113,8 +113,37 @@ public class SemanticAnalyzer
         // step 1:  add built-in classes to classMap
         addBuiltins();
 
-        // remove the following statement
-        throw new RuntimeException("Semantic analyzer unimplemented");
+        //        //        // remove the following statement
+        //        //        throw new RuntimeException("Semantic analyzer unimplemented");
+        //        Iterator<ASTNode> classList=this.program.getClassList().iterator();
+        //        while (classList.hasNext()){
+        //            //declare class tree node
+        //            Class_ tempClass= (Class_) classList.next();
+        //            //String tempParent= tempClass.getParent();
+        //            //todo: check cyclic extension
+        //
+        //            ClassTreeNode tempCTN=new ClassTreeNode(tempClass,false, true, classMap );
+        //            classMap.put(tempClass.getName(),tempCTN);
+        //        }
+        //        Iterator classMapIterator= classMap.entrySet().iterator();
+        //
+        //        //set parents for each entry in classMap
+        //        //build the inheritance tree of ClassTreeNodes
+        //        while(classMapIterator.hasNext()){
+        //            Map.Entry pair= (Map.Entry) classMapIterator.next();
+        //            ClassTreeNode tempCTN=(ClassTreeNode) pair.getValue();
+        //            String tempParent=tempCTN.getASTNode().getParent();
+        //            if(tempParent==null||tempParent=="Object"){
+        //                tempCTN.setParent(classMap.get("Object"));
+        //            }
+        //            else{
+        //                tempCTN.setParent(classMap.get(tempParent));
+        //            }
+        //        }
+
+        InheritanceTreeVisitor inheritanceTreeVisitor= new InheritanceTreeVisitor();
+        this.classMap= inheritanceTreeVisitor.buildClassMap(program, classMap);
+
 
         // add code here...
 
@@ -190,5 +219,13 @@ public class SemanticAnalyzer
         // create class tree node for Sys, add it to the mapping
         classMap.put("Sys", new ClassTreeNode(astNode, /*built-in?*/true, /*extendable
         ?*/false, classMap));
+    }
+
+    /**
+     * build the symbol table for all methods and fields for a given classTreeNode
+     * @param classTreeNode
+     */
+    private void buildClassEnvironment(ClassTreeNode classTreeNode){
+
     }
 }
