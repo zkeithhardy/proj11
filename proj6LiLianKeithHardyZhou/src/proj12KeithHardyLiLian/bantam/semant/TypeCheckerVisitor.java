@@ -56,7 +56,7 @@ public class TypeCheckerVisitor extends Visitor
             initExpr.accept(this);
             String initType = initExpr.getExprType();
             /*...the initExpr's type is not a subtype of the node's type...*/
-            if(!(type.equals(initType))) { //have to deal with subtyping. only dealing with current type right now.
+            if(!(type.equals(initType))) {
                 if(classNames.contains(type)){
                     ClassTreeNode classNode = currentClass.getClassMap().get(type);
                     Iterator<ClassTreeNode> subclasses = classNode.getChildrenList();
@@ -194,7 +194,7 @@ public class TypeCheckerVisitor extends Visitor
         }
         if (node.getPredExpr() != null) {
             node.getPredExpr().accept(this);
-            if(!node.getPredExpr().equals("boolean")){
+            if(!node.getPredExpr().getExprType().equals("boolean")){
                 errorHandler.register(Error.Kind.SEMANT_ERROR,
                         currentClass.getASTNode().getFilename(), node.getLineNum(),
                         "The type of the predicate is " + node.getPredExpr().getExprType()
@@ -242,7 +242,7 @@ public class TypeCheckerVisitor extends Visitor
                 errorHandler.register(Error.Kind.SEMANT_ERROR,
                         currentClass.getASTNode().getFilename(), node.getLineNum(),
                         "The return value" + node.getExpr().getExprType() + " of the method "
-                                + " is undefined.");
+                                + " is of the wrong type.");
             }
         }
         return null;
@@ -258,6 +258,16 @@ public class TypeCheckerVisitor extends Visitor
      */
     public Object visit(DeclStmt node) {
         node.getInit().accept(this);
+        node.setType(node.getInit().getExprType());
+
+        if(currentSymbolTable.lookup(node.getName(),currentSymbolTable.getCurrScopeLevel()) == null){
+            currentSymbolTable.add(node.getName(),node.getType());
+        }else{
+            errorHandler.register(Error.Kind.SEMANT_ERROR,
+                    currentClass.getASTNode().getFilename(), node.getLineNum(),
+                    "The variable" + node.getName() + " has already been declared in this scope.");
+        }
+
         return null;
     }
 
@@ -269,24 +279,30 @@ public class TypeCheckerVisitor extends Visitor
      * @return result of the visit
      */
     public Object visit(DispatchExpr node) {
-        if(node.getRefExpr() != null)
+        if(node.getRefExpr() != null){
             node.getRefExpr().accept(this);
+        }
+
         node.getActualList().accept(this);
         return null;
     }
 
     //UNFINISHED
     /**
-     * Visit a new array expression node
+     * Visit a variable expression node
      *
-     * @param node the new array expression node
+     * @param node the variable expression node
      * @return result of the visit
      */
-    public Object visit(NewArrayExpr node) {
-        node.getSize().accept(this);
+    public Object visit(VarExpr node) {
+        if (node.getRef() != null) {
+            node.getRef().accept(this);
+        }
         return null;
     }
 
+
+    //UNFINISHED
     /**
      * Visit an instanceof expression node
      *
@@ -318,10 +334,38 @@ public class TypeCheckerVisitor extends Visitor
      * @return result of the visit
      */
     public Object visit(AssignExpr node) {
+        Object leftType = "";
         if(node.getRefName() != null){
+            switch (node.getRefName()){
+                case "this":
+                    leftType = currentSymbolTable.lookup(node.getName(),1);
+                    break;
 
+                case "super":
+                    leftType = currentSymbolTable.lookup(node.getName(),0);
+                    break;
+
+                default:
+                    //TODO HAVE TO DEAL WITH CASE OF x.y = 3
+                    break;
+            }
+        }else{
+            leftType = currentSymbolTable.lookup(node.getName());
+        }
+        if(leftType.equals("")){
+            errorHandler.register(Error.Kind.SEMANT_ERROR,
+                    currentClass.getASTNode().getFilename(), node.getLineNum(),
+                    "The variable " + node.getName() + " has not been declared");
         }
         node.getExpr().accept(this);
+        String rightType = node.getExpr().getExprType();
+
+        if(!leftType.equals(rightType)){
+            errorHandler.register(Error.Kind.SEMANT_ERROR,
+                    currentClass.getASTNode().getFilename(), node.getLineNum(),
+                    "Cannot assign expression of type " + node.getExpr().getExprType() + " to variable" +
+                            "of type " + leftType);
+        }
         return null;
     }
 
@@ -334,7 +378,44 @@ public class TypeCheckerVisitor extends Visitor
      */
     public Object visit(ArrayAssignExpr node) {
         node.getIndex().accept(this);
+        if (!node.getIndex().getExprType().equals("int")) {
+            errorHandler.register(Error.Kind.SEMANT_ERROR,
+                    currentClass.getASTNode().getFilename(), node.getLineNum(),
+                    "Index of Array is not of type int");
+        }
+
+        Object leftType = "";
+        if(node.getRefName() != null){
+            switch (node.getRefName()){
+                case "this":
+                    leftType = currentSymbolTable.lookup(node.getName(),1);
+                    break;
+
+                case "super":
+                    leftType = currentSymbolTable.lookup(node.getName(),0);
+                    break;
+
+                default:
+                    //TODO HAVE TO DEAL WITH CASE OF x.y = 3
+                    break;
+            }
+        }else{
+            leftType = currentSymbolTable.lookup(node.getName());
+        }
+        if(leftType.equals("")){
+            errorHandler.register(Error.Kind.SEMANT_ERROR,
+                    currentClass.getASTNode().getFilename(), node.getLineNum(),
+                    "The variable " + node.getName() + " has not been declared");
+        }
         node.getExpr().accept(this);
+        String rightType = node.getExpr().getExprType();
+
+        if(!leftType.equals(rightType)){
+            errorHandler.register(Error.Kind.SEMANT_ERROR,
+                    currentClass.getASTNode().getFilename(), node.getLineNum(),
+                    "Cannot assign expression of type " + node.getExpr().getExprType() + " to variable" +
+                            "of type " + leftType);
+        }
         return null;
     }
 
@@ -345,6 +426,35 @@ public class TypeCheckerVisitor extends Visitor
      * @return null
      */
     public Object visit(NewExpr node) {
+        Set<String> classNames = currentClass.getClassMap().keySet();
+        String type = node.getType();
+        /*...the node's type is not a defined class type...*/
+        if(!classNames.contains(type) && !type.equals("int") && !type.equals("boolean") ) {
+            errorHandler.register(Error.Kind.SEMANT_ERROR,
+                    currentClass.getASTNode().getFilename(), node.getLineNum(),
+                    "The type " + node.getType() + " does not exist.");
+            node.setExprType("Object"); // to allow analysis to continue
+        }
+        else {
+            node.setExprType(node.getType());
+        }
+        return null;
+    }
+
+    /**
+     * Visit a new array expression node
+     *
+     * @param node the new array expression node
+     * @return result of the visit
+     */
+    public Object visit(NewArrayExpr node) {
+        node.getSize().accept(this);
+        if(!node.getSize().getExprType().equals("int")){
+            errorHandler.register(Error.Kind.SEMANT_ERROR,
+                    currentClass.getASTNode().getFilename(), node.getLineNum(),
+                    "Size of New Array is not of type int");
+        }
+
         Set<String> classNames = currentClass.getClassMap().keySet();
         String type = node.getType();
         /*...the node's type is not a defined class type...*/
@@ -693,20 +803,6 @@ public class TypeCheckerVisitor extends Visitor
                             " not " + type + " expressions.");
         }
         node.setExprType("int");
-        return null;
-    }
-
-    //UNFINISHED
-    /**
-     * Visit a variable expression node
-     *
-     * @param node the variable expression node
-     * @return result of the visit
-     */
-    public Object visit(VarExpr node) {
-        if (node.getRef() != null) {
-            node.getRef().accept(this);
-        }
         return null;
     }
 
