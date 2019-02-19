@@ -147,7 +147,7 @@ public class SemanticAnalyzer
         // add code here...
 
         // uncomment the following statement
-        // return root;
+        return root;
     }
 
     /**
