@@ -125,7 +125,6 @@ public class ToolbarController {
                             break;
                     }
                 }
-                AST.
                 this.parseIsDone = true;
             }catch(InterruptedException| ExecutionException e){
                 Platform.runLater(()-> this.console.writeToConsole("Parsing failed \n", "Error"));
