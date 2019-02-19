@@ -52,6 +52,7 @@ public class ErrorHandler {
         if (errorList.size() < 100) {
             insert(error);
         }
+
     }
 
     /**

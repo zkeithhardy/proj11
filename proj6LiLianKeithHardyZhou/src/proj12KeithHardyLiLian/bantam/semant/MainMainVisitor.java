@@ -9,18 +9,23 @@
 package proj12KeithHardyLiLian.bantam.semant;
 
 import proj12KeithHardyLiLian.bantam.ast.*;
+import proj12KeithHardyLiLian.bantam.util.ClassTreeNode;
+import proj12KeithHardyLiLian.bantam.util.SymbolTable;
 import proj12KeithHardyLiLian.bantam.visitor.Visitor;
+
+import java.util.Hashtable;
 
 public class MainMainVisitor extends Visitor {
     private boolean hasMainClassAndMethod; //tracks whether a Main class with a main method has been found yet
-
+    private Hashtable<String, ClassTreeNode> classMap;
     /**
      * Takes in a Syntax Tree and searches the tree for a main class with a main method
      * @param ast AST to search for main method
      * @return boolean of whether the main method is there
      */
-    public boolean hasMain(Program ast){
+    public boolean hasMain(Program ast, Hashtable<String, ClassTreeNode> classMap){
         hasMainClassAndMethod = false;
+        this.classMap=classMap;
         ast.accept(this);
         return hasMainClassAndMethod;
     }
@@ -33,7 +38,14 @@ public class MainMainVisitor extends Visitor {
         if(hasMainClassAndMethod){
             return null;
         }
+
         if(node.getName().equals("Main")){
+            ClassTreeNode tempClassTreeNode=this.classMap.get(node.getName());
+            SymbolTable curMethodSymTbl= tempClassTreeNode.getMethodSymbolTable();
+
+            if (curMethodSymTbl.lookup("main")!=null){
+                curMethodSymTbl.lookup("main").
+            }
             node.getMemberList().accept(this);
         }
         return null;
