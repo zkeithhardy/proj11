@@ -25,7 +25,7 @@ public class EnvironmentBuilderVisitor extends Visitor {
      * @param classMap class map class that is about to be build
      * @return the built class map
      */
-    public Hashtable<String, ClassTreeNode> buildClassMap(Program ast, Hashtable<String, ClassTreeNode> classMap,
+    public Hashtable<String, ClassTreeNode> buildEnvironment(Program ast, Hashtable<String, ClassTreeNode> classMap,
                                                           ErrorHandler errorHandler){
         this.classMap = classMap;
         this.varSymbolTable = new SymbolTable();
