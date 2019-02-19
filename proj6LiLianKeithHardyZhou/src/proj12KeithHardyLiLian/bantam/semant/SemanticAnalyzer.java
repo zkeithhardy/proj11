@@ -121,6 +121,12 @@ public class SemanticAnalyzer
         EnvironmentBuilderVisitor environmentBuilderVisitor = new EnvironmentBuilderVisitor();
         this.classMap = environmentBuilderVisitor.buildEnvironment(this.program, this.classMap, this.errorHandler);
 
+        // step 4: check that the Main class and main method are declared properly
+        MainMainVisitor mainMainVisitor = new MainMainVisitor();
+        mainMainVisitor.hasMain(this.program, this.classMap, this.errorHandler);
+
+        // step 5: type check everything
+
         return root;
     }
 

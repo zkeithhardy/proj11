@@ -10,6 +10,8 @@ package proj12KeithHardyLiLian.bantam.semant;
 
 import proj12KeithHardyLiLian.bantam.ast.*;
 import proj12KeithHardyLiLian.bantam.util.ClassTreeNode;
+import proj12KeithHardyLiLian.bantam.util.Error;
+import proj12KeithHardyLiLian.bantam.util.ErrorHandler;
 import proj12KeithHardyLiLian.bantam.util.SymbolTable;
 import proj12KeithHardyLiLian.bantam.visitor.Visitor;
 
@@ -23,10 +25,13 @@ public class MainMainVisitor extends Visitor {
      * @param ast AST to search for main method
      * @return boolean of whether the main method is there
      */
-    public boolean hasMain(Program ast, Hashtable<String, ClassTreeNode> classMap){
+    public boolean hasMain(Program ast, Hashtable<String, ClassTreeNode> classMap, ErrorHandler errorHandler){
         hasMainClassAndMethod = false;
-        this.classMap=classMap;
+        this.classMap = classMap;
         ast.accept(this);
+
+        if(!hasMainClassAndMethod)
+            errorHandler.register(Error.Kind.SEMANT_ERROR, "No proper main method found\n");
         return hasMainClassAndMethod;
     }
 
@@ -42,47 +47,12 @@ public class MainMainVisitor extends Visitor {
         if(node.getName().equals("Main")){
             ClassTreeNode tempClassTreeNode=this.classMap.get(node.getName());
             SymbolTable curMethodSymTbl= tempClassTreeNode.getMethodSymbolTable();
-
-            if (curMethodSymTbl.lookup("main")!=null){
-                curMethodSymTbl.lookup("main").
+            if (curMethodSymTbl.lookup("main") != null){
+                Method mainMethod = (Method)curMethodSymTbl.lookup("main");
+                if(mainMethod.getFormalList().getSize() == 0 && mainMethod.getReturnType().equals("void")){
+                    hasMainClassAndMethod = true;
+                }
             }
-            node.getMemberList().accept(this);
-        }
-        return null;
-    }
-
-    /**
-     * bypass fields
-     * @param node the field node
-     */
-    public Object visit(Field node){
-        return null;
-    }
-
-    /**
-     * updated visitor so that if main method is found in main class, stops searching through
-     * the member list
-     * @param node the member list node
-     */
-    public Object visit(MemberList node){
-        for (ASTNode child : node){
-            child.accept(this);
-            if(hasMainClassAndMethod){
-                return null;
-            }
-        }
-        return null;
-    }
-
-    /**
-     * if in main class, searches for main method with correct format.
-     * @param node the method node
-     */
-    public Object visit(Method node){
-        //must be called main, have void return, and no parameters
-        if(node.getName().equals("main") && node.getReturnType().equals("void")
-                && node.getFormalList().getSize() == 0){
-            hasMainClassAndMethod = true;
         }
         return null;
     }
