@@ -51,7 +51,7 @@ public class SemanticAnalyzer
      * However, class names can be used as variable names.
      */
     public static final Set<String> reservedIdentifiers = new HashSet<>(Arrays.asList(
-            "null", "this", "super", "void", "int", "boolean"));
+            "null", "this", "super", "void", "int", "boolean", "true", "false"));
 
     /**
      * Root of the AST
@@ -123,11 +123,23 @@ public class SemanticAnalyzer
 
         // step 4: check that the Main class and main method are declared properly
         MainMainVisitor mainMainVisitor = new MainMainVisitor();
-        mainMainVisitor.hasMain(this.program, this.classMap, this.errorHandler);
+        //need to register error here if there is not a main class
+        boolean hasMain = mainMainVisitor.hasMain(this.program, this.classMap, this.errorHandler);
 
-        // step 5: type check everything
+        if(hasMain){
+            //step 5: type check everything
+//            TypeCheckerVisitor typeCheckerVisitor = new TypeCheckerVisitor();
+//            //need: this.program currentClass (main class??), field symbol table, error handler
+//            typeCheckerVisitor.typeCheck(this.program,this.classMap.get("Main"),
+//                      this.classMap.get("Main").getVarSymbolTable(),this.errorHandler);
+            return root;
+        }else{
+            return null;
+        }
 
-        return root;
+
+
+
     }
 
     /**

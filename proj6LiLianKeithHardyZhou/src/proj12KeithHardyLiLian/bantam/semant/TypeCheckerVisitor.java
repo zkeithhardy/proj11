@@ -6,6 +6,7 @@ import proj12KeithHardyLiLian.bantam.util.*;
 import proj12KeithHardyLiLian.bantam.util.Error;
 import proj12KeithHardyLiLian.bantam.visitor.Visitor;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -14,6 +15,8 @@ public class TypeCheckerVisitor extends Visitor
     private ClassTreeNode currentClass;
     private SymbolTable currentSymbolTable;
     private ErrorHandler errorHandler;
+    private String currentMethodType;
+
 
     public boolean typeCheck(Program ast,ClassTreeNode currentClass,
                              SymbolTable currentSymbolTable,ErrorHandler errorHandler){
@@ -102,6 +105,7 @@ public class TypeCheckerVisitor extends Visitor
                     "The return type " + node.getReturnType() + " of the method "
                             + node.getName() + " is undefined.");
         }
+        this.currentMethodType = type;
 
         //create a new scope for the method body
         currentSymbolTable.enterScope();
@@ -238,7 +242,7 @@ public class TypeCheckerVisitor extends Visitor
     public Object visit(ReturnStmt node) {
         if (node.getExpr() != null) {
             node.getExpr().accept(this);
-            if(!node.getExpr().getExprType().equals(currentClass.getMethodSymbolTable())){
+            if(!node.getExpr().getExprType().equals(this.currentMethodType)){
                 errorHandler.register(Error.Kind.SEMANT_ERROR,
                         currentClass.getASTNode().getFilename(), node.getLineNum(),
                         "The return value" + node.getExpr().getExprType() + " of the method "
@@ -248,8 +252,6 @@ public class TypeCheckerVisitor extends Visitor
         return null;
     }
 
-
-    //UNFINISHED
     /**
      * Visit a declaration statement node
      *
@@ -260,6 +262,17 @@ public class TypeCheckerVisitor extends Visitor
         node.getInit().accept(this);
         node.setType(node.getInit().getExprType());
 
+        if( node.getInit().getExprType().equals("null")){
+            errorHandler.register(Error.Kind.SEMANT_ERROR,
+                    currentClass.getASTNode().getFilename(), node.getLineNum(),
+                    "Cannot declare a variable as null.");
+        }
+
+        if(SemanticAnalyzer.reservedIdentifiers.contains(node.getName())){
+            errorHandler.register(Error.Kind.SEMANT_ERROR,
+                    currentClass.getASTNode().getFilename(), node.getLineNum(),
+                    "Cannot use the reserved keyword" + node.getName() + "to declare a variable.");
+        }
         if(currentSymbolTable.lookup(node.getName(),currentSymbolTable.getCurrScopeLevel()) == null){
             currentSymbolTable.add(node.getName(),node.getType());
         }else{
@@ -282,8 +295,18 @@ public class TypeCheckerVisitor extends Visitor
         if(node.getRefExpr() != null){
             node.getRefExpr().accept(this);
         }
-
+        Method method = (Method) currentClass.getMethodSymbolTable().lookup(node.getMethodName());
+        String methodType = method.getReturnType();
+        node.setExprType(methodType);
         node.getActualList().accept(this);
+
+        //now have to check Actual List against Formal List for the Method.
+        for (Iterator it = method.getFormalList().iterator(); it.hasNext(); ){
+            Expr formal = (Expr) it.next();
+
+        }
+
+
         return null;
     }
 
@@ -298,11 +321,23 @@ public class TypeCheckerVisitor extends Visitor
         if (node.getRef() != null) {
             node.getRef().accept(this);
         }
+
+        Object type = currentSymbolTable.lookup(node.getName());
+        if(type == null){
+            errorHandler.register(Error.Kind.SEMANT_ERROR,
+                    currentClass.getASTNode().getFilename(), node.getLineNum(),
+                    "Variable has not been declared in this scope");
+        }else{
+            node.setExprType((String)type);
+        }
+
+        if(node.getName().equals("null")){
+            node.setExprType("null");
+        }
+
         return null;
     }
 
-
-    //UNFINISHED
     /**
      * Visit an instanceof expression node
      *
@@ -311,10 +346,28 @@ public class TypeCheckerVisitor extends Visitor
      */
     public Object visit(InstanceofExpr node) {
         node.getExpr().accept(this);
+
+        if(node.getExpr().getExprType().equals("int") || node.getExpr().getExprType().equals("boolean")){
+            errorHandler.register(Error.Kind.SEMANT_ERROR,
+                    currentClass.getASTNode().getFilename(), node.getLineNum(),
+                    "Cannot use instanceof on a variable of primitive type");
+        }
+
+        String superType = node.getType();
+        node.setUpCheck(true);
+
+        ClassTreeNode exprClass = currentClass.lookupClass(superType);
+
+        if(exprClass == null){
+            errorHandler.register(Error.Kind.SEMANT_ERROR,
+                    currentClass.getASTNode().getFilename(), node.getLineNum(),
+                    "Class " + node.getType() + " does not exist");
+        }
+        node.setExprType("boolean");
+
         return null;
     }
 
-    //UNFINISHED
     /**
      * Visit a cast expression node
      *
@@ -323,10 +376,41 @@ public class TypeCheckerVisitor extends Visitor
      */
     public Object visit(CastExpr node) {
         node.getExpr().accept(this);
+
+        String currentType = node.getExpr().getExprType();
+        String castType = node.getType();
+
+        if(node.getExpr().getExprType().equals("int") || node.getExpr().getExprType().equals("boolean")){
+            errorHandler.register(Error.Kind.SEMANT_ERROR,
+                    currentClass.getASTNode().getFilename(), node.getLineNum(),
+                    "Cannot use cast on a variable of primitive type" + node.getExpr().getExprType());
+        }
+
+        ClassTreeNode exprClass = currentClass.lookupClass(currentType);
+        String superClass = exprClass.getParent().getName();
+        Iterator<ClassTreeNode> children = exprClass.getChildrenList();
+        if(superClass.equals(castType)){
+            node.setUpCast(true);
+            node.setExprType(castType);
+            return null;
+        }
+
+        while(children.hasNext()){
+            ClassTreeNode child = children.next();
+            if(child.getName().equals(castType)){
+                node.setUpCast(false);
+                node.setExprType(castType);
+                return null;
+            }
+        }
+
+        errorHandler.register(Error.Kind.SEMANT_ERROR,
+                currentClass.getASTNode().getFilename(), node.getLineNum(),
+                "Class " + node.getType() + " is not a super class or subclass of class" +
+                node.getExpr().getExprType());
         return null;
     }
 
-    //UNFINISHED
     /**
      * Visit an assignment expression node
      *
@@ -346,7 +430,15 @@ public class TypeCheckerVisitor extends Visitor
                     break;
 
                 default:
-                    //TODO HAVE TO DEAL WITH CASE OF x.y = 3
+                    leftType = currentSymbolTable.lookup(node.getName());
+                    if(leftType.equals("int") || leftType.equals("boolean")){
+                        errorHandler.register(Error.Kind.SEMANT_ERROR,
+                                currentClass.getASTNode().getFilename(), node.getLineNum(),
+                                "Invalid var expression, primitives do not have builtin methods");
+                    }else{
+                        leftType = currentClass.getClassMap().get(leftType).
+                                getMethodSymbolTable().lookup(node.getName());
+                    }
                     break;
             }
         }else{
@@ -396,7 +488,15 @@ public class TypeCheckerVisitor extends Visitor
                     break;
 
                 default:
-                    //TODO HAVE TO DEAL WITH CASE OF x.y = 3
+                    leftType = currentSymbolTable.lookup(node.getName());
+                    if(leftType.equals("int") || leftType.equals("boolean")){
+                        errorHandler.register(Error.Kind.SEMANT_ERROR,
+                                currentClass.getASTNode().getFilename(), node.getLineNum(),
+                                "Invalid var expression, primitives do not have builtin methods");
+                    }else{
+                        leftType = currentClass.getClassMap().get(leftType).
+                                getMethodSymbolTable().lookup(node.getName());
+                    }
                     break;
             }
         }else{
@@ -407,9 +507,12 @@ public class TypeCheckerVisitor extends Visitor
                     currentClass.getASTNode().getFilename(), node.getLineNum(),
                     "The variable " + node.getName() + " has not been declared");
         }
+
         node.getExpr().accept(this);
         String rightType = node.getExpr().getExprType();
 
+
+        //HERE: have to get the type of the array without the []
         if(!leftType.equals(rightType)){
             errorHandler.register(Error.Kind.SEMANT_ERROR,
                     currentClass.getASTNode().getFilename(), node.getLineNum(),
@@ -465,7 +568,7 @@ public class TypeCheckerVisitor extends Visitor
             node.setExprType("Object"); // to allow analysis to continue
         }
         else {
-            node.setExprType(node.getType());
+            node.setExprType(node.getType() + "[]");
         }
         return null;
     }
@@ -803,6 +906,25 @@ public class TypeCheckerVisitor extends Visitor
                             " not " + type + " expressions.");
         }
         node.setExprType("int");
+        return null;
+    }
+
+
+    //UNFINISHED
+    /**
+     * Visit an array expression node
+     *
+     * @param node the array expression node
+     * @return result of the visit
+     */
+    public Object visit(ArrayExpr node) {
+        if (node.getRef() != null) {
+            node.getRef().accept(this);
+        }
+        node.getIndex().accept(this);
+
+        //check name against Symbol table and classmap
+        node.setExprType(node.getName() + "[]");
         return null;
     }
 
