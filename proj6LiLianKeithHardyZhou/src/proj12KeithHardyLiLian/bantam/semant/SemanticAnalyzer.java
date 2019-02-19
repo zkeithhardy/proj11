@@ -118,6 +118,8 @@ public class SemanticAnalyzer
 
         // step 3: build the environment for each class (add class members only) and check
         //          that members are declared properly
+        EnvironmentBuilderVisitor environmentBuilderVisitor = new EnvironmentBuilderVisitor();
+        this.classMap = environmentBuilderVisitor.buildEnvironment(this.program, this.classMap, this.errorHandler);
 
         return root;
     }
