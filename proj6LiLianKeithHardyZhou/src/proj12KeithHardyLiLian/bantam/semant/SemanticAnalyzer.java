@@ -112,41 +112,15 @@ public class SemanticAnalyzer
         // step 1:  add built-in classes to classMap
         addBuiltins();
 
-        //        //        // remove the following statement
-        //        //        throw new RuntimeException("Semantic analyzer unimplemented");
-        //        Iterator<ASTNode> classList=this.program.getClassList().iterator();
-        //        while (classList.hasNext()){
-        //            //declare class tree node
-        //            Class_ tempClass= (Class_) classList.next();
-        //            //String tempParent= tempClass.getParent();
-        //            //todo: check cyclic extension
-        //
-        //            ClassTreeNode tempCTN=new ClassTreeNode(tempClass,false, true, classMap );
-        //            classMap.put(tempClass.getName(),tempCTN);
-        //        }
-        //        Iterator classMapIterator= classMap.entrySet().iterator();
-        //
-        //        //set parents for each entry in classMap
-        //        //build the inheritance tree of ClassTreeNodes
-        //        while(classMapIterator.hasNext()){
-        //            Map.Entry pair= (Map.Entry) classMapIterator.next();
-        //            ClassTreeNode tempCTN=(ClassTreeNode) pair.getValue();
-        //            String tempParent=tempCTN.getASTNode().getParent();
-        //            if(tempParent==null||tempParent=="Object"){
-        //                tempCTN.setParent(classMap.get("Object"));
-        //            }
-        //            else{
-        //                tempCTN.setParent(classMap.get(tempParent));
-        //            }
-        //        }
+        // step 2: add user-defined classes and build the inheritance tree of ClassTreeNodes
+        InheritanceTreeVisitor inheritanceTreeVisitor = new InheritanceTreeVisitor();
+        this.classMap = inheritanceTreeVisitor.buildClassMap(this.program, this.classMap, this.errorHandler);
 
-        InheritanceTreeVisitor inheritanceTreeVisitor= new InheritanceTreeVisitor();
-        this.classMap= inheritanceTreeVisitor.buildClassMap(program, classMap);
+        // step 3: build the environment for each class (add class members only) and check
+        //          that members are declared properly
+        EnvironmentBuilderVisitor environmentBuilderVisitor = new EnvironmentBuilderVisitor();
+        this.classMap = environmentBuilderVisitor.buildEnvironment(this.program, this.classMap, this.errorHandler);
 
-
-        // add code here...
-
-        // uncomment the following statement
         return root;
     }
 
