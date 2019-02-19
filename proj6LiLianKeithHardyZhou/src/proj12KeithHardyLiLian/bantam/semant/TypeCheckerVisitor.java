@@ -31,18 +31,6 @@ public class TypeCheckerVisitor extends Visitor
         return success;
     }
 
-    //UNFINISHED
-    /**
-     * Visit a declaration statement node
-     *
-     * @param node the declaration statement node
-     * @return result of the visit
-     */
-    public Object visit(DeclStmt node) {
-        node.getInit().accept(this);
-        return null;
-    }
-
     /**
      * Visit a field node
      *
@@ -260,6 +248,19 @@ public class TypeCheckerVisitor extends Visitor
         return null;
     }
 
+
+    //UNFINISHED
+    /**
+     * Visit a declaration statement node
+     *
+     * @param node the declaration statement node
+     * @return result of the visit
+     */
+    public Object visit(DeclStmt node) {
+        node.getInit().accept(this);
+        return null;
+    }
+
     //UNFINISHED
     /**
      * Visit a dispatch expression node
@@ -317,6 +318,9 @@ public class TypeCheckerVisitor extends Visitor
      * @return result of the visit
      */
     public Object visit(AssignExpr node) {
+        if(node.getRefName() != null){
+
+        }
         node.getExpr().accept(this);
         return null;
     }
@@ -407,7 +411,7 @@ public class TypeCheckerVisitor extends Visitor
         node.getRightExpr().accept(this);
         String type1 = node.getLeftExpr().getExprType();
         String type2 = node.getRightExpr().getExprType();
-        if(!type1.equals(type2)) {
+        if(!type1.equals("int") || !type2.equals("int")) {
             errorHandler.register(Error.Kind.SEMANT_ERROR,
                     currentClass.getASTNode().getFilename(), node.getLineNum(),
                     "The two values being compared for equality are not compatible types.");
@@ -427,7 +431,7 @@ public class TypeCheckerVisitor extends Visitor
         node.getRightExpr().accept(this);
         String type1 = node.getLeftExpr().getExprType();
         String type2 = node.getRightExpr().getExprType();
-        if(!type1.equals(type2)) {
+        if(!type1.equals("int") || !type2.equals("int")) {
             errorHandler.register(Error.Kind.SEMANT_ERROR,
                     currentClass.getASTNode().getFilename(), node.getLineNum(),
                     "The two values being compared for equality are not compatible types.");
@@ -447,7 +451,7 @@ public class TypeCheckerVisitor extends Visitor
         node.getRightExpr().accept(this);
         String type1 = node.getLeftExpr().getExprType();
         String type2 = node.getRightExpr().getExprType();
-        if(!type1.equals(type2)) {
+        if(!type1.equals("int") || !type2.equals("int")) {
             errorHandler.register(Error.Kind.SEMANT_ERROR,
                     currentClass.getASTNode().getFilename(), node.getLineNum(),
                     "The two values being compared for equality are not compatible types.");
@@ -467,7 +471,7 @@ public class TypeCheckerVisitor extends Visitor
         node.getRightExpr().accept(this);
         String type1 = node.getLeftExpr().getExprType();
         String type2 = node.getRightExpr().getExprType();
-        if(!type1.equals(type2)) {
+        if(!type1.equals("int") || !type2.equals("int")) {
             errorHandler.register(Error.Kind.SEMANT_ERROR,
                     currentClass.getASTNode().getFilename(), node.getLineNum(),
                     "The two values being compared for equality are not compatible types.");
@@ -516,7 +520,6 @@ public class TypeCheckerVisitor extends Visitor
         return null;
     }
 
-    //UNFINISHED
     /**
      * Visit a binary arithmetic plus expression node
      *
@@ -526,10 +529,17 @@ public class TypeCheckerVisitor extends Visitor
     public Object visit(BinaryArithPlusExpr node) {
         node.getLeftExpr().accept(this);
         node.getRightExpr().accept(this);
+        String type1 = node.getLeftExpr().getExprType();
+        String type2 = node.getRightExpr().getExprType();
+        if(!type1.equals("int") || !type2.equals("int")) {
+            errorHandler.register(Error.Kind.SEMANT_ERROR,
+                    currentClass.getASTNode().getFilename(), node.getLineNum(),
+                    "The two values being added are not of type int.");
+        }
+        node.setExprType("int");
         return null;
     }
 
-    //UNFINISHED
     /**
      * Visit a binary arithmetic minus expression node
      *
@@ -539,10 +549,17 @@ public class TypeCheckerVisitor extends Visitor
     public Object visit(BinaryArithMinusExpr node) {
         node.getLeftExpr().accept(this);
         node.getRightExpr().accept(this);
+        String type1 = node.getLeftExpr().getExprType();
+        String type2 = node.getRightExpr().getExprType();
+        if(!type1.equals("int") || !type2.equals("int")) {
+            errorHandler.register(Error.Kind.SEMANT_ERROR,
+                    currentClass.getASTNode().getFilename(), node.getLineNum(),
+                    "The two values being subtracted are not of type int.");
+        }
+        node.setExprType("int");
         return null;
     }
 
-    //UNFINISHED
     /**
      * Visit a binary arithmetic times expression node
      *
@@ -552,10 +569,17 @@ public class TypeCheckerVisitor extends Visitor
     public Object visit(BinaryArithTimesExpr node) {
         node.getLeftExpr().accept(this);
         node.getRightExpr().accept(this);
+        String type1 = node.getLeftExpr().getExprType();
+        String type2 = node.getRightExpr().getExprType();
+        if(!type1.equals("int") || !type2.equals("int")) {
+            errorHandler.register(Error.Kind.SEMANT_ERROR,
+                    currentClass.getASTNode().getFilename(), node.getLineNum(),
+                    "The two values being multiplied are not of type int.");
+        }
+        node.setExprType("int");
         return null;
     }
 
-    //UNFINISHED
     /**
      * Visit a binary arithmetic divide expression node
      *
@@ -565,10 +589,17 @@ public class TypeCheckerVisitor extends Visitor
     public Object visit(BinaryArithDivideExpr node) {
         node.getLeftExpr().accept(this);
         node.getRightExpr().accept(this);
+        String type1 = node.getLeftExpr().getExprType();
+        String type2 = node.getRightExpr().getExprType();
+        if(!type1.equals("int") || !type2.equals("int")) {
+            errorHandler.register(Error.Kind.SEMANT_ERROR,
+                    currentClass.getASTNode().getFilename(), node.getLineNum(),
+                    "The two values being divided are not of type int.");
+        }
+        node.setExprType("int");
         return null;
     }
 
-    //UNFINISHED
     /**
      * Visit a binary arithmetic modulus expression node
      *
@@ -578,6 +609,14 @@ public class TypeCheckerVisitor extends Visitor
     public Object visit(BinaryArithModulusExpr node) {
         node.getLeftExpr().accept(this);
         node.getRightExpr().accept(this);
+        String type1 = node.getLeftExpr().getExprType();
+        String type2 = node.getRightExpr().getExprType();
+        if(!type1.equals("int") || !type2.equals("int")) {
+            errorHandler.register(Error.Kind.SEMANT_ERROR,
+                    currentClass.getASTNode().getFilename(), node.getLineNum(),
+                    "The two values being modulo-ed are not of type int.");
+        }
+        node.setExprType("int");
         return null;
     }
 
