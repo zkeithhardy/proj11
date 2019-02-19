@@ -119,7 +119,7 @@ public class SemanticAnalyzer
         // step 3: build the environment for each class (add class members only) and check
         //          that members are declared properly
 
-         return root;
+        return root;
     }
 
     /**
