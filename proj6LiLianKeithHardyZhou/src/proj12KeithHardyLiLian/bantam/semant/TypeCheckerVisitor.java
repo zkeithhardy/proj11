@@ -922,8 +922,21 @@ public class TypeCheckerVisitor extends Visitor
             node.getRef().accept(this);
         }
         node.getIndex().accept(this);
+        if(!node.getIndex().getExprType().equals("int")){
+            errorHandler.register(Error.Kind.SEMANT_ERROR,
+                    currentClass.getASTNode().getFilename(), node.getLineNum(),
+                    "Index of Array is not of type int");
+        }
 
-        //check name against Symbol table and classmap
+        Object type = currentSymbolTable.lookup(node.getName());
+        if(type == null){
+            errorHandler.register(Error.Kind.SEMANT_ERROR,
+                    currentClass.getASTNode().getFilename(), node.getLineNum(),
+                    "Variable has not been declared in this scope");
+        }else{
+            node.setExprType((String)type);
+        }
+
         node.setExprType(node.getName() + "[]");
         return null;
     }
