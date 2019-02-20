@@ -310,7 +310,6 @@ public class TypeCheckerVisitor extends Visitor
         return null;
     }
 
-    //UNFINISHED
     /**
      * Visit a variable expression node
      *
@@ -327,6 +326,7 @@ public class TypeCheckerVisitor extends Visitor
             errorHandler.register(Error.Kind.SEMANT_ERROR,
                     currentClass.getASTNode().getFilename(), node.getLineNum(),
                     "Variable has not been declared in this scope");
+                    node.setExprType("Object");//to allow it to keep analyzing
         }else{
             node.setExprType((String)type);
         }
@@ -429,15 +429,21 @@ public class TypeCheckerVisitor extends Visitor
                     leftType = currentSymbolTable.lookup(node.getName(),0);
                     break;
 
+                //is this even necessary? aren't fields protected?
                 default:
-                    leftType = currentSymbolTable.lookup(node.getName());
+                    leftType = currentSymbolTable.lookup(node.getRefName());
                     if(leftType.equals("int") || leftType.equals("boolean")){
                         errorHandler.register(Error.Kind.SEMANT_ERROR,
                                 currentClass.getASTNode().getFilename(), node.getLineNum(),
-                                "Invalid var expression, primitives do not have builtin methods");
+                                "Invalid var expression, primitives do not have fields");
                     }else{
                         leftType = currentClass.getClassMap().get(leftType).
-                                getMethodSymbolTable().lookup(node.getName());
+                                getVarSymbolTable().lookup(node.getName());
+                        if(leftType == null){
+                            errorHandler.register(Error.Kind.SEMANT_ERROR,
+                                    currentClass.getASTNode().getFilename(), node.getLineNum(),
+                                    "The variable " + node.getName() + " has not been declared");
+                        }
                     }
                     break;
             }
@@ -488,14 +494,14 @@ public class TypeCheckerVisitor extends Visitor
                     break;
 
                 default:
-                    leftType = currentSymbolTable.lookup(node.getName());
+                    leftType = currentSymbolTable.lookup(node.getRefName());
                     if(leftType.equals("int") || leftType.equals("boolean")){
                         errorHandler.register(Error.Kind.SEMANT_ERROR,
                                 currentClass.getASTNode().getFilename(), node.getLineNum(),
                                 "Invalid var expression, primitives do not have builtin methods");
                     }else{
                         leftType = currentClass.getClassMap().get(leftType).
-                                getMethodSymbolTable().lookup(node.getName());
+                                getVarSymbolTable().lookup(node.getName());
                     }
                     break;
             }
@@ -909,8 +915,6 @@ public class TypeCheckerVisitor extends Visitor
         return null;
     }
 
-
-    //UNFINISHED
     /**
      * Visit an array expression node
      *
@@ -929,15 +933,14 @@ public class TypeCheckerVisitor extends Visitor
         }
 
         Object type = currentSymbolTable.lookup(node.getName());
-        if(type == null){
+        String typeString = (String) type;
+        if(type == null || !typeString.endsWith("[]")) {
             errorHandler.register(Error.Kind.SEMANT_ERROR,
                     currentClass.getASTNode().getFilename(), node.getLineNum(),
-                    "Variable has not been declared in this scope");
-        }else{
-            node.setExprType((String)type);
+                    "Array " + node.getName() + " has not been declared in this scope");
         }
 
-        node.setExprType(node.getName() + "[]");
+        node.setExprType(typeString);
         return null;
     }
 
