@@ -467,7 +467,6 @@ public class TypeCheckerVisitor extends Visitor
         return null;
     }
 
-    //UNFINISHED
     /**
      * Visit an array assignment expression node
      *
