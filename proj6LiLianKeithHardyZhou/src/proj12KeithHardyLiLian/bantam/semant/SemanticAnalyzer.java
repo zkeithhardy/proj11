@@ -29,7 +29,10 @@
 package proj12KeithHardyLiLian.bantam.semant;
 
 import proj12KeithHardyLiLian.bantam.ast.*;
+import proj12KeithHardyLiLian.bantam.parser.Parser;
 import proj12KeithHardyLiLian.bantam.util.*;
+import proj12KeithHardyLiLian.bantam.util.Error;
+
 import java.util.*;
 
 /**
@@ -212,11 +215,39 @@ public class SemanticAnalyzer
         ?*/false, classMap));
     }
 
-    /**
-     * build the symbol table for all methods and fields for a given classTreeNode
-     * @param classTreeNode
-     */
-    private void buildClassEnvironment(ClassTreeNode classTreeNode){
+
+    public static void main(String[] argv){
+        if (argv.length==0){
+            System.out.println("Please provide test files\n");
+            return;
+        }
+
+
+        for(String filename: argv){
+            ErrorHandler errorHandler = new ErrorHandler();
+            Parser testParser= new Parser(errorHandler);
+            SemanticAnalyzer semanticAnalyzer=new SemanticAnalyzer(errorHandler);
+            try {
+                Program astTree=testParser.parse(filename);
+                System.out.println("Parsing Successful.\n");
+                semanticAnalyzer.analyze(astTree);
+            }catch(CompilationException e){
+                if(errorHandler.errorsFound()){
+                    System.out.println(filename + ": Parsing Failed");
+                    List<Error> errorList= errorHandler.getErrorList();
+                    for(Error error:errorList ){
+                        System.out.println(error.toString() + "\n");
+                    }
+                }else{
+                    System.out.println("Invalid filename: "+filename);
+                }
+            }
+
+
+
+        }
 
     }
+
+
 }
