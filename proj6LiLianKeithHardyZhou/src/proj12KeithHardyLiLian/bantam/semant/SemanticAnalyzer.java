@@ -231,6 +231,10 @@ public class SemanticAnalyzer
                 Program astTree=testParser.parse(filename);
                 System.out.println("Parsing Successful.\n");
                 semanticAnalyzer.analyze(astTree);
+                List<Error> errorList= errorHandler.getErrorList();
+                for(Error error:errorList){
+                    System.out.println(error.toString()+"\n");
+                }
             }catch(CompilationException e){
                 if(errorHandler.errorsFound()){
                     System.out.println(filename + ": Parsing Failed");

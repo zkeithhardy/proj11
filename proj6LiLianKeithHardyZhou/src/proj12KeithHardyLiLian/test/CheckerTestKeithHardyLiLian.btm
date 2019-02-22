@@ -10,10 +10,10 @@ class Main extends B{
     B testB= new B();
 
     //dispatch expression after list of expressions
-    testB.foo()[3].equals(7);
+    //testB.foo()[3].equals(7);
 
     //proper number of arguments for method call
-    testB.foo(true);
+    //testB.foo(true);
 
 
 
@@ -61,8 +61,8 @@ class B{
 	}
 
     int[] foo(){
-    a[3]=4;
-    return a;
+    	a[3]=4;
+    	return a;
     }
 
     int bruce(boolean boo){
