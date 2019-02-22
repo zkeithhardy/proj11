@@ -27,6 +27,7 @@ public class InheritanceTreeVisitor extends Visitor {
     public Hashtable<String, ClassTreeNode> buildClassMap(Program ast, Hashtable<String, ClassTreeNode> classMap,
                                                           ErrorHandler errorHandler){
         this.classMap = classMap;
+        this.parentMap = new HashMap<>();
         this.errorHandler = errorHandler;
         this.parentMap=new HashMap<String, String>();
         ast.accept(this);
@@ -45,7 +46,8 @@ public class InheritanceTreeVisitor extends Visitor {
             System.out.println(entry);
             String parent = entry.getValue();
             String child = entry.getKey();
-            if(parentMap.get(parent).equals(child)){
+//            System.out.println("parent: "+parent+" child: "+child+"\n");
+            if(!parent.equals("Object") && parentMap.get(parent).equals(child)){
                 errorHandler.register(Error.Kind.SEMANT_ERROR, "Cyclic Extension: "+parent+" and "
                 +child+"\n");
             }
@@ -55,7 +57,13 @@ public class InheritanceTreeVisitor extends Visitor {
         while(classListIterator.hasNext()){
             Class_ tempClass = (Class_) classListIterator.next();
             String tempClassName = tempClass.getName();
-            String tempClassParentName = tempClass.getParent();
+            String tempClassParentName;
+            if(tempClass.getParent().equals("")){
+                tempClassParentName = "Object";
+            }
+            else{
+                tempClassParentName = tempClass.getParent();
+            }
             classMap.get(tempClassName).setParent(classMap.get(tempClassParentName));
         }
         return null;
@@ -65,7 +73,13 @@ public class InheritanceTreeVisitor extends Visitor {
     public Object visit(Class_ node){
         ClassTreeNode tempTreeNode = new ClassTreeNode(node,false, true, this.classMap );
         this.classMap.put(tempTreeNode.getName(),tempTreeNode);
-        this.parentMap.put(node.getName(), node.getParent());
+//        System.out.println("in Class visit: class name: "+node.getName()+" parent: "+node.getParent()+"\n");
+        if(node.getParent().equals("")){
+            this.parentMap.put(node.getName(), "Object");
+        }
+        else {
+            this.parentMap.put(node.getName(), node.getParent());
+        }
         return null;
     }
 
