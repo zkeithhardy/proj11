@@ -89,7 +89,7 @@ class A extends C{
     }
 }
 
-class A extends C{
+class C extends A{
     void main(){
 
     }

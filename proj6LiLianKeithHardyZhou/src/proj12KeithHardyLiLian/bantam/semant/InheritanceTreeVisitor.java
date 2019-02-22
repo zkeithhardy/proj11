@@ -28,6 +28,7 @@ public class InheritanceTreeVisitor extends Visitor {
                                                           ErrorHandler errorHandler){
         this.classMap = classMap;
         this.errorHandler = errorHandler;
+        this.parentMap=new HashMap<String, String>();
         ast.accept(this);
         return this.classMap;
     }
@@ -41,6 +42,7 @@ public class InheritanceTreeVisitor extends Visitor {
         super.visit(node);
         // detect cyclic extension
         for(Map.Entry<String, String> entry : parentMap.entrySet()){
+            System.out.println(entry);
             String parent = entry.getValue();
             String child = entry.getKey();
             if(parentMap.get(parent).equals(child)){
