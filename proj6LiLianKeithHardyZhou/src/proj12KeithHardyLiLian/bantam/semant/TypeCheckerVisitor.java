@@ -301,12 +301,31 @@ public class TypeCheckerVisitor extends Visitor
         node.getActualList().accept(this);
 
         //now have to check Actual List against Formal List for the Method.
-        for (Iterator it = method.getFormalList().iterator(); it.hasNext(); ){
-            Expr formal = (Expr) it.next();
+        Iterator<ASTNode> formalIterator = method.getFormalList().iterator();
+        Iterator<ASTNode> actualIterator = node.getActualList().iterator();
+
+        while (formalIterator.hasNext() && actualIterator.hasNext()){
+             Formal formal = (Formal) formalIterator.next();
+             Expr actual = (Expr) actualIterator.next();
+
+             String formalType = formal.getType();
+             String actualType = actual.getExprType();
+
+            if(!formalType.equals(actualType)) {
+                errorHandler.register(Error.Kind.SEMANT_ERROR,
+                        currentClass.getASTNode().getFilename(), node.getLineNum(),
+                        "Cannot pass value of type " + actualType + " into method " + method.getName() +
+                        " where it requires an argument of type " + formalType + "." );
+            }
 
         }
+        if(formalIterator.hasNext() || actualIterator.hasNext()){
+            errorHandler.register(Error.Kind.SEMANT_ERROR,
+                    currentClass.getASTNode().getFilename(), node.getLineNum(),
+                    "Incorrect number of arguments passed into method " + method.getName() + "." );
+        }
 
-
+        node.setExprType(method.getReturnType());
         return null;
     }
 
