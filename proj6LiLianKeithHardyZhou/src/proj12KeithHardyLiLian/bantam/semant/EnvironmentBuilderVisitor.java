@@ -39,7 +39,31 @@ public class EnvironmentBuilderVisitor extends Visitor {
         // assign the ctn's symbol tables to the local symbol tables
         ClassTreeNode tempTreeNode = this.classMap.get(node.getName());
         this.varSymbolTable = tempTreeNode.getVarSymbolTable();
+
+        if(this.varSymbolTable.getSize()==0){
+            this.varSymbolTable.enterScope();
+            ClassTreeNode tempParent =tempTreeNode.getParent();
+            while(tempParent!=null){//todo:reverse
+                System.out.println(tempParent.getName());
+
+                SymbolTable parentVarST= tempTreeNode.getParent().getVarSymbolTable();
+                if(parentVarST.getSize()==0){
+                    parentVarST.enterScope();
+                    System.out.println(tempParent.getName()+" entered scope" +" size: "+parentVarST.getCurrScopeSize() +"\n");
+                }
+                tempParent=tempParent.getParent();
+            }
+
+        }
+
         this.methodSymbolTable = tempTreeNode.getMethodSymbolTable();
+        if(this.methodSymbolTable.getSize()==0){
+            this.methodSymbolTable.enterScope();
+            SymbolTable parentMethodST= tempTreeNode.getParent().getMethodSymbolTable();
+            if(parentMethodST.getSize()==0){
+                parentMethodST.enterScope();
+            }
+        }
         this.curClassName = node.getName();
         this.memberNames = new HashSet<>();
 
@@ -49,12 +73,11 @@ public class EnvironmentBuilderVisitor extends Visitor {
     }
 
     public Object visit(Field node){
-        if(this.varSymbolTable.lookup(node.getName()) == null) {
+        System.out.println(node.getName()+" "+this.varSymbolTable.getCurrScopeSize());
+        this.varSymbolTable.dump();
+        if(this.varSymbolTable.getSize() == 0 || this.varSymbolTable.peek(node.getName()) == null) {
+            System.out.println(node.getType());
             this.varSymbolTable.add(node.getName(), node.getType());
-            if(!this.memberNames.add(node.getName())){
-                errorHandler.register(Error.Kind.SEMANT_ERROR, "Field and method name duplication "
-                        + node.getName()+ " found in class "+ this.curClassName+"\n");
-            }
         }
         else{
             errorHandler.register(Error.Kind.SEMANT_ERROR, "Field duplication " + node.getName()+
@@ -64,12 +87,8 @@ public class EnvironmentBuilderVisitor extends Visitor {
     }
 
     public Object visit(Method node){
-        if(this.methodSymbolTable.lookup(node.getName()) == null){
+        if(this.methodSymbolTable.getSize() == 0 || this.methodSymbolTable.peek(node.getName()) == null){
             this.methodSymbolTable.add(node.getName(), node);
-            if(!this.memberNames.add(node.getName())){
-                errorHandler.register(Error.Kind.SEMANT_ERROR, "Field and method name duplication "
-                        + node.getName()+ " found in class "+ this.curClassName+"\n");
-            }
         }
         else{
             errorHandler.register(Error.Kind.SEMANT_ERROR, "Method name duplication " + node.getName()+

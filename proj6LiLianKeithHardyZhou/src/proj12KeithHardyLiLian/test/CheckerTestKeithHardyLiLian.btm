@@ -53,6 +53,7 @@ class Main extends B{
 
 class B{
 	int[] a;
+	int b;
 	void B(){
 		a = new int[3];
 		c = new int[1+5*c+6];
@@ -83,14 +84,14 @@ class B{
 
 
 //circular inheritance
-class A extends C{
-    void main(){
+//class A extends C{
+//    void main(){
 
-    }
-}
+//    }
+//}
 
-class C extends A{
-    void main(){
+//class C extends A{
+//    void main(){
 
-    }
-}
+//    }
+//}
