@@ -6,10 +6,7 @@ import proj12KeithHardyLiLian.bantam.util.Error;
 import proj12KeithHardyLiLian.bantam.util.ErrorHandler;
 import proj12KeithHardyLiLian.bantam.visitor.Visitor;
 
-import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 
 public class InheritanceTreeVisitor extends Visitor {
     private Hashtable<String, ClassTreeNode> classMap;
@@ -54,10 +51,39 @@ public class InheritanceTreeVisitor extends Visitor {
             }
             classMap.get(tempClassName).setParent(classMap.get(tempClassParentName));
         }
+
+        List<String> buildIns = Arrays.asList("Object", "TextIO", "String","Sys");
+        //check for cyclic inheritance
+        classMap.forEach((name, tempTreeNode)->{
+            if (!buildIns.contains(tempTreeNode.getName())&& tempTreeNode.getParent().getParent()==tempTreeNode){
+                //get rid of any cycles you find in the inheritance tree by taking any node in the cycle and
+                // (a) making that node a child of the Object class instead of its current parent and
+                // (b) setting its parent to the Object class.
+                ClassTreeNode objectNode=classMap.get("Object");
+                ClassTreeNode tempParent=tempTreeNode.getParent();
+
+                objectNode.addChild(tempTreeNode);
+                objectNode.addChild(tempParent);
+
+                tempTreeNode.removeChild(tempTreeNode.getParent());
+                tempTreeNode.setParent(objectNode);
+
+                tempParent.removeChild(tempTreeNode);
+                tempParent.setParent(objectNode);
+
+                errorHandler.register(Error.Kind.SEMANT_ERROR, tempParent.getASTNode().getFilename(),
+                        tempParent.getASTNode().getLineNum(),"Cyclic inheritance found in class "+
+                                tempTreeNode.getName()+" and class " + tempParent.getName());
+            }
+        });
         return null;
     }
 
-
+    /**
+     * Visit the Class_ node and put it into the class map as well as parent map
+     * @param node the class node
+     * @return
+     */
     public Object visit(Class_ node){
         ClassTreeNode tempTreeNode = new ClassTreeNode(node,false, true, this.classMap );
         this.classMap.put(tempTreeNode.getName(),tempTreeNode);
@@ -69,5 +95,6 @@ public class InheritanceTreeVisitor extends Visitor {
         }
         return null;
     }
+
 
 }

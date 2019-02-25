@@ -274,7 +274,7 @@ public class TypeCheckerVisitor extends Visitor
         if(SemanticAnalyzer.reservedIdentifiers.contains(node.getName())){
             errorHandler.register(Error.Kind.SEMANT_ERROR,
                     currentClass.getASTNode().getFilename(), node.getLineNum(),
-                    "Cannot use the reserved keyword" + node.getName() + "to declare a variable.");
+                    "Cannot use the reserved keyword " + node.getName() + "to declare a variable.");
         }
         if(currentSymbolTable.peek(node.getName()) == null){
             currentSymbolTable.add(node.getName(),node.getType());
