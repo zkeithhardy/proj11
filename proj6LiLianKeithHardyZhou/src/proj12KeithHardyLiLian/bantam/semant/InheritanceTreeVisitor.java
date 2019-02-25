@@ -63,7 +63,7 @@ public class InheritanceTreeVisitor extends Visitor {
                 objectNode.addChild(tempTreeNode);
                 objectNode.addChild(tempParent);
 
-                tempTreeNode.removeChild(tempTreeNode.getParent());
+                tempTreeNode.removeChild(tempParent);
                 tempTreeNode.setParent(objectNode);
 
                 tempParent.removeChild(tempTreeNode);
