@@ -19,10 +19,10 @@ public class TypeCheckerVisitor extends Visitor
 
     /**
      * type check the given program with its SymbolTable and errorHandler
-     * @param ast
-     * @param currentClass
-     * @param currentSymbolTable
-     * @param errorHandler
+     * @param ast the prgram to be checked
+     * @param currentClass the current class tree node
+     * @param currentSymbolTable the current symbol table
+     * @param errorHandler the error handler
      * @return
      */
     public boolean typeCheck(Program ast,ClassTreeNode currentClass,
