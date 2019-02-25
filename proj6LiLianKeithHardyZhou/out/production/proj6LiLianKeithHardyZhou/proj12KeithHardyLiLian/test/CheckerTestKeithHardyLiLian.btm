@@ -1,8 +1,10 @@
 class Main extends B{
     boolean a = true;
+    //illigeal type declaration 
     int b = true;
 
     //use of undeclared type
+    //incompatible type declaration
     ood c = null;
 
     //variable defined twice as fields
@@ -18,22 +20,32 @@ class Main extends B{
     }
     // method name duplication
     void bar(int y, int z) {
-        //use of proper types of data for operations
+        //use of improper types of data for operations
         y = y + true;
         //use of undefined variable
         stephanie = 1;
+	//cannot assign variable of type int to type Object
+	//z is already declared in this scope
         var z = this.foo();
         z = z * y;
+	//illigal delaration statement
         var q = (new int[4]);
+	//missing declaraiton of i
         for(i = 0; i < 2; i++){
             z = z + i;
             y = z + i;
         }
+	//x has not be declared
+	//z is not comparable to int
         while(z < 5 || x > 6){
+	   //use of undefied method in dispatch statement
+	   //incorrect number of argumets passed in method bar and foo
            foo(z).get(x).ban().bar();
+	   //increment on undefined variable 
            this.counter ++;
            break;
         }
+	//undeclared x variable 
         if(x == 3){
             z = z / 2;
         }else{
@@ -42,6 +54,9 @@ class Main extends B{
     }
     //method overloading
     int foo(){
+	//undefined variable d
+	//incorrect number of arguments in function foo
+	//undeclared method fooo
         foo(d).fooo(x);
         return 6;
     }
@@ -57,8 +72,11 @@ class B{
     int b;
     void B(){
 	a = new int[3];
+	//illigal declaration of undefined variable c
 	c = new int[1+5*c+6];
+	//undefined method bar
 	(new A()).bar(car(a,cars(c),d,12),b);
+	//undefined method bar
 	(new A()).bar(car(a,cars(c)),b);
     }
 

@@ -73,15 +73,15 @@ public class EnvironmentBuilderVisitor extends Visitor {
         if(this.methodSymbolTable.getSize() == 0 || this.methodSymbolTable.peek(node.getName()) == null){
             // if the current class has a parent and that parent has a method with the same name
             // or if the current class has any number of children and any of the children has a method with the same name
-            if((curClassTreeNode.getParent() != null &&
-                    curClassTreeNode.getParent().getMethodSymbolTable().getCurrScopeSize()!=0 &&
-                    curClassTreeNode.getParent().getParent().getMethodSymbolTable().peek(node.getName())!=null)
-                    || (curClassTreeNode.getNumChildren() != 0 &&
-                    childHasDuplicate(curClassTreeNode.getChildrenList(), node.getName()))) {
-                errorHandler.register(Error.Kind.SEMANT_ERROR, curClassTreeNode.getASTNode().getFilename(),
-                        node.getLineNum(),"Method overloading " + node.getName()+
-                        " found in class "+ this.curClassName);
-            }
+//            if((curClassTreeNode.getParent() != null &&
+//                    curClassTreeNode.getParent().getMethodSymbolTable().getCurrScopeSize()!=0 &&
+//                    curClassTreeNode.getParent().getParent().getMethodSymbolTable().peek(node.getName())!=null)
+//                    || (curClassTreeNode.getNumChildren() != 0 &&
+//                    childHasDuplicate(curClassTreeNode.getChildrenList(), node.getName()))) {
+//                errorHandler.register(Error.Kind.SEMANT_ERROR, curClassTreeNode.getASTNode().getFilename(),
+//                        node.getLineNum(),"Method overriding " + node.getName()+
+//                        " found in class "+ this.curClassName);
+//            }
             this.methodSymbolTable.add(node.getName(), node);
         }
         else{
