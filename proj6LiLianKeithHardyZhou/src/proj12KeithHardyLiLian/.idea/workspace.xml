@@ -145,8 +145,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/bantam/semant/InheritanceTreeVisitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-38">
-              <caret line="34" column="5" lean-forward="true" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
+            <state relative-caret-position="95">
+              <caret line="47" column="42" selection-start-line="47" selection-start-column="42" selection-end-line="47" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -154,8 +154,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bantam/semant/EnvironmentBuilderVisitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="99" column="130" selection-start-line="99" selection-start-column="130" selection-end-line="99" selection-end-column="130" />
+            <state relative-caret-position="41">
+              <caret line="90" column="93" lean-forward="true" selection-start-line="90" selection-start-column="93" selection-end-line="90" selection-end-column="93" />
             </state>
           </provider>
         </entry>
@@ -403,7 +403,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3285968" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.23978686" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -706,13 +706,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bantam/semant/EnvironmentBuilderVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="99" column="130" selection-start-line="99" selection-start-column="130" selection-end-line="99" selection-end-column="130" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/CheckerTestKeithHardyLiLian.btm">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1691">
@@ -720,10 +713,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/bantam/semant/EnvironmentBuilderVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="41">
+          <caret line="90" column="93" lean-forward="true" selection-start-line="90" selection-start-column="93" selection-end-line="90" selection-end-column="93" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/bantam/semant/InheritanceTreeVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-38">
-          <caret line="34" column="5" lean-forward="true" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
+        <state relative-caret-position="95">
+          <caret line="47" column="42" selection-start-line="47" selection-start-column="42" selection-end-line="47" selection-end-column="42" />
         </state>
       </provider>
     </entry>

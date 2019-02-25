@@ -46,11 +46,6 @@ public class InheritanceTreeVisitor extends Visitor {
             System.out.println(entry);
             String parent = entry.getValue();
             String child = entry.getKey();
-//            System.out.println("parent: "+parent+" child: "+child+"\n");
-            if(!parent.equals("Object") && parentMap.get(parent).equals(child)){
-                errorHandler.register(Error.Kind.SEMANT_ERROR, "Cyclic Extension: "+parent+" and "
-                +child+"\n");
-            }
         }
         // set parents
         Iterator classListIterator= node.iterator();

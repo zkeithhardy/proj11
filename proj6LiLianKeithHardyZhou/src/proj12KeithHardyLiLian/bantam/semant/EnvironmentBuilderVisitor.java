@@ -88,7 +88,7 @@ public class EnvironmentBuilderVisitor extends Visitor {
             tempParent.setParent(objectNode);
 
             errorHandler.register(Error.Kind.SEMANT_ERROR,"Cyclic inheritance found in class "+
-                    tempTreeNode.getName()+" and class " + tempTreeNode.getParent().getName()+"\n");
+                    tempTreeNode.getName()+" and class " + tempTreeNode.getParent().getName());
         }
     }
     public Object visit(Field node){
