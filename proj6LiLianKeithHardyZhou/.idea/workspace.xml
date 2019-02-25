@@ -3,15 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="3f9f4d53-dccb-439a-ad59-57724734fed7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/ToolbarController$CheckTask.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/ToolbarController$CheckTask.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/ToolbarController$ParseTask.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/ToolbarController$ParseTask.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/ToolbarController$ScanTask.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/ToolbarController$ScanTask.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/semant/EnvironmentBuilderVisitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/semant/EnvironmentBuilderVisitor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/semant/SemanticAnalyzer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/semant/SemanticAnalyzer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/semant/TypeCheckerVisitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/semant/TypeCheckerVisitor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/util/SymbolTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/util/SymbolTable.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/test/CheckerTestKeithHardyLiLian.btm" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/test/CheckerTestKeithHardyLiLian.btm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/semant/EnvironmentBuilderVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/semant/EnvironmentBuilderVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/semant/InheritanceTreeVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/semant/InheritanceTreeVisitor.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,23 +15,34 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/semant/NumLocalVarsVisitor.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/semant/InheritanceTreeVisitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="40" column="17" selection-start-line="40" selection-start-column="17" selection-end-line="40" selection-end-column="17" />
+            <state relative-caret-position="360">
+              <caret line="76" column="81" selection-start-line="76" selection-start-column="81" selection-end-line="76" selection-end-column="81" />
+              <folding>
+                <element signature="docComment;method#buildClassMap#0;class#InheritanceTreeVisitor#0" />
+                <element signature="method#buildClassMap#0;class#InheritanceTreeVisitor#0" />
+                <element signature="docComment;method#visit#0;class#InheritanceTreeVisitor#0" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/semant/InheritanceTreeVisitor.java">
+        <entry file="file://$PROJECT_DIR$/src/proj12KeithHardyLiLian/test/CheckerTestKeithHardyLiLian.btm">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="40" column="7" selection-start-line="40" selection-start-column="7" selection-end-line="40" selection-end-column="7" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="1746">
+              <caret line="97" column="1" lean-forward="true" selection-start-line="97" selection-start-column="1" selection-end-line="97" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/ast/Class_.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="450">
+              <caret line="91" column="25" selection-start-line="91" selection-start-column="18" selection-end-line="91" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -46,7 +50,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/semant/SemanticAnalyzer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="467">
+            <state relative-caret-position="-883">
               <caret line="133" column="43" selection-start-line="133" selection-start-column="43" selection-end-line="133" selection-end-column="43" />
             </state>
           </provider>
@@ -70,15 +74,6 @@
                 <element signature="e#4593#4703#0" />
                 <element signature="e#4941#5250#1" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/proj12KeithHardyLiLian/test/CheckerTestKeithHardyLiLian.btm">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1746">
-              <caret line="97" selection-start-line="97" selection-end-line="97" />
             </state>
           </provider>
         </entry>
@@ -133,11 +128,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/semant/EnvironmentBuilderVisitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="104" column="10" selection-start-line="104" selection-start-column="10" selection-end-line="104" selection-end-column="10" />
+            <state relative-caret-position="486">
+              <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
             </state>
           </provider>
         </entry>
@@ -231,12 +226,12 @@
         <option value="$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/semant/MainMainVisitor.java" />
         <option value="$PROJECT_DIR$/src/proj12KeithHardyLiLian/test/SemanticAnalyzerTestKeithHardyLiLian.btm" />
         <option value="$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/semant/SemanticAnalyzer.java" />
-        <option value="$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/semant/InheritanceTreeVisitor.java" />
         <option value="$PROJECT_DIR$/src/proj12KeithHardyLiLian/test/CheckerTestKeithHardyLiLian.btm" />
         <option value="$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/util/ClassTreeNode.java" />
         <option value="$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/util/SymbolTable.java" />
-        <option value="$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/semant/EnvironmentBuilderVisitor.java" />
         <option value="$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/semant/TypeCheckerVisitor.java" />
+        <option value="$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/semant/EnvironmentBuilderVisitor.java" />
+        <option value="$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/semant/InheritanceTreeVisitor.java" />
       </list>
     </option>
   </component>
@@ -278,14 +273,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="proj12KeithHardyLiLian" type="462c0819:PsiDirectoryNode" />
               <item name="bantam" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="proj6LiLianKeithHardyZhou" type="b2602c69:ProjectViewProjectNode" />
-              <item name="proj6LiLianKeithHardyZhou" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="proj12KeithHardyLiLian" type="462c0819:PsiDirectoryNode" />
-              <item name="bantam" type="462c0819:PsiDirectoryNode" />
-              <item name="ast" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="proj6LiLianKeithHardyZhou" type="b2602c69:ProjectViewProjectNode" />
@@ -356,6 +343,13 @@
               <item name="proj12KeithHardyLiLian" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="proj6LiLianKeithHardyZhou" type="b2602c69:ProjectViewProjectNode" />
+              <item name="proj6LiLianKeithHardyZhou" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="proj12KeithHardyLiLian" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -364,7 +358,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551062949670" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551065774045" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/proj12KeithHardyLiLian/include/richtextfx-fat-0.9.1.jar!/" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
@@ -439,8 +433,8 @@
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info active="true" anchor="bottom" id="Find" order="1" visible="true" weight="0.3286119" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32719547" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.19546743" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -478,13 +472,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-7">
           <caret line="253" column="22" selection-start-line="253" selection-start-column="22" selection-end-line="253" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/ast/Class_.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7">
-          <caret line="91" column="25" selection-start-line="91" selection-start-column="18" selection-end-line="91" selection-end-column="25" />
         </state>
       </provider>
     </entry>
@@ -837,34 +824,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/proj12KeithHardyLiLian/test/CheckerTestKeithHardyLiLian.btm">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1746">
-          <caret line="97" selection-start-line="97" selection-end-line="97" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/semant/NumLocalVarsVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
           <caret line="40" column="17" selection-start-line="40" selection-start-column="17" selection-end-line="40" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/semant/SemanticAnalyzer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="467">
-          <caret line="133" column="43" selection-start-line="133" selection-start-column="43" selection-end-line="133" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/semant/InheritanceTreeVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="40" column="7" selection-start-line="40" selection-start-column="7" selection-end-line="40" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -916,26 +879,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/semant/TypeCheckerVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="351" selection-start-line="351" selection-end-line="351" />
-          <folding>
-            <element signature="e#1007#1105#0" />
-            <element signature="e#2183#3314#1" />
-            <element signature="e#2230#2912#1" />
-            <element signature="e#2423#2455#0" />
-            <element signature="e#2662#2894#1" />
-            <element signature="e#2804#2872#1" />
-            <element signature="e#3333#3404#0" />
-            <element signature="e#3552#3661#0" />
-            <element signature="e#4008#4306#1" />
-            <element signature="e#4593#4703#0" />
-            <element signature="e#4941#5250#1" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/util/SymbolTable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="142">
@@ -982,10 +925,63 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/semant/TypeCheckerVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="351" selection-start-line="351" selection-end-line="351" />
+          <folding>
+            <element signature="e#1007#1105#0" />
+            <element signature="e#2183#3314#1" />
+            <element signature="e#2230#2912#1" />
+            <element signature="e#2423#2455#0" />
+            <element signature="e#2662#2894#1" />
+            <element signature="e#2804#2872#1" />
+            <element signature="e#3333#3404#0" />
+            <element signature="e#3552#3661#0" />
+            <element signature="e#4008#4306#1" />
+            <element signature="e#4593#4703#0" />
+            <element signature="e#4941#5250#1" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/ast/Class_.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="91" column="25" selection-start-line="91" selection-start-column="18" selection-end-line="91" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/semant/EnvironmentBuilderVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="104" column="10" selection-start-line="104" selection-start-column="10" selection-end-line="104" selection-end-column="10" />
+        <state relative-caret-position="486">
+          <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/semant/SemanticAnalyzer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-883">
+          <caret line="133" column="43" selection-start-line="133" selection-start-column="43" selection-end-line="133" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/proj12KeithHardyLiLian/test/CheckerTestKeithHardyLiLian.btm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1746">
+          <caret line="97" column="1" lean-forward="true" selection-start-line="97" selection-start-column="1" selection-end-line="97" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/semant/InheritanceTreeVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="76" column="81" selection-start-line="76" selection-start-column="81" selection-end-line="76" selection-end-column="81" />
+          <folding>
+            <element signature="docComment;method#buildClassMap#0;class#InheritanceTreeVisitor#0" />
+            <element signature="method#buildClassMap#0;class#InheritanceTreeVisitor#0" />
+            <element signature="docComment;method#visit#0;class#InheritanceTreeVisitor#0" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -6,10 +6,7 @@ import proj12KeithHardyLiLian.bantam.util.Error;
 import proj12KeithHardyLiLian.bantam.util.ErrorHandler;
 import proj12KeithHardyLiLian.bantam.visitor.Visitor;
 
-import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 
 public class InheritanceTreeVisitor extends Visitor {
     private Hashtable<String, ClassTreeNode> classMap;
@@ -54,6 +51,32 @@ public class InheritanceTreeVisitor extends Visitor {
             }
             classMap.get(tempClassName).setParent(classMap.get(tempClassParentName));
         }
+
+        System.out.println(classMap.size()+" items in class map \n");
+
+        //check for cyclic inheritance
+        classMap.forEach((name, tempTreeNode)->{
+            List<String> buildIns = Arrays.asList("Object", "TextIO", "String","Sys");
+
+            if (!buildIns.contains(tempTreeNode.getName())&& tempTreeNode.getParent().getParent()==tempTreeNode){
+                System.out.println("");
+                ClassTreeNode objectNode=classMap.get("Object");
+                ClassTreeNode tempParent=tempTreeNode.getParent();
+
+                objectNode.addChild(tempTreeNode);
+                objectNode.addChild(tempParent);
+
+                tempTreeNode.removeChild(tempTreeNode.getParent());
+                tempTreeNode.setParent(objectNode);
+
+                tempParent.removeChild(tempTreeNode);
+                tempParent.setParent(objectNode);
+
+                errorHandler.register(Error.Kind.SEMANT_ERROR, tempParent.getASTNode().getFilename(),
+                        tempParent.getASTNode().getLineNum(),"Cyclic inheritance found in class "+
+                                tempTreeNode.getName()+" and class " + tempParent.getName());
+            }
+        });
         return null;
     }
 
@@ -69,5 +92,6 @@ public class InheritanceTreeVisitor extends Visitor {
         }
         return null;
     }
+
 
 }
