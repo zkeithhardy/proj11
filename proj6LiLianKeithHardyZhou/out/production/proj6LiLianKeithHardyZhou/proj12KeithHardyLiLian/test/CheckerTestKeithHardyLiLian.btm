@@ -3,16 +3,17 @@ class Main extends B{
     int b = true;
 
     //use of undeclared type
-    ood c= null;
+    ood c = null;
+
     //variable defined twice as fields
     boolean b = false;
 
     B testB = new B();
 
-    //proper number of arguments for method call
-    testB.foo(true);
-
     void bar(int a){
+	//improper number of arguments for method call
+    	testB.foo(true);
+
         a = a + 1;
     }
     // method name duplication
@@ -20,7 +21,7 @@ class Main extends B{
         //use of proper types of data for operations
         y = y + true;
         //use of undefined variable
-        stephanie=1;
+        stephanie = 1;
         var z = this.foo();
         z = z * y;
         var q = (new int[4]);
@@ -46,6 +47,7 @@ class Main extends B{
     }
 
     int dale(){
+	//wrong type of return statement
         return true;
     }
 }
@@ -68,10 +70,10 @@ class B{
     int bruce(boolean boo){
         return 3;
     }
-	void main() {
-		//argument types do not match parameter type
-		bruce(3);
-		a[3] = 5;
+    void main() {
+	//argument types do not match parameter type
+	bruce(3);
+	a[3] = 5;
         x = a[3];
         foo(x,y);
         var y = a.b().length;
