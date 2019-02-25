@@ -17,6 +17,7 @@ public class EnvironmentBuilderVisitor extends Visitor {
     private SymbolTable methodSymbolTable;
     private ErrorHandler errorHandler;
     private String curClassName;
+    private ClassTreeNode curClassTreeNode;
 
     /**
      * return the built class map with all nodes and parent structure
@@ -37,32 +38,17 @@ public class EnvironmentBuilderVisitor extends Visitor {
 
     public Object visit(Class_ node){
         // assign the ctn's symbol tables to the local symbol tables
-        ClassTreeNode tempTreeNode = this.classMap.get(node.getName());
-        checkCyclicInheritance(tempTreeNode);
+        curClassTreeNode = this.classMap.get(node.getName());
+        checkCyclicInheritance(curClassTreeNode);
 
-        this.varSymbolTable = tempTreeNode.getVarSymbolTable();
+        this.varSymbolTable = curClassTreeNode.getVarSymbolTable();
         if(this.varSymbolTable.getSize() == 0){
             this.varSymbolTable.enterScope();
-//            ClassTreeNode tempParent = tempTreeNode.getParent();
-//            while(tempParent != null){
-//                System.out.println(tempParent.getName());
-//                SymbolTable parentVarST = tempParent.getVarSymbolTable();
-//                if(parentVarST.getSize() == 0){
-//                    parentVarST.enterScope();
-//                    System.out.println(tempParent.getName()+" entered scope" +" size: "+parentVarST.getCurrScopeSize() +"\n");
-//                }
-//                tempParent=tempParent.getParent();
-//            }
-
         }
 
-        this.methodSymbolTable = tempTreeNode.getMethodSymbolTable();
+        this.methodSymbolTable = curClassTreeNode.getMethodSymbolTable();
         if(this.methodSymbolTable.getSize()==0){
             this.methodSymbolTable.enterScope();
-//            SymbolTable parentMethodST = tempTreeNode.getParent().getMethodSymbolTable();
-//            if(parentMethodST.getSize() == 0){
-//                parentMethodST.enterScope();
-//            }
         }
         this.curClassName = node.getName();
 
@@ -89,22 +75,20 @@ public class EnvironmentBuilderVisitor extends Visitor {
             tempParent.removeChild(tempTreeNode);
             tempParent.setParent(objectNode);
 
-            errorHandler.register(Error.Kind.SEMANT_ERROR,"Cyclic inheritance found in class "+
+            errorHandler.register(Error.Kind.SEMANT_ERROR, curClassTreeNode.getASTNode().getFilename(),
+                    curClassTreeNode.getASTNode().getLineNum(),"Cyclic inheritance found in class "+
                     tempTreeNode.getName()+" and class " + tempTreeNode.getParent().getName());
         }
     }
     public Object visit(Field node){
-//        System.out.println(node.getName()+" "+this.varSymbolTable.getCurrScopeSize());
         if(this.varSymbolTable.getSize() == 0 || this.varSymbolTable.peek(node.getName()) == null) {
-//            System.out.println("Type of "+node.getName()+": "+node.getType());
             this.varSymbolTable.add(node.getName(), node.getType());
         }
         else{
-            errorHandler.register(Error.Kind.SEMANT_ERROR, "Field duplication " + node.getName()+
+            errorHandler.register(Error.Kind.SEMANT_ERROR, curClassTreeNode.getASTNode().getFilename(),
+                    node.getLineNum(),"Field duplication " + node.getName()+
                     " found in class "+ this.curClassName);
         }
-//        System.out.println("Field Dumping");
-//        this.varSymbolTable.dump();
         return null;
     }
 
@@ -112,7 +96,6 @@ public class EnvironmentBuilderVisitor extends Visitor {
 //        System.out.println("Current class: "+curClassName + " Parent: "+this.classMap.get(this.curClassName).getParent().getName());
         // if there's no duplication in the current scope
         if(this.methodSymbolTable.getSize() == 0 || this.methodSymbolTable.peek(node.getName()) == null){
-            ClassTreeNode curClassTreeNode = this.classMap.get(this.curClassName);
             // if the current class has a parent and that parent has a method with the same name
             // or if the current class has any number of children and any of the children has a method with the same name
             if((curClassTreeNode.getParent() != null &&
@@ -120,7 +103,8 @@ public class EnvironmentBuilderVisitor extends Visitor {
                     curClassTreeNode.getParent().getParent().getMethodSymbolTable().peek(node.getName())!=null)
                     || (curClassTreeNode.getNumChildren() != 0 &&
                     childHasDuplicate(curClassTreeNode.getChildrenList(), node.getName()))) {
-                errorHandler.register(Error.Kind.SEMANT_ERROR, "Method overloading " + node.getName()+
+                errorHandler.register(Error.Kind.SEMANT_ERROR, curClassTreeNode.getASTNode().getFilename(),
+                        node.getLineNum(),"Method overloading " + node.getName()+
                         " found in class "+ this.curClassName);
             }
             else {
@@ -128,11 +112,10 @@ public class EnvironmentBuilderVisitor extends Visitor {
             }
         }
         else{
-            errorHandler.register(Error.Kind.SEMANT_ERROR, "Method name duplication " + node.getName()+
+            errorHandler.register(Error.Kind.SEMANT_ERROR, curClassTreeNode.getASTNode().getFilename(),
+                    node.getLineNum(),"Method name duplication " + node.getName()+
                     " found in class "+ this.curClassName);
         }
-//        System.out.println("Method Dumping");
-//        this.methodSymbolTable.dump();
         return null;
     }
 
