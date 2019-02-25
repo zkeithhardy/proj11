@@ -72,19 +72,20 @@ public class EnvironmentBuilderVisitor extends Visitor {
     private void checkCyclicInheritance(ClassTreeNode tempTreeNode){
 
         if (!tempTreeNode.getName().equals("Object")&& tempTreeNode.getParent().getParent()==tempTreeNode){
-            System.out.println("Cyclic inheritance found in class "+
-                    tempTreeNode.getName()+" and class " + tempTreeNode.getParent().getName()+"\n");
-
             //get rid of any cycles you find in the inheritance tree by taking any node in the cycle and
             // (a) making that node a child of the Object class instead of its current parent and
             // (b) setting its parent to the Object class.
-            tempTreeNode.removeChild(tempTreeNode.getParent());
-
             ClassTreeNode objectNode=classMap.get("Object");
+            ClassTreeNode tempParent=tempTreeNode.getParent();
+
             objectNode.addChild(tempTreeNode);
+            objectNode.addChild(tempParent);
+
+            tempTreeNode.removeChild(tempTreeNode.getParent());
             tempTreeNode.setParent(objectNode);
-            tempTreeNode.getParent().removeChild(tempTreeNode);
-            tempTreeNode.getParent().setParent(objectNode);
+
+            tempParent.removeChild(tempTreeNode);
+            tempParent.setParent(objectNode);
 
             errorHandler.register(Error.Kind.SEMANT_ERROR,"Cyclic inheritance found in class "+
                     tempTreeNode.getName()+" and class " + tempTreeNode.getParent().getName()+"\n");

@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3f9f4d53-dccb-439a-ad59-57724734fed7" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/semant/EnvironmentBuilderVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/semant/EnvironmentBuilderVisitor.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -56,7 +57,7 @@
         <entry file="file://$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/util/SymbolTable.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="142">
-              <caret line="225" selection-start-line="225" selection-end-line="225" />
+              <caret line="403" selection-start-line="403" selection-end-line="403" />
               <folding>
                 <element signature="docComment;class#SymbolTable#0" />
                 <element signature="docComment;field#hash#0;class#SymbolTable#0" />
@@ -93,8 +94,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/semant/EnvironmentBuilderVisitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="377">
-              <caret line="85" column="57" selection-start-line="85" selection-start-column="57" selection-end-line="85" selection-end-column="57" />
+            <state relative-caret-position="180">
+              <caret line="73" column="107" selection-start-line="73" selection-start-column="107" selection-end-line="73" selection-end-column="107" />
             </state>
           </provider>
         </entry>
@@ -457,7 +458,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551059364299" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551059656549" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/proj12KeithHardyLiLian/include/richtextfx-fat-0.9.1.jar!/" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
@@ -990,13 +991,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/semant/SemanticAnalyzer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-415">
-          <caret line="132" column="43" selection-start-line="132" selection-start-column="43" selection-end-line="132" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/semant/InheritanceTreeVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="196">
@@ -1134,42 +1128,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/util/SymbolTable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="225" selection-start-line="225" selection-end-line="225" />
-          <folding>
-            <element signature="docComment;class#SymbolTable#0" />
-            <element signature="docComment;field#hash#0;class#SymbolTable#0" />
-            <element signature="docComment;field#scopes#0;class#SymbolTable#0" />
-            <element signature="docComment;field#parent#0;class#SymbolTable#0" />
-            <element signature="docComment;method#SymbolTable#0;class#SymbolTable#0" />
-            <element signature="docComment;method#SymbolTable#1;class#SymbolTable#0" />
-            <element signature="e#2274#2346#1" />
-            <element signature="e#2360#2401#1" />
-            <element signature="docComment;method#enterScope#0;class#SymbolTable#0" />
-            <element signature="docComment;method#exitScope#0;class#SymbolTable#0" />
-            <element signature="method#exitScope#0;class#SymbolTable#0" />
-            <element signature="e#2887#2958#1" />
-            <element signature="e#3041#3108#1" />
-            <element signature="e#3122#3158#1" />
-            <element signature="method#lookup#1;class#SymbolTable#0" />
-            <element signature="docComment;method#peek#0;class#SymbolTable#0" />
-            <element signature="docComment;method#peek#1;class#SymbolTable#0" />
-            <element signature="method#peek#1;class#SymbolTable#0" />
-            <element signature="docComment;method#set#0;class#SymbolTable#0" />
-            <element signature="method#set#0;class#SymbolTable#0" />
-            <element signature="docComment;method#set#1;class#SymbolTable#0" />
-            <element signature="method#set#1;class#SymbolTable#0" />
-            <element signature="docComment;method#getCurrScopeLevel#0;class#SymbolTable#0" />
-            <element signature="method#getCurrScopeLevel#0;class#SymbolTable#0" />
-            <element signature="docComment;method#clone#0;class#SymbolTable#0" />
-            <element signature="method#clone#0;class#SymbolTable#0" />
-            <element signature="docComment;method#dump#0;class#SymbolTable#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/proj12KeithHardyLiLian/test/CheckerTestKeithHardyLiLian.btm">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
@@ -1218,10 +1176,53 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/util/SymbolTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="403" selection-start-line="403" selection-end-line="403" />
+          <folding>
+            <element signature="docComment;class#SymbolTable#0" />
+            <element signature="docComment;field#hash#0;class#SymbolTable#0" />
+            <element signature="docComment;field#scopes#0;class#SymbolTable#0" />
+            <element signature="docComment;field#parent#0;class#SymbolTable#0" />
+            <element signature="docComment;method#SymbolTable#0;class#SymbolTable#0" />
+            <element signature="docComment;method#SymbolTable#1;class#SymbolTable#0" />
+            <element signature="e#2274#2346#1" />
+            <element signature="e#2360#2401#1" />
+            <element signature="docComment;method#enterScope#0;class#SymbolTable#0" />
+            <element signature="docComment;method#exitScope#0;class#SymbolTable#0" />
+            <element signature="method#exitScope#0;class#SymbolTable#0" />
+            <element signature="e#2887#2958#1" />
+            <element signature="e#3041#3108#1" />
+            <element signature="e#3122#3158#1" />
+            <element signature="method#lookup#1;class#SymbolTable#0" />
+            <element signature="docComment;method#peek#0;class#SymbolTable#0" />
+            <element signature="docComment;method#peek#1;class#SymbolTable#0" />
+            <element signature="method#peek#1;class#SymbolTable#0" />
+            <element signature="docComment;method#set#0;class#SymbolTable#0" />
+            <element signature="method#set#0;class#SymbolTable#0" />
+            <element signature="docComment;method#set#1;class#SymbolTable#0" />
+            <element signature="method#set#1;class#SymbolTable#0" />
+            <element signature="docComment;method#getCurrScopeLevel#0;class#SymbolTable#0" />
+            <element signature="method#getCurrScopeLevel#0;class#SymbolTable#0" />
+            <element signature="docComment;method#clone#0;class#SymbolTable#0" />
+            <element signature="method#clone#0;class#SymbolTable#0" />
+            <element signature="docComment;method#dump#0;class#SymbolTable#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/semant/SemanticAnalyzer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-415">
+          <caret line="132" column="43" selection-start-line="132" selection-start-column="43" selection-end-line="132" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/semant/EnvironmentBuilderVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="85" column="57" selection-start-line="85" selection-start-column="57" selection-end-line="85" selection-end-column="57" />
+        <state relative-caret-position="180">
+          <caret line="73" column="107" selection-start-line="73" selection-start-column="107" selection-end-line="73" selection-end-column="107" />
         </state>
       </provider>
     </entry>
