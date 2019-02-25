@@ -10,7 +10,6 @@ import java.util.*;
 
 public class InheritanceTreeVisitor extends Visitor {
     private Hashtable<String, ClassTreeNode> classMap;
-    private HashMap<String, String> parentMap;
     //<child, parent>
     private ErrorHandler errorHandler;
 
@@ -24,7 +23,6 @@ public class InheritanceTreeVisitor extends Visitor {
     public Hashtable<String, ClassTreeNode> buildClassMap(Program ast, Hashtable<String, ClassTreeNode> classMap,
                                                           ErrorHandler errorHandler){
         this.classMap = classMap;
-        this.parentMap = new HashMap<>();
         this.errorHandler = errorHandler;
         ast.accept(this);
         return this.classMap;
@@ -65,7 +63,7 @@ public class InheritanceTreeVisitor extends Visitor {
                 objectNode.addChild(tempTreeNode);
                 objectNode.addChild(tempParent);
 
-                tempTreeNode.removeChild(tempTreeNode.getParent());
+                tempTreeNode.removeChild(tempParent);
                 tempTreeNode.setParent(objectNode);
 
                 tempParent.removeChild(tempTreeNode);
@@ -87,12 +85,6 @@ public class InheritanceTreeVisitor extends Visitor {
     public Object visit(Class_ node){
         ClassTreeNode tempTreeNode = new ClassTreeNode(node,false, true, this.classMap );
         this.classMap.put(tempTreeNode.getName(),tempTreeNode);
-        if(node.getParent().equals("")){
-            this.parentMap.put(node.getName(), "Object");
-        }
-        else {
-            this.parentMap.put(node.getName(), node.getParent());
-        }
         return null;
     }
 
