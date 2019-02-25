@@ -168,6 +168,7 @@ public class Console extends StyleClassedTextArea {
      * @return the boolean value indicating if a process running
      */
     private boolean getProcessStatus(){
-        return !(this.toolbarController.scanIsDone()&&this.toolbarController.parseIsDone());
+        return !(this.toolbarController.scanIsDone()&&this.toolbarController.parseIsDone()
+                &&this.toolbarController.checkIsDone());
     }
 }
