@@ -290,7 +290,7 @@ public class TypeCheckerVisitor extends Visitor
             if(!node.getExpr().getExprType().equals(this.currentMethodType)){
                 errorHandler.register(Error.Kind.SEMANT_ERROR,
                         currentClass.getASTNode().getFilename(), node.getLineNum(),
-                        "The return value" + node.getExpr().getExprType() + " of the method "
+                        "The return value " + node.getExpr().getExprType() + " of the method "
                                 + " is of the wrong type.");
             }
         }
@@ -568,8 +568,8 @@ public class TypeCheckerVisitor extends Visitor
         if(!leftType.equals(rightType)){
             errorHandler.register(Error.Kind.SEMANT_ERROR,
                     currentClass.getASTNode().getFilename(), node.getLineNum(),
-                    "Cannot assign expression of type " + node.getExpr().getExprType() + " to variable" +
-                            "of type " + leftType);
+                    "Cannot assign expression of type " + node.getExpr().getExprType()
+                            + " to variable of type " + leftType);
         }
         node.setExprType(rightType);
         return null;
