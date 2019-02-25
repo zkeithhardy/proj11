@@ -36,9 +36,9 @@ public class EnvironmentBuilderVisitor extends Visitor {
     public Object visit(Class_ node){
         // assign the ctn's symbol tables to the local symbol tables
         ClassTreeNode tempTreeNode = this.classMap.get(node.getName());
-        this.checkCyclicInheritance(tempTreeNode);
-        this.varSymbolTable = tempTreeNode.getVarSymbolTable();
+        checkCyclicInheritance(tempTreeNode);
 
+        this.varSymbolTable = tempTreeNode.getVarSymbolTable();
         if(this.varSymbolTable.getSize() == 0){
             this.varSymbolTable.enterScope();
 //            ClassTreeNode tempParent = tempTreeNode.getParent();
@@ -72,11 +72,20 @@ public class EnvironmentBuilderVisitor extends Visitor {
     private void checkCyclicInheritance(ClassTreeNode tempTreeNode){
 
         if (!tempTreeNode.getName().equals("Object")&& tempTreeNode.getParent().getParent()==tempTreeNode){
+            System.out.println("Cyclic inheritance found in class "+
+                    tempTreeNode.getName()+" and class " + tempTreeNode.getParent().getName()+"\n");
+
+            //get rid of any cycles you find in the inheritance tree by taking any node in the cycle and
+            // (a) making that node a child of the Object class instead of its current parent and
+            // (b) setting its parent to the Object class.
             tempTreeNode.removeChild(tempTreeNode.getParent());
+
             ClassTreeNode objectNode=classMap.get("Object");
             objectNode.addChild(tempTreeNode);
             tempTreeNode.setParent(objectNode);
-            System.out.println("entering check cyclic condition\n");
+            tempTreeNode.getParent().removeChild(tempTreeNode);
+            tempTreeNode.getParent().setParent(objectNode);
+
             errorHandler.register(Error.Kind.SEMANT_ERROR,"Cyclic inheritance found in class "+
                     tempTreeNode.getName()+" and class " + tempTreeNode.getParent().getName()+"\n");
         }
