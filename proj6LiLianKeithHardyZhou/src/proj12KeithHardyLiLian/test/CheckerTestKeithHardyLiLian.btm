@@ -84,16 +84,15 @@ class B{
     }
 }
 
-
 //circular inheritance
-//class A extends C{
-//    void main(){
+class A extends C{
+    void main(){
 
-//    }
-//}
+    }
+}
 
-//class C extends A{
-//    void main(){
+class C extends A{
+    void main(){
 
-//    }
-//}
+    }
+}
