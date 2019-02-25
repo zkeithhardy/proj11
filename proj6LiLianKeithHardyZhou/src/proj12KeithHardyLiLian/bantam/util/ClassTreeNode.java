@@ -224,6 +224,16 @@ public class ClassTreeNode {
     }
 
     /**
+     * Remove the specified child in the class tree to fix the cyclic inheritance problem
+     *
+     * @param child the class tree node of the immediate subclass
+     */
+    public void removeChild(ClassTreeNode child){
+        if(children.contains(child)){
+            children.removeElement(child);
+        }
+    }
+    /**
      * Get the number of children of this class
      *
      * @return number of children

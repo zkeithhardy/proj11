@@ -36,6 +36,7 @@ public class EnvironmentBuilderVisitor extends Visitor {
     public Object visit(Class_ node){
         // assign the ctn's symbol tables to the local symbol tables
         ClassTreeNode tempTreeNode = this.classMap.get(node.getName());
+        checkCyclicInheritance(tempTreeNode);
         this.varSymbolTable = tempTreeNode.getVarSymbolTable();
 
         if(this.varSymbolTable.getSize() == 0){
@@ -68,6 +69,18 @@ public class EnvironmentBuilderVisitor extends Visitor {
         return null;
     }
 
+    private void checkCyclicInheritance(ClassTreeNode tempTreeNode){
+
+        if (!tempTreeNode.getName().equals("Object")&& tempTreeNode.getParent().getParent()==tempTreeNode){
+            tempTreeNode.removeChild(tempTreeNode.getParent());
+            ClassTreeNode objectNode=classMap.get("Object");
+            objectNode.addChild(tempTreeNode);
+            tempTreeNode.setParent(objectNode);
+            System.out.println("entering check cyclic condition\n");
+            errorHandler.register(Error.Kind.SEMANT_ERROR,"Cyclic inheritance found in class "+
+                    tempTreeNode.getName()+" and class " + tempTreeNode.getParent().getName()+"\n");
+        }
+    }
     public Object visit(Field node){
 //        System.out.println(node.getName()+" "+this.varSymbolTable.getCurrScopeSize());
         if(this.varSymbolTable.getSize() == 0 || this.varSymbolTable.peek(node.getName()) == null) {
