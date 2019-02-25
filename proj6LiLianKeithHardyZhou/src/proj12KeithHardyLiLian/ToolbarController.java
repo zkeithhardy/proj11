@@ -143,7 +143,8 @@ public class ToolbarController {
 
                 this.checkIsDone = true;
             }catch(InterruptedException| ExecutionException e){
-                Platform.runLater(()-> this.console.writeToConsole("Semantic Analyzer failed \n",
+                Platform.runLater(()-> this.console.writeToConsole("Semantic Analyzer failed: " + e.toString()
+                                + "\n",
                         "Error"));
             }
         }).start();
