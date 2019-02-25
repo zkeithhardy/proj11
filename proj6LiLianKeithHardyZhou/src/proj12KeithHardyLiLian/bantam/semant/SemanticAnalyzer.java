@@ -138,7 +138,6 @@ public class SemanticAnalyzer
                 return root;
         }
         return null;
-
     }
 
     /**
@@ -241,12 +240,6 @@ public class SemanticAnalyzer
                     System.out.println("Invalid filename: "+filename);
                 }
             }
-
-
-
         }
-
     }
-
-
 }

@@ -17,7 +17,14 @@ public class TypeCheckerVisitor extends Visitor
     private ErrorHandler errorHandler;
     private String currentMethodType;
 
-
+    /**
+     * type check the given program with its SymbolTable and errorHandler
+     * @param ast
+     * @param currentClass
+     * @param currentSymbolTable
+     * @param errorHandler
+     * @return
+     */
     public boolean typeCheck(Program ast,ClassTreeNode currentClass,
                              SymbolTable currentSymbolTable,ErrorHandler errorHandler){
         boolean success = true;
@@ -34,6 +41,11 @@ public class TypeCheckerVisitor extends Visitor
         return success;
     }
 
+    /**
+     * visit the class node
+     * @param node the class node
+     * @return
+     */
     public Object visit(Class_ node){
         ClassTreeNode newClass = this.currentClass.getClassMap().get(node.getName());
         currentClass = newClass;

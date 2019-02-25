@@ -1,8 +1,10 @@
 class Main extends B{
     boolean a = true;
+    //illigeal type declaration 
     int b = true;
 
     //use of undeclared type
+    //incompatible type declaration
     ood c = null;
 
     //the type D does not exist
@@ -42,7 +44,7 @@ class Main extends B{
 
     // method name duplication
     void bar(int y, int z) {
-        //use of proper types of data for operations
+        //use of improper types of data for operations
         y = y + true;
 	y = y / true;
 	y = y - true;
@@ -58,20 +60,30 @@ class Main extends B{
 	y = true--;
         //use of undefined variable
         stephanie = 1;
+	//cannot assign variable of type int to type Object
+	//z is already declared in this scope
         var z = this.foo();
         z = z * y;
 	//size of new array is not of type int
         var q = (new int[true]);
+	//illigal delaration statement
+        var q = (new int[4]);
+	//missing declaraiton of i
         for(i = 0; i < 2; i++){
             z = z + i;
             y = z + i;
         }
+	//x has not be declared
+	//z is not comparable to int
         while(z < 5 || x > 6){
+	   //use of undefied method in dispatch statement
+	   //incorrect number of argumets passed in method bar and foo
            foo(z).get(x).ban().bar();
+	   //increment on undefined variable 
            this.counter ++;
            break;
         }
-	//type of thr predicate is not boolean
+	//type of the predicate is not boolean
 	while(y){
 	   break;
 	}
@@ -81,6 +93,7 @@ class Main extends B{
 	for(a = true; a = 3; b){
 	   a = false;
 	}
+	//undeclared x variable 
         if(x == 3){
             z = z / 2;
         }else{
@@ -89,6 +102,9 @@ class Main extends B{
     }
     //method overloading
     int foo(){
+	//undefined variable d
+	//incorrect number of arguments in function foo
+	//undeclared method fooo
         foo(d).fooo(x);
         return 6;
     }
@@ -106,8 +122,12 @@ class B{
 	a = new int[3];
 	//Index of array is not of type int
 	a[t] = 0;
+	//illigal declaration of undefined variable c
+	//illigal multiplication between type c and 5
 	c = new int[1+5*c+6];
+	//undefined method bar
 	(new A()).bar(car(a,cars(c),d,12),b);
+	//undefined method bar
 	(new A()).bar(car(a,cars(c)),b);
     }
 
@@ -123,18 +143,30 @@ class B{
 	//argument types do not match parameter type
 	bruce(3);
 	a[3] = 5;
+	//x has not been declared
+	//cannot assgin int[] to type Object
         x = a[3];
 	foo();
+	//y has not be declared
+	//x has not been declared
+	//incorrect number of arguments passed in to foo
         foo(x,y);
+
+	//method b is not defined 
+	//variable length has not been declared
         var y = a.b().length;
+	//type ban does not exist
         var z = new ban();
+	//method get, bar are not declared
+	//illigal addition between a and b
+	//cannot cast on a variable of primitive type int
         cast(int,a+b.foo().get().bar(ab));
 	//wrong type of return value
         return 6;
     }
 }
 
-//circular inheritance
+//cyclic inheritance
 class A extends C{
     void main(){
 

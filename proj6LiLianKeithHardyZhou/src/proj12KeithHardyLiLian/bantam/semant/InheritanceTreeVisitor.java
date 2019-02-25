@@ -87,6 +87,4 @@ public class InheritanceTreeVisitor extends Visitor {
         this.classMap.put(tempTreeNode.getName(),tempTreeNode);
         return null;
     }
-
-
 }
