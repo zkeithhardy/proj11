@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3f9f4d53-dccb-439a-ad59-57724734fed7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/semant/TypeCheckerVisitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/semant/TypeCheckerVisitor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/util/SymbolTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/util/SymbolTable.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/semant/InheritanceTreeVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/semant/InheritanceTreeVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/semant/TypeCheckerVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/semant/TypeCheckerVisitor.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,12 +13,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/semant/InheritanceTreeVisitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-918">
-              <caret line="18" column="4" lean-forward="true" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
+            <state relative-caret-position="216">
+              <caret line="60" column="22" selection-start-line="60" selection-start-column="22" selection-end-line="60" selection-end-column="22" />
               <folding>
+                <element signature="imports" expanded="true" />
                 <element signature="method#buildClassMap#0;class#InheritanceTreeVisitor#0" />
               </folding>
             </state>
@@ -38,29 +36,21 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/ast/Class_.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-32">
-              <caret line="91" column="25" selection-start-line="91" selection-start-column="18" selection-end-line="91" selection-end-column="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/semant/SemanticAnalyzer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
+            <state relative-caret-position="432">
               <caret line="133" column="43" selection-start-line="133" selection-start-column="43" selection-end-line="133" selection-end-column="43" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/semant/TypeCheckerVisitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1110">
-              <caret line="351" selection-start-line="351" selection-end-line="351" />
+            <state relative-caret-position="327">
+              <caret line="250" column="94" lean-forward="true" selection-start-line="250" selection-start-column="94" selection-end-line="250" selection-end-column="94" />
               <folding>
+                <element signature="e#536#1001#0" />
                 <element signature="e#1007#1105#0" />
                 <element signature="e#2183#3314#1" />
                 <element signature="e#2230#2912#1" />
@@ -208,6 +198,7 @@
       <find>getcurrscopesi</find>
       <find>lookup</find>
       <find>found in m</find>
+      <find>the re</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -228,9 +219,9 @@
         <option value="$PROJECT_DIR$/src/proj12KeithHardyLiLian/test/CheckerTestKeithHardyLiLian.btm" />
         <option value="$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/util/ClassTreeNode.java" />
         <option value="$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/util/SymbolTable.java" />
-        <option value="$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/semant/TypeCheckerVisitor.java" />
         <option value="$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/semant/EnvironmentBuilderVisitor.java" />
         <option value="$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/semant/InheritanceTreeVisitor.java" />
+        <option value="$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/semant/TypeCheckerVisitor.java" />
       </list>
     </option>
   </component>
@@ -357,7 +348,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551066086587" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551066823222" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/proj12KeithHardyLiLian/include/richtextfx-fat-0.9.1.jar!/" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
@@ -376,7 +367,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.SemanticAnalyzer">
+  <component name="RunManager" selected="Application.proj12KeithHardyLiLian">
     <configuration name="SemanticAnalyzer" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="proj12KeithHardyLiLian.bantam.semant.SemanticAnalyzer" />
       <module name="proj6LiLianKeithHardyZhou" />
@@ -938,35 +929,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/semant/InheritanceTreeVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-918">
-          <caret line="18" column="4" lean-forward="true" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
-          <folding>
-            <element signature="method#buildClassMap#0;class#InheritanceTreeVisitor#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/ast/Class_.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-32">
+        <state relative-caret-position="1170">
           <caret line="91" column="25" selection-start-line="91" selection-start-column="18" selection-end-line="91" selection-end-column="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/semant/SemanticAnalyzer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
+        <state relative-caret-position="432">
           <caret line="133" column="43" selection-start-line="133" selection-start-column="43" selection-end-line="133" selection-end-column="43" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/semant/TypeCheckerVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1110">
-          <caret line="351" selection-start-line="351" selection-end-line="351" />
+        <state relative-caret-position="327">
+          <caret line="250" column="94" lean-forward="true" selection-start-line="250" selection-start-column="94" selection-end-line="250" selection-end-column="94" />
           <folding>
+            <element signature="e#536#1001#0" />
             <element signature="e#1007#1105#0" />
             <element signature="e#2183#3314#1" />
             <element signature="e#2230#2912#1" />
@@ -978,6 +960,17 @@
             <element signature="e#4008#4306#1" />
             <element signature="e#4593#4703#0" />
             <element signature="e#4941#5250#1" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/semant/InheritanceTreeVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="60" column="22" selection-start-line="60" selection-start-column="22" selection-end-line="60" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#buildClassMap#0;class#InheritanceTreeVisitor#0" />
           </folding>
         </state>
       </provider>

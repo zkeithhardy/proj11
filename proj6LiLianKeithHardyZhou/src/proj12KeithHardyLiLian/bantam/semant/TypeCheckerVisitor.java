@@ -248,7 +248,7 @@ public class TypeCheckerVisitor extends Visitor
             if(!node.getExpr().getExprType().equals(this.currentMethodType)){
                 errorHandler.register(Error.Kind.SEMANT_ERROR,
                         currentClass.getASTNode().getFilename(), node.getLineNum(),
-                        "The return value" + node.getExpr().getExprType() + " of the method "
+                        "The return value " + node.getExpr().getExprType() + " of the method "
                                 + " is of the wrong type.");
             }
         }
@@ -274,14 +274,14 @@ public class TypeCheckerVisitor extends Visitor
         if(SemanticAnalyzer.reservedIdentifiers.contains(node.getName())){
             errorHandler.register(Error.Kind.SEMANT_ERROR,
                     currentClass.getASTNode().getFilename(), node.getLineNum(),
-                    "Cannot use the reserved keyword" + node.getName() + "to declare a variable.");
+                    "Cannot use the reserved keyword " + node.getName() + "to declare a variable.");
         }
         if(currentSymbolTable.peek(node.getName()) == null){
             currentSymbolTable.add(node.getName(),node.getType());
         }else{
             errorHandler.register(Error.Kind.SEMANT_ERROR,
                     currentClass.getASTNode().getFilename(), node.getLineNum(),
-                    "The variable" + node.getName() + " has already been declared in this scope.");
+                    "The variable " + node.getName() + " has already been declared in this scope.");
         }
 
         return null;
