@@ -5,15 +5,12 @@ class Main extends B{
     //use of undeclared type
     ood c= null;
     //variable defined twice as fields
-    boolean b =false;
+    boolean b = false;
 
-    B testB= new B();
-
-    //dispatch expression after list of expressions
-    //testB.foo()[3].equals(7);
+    B testB = new B();
 
     //proper number of arguments for method call
-    //testB.foo(true);
+    testB.foo(true);
 
     void bar(int a){
         a = a + 1;

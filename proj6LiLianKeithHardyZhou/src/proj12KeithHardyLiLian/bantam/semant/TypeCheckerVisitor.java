@@ -600,7 +600,7 @@ public class TypeCheckerVisitor extends Visitor
             errorHandler.register(Error.Kind.SEMANT_ERROR,
                     currentClass.getASTNode().getFilename(), node.getLineNum(),
                     "Cannot assign expression of type " + node.getExpr().getExprType() + " to variable" +
-                            "of type " + leftType);
+                            " of type " + leftType);
         }
         node.setExprType(rightType);
         return null;
