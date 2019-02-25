@@ -7,9 +7,7 @@ import proj12KeithHardyLiLian.bantam.util.ErrorHandler;
 import proj12KeithHardyLiLian.bantam.util.SymbolTable;
 import proj12KeithHardyLiLian.bantam.visitor.Visitor;
 
-import java.util.HashSet;
 import java.util.Hashtable;
-import java.util.Iterator;
 
 public class EnvironmentBuilderVisitor extends Visitor {
     private Hashtable<String, ClassTreeNode> classMap;
@@ -36,6 +34,12 @@ public class EnvironmentBuilderVisitor extends Visitor {
         return this.classMap;
     }
 
+    /**
+     * visit class_ node and initialize the var symbol table and method symbol table by
+     * initializing their scope
+     * @param node the class node
+     * @return
+     */
     public Object visit(Class_ node){
         // assign the ctn's symbol tables to the local symbol tables
         curClassTreeNode = this.classMap.get(node.getName());
@@ -56,7 +60,11 @@ public class EnvironmentBuilderVisitor extends Visitor {
         return null;
     }
 
-
+    /**
+     * visit the field node so that it add new entries in variable symbol table
+     * @param node the field node
+     * @return
+     */
     public Object visit(Field node){
         if(this.varSymbolTable.getSize() != 0 && this.varSymbolTable.peek(node.getName()) != null) {
             errorHandler.register(Error.Kind.SEMANT_ERROR, curClassTreeNode.getASTNode().getFilename(),
@@ -67,6 +75,11 @@ public class EnvironmentBuilderVisitor extends Visitor {
         return null;
     }
 
+    /**
+     * visit the method node and modify entries in the method symbol table
+     * @param node the method node
+     * @return
+     */
     public Object visit(Method node){
 //        System.out.println("Current class: "+curClassName + " Parent: "+this.classMap.get(this.curClassName).getParent().getName());
         // if there's no duplication in the current scope
@@ -92,20 +105,20 @@ public class EnvironmentBuilderVisitor extends Visitor {
         return null;
     }
 
-    /**
-     *
-     * @param children the list of children
-     * @param methodName the target method name
-     * @return whether any of the children has the target method name
-     */
-    private boolean childHasDuplicate(Iterator<ClassTreeNode> children, String methodName){
-        while(children.hasNext()){
-            // if the child has a scope and a method with the same name
-            ClassTreeNode curChild = children.next();
-            if(curChild.getMethodSymbolTable().getCurrScopeSize() != 0 &&
-                    curChild.getMethodSymbolTable().peek(methodName) != null)
-                return true;
-        }
-        return false;
-    }
+//    /**
+//     *
+//     * @param children the list of children
+//     * @param methodName the target method name
+//     * @return whether any of the children has the target method name
+//     */
+//    private boolean childHasDuplicate(Iterator<ClassTreeNode> children, String methodName){
+//        while(children.hasNext()){
+//            // if the child has a scope and a method with the same name
+//            ClassTreeNode curChild = children.next();
+//            if(curChild.getMethodSymbolTable().getCurrScopeSize() != 0 &&
+//                    curChild.getMethodSymbolTable().peek(methodName) != null)
+//                return true;
+//        }
+//        return false;
+//    }
 }
