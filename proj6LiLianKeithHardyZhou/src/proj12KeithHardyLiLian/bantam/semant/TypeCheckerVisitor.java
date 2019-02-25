@@ -34,6 +34,14 @@ public class TypeCheckerVisitor extends Visitor
         return success;
     }
 
+    public Object visit(Class_ node){
+        ClassTreeNode newClass = this.currentClass.getClassMap().get(node.getName());
+        currentClass = newClass;
+        currentSymbolTable = newClass.getVarSymbolTable();
+        super.visit(node);
+        return null;
+    }
+
     /**
      * Visit a field node
      *
@@ -43,12 +51,20 @@ public class TypeCheckerVisitor extends Visitor
     public Object visit(Field node) {
         Set<String> classNames = currentClass.getClassMap().keySet();
         String type = node.getType();
+
+        //check for arrays as well
+        ArrayList<String> classNamesArray = new ArrayList<>();
+        classNamesArray.addAll(classNames);
+        for(int i = 0; i < classNamesArray.size(); i++){
+            classNamesArray.set(i,classNamesArray.get(i) + "[]");
+        }
         // The fields should have already been added to the symbol table by the
         // SemanticAnalyzer so the only thing to check is the compatibility of the init
         // expr's type with the field's type.
 
         /*...node's type is not a defined type...*/
-        if (!classNames.contains(type) && !type.equals("boolean") && !type.equals("int")) {
+        if (!classNames.contains(type) && !classNamesArray.contains(type) && !type.equals("boolean")
+                && !type.equals("int") && !type.equals("int[]") && !type.equals("boolean[]")) {
             errorHandler.register(Error.Kind.SEMANT_ERROR,
                     currentClass.getASTNode().getFilename(), node.getLineNum(),
                     "The declared type " + node.getType() + " of the field "
@@ -122,14 +138,18 @@ public class TypeCheckerVisitor extends Visitor
      * @return null
      */
     public Object visit(Formal node) {
+        //grab all possible types for the object
         Set<String> classNames = currentClass.getClassMap().keySet();
         String type = node.getType();
+
+        //not a valid type
         if (!classNames.contains(type) && !type.equals("boolean") && !type.equals("int")) {
             errorHandler.register(Error.Kind.SEMANT_ERROR,
                     currentClass.getASTNode().getFilename(), node.getLineNum(),
                     "The declared type " + node.getType() + " of the formal" +
                             " parameter " + node.getName() + " is undefined.");
         }
+
         // add it to the current scope
         currentSymbolTable.add(node.getName(), node.getType());
 
@@ -144,12 +164,15 @@ public class TypeCheckerVisitor extends Visitor
      */
     public Object visit(WhileStmt node) {
         node.getPredExpr().accept(this);
+
         if(!node.getPredExpr().getExprType().equals("boolean")) {
             errorHandler.register(Error.Kind.SEMANT_ERROR,
                     currentClass.getASTNode().getFilename(), node.getLineNum(),
                     "The type of the predicate is " + node.getPredExpr().getExprType()
                             + " which is not boolean.");
         }
+
+        //enter scope for while loop
         currentSymbolTable.enterScope();
         node.getBodyStmt().accept(this);
         currentSymbolTable.exitScope();
@@ -164,15 +187,20 @@ public class TypeCheckerVisitor extends Visitor
      */
     public Object visit(IfStmt node) {
         node.getPredExpr().accept(this);
+
         if(!node.getPredExpr().getExprType().equals("boolean")) {
             errorHandler.register(Error.Kind.SEMANT_ERROR,
                     currentClass.getASTNode().getFilename(), node.getLineNum(),
                     "The type of the predicate is " + node.getPredExpr().getExprType()
                             + " which is not boolean.");
         }
+
+        //enter scope for body
         currentSymbolTable.enterScope();
         node.getThenStmt().accept(this);
         currentSymbolTable.exitScope();
+
+        //enter scope for else
         if (node.getElseStmt() != null) {
             currentSymbolTable.enterScope();
             node.getElseStmt().accept(this);
@@ -188,6 +216,8 @@ public class TypeCheckerVisitor extends Visitor
      * @return result of the visit
      */
     public Object visit(ForStmt node) {
+
+        //check init type
         if (node.getInitExpr() != null) {
             AssignExpr init = (AssignExpr) node.getInitExpr();
             currentSymbolTable.add(init.getName(),"int");
@@ -199,6 +229,7 @@ public class TypeCheckerVisitor extends Visitor
                                 + " which is not int.");
             }
         }
+
         if (node.getPredExpr() != null) {
             node.getPredExpr().accept(this);
             if(!node.getPredExpr().getExprType().equals("boolean")){
@@ -208,6 +239,7 @@ public class TypeCheckerVisitor extends Visitor
                                 + " which is not boolean.");
             }
         }
+
         if (node.getUpdateExpr() != null) {
             node.getUpdateExpr().accept(this);
             if(!node.getUpdateExpr().getExprType().equals("int")) {
@@ -245,10 +277,11 @@ public class TypeCheckerVisitor extends Visitor
     public Object visit(ReturnStmt node) {
         if (node.getExpr() != null) {
             node.getExpr().accept(this);
+
             if(!node.getExpr().getExprType().equals(this.currentMethodType)){
                 errorHandler.register(Error.Kind.SEMANT_ERROR,
                         currentClass.getASTNode().getFilename(), node.getLineNum(),
-                        "The return value " + node.getExpr().getExprType() + " of the method "
+                        "The return value" + node.getExpr().getExprType() + " of the method "
                                 + " is of the wrong type.");
             }
         }
@@ -265,17 +298,21 @@ public class TypeCheckerVisitor extends Visitor
         node.getInit().accept(this);
         node.setType(node.getInit().getExprType());
 
+        //make sure that variable is not being declared null: not legal in Bantam
         if( node.getInit().getExprType().equals("null")){
             errorHandler.register(Error.Kind.SEMANT_ERROR,
                     currentClass.getASTNode().getFilename(), node.getLineNum(),
                     "Cannot declare a variable as null.");
         }
 
+        //make sure variable name is not a reserved keyword
         if(SemanticAnalyzer.reservedIdentifiers.contains(node.getName())){
             errorHandler.register(Error.Kind.SEMANT_ERROR,
                     currentClass.getASTNode().getFilename(), node.getLineNum(),
-                    "Cannot use the reserved keyword " + node.getName() + "to declare a variable.");
+                    "Cannot use the reserved keyword " + node.getName() + " to declare a variable.");
         }
+
+        //add var to symbol table if not already there, register an error otherwise
         if(currentSymbolTable.peek(node.getName()) == null){
             currentSymbolTable.add(node.getName(),node.getType());
         }else{
@@ -287,7 +324,6 @@ public class TypeCheckerVisitor extends Visitor
         return null;
     }
 
-    //UNFINISHED
     /**
      * Visit a dispatch expression node
      *
@@ -298,6 +334,8 @@ public class TypeCheckerVisitor extends Visitor
         if(node.getRefExpr() != null){
             node.getRefExpr().accept(this);
         }
+
+        //find corresponding method
         Method method = (Method) currentClass.getMethodSymbolTable().lookup(node.getMethodName());
         if(method == null){
             errorHandler.register(Error.Kind.SEMANT_ERROR,
@@ -306,6 +344,7 @@ public class TypeCheckerVisitor extends Visitor
                     node.setExprType("Object");
                     return null;
         }
+
         String methodType = method.getReturnType();
         node.setExprType(methodType);
         node.getActualList().accept(this);
@@ -320,6 +359,7 @@ public class TypeCheckerVisitor extends Visitor
              String formalType = formal.getType();
              String actualType = actual.getExprType();
 
+             //parameter of incorrect type passed in
             if(!formalType.equals(actualType)) {
                 errorHandler.register(Error.Kind.SEMANT_ERROR,
                         currentClass.getASTNode().getFilename(), node.getLineNum(),
@@ -328,6 +368,8 @@ public class TypeCheckerVisitor extends Visitor
             }
 
         }
+
+        //incorrect number of arguments passed into method call
         if(formalIterator.hasNext() || actualIterator.hasNext()){
             errorHandler.register(Error.Kind.SEMANT_ERROR,
                     currentClass.getASTNode().getFilename(), node.getLineNum(),
@@ -349,15 +391,22 @@ public class TypeCheckerVisitor extends Visitor
             node.getRef().accept(this);
         }
 
-//        System.out.println("Dumping current symbol table: current scope size: "+currentSymbolTable.getCurrScopeSize());
-//        System.out.println(currentSymbolTable.getCurrScopeLevel());
-//        currentSymbolTable.dump();
+        if(node.getName().equals("this")){
+            node.setExprType(currentClass.getName());
+            return null;
+        }
+        if(node.getName().equals("super")){
+            node.setExprType(currentClass.getParent().getName());
+            return null;
+        }
+
         Object type = currentSymbolTable.lookup(node.getName());
 
+        //undeclared variable
         if(type == null){
             errorHandler.register(Error.Kind.SEMANT_ERROR,
                     currentClass.getASTNode().getFilename(), node.getLineNum(),
-                    "Variable has not been declared in this scope");
+                    "Variable " + node.getName()  + " has not been declared in this scope");
                     node.setExprType("Object");//to allow it to keep analyzing
         }else{
             node.setExprType((String)type);
@@ -366,7 +415,6 @@ public class TypeCheckerVisitor extends Visitor
         if(node.getName().equals("null")){
             node.setExprType("null");
         }
-        System.out.println(node.getName() + ": "+ type);
         return null;
     }
 
@@ -390,13 +438,14 @@ public class TypeCheckerVisitor extends Visitor
 
         ClassTreeNode exprClass = currentClass.lookupClass(superType);
 
+        //invalid instance class
         if(exprClass == null){
             errorHandler.register(Error.Kind.SEMANT_ERROR,
                     currentClass.getASTNode().getFilename(), node.getLineNum(),
                     "Class " + node.getType() + " does not exist");
         }
-        node.setExprType("boolean");
 
+        node.setExprType("boolean");
         return null;
     }
 
@@ -415,11 +464,12 @@ public class TypeCheckerVisitor extends Visitor
         if(node.getExpr().getExprType().equals("int") || node.getExpr().getExprType().equals("boolean")){
             errorHandler.register(Error.Kind.SEMANT_ERROR,
                     currentClass.getASTNode().getFilename(), node.getLineNum(),
-                    "Cannot use cast on a variable of primitive type" + node.getExpr().getExprType());
+                    "Cannot use cast on a variable of primitive type " + node.getExpr().getExprType());
             node.setExprType(castType);
             return null;
         }
 
+        //gather all of the possible parents to be cast to for an upcast
         ClassTreeNode exprClass = currentClass.lookupClass(currentType);
         ArrayList<String> parents = new ArrayList<>();
         ClassTreeNode parent = exprClass.getParent();
@@ -428,12 +478,14 @@ public class TypeCheckerVisitor extends Visitor
             parent = parent.getParent();
         }
 
+        //look for upcasts
         if(parents.contains(castType)){
             node.setUpCast(true);
             node.setExprType(castType);
             return null;
         }
 
+        //gather all possible downcasts and look for one
         Iterator<ClassTreeNode> children = exprClass.getChildrenList();
         while(children.hasNext()){
             ClassTreeNode child = children.next();
@@ -444,6 +496,7 @@ public class TypeCheckerVisitor extends Visitor
             }
         }
 
+        //cast was not of a valid type
         errorHandler.register(Error.Kind.SEMANT_ERROR,
                 currentClass.getASTNode().getFilename(), node.getLineNum(),
                 "Class " + node.getType() + " is not a super class or subclass of class" +
@@ -462,14 +515,14 @@ public class TypeCheckerVisitor extends Visitor
         if(node.getRefName() != null){
             switch (node.getRefName()){
                 case "this":
-                    leftType = currentSymbolTable.lookup(node.getName(),1);
+                    leftType = currentSymbolTable.peek(node.getName(),0);
                     break;
 
                 case "super":
-                    leftType = currentSymbolTable.lookup(node.getName(),0);
+                    leftType = currentClass.getVarSymbolTable().lookup(node.getName());
                     break;
 
-                //is this even necessary? aren't fields protected?
+                //look for
                 default:
                     leftType = currentSymbolTable.lookup(node.getRefName());
                     if(leftType.equals("int") || leftType.equals("boolean")){
@@ -501,8 +554,8 @@ public class TypeCheckerVisitor extends Visitor
         if(!leftType.equals(rightType)){
             errorHandler.register(Error.Kind.SEMANT_ERROR,
                     currentClass.getASTNode().getFilename(), node.getLineNum(),
-                    "Cannot assign expression of type " + node.getExpr().getExprType() + " to variable" +
-                            "of type " + leftType);
+                    "Cannot assign expression of type " + node.getExpr().getExprType()
+                            + " to variable of type " + leftType);
         }
         node.setExprType(rightType);
         return null;
@@ -564,7 +617,7 @@ public class TypeCheckerVisitor extends Visitor
             errorHandler.register(Error.Kind.SEMANT_ERROR,
                     currentClass.getASTNode().getFilename(), node.getLineNum(),
                     "Cannot assign expression of type " + node.getExpr().getExprType() + " to variable" +
-                            "of type " + leftType);
+                            " of type " + leftType);
         }
         node.setExprType(rightType);
         return null;
