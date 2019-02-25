@@ -810,8 +810,6 @@ public class Parser
 
     private String parseIdentifier() {
         String identifier = this.currentToken.spelling;
-        System.out.println("Printing ID");
-        System.out.println(identifier);
 	    this.checkToken(IDENTIFIER,"When parsing Identifier, Identifier expected");
 	    return identifier;
     }

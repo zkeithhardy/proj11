@@ -1037,7 +1037,11 @@ public class TypeCheckerVisitor extends Visitor
         }
 
         Object type = currentSymbolTable.lookup(node.getName());
-        String typeString = (String) type;
+
+        String typeString = "";
+        if (type != null) {
+            typeString = (String) type;
+        }
 
         if(type == null || !typeString.endsWith("[]")) {
             errorHandler.register(Error.Kind.SEMANT_ERROR,
