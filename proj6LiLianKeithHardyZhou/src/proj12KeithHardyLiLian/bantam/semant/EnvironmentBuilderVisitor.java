@@ -81,7 +81,6 @@ public class EnvironmentBuilderVisitor extends Visitor {
      * @return
      */
     public Object visit(Method node){
-//        System.out.println("Current class: "+curClassName + " Parent: "+this.classMap.get(this.curClassName).getParent().getName());
         // if there's no duplication in the current scope
         if(this.methodSymbolTable.getSize() == 0 || this.methodSymbolTable.peek(node.getName()) == null){
             // if the current class has a parent and that parent has a method with the same name

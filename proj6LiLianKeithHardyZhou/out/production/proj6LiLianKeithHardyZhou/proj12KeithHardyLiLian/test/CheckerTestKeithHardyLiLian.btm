@@ -73,6 +73,7 @@ class B{
     void B(){
 	a = new int[3];
 	//illigal declaration of undefined variable c
+	//illigal multiplication between type c and 5
 	c = new int[1+5*c+6];
 	//undefined method bar
 	(new A()).bar(car(a,cars(c),d,12),b);
@@ -92,18 +93,30 @@ class B{
 	//argument types do not match parameter type
 	bruce(3);
 	a[3] = 5;
+	//x has not been declared
+	//cannot assgin int[] to type Object
         x = a[3];
 	foo();
+	//y has not be declared
+	//x has not been declared
+	//incorrect number of arguments passed in to foo
         foo(x,y);
+
+	//method b is not defined 
+	//variable length has not been declared
         var y = a.b().length;
+	//type ban does not exist
         var z = new ban();
+	//method get, bar are not declared
+	//illigal addition between a and b
+	//cannot cast on a variable of primitive type int
         cast(int,a+b.foo().get().bar(ab));
 	//wrong type of return value
         return 6;
     }
 }
 
-//circular inheritance
+//cyclic inheritance
 class A extends C{
     void main(){
 

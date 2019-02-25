@@ -128,7 +128,6 @@ public class SemanticAnalyzer
         MainMainVisitor mainMainVisitor = new MainMainVisitor();
         //need to register error here if there is not a main class
         boolean hasMain = mainMainVisitor.hasMain(this.program, this.classMap, this.errorHandler);
-//        System.out.println("Found main:" + hasMain);
 
         if(hasMain){
             //step 5: type check everything
@@ -140,10 +139,6 @@ public class SemanticAnalyzer
         }else{
             return null;
         }
-
-
-
-
     }
 
     /**
@@ -246,12 +241,6 @@ public class SemanticAnalyzer
                     System.out.println("Invalid filename: "+filename);
                 }
             }
-
-
-
         }
-
     }
-
-
 }
