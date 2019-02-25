@@ -58,14 +58,12 @@ public class EnvironmentBuilderVisitor extends Visitor {
 
 
     public Object visit(Field node){
-        if(this.varSymbolTable.getSize() == 0 || this.varSymbolTable.peek(node.getName()) == null) {
-            this.varSymbolTable.add(node.getName(), node.getType());
-        }
-        else{
+        if(this.varSymbolTable.getSize() != 0 && this.varSymbolTable.peek(node.getName()) != null) {
             errorHandler.register(Error.Kind.SEMANT_ERROR, curClassTreeNode.getASTNode().getFilename(),
                     node.getLineNum(),"Field duplication " + node.getName()+
-                    " found in class "+ this.curClassName);
+                            " found in class "+ this.curClassName);
         }
+        this.varSymbolTable.add(node.getName(), node.getType());
         return null;
     }
 
@@ -84,9 +82,7 @@ public class EnvironmentBuilderVisitor extends Visitor {
                         node.getLineNum(),"Method overloading " + node.getName()+
                         " found in class "+ this.curClassName);
             }
-            else {
-                this.methodSymbolTable.add(node.getName(), node);
-            }
+            this.methodSymbolTable.add(node.getName(), node);
         }
         else{
             errorHandler.register(Error.Kind.SEMANT_ERROR, curClassTreeNode.getASTNode().getFilename(),

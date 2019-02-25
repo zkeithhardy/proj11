@@ -31,12 +31,12 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="btm" value="2" />
-          <entry key="java" value="1672" />
+          <entry key="java" value="1679" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="1672" />
+          <entry key="JAVA" value="1679" />
           <entry key="PLAIN_TEXT" value="2" />
         </counts>
       </usages-collector>
@@ -100,11 +100,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bantam/semant/TypeCheckerVisitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="283" column="92" selection-start-line="283" selection-start-column="92" selection-end-line="283" selection-end-column="92" />
+            <state relative-caret-position="297">
+              <caret line="292" column="92" selection-start-line="292" selection-start-column="92" selection-end-line="292" selection-end-column="92" />
               <folding>
                 <element signature="e#536#1001#0" />
                 <element signature="e#1007#1105#0" />
@@ -154,11 +154,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/bantam/semant/EnvironmentBuilderVisitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="257">
-              <caret line="59" column="9" lean-forward="true" selection-start-line="59" selection-start-column="9" selection-end-line="59" selection-end-column="9" />
+            <state relative-caret-position="219">
+              <caret line="63" column="67" selection-start-line="63" selection-start-column="67" selection-end-line="63" selection-end-column="67" />
             </state>
           </provider>
         </entry>
@@ -210,7 +210,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>varsy</find>
       <find>FormalLis</find>
       <find>ExprLi</find>
       <find>ArrayEx</find>
@@ -240,6 +239,7 @@
       <find>print</find>
       <find>has not been declared in</find>
       <find>varex</find>
+      <find>the return value</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -253,11 +253,11 @@
         <option value="$PROJECT_DIR$/bantam/semant/SemanticAnalyzer.java" />
         <option value="$PROJECT_DIR$/ToolbarController.java" />
         <option value="$PROJECT_DIR$/bantam/semant/InheritanceTreeVisitor.java" />
-        <option value="$PROJECT_DIR$/bantam/semant/EnvironmentBuilderVisitor.java" />
         <option value="$PROJECT_DIR$/bantam/util/SymbolTable.java" />
         <option value="$PROJECT_DIR$/test/CheckerTestKeithHardyLiLian.btm" />
         <option value="$PROJECT_DIR$/bantam/parser/Parser.java" />
         <option value="$PROJECT_DIR$/bantam/semant/TypeCheckerVisitor.java" />
+        <option value="$PROJECT_DIR$/bantam/semant/EnvironmentBuilderVisitor.java" />
       </list>
     </option>
   </component>
@@ -1513,13 +1513,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bantam/semant/EnvironmentBuilderVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="59" column="9" lean-forward="true" selection-start-line="59" selection-start-column="9" selection-end-line="59" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Java8/Java8Parser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-4114">
@@ -1583,12 +1576,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/bantam/semant/TypeCheckerVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="283" column="92" selection-start-line="283" selection-start-column="92" selection-end-line="283" selection-end-column="92" />
+        <state relative-caret-position="297">
+          <caret line="292" column="92" selection-start-line="292" selection-start-column="92" selection-end-line="292" selection-end-column="92" />
           <folding>
             <element signature="e#536#1001#0" />
             <element signature="e#1007#1105#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bantam/semant/EnvironmentBuilderVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="63" column="67" selection-start-line="63" selection-start-column="67" selection-end-line="63" selection-end-column="67" />
         </state>
       </provider>
     </entry>
