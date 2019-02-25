@@ -349,6 +349,9 @@ public class TypeCheckerVisitor extends Visitor
             node.getRef().accept(this);
         }
 
+//        System.out.println("Dumping current symbol table: current scope size: "+currentSymbolTable.getCurrScopeSize());
+//        System.out.println(currentSymbolTable.getCurrScopeLevel());
+//        currentSymbolTable.dump();
         Object type = currentSymbolTable.lookup(node.getName());
         if(type == null){
             errorHandler.register(Error.Kind.SEMANT_ERROR,
