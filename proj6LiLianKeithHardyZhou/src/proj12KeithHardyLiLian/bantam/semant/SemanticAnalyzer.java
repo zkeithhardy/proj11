@@ -222,7 +222,6 @@ public class SemanticAnalyzer
             return;
         }
 
-
         for(String filename: argv){
             ErrorHandler errorHandler = new ErrorHandler();
             Parser testParser= new Parser(errorHandler);

@@ -15,8 +15,10 @@ class Main extends B{
     //proper number of arguments for method call
     //testB.foo(true);
 
-
-
+    void bar(int a){
+        a = a + 1;
+    }
+    // method name duplication
     void bar(int y, int z) {
         //use of proper types of data for operations
         y = y + true;

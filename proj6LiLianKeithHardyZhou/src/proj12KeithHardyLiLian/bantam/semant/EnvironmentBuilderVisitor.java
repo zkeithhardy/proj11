@@ -16,9 +16,6 @@ public class EnvironmentBuilderVisitor extends Visitor {
     private SymbolTable methodSymbolTable;
     private ErrorHandler errorHandler;
     private String curClassName;
-    private HashSet<String> memberNames;
-
-    //tracks whether a Main class with a main method has been found yet
 
     /**
      * return the built class map with all nodes and parent structure
@@ -40,14 +37,13 @@ public class EnvironmentBuilderVisitor extends Visitor {
         ClassTreeNode tempTreeNode = this.classMap.get(node.getName());
         this.varSymbolTable = tempTreeNode.getVarSymbolTable();
 
-        if(this.varSymbolTable.getSize()==0){
+        if(this.varSymbolTable.getSize() == 0){
             this.varSymbolTable.enterScope();
-            ClassTreeNode tempParent =tempTreeNode.getParent();
-            while(tempParent!=null){//todo:reverse
+            ClassTreeNode tempParent = tempTreeNode.getParent();
+            while(tempParent != null){
                 System.out.println(tempParent.getName());
-
-                SymbolTable parentVarST= tempTreeNode.getParent().getVarSymbolTable();
-                if(parentVarST.getSize()==0){
+                SymbolTable parentVarST = tempParent.getVarSymbolTable();
+                if(parentVarST.getSize() == 0){
                     parentVarST.enterScope();
                     System.out.println(tempParent.getName()+" entered scope" +" size: "+parentVarST.getCurrScopeSize() +"\n");
                 }
@@ -59,13 +55,12 @@ public class EnvironmentBuilderVisitor extends Visitor {
         this.methodSymbolTable = tempTreeNode.getMethodSymbolTable();
         if(this.methodSymbolTable.getSize()==0){
             this.methodSymbolTable.enterScope();
-            SymbolTable parentMethodST= tempTreeNode.getParent().getMethodSymbolTable();
-            if(parentMethodST.getSize()==0){
+            SymbolTable parentMethodST = tempTreeNode.getParent().getMethodSymbolTable();
+            if(parentMethodST.getSize() == 0){
                 parentMethodST.enterScope();
             }
         }
         this.curClassName = node.getName();
-        this.memberNames = new HashSet<>();
 
         super.visit(node);
 
@@ -73,16 +68,17 @@ public class EnvironmentBuilderVisitor extends Visitor {
     }
 
     public Object visit(Field node){
-        System.out.println(node.getName()+" "+this.varSymbolTable.getCurrScopeSize());
-        this.varSymbolTable.dump();
+//        System.out.println(node.getName()+" "+this.varSymbolTable.getCurrScopeSize());
         if(this.varSymbolTable.getSize() == 0 || this.varSymbolTable.peek(node.getName()) == null) {
-            System.out.println(node.getType());
+//            System.out.println("Type of "+node.getName()+": "+node.getType());
             this.varSymbolTable.add(node.getName(), node.getType());
         }
         else{
             errorHandler.register(Error.Kind.SEMANT_ERROR, "Field duplication " + node.getName()+
-                    " found in class "+ this.curClassName+"\n");
+                    " found in class "+ this.curClassName);
         }
+        System.out.println("Field Dumping");
+        this.varSymbolTable.dump();
         return null;
     }
 
@@ -92,8 +88,10 @@ public class EnvironmentBuilderVisitor extends Visitor {
         }
         else{
             errorHandler.register(Error.Kind.SEMANT_ERROR, "Method name duplication " + node.getName()+
-                    " found in class "+ this.curClassName+"\n");
+                    " found in class "+ this.curClassName);
         }
+        System.out.println("Method Dumping");
+        this.methodSymbolTable.dump();
         return null;
     }
 }
