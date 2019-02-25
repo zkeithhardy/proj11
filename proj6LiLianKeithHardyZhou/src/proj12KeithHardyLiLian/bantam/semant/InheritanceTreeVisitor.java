@@ -52,14 +52,13 @@ public class InheritanceTreeVisitor extends Visitor {
             classMap.get(tempClassName).setParent(classMap.get(tempClassParentName));
         }
 
-        System.out.println(classMap.size()+" items in class map \n");
-
+        List<String> buildIns = Arrays.asList("Object", "TextIO", "String","Sys");
         //check for cyclic inheritance
         classMap.forEach((name, tempTreeNode)->{
-            List<String> buildIns = Arrays.asList("Object", "TextIO", "String","Sys");
-
             if (!buildIns.contains(tempTreeNode.getName())&& tempTreeNode.getParent().getParent()==tempTreeNode){
-                System.out.println("");
+                //get rid of any cycles you find in the inheritance tree by taking any node in the cycle and
+                // (a) making that node a child of the Object class instead of its current parent and
+                // (b) setting its parent to the Object class.
                 ClassTreeNode objectNode=classMap.get("Object");
                 ClassTreeNode tempParent=tempTreeNode.getParent();
 
@@ -80,7 +79,11 @@ public class InheritanceTreeVisitor extends Visitor {
         return null;
     }
 
-
+    /**
+     * Visit the Class_ node and put it into the class map as well as parent map
+     * @param node the class node
+     * @return
+     */
     public Object visit(Class_ node){
         ClassTreeNode tempTreeNode = new ClassTreeNode(node,false, true, this.classMap );
         this.classMap.put(tempTreeNode.getName(),tempTreeNode);
