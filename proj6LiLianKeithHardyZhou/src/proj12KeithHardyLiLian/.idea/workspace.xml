@@ -29,12 +29,12 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="btm" value="62" />
-          <entry key="java" value="1762" />
+          <entry key="java" value="2707" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="1762" />
+          <entry key="JAVA" value="2707" />
           <entry key="PLAIN_TEXT" value="62" />
         </counts>
       </usages-collector>
@@ -113,8 +113,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bantam/util/ClassTreeNode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4066">
-              <caret line="262" column="13" selection-start-line="262" selection-start-column="7" selection-end-line="262" selection-end-column="13" />
+            <state relative-caret-position="115">
+              <caret line="221" column="34" lean-forward="true" selection-start-line="221" selection-start-column="19" selection-end-line="221" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -131,7 +131,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bantam/semant/SemanticAnalyzer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="254">
+            <state relative-caret-position="2363">
               <caret line="236" column="34" selection-start-line="236" selection-start-column="34" selection-end-line="236" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -145,8 +145,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bantam/semant/InheritanceTreeVisitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="703">
-              <caret line="48" column="74" selection-start-line="48" selection-end-line="49" />
+            <state relative-caret-position="-311">
+              <caret line="50" column="48" selection-start-line="50" selection-start-column="48" selection-end-line="50" selection-end-column="48" />
             </state>
           </provider>
         </entry>
@@ -154,8 +154,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/bantam/semant/EnvironmentBuilderVisitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="93" column="38" lean-forward="true" selection-start-line="93" selection-start-column="38" selection-end-line="93" selection-end-column="38" />
+            <state relative-caret-position="860">
+              <caret line="116" column="69" selection-start-line="116" selection-start-column="69" selection-end-line="116" selection-end-column="69" />
             </state>
           </provider>
         </entry>
@@ -163,8 +163,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bantam/util/SymbolTable.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-152">
-              <caret line="137" selection-start-line="137" selection-end-line="137" />
+            <state relative-caret-position="-3496">
+              <caret line="225" column="70" selection-start-line="225" selection-start-column="66" selection-end-line="225" selection-end-column="70" />
             </state>
           </provider>
         </entry>
@@ -207,6 +207,8 @@
       <find>getsi</find>
       <find>dump</find>
       <find>b</find>
+      <find>parent</find>
+      <find>peek</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -401,7 +403,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.24689165" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.29307282" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -657,13 +659,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bantam/util/ClassTreeNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4066">
-          <caret line="262" column="13" selection-start-line="262" selection-start-column="7" selection-end-line="262" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bantam/ast/InstanceofExpr.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
@@ -685,16 +680,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/test/CheckerTestKeithHardyLiLian.btm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-402">
+          <caret line="20" column="30" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/bantam/semant/InheritanceTreeVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="703">
-          <caret line="48" column="74" selection-start-line="48" selection-end-line="49" />
+        <state relative-caret-position="-311">
+          <caret line="50" column="48" selection-start-line="50" selection-start-column="48" selection-end-line="50" selection-end-column="48" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bantam/semant/SemanticAnalyzer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
+        <state relative-caret-position="2363">
           <caret line="236" column="34" selection-start-line="236" selection-start-column="34" selection-end-line="236" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -704,24 +706,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bantam/util/SymbolTable.java">
+    <entry file="file://$PROJECT_DIR$/bantam/util/ClassTreeNode.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-152">
-          <caret line="137" selection-start-line="137" selection-end-line="137" />
+        <state relative-caret-position="115">
+          <caret line="221" column="34" lean-forward="true" selection-start-line="221" selection-start-column="19" selection-end-line="221" selection-end-column="34" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/CheckerTestKeithHardyLiLian.btm">
+    <entry file="file://$PROJECT_DIR$/bantam/util/SymbolTable.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-402">
-          <caret line="20" column="30" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
+        <state relative-caret-position="-3496">
+          <caret line="225" column="70" selection-start-line="225" selection-start-column="66" selection-end-line="225" selection-end-column="70" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bantam/semant/EnvironmentBuilderVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="93" column="38" lean-forward="true" selection-start-line="93" selection-start-column="38" selection-end-line="93" selection-end-column="38" />
+        <state relative-caret-position="860">
+          <caret line="116" column="69" selection-start-line="116" selection-start-column="69" selection-end-line="116" selection-end-column="69" />
         </state>
       </provider>
     </entry>

@@ -9,6 +9,7 @@ import proj12KeithHardyLiLian.bantam.visitor.Visitor;
 
 import java.util.HashSet;
 import java.util.Hashtable;
+import java.util.Iterator;
 
 public class EnvironmentBuilderVisitor extends Visitor {
     private Hashtable<String, ClassTreeNode> classMap;
@@ -83,8 +84,22 @@ public class EnvironmentBuilderVisitor extends Visitor {
     }
 
     public Object visit(Method node){
+        // if there's no duplication in the current scope
         if(this.methodSymbolTable.getSize() == 0 || this.methodSymbolTable.peek(node.getName()) == null){
-            this.methodSymbolTable.add(node.getName(), node);
+            ClassTreeNode curClassTreeNode = this.classMap.get(this.curClassName);
+            // if the current class has a parent and that parent has a method with the same name
+            // or if the current class has any number of children and any of the children has a method with the same name
+            if((curClassTreeNode.getParent() != null &&
+                    curClassTreeNode.getParent().getMethodSymbolTable().getCurrScopeSize()!=0 &&
+                    curClassTreeNode.getParent().getParent().getMethodSymbolTable().peek(node.getName())!=null)
+                    || (curClassTreeNode.getNumChildren() != 0 &&
+                    childHasDuplicate(curClassTreeNode.getChildrenList(), node.getName()))) {
+                errorHandler.register(Error.Kind.SEMANT_ERROR, "Method overloading " + node.getName()+
+                        " found in class "+ this.curClassName);
+            }
+            else {
+                this.methodSymbolTable.add(node.getName(), node);
+            }
         }
         else{
             errorHandler.register(Error.Kind.SEMANT_ERROR, "Method name duplication " + node.getName()+
@@ -93,5 +108,22 @@ public class EnvironmentBuilderVisitor extends Visitor {
         System.out.println("Method Dumping");
         this.methodSymbolTable.dump();
         return null;
+    }
+
+    /**
+     *
+     * @param children the list of children
+     * @param methodName the target method name
+     * @return whether any of the children has the target method name
+     */
+    private boolean childHasDuplicate(Iterator<ClassTreeNode> children, String methodName){
+        while(children.hasNext()){
+            // if the child has a scope and a method with the same name
+            ClassTreeNode curChild = children.next();
+            if(curChild.getMethodSymbolTable().getCurrScopeSize() != 0 &&
+                    curChild.getMethodSymbolTable().peek(methodName) != null)
+                return true;
+        }
+        return false;
     }
 }
