@@ -36,7 +36,7 @@ public class EnvironmentBuilderVisitor extends Visitor {
     public Object visit(Class_ node){
         // assign the ctn's symbol tables to the local symbol tables
         ClassTreeNode tempTreeNode = this.classMap.get(node.getName());
-        checkCyclicInheritance(tempTreeNode);
+        this.checkCyclicInheritance(tempTreeNode);
         this.varSymbolTable = tempTreeNode.getVarSymbolTable();
 
         if(this.varSymbolTable.getSize() == 0){
@@ -97,6 +97,7 @@ public class EnvironmentBuilderVisitor extends Visitor {
     }
 
     public Object visit(Method node){
+        System.out.println("Current class: "+curClassName + " Parent: "+this.classMap.get(this.curClassName).getParent().getName());
         // if there's no duplication in the current scope
         if(this.methodSymbolTable.getSize() == 0 || this.methodSymbolTable.peek(node.getName()) == null){
             ClassTreeNode curClassTreeNode = this.classMap.get(this.curClassName);

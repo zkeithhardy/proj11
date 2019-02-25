@@ -29,7 +29,7 @@ public class InheritanceTreeVisitor extends Visitor {
         this.classMap = classMap;
         this.parentMap = new HashMap<>();
         this.errorHandler = errorHandler;
-        this.parentMap=new HashMap<String, String>();
+        this.parentMap=new HashMap<>();
         ast.accept(this);
         return this.classMap;
     }
