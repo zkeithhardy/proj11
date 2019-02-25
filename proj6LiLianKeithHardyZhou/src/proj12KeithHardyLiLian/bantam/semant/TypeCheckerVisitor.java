@@ -151,8 +151,16 @@ public class TypeCheckerVisitor extends Visitor
         Set<String> classNames = currentClass.getClassMap().keySet();
         String type = node.getType();
 
+        //check for arrays as well
+        ArrayList<String> classNamesArray = new ArrayList<>();
+        classNamesArray.addAll(classNames);
+        for(int i = 0; i < classNamesArray.size(); i++){
+            classNamesArray.set(i,classNamesArray.get(i) + "[]");
+        }
+
         //not a valid type
-        if (!classNames.contains(type) && !type.equals("boolean") && !type.equals("int")) {
+        if (!classNames.contains(type) && !classNamesArray.contains(type) && !type.equals("boolean")
+                && !type.equals("int") && !type.equals("int[]") && !type.equals("boolean[]")) {
             errorHandler.register(Error.Kind.SEMANT_ERROR,
                     currentClass.getASTNode().getFilename(), node.getLineNum(),
                     "The declared type " + node.getType() + " of the formal" +
