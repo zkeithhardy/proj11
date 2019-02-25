@@ -1,3 +1,12 @@
+/*
+ * TypeCheckerVisitor.java
+ * Zeb Keith-Hardy, Michael Li, Iris Lian
+ * Class: CS 461
+ * Project 12
+ * Date: February 25, 2019
+ */
+
+
 package proj12KeithHardyLiLian.bantam.semant;
 
 import proj12KeithHardyLiLian.bantam.ast.*;

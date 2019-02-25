@@ -51,7 +51,7 @@ public class TypeCheckerVisitor extends Visitor
     /**
      * visit the class node
      * @param node the class node
-     * @return
+     * @return null
      */
     public Object visit(Class_ node){
         ClassTreeNode newClass = this.currentClass.getClassMap().get(node.getName());
