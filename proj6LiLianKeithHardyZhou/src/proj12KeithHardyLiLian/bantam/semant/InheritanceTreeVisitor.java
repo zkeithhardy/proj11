@@ -39,7 +39,7 @@ public class InheritanceTreeVisitor extends Visitor {
 
     /**
      * Set the parent for all classTreeNodes in the classMap
-     * @param node
+     * @param node the class List node
      * @return
      */
     public Object visit(ClassList node) {
