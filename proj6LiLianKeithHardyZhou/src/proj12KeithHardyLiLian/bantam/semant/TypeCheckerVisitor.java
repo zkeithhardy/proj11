@@ -23,7 +23,7 @@ public class TypeCheckerVisitor extends Visitor
      * @param currentClass the current class tree node
      * @param currentSymbolTable the current symbol table
      * @param errorHandler the error handler
-     * @return
+     * @return boolean to indicate it has been successfully checked or not
      */
     public boolean typeCheck(Program ast,ClassTreeNode currentClass,
                              SymbolTable currentSymbolTable,ErrorHandler errorHandler){
