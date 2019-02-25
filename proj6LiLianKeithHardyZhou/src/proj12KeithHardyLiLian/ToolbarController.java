@@ -195,18 +195,22 @@ public class ToolbarController {
                 Platform.runLater(()->ToolbarController.this.console.writeToConsole(
                         "Parsing Successful.\n", "Output"));
                 classTree = analyzer.analyze(AST);
-                if (errorHandler.errorsFound()) {
-                    List<Error> errorList = errorHandler.getErrorList();
-                    Iterator<Error> errorIterator = errorList.iterator();
-                    ToolbarController.this.console.writeToConsole("\n", "Error");
-                    while (errorIterator.hasNext()) {
-                        ToolbarController.this.console.writeToConsole(errorIterator.next().toString() +
-                                "\n", "Error");
+                Platform.runLater(()-> {
+                    if (errorHandler.errorsFound()) {
+
+                        List<Error> errorList = errorHandler.getErrorList();
+                        Iterator<Error> errorIterator = errorList.iterator();
+                        ToolbarController.this.console.writeToConsole("\n", "Error");
+                        while (errorIterator.hasNext()) {
+                            ToolbarController.this.console.writeToConsole(errorIterator.next().toString() +
+                                    "\n", "Error");
+                        }
+
+                    }else{
+                        Platform.runLater(()->ToolbarController.this.console.writeToConsole(
+                                "Analyzing Successful.\n", "Output"));
                     }
-                }else{
-                    Platform.runLater(()->ToolbarController.this.console.writeToConsole(
-                            "Analyzing Successful.\n", "Output"));
-                }
+                });
             }
             catch (CompilationException e){
                 Platform.runLater(()-> {
