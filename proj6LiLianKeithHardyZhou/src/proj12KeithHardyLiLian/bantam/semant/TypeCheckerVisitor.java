@@ -281,7 +281,7 @@ public class TypeCheckerVisitor extends Visitor
             if(!node.getExpr().getExprType().equals(this.currentMethodType)){
                 errorHandler.register(Error.Kind.SEMANT_ERROR,
                         currentClass.getASTNode().getFilename(), node.getLineNum(),
-                        "The return value " + node.getExpr().getExprType() + " of the method "
+                        "The return value " + node.getExpr().getExprType() + " of the method"
                                 + " is of the wrong type.");
             }
         }
