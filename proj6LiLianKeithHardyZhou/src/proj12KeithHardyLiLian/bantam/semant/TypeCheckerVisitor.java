@@ -17,7 +17,14 @@ public class TypeCheckerVisitor extends Visitor
     private ErrorHandler errorHandler;
     private String currentMethodType;
 
-
+    /**
+     * type check the given program with its SymbolTable and errorHandler
+     * @param ast
+     * @param currentClass
+     * @param currentSymbolTable
+     * @param errorHandler
+     * @return
+     */
     public boolean typeCheck(Program ast,ClassTreeNode currentClass,
                              SymbolTable currentSymbolTable,ErrorHandler errorHandler){
         boolean success = true;
@@ -34,6 +41,11 @@ public class TypeCheckerVisitor extends Visitor
         return success;
     }
 
+    /**
+     * visit the class node
+     * @param node the class node
+     * @return
+     */
     public Object visit(Class_ node){
         ClassTreeNode newClass = this.currentClass.getClassMap().get(node.getName());
         currentClass = newClass;
@@ -151,8 +163,16 @@ public class TypeCheckerVisitor extends Visitor
         Set<String> classNames = currentClass.getClassMap().keySet();
         String type = node.getType();
 
+        //check for arrays as well
+        ArrayList<String> classNamesArray = new ArrayList<>();
+        classNamesArray.addAll(classNames);
+        for(int i = 0; i < classNamesArray.size(); i++){
+            classNamesArray.set(i,classNamesArray.get(i) + "[]");
+        }
+
         //not a valid type
-        if (!classNames.contains(type) && !type.equals("boolean") && !type.equals("int")) {
+        if (!classNames.contains(type) && !classNamesArray.contains(type) && !type.equals("boolean")
+                && !type.equals("int") && !type.equals("int[]") && !type.equals("boolean[]")) {
             errorHandler.register(Error.Kind.SEMANT_ERROR,
                     currentClass.getASTNode().getFilename(), node.getLineNum(),
                     "The declared type " + node.getType() + " of the formal" +
@@ -290,7 +310,7 @@ public class TypeCheckerVisitor extends Visitor
             if(!node.getExpr().getExprType().equals(this.currentMethodType)){
                 errorHandler.register(Error.Kind.SEMANT_ERROR,
                         currentClass.getASTNode().getFilename(), node.getLineNum(),
-                        "The return value " + node.getExpr().getExprType() + " of the method "
+                        "The return value " + node.getExpr().getExprType() + " of the method"
                                 + " is of the wrong type.");
             }
         }
