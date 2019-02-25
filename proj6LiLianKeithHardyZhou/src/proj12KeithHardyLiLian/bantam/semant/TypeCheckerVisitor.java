@@ -132,7 +132,7 @@ public class TypeCheckerVisitor extends Visitor
         }
         // add it to the current scope
         currentSymbolTable.add(node.getName(), node.getType());
-        currentSymbolTable.dump();
+
         return null;
     }
 
@@ -283,7 +283,7 @@ public class TypeCheckerVisitor extends Visitor
                     currentClass.getASTNode().getFilename(), node.getLineNum(),
                     "The variable" + node.getName() + " has already been declared in this scope.");
         }
-        currentSymbolTable.dump();
+
         return null;
     }
 
@@ -333,7 +333,7 @@ public class TypeCheckerVisitor extends Visitor
                     currentClass.getASTNode().getFilename(), node.getLineNum(),
                     "Incorrect number of arguments passed into method " + method.getName() + "." );
         }
-        System.out.println(method.getName());
+
         node.setExprType(method.getReturnType());
         return null;
     }
@@ -353,6 +353,7 @@ public class TypeCheckerVisitor extends Visitor
 //        System.out.println(currentSymbolTable.getCurrScopeLevel());
 //        currentSymbolTable.dump();
         Object type = currentSymbolTable.lookup(node.getName());
+
         if(type == null){
             errorHandler.register(Error.Kind.SEMANT_ERROR,
                     currentClass.getASTNode().getFilename(), node.getLineNum(),
@@ -420,14 +421,20 @@ public class TypeCheckerVisitor extends Visitor
         }
 
         ClassTreeNode exprClass = currentClass.lookupClass(currentType);
-        String superClass = exprClass.getParent().getName();
-        Iterator<ClassTreeNode> children = exprClass.getChildrenList();
-        if(superClass.equals(castType)){
+        ArrayList<String> parents = new ArrayList<>();
+        ClassTreeNode parent = exprClass.getParent();
+        while(parent != null){
+            parents.add(parent.getName());
+            parent = parent.getParent();
+        }
+
+        if(parents.contains(castType)){
             node.setUpCast(true);
             node.setExprType(castType);
             return null;
         }
 
+        Iterator<ClassTreeNode> children = exprClass.getChildrenList();
         while(children.hasNext()){
             ClassTreeNode child = children.next();
             if(child.getName().equals(castType)){
