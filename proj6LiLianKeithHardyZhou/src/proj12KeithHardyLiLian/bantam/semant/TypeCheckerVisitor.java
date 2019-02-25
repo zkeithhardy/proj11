@@ -114,8 +114,17 @@ public class TypeCheckerVisitor extends Visitor
         Set<String> classNames = currentClass.getClassMap().keySet();
         String type = node.getReturnType();
 
+        //check for arrays as well
+        ArrayList<String> classNamesArray = new ArrayList<>();
+        classNamesArray.addAll(classNames);
+        for(int i = 0; i < classNamesArray.size(); i++){
+            classNamesArray.set(i,classNamesArray.get(i) + "[]");
+        }
+
         /*...the node's return type is not a defined type and not "void"...*/
-        if (!classNames.contains(type) && !type.equals("boolean") && !type.equals("int") && !type.equals("void")) {
+        if (!classNames.contains(type) && !classNamesArray.contains(type) &&
+                !type.equals("boolean") && !type.equals("int") && !type.equals("int[]")
+                && !type.equals("boolean[]") && !type.equals("void")) {
             errorHandler.register(Error.Kind.SEMANT_ERROR,
                     currentClass.getASTNode().getFilename(), node.getLineNum(),
                     "The return type " + node.getReturnType() + " of the method "
@@ -519,10 +528,10 @@ public class TypeCheckerVisitor extends Visitor
                     break;
 
                 case "super":
-                    leftType = currentClass.getVarSymbolTable().lookup(node.getName());
+                    leftType = currentClass.getParent().getVarSymbolTable().lookup(node.getName());
                     break;
 
-                //look for
+                //look for type in available classes
                 default:
                     leftType = currentSymbolTable.lookup(node.getRefName());
                     if(leftType.equals("int") || leftType.equals("boolean")){
@@ -541,14 +550,19 @@ public class TypeCheckerVisitor extends Visitor
                     break;
             }
         }else{
+            //no ref in this case
             leftType = currentSymbolTable.lookup(node.getName());
         }
+
+        //could not be found
         if(leftType==null){
             errorHandler.register(Error.Kind.SEMANT_ERROR,
                     currentClass.getASTNode().getFilename(), node.getLineNum(),
                     "The variable " + node.getName() + " has not been declared");
                     leftType = "Object";
         }
+
+        //check type of expression
         node.getExpr().accept(this);
         String rightType = node.getExpr().getExprType();
         if(!leftType.equals(rightType)){
@@ -586,21 +600,30 @@ public class TypeCheckerVisitor extends Visitor
                     leftType = currentSymbolTable.lookup(node.getName(),0);
                     break;
 
+                //look for ref type
                 default:
                     leftType = currentSymbolTable.lookup(node.getRefName());
                     if(leftType.equals("int") || leftType.equals("boolean")){
                         errorHandler.register(Error.Kind.SEMANT_ERROR,
                                 currentClass.getASTNode().getFilename(), node.getLineNum(),
-                                "Invalid var expression, primitives do not have builtin methods");
+                                "Invalid var expression, primitives do not have fields");
                     }else{
                         leftType = currentClass.getClassMap().get(leftType).
                                 getVarSymbolTable().lookup(node.getName());
+                        if(leftType == null){
+                            errorHandler.register(Error.Kind.SEMANT_ERROR,
+                                    currentClass.getASTNode().getFilename(), node.getLineNum(),
+                                    "The variable " + node.getName() + " has not been declared");
+                        }
                     }
                     break;
             }
         }else{
+            //no ref
             leftType = currentSymbolTable.lookup(node.getName());
         }
+
+        //could not find var
         if(leftType==null){
             errorHandler.register(Error.Kind.SEMANT_ERROR,
                     currentClass.getASTNode().getFilename(), node.getLineNum(),
@@ -608,12 +631,11 @@ public class TypeCheckerVisitor extends Visitor
                     leftType = "Object[]";
         }
 
+        //type check both side make sure they match
         node.getExpr().accept(this);
         String rightType = node.getExpr().getExprType();
-
-
-        //HERE: have to get the type of the array without the []
-        if(!leftType.equals(rightType)){
+        String left = (String) leftType;
+        if(!left.substring(0,left.length()-2).equals(rightType)){
             errorHandler.register(Error.Kind.SEMANT_ERROR,
                     currentClass.getASTNode().getFilename(), node.getLineNum(),
                     "Cannot assign expression of type " + node.getExpr().getExprType() + " to variable" +
