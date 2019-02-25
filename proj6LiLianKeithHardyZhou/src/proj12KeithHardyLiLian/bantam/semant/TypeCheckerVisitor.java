@@ -391,6 +391,15 @@ public class TypeCheckerVisitor extends Visitor
             node.getRef().accept(this);
         }
 
+        if(node.getName().equals("this")){
+            node.setExprType(currentClass.getName());
+            return null;
+        }
+        if(node.getName().equals("super")){
+            node.setExprType(currentClass.getParent().getName());
+            return null;
+        }
+
         Object type = currentSymbolTable.lookup(node.getName());
 
         //undeclared variable
