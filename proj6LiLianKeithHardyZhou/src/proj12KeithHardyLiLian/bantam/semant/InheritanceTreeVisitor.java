@@ -29,7 +29,6 @@ public class InheritanceTreeVisitor extends Visitor {
         this.classMap = classMap;
         this.parentMap = new HashMap<>();
         this.errorHandler = errorHandler;
-        this.parentMap=new HashMap<>();
         ast.accept(this);
         return this.classMap;
     }
@@ -62,7 +61,6 @@ public class InheritanceTreeVisitor extends Visitor {
     public Object visit(Class_ node){
         ClassTreeNode tempTreeNode = new ClassTreeNode(node,false, true, this.classMap );
         this.classMap.put(tempTreeNode.getName(),tempTreeNode);
-//        System.out.println("in Class visit: class name: "+node.getName()+" parent: "+node.getParent()+"\n");
         if(node.getParent().equals("")){
             this.parentMap.put(node.getName(), "Object");
         }

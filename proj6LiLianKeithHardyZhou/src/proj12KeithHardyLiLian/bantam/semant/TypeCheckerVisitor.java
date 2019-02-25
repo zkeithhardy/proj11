@@ -415,6 +415,8 @@ public class TypeCheckerVisitor extends Visitor
             errorHandler.register(Error.Kind.SEMANT_ERROR,
                     currentClass.getASTNode().getFilename(), node.getLineNum(),
                     "Cannot use cast on a variable of primitive type" + node.getExpr().getExprType());
+            node.setExprType(castType);
+            return null;
         }
 
         ClassTreeNode exprClass = currentClass.lookupClass(currentType);
