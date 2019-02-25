@@ -703,16 +703,7 @@ public class TypeCheckerVisitor extends Visitor
      * @return null
      */
     public Object visit(BinaryCompEqExpr node) {
-        node.getLeftExpr().accept(this);
-        node.getRightExpr().accept(this);
-        String type1 = node.getLeftExpr().getExprType();
-        String type2 = node.getRightExpr().getExprType();
-        if(!type1.equals(type2)) {
-            errorHandler.register(Error.Kind.SEMANT_ERROR,
-                    currentClass.getASTNode().getFilename(), node.getLineNum(),
-                    "The two values being compared for equality are not compatible types.");
-        }
-        node.setExprType("boolean");
+        this.checkEquality(node);
         return null;
     }
 
@@ -723,17 +714,26 @@ public class TypeCheckerVisitor extends Visitor
      * @return result of the visit
      */
     public Object visit(BinaryCompNeExpr node) {
+        this.checkEquality(node);
+        return null;
+    }
+
+    /**
+     * Type checks generic Binary Comp Expressions
+     * @param node node to be type checked
+     */
+    private void checkEquality(BinaryCompExpr node){
         node.getLeftExpr().accept(this);
         node.getRightExpr().accept(this);
         String type1 = node.getLeftExpr().getExprType();
         String type2 = node.getRightExpr().getExprType();
+
         if(!type1.equals(type2)) {
             errorHandler.register(Error.Kind.SEMANT_ERROR,
                     currentClass.getASTNode().getFilename(), node.getLineNum(),
                     "The two values being compared for equality are not compatible types.");
         }
         node.setExprType("boolean");
-        return null;
     }
 
     /**
@@ -743,16 +743,7 @@ public class TypeCheckerVisitor extends Visitor
      * @return result of the visit
      */
     public Object visit(BinaryCompLtExpr node) {
-        node.getLeftExpr().accept(this);
-        node.getRightExpr().accept(this);
-        String type1 = node.getLeftExpr().getExprType();
-        String type2 = node.getRightExpr().getExprType();
-        if(!type1.equals("int") || !type2.equals("int")) {
-            errorHandler.register(Error.Kind.SEMANT_ERROR,
-                    currentClass.getASTNode().getFilename(), node.getLineNum(),
-                    "The two values being compared for equality are not compatible types.");
-        }
-        node.setExprType("boolean");
+        this.checkBinaryCompInt(node);
         return null;
     }
 
@@ -763,16 +754,7 @@ public class TypeCheckerVisitor extends Visitor
      * @return result of the visit
      */
     public Object visit(BinaryCompLeqExpr node) {
-        node.getLeftExpr().accept(this);
-        node.getRightExpr().accept(this);
-        String type1 = node.getLeftExpr().getExprType();
-        String type2 = node.getRightExpr().getExprType();
-        if(!type1.equals("int") || !type2.equals("int")) {
-            errorHandler.register(Error.Kind.SEMANT_ERROR,
-                    currentClass.getASTNode().getFilename(), node.getLineNum(),
-                    "The two values being compared for equality are not compatible types.");
-        }
-        node.setExprType("boolean");
+        this.checkBinaryCompInt(node);
         return null;
     }
 
@@ -783,16 +765,7 @@ public class TypeCheckerVisitor extends Visitor
      * @return result of the visit
      */
     public Object visit(BinaryCompGtExpr node) {
-        node.getLeftExpr().accept(this);
-        node.getRightExpr().accept(this);
-        String type1 = node.getLeftExpr().getExprType();
-        String type2 = node.getRightExpr().getExprType();
-        if(!type1.equals("int") || !type2.equals("int")) {
-            errorHandler.register(Error.Kind.SEMANT_ERROR,
-                    currentClass.getASTNode().getFilename(), node.getLineNum(),
-                    "The two values being compared for equality are not compatible types.");
-        }
-        node.setExprType("boolean");
+        this.checkBinaryCompInt(node);
         return null;
     }
 
@@ -803,17 +776,26 @@ public class TypeCheckerVisitor extends Visitor
      * @return result of the visit
      */
     public Object visit(BinaryCompGeqExpr node) {
+        this.checkBinaryCompInt(node);
+        return null;
+    }
+
+    /**
+     * Type checks BinaryCompExpr with integer operands
+     * @param node node to be type checked
+     */
+    private void checkBinaryCompInt(BinaryCompExpr node){
         node.getLeftExpr().accept(this);
         node.getRightExpr().accept(this);
         String type1 = node.getLeftExpr().getExprType();
         String type2 = node.getRightExpr().getExprType();
+
         if(!type1.equals("int") || !type2.equals("int")) {
             errorHandler.register(Error.Kind.SEMANT_ERROR,
                     currentClass.getASTNode().getFilename(), node.getLineNum(),
                     "The two values being compared for equality are not compatible types.");
         }
         node.setExprType("boolean");
-        return null;
     }
 
     /**
@@ -823,16 +805,7 @@ public class TypeCheckerVisitor extends Visitor
      * @return result of the visit
      */
     public Object visit(BinaryLogicAndExpr node) {
-        node.getLeftExpr().accept(this);
-        node.getRightExpr().accept(this);
-        String type1 = node.getLeftExpr().getExprType();
-        String type2 = node.getRightExpr().getExprType();
-        if(type1.equals("boolean") && type2.equals("boolean")) {
-            errorHandler.register(Error.Kind.SEMANT_ERROR,
-                    currentClass.getASTNode().getFilename(), node.getLineNum(),
-                    "The two statements are not boolean.");
-        }
-        node.setExprType("boolean");
+        this.checkBinaryLogicExpr(node);
         return null;
     }
 
@@ -843,17 +816,26 @@ public class TypeCheckerVisitor extends Visitor
      * @return result of the visit
      */
     public Object visit(BinaryLogicOrExpr node) {
+        this.checkBinaryLogicExpr(node);
+        return null;
+    }
+
+    /**
+     * Type checks Binary Logic Expressions
+     * @param node Binary Logic node to type check
+     */
+    private void checkBinaryLogicExpr(BinaryLogicExpr node){
         node.getLeftExpr().accept(this);
         node.getRightExpr().accept(this);
         String type1 = node.getLeftExpr().getExprType();
         String type2 = node.getRightExpr().getExprType();
+
         if(type1.equals("boolean") && type2.equals("boolean")) {
             errorHandler.register(Error.Kind.SEMANT_ERROR,
                     currentClass.getASTNode().getFilename(), node.getLineNum(),
                     "The two statements are not boolean.");
         }
         node.setExprType("boolean");
-        return null;
     }
 
     /**
@@ -863,16 +845,7 @@ public class TypeCheckerVisitor extends Visitor
      * @return result of the visit
      */
     public Object visit(BinaryArithPlusExpr node) {
-        node.getLeftExpr().accept(this);
-        node.getRightExpr().accept(this);
-        String type1 = node.getLeftExpr().getExprType();
-        String type2 = node.getRightExpr().getExprType();
-        if(!type1.equals("int") || !type2.equals("int")) {
-            errorHandler.register(Error.Kind.SEMANT_ERROR,
-                    currentClass.getASTNode().getFilename(), node.getLineNum(),
-                    "The two values being added are not of type int.");
-        }
-        node.setExprType("int");
+        this.checkBinaryArithNode(node,"The two values being added are not of type int.");
         return null;
     }
 
@@ -883,16 +856,7 @@ public class TypeCheckerVisitor extends Visitor
      * @return result of the visit
      */
     public Object visit(BinaryArithMinusExpr node) {
-        node.getLeftExpr().accept(this);
-        node.getRightExpr().accept(this);
-        String type1 = node.getLeftExpr().getExprType();
-        String type2 = node.getRightExpr().getExprType();
-        if(!type1.equals("int") || !type2.equals("int")) {
-            errorHandler.register(Error.Kind.SEMANT_ERROR,
-                    currentClass.getASTNode().getFilename(), node.getLineNum(),
-                    "The two values being subtracted are not of type int.");
-        }
-        node.setExprType("int");
+        this.checkBinaryArithNode(node,"The two values being subtracted are not of type int.");
         return null;
     }
 
@@ -903,16 +867,7 @@ public class TypeCheckerVisitor extends Visitor
      * @return result of the visit
      */
     public Object visit(BinaryArithTimesExpr node) {
-        node.getLeftExpr().accept(this);
-        node.getRightExpr().accept(this);
-        String type1 = node.getLeftExpr().getExprType();
-        String type2 = node.getRightExpr().getExprType();
-        if(!type1.equals("int") || !type2.equals("int")) {
-            errorHandler.register(Error.Kind.SEMANT_ERROR,
-                    currentClass.getASTNode().getFilename(), node.getLineNum(),
-                    "The two values being multiplied are not of type int.");
-        }
-        node.setExprType("int");
+        this.checkBinaryArithNode(node,"The two values being multiplied are not of type int.");
         return null;
     }
 
@@ -923,16 +878,7 @@ public class TypeCheckerVisitor extends Visitor
      * @return result of the visit
      */
     public Object visit(BinaryArithDivideExpr node) {
-        node.getLeftExpr().accept(this);
-        node.getRightExpr().accept(this);
-        String type1 = node.getLeftExpr().getExprType();
-        String type2 = node.getRightExpr().getExprType();
-        if(!type1.equals("int") || !type2.equals("int")) {
-            errorHandler.register(Error.Kind.SEMANT_ERROR,
-                    currentClass.getASTNode().getFilename(), node.getLineNum(),
-                    "The two values being divided are not of type int.");
-        }
-        node.setExprType("int");
+        this.checkBinaryArithNode(node,"The two values being divided are not of type int.");
         return null;
     }
 
@@ -943,17 +889,26 @@ public class TypeCheckerVisitor extends Visitor
      * @return result of the visit
      */
     public Object visit(BinaryArithModulusExpr node) {
+        this.checkBinaryArithNode(node,"The two values being modulo-ed are not of type int.");
+        return null;
+    }
+
+    /**
+     * Type checks all BinaryArithExpr nodes to make sure operands are of type int
+     * @param node node to be type checked
+     * @param errMsg error message registered with the error handler
+     */
+    private void checkBinaryArithNode(BinaryArithExpr node, String errMsg){
         node.getLeftExpr().accept(this);
         node.getRightExpr().accept(this);
         String type1 = node.getLeftExpr().getExprType();
         String type2 = node.getRightExpr().getExprType();
+
         if(!type1.equals("int") || !type2.equals("int")) {
             errorHandler.register(Error.Kind.SEMANT_ERROR,
-                    currentClass.getASTNode().getFilename(), node.getLineNum(),
-                    "The two values being modulo-ed are not of type int.");
+                    currentClass.getASTNode().getFilename(), node.getLineNum(), errMsg);
         }
         node.setExprType("int");
-        return null;
     }
 
     /**
@@ -965,6 +920,7 @@ public class TypeCheckerVisitor extends Visitor
     public Object visit(UnaryNegExpr node) {
         node.getExpr().accept(this);
         String type = node.getExpr().getExprType();
+
         if(!type.equals("int")) {
             errorHandler.register(Error.Kind.SEMANT_ERROR,
                     currentClass.getASTNode().getFilename(), node.getLineNum(),
@@ -984,6 +940,7 @@ public class TypeCheckerVisitor extends Visitor
     public Object visit(UnaryNotExpr node) {
         node.getExpr().accept(this);
         String type = node.getExpr().getExprType();
+
         if(!type.equals("boolean")) {
             errorHandler.register(Error.Kind.SEMANT_ERROR,
                     currentClass.getASTNode().getFilename(), node.getLineNum(),
@@ -1003,6 +960,7 @@ public class TypeCheckerVisitor extends Visitor
     public Object visit(UnaryIncrExpr node) {
         node.getExpr().accept(this);
         String type = node.getExpr().getExprType();
+
         if(!type.equals("int")) {
             errorHandler.register(Error.Kind.SEMANT_ERROR,
                     currentClass.getASTNode().getFilename(), node.getLineNum(),
@@ -1022,6 +980,7 @@ public class TypeCheckerVisitor extends Visitor
     public Object visit(UnaryDecrExpr node) {
         node.getExpr().accept(this);
         String type = node.getExpr().getExprType();
+
         if(!type.equals("int")) {
             errorHandler.register(Error.Kind.SEMANT_ERROR,
                     currentClass.getASTNode().getFilename(), node.getLineNum(),
@@ -1043,6 +1002,7 @@ public class TypeCheckerVisitor extends Visitor
             node.getRef().accept(this);
         }
         node.getIndex().accept(this);
+
         if(!node.getIndex().getExprType().equals("int")){
             errorHandler.register(Error.Kind.SEMANT_ERROR,
                     currentClass.getASTNode().getFilename(), node.getLineNum(),
@@ -1051,6 +1011,7 @@ public class TypeCheckerVisitor extends Visitor
 
         Object type = currentSymbolTable.lookup(node.getName());
         String typeString = (String) type;
+
         if(type == null || !typeString.endsWith("[]")) {
             errorHandler.register(Error.Kind.SEMANT_ERROR,
                     currentClass.getASTNode().getFilename(), node.getLineNum(),
