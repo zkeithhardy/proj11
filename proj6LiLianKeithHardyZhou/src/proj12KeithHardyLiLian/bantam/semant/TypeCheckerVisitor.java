@@ -132,6 +132,7 @@ public class TypeCheckerVisitor extends Visitor
         }
         // add it to the current scope
         currentSymbolTable.add(node.getName(), node.getType());
+        currentSymbolTable.dump();
         return null;
     }
 
@@ -188,6 +189,8 @@ public class TypeCheckerVisitor extends Visitor
      */
     public Object visit(ForStmt node) {
         if (node.getInitExpr() != null) {
+            AssignExpr init = (AssignExpr) node.getInitExpr();
+            currentSymbolTable.add(init.getName(),"int");
             node.getInitExpr().accept(this);
             if(!node.getInitExpr().getExprType().equals("int")) {
                 errorHandler.register(Error.Kind.SEMANT_ERROR,
@@ -273,14 +276,14 @@ public class TypeCheckerVisitor extends Visitor
                     currentClass.getASTNode().getFilename(), node.getLineNum(),
                     "Cannot use the reserved keyword" + node.getName() + "to declare a variable.");
         }
-        if(currentSymbolTable.lookup(node.getName(),currentSymbolTable.getCurrScopeLevel()) == null){
+        if(currentSymbolTable.peek(node.getName()) == null){
             currentSymbolTable.add(node.getName(),node.getType());
         }else{
             errorHandler.register(Error.Kind.SEMANT_ERROR,
                     currentClass.getASTNode().getFilename(), node.getLineNum(),
                     "The variable" + node.getName() + " has already been declared in this scope.");
         }
-
+        currentSymbolTable.dump();
         return null;
     }
 
@@ -296,6 +299,13 @@ public class TypeCheckerVisitor extends Visitor
             node.getRefExpr().accept(this);
         }
         Method method = (Method) currentClass.getMethodSymbolTable().lookup(node.getMethodName());
+        if(method == null){
+            errorHandler.register(Error.Kind.SEMANT_ERROR,
+                    currentClass.getASTNode().getFilename(), node.getLineNum(),
+                    "Method " + node.getMethodName() + " is not declared in this class.");
+                    node.setExprType("Object");
+                    return null;
+        }
         String methodType = method.getReturnType();
         node.setExprType(methodType);
         node.getActualList().accept(this);
@@ -307,7 +317,6 @@ public class TypeCheckerVisitor extends Visitor
         while (formalIterator.hasNext() && actualIterator.hasNext()){
              Formal formal = (Formal) formalIterator.next();
              Expr actual = (Expr) actualIterator.next();
-
              String formalType = formal.getType();
              String actualType = actual.getExprType();
 
@@ -324,7 +333,7 @@ public class TypeCheckerVisitor extends Visitor
                     currentClass.getASTNode().getFilename(), node.getLineNum(),
                     "Incorrect number of arguments passed into method " + method.getName() + "." );
         }
-
+        System.out.println(method.getName());
         node.setExprType(method.getReturnType());
         return null;
     }
@@ -353,7 +362,7 @@ public class TypeCheckerVisitor extends Visitor
         if(node.getName().equals("null")){
             node.setExprType("null");
         }
-
+        System.out.println(node.getName() + ": "+ type);
         return null;
     }
 
@@ -437,7 +446,7 @@ public class TypeCheckerVisitor extends Visitor
      * @return result of the visit
      */
     public Object visit(AssignExpr node) {
-        Object leftType = "";
+        Object leftType;
         if(node.getRefName() != null){
             switch (node.getRefName()){
                 case "this":
@@ -469,20 +478,21 @@ public class TypeCheckerVisitor extends Visitor
         }else{
             leftType = currentSymbolTable.lookup(node.getName());
         }
-        if(leftType.equals("")){
+        if(leftType==null){
             errorHandler.register(Error.Kind.SEMANT_ERROR,
                     currentClass.getASTNode().getFilename(), node.getLineNum(),
                     "The variable " + node.getName() + " has not been declared");
+                    leftType = "Object";
         }
         node.getExpr().accept(this);
         String rightType = node.getExpr().getExprType();
-
         if(!leftType.equals(rightType)){
             errorHandler.register(Error.Kind.SEMANT_ERROR,
                     currentClass.getASTNode().getFilename(), node.getLineNum(),
                     "Cannot assign expression of type " + node.getExpr().getExprType() + " to variable" +
                             "of type " + leftType);
         }
+        node.setExprType(rightType);
         return null;
     }
 
@@ -500,7 +510,7 @@ public class TypeCheckerVisitor extends Visitor
                     "Index of Array is not of type int");
         }
 
-        Object leftType = "";
+        Object leftType;
         if(node.getRefName() != null){
             switch (node.getRefName()){
                 case "this":
@@ -526,10 +536,11 @@ public class TypeCheckerVisitor extends Visitor
         }else{
             leftType = currentSymbolTable.lookup(node.getName());
         }
-        if(leftType.equals("")){
+        if(leftType==null){
             errorHandler.register(Error.Kind.SEMANT_ERROR,
                     currentClass.getASTNode().getFilename(), node.getLineNum(),
                     "The variable " + node.getName() + " has not been declared");
+                    leftType = "Object[]";
         }
 
         node.getExpr().accept(this);
@@ -543,6 +554,7 @@ public class TypeCheckerVisitor extends Visitor
                     "Cannot assign expression of type " + node.getExpr().getExprType() + " to variable" +
                             "of type " + leftType);
         }
+        node.setExprType(rightType);
         return null;
     }
 
