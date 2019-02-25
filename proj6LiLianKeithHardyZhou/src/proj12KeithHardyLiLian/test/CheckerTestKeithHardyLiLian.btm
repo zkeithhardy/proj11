@@ -53,14 +53,14 @@ class Main extends B{
 }
 
 class B{
-	int[] a;
-	int b;
-	void B(){
-		a = new int[3];
-		c = new int[1+5*c+6];
-		(new A()).bar(car(a,cars(c),d,12),b);
-		(new A()).bar(car(a,cars(c)),b);
-	}
+    int[] a;
+    int b;
+    void B(){
+	a = new int[3];
+	c = new int[1+5*c+6];
+	(new A()).bar(car(a,cars(c),d,12),b);
+	(new A()).bar(car(a,cars(c)),b);
+    }
 
     int[] foo(){
     	a[3]=4;
@@ -75,10 +75,12 @@ class B{
 	bruce(3);
 	a[3] = 5;
         x = a[3];
+	foo();
         foo(x,y);
         var y = a.b().length;
         var z = new ban();
         cast(int,a+b.foo().get().bar(ab));
+	//wrong type of return value
         return 6;
     }
 }
