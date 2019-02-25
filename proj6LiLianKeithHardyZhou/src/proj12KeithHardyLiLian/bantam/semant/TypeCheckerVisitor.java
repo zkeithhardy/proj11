@@ -248,7 +248,7 @@ public class TypeCheckerVisitor extends Visitor
             if(!node.getExpr().getExprType().equals(this.currentMethodType)){
                 errorHandler.register(Error.Kind.SEMANT_ERROR,
                         currentClass.getASTNode().getFilename(), node.getLineNum(),
-                        "The return value" + node.getExpr().getExprType() + " of the method "
+                        "The return value " + node.getExpr().getExprType() + " of the method "
                                 + " is of the wrong type.");
             }
         }
@@ -281,7 +281,7 @@ public class TypeCheckerVisitor extends Visitor
         }else{
             errorHandler.register(Error.Kind.SEMANT_ERROR,
                     currentClass.getASTNode().getFilename(), node.getLineNum(),
-                    "The variable" + node.getName() + " has already been declared in this scope.");
+                    "The variable " + node.getName() + " has already been declared in this scope.");
         }
 
         return null;
@@ -564,7 +564,7 @@ public class TypeCheckerVisitor extends Visitor
             errorHandler.register(Error.Kind.SEMANT_ERROR,
                     currentClass.getASTNode().getFilename(), node.getLineNum(),
                     "Cannot assign expression of type " + node.getExpr().getExprType() + " to variable" +
-                            "of type " + leftType);
+                            " of type " + leftType);
         }
         node.setExprType(rightType);
         return null;
