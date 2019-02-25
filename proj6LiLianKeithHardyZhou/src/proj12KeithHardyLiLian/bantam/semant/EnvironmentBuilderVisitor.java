@@ -39,26 +39,26 @@ public class EnvironmentBuilderVisitor extends Visitor {
 
         if(this.varSymbolTable.getSize() == 0){
             this.varSymbolTable.enterScope();
-            ClassTreeNode tempParent = tempTreeNode.getParent();
-            while(tempParent != null){
-                System.out.println(tempParent.getName());
-                SymbolTable parentVarST = tempParent.getVarSymbolTable();
-                if(parentVarST.getSize() == 0){
-                    parentVarST.enterScope();
-                    System.out.println(tempParent.getName()+" entered scope" +" size: "+parentVarST.getCurrScopeSize() +"\n");
-                }
-                tempParent=tempParent.getParent();
-            }
+//            ClassTreeNode tempParent = tempTreeNode.getParent();
+//            while(tempParent != null){
+//                System.out.println(tempParent.getName());
+//                SymbolTable parentVarST = tempParent.getVarSymbolTable();
+//                if(parentVarST.getSize() == 0){
+//                    parentVarST.enterScope();
+//                    System.out.println(tempParent.getName()+" entered scope" +" size: "+parentVarST.getCurrScopeSize() +"\n");
+//                }
+//                tempParent=tempParent.getParent();
+//            }
 
         }
 
         this.methodSymbolTable = tempTreeNode.getMethodSymbolTable();
         if(this.methodSymbolTable.getSize()==0){
             this.methodSymbolTable.enterScope();
-            SymbolTable parentMethodST = tempTreeNode.getParent().getMethodSymbolTable();
-            if(parentMethodST.getSize() == 0){
-                parentMethodST.enterScope();
-            }
+//            SymbolTable parentMethodST = tempTreeNode.getParent().getMethodSymbolTable();
+//            if(parentMethodST.getSize() == 0){
+//                parentMethodST.enterScope();
+//            }
         }
         this.curClassName = node.getName();
 
