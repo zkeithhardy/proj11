@@ -135,7 +135,6 @@ public class SymbolTable {
      */
     public Object lookup(String s) {
         if (scopes.size() == 0) {
-            dump();
             throw new RuntimeException("Must enter a scope before looking up in table");
         }
 

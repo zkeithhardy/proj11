@@ -43,7 +43,7 @@ public class InheritanceTreeVisitor extends Visitor {
         super.visit(node);
         // detect cyclic extension
         for(Map.Entry<String, String> entry : parentMap.entrySet()){
-            System.out.println(entry);
+            //System.out.println(entry);
             String parent = entry.getValue();
             String child = entry.getKey();
         }
