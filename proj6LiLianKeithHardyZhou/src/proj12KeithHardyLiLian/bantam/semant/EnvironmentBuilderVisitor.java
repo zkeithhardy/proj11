@@ -1,3 +1,12 @@
+/*
+ * EnvironmentBuilderVisitor.java
+ * Zeb Keith-Hardy, Michael Li, Iris Lian
+ * Class: CS 461
+ * Project 12
+ * Date: February 25, 2019
+ */
+
+
 package proj12KeithHardyLiLian.bantam.semant;
 
 import proj12KeithHardyLiLian.bantam.ast.*;
@@ -38,7 +47,7 @@ public class EnvironmentBuilderVisitor extends Visitor {
      * visit class_ node and initialize the var symbol table and method symbol table by
      * initializing their scope
      * @param node the class node
-     * @return
+     * @return null
      */
     public Object visit(Class_ node){
         // assign the ctn's symbol tables to the local symbol tables
@@ -63,7 +72,7 @@ public class EnvironmentBuilderVisitor extends Visitor {
     /**
      * visit the field node so that it add new entries in variable symbol table
      * @param node the field node
-     * @return
+     * @return null
      */
     public Object visit(Field node){
         if(this.varSymbolTable.getSize() != 0 && this.varSymbolTable.peek(node.getName()) != null) {
@@ -78,22 +87,11 @@ public class EnvironmentBuilderVisitor extends Visitor {
     /**
      * visit the method node and modify entries in the method symbol table
      * @param node the method node
-     * @return
+     * @return null
      */
     public Object visit(Method node){
         // if there's no duplication in the current scope
         if(this.methodSymbolTable.getSize() == 0 || this.methodSymbolTable.peek(node.getName()) == null){
-            // if the current class has a parent and that parent has a method with the same name
-            // or if the current class has any number of children and any of the children has a method with the same name
-//            if((curClassTreeNode.getParent() != null &&
-//                    curClassTreeNode.getParent().getMethodSymbolTable().getCurrScopeSize()!=0 &&
-//                    curClassTreeNode.getParent().getParent().getMethodSymbolTable().peek(node.getName())!=null)
-//                    || (curClassTreeNode.getNumChildren() != 0 &&
-//                    childHasDuplicate(curClassTreeNode.getChildrenList(), node.getName()))) {
-//                errorHandler.register(Error.Kind.SEMANT_ERROR, curClassTreeNode.getASTNode().getFilename(),
-//                        node.getLineNum(),"Method overriding " + node.getName()+
-//                        " found in class "+ this.curClassName);
-//            }
             this.methodSymbolTable.add(node.getName(), node);
         }
         else{
@@ -103,21 +101,4 @@ public class EnvironmentBuilderVisitor extends Visitor {
         }
         return null;
     }
-
-//    /**
-//     *
-//     * @param children the list of children
-//     * @param methodName the target method name
-//     * @return whether any of the children has the target method name
-//     */
-//    private boolean childHasDuplicate(Iterator<ClassTreeNode> children, String methodName){
-//        while(children.hasNext()){
-//            // if the child has a scope and a method with the same name
-//            ClassTreeNode curChild = children.next();
-//            if(curChild.getMethodSymbolTable().getCurrScopeSize() != 0 &&
-//                    curChild.getMethodSymbolTable().peek(methodName) != null)
-//                return true;
-//        }
-//        return false;
-//    }
 }

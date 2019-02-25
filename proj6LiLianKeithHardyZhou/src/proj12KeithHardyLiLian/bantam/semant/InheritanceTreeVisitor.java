@@ -1,5 +1,5 @@
 /*
- * TypeCheckerVisitor.java
+ * InheritanceTreeVisitor.java
  * Zeb Keith-Hardy, Michael Li, Iris Lian
  * Class: CS 461
  * Project 12
