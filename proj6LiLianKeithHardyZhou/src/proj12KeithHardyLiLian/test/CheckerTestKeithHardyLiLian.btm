@@ -9,6 +9,8 @@ class Main extends B{
 
     B testB= new B();
 
+    
+
     //dispatch expression after list of expressions
     //testB.foo()[3].equals(7);
 
@@ -17,6 +19,7 @@ class Main extends B{
 
     void bar(int a){
         a = a + 1;
+	test8.foo(true);
     }
     // method name duplication
     void bar(int y, int z) {
