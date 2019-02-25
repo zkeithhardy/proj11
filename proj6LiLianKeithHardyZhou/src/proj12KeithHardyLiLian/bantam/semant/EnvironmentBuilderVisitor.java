@@ -29,6 +29,8 @@ public class EnvironmentBuilderVisitor extends Visitor {
         this.varSymbolTable = new SymbolTable();
         this.methodSymbolTable = new SymbolTable();
         this.errorHandler = errorHandler;
+        this.classMap.get("Object").getVarSymbolTable().enterScope(); // temp solution
+        this.classMap.get("Object").getMethodSymbolTable().enterScope();
         ast.accept(this);
         return this.classMap;
     }
@@ -88,7 +90,7 @@ public class EnvironmentBuilderVisitor extends Visitor {
             tempParent.setParent(objectNode);
 
             errorHandler.register(Error.Kind.SEMANT_ERROR,"Cyclic inheritance found in class "+
-                    tempTreeNode.getName()+" and class " + tempParent.getName());
+                    tempTreeNode.getName()+" and class " + tempTreeNode.getParent().getName());
         }
     }
     public Object visit(Field node){
@@ -101,13 +103,13 @@ public class EnvironmentBuilderVisitor extends Visitor {
             errorHandler.register(Error.Kind.SEMANT_ERROR, "Field duplication " + node.getName()+
                     " found in class "+ this.curClassName);
         }
-        //System.out.println("Field Dumping");
-        //this.varSymbolTable.dump();
+//        System.out.println("Field Dumping");
+//        this.varSymbolTable.dump();
         return null;
     }
 
     public Object visit(Method node){
-        //System.out.println("Current class: "+curClassName + " Parent: "+this.classMap.get(this.curClassName).getParent().getName());
+//        System.out.println("Current class: "+curClassName + " Parent: "+this.classMap.get(this.curClassName).getParent().getName());
         // if there's no duplication in the current scope
         if(this.methodSymbolTable.getSize() == 0 || this.methodSymbolTable.peek(node.getName()) == null){
             ClassTreeNode curClassTreeNode = this.classMap.get(this.curClassName);
@@ -129,8 +131,8 @@ public class EnvironmentBuilderVisitor extends Visitor {
             errorHandler.register(Error.Kind.SEMANT_ERROR, "Method name duplication " + node.getName()+
                     " found in class "+ this.curClassName);
         }
-        //System.out.println("Method Dumping");
-        //this.methodSymbolTable.dump();
+//        System.out.println("Method Dumping");
+//        this.methodSymbolTable.dump();
         return null;
     }
 
