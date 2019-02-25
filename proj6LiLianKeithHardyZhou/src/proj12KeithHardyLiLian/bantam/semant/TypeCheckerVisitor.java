@@ -34,6 +34,14 @@ public class TypeCheckerVisitor extends Visitor
         return success;
     }
 
+    public Object visit(Class_ node){
+        ClassTreeNode newClass = this.currentClass.getClassMap().get(node.getName());
+        currentClass = newClass;
+        currentSymbolTable = newClass.getVarSymbolTable();
+        super.visit(node);
+        return null;
+    }
+
     /**
      * Visit a field node
      *
