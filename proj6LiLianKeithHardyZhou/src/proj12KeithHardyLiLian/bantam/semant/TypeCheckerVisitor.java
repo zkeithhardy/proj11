@@ -43,12 +43,20 @@ public class TypeCheckerVisitor extends Visitor
     public Object visit(Field node) {
         Set<String> classNames = currentClass.getClassMap().keySet();
         String type = node.getType();
+
+        //check for arrays as well
+        ArrayList<String> classNamesArray = new ArrayList<>();
+        classNamesArray.addAll(classNames);
+        for(int i = 0; i < classNamesArray.size(); i++){
+            classNamesArray.set(i,classNamesArray.get(i) + "[]");
+        }
         // The fields should have already been added to the symbol table by the
         // SemanticAnalyzer so the only thing to check is the compatibility of the init
         // expr's type with the field's type.
 
         /*...node's type is not a defined type...*/
-        if (!classNames.contains(type) && !type.equals("boolean") && !type.equals("int")) {
+        if (!classNames.contains(type) && !classNamesArray.contains(type) && !type.equals("boolean")
+                && !type.equals("int") && !type.equals("int[]") && !type.equals("boolean[]")) {
             errorHandler.register(Error.Kind.SEMANT_ERROR,
                     currentClass.getASTNode().getFilename(), node.getLineNum(),
                     "The declared type " + node.getType() + " of the field "
