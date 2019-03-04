@@ -15,17 +15,13 @@ import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 
 import javafx.scene.input.KeyEvent;
-import org.antlr.v4.runtime.CharStreams;
-import org.antlr.v4.runtime.CommonTokenStream;
-import org.antlr.v4.runtime.tree.ParseTree;
-import org.antlr.v4.runtime.tree.ParseTreeWalker;
-import org.antlr.v4.runtime.tree.TerminalNode;
 
 import org.fxmisc.richtext.CodeArea;
+import proj12KeithHardyLiLian.bantam.ast.Program;
+import proj12KeithHardyLiLian.bantam.parser.Parser;
+import proj12KeithHardyLiLian.bantam.util.ErrorHandler;
 
 import java.io.File;
 import java.util.HashMap;
@@ -37,14 +33,15 @@ import java.util.concurrent.*;
  * Controller that manages the generation and display of the structure of the
  * java code in the file currently being viewed.
  * @author Melody Mao, Zena Abulhab, Yi Feng, and Evan Savillo
+ * @author Modified by Zeb Keith-Hardy, Michael Li, and Iris Lian.
  */
 public class StructureViewController
 {
     private Map<TreeItem, Integer> treeItemLineNumMap;
     private CodeTabPane codeTabPane;
     private TreeView<String> treeView;
-    private final ParseTreeWalker walker;
     private TreeItem<String> structureTreeRoot;
+    private ErrorHandler errorHandler;
 
 
     /**
@@ -53,7 +50,6 @@ public class StructureViewController
      *                          It holds all structure information
      */
     public StructureViewController(TreeView<String> fileStructureTree, CodeTabPane codeTabPane) {
-        this.walker = new ParseTreeWalker();
         this.codeTabPane=codeTabPane;
         this.treeItemLineNumMap = new HashMap<>();
         this.treeView = fileStructureTree;
@@ -66,25 +62,25 @@ public class StructureViewController
         this.codeTabPane.getSelectionModel().selectedItemProperty().addListener((observableValue, oldTab, newTab) -> {
             this.updateStructureView();
         });
+
+        this.errorHandler = new ErrorHandler();
     }
 
     /**
      * Parses a file thereby storing contents as TreeItems in our special tree.
-     * @param fileContents the file to be parsed
+     * @param fileName the file to be parsed
      */
-    public TreeItem<String> generateStructureTree(String fileContents)
+    public TreeItem<String> generateStructureTree(String fileName)
     {
-        TreeItem<String> newRoot = new TreeItem<>(fileContents);
+        TreeItem<String> newRoot = new TreeItem<>(fileName);
 
-//        //build lexer, parser, and parse tree for the given file
-//        Java8Lexer lexer = new Java8Lexer(CharStreams.fromString(fileContents));
-//        lexer.removeErrorListeners();
-//
-//        CommonTokenStream tokens = new CommonTokenStream(lexer);
-//        Java8Parser parser = new Java8Parser(tokens);
-//        parser.removeErrorListeners();
-//
-//        ParseTree tree = parser.compilationUnit();
+        Parser parser = new Parser(errorHandler);
+        Program ast = parser.parse(fileName);
+
+        if(!errorHandler.errorsFound()) {
+            StructureViewVisitor structureViewVisitor = new StructureViewVisitor();
+            structureViewVisitor.buildStructureTree(newRoot, ast, this.treeItemLineNumMap);
+        }
 
         //walk through parse tree with listening for code structure elements
         //CodeStructureListener codeStructureListener = new CodeStructureListener(newRoot, this.treeItemLineNumMap);
@@ -278,10 +274,10 @@ public class StructureViewController
                 // if this is not an unsaved file
                 if (currentFile != null) {
                     String fileName = currentFile.getPath();
-                    // if this is a java file
-                    if (fileName.endsWith(".java")) {
+                    // if this is a bantam file
+                    if (fileName.endsWith(".btm")) {
                         // Re-generates the tree
-                        return structureViewController.generateStructureTree(currentCodeArea.getText());
+                        return structureViewController.generateStructureTree(fileName);
                     }
                 }
             }
