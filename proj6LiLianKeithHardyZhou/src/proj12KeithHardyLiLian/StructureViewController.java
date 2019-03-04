@@ -12,7 +12,6 @@
 package proj12KeithHardyLiLian;
 
 import javafx.application.Platform;
-import javafx.scene.control.Alert;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 
@@ -78,18 +77,11 @@ public class StructureViewController
 
         Parser parser = new Parser(errorHandler);
         Program ast = parser.parse(fileName);
-        System.out.println(errorHandler.errorsFound());
         if(!errorHandler.errorsFound()) {
             StructureTreeVisitor structureViewVisitor = new StructureTreeVisitor();
             newRoot = structureViewVisitor.buildStructureTree(newRoot, ast, this.treeItemLineNumMap);
 
         }
-        System.out.println(this.treeItemLineNumMap.size());
-
-        //walk through parse tree with listening for code structure elements
-        //CodeStructureListener codeStructureListener = new CodeStructureListener(newRoot, this.treeItemLineNumMap);
-        //this.walker.walk(codeStructureListener, tree);
-
         return newRoot;
     }
 
@@ -138,111 +130,6 @@ public class StructureViewController
         return this.treeItemLineNumMap.get(treeItem);
     }
 
-    /**
-     * Private helper class that listens for code structure declarations
-     * (classes, fields, methods) during a parse tree walk and builds a
-     * TreeView subtree representing the code structure.
-     */
-//    private class CodeStructureListener extends Java8BaseListener
-//    {
-//        private Image classPic;
-//        private Image methodPic;
-//        private Image fieldPic;
-//        private TreeItem<String> currentNode;
-//        private Map<TreeItem, Integer> treeItemIntegerMap;
-//
-//        /**
-//         * creates a new CodeStructureListener that builds a subtree
-//         * from the given root TreeItem
-//         *
-//         * @param root root TreeItem to build subtree from
-//         * @param treeItemIntegerMap a map class that maps the tree item to the line number
-//         */
-//        public CodeStructureListener(TreeItem<String> root, Map<TreeItem, Integer> treeItemIntegerMap)
-//        {
-//            this.currentNode = root;
-//            this.treeItemIntegerMap = treeItemIntegerMap;
-//            this.classPic = new Image(getClass().getResource("resources/c.png").toExternalForm());
-//            this.methodPic = new Image(getClass().getResource("resources/m.png").toExternalForm());
-//            this.fieldPic = new Image(getClass().getResource("resources/f.png").toExternalForm());
-//        }
-//
-//        /**
-//         * Starts a new subtree for the class declaration entered
-//         * @param declarationContext the context class for the declared context
-//         */
-//        @Override
-//        public void enterNormalClassDeclaration(Java8Parser.NormalClassDeclarationContext declarationContext)
-//        {
-//            //get class name
-//            TerminalNode node = declarationContext.Identifier();
-//            if(node!=null) {
-//                String className = node.getText();
-//
-//                //add class to TreeView under the current class tree
-//                //set up the icon
-//                //store the line number of its declaration
-//                TreeItem<String> newNode = new TreeItem<>(className);
-//                newNode.setGraphic(new ImageView(this.classPic));
-//                newNode.setExpanded(true);
-//                this.currentNode.getChildren().add(newNode);
-//                this.currentNode = newNode; //move current node into new subtree
-//                this.treeItemIntegerMap.put(newNode, declarationContext.getStart().getLine());
-//            }
-//        }
-//
-//        /**
-//         * ends the new subtree for the class declaration exited,
-//         * returns traversal to parent node
-//         * @param declarationContext the context class for the declared context
-//         */
-//        @Override
-//        public void exitNormalClassDeclaration(Java8Parser.NormalClassDeclarationContext declarationContext)
-//        {
-//            this.currentNode = this.currentNode.getParent(); //move current node back to parent
-//        }
-//
-//        /**
-//         * adds a child node for the field entered under the TreeItem for the current class
-//         * @param fieldDeclarationContext the field context class for the declared context
-//         */
-//        @Override
-//        public void enterFieldDeclaration(Java8Parser.FieldDeclarationContext fieldDeclarationContext)
-//        {
-//            //get field name
-//            TerminalNode node = fieldDeclarationContext.variableDeclaratorList().variableDeclarator(0).variableDeclaratorId().Identifier();
-//            String fieldName = node.getText();
-//
-//            //add field to TreeView under the current class tree
-//            //set up the icon
-//            //store the line number of its declaration
-//            TreeItem<String> newNode = new TreeItem<>(fieldName);
-//            newNode.setGraphic(new ImageView(this.fieldPic));
-//            this.currentNode.getChildren().add(newNode);
-//            this.treeItemIntegerMap.put(newNode, fieldDeclarationContext.getStart().getLine());
-//        }
-//
-//        /**
-//         * adds a child node for the method entered under the TreeItem for the current class
-//         * @param headerDeclarationContext the header context class for the declared context
-//         */
-//        @Override
-//        public void enterMethodHeader(Java8Parser.MethodHeaderContext headerDeclarationContext)
-//        {
-//            //get method name
-//            TerminalNode nameNode = headerDeclarationContext.methodDeclarator().Identifier();
-//            String methodName = nameNode.getText();
-//
-//            //add method to TreeView under the current class tree
-//            //set up the icon
-//            //store the line number of its declaration
-//            TreeItem<String> newNode = new TreeItem<>(methodName);
-//            newNode.setGraphic(new ImageView(this.methodPic));
-//            this.currentNode.getChildren().add(newNode);
-//            this.treeItemIntegerMap.put(newNode, headerDeclarationContext.getStart().getLine());
-//
-//        }
-//    }
     /**
      * An inner class used for a thread to execute the run task
      * Designed to be used for compilation or running.
