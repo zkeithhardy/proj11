@@ -20,7 +20,7 @@ import javafx.scene.input.KeyEvent;
 
 import org.fxmisc.richtext.CodeArea;
 import proj12KeithHardyLiLian.bantam.ast.Program;
-import proj12KeithHardyLiLian.bantam.parser.Parser;
+import proj12KeithHardyLiLian.bantam.parser.*;
 import proj12KeithHardyLiLian.bantam.util.ErrorHandler;
 
 import java.io.File;
@@ -42,6 +42,7 @@ public class StructureViewController
     private TreeView<String> treeView;
     private TreeItem<String> structureTreeRoot;
     private ErrorHandler errorHandler;
+    private Console console;
 
 
     /**
@@ -49,10 +50,11 @@ public class StructureViewController
      * @param fileStructureTree the TreeView object passed by master controller
      *                          It holds all structure information
      */
-    public StructureViewController(TreeView<String> fileStructureTree, CodeTabPane codeTabPane) {
+    public StructureViewController(TreeView<String> fileStructureTree, CodeTabPane codeTabPane, Console console) {
         this.codeTabPane=codeTabPane;
         this.treeItemLineNumMap = new HashMap<>();
         this.treeView = fileStructureTree;
+        this.console = console;
 
         // Updates the file structure view whenever a key is typed
         this.codeTabPane.addEventFilter(KeyEvent.KEY_RELEASED, event -> {
@@ -78,7 +80,7 @@ public class StructureViewController
         Program ast = parser.parse(fileName);
 
         if(!errorHandler.errorsFound()) {
-            StructureViewVisitor structureViewVisitor = new StructureViewVisitor();
+            StructureTreeVisitor structureViewVisitor = new StructureTreeVisitor();
             structureViewVisitor.buildStructureTree(newRoot, ast, this.treeItemLineNumMap);
         }
 
@@ -102,9 +104,9 @@ public class StructureViewController
                 curExecutor.shutdown();
                 //if the update failed, an dialog box will pops up reporting error
             }catch (InterruptedException| ExecutionException e){
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("Failed to update structure view.");
-                alert.showAndWait();
+                Platform.runLater(()-> {
+                    this.console.writeToConsole("Failed to update structure view.","Error");
+                });
             }
             //set the root node of the current structure view to the new root node
             Platform.runLater(()-> {

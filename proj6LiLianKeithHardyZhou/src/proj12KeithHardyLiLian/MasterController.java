@@ -94,7 +94,7 @@ public class MasterController {
 
         this.directoryController = new DirectoryController(this.directoryTree,this.codeTabPane,
                 this.codeTabPane.getFileNames());
-        this.structureViewController=new StructureViewController(this.fileStructureTree, this.codeTabPane);
+        this.structureViewController=new StructureViewController(this.fileStructureTree, this.codeTabPane,this.console);
 
         //bind the edit, save, saveAs, close menus to the property of a list of opened tabs
         SimpleListProperty<Tab> tabsProperty = new SimpleListProperty<> (this.codeTabPane.getTabs());
