@@ -78,11 +78,13 @@ public class StructureViewController
 
         Parser parser = new Parser(errorHandler);
         Program ast = parser.parse(fileName);
-
+        System.out.println(errorHandler.errorsFound());
         if(!errorHandler.errorsFound()) {
             StructureTreeVisitor structureViewVisitor = new StructureTreeVisitor();
-            structureViewVisitor.buildStructureTree(newRoot, ast, this.treeItemLineNumMap);
+            newRoot = structureViewVisitor.buildStructureTree(newRoot, ast, this.treeItemLineNumMap);
+
         }
+        System.out.println(this.treeItemLineNumMap.size());
 
         //walk through parse tree with listening for code structure elements
         //CodeStructureListener codeStructureListener = new CodeStructureListener(newRoot, this.treeItemLineNumMap);

@@ -18,9 +18,9 @@ public class StructureTreeVisitor extends Visitor {
     public TreeItem<String> buildStructureTree(TreeItem<String> currentNode, Program root, Map<TreeItem, Integer> treeItemIntegerMap){
         this.currentNode=currentNode;
         this.treeItemIntegerMap=treeItemIntegerMap;
-        this.classPic = new Image(getClass().getResource("resources/c.png").toExternalForm());
-        this.methodPic = new Image(getClass().getResource("resources/m.png").toExternalForm());
-        this.fieldPic = new Image(getClass().getResource("resources/f.png").toExternalForm());
+        this.classPic = new Image(getClass().getResource("../resources/c.png").toExternalForm());
+        this.methodPic = new Image(getClass().getResource("../resources/m.png").toExternalForm());
+        this.fieldPic = new Image(getClass().getResource("../resources/f.png").toExternalForm());
 
         root.accept(this);
         return currentNode;
