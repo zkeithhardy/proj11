@@ -62,7 +62,15 @@ public class NavigateStructureVisitor extends Visitor {
         // if not building structure view tree and is searching for symbols
         if (target == null || searchSymbol) {
             super.visit(node);
-            this.currentNode = this.currentNode.getParent();
+            if(this.currentNode.getChildren().isEmpty()){
+                TreeItem<String> removedNode = this.currentNode;
+                this.currentNode = this.currentNode.getParent();
+                this.currentNode.getChildren().remove(removedNode);
+                this.treeItemIntegerMap.remove(removedNode);
+            }else{
+                this.currentNode = this.currentNode.getParent();
+            }
+
         }
         return null;
     }
