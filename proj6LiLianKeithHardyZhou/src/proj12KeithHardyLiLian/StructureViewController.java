@@ -78,8 +78,8 @@ public class StructureViewController
         Parser parser = new Parser(errorHandler);
         Program ast = parser.parse(fileName);
         if(!errorHandler.errorsFound()) {
-            StructureTreeVisitor structureViewVisitor = new StructureTreeVisitor();
-            newRoot = structureViewVisitor.buildStructureTree(newRoot, ast, this.treeItemLineNumMap);
+            NavigateStructureVisitor structureViewVisitor = new NavigateStructureVisitor();
+            newRoot = structureViewVisitor.buildOrNavigateStructureTree(newRoot, ast, this.treeItemLineNumMap);
 
         }
         return newRoot;
@@ -99,7 +99,7 @@ public class StructureViewController
                 //if the update failed, an dialog box will pops up reporting error
             }catch (InterruptedException| ExecutionException e){
                 Platform.runLater(()-> {
-                    this.console.writeToConsole("Failed to update structure view.","Error");
+                    this.console.writeToConsole("Failed to update structure view.\n","Error");
                 });
             }
             //set the root node of the current structure view to the new root node
