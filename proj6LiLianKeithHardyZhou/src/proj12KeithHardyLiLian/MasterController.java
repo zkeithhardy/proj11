@@ -98,7 +98,7 @@ public class MasterController {
                 this.codeTabPane.getFileNames());
         this.structureViewController=new StructureViewController(this.fileStructureTree, this.codeTabPane,this.console);
 
-        this.navigationController = new NavigationController(this.codeTabPane);
+        this.navigationController = new NavigationController(this.codeTabPane,this.console);
 
         //bind the edit, save, saveAs, close menus to the property of a list of opened tabs
         SimpleListProperty<Tab> tabsProperty = new SimpleListProperty<> (this.codeTabPane.getTabs());
@@ -505,7 +505,7 @@ public class MasterController {
     @FXML
     private void handleFindClass(){
         this.handleSave();
-        this.navigationController.getSearchValue("Search for Class",true);
+        this.navigationController.getSearchValue("Search for Class",false);
     }
 
     /**
@@ -514,7 +514,7 @@ public class MasterController {
     @FXML
     private void handleFindSymbol(){
         this.handleSave();
-        this.navigationController.getSearchValue("Search for Symbol",false);
+        this.navigationController.getSearchValue("Search for Symbol",true);
     }
 
 }

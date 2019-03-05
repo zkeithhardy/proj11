@@ -2,15 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e0b7e47a-b2f2-481e-b29a-f6be511667fb" name="Default Changelist" comment="work on structure view controller">
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/Main.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/Main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/Main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/Main.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/MasterController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/MasterController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/StructureTreeVisitor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/StructureViewController$updateStructureViewTask.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/StructureViewController$updateStructureViewTask.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/StructureViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/StructureViewController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/resources/Main.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/resources/Main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/resources/Main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/resources/Main.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/test/CheckerTestKeithHardyLiLian.btm" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/test/CheckerTestKeithHardyLiLian.btm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MasterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/MasterController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NavigationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/NavigationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/CheckerTestKeithHardyLiLian.btm" beforeDir="false" afterPath="$PROJECT_DIR$/test/CheckerTestKeithHardyLiLian.btm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StructureViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/StructureViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/Main.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/Main.css" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/../../out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -79,14 +84,16 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="btm" value="21" />
+          <entry key="css" value="58" />
           <entry key="fxml" value="73" />
-          <entry key="java" value="7652" />
+          <entry key="java" value="8727" />
           <entry key="txt" value="96" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="7652" />
+          <entry key="CSS" value="58" />
+          <entry key="JAVA" value="8727" />
           <entry key="PLAIN_TEXT" value="117" />
           <entry key="XML" value="73" />
         </counts>
@@ -95,16 +102,16 @@
         <counts>
           <entry key="btm" value="1" />
           <entry key="class" value="6" />
-          <entry key="css" value="1" />
+          <entry key="css" value="2" />
           <entry key="fxml" value="2" />
-          <entry key="java" value="33" />
+          <entry key="java" value="36" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="6" />
-          <entry key="CSS" value="1" />
-          <entry key="JAVA" value="33" />
+          <entry key="CSS" value="2" />
+          <entry key="JAVA" value="36" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="XML" value="2" />
         </counts>
@@ -124,8 +131,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MasterController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="163">
-              <caret line="308" column="32" selection-start-line="308" selection-start-column="23" selection-end-line="308" selection-end-column="32" />
+            <state relative-caret-position="-889">
+              <caret line="100" column="90" selection-start-line="100" selection-start-column="90" selection-end-line="100" selection-end-column="90" />
               <folding>
                 <element signature="e#9409#9410#0" expanded="true" />
                 <element signature="e#9467#9468#0" expanded="true" />
@@ -159,10 +166,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/JavaCodeArea.java">
+        <entry file="file://$PROJECT_DIR$/PreferenceController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="402">
-              <caret line="45" column="26" lean-forward="true" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="26" />
+            <state relative-caret-position="333">
+              <caret line="246" column="62" selection-start-line="246" selection-start-column="45" selection-end-line="246" selection-end-column="62" />
             </state>
           </provider>
         </entry>
@@ -177,11 +184,36 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/NavigationController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="317">
-              <caret line="112" column="106" lean-forward="true" selection-start-line="112" selection-start-column="106" selection-end-line="112" selection-end-column="106" />
+            <state relative-caret-position="130">
+              <caret line="36" column="98" selection-start-line="36" selection-start-column="98" selection-end-line="36" selection-end-column="98" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#2081#2091#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/StructureViewController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="439">
+              <caret line="110" column="19" lean-forward="true" selection-start-line="90" selection-start-column="8" selection-end-line="110" selection-end-column="19" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ToolbarController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="453">
+              <caret line="125" column="19" lean-forward="true" selection-start-line="108" selection-start-column="8" selection-end-line="125" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -191,27 +223,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="187">
               <caret line="47" column="29" lean-forward="true" selection-start-line="47" selection-start-column="29" selection-end-line="47" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/StructureViewController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="524">
-              <caret line="80" column="35" selection-start-line="80" selection-start-column="35" selection-end-line="80" selection-end-column="35" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/Main.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="77">
-              <caret line="97" lean-forward="true" selection-start-line="97" selection-end-line="97" />
             </state>
           </provider>
         </entry>
@@ -227,8 +238,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Sys</find>
-      <find>cast</find>
       <find>System.o</find>
       <find>dump</find>
       <find>print</find>
@@ -252,11 +261,13 @@
       <find>tree</find>
       <find>code</find>
       <find>java</find>
-      <find>fileStructureTree</find>
       <find>caret</find>
       <find>requestFollow</find>
       <find>treeItemC</find>
+      <find>hover</find>
+      <find>h</find>
       <find>treeView</find>
+      <find>fileStructureTree</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -276,10 +287,11 @@
         <option value="$PROJECT_DIR$/bantam/semant/TypeCheckerVisitor.java" />
         <option value="$PROJECT_DIR$/bantam/parser/Parser.java" />
         <option value="$PROJECT_DIR$/bantam/parser/StructureTreeVisitor.java" />
-        <option value="$PROJECT_DIR$/MasterController.java" />
-        <option value="$PROJECT_DIR$/StructureViewController.java" />
         <option value="$PROJECT_DIR$/resources/Main.fxml" />
         <option value="$PROJECT_DIR$/NavigateStructureVisitor.java" />
+        <option value="$PROJECT_DIR$/resources/Main.css" />
+        <option value="$PROJECT_DIR$/StructureViewController.java" />
+        <option value="$PROJECT_DIR$/MasterController.java" />
         <option value="$PROJECT_DIR$/NavigationController.java" />
       </list>
     </option>
@@ -344,7 +356,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551759536257" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551762628918" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/test/CheckerTestKeithHardyLiLian.btm" />
   </component>
   <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
@@ -648,14 +660,21 @@
       <option name="project" value="LOCAL" />
       <updated>1551757534519</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="work on structure view controller">
+      <created>1551759558673</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1551759558673</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20604026" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20604026" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -664,15 +683,15 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.8865772" visible="true" weight="0.1929078" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.88590604" visible="true" weight="0.1929078" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.3285968" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.11342282" side_tool="true" weight="0.1929078" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.11409396" side_tool="true" weight="0.1929078" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.13333334" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.32907802" />
+      <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.49932885" weight="0.32907802" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -717,18 +736,11 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="made changes to typechecker" />
     <MESSAGE value="more work on type check visitor" />
-    <MESSAGE value="work on structure view controller" />
     <MESSAGE value="work on navigationcontroller" />
-    <option name="LAST_COMMIT_MESSAGE" value="work on navigationcontroller" />
+    <MESSAGE value="work on structure view controller" />
+    <option name="LAST_COMMIT_MESSAGE" value="work on structure view controller" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/bantam/ast/ExprStmt.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="39" column="13" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bantam/ast/ASTNode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="62">
@@ -888,13 +900,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PreferenceController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3978">
-          <caret line="253" column="5" lean-forward="true" selection-start-line="253" selection-start-column="5" selection-end-line="253" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bantam/semant/MainMainVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="595">
@@ -941,20 +946,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/NavigateStructureVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="47" column="29" lean-forward="true" selection-start-line="47" selection-start-column="29" selection-end-line="47" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ToolbarController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="487">
-          <caret line="129" column="7" selection-start-line="129" selection-start-column="7" selection-end-line="129" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ConsoleContextMenu.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -983,10 +974,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/NavigationController.java">
+    <entry file="file://$PROJECT_DIR$/resources/NightMode.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="112" column="106" lean-forward="true" selection-start-line="112" selection-start-column="106" selection-end-line="112" selection-end-column="106" />
+        <state relative-caret-position="162">
+          <caret line="73" column="59" selection-start-line="73" selection-start-column="54" selection-end-line="73" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/Main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="61">
+          <caret line="99" column="18" lean-forward="true" selection-start-line="99" selection-start-column="18" selection-end-line="99" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/NavigateStructureVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="47" column="29" lean-forward="true" selection-start-line="47" selection-start-column="29" selection-end-line="47" selection-end-column="29" />
         </state>
       </provider>
     </entry>
@@ -998,10 +1003,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/PreferenceController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="333">
+          <caret line="246" column="62" selection-start-line="246" selection-start-column="45" selection-end-line="246" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/StructureViewController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="439">
+          <caret line="110" column="19" lean-forward="true" selection-start-line="90" selection-start-column="8" selection-end-line="110" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ToolbarController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="453">
+          <caret line="125" column="19" lean-forward="true" selection-start-line="108" selection-start-column="8" selection-end-line="125" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/MasterController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="308" column="32" selection-start-line="308" selection-start-column="23" selection-end-line="308" selection-end-column="32" />
+        <state relative-caret-position="-889">
+          <caret line="100" column="90" selection-start-line="100" selection-start-column="90" selection-end-line="100" selection-end-column="90" />
           <folding>
             <element signature="e#9409#9410#0" expanded="true" />
             <element signature="e#9467#9468#0" expanded="true" />
@@ -1033,20 +1062,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/StructureViewController.java">
+    <entry file="file://$PROJECT_DIR$/NavigationController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="524">
-          <caret line="80" column="35" selection-start-line="80" selection-start-column="35" selection-end-line="80" selection-end-column="35" />
+        <state relative-caret-position="130">
+          <caret line="36" column="98" selection-start-line="36" selection-start-column="98" selection-end-line="36" selection-end-column="98" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#2081#2091#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/Main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="77">
-          <caret line="97" lean-forward="true" selection-start-line="97" selection-end-line="97" />
         </state>
       </provider>
     </entry>

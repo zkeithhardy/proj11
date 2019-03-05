@@ -1,64 +1,66 @@
 package proj12KeithHardyLiLian;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import proj12KeithHardyLiLian.bantam.ast.*;
 import proj12KeithHardyLiLian.bantam.parser.Parser;
+import proj12KeithHardyLiLian.bantam.treedrawer.Drawer;
+import proj12KeithHardyLiLian.bantam.util.CompilationException;
+import proj12KeithHardyLiLian.bantam.util.Error;
 import proj12KeithHardyLiLian.bantam.util.ErrorHandler;
 
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
+import java.util.concurrent.*;
 
 public class NavigationController {
     private CodeTabPane codeTabPane;
     private Map<TreeItem,Integer> treeItemLineNumMap;
     private ErrorHandler errorHandler;
+    private Console console;
+    private boolean searchSymbol;
+    private String searchTarget;
 
-    public NavigationController(CodeTabPane codeTabPane){
+    public NavigationController(CodeTabPane codeTabPane,Console console){
         this.codeTabPane = codeTabPane;
         this.treeItemLineNumMap = new HashMap<>();
         this.errorHandler = new ErrorHandler();
+        this.console = console;
     }
 
     /**
-     * Handles Class Finder
+     * Finds a symbol or class in the current code area based on which option the user clicked on.
      */
-    public void handleFindClass(String className){
-        TreeItem<String> newRoot = new TreeItem<>(this.codeTabPane.getFileName());
-
-        errorHandler.clear();
-        Parser parser = new Parser(errorHandler);
-        Program ast = parser.parse(this.codeTabPane.getFileName());
-        if(!errorHandler.errorsFound()){
-            NavigateStructureVisitor navigateStructureVisitor = new NavigateStructureVisitor();
-            newRoot = navigateStructureVisitor.buildOrNavigateStructureTree(newRoot,ast,this.treeItemLineNumMap,
-                    className,false);
-        }
-        this.showResultDialog(newRoot);
-    }
-
-    /**
-     * Handles Symbol Finder
-     */
-    public void handleFindSymbol(String symbolName){
-        TreeItem<String> newRoot = new TreeItem<>(this.codeTabPane.getFileName());
-
-        errorHandler.clear();
-        Parser parser = new Parser(errorHandler);
-        Program ast = parser.parse(this.codeTabPane.getFileName());
-        if(!errorHandler.errorsFound()){
-            NavigateStructureVisitor navigateStructureVisitor = new NavigateStructureVisitor();
-            newRoot = navigateStructureVisitor.buildOrNavigateStructureTree(newRoot,ast,this.treeItemLineNumMap,
-                    symbolName,true);
-            this.showResultDialog(newRoot);
-        }
+    public void handleFindClassOrSymbol(){
+        new Thread (()->{
+            ParseTask parseTask = new ParseTask();
+            FutureTask<TreeItem> curFutureTask = new FutureTask<TreeItem>(parseTask);
+            ExecutorService curExecutor = Executors.newFixedThreadPool(1);
+            curExecutor.execute(curFutureTask);
+            try{
+                TreeItem<String> newRoot = curFutureTask.get();
+                Platform.runLater(()-> this.showResultDialog(newRoot));
+            }catch(InterruptedException| ExecutionException e){
+                Platform.runLater(()-> this.console.writeToConsole("Parsing failed \n", "Error"));
+            }
+        }).start();
 
 
     }
 
-    public String getSearchValue(String title,boolean searchClass){
+    /**
+     * Asks the user what they want to search for in  a dialog box
+     * @param title Title for dialog box
+     * @param searchSymbol boolean for searching for class or symbol
+     * @return
+     */
+    public String getSearchValue(String title,boolean searchSymbol){
+        this.searchSymbol=searchSymbol;
         Dialog<ButtonType> searchDialog = new Dialog<>();
         searchDialog.setTitle(title);
         ButtonType searchButton = new ButtonType("Search");
@@ -80,13 +82,9 @@ public class NavigationController {
         final Button findButton = (Button) searchDialog.getDialogPane().lookupButton(searchButton);
         findButton.addEventFilter(ActionEvent.ACTION, event -> {
             String searchText = searchField.getText();
+            this.searchTarget = searchText;
             searchDialog.close();
-            if(searchClass){
-                this.handleFindClass(searchText);
-            }
-            else{
-                this.handleFindSymbol(searchText);
-            }
+            this.handleFindClassOrSymbol();
             event.consume();
         });
 
@@ -94,11 +92,15 @@ public class NavigationController {
         return null;
     }
 
+    /**
+     * places result of AST search in a dialog box and allows the user to move to one of the results
+     * @param root root of tree
+     */
     public void showResultDialog(TreeItem<String> root){
         Dialog<ButtonType> treeItemDialog = new Dialog<>();
 
         TreeView treeView = new TreeView();
-        root.setExpanded(true);
+
         treeView.setRoot(root);
         treeView.setShowRoot(false);
 
@@ -110,7 +112,7 @@ public class NavigationController {
         final Button goButton = (Button) treeItemDialog.getDialogPane().lookupButton(goToButton);
         goButton.addEventFilter(ActionEvent.ACTION, event -> {
             if(treeView.getSelectionModel().getSelectedItem() != null){
-                int lineNum = this.treeItemLineNumMap.get(treeView.getSelectionModel().getSelectedItem());
+                int lineNum = this.treeItemLineNumMap.get((TreeItem) treeView.getSelectionModel().getSelectedItem());
                 treeItemDialog.close();
                 this.codeTabPane.getCodeArea().showParagraphAtTop(lineNum - 1);
 
@@ -119,5 +121,40 @@ public class NavigationController {
         });
 
         treeItemDialog.showAndWait();
+    }
+
+    /**
+     * An inner class used to parse a file in a separate thread.
+     * Prints error info to the console
+     */
+    private class ParseTask implements Callable {
+
+        /**
+         * Create a Parser and use it to create an AST
+         * Search the AST for a symbol or class
+         * @return The tree to be displayed
+         */
+        @Override
+        public TreeItem call(){
+            ErrorHandler errorHandler = new ErrorHandler();
+            Parser parser = new Parser(errorHandler);
+            String filename = NavigationController.this.codeTabPane.getFileName();
+            Program AST = null;
+            TreeItem<String> newRoot = new TreeItem<>(filename);
+            try{
+
+                AST = parser.parse(filename);
+                NavigateStructureVisitor structureViewVisitor = new NavigateStructureVisitor();
+                newRoot = structureViewVisitor.buildOrNavigateStructureTree(newRoot, AST,
+                        NavigationController.this.treeItemLineNumMap, NavigationController.this.searchTarget,
+                        NavigationController.this.searchSymbol);
+            }
+            catch (CompilationException e){
+                Platform.runLater(()-> {
+                    NavigationController.this.console.writeToConsole("Could not parse file", "Error");
+                });
+            }
+            return newRoot;
+        }
     }
 }

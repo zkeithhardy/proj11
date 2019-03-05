@@ -89,7 +89,8 @@ public class StructureViewController
     public void updateStructureView(){
         //declare a new thread and assign it with the work of updating the structure view
         new Thread(()->{
-            updateStructureViewTask updateStructViewTask = new updateStructureViewTask(this.codeTabPane,this);
+            updateStructureViewTask updateStructViewTask = new updateStructureViewTask(this.codeTabPane,
+                    this);
             FutureTask<TreeItem<String>> curFutureTask = new FutureTask<>(updateStructViewTask );
             ExecutorService curExecutor = Executors.newFixedThreadPool(1);
             curExecutor.execute(curFutureTask);
