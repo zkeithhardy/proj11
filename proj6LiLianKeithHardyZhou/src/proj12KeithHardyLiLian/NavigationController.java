@@ -32,10 +32,11 @@ public class NavigationController {
         Parser parser = new Parser(errorHandler);
         Program ast = parser.parse(this.codeTabPane.getFileName());
         if(!errorHandler.errorsFound()){
-            //NavigateStuctureVistor navigateStructureVisitor = new NavigateStuctureVistor();
-            //newRoot = navigateStructureVisitor.buildStructureTree(newRoot,ast,this.treeItemLineNumMap,className,true);
+            NavigateStructureVisitor navigateStructureVisitor = new NavigateStructureVisitor();
+            newRoot = navigateStructureVisitor.buildOrNavigateStructureTree(newRoot,ast,this.treeItemLineNumMap,
+                    className,true);
         }
-        this.showResultDialog();
+        this.showResultDialog(newRoot);
     }
 
     /**
@@ -48,9 +49,10 @@ public class NavigationController {
         Parser parser = new Parser(errorHandler);
         Program ast = parser.parse(this.codeTabPane.getFileName());
         if(!errorHandler.errorsFound()){
-            //NavigateStructureVisitor navigateStructureVisitor = new NavigateStructureVisitor();
-            //newRoot = navigateStructureVisitor.buildStructureTree(newRoot,ast,this.treeItemLineNumMap,symbolNameName,true);
-            this.showResultDialog();
+            NavigateStructureVisitor navigateStructureVisitor = new NavigateStructureVisitor();
+            newRoot = navigateStructureVisitor.buildOrNavigateStructureTree(newRoot,ast,this.treeItemLineNumMap,
+                    symbolName,true);
+            this.showResultDialog(newRoot);
         }
 
 
@@ -92,7 +94,13 @@ public class NavigationController {
         return null;
     }
 
-    public void showResultDialog(){
-        Dialog<TreeItem> treeItemDialog = new Dialog<>();
+    public void showResultDialog(TreeItem<String> root){
+        Dialog<TreeView> treeItemDialog = new Dialog<>();
+
+        TreeView treeView = new TreeView();
+        treeView.setRoot(root);
+
+        treeItemDialog.setTitle("Results");
+        treeItemDialog.getDialogPane().setContent(treeView);
     }
 }
