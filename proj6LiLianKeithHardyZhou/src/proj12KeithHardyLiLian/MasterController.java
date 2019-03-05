@@ -47,6 +47,7 @@ import java.util.Optional;
  */
 public class MasterController {
     @FXML private Menu editMenu;
+    @FXML private Menu navigationMenu;
     @FXML private CodeTabPane codeTabPane;
     @FXML private VBox vBox;
     @FXML private MenuItem saveMenuItem;
@@ -66,6 +67,7 @@ public class MasterController {
     private EditController editController;
     private FileController fileController;
     private ToolbarController toolbarController;
+    private NavigationController navigationController;
     private PreferenceController preferenceController;
     private DirectoryController directoryController;
     private HelpMenuController helpMenuController;
@@ -96,10 +98,13 @@ public class MasterController {
                 this.codeTabPane.getFileNames());
         this.structureViewController=new StructureViewController(this.fileStructureTree, this.codeTabPane,this.console);
 
+        this.navigationController = new NavigationController(this.codeTabPane);
+
         //bind the edit, save, saveAs, close menus to the property of a list of opened tabs
         SimpleListProperty<Tab> tabsProperty = new SimpleListProperty<> (this.codeTabPane.getTabs());
 
         this.editMenu.disableProperty().bind(tabsProperty.emptyProperty());
+        this.navigationMenu.disableProperty().bind(tabsProperty.emptyProperty());
         this.saveMenuItem.disableProperty().bind(tabsProperty.emptyProperty());
         this.saveAsMenuItem.disableProperty().bind(tabsProperty.emptyProperty());
         this.closeMenuItem.disableProperty().bind(tabsProperty.emptyProperty());
@@ -485,9 +490,31 @@ public class MasterController {
         }
     }
 
+
+    /**
+     * Handles Semantic Analyzer
+     */
     @FXML
     private void handleChecking(){
         this.handleScanOrScanParse("checker");
+    }
+
+    /**
+     * Handles Class Finder
+     */
+    @FXML
+    private void handleFindClass(){
+        this.handleSave();
+        this.navigationController.getSearchValue("Search for Class",true);
+    }
+
+    /**
+     * Handles Symbol Finder
+     */
+    @FXML
+    private void handleFindSymbol(){
+        this.handleSave();
+        this.navigationController.getSearchValue("Search for Symbol",false);
     }
 
 }
