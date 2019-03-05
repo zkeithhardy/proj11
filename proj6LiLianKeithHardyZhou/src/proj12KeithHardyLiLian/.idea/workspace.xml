@@ -4,6 +4,7 @@
     <list default="true" id="e0b7e47a-b2f2-481e-b29a-f6be511667fb" name="Default Changelist" comment="work on structure view controller">
       <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/Main.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/Main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/Main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/Main.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/MasterController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/MasterController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/StructureTreeVisitor.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/StructureViewController$updateStructureViewTask.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/StructureViewController$updateStructureViewTask.class" afterDir="false" />
@@ -11,8 +12,6 @@
       <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/resources/Main.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/resources/Main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/resources/Main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/resources/Main.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/test/CheckerTestKeithHardyLiLian.btm" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/test/CheckerTestKeithHardyLiLian.btm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NavigateStructureVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/NavigateStructureVisitor.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/../../out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -83,15 +82,15 @@
           <entry key="btm" value="21" />
           <entry key="css" value="58" />
           <entry key="fxml" value="73" />
-          <entry key="java" value="9071" />
-          <entry key="txt" value="157" />
+          <entry key="java" value="9072" />
+          <entry key="txt" value="204" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="58" />
-          <entry key="JAVA" value="9071" />
-          <entry key="PLAIN_TEXT" value="178" />
+          <entry key="JAVA" value="9072" />
+          <entry key="PLAIN_TEXT" value="225" />
           <entry key="XML" value="73" />
         </counts>
       </usages-collector>
@@ -115,7 +114,7 @@
       </usages-collector>
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="4" />
+          <entry key="project.closed" value="5" />
           <entry key="project.open.time.7" value="1" />
           <entry key="project.open.time.8" value="2" />
           <entry key="project.open.time.9" value="1" />
@@ -181,7 +180,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/NavigateStructureVisitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="317">
+            <state relative-caret-position="487">
               <caret line="68" column="60" selection-start-line="68" selection-start-column="60" selection-end-line="68" selection-end-column="60" />
               <folding>
                 <element signature="e#0#3501#0" expanded="true" />
@@ -319,7 +318,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551802935884" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551811898097" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/test/CheckerTestKeithHardyLiLian.btm" />
   </component>
   <component name="RunDashboard">
@@ -336,7 +335,7 @@
   </component>
   <component name="RunManager" selected="Application.proj12KeithHardyLiLian.Main">
     <configuration name="Unnamed" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="proj12KeithHardyLiLian.bantam.semant.SemanticAnalyzer" />
+      <option name="MAIN_CLASS_NAME" value="proj13KeithHardyLiLian.bantam.semant.SemanticAnalyzer" />
       <module name="proj6LiLianKeithHardyZhou" />
       <option name="PROGRAM_PARAMETERS" value="C:\Users\zkeit\Documents\CS461\proj12\proj6LiLianKeithHardyZhou\src\proj12KeithHardyLiLian\test\CheckerTestKeithHardyLiLian.btm" />
       <method v="2">
@@ -344,7 +343,7 @@
       </method>
     </configuration>
     <configuration name="proj12KeithHardyLiLian.Main" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="proj12KeithHardyLiLian.Main" />
+      <option name="MAIN_CLASS_NAME" value="proj13KeithHardyLiLian.Main" />
       <module name="proj6LiLianKeithHardyZhou" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -527,7 +526,14 @@
       <option name="project" value="LOCAL" />
       <updated>1551762972300</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="fixed display of extra classes in symbol search">
+      <created>1551802966889</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1551802966889</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -542,7 +548,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.88590604" visible="true" weight="0.1929078" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.88590604" weight="0.1929078" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -599,7 +605,8 @@
     <MESSAGE value="work on structure view controller" />
     <MESSAGE value="added threading to class and symbol finder." />
     <MESSAGE value="cleaned up code" />
-    <option name="LAST_COMMIT_MESSAGE" value="cleaned up code" />
+    <MESSAGE value="fixed display of extra classes in symbol search" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed display of extra classes in symbol search" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/bantam/ast/ASTNode.java">
@@ -891,7 +898,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/NavigateStructureVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
+        <state relative-caret-position="487">
           <caret line="68" column="60" selection-start-line="68" selection-start-column="60" selection-end-line="68" selection-end-column="60" />
           <folding>
             <element signature="e#0#3501#0" expanded="true" />
