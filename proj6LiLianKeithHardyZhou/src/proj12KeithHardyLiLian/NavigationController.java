@@ -1,3 +1,10 @@
+/*
+ * File: NavigationController.java
+ * CS461 Project 13
+ * Names: Zeb Keith-Hardy, Michael Li, Iris Lian
+ * Date: 3/5/19
+ */
+
 package proj12KeithHardyLiLian;
 
 import javafx.application.Platform;
@@ -7,21 +14,16 @@ import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import proj12KeithHardyLiLian.bantam.ast.*;
 import proj12KeithHardyLiLian.bantam.parser.Parser;
-import proj12KeithHardyLiLian.bantam.treedrawer.Drawer;
 import proj12KeithHardyLiLian.bantam.util.CompilationException;
-import proj12KeithHardyLiLian.bantam.util.Error;
 import proj12KeithHardyLiLian.bantam.util.ErrorHandler;
 
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.*;
 
 public class NavigationController {
     private CodeTabPane codeTabPane;
     private Map<TreeItem,Integer> treeItemLineNumMap;
-    private ErrorHandler errorHandler;
     private Console console;
     private boolean searchSymbol;
     private String searchTarget;
@@ -29,14 +31,13 @@ public class NavigationController {
     public NavigationController(CodeTabPane codeTabPane,Console console){
         this.codeTabPane = codeTabPane;
         this.treeItemLineNumMap = new HashMap<>();
-        this.errorHandler = new ErrorHandler();
         this.console = console;
     }
 
     /**
      * Finds a symbol or class in the current code area based on which option the user clicked on.
      */
-    public void handleFindClassOrSymbol(){
+    private void handleFindClassOrSymbol(){
         new Thread (()->{
             ParseTask parseTask = new ParseTask();
             FutureTask<TreeItem> curFutureTask = new FutureTask<TreeItem>(parseTask);
@@ -57,9 +58,8 @@ public class NavigationController {
      * Asks the user what they want to search for in  a dialog box
      * @param title Title for dialog box
      * @param searchSymbol boolean for searching for class or symbol
-     * @return
      */
-    public String getSearchValue(String title,boolean searchSymbol){
+    public void getSearchValue(String title,boolean searchSymbol){
         this.searchSymbol=searchSymbol;
         Dialog<ButtonType> searchDialog = new Dialog<>();
         searchDialog.setTitle(title);
@@ -81,22 +81,20 @@ public class NavigationController {
 
         final Button findButton = (Button) searchDialog.getDialogPane().lookupButton(searchButton);
         findButton.addEventFilter(ActionEvent.ACTION, event -> {
-            String searchText = searchField.getText();
-            this.searchTarget = searchText;
+            this.searchTarget = searchField.getText();
             searchDialog.close();
             this.handleFindClassOrSymbol();
             event.consume();
         });
 
         searchDialog.showAndWait();
-        return null;
     }
 
     /**
      * places result of AST search in a dialog box and allows the user to move to one of the results
      * @param root root of tree
      */
-    public void showResultDialog(TreeItem<String> root){
+    private void showResultDialog(TreeItem<String> root){
         Dialog<ButtonType> treeItemDialog = new Dialog<>();
 
         TreeView treeView = new TreeView();

@@ -1,3 +1,10 @@
+/*
+ * File: NavigateStructureVisitor.java
+ * CS461 Project 13
+ * Names: Zeb Keith-Hardy, Michael Li, Iris Lian
+ * Date: 3/5/19
+ */
+
 package proj12KeithHardyLiLian;
 
 import javafx.scene.control.TreeItem;
