@@ -34,7 +34,7 @@ public class NavigationController {
         if(!errorHandler.errorsFound()){
             NavigateStructureVisitor navigateStructureVisitor = new NavigateStructureVisitor();
             newRoot = navigateStructureVisitor.buildOrNavigateStructureTree(newRoot,ast,this.treeItemLineNumMap,
-                    className,true);
+                    className,false);
         }
         this.showResultDialog(newRoot);
     }
@@ -95,12 +95,29 @@ public class NavigationController {
     }
 
     public void showResultDialog(TreeItem<String> root){
-        Dialog<TreeView> treeItemDialog = new Dialog<>();
+        Dialog<ButtonType> treeItemDialog = new Dialog<>();
 
         TreeView treeView = new TreeView();
+        root.setExpanded(true);
         treeView.setRoot(root);
+        treeView.setShowRoot(false);
 
         treeItemDialog.setTitle("Results");
         treeItemDialog.getDialogPane().setContent(treeView);
+        ButtonType goToButton = new ButtonType("GoTo");
+        treeItemDialog.getDialogPane().getButtonTypes().add(goToButton);
+
+        final Button goButton = (Button) treeItemDialog.getDialogPane().lookupButton(goToButton);
+        goButton.addEventFilter(ActionEvent.ACTION, event -> {
+            if(treeView.getSelectionModel().getSelectedItem() != null){
+                int lineNum = this.treeItemLineNumMap.get(treeView.getSelectionModel().getSelectedItem());
+                treeItemDialog.close();
+                this.codeTabPane.getCodeArea().showParagraphAtTop(lineNum - 1);
+
+            }
+            event.consume();
+        });
+
+        treeItemDialog.showAndWait();
     }
 }
