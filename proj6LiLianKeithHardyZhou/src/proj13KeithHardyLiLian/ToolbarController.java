@@ -55,8 +55,6 @@ public class ToolbarController {
     private boolean checkIsDone;
     private Console console;
     private CodeTabPane codeTabPane;
-    private String tokenString;
-    private Integer errorCounter = 0;
 
     /**
      * This is the constructor of ToolbarController.

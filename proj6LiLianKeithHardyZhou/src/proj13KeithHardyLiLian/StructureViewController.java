@@ -86,6 +86,9 @@ public class StructureViewController
         return newRoot;
     }
 
+    /**
+     * updates the Structure Tree by parsing the AST
+     */
     public void updateStructureView(){
         //declare a new thread and assign it with the work of updating the structure view
         new Thread(()->{

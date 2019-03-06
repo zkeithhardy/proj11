@@ -48,7 +48,11 @@ public class NavigateStructureVisitor extends Visitor {
         return currentNode;
     }
 
-
+    /**
+     * Visits class nodes, builds a tree item. if searching for symbol, searches childen of node
+     * @param node the class node
+     * @return null
+     */
     @Override
     public Object visit(Class_ node) {
         // if is building structure view tree or searching for symbols or searching for a class which has a match
@@ -75,7 +79,11 @@ public class NavigateStructureVisitor extends Visitor {
         return null;
     }
 
-
+    /**
+     * Searching for symbol: adds Field to tree if Field name matches target
+     * @param node the field node
+     * @return null
+     */
     @Override
     public Object visit(Field node) {
         if(target == null || node.getName().equals(target)) {
@@ -85,6 +93,11 @@ public class NavigateStructureVisitor extends Visitor {
         return null;
     }
 
+    /**
+     * Searching for symbol: adds Method to tree if Method name matches target
+     * @param node the method node
+     * @return null
+     */
     @Override
     public Object visit(Method node) {
         if(target == null || node.getName().equals(target)) {
@@ -94,6 +107,12 @@ public class NavigateStructureVisitor extends Visitor {
         return null;
     }
 
+    /**
+     * Builds a new TreeItem, adds it as a child of the currentNode, and adds to treeItemIntegerMap
+     * @param name node of TreeItem
+     * @param node node to get line number from to add to map
+     * @return null
+     */
     private TreeItem<String> buildNodeAndUpdate( String name, ASTNode node){
         TreeItem<String> newNode= new TreeItem<>(name);
         this.currentNode.getChildren().add(newNode);
