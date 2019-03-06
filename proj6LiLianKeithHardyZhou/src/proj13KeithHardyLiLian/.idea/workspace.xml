@@ -269,7 +269,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="15" />
     <option name="y" value="-30" />
     <option name="width" value="1341" />
@@ -323,7 +323,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551837035960" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551837350221" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
@@ -341,7 +341,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.proj12KeithHardyLiLian.Main">
+  <component name="RunManager" selected="Application.proj13KeithHardyLiLian.Main">
     <configuration name="Unnamed" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="proj12KeithHardyLiLian.bantam.semant.SemanticAnalyzer" />
       <module name="proj6LiLianKeithHardyZhou" />
@@ -350,15 +350,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="proj12KeithHardyLiLian.Main" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="proj12KeithHardyLiLian.Main" />
+    <configuration name="proj13KeithHardyLiLian.Main" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="proj13KeithHardyLiLian.Main" />
       <module name="proj6LiLianKeithHardyZhou" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.proj12KeithHardyLiLian.Main" />
+      <item itemvalue="Application.proj13KeithHardyLiLian.Main" />
       <item itemvalue="Application.Unnamed" />
     </list>
   </component>
