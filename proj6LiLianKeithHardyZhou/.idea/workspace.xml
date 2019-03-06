@@ -374,8 +374,8 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551075146126" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/proj12KeithHardyLiLian/include/richtextfx-fat-0.9.1.jar!/" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551835247369" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -395,7 +395,7 @@
   </component>
   <component name="RunManager" selected="Application.SemanticAnalyzer">
     <configuration name="SemanticAnalyzer" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="proj12KeithHardyLiLian.bantam.semant.SemanticAnalyzer" />
+      <option name="MAIN_CLASS_NAME" value="proj13KeithHardyLiLian.bantam.semant.SemanticAnalyzer" />
       <module name="proj6LiLianKeithHardyZhou" />
       <option name="PROGRAM_PARAMETERS" value="C:\Users\lmc97\OneDrive\Documents\GitHub\proj11\proj6LiLianKeithHardyZhou\src\proj12KeithHardyLiLian\test\CheckerTestKeithHardyLiLian.btm" />
       <method v="2">
@@ -405,7 +405,7 @@
     <configuration name="proj12KeithHardyLiLian" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="10" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <option name="MAIN_CLASS_NAME" value="proj12KeithHardyLiLian.Main" />
+      <option name="MAIN_CLASS_NAME" value="proj13KeithHardyLiLian.Main" />
       <module name="proj6LiLianKeithHardyZhou" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -530,7 +530,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../../../Desktop/Main.java.txt" />
+    <entry file="file://$PROJECT_DIR$/../../../Main.java.txt" />
     <entry file="file://$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/ast/Method.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1314">
