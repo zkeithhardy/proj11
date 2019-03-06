@@ -517,4 +517,12 @@ public class MasterController {
         this.navigationController.getSearchValue("Search for Symbol",true);
     }
 
+    /**
+     * Handles Super Class Finder
+     */
+    @FXML
+    private void handleSuperClass(){
+        this.handleSave();
+        this.navigationController.getSuperClass();
+    }
 }

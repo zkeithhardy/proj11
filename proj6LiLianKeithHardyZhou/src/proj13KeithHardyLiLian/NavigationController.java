@@ -112,6 +112,7 @@ public class NavigationController {
             if(treeView.getSelectionModel().getSelectedItem() != null){
                 int lineNum = this.treeItemLineNumMap.get((TreeItem) treeView.getSelectionModel().getSelectedItem());
                 treeItemDialog.close();
+
                 this.codeTabPane.getCodeArea().showParagraphAtTop(lineNum - 1);
 
             }
@@ -119,6 +120,29 @@ public class NavigationController {
         });
 
         treeItemDialog.showAndWait();
+    }
+
+    /**
+     * Finds the super class for the highlighted class.
+     * Implementation to open the Object class not implemented yet, Object class does not yet exist
+     * Once we have Object class, will add this implementation
+     */
+    public void getSuperClass(){
+        new Thread (()->{
+            SuperClassTask superClassTask = new SuperClassTask();
+            FutureTask<Integer> curFutureTask = new FutureTask<Integer>(superClassTask);
+            ExecutorService curExecutor = Executors.newFixedThreadPool(1);
+            curExecutor.execute(curFutureTask);
+            try{
+                Integer lineNum = curFutureTask.get();
+                if(lineNum != null){
+                    Platform.runLater(()-> this.codeTabPane.getCodeArea().showParagraphAtTop(lineNum -1));
+                }
+            }catch(InterruptedException| ExecutionException e){
+                Platform.runLater(()-> this.console.writeToConsole("Parsing failed \n", "Error"));
+            }
+        }).start();
+
     }
 
     /**
@@ -149,10 +173,46 @@ public class NavigationController {
             }
             catch (CompilationException e){
                 Platform.runLater(()-> {
-                    NavigationController.this.console.writeToConsole("Could not parse file", "Error");
+                    NavigationController.this.console.writeToConsole(
+                            "Could not parse file to find Class or Symbol", "Error");
                 });
             }
             return newRoot;
+        }
+    }
+
+    /**
+     * An inner class used to parse a file in a separate thread.
+     * Prints error info to the console
+     */
+    private class SuperClassTask implements Callable {
+
+        /**
+         * Create a Parser and use it to create an AST
+         * Search the AST for a symbol or class
+         * @return The tree to be displayed
+         */
+        @Override
+        public Integer call(){
+            ErrorHandler errorHandler = new ErrorHandler();
+            Parser parser = new Parser(errorHandler);
+            String filename = NavigationController.this.codeTabPane.getFileName();
+            Program AST = null;
+            int lineNum = NavigationController.this.codeTabPane.getCodeArea().getCaretPosition();
+            String highlightedText = NavigationController.this.codeTabPane.getCodeArea().getSelectedText();
+            Integer superClassLineNum = lineNum;
+            try{
+                AST = parser.parse(filename);
+                SuperClassVisitor superClassVisitor = new SuperClassVisitor();
+                superClassLineNum = superClassVisitor.findSuperClass(AST,highlightedText);
+            }
+            catch (CompilationException e){
+                Platform.runLater(()-> {
+                    NavigationController.this.console.writeToConsole(
+                            "Could not parse file to find Super Class", "Error");
+                });
+            }
+            return superClassLineNum;
         }
     }
 }
