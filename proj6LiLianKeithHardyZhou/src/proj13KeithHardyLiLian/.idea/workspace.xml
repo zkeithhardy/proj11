@@ -2,16 +2,134 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e0b7e47a-b2f2-481e-b29a-f6be511667fb" name="Default Changelist" comment="work on structure view controller">
-      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/Main.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/Main.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../proj12KeithHardyLiLian/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/Main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/Main.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/.idea/proj6LiLianKeithHardyZhou.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/.idea/uiDesigner.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/MasterController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/MasterController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/StructureTreeVisitor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/StructureViewController$updateStructureViewTask.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/StructureViewController$updateStructureViewTask.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/StructureViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/StructureViewController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/resources/Main.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/resources/Main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/resources/Main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/resources/Main.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/test/CheckerTestKeithHardyLiLian.btm" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/test/CheckerTestKeithHardyLiLian.btm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/CodeAreaContextMenu.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/CodeTab.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/CodeTabPane.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/Console.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/ConsoleContextMenu.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/DirectoryController$createDirectoryTreeTask.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/DirectoryController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/EditController$findReplace.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/EditController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/FileController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/HelpMenuController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/JavaCodeArea.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/JavaStyle.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/MasterController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/PreferenceController$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/PreferenceController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/StructureViewController$updateStructureViewTask.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/StructureViewController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/TabContextMenu.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/ToolbarController$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/ToolbarController$CheckTask.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/ToolbarController$ParseTask.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/ToolbarController$ScanTask.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/ToolbarController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/ast/ASTNode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/ast/ArrayAssignExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/ast/ArrayExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/ast/AssignExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/ast/BinaryArithDivideExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/ast/BinaryArithExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/ast/BinaryArithMinusExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/ast/BinaryArithModulusExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/ast/BinaryArithPlusExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/ast/BinaryArithTimesExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/ast/BinaryCompEqExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/ast/BinaryCompExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/ast/BinaryCompGeqExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/ast/BinaryCompGtExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/ast/BinaryCompLeqExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/ast/BinaryCompLtExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/ast/BinaryCompNeExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/ast/BinaryExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/ast/BinaryLogicAndExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/ast/BinaryLogicExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/ast/BinaryLogicOrExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/ast/BlockStmt.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/ast/BreakStmt.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/ast/CastExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/ast/ClassList.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/ast/Class_.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/ast/ConstBooleanExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/ast/ConstExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/ast/ConstIntExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/ast/ConstStringExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/ast/DeclStmt.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/ast/DispatchExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/ast/Expr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/ast/ExprList.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/ast/ExprStmt.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/ast/Field.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/ast/ForStmt.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/ast/Formal.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/ast/FormalList.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/ast/IfStmt.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/ast/InstanceofExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/ast/ListNode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/ast/Member.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/ast/MemberList.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/ast/Method.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/ast/NewArrayExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/ast/NewExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/ast/Program.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/ast/ReturnStmt.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/ast/Stmt.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/ast/StmtList.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/ast/UnaryDecrExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/ast/UnaryExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/ast/UnaryIncrExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/ast/UnaryNegExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/ast/UnaryNotExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/ast/VarExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/ast/WhileStmt.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/lexer/Scanner.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/lexer/SourceFile.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/lexer/Token$Kind.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/lexer/Token.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/parser/Parser$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/parser/Parser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/semant/EnvironmentBuilderVisitor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/semant/InheritanceTreeVisitor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/semant/MainMainVisitor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/semant/NumLocalVarsVisitor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/semant/SemanticAnalyzer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/semant/StringConstantsVisitor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/semant/TypeCheckerVisitor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/treedrawer/Drawer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/treedrawer/DrawerFrame.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/treedrawer/DrawerPanel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/treedrawer/DrawingTree.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/treedrawer/LayoutVisitor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/treedrawer/Polygon.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/treedrawer/Polyline.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/util/ClassTreeNode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/util/CompilationException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/util/Error$Kind.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/util/Error.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/util/ErrorHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/util/SymbolTable.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/visitor/Visitor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/include/richtextfx-fat-0.9.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/resources/Main.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/resources/Main.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/resources/NightMode.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/resources/c.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/resources/f.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/resources/m.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/test/CheckerTestKeithHardyLiLian.btm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj12KeithHardyLiLian.pdf" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/../../out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -122,13 +240,43 @@
         </counts>
       </usages-collector>
     </session>
+    <session id="1959139414">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.0" value="1" />
+          <entry key="project.open.time.9" value="1" />
+          <entry key="project.opened" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="java" value="4" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JAVA" value="4" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="java" value="5" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="JAVA" value="5" />
+        </counts>
+      </usages-collector>
+    </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MasterController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1173">
+            <state relative-caret-position="-1162">
               <caret line="100" column="90" selection-start-line="100" selection-start-column="90" selection-end-line="100" selection-end-column="90" />
             </state>
           </provider>
@@ -137,27 +285,56 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PreferenceController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3859">
-              <caret line="246" column="62" selection-start-line="246" selection-start-column="45" selection-end-line="246" selection-end-column="62" />
+            <state relative-caret-position="113">
+              <caret line="226" column="36" selection-start-line="226" selection-start-column="36" selection-end-line="226" selection-end-column="36" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/Main.fxml">
+        <entry file="file://$PROJECT_DIR$/bantam/util/SymbolTable.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1190">
-              <caret line="70" column="73" selection-start-line="70" selection-start-column="73" selection-end-line="70" selection-end-column="73" />
+            <state relative-caret-position="385">
+              <caret line="464" column="16" selection-start-line="464" selection-start-column="16" selection-end-line="464" selection-end-column="16" />
             </state>
           </provider>
-          <provider editor-type-id="JavaFX-Scene-Builder" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bantam/parser/Parser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="13634">
+              <caret line="825" column="108" selection-start-line="825" selection-start-column="108" selection-end-line="825" selection-end-column="108" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bantam/lexer/Scanner.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="8" column="7" lean-forward="true" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/bantam/lexer/SourceFile.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/NavigationController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-end-line="5" selection-end-column="3" />
+            <state relative-caret-position="221">
+              <caret line="48" column="58" lean-forward="true" selection-start-line="48" selection-start-column="58" selection-end-line="48" selection-end-column="58" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -168,7 +345,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/StructureViewController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1445">
+            <state>
               <caret selection-end-line="9" selection-end-column="2" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -177,14 +354,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/NavigateStructureVisitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="487">
+            <state relative-caret-position="969">
               <caret line="68" column="60" selection-start-line="68" selection-start-column="60" selection-end-line="68" selection-end-column="60" />
-              <folding>
-                <element signature="e#0#3501#0" expanded="true" />
-              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="317">
+              <caret line="42" column="7" lean-forward="true" selection-start-line="42" selection-start-column="7" selection-end-line="42" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -238,7 +421,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Main.java" />
         <option value="$PROJECT_DIR$/bantam/ast/Field.java" />
         <option value="$PROJECT_DIR$/bantam/semant/SemanticAnalyzer.java" />
         <option value="$PROJECT_DIR$/bantam/semant/InheritanceTreeVisitor.java" />
@@ -255,6 +437,8 @@
         <option value="$PROJECT_DIR$/MasterController.java" />
         <option value="$PROJECT_DIR$/NavigationController.java" />
         <option value="$PROJECT_DIR$/NavigateStructureVisitor.java" />
+        <option value="$PROJECT_DIR$/Main.java" />
+        <option value="$PROJECT_DIR$/bantam/lexer/Scanner.java" />
       </list>
     </option>
   </component>
@@ -276,50 +460,200 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
-      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="proj12KeithHardyLiLian" type="b2602c69:ProjectViewProjectNode" />
+              <item name="proj13KeithHardyLiLian" type="b2602c69:ProjectViewProjectNode" />
               <item name="proj6LiLianKeithHardyZhou" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="proj12KeithHardyLiLian" type="b2602c69:ProjectViewProjectNode" />
+              <item name="proj13KeithHardyLiLian" type="b2602c69:ProjectViewProjectNode" />
               <item name="proj6LiLianKeithHardyZhou" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="proj12KeithHardyLiLian" type="b2602c69:ProjectViewProjectNode" />
+              <item name="proj13KeithHardyLiLian" type="b2602c69:ProjectViewProjectNode" />
               <item name="proj6LiLianKeithHardyZhou" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="proj12KeithHardyLiLian" type="462c0819:PsiDirectoryNode" />
+              <item name="proj13KeithHardyLiLian" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="proj12KeithHardyLiLian" type="b2602c69:ProjectViewProjectNode" />
+              <item name="proj13KeithHardyLiLian" type="b2602c69:ProjectViewProjectNode" />
               <item name="proj6LiLianKeithHardyZhou" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="proj12KeithHardyLiLian" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="proj13KeithHardyLiLian" type="462c0819:PsiDirectoryNode" />
+              <item name="bantam" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="proj12KeithHardyLiLian" type="b2602c69:ProjectViewProjectNode" />
+              <item name="proj13KeithHardyLiLian" type="b2602c69:ProjectViewProjectNode" />
               <item name="proj6LiLianKeithHardyZhou" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="proj12KeithHardyLiLian" type="462c0819:PsiDirectoryNode" />
-              <item name="JavaCodeArea.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
+              <item name="proj13KeithHardyLiLian" type="462c0819:PsiDirectoryNode" />
+              <item name="bantam" type="462c0819:PsiDirectoryNode" />
+              <item name="lexer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="proj13KeithHardyLiLian" type="b2602c69:ProjectViewProjectNode" />
+              <item name="proj6LiLianKeithHardyZhou" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="proj13KeithHardyLiLian" type="462c0819:PsiDirectoryNode" />
+              <item name="bantam" type="462c0819:PsiDirectoryNode" />
+              <item name="parser" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="proj13KeithHardyLiLian" type="b2602c69:ProjectViewProjectNode" />
+              <item name="proj6LiLianKeithHardyZhou" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="proj13KeithHardyLiLian" type="462c0819:PsiDirectoryNode" />
+              <item name="bantam" type="462c0819:PsiDirectoryNode" />
+              <item name="semant" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="proj13KeithHardyLiLian" type="b2602c69:ProjectViewProjectNode" />
+              <item name="proj6LiLianKeithHardyZhou" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="proj13KeithHardyLiLian" type="462c0819:PsiDirectoryNode" />
+              <item name="bantam" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551803284657" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/test/CheckerTestKeithHardyLiLian.btm" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551836742633" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
+    <UpdatedFiles>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Updated from server" />
+        <option name="myStatusName" value="Changed on server" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="CHANGED_ON_SERVER" />
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated" />
+          <option name="myStatusName" value="Changed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UPDATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/Main.css</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/Main.fxml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/.idea/workspace.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/MasterController.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/StructureViewController$updateStructureViewTask.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/StructureViewController.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/resources/Main.css</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/resources/Main.fxml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/MasterController.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/StructureViewController.java</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Created" />
+          <option name="myStatusName" value="Created" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CREATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/NavigateStructureVisitor.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/NavigationController$1.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/NavigationController$ParseTask.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/NavigationController.class</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Deleted" />
+          <option name="myStatusName" value="Deleted" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="true" />
+          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/StructureTreeVisitor.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../proj12KeithHardyLiLian/.idea/workspace.xml</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Restored" />
+          <option name="myStatusName" value="Will be restored" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="RESTORED" />
+        </FILE-GROUP>
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Modified" />
+        <option name="myStatusName" value="Modified" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MODIFIED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Skipped" />
+        <option name="myStatusName" value="Skipped" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SKIPPED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with conflicts" />
+        <option name="myStatusName" value="Will be merged with conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_CONFLICTS" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with tree conflicts" />
+        <option name="myStatusName" value="Merged with tree conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with property conflicts" />
+        <option name="myStatusName" value="Will be merged with property conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged" />
+        <option name="myStatusName" value="Will be merged" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Not in repository" />
+        <option name="myStatusName" value="Not in repository" />
+        <option name="mySupportsDeletion" value="true" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="UNKNOWN" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally added" />
+        <option name="myStatusName" value="Locally added" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_ADDED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally removed" />
+        <option name="myStatusName" value="Locally removed" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_REMOVED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Switched" />
+        <option name="myStatusName" value="Switched" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SWITCHED" />
+      </FILE-GROUP>
+    </UpdatedFiles>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -333,7 +667,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.proj12KeithHardyLiLian.Main">
+  <component name="RunManager" selected="Application.proj13KeithHardyLiLian.Main">
     <configuration name="Unnamed" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="proj12KeithHardyLiLian.bantam.semant.SemanticAnalyzer" />
       <module name="proj6LiLianKeithHardyZhou" />
@@ -342,15 +676,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="proj12KeithHardyLiLian.Main" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="proj12KeithHardyLiLian.Main" />
+    <configuration name="proj13KeithHardyLiLian.Main" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="proj13KeithHardyLiLian.Main" />
       <module name="proj6LiLianKeithHardyZhou" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.proj12KeithHardyLiLian.Main" />
+      <item itemvalue="Application.proj13KeithHardyLiLian.Main" />
       <item itemvalue="Application.Unnamed" />
     </list>
   </component>
@@ -538,8 +872,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20872483" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21409395" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -609,27 +944,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="fixed display of extra classes in symbol search" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/bantam/ast/ASTNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="62">
-          <caret line="253" column="22" selection-start-line="253" selection-start-column="22" selection-end-line="253" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bantam/ast/Method.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-68">
-          <caret line="39" column="13" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bantam/ast/VarExpr.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="60" column="14" lean-forward="true" selection-start-line="60" selection-start-column="14" selection-end-line="60" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bantam/ast/UnaryDecrExpr.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -761,24 +1075,10 @@
     <entry file="file://$PROJECT_DIR$/Java8/Java8Parser.java" />
     <entry file="jar://$PROJECT_DIR$/include/antlr-4.7.1-complete.jar!/org/antlr/runtime/tree/TreeParser.class" />
     <entry file="jar://$PROJECT_DIR$/include/antlr-4.7.1-complete.jar!/org/antlr/v4/runtime/tree/ParseTreeWalker.class" />
-    <entry file="file://$PROJECT_DIR$/bantam/parser/Parser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="11934">
-          <caret line="825" column="108" selection-start-line="825" selection-start-column="108" selection-end-line="825" selection-end-column="108" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bantam/semant/MainMainVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="595">
           <caret line="48" column="14" selection-start-line="48" selection-start-column="14" selection-end-line="48" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bantam/util/SymbolTable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="623">
-          <caret line="471" column="19" selection-start-line="471" selection-start-column="12" selection-end-line="471" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -847,38 +1147,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MasterController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1173">
-          <caret line="100" column="90" selection-start-line="100" selection-start-column="90" selection-end-line="100" selection-end-column="90" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PreferenceController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3859">
-          <caret line="246" column="62" selection-start-line="246" selection-start-column="45" selection-end-line="246" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/Main.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1190">
-          <caret line="70" column="73" selection-start-line="70" selection-start-column="73" selection-end-line="70" selection-end-column="73" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/NavigationController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="5" selection-end-column="3" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ToolbarController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="453">
@@ -886,9 +1154,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/Main.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1190">
+          <caret line="70" column="73" selection-start-line="70" selection-start-column="73" selection-end-line="70" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/StructureViewController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1445">
+        <state>
           <caret selection-end-line="9" selection-end-column="2" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -898,11 +1174,70 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/NavigateStructureVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="487">
+        <state relative-caret-position="969">
           <caret line="68" column="60" selection-start-line="68" selection-start-column="60" selection-end-line="68" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="42" column="7" lean-forward="true" selection-start-line="42" selection-start-column="7" selection-end-line="42" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MasterController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1162">
+          <caret line="100" column="90" selection-start-line="100" selection-start-column="90" selection-end-line="100" selection-end-column="90" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/NavigationController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="48" column="58" lean-forward="true" selection-start-line="48" selection-start-column="58" selection-end-line="48" selection-end-column="58" />
           <folding>
-            <element signature="e#0#3501#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PreferenceController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="226" column="36" selection-start-line="226" selection-start-column="36" selection-end-line="226" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bantam/util/SymbolTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="385">
+          <caret line="464" column="16" selection-start-line="464" selection-start-column="16" selection-end-line="464" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bantam/parser/Parser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="13634">
+          <caret line="825" column="108" selection-start-line="825" selection-start-column="108" selection-end-line="825" selection-end-column="108" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bantam/lexer/Scanner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="8" column="7" lean-forward="true" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bantam/lexer/SourceFile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
         </state>
       </provider>
     </entry>
