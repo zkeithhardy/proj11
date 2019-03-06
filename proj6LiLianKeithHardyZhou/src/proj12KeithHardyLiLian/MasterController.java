@@ -179,7 +179,10 @@ public class MasterController {
      * Else if the file has never been saved, opens a pop-up window that allows the user to
      * choose a filename and directory and then store the content of the tab to storage.
      */
-    @FXML public void handleSave() { fileController.handleSave(); }
+    @FXML public void handleSave() {
+        this.updateStructureView();
+        fileController.handleSave();
+    }
 
     /**
      * Handler for the "Save as..." menu item in the "File" menu.

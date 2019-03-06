@@ -115,3 +115,7 @@
 #console .caret{
     -fx-stroke: black;
 }
+
+.tree-item:clicked{
+    -fx-background:dodgerblue;
+}
