@@ -15,6 +15,12 @@ import proj13KeithHardyLiLian.bantam.visitor.Visitor;
 
 import java.util.Map;
 
+/**
+ * this is the navigate structure visitor class that parse the ast tree
+ * and handle search Class/field, and attach the image files to them on the
+ * structure view pane.
+ * @author Michael Li, Iris Lian, Zeb Keith-Hardy
+ */
 public class NavigateStructureVisitor extends Visitor {
     private TreeItem<String> currentNode;
     private Map<TreeItem, Integer> treeItemIntegerMap;

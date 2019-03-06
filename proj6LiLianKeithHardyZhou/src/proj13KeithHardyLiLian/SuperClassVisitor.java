@@ -15,6 +15,12 @@ import proj13KeithHardyLiLian.bantam.visitor.Visitor;
 
 import java.util.HashMap;
 
+/**
+ * This class is the visitor class that parse through the AST
+ * and find the input class name's parent class and then return
+ * their corresponding line number.
+ * @author Michael Li, Iris Lian, Zeb Keith-Hardy
+ */
 public class SuperClassVisitor extends Visitor {
 
     private String className;

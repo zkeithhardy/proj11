@@ -78,6 +78,7 @@
         <Menu mnemonicParsing="false" text = "Navigation" fx:id="navigationMenu">
             <MenuItem mnemonicParsing="false" onAction="#handleFindClass" text = "Class"/>
             <MenuItem mnemonicParsing="false" onAction="#handleFindSymbol" text = "Symbol"/>
+            <MenuItem mnemonicParsing="false" onAction="#handleSuperClass" text = "Super Class"/>
         </Menu>
         <Menu mnemonicParsing="false" text = "Preferences">
             <CheckMenuItem mnemonicParsing="false" onAction="#handleNightMode" text = "NightMode"/>

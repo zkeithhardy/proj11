@@ -21,6 +21,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.*;
 
+/**
+ * this the the navigation controller class that handles all features
+ * this tabpane. The features include find certain class/field and find
+ * the superclass of a existing class.
+ * @author Michael Li, Iris Lian, Zeb Keith-Hardy
+ */
 public class NavigationController {
     private CodeTabPane codeTabPane;
     private Map<TreeItem,Integer> treeItemLineNumMap;
