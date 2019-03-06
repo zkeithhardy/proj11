@@ -75,10 +75,6 @@
             <MenuItem mnemonicParsing="false" onAction="#handleMatchBracketOrParen"
                       text="Match Bracket/Parenthesis" accelerator="Shortcut+M"/>
         </Menu>
-        <Menu mnemonicParsing="false" text = "Navigation" fx:id="navigationMenu">
-            <MenuItem mnemonicParsing="false" onAction="#handleFindClass" text = "Class"/>
-            <MenuItem mnemonicParsing="false" onAction="#handleFindSymbol" text = "Symbol"/>
-        </Menu>
         <Menu mnemonicParsing="false" text = "Preferences">
             <CheckMenuItem mnemonicParsing="false" onAction="#handleNightMode" text = "NightMode"/>
             <MenuItem text="Keyword" fx:id="keywordsPreItem" onAction="#handleKeywordColorAction"/>
