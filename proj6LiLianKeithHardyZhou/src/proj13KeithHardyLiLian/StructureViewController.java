@@ -54,11 +54,7 @@ public class StructureViewController
         this.treeItemLineNumMap = new HashMap<>();
         this.treeView = fileStructureTree;
         this.console = console;
-
-        // Updates the file structure view whenever a key is typed
-        this.codeTabPane.addEventFilter(KeyEvent.KEY_RELEASED, event -> {
-            this.updateStructureView();
-        });
+        
         //update the file structure view when user change tab
         this.codeTabPane.getSelectionModel().selectedItemProperty().addListener((observableValue, oldTab, newTab) -> {
             this.updateStructureView();
