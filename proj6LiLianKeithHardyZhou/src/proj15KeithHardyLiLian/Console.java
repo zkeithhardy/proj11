@@ -81,6 +81,19 @@ public class Console extends StyleClassedTextArea {
     }
 
     /**
+     * Gets the command text that the user has input to this console.
+     * @return String that the user has input to the console
+     */
+    public String getConsoleCommand(){
+        String userCommand = this.command;
+        this.command = "";
+
+        //-1 means no command is stored
+        this.commandStartIndex = -1;
+        return userCommand + "\n";
+    }
+
+    /**
      * Consume all keyTyped event if it is before the commandstartindex
      * @param e the keyEvent
      */
@@ -147,6 +160,22 @@ public class Console extends StyleClassedTextArea {
     }
 
     /**
+     * Returns the value of receivedCommand field
+     * @Return the boolean value of receivedCommand
+     */
+    public boolean getReceivedCommand() {
+        return receivedCommand;
+    }
+
+    /**
+     * Set the value of received command
+     * @param receivedCommand boolean to assign to receivedCommand field
+     */
+    public void setReceivedCommand(boolean receivedCommand) {
+        this.receivedCommand = receivedCommand;
+    }
+
+    /**
      * Moves the caret to the end of the text and movee the scroll bar to the caret position
      */
     private void moveCaretToEnd(){
@@ -169,6 +198,6 @@ public class Console extends StyleClassedTextArea {
      */
     private boolean getProcessStatus(){
         return !(this.toolbarController.scanIsDone()&&this.toolbarController.parseIsDone()
-                &&this.toolbarController.checkIsDone());
+                &&this.toolbarController.checkIsDone()&&this.toolbarController.getTaskStatus());
     }
 }

@@ -22,6 +22,8 @@
 package proj15KeithHardyLiLian;
 
 import javafx.application.Platform;
+import javafx.scene.control.Button;
+import mars.MarsLaunch;
 import proj15KeithHardyLiLian.bantam.ast.Program;
 import proj15KeithHardyLiLian.bantam.parser.Parser;
 import proj15KeithHardyLiLian.bantam.semant.*;
@@ -33,6 +35,7 @@ import proj15KeithHardyLiLian.bantam.util.Error;
 import proj15KeithHardyLiLian.bantam.lexer.Scanner;
 import proj15KeithHardyLiLian.bantam.lexer.Token;
 
+import java.io.*;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.*;
@@ -50,23 +53,32 @@ import java.util.concurrent.*;
  */
 public class ToolbarController {
 
+    private FutureTask<Boolean> curFutureTask;
     private boolean scanIsDone;
     private boolean parseIsDone;
     private boolean checkIsDone;
     private Console console;
     private CodeTabPane codeTabPane;
+    private boolean assembleSuccessful;
+    private Button stopMipsButton;
+    private Button assembleButton;
+    private Button assembleRunButton;
 
     /**
      * This is the constructor of ToolbarController.
      * @param console the console
      * @param codeTabPane the tab pane
      */
-    public ToolbarController(Console console, CodeTabPane codeTabPane){
+    public ToolbarController(Console console, CodeTabPane codeTabPane, Button stopMipsButton,
+                             Button assembleButton, Button assembleRunButton){
         this.console = console;
         this.codeTabPane = codeTabPane;
         this.scanIsDone = true;
         this.parseIsDone = true;
         this.checkIsDone = true;
+        this.stopMipsButton = stopMipsButton;
+        this.assembleButton = assembleButton;
+        this.assembleRunButton = assembleRunButton;
     }
 
     /**
@@ -148,10 +160,59 @@ public class ToolbarController {
     }
 
     /**
+     * Start the thread to compile or to compile&run the input file
+     * @param method to compile or to compile and run
+     */
+    public void startAssembleOrAssembleRun(String method){
+        Thread thread;
+        if(method.equals("assemble"))
+            thread = new Thread(()->handleAssemble());
+        else
+            thread = new Thread(()->handleAssembleRun());
+        thread.start();
+    }
+
+    /**
      * handles Assembling MIPS code
      */
     public void handleAssemble(){
+        //This will run the mars simulator in NON-headless mode
+//        String[] args = new String[2];
+//        args[0] = "a";
+//        args[1] = this.codeTabPane.getFileName();
+//        MarsLaunch mars = new MarsLaunch(args);
 
+        // create and run the compile process
+        ProcessBuilder processBuilder = new ProcessBuilder("Mars","a", this.codeTabPane.getFileName());
+        AssembleOrRunTask compileTask = new AssembleOrRunTask(this.console, processBuilder);
+        this.curFutureTask = new FutureTask<Boolean>(compileTask);
+        ExecutorService compileExecutor = Executors.newFixedThreadPool(1);
+        compileExecutor.execute(this.curFutureTask);
+
+        // Check if compile was successful, and if so, indicate this in the console
+        this.assembleSuccessful = false;
+        try {
+            this.assembleSuccessful = this.curFutureTask.get();
+            if (this.assembleSuccessful) {
+                Platform.runLater(() ->
+                        this.console.writeToConsole("\nCompilation was Successful.\n",
+                                "ProcessInfo"));
+            }
+            compileExecutor.shutdown();
+        } catch (ExecutionException | InterruptedException | CancellationException e) {
+            compileTask.stop();
+        }
+
+        //The stop button would not be disabled when there is a process running
+        //even if there is no tabs opened
+        //This if statements checks if the user closed a tab when compiling and disables
+        //the stop button after compile finishes.
+        if (this.codeTabPane.getTabs().isEmpty()){
+            this.stopMipsButton.setDisable(true);
+        }
+        else{
+            this.enableAssembleRun();
+        }
     }
 
     /**
@@ -159,13 +220,64 @@ public class ToolbarController {
      */
     public void handleAssembleRun(){
 
+        // Try to compile
+        if(!this.assembleSuccessful){
+            return;
+        }
+        // Disable appropriate compile buttons
+        this.disableAssembleRun();
+        // Run the java program
+        ProcessBuilder processBuilder = new ProcessBuilder("Mars",this.codeTabPane.getFileName());
+        AssembleOrRunTask runTask = new AssembleOrRunTask(this.console,processBuilder);
+        this.curFutureTask = new FutureTask<Boolean>(runTask);
+        ExecutorService curExecutor = Executors.newFixedThreadPool(1);
+        curExecutor.execute(this.curFutureTask);
+
+        try{
+            this.curFutureTask.get();
+            curExecutor.shutdown();
+        }
+        // if the program is interrupted, stop running
+        catch (InterruptedException|ExecutionException|CancellationException e){
+            runTask.stop();
+        }
+
+        //If the user close the tab when the process is running, the stop button would not
+        //be disabled. This statement checks is the stop button should be disabled.
+        if (this.codeTabPane.getTabs().isEmpty()){
+            this.stopMipsButton.setDisable(true);
+        }
+        else{
+            this.enableAssembleRun();
+        }
     }
 
     /**
      * Stops execution of MIPS code.
      */
     public void handleStopMips(){
+        if(this.curFutureTask!=null) {
+            this.curFutureTask.cancel(true);
+            this.console.writeToConsole("Process terminated.\n", "ProcessInfo");
+        }
+    }
 
+    /**
+     * Disables the Compile and Compile and Run buttons, enables the Stop button.
+     */
+    public void disableAssembleRun() {
+        this.assembleButton.setDisable(true);
+        this.assembleRunButton.setDisable(true);
+        this.stopMipsButton.setDisable(false);
+    }
+
+    /**
+     * Enables the Compile and Compile and Run buttons, disables the Stop button.
+     */
+    public void enableAssembleRun() {
+        this.assembleButton.setDisable(false);
+        this.assembleRunButton.setDisable(false);
+        this.stopMipsButton.setDisable(true);
     }
 
     /**
@@ -189,6 +301,19 @@ public class ToolbarController {
      *
      */
     public boolean checkIsDone(){return this.checkIsDone;}
+
+    /**
+     * Check if the task is still running.
+     * @return true if this task is running, and false otherwise
+     */
+    public boolean getTaskStatus(){
+        if(this.curFutureTask == null){
+            return false;
+        }
+        else{
+            return !this.curFutureTask.isDone();
+        }
+    }
 
     /**
      * An inner class used to analyze a file in a separate thread.
@@ -336,6 +461,96 @@ public class ToolbarController {
                 ToolbarController.this.scanIsDone = true;
             });
             return tokenString.toString();
+        }
+    }
+
+    /**
+     * An inner class used for a thread to execute the run task
+     * Designed to be used for compilation or running.
+     * Writes the input/output error to the console.
+     */
+    private class AssembleOrRunTask implements Callable{
+        private Process curProcess;
+        private Console console;
+        private ProcessBuilder processBuilder;
+
+        /**
+         * Initializes this compile/run task
+         * @param console where to write output to
+         * @param processBuilder the ProcessBuilder we have used to call javac/java
+         */
+        public AssembleOrRunTask(Console console, ProcessBuilder processBuilder){
+            this.console = console;
+            this.processBuilder = processBuilder;
+        }
+
+        /**
+         * Starts the process
+         * @return will return false if there is an error, true otherwise.
+         * @throws IOException error reading input/output to/from console
+         */
+        @Override
+        public Boolean call() throws IOException{
+            // we use Boolean because this is required by the Callable interface
+            this.curProcess = this.processBuilder.start();
+            BufferedReader stdInput, stdError;
+            BufferedWriter stdOutput;
+            stdInput = new BufferedReader(new InputStreamReader(this.curProcess.getInputStream()));
+            stdError = new BufferedReader(new InputStreamReader(this.curProcess.getErrorStream()));
+            stdOutput = new BufferedWriter((new OutputStreamWriter(this.curProcess.getOutputStream())));
+
+            // True if there are no errors
+            boolean taskSuccessful = true;
+
+            // A separate thread that checks for user input to the console
+            new Thread(()->{
+                while(this.curProcess.isAlive()){
+                    if(this.console.getReceivedCommand()){
+                        try {
+                            stdOutput.write(this.console.getConsoleCommand());
+                            this.console.setReceivedCommand(false);
+                            stdOutput.flush();
+                        }catch (IOException e){this.stop();}
+                    }
+                }
+            }).start();
+
+            int inp;
+            int err = -1;
+            // While there is some input to the console, or errors that have occurred,
+            // append them to the console for the user to see.
+            while ((inp = stdInput.read()) >= 0 || (err = stdError.read()) >= 0){
+
+                final char finalInput = (char)inp;
+                final char finalError = (char)err;
+
+                if (inp >= 0) {
+                    Platform.runLater(() -> this.console.writeToConsole(Character.toString(finalInput), "Output"));
+                }
+                if(err >= 0) {
+                    taskSuccessful = false;
+                    Platform.runLater(() -> this.console.writeToConsole(Character.toString(finalError), "Error"));
+                }
+                try {
+                    Thread.sleep(2);
+                }catch (InterruptedException e){
+                    this.stop();
+                    return taskSuccessful;
+                }
+            }
+            stdError.close();
+            stdInput.close();
+            stdOutput.close();
+            return taskSuccessful;
+        }
+
+        /**
+         * Stop the current process
+         */
+        public void stop(){
+            if(this.curProcess != null){
+                curProcess.destroyForcibly();
+            }
         }
     }
 }
