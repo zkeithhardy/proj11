@@ -160,8 +160,8 @@ public class ToolbarController {
     }
 
     /**
-     * Start the thread to compile or to compile&run the input file
-     * @param method to compile or to compile and run
+     * Start the thread to assemble or assemble&run the input file
+     * @param method to assemble or to assemble and run
      */
     public void startAssembleOrAssembleRun(String method){
         Thread thread;
@@ -176,12 +176,6 @@ public class ToolbarController {
      * handles Assembling MIPS code
      */
     public void handleAssemble(){
-        //This will run the mars simulator in NON-headless mode
-//        String[] args = new String[2];
-//        args[0] = "a";
-//        args[1] = this.codeTabPane.getFileName();
-//        MarsLaunch mars = new MarsLaunch(args);
-
         // create and run the compile process
         ProcessBuilder processBuilder = new ProcessBuilder("java","-jar", "include/Mars4_5.jar",
                 "a", this.codeTabPane.getFileName());
@@ -196,7 +190,7 @@ public class ToolbarController {
             this.assembleSuccessful = this.curFutureTask.get();
             if (this.assembleSuccessful) {
                 Platform.runLater(() ->
-                        this.console.writeToConsole("\nCompilation was Successful.\n",
+                        this.console.writeToConsole("\nAssembly was Successful.\n",
                                 "ProcessInfo"));
             }
             compileExecutor.shutdown();
@@ -206,8 +200,8 @@ public class ToolbarController {
 
         //The stop button would not be disabled when there is a process running
         //even if there is no tabs opened
-        //This if statements checks if the user closed a tab when compiling and disables
-        //the stop button after compile finishes.
+        //This if statements checks if the user closed a tab when assembling and disables
+        //the stop button after assemble finishes.
         if (this.codeTabPane.getTabs().isEmpty()){
             this.stopMipsButton.setDisable(true);
         }
@@ -221,11 +215,11 @@ public class ToolbarController {
      */
     public void handleAssembleRun(){
 
-        // Try to compile
+        // Try to assemble
         if(!this.assembleSuccessful){
             return;
         }
-        // Disable appropriate compile buttons
+        // Disable appropriate assemble buttons
         this.disableAssembleRun();
         // Run the java program
         ProcessBuilder processBuilder = new ProcessBuilder("java","-jar", "include/Mars4_5.jar",
@@ -265,7 +259,7 @@ public class ToolbarController {
     }
 
     /**
-     * Disables the Compile and Compile and Run buttons, enables the Stop button.
+     * Disables the Assemble and Assemble and Run buttons, enables the Stop button.
      */
     public void disableAssembleRun() {
         this.assembleButton.setDisable(true);
@@ -274,7 +268,7 @@ public class ToolbarController {
     }
 
     /**
-     * Enables the Compile and Compile and Run buttons, disables the Stop button.
+     * Enables the Assemble and Assemble and Run buttons, disables the Stop button.
      */
     public void enableAssembleRun() {
         this.assembleButton.setDisable(false);
@@ -468,7 +462,7 @@ public class ToolbarController {
 
     /**
      * An inner class used for a thread to execute the run task
-     * Designed to be used for compilation or running.
+     * Designed to be used for assembling or running.
      * Writes the input/output error to the console.
      */
     private class AssembleOrRunTask implements Callable{
