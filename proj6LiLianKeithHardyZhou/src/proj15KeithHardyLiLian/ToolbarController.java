@@ -183,7 +183,8 @@ public class ToolbarController {
 //        MarsLaunch mars = new MarsLaunch(args);
 
         // create and run the compile process
-        ProcessBuilder processBuilder = new ProcessBuilder("Mars","a", this.codeTabPane.getFileName());
+        ProcessBuilder processBuilder = new ProcessBuilder("java","-jar", "include/Mars4_5.jar",
+                "a", this.codeTabPane.getFileName());
         AssembleOrRunTask compileTask = new AssembleOrRunTask(this.console, processBuilder);
         this.curFutureTask = new FutureTask<Boolean>(compileTask);
         ExecutorService compileExecutor = Executors.newFixedThreadPool(1);
@@ -227,7 +228,8 @@ public class ToolbarController {
         // Disable appropriate compile buttons
         this.disableAssembleRun();
         // Run the java program
-        ProcessBuilder processBuilder = new ProcessBuilder("Mars",this.codeTabPane.getFileName());
+        ProcessBuilder processBuilder = new ProcessBuilder("java","-jar", "include/Mars4_5.jar",
+                this.codeTabPane.getFileName());
         AssembleOrRunTask runTask = new AssembleOrRunTask(this.console,processBuilder);
         this.curFutureTask = new FutureTask<Boolean>(runTask);
         ExecutorService curExecutor = Executors.newFixedThreadPool(1);
