@@ -5,22 +5,18 @@
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module-library" exported="">
+    <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/proj6LiLianKeithHardyZhou/src/proj10LiLianKeithHardyZhou/include/antlr-4.7.1-complete.jar!/" />
+          <root url="jar://$MODULE_DIR$/proj6LiLianKeithHardyZhou/src/proj15KeithHardyLiLian/include/richtextfx-fat-0.9.1.jar!/" />
+          <root url="jar://$MODULE_DIR$/proj6LiLianKeithHardyZhou/src/proj15KeithHardyLiLian/include/Mars4_5.jar!/" />
         </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" exported="">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/proj6LiLianKeithHardyZhou/src/proj10LiLianKeithHardyZhou/include/richtextfx-fat-0.9.1.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
+        <JAVADOC>
+          <root url="jar://$MODULE_DIR$/proj6LiLianKeithHardyZhou/src/proj15KeithHardyLiLian/include/Mars4_5.jar!/docs" />
+        </JAVADOC>
+        <SOURCES>
+          <root url="jar://$MODULE_DIR$/proj6LiLianKeithHardyZhou/src/proj15KeithHardyLiLian/include/Mars4_5.jar!/" />
+        </SOURCES>
       </library>
     </orderEntry>
   </component>

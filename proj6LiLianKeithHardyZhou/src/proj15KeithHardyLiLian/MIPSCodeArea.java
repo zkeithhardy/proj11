@@ -102,16 +102,16 @@ class MIPSStyle {
 
     // a list of strings that contain the directives for the IDE to identify.
     private static final String[] DIRECTIVE = new String[]{
-            ".data",".text",".word",".ascii",".asciiz",".byte",".align",".half",".space",
-            ".double",".float",".extern",".kdata",".ktext",".globl",".set",".eqv",".macro",
-            ".end_macro",".include"
+            "data","text","word","ascii","asciiz","byte","align","half","space",
+            "double","float","extern","kdata","ktext","globl","set","eqv","macro",
+            "end_macro","include"
     };
 
     // a list of strings that contain the registers for the IDE to identify.
     private static final String[] REGISTER = new String[]{
-            "$zero","$at","$v0","$v1","$a0","$a1","$a2","$a3","$t0","$t1","$t2","$t3",
-            "$t4","$t5","$t6","$t7","$t8","$t9","$s0","$s1","$s2","$s3","$s4","$s5","$s6",
-            "$s7","$s8","$k0","$k1","$gp","$sp","$fp","$ra"
+            "zero","at","v0","v1","a0","a1","a2","a3","t0","t1","t2","t3",
+            "t4","t5","t6","t7","t8","t9","s0","s1","s2","s3","s4","s5","s6",
+            "s7","s8","k0","k1","gp","sp","fp","ra"
     };
 
     // the regex rules for the ide
@@ -122,8 +122,8 @@ class MIPSStyle {
     private static final String PAREN_PATTERN = "\\(|\\)";
     private static final String STRING_PATTERN = "\"([^\"\\\\]|\\\\.)*\"";
     private static final String COMMENT_PATTERN = "#[^\n]*"; //"^([^#]*)#(.*)$"
-    private static final String DIRECTIVE_PATTERN = "\\b(" + String.join("|", DIRECTIVE) + ")\\b";
-    private static final String REGISTER_PATTERN = "\\b(" + String.join("|", REGISTER) + ")\\b";
+    private static final String DIRECTIVE_PATTERN = "\\.(" + String.join("|", DIRECTIVE) + ")";
+    private static final String REGISTER_PATTERN =  "\\$(" + String.join("|", REGISTER) + ")";
 
     private static final Pattern PATTERN = Pattern.compile(
             "(?<OPERATION>" + OPERATION_PATTERN + ")"
