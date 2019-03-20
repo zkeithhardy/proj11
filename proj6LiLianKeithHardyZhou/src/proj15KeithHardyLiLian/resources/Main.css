@@ -137,3 +137,11 @@
 .tree-item:clicked{
     -fx-background:dodgerblue;
 }
+
+.directive{
+    -fx-fill:pink;
+}
+
+.register{
+    -fx-fill:red;
+}

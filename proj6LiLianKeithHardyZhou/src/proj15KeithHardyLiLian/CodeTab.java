@@ -10,6 +10,7 @@ package proj15KeithHardyLiLian;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tab;
 import org.fxmisc.flowless.VirtualizedScrollPane;
+import org.fxmisc.richtext.CodeArea;
 import org.fxmisc.richtext.LineNumberFactory;
 
 /**
@@ -41,7 +42,7 @@ public class CodeTab extends Tab{
         this.codeAreaContextMenu = codeAreaContextMenu;
         this.codeTabPane = codeTabPane;
 
-        this.addCodeArea(content);
+        this.addCodeArea(content, filename);
         this.setOnCloseRequest(event -> this.masterController.handleClose(event));
         this.setContextMenu(tabContextMenu);
     }
@@ -49,10 +50,16 @@ public class CodeTab extends Tab{
     /**
      * Creates a code area, adds it to a VirtualizedScrollPane, and then adds the scroll pane to the tab object.
      * @param content content to add to the code area if opening a file
+     * @param filename
      */
-    public void addCodeArea(String content){
+    public void addCodeArea(String content, String filename){
         // creation of the codeArea
-        JavaCodeArea codeArea = new JavaCodeArea();
+        CodeArea codeArea;
+        if(filename.endsWith(".asm"))
+            codeArea = new MIPSCodeArea();
+        else
+            codeArea = new JavaCodeArea();
+
         codeArea.setOnKeyPressed(event -> this.codeTabPane.resetSaveStatus());
         codeArea.replaceText(content);
         codeArea.setContextMenu(this.codeAreaContextMenu);
