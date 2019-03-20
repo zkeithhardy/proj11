@@ -221,7 +221,7 @@ public class ToolbarController {
         }
         // Disable appropriate assemble buttons
         this.disableAssembleRun();
-        // Run the java program
+        // Run the MIPS program
         ProcessBuilder processBuilder = new ProcessBuilder("java","-jar", "include/Mars4_5.jar",
                 this.codeTabPane.getFileName());
         AssembleOrRunTask runTask = new AssembleOrRunTask(this.console,processBuilder);
