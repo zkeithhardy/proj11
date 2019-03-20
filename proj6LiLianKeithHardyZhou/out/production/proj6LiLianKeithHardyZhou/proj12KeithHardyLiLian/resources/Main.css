@@ -49,24 +49,6 @@
 
 #checkButton {
     -fx-font: 13 arial;
-    -fx-base: yellow;
-    -fx-background-radius: 100;
-}
-
-#assembleButton{
-    -fx-font: 13 arial;
-    -fx-base: orange;
-    -fx-background-radius: 100;
-}
-
-#assembleRunButton{
-    -fx-font: 13 arial;
-    -fx-base: darkgreen;
-    -fx-background-radius: 100;
-}
-
-#stopMipsButton{
-    -fx-font: 13 arial;
     -fx-base: pink;
     -fx-background-radius: 100;
 }
@@ -132,16 +114,4 @@
 
 #console .caret{
     -fx-stroke: black;
-}
-
-.tree-item:clicked{
-    -fx-background:dodgerblue;
-}
-
-.directive{
-    -fx-fill:pink;
-}
-
-.register{
-    -fx-fill:red;
 }

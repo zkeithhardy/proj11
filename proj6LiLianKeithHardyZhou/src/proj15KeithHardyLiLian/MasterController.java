@@ -164,7 +164,7 @@ public class MasterController {
             this.checkButton.setDisable(false);
             this.assembleButton.setDisable(false);
             this.assembleRunButton.setDisable(false);
-            this.stopMipsButton.setDisable(false);
+            this.stopMipsButton.setDisable(true);
 
         }
         this.updateStructureView();

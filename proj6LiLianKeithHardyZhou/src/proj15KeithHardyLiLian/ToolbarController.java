@@ -176,15 +176,15 @@ public class ToolbarController {
      * handles Assembling MIPS code
      */
     public void handleAssemble(){
-        // create and run the compile process
+        // create assemble task and run it
         ProcessBuilder processBuilder = new ProcessBuilder("java","-jar", "include/Mars4_5.jar",
                 "a", this.codeTabPane.getFileName());
-        AssembleOrRunTask compileTask = new AssembleOrRunTask(this.console, processBuilder);
-        this.curFutureTask = new FutureTask<Boolean>(compileTask);
+        AssembleOrRunTask AssembleTask = new AssembleOrRunTask(this.console, processBuilder);
+        this.curFutureTask = new FutureTask<Boolean>(AssembleTask);
         ExecutorService compileExecutor = Executors.newFixedThreadPool(1);
         compileExecutor.execute(this.curFutureTask);
 
-        // Check if compile was successful, and if so, indicate this in the console
+        // Check if assemble was successful, and if so, indicate this in the console
         this.assembleSuccessful = false;
         try {
             this.assembleSuccessful = this.curFutureTask.get();
@@ -195,7 +195,7 @@ public class ToolbarController {
             }
             compileExecutor.shutdown();
         } catch (ExecutionException | InterruptedException | CancellationException e) {
-            compileTask.stop();
+            AssembleTask.stop();
         }
 
         //The stop button would not be disabled when there is a process running
