@@ -99,7 +99,7 @@ public class JavaCodeArea extends CodeArea{
         private static final String SEMICOLON_PATTERN = "\\;";
         private static final String STRING_PATTERN = "\"([^\"\\\\]|\\\\.)*\"";
         private static final String CHAR_PATTERN = "\"([^\'\\\\]|\\\\.)*\'";
-        private static final String COMMENT_PATTERN = "//[^\n]*" + "|" + "/\\*(.|\\R)*?\\*/";
+        private static final String COMMENT_PATTERN = "//[^\n]*" + "|\\$" + "/\\*(.|\\R)*?\\*/";
 
         private static final Pattern PATTERN = Pattern.compile(
                 "(?<KEYWORD>" + KEYWORD_PATTERN + ")"

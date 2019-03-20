@@ -2,141 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3f9f4d53-dccb-439a-ad59-57724734fed7" name="Default Changelist" comment="Merge branch 'master' of https://github.com/zkeithhardy/proj11&#10;&#10;# Conflicts:&#10;#&#9;proj6LiLianKeithHardyZhou/out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/semant/TypeCheckerVisitor.class">
-      <change beforePath="$PROJECT_DIR$/.idea/proj6LiLianKeithHardyZhou.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/proj6LiLianKeithHardyZhou.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj11KeithHardyZhangZhao/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/.idea/proj6LiLianKeithHardyZhou.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/CodeAreaContextMenu.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/CodeTab.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/CodeTabPane.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/Console.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/ConsoleContextMenu.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/DirectoryController$createDirectoryTreeTask.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/DirectoryController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/EditController$findReplace.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/EditController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/FileController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/HelpMenuController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/JavaCodeArea.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/JavaStyle.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/MasterController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/NavigateStructureVisitor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/NavigationController$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/NavigationController$ParseTask.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/NavigationController$SuperClassTask.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/NavigationController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/PreferenceController$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/PreferenceController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/StructureViewController$updateStructureViewTask.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/StructureViewController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/SuperClassVisitor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/TabContextMenu.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/ToolbarController$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/ToolbarController$CheckTask.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/ToolbarController$ParseTask.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/ToolbarController$ScanTask.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/ToolbarController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/ast/ASTNode.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/ast/ArrayAssignExpr.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/ast/ArrayExpr.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/ast/AssignExpr.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/ast/BinaryArithDivideExpr.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/ast/BinaryArithExpr.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/ast/BinaryArithMinusExpr.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/ast/BinaryArithModulusExpr.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/ast/BinaryArithPlusExpr.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/ast/BinaryArithTimesExpr.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/ast/BinaryCompEqExpr.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/ast/BinaryCompExpr.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/ast/BinaryCompGeqExpr.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/ast/BinaryCompGtExpr.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/ast/BinaryCompLeqExpr.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/ast/BinaryCompLtExpr.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/ast/BinaryCompNeExpr.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/ast/BinaryExpr.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/ast/BinaryLogicAndExpr.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/ast/BinaryLogicExpr.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/ast/BinaryLogicOrExpr.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/ast/BlockStmt.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/ast/BreakStmt.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/ast/CastExpr.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/ast/ClassList.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/ast/Class_.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/ast/ConstBooleanExpr.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/ast/ConstExpr.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/ast/ConstIntExpr.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/ast/ConstStringExpr.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/ast/DeclStmt.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/ast/DispatchExpr.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/ast/Expr.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/ast/ExprList.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/ast/ExprStmt.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/ast/Field.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/ast/ForStmt.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/ast/Formal.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/ast/FormalList.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/ast/IfStmt.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/ast/InstanceofExpr.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/ast/ListNode.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/ast/Member.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/ast/MemberList.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/ast/Method.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/ast/NewArrayExpr.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/ast/NewExpr.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/ast/Program.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/ast/ReturnStmt.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/ast/Stmt.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/ast/StmtList.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/ast/UnaryDecrExpr.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/ast/UnaryExpr.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/ast/UnaryIncrExpr.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/ast/UnaryNegExpr.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/ast/UnaryNotExpr.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/ast/VarExpr.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/ast/WhileStmt.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/lexer/Scanner.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/lexer/SourceFile.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/lexer/Token$Kind.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/lexer/Token.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/parser/Parser$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/parser/Parser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/semant/EnvironmentBuilderVisitor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/semant/InheritanceTreeVisitor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/semant/MainMainVisitor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/semant/NumLocalVarsVisitor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/semant/SemanticAnalyzer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/semant/StringConstantsVisitor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/semant/TypeCheckerVisitor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/treedrawer/Drawer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/treedrawer/DrawerFrame.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/treedrawer/DrawerPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/treedrawer/DrawingTree.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/treedrawer/LayoutVisitor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/treedrawer/Polygon.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/treedrawer/Polyline.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/util/ClassTreeNode.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/util/CompilationException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/util/Error$Kind.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/util/Error.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/util/ErrorHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/util/SymbolTable.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/bantam/visitor/Visitor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/include/richtextfx-fat-0.9.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/resources/Main.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/resources/Main.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/resources/NightMode.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/resources/c.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/resources/f.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/resources/m.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj6LiLianKeithHardyZhou/proj13KeithHardyLiLian/test/CheckerTestKeithHardyLiLian.btm" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/proj15KeithHardyLiLian/JavaCodeArea.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/proj15KeithHardyLiLian/JavaCodeArea.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/proj15KeithHardyLiLian/MasterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/proj15KeithHardyLiLian/MasterController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/proj15KeithHardyLiLian/ToolbarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/proj15KeithHardyLiLian/ToolbarController.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -151,8 +17,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/proj15KeithHardyLiLian/ToolbarController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="81" selection-start-line="81" selection-end-line="81" />
+            <state relative-caret-position="-560">
+              <caret line="223" column="23" selection-start-line="223" selection-start-column="23" selection-end-line="223" selection-end-column="23" />
               <folding>
                 <element signature="docComment;class#ToolbarController#0" />
                 <element signature="docComment;method#ToolbarController#0;class#ToolbarController#0" />
@@ -162,7 +28,6 @@
                 <element signature="e#3068#3113#1" />
                 <element signature="e#3117#3163#1" />
                 <element signature="docComment;method#handleScan#0;class#ToolbarController#0" />
-                <element signature="method#handleScan#0;class#ToolbarController#0" />
                 <element signature="e#3437#3699#0" />
                 <element signature="docComment;method#handleParsing#0;class#ToolbarController#0" />
                 <element signature="method#handleParsing#0;class#ToolbarController#0" />
@@ -179,8 +44,6 @@
                 <element signature="docComment;method#handleAssemble#0;class#ToolbarController#0" />
                 <element signature="docComment;method#handleAssembleRun#0;class#ToolbarController#0" />
                 <element signature="docComment;method#handleStopMips#0;class#ToolbarController#0" />
-                <element signature="docComment;method#disableAssembleRun#0;class#ToolbarController#0" />
-                <element signature="docComment;method#enableAssembleRun#0;class#ToolbarController#0" />
                 <element signature="docComment;method#scanIsDone#0;class#ToolbarController#0" />
                 <element signature="n#!!block;n#scanIsDone#1;n#ToolbarController#0" />
                 <element signature="docComment;method#parseIsDone#0;class#ToolbarController#0" />
@@ -226,11 +89,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/proj15KeithHardyLiLian/MasterController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="60" column="35" selection-start-line="60" selection-start-column="25" selection-end-line="60" selection-end-column="35" />
+            <state relative-caret-position="287">
+              <caret line="69" column="6" lean-forward="true" selection-start-line="69" selection-start-column="6" selection-end-line="69" selection-end-column="6" />
               <folding>
                 <element signature="docComment;class#MasterController#0" />
                 <element signature="e#2643#2719#0" />
@@ -344,11 +207,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/proj15KeithHardyLiLian/JavaCodeArea.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-494">
-              <caret line="95" column="61" lean-forward="true" selection-start-line="95" selection-start-column="61" selection-end-line="95" selection-end-column="61" />
+            <state relative-caret-position="99">
+              <caret line="101" column="72" selection-start-line="101" selection-start-column="72" selection-end-line="101" selection-end-column="72" />
             </state>
           </provider>
         </entry>
@@ -464,9 +327,9 @@
         <option value="$PROJECT_DIR$/src/proj13KeithHardyLiLian/NavigationController.java" />
         <option value="$PROJECT_DIR$/src/proj13KeithHardyLiLian/NavigateStructureVisitor.java" />
         <option value="$PROJECT_DIR$/src/proj13KeithHardyLiLian/SuperClassVisitor.java" />
-        <option value="$PROJECT_DIR$/src/proj15KeithHardyLiLian/JavaCodeArea.java" />
-        <option value="$PROJECT_DIR$/src/proj15KeithHardyLiLian/ToolbarController.java" />
         <option value="$PROJECT_DIR$/src/proj15KeithHardyLiLian/MasterController.java" />
+        <option value="$PROJECT_DIR$/src/proj15KeithHardyLiLian/ToolbarController.java" />
+        <option value="$PROJECT_DIR$/src/proj15KeithHardyLiLian/JavaCodeArea.java" />
       </list>
     </option>
   </component>
@@ -517,7 +380,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553047755166" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553052250569" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/proj15KeithHardyLiLian" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -970,13 +833,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/proj15KeithHardyLiLian/JavaCodeArea.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-494">
-          <caret line="95" column="61" lean-forward="true" selection-start-line="95" selection-start-column="61" selection-end-line="95" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/proj15KeithHardyLiLian/NavigateStructureVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-216">
@@ -1026,86 +882,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/proj15KeithHardyLiLian/ToolbarController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="81" selection-start-line="81" selection-end-line="81" />
-          <folding>
-            <element signature="docComment;class#ToolbarController#0" />
-            <element signature="docComment;method#ToolbarController#0;class#ToolbarController#0" />
-            <element signature="docComment;method#handleScanOrScanParse#0;class#ToolbarController#0" />
-            <element signature="method#handleScanOrScanParse#0;class#ToolbarController#0" />
-            <element signature="e#2990#3032#1" />
-            <element signature="e#3068#3113#1" />
-            <element signature="e#3117#3163#1" />
-            <element signature="docComment;method#handleScan#0;class#ToolbarController#0" />
-            <element signature="method#handleScan#0;class#ToolbarController#0" />
-            <element signature="e#3437#3699#0" />
-            <element signature="docComment;method#handleParsing#0;class#ToolbarController#0" />
-            <element signature="method#handleParsing#0;class#ToolbarController#0" />
-            <element signature="e#3910#4679#0" />
-            <element signature="e#4189#4506#0" />
-            <element signature="e#4273#4451#1" />
-            <element signature="e#4555#4669#0" />
-            <element signature="docComment;method#handleChecking#0;class#ToolbarController#0" />
-            <element signature="method#handleChecking#0;class#ToolbarController#0" />
-            <element signature="e#4921#5592#0" />
-            <element signature="e#5212#5332#0" />
-            <element signature="e#5381#5582#0" />
-            <element signature="docComment;method#startAssembleOrAssembleRun#0;class#ToolbarController#0" />
-            <element signature="docComment;method#handleAssemble#0;class#ToolbarController#0" />
-            <element signature="docComment;method#handleAssembleRun#0;class#ToolbarController#0" />
-            <element signature="docComment;method#handleStopMips#0;class#ToolbarController#0" />
-            <element signature="docComment;method#disableAssembleRun#0;class#ToolbarController#0" />
-            <element signature="docComment;method#enableAssembleRun#0;class#ToolbarController#0" />
-            <element signature="docComment;method#scanIsDone#0;class#ToolbarController#0" />
-            <element signature="n#!!block;n#scanIsDone#1;n#ToolbarController#0" />
-            <element signature="docComment;method#parseIsDone#0;class#ToolbarController#0" />
-            <element signature="n#!!block;n#parseIsDone#1;n#ToolbarController#0" />
-            <element signature="docComment;method#checkIsDone#0;class#ToolbarController#0" />
-            <element signature="method#checkIsDone#0;class#ToolbarController#0" />
-            <element signature="method#getTaskStatus#0;class#ToolbarController#0" />
-            <element signature="e#10617#10676#1" />
-            <element signature="docComment;class#CheckTask#0;class#ToolbarController#0" />
-            <element signature="class#CheckTask#0;class#ToolbarController#0" />
-            <element signature="docComment;method#call#0;class#CheckTask#0;class#ToolbarController#0" />
-            <element signature="method#call#0;class#CheckTask#0;class#ToolbarController#0" />
-            <element signature="e#11452#12525#0" />
-            <element signature="e#11731#12509#0" />
-            <element signature="e#11790#12300#1" />
-            <element signature="e#12090#12277#1" />
-            <element signature="e#12304#12491#1" />
-            <element signature="e#12568#13561#0" />
-            <element signature="e#12604#13545#0" />
-            <element signature="e#13019#13527#1" />
-            <element signature="e#13318#13505#1" />
-            <element signature="docComment;class#ParseTask#0;class#ToolbarController#0" />
-            <element signature="class#ParseTask#0;class#ToolbarController#0" />
-            <element signature="docComment;method#call#0;class#ParseTask#0;class#ToolbarController#0" />
-            <element signature="method#call#0;class#ParseTask#0;class#ToolbarController#0" />
-            <element signature="e#14198#14405#0" />
-            <element signature="e#14448#15441#0" />
-            <element signature="e#14484#15425#0" />
-            <element signature="e#14899#15407#1" />
-            <element signature="e#15198#15385#1" />
-            <element signature="docComment;class#ScanTask#0;class#ToolbarController#0" />
-            <element signature="docComment;method#call#0;class#ScanTask#0;class#ToolbarController#0" />
-            <element signature="e#16444#17376#0" />
-            <element signature="e#16744#17217#1" />
-            <element signature="e#17024#17199#1" />
-            <element signature="docComment;class#AssembleOrRunTask#0;class#ToolbarController#0" />
-            <element signature="docComment;method#AssembleOrRunTask#0;class#AssembleOrRunTask#0;class#ToolbarController#0" />
-            <element signature="docComment;method#call#0;class#AssembleOrRunTask#0;class#ToolbarController#0" />
-            <element signature="e#19694#19768#0" />
-            <element signature="docComment;method#stop#0;class#AssembleOrRunTask#0;class#ToolbarController#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/proj15KeithHardyLiLian/MasterController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="60" column="35" selection-start-line="60" selection-start-column="25" selection-end-line="60" selection-end-column="35" />
+        <state relative-caret-position="287">
+          <caret line="69" column="6" lean-forward="true" selection-start-line="69" selection-start-column="6" selection-end-line="69" selection-end-column="6" />
           <folding>
             <element signature="docComment;class#MasterController#0" />
             <element signature="e#2643#2719#0" />
@@ -1206,6 +986,86 @@
             <element signature="e#18836#18881#0" />
             <element signature="e#18836#19012#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/proj15KeithHardyLiLian/ToolbarController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-560">
+          <caret line="223" column="23" selection-start-line="223" selection-start-column="23" selection-end-line="223" selection-end-column="23" />
+          <folding>
+            <element signature="docComment;class#ToolbarController#0" />
+            <element signature="docComment;method#ToolbarController#0;class#ToolbarController#0" />
+            <element signature="docComment;method#handleScanOrScanParse#0;class#ToolbarController#0" />
+            <element signature="method#handleScanOrScanParse#0;class#ToolbarController#0" />
+            <element signature="e#2990#3032#1" />
+            <element signature="e#3068#3113#1" />
+            <element signature="e#3117#3163#1" />
+            <element signature="docComment;method#handleScan#0;class#ToolbarController#0" />
+            <element signature="e#3437#3699#0" />
+            <element signature="docComment;method#handleParsing#0;class#ToolbarController#0" />
+            <element signature="method#handleParsing#0;class#ToolbarController#0" />
+            <element signature="e#3910#4679#0" />
+            <element signature="e#4189#4506#0" />
+            <element signature="e#4273#4451#1" />
+            <element signature="e#4555#4669#0" />
+            <element signature="docComment;method#handleChecking#0;class#ToolbarController#0" />
+            <element signature="method#handleChecking#0;class#ToolbarController#0" />
+            <element signature="e#4921#5592#0" />
+            <element signature="e#5212#5332#0" />
+            <element signature="e#5381#5582#0" />
+            <element signature="docComment;method#startAssembleOrAssembleRun#0;class#ToolbarController#0" />
+            <element signature="docComment;method#handleAssemble#0;class#ToolbarController#0" />
+            <element signature="docComment;method#handleAssembleRun#0;class#ToolbarController#0" />
+            <element signature="docComment;method#handleStopMips#0;class#ToolbarController#0" />
+            <element signature="docComment;method#scanIsDone#0;class#ToolbarController#0" />
+            <element signature="n#!!block;n#scanIsDone#1;n#ToolbarController#0" />
+            <element signature="docComment;method#parseIsDone#0;class#ToolbarController#0" />
+            <element signature="n#!!block;n#parseIsDone#1;n#ToolbarController#0" />
+            <element signature="docComment;method#checkIsDone#0;class#ToolbarController#0" />
+            <element signature="method#checkIsDone#0;class#ToolbarController#0" />
+            <element signature="method#getTaskStatus#0;class#ToolbarController#0" />
+            <element signature="e#10617#10676#1" />
+            <element signature="docComment;class#CheckTask#0;class#ToolbarController#0" />
+            <element signature="class#CheckTask#0;class#ToolbarController#0" />
+            <element signature="docComment;method#call#0;class#CheckTask#0;class#ToolbarController#0" />
+            <element signature="method#call#0;class#CheckTask#0;class#ToolbarController#0" />
+            <element signature="e#11452#12525#0" />
+            <element signature="e#11731#12509#0" />
+            <element signature="e#11790#12300#1" />
+            <element signature="e#12090#12277#1" />
+            <element signature="e#12304#12491#1" />
+            <element signature="e#12568#13561#0" />
+            <element signature="e#12604#13545#0" />
+            <element signature="e#13019#13527#1" />
+            <element signature="e#13318#13505#1" />
+            <element signature="docComment;class#ParseTask#0;class#ToolbarController#0" />
+            <element signature="class#ParseTask#0;class#ToolbarController#0" />
+            <element signature="docComment;method#call#0;class#ParseTask#0;class#ToolbarController#0" />
+            <element signature="method#call#0;class#ParseTask#0;class#ToolbarController#0" />
+            <element signature="e#14198#14405#0" />
+            <element signature="e#14448#15441#0" />
+            <element signature="e#14484#15425#0" />
+            <element signature="e#14899#15407#1" />
+            <element signature="e#15198#15385#1" />
+            <element signature="docComment;class#ScanTask#0;class#ToolbarController#0" />
+            <element signature="docComment;method#call#0;class#ScanTask#0;class#ToolbarController#0" />
+            <element signature="e#16444#17376#0" />
+            <element signature="e#16744#17217#1" />
+            <element signature="e#17024#17199#1" />
+            <element signature="docComment;class#AssembleOrRunTask#0;class#ToolbarController#0" />
+            <element signature="docComment;method#AssembleOrRunTask#0;class#AssembleOrRunTask#0;class#ToolbarController#0" />
+            <element signature="docComment;method#call#0;class#AssembleOrRunTask#0;class#ToolbarController#0" />
+            <element signature="e#19694#19768#0" />
+            <element signature="docComment;method#stop#0;class#AssembleOrRunTask#0;class#ToolbarController#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/proj15KeithHardyLiLian/JavaCodeArea.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="99">
+          <caret line="101" column="72" selection-start-line="101" selection-start-column="72" selection-end-line="101" selection-end-column="72" />
         </state>
       </provider>
     </entry>
