@@ -300,14 +300,14 @@ public class ToolbarController {
 
     /**
      * Check if the task is still running.
-     * @return true if this task is running, and false otherwise
+     * @return true if this task is not running, and false otherwise
      */
     public boolean getTaskStatus(){
         if(this.curFutureTask == null){
-            return false;
+            return true;
         }
         else{
-            return !this.curFutureTask.isDone();
+            return this.curFutureTask.isDone();
         }
     }
 
