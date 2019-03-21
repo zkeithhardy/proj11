@@ -55,10 +55,6 @@ public class StructureViewController
         this.treeView = fileStructureTree;
         this.console = console;
 
-        // Updates the file structure view whenever a key is typed
-        this.codeTabPane.addEventFilter(KeyEvent.KEY_RELEASED, event -> {
-            this.updateStructureView();
-        });
         //update the file structure view when user change tab
         this.codeTabPane.getSelectionModel().selectedItemProperty().addListener((observableValue, oldTab, newTab) -> {
             this.updateStructureView();
@@ -74,9 +70,11 @@ public class StructureViewController
     public TreeItem<String> generateStructureTree(String fileName)
     {
         TreeItem<String> newRoot = new TreeItem<>(fileName);
-
+        errorHandler.clear();
         Parser parser = new Parser(errorHandler);
         Program ast = parser.parse(fileName);
+
+        System.out.println(errorHandler.errorsFound());
         if(!errorHandler.errorsFound()) {
             NavigateStructureVisitor structureViewVisitor = new NavigateStructureVisitor();
             newRoot = structureViewVisitor.buildOrNavigateStructureTree(newRoot, ast, this.treeItemLineNumMap,
@@ -92,7 +90,7 @@ public class StructureViewController
     public void updateStructureView(){
         //declare a new thread and assign it with the work of updating the structure view
         new Thread(()->{
-            updateStructureViewTask updateStructViewTask = new updateStructureViewTask(this.codeTabPane,
+            UpdateStructureViewTask updateStructViewTask = new UpdateStructureViewTask(this.codeTabPane,
                     this);
             FutureTask<TreeItem<String>> curFutureTask = new FutureTask<>(updateStructViewTask );
             ExecutorService curExecutor = Executors.newFixedThreadPool(1);
@@ -104,7 +102,7 @@ public class StructureViewController
                 //if the update failed, an dialog box will pops up reporting error
             }catch (InterruptedException| ExecutionException e){
                 Platform.runLater(()-> {
-                    this.console.writeToConsole("Failed to update structure view.\n","Error");
+                    this.console.writeToConsole("","Error");
                 });
             }
             //set the root node of the current structure view to the new root node
@@ -140,7 +138,7 @@ public class StructureViewController
      * Designed to be used for compilation or running.
      * Writes the input/output error to the console.
      */
-    private class updateStructureViewTask implements Callable<TreeItem<String>> {
+    private class UpdateStructureViewTask implements Callable<TreeItem<String>> {
         private CodeTabPane codeTabPane;
         private StructureViewController structureViewController;
 
@@ -150,7 +148,7 @@ public class StructureViewController
          * @param structureViewController the structure view controller class to access the structure tree
          */
 
-        public updateStructureViewTask(CodeTabPane codeTabPane,
+        public UpdateStructureViewTask(CodeTabPane codeTabPane,
                                        StructureViewController structureViewController){
             this.codeTabPane=codeTabPane;
             this.structureViewController = structureViewController;
