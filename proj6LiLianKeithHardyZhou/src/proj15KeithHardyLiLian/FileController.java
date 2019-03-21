@@ -162,7 +162,7 @@ public class FileController {
         VirtualizedScrollPane<CodeArea> scrollPane = (VirtualizedScrollPane<CodeArea>) curTab.getContent();
         CodeArea codeArea = scrollPane.getContent();
         String text = codeArea.getText();
-        curTab.addCodeArea(text,file.getName());
+        curTab.addCodeArea(text,file.getName(),true);
         // open file directory
         this.masterController.createDirectoryTree();
         // update structure view

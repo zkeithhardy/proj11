@@ -42,7 +42,7 @@ public class CodeTab extends Tab{
         this.codeAreaContextMenu = codeAreaContextMenu;
         this.codeTabPane = codeTabPane;
 
-        this.addCodeArea(content, filename);
+        this.addCodeArea(content, filename, false);
         this.setOnCloseRequest(event -> this.masterController.handleClose(event));
         this.setContextMenu(tabContextMenu);
     }
@@ -52,17 +52,17 @@ public class CodeTab extends Tab{
      * @param content content to add to the code area if opening a file
      * @param filename
      */
-    public void addCodeArea(String content, String filename){
+    public void addCodeArea(String content, String filename, boolean saving){
         // creation of the codeArea
         CodeArea codeArea;
         if(filename.endsWith(".asm") || filename.endsWith(".s")) {
-            if(this.codeTabPane.getCodeArea() instanceof MIPSCodeArea){
+            if((this.codeTabPane.getCodeArea() instanceof MIPSCodeArea) && saving){
                 return;
             }
             codeArea = new MIPSCodeArea();
         }
         else {
-            if(this.codeTabPane.getCodeArea() instanceof JavaCodeArea){
+            if((this.codeTabPane.getCodeArea() instanceof JavaCodeArea) && saving ){
                 return;
             }
             codeArea = new JavaCodeArea();
