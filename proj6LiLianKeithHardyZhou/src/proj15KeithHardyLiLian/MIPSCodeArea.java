@@ -78,41 +78,35 @@ class MIPSStyle {
 
     // a list of strings that contain the operations for the IDE to identify.
     private static final String[] OPERATION = new String[]{
-            "abs","b","beqz","bge","bgeu","bgt","bgtu","ble","bleu","blt","bltu","bnez",
-            "l.d","l.s","la","lbu","ld","ldc1","lh","lhu","li","ll","lwc1","lwl","lwr",
-            "mfc1.d","move","mtcl.d","mul","mulo","mulou","mulu","neg","not","rem","remu",
-            "rol","ror","s.d","s.s","sc","sd","sdc1","seq","sge","sgeu","sgt","sgtu","sh",
-            "sle","sleu","sne","subi","subiu","swc1","swl","swr","ulh","ulhu","ulw","ush",
-            "usw",
-
-            "abs.d","abs.s","add.d","add.s","bc1f","bc1t","break","c.eq.d","c.eq.s","c.le.d",
-            "c.le.s","c.lt.d","c.lt.s","ceil.w.d","ceil.w.s","clo","clz","cvt.d.s","cvt.d.w",
-            "cvt.s.d","cvt.s.w","cvt.w.d","cvt.w.s","div.d","div.s","eret","floor.w.d",
-            "floor.w.s","lui","madd","maddu","mfc0","mfc1","mov.d","mov.s","movf","movf.d",
-            "movf.s","movn","movn.d","movn.s","movt","movt.d","movt.s","movz","movz.d",
-            "movz.s","msub","msubu","mtc0","mtc1","mthi","mtlo","mul.d","mul.s","neg.d",
-            "neg.s","nop","nor","round.w.d","round.w.s","sqrt.d","sqrt.s","sub.d","sub.s",
-            "teq","teqi","tge","tgei","tgeiu","tgeu","tlt","tlti","tltiu","tltu","tne",
-            "tnei","trunc.w.d","trunc.w.s",
-
-            "add","addi","addiu","addu","and","andi","beq","bgez","bgezal","bgtz","blez",
-            "bltz","bltzal","bne","div","divu","j","jal","jalr","jr","lb","lur","lw","mfhi",
-            "mflo","mult","multu","noop","or","ori","sb","sll","sllv","slt","slti","sltiu",
-            "sltu","sra","srl","srlv","sub","subu","sw","syscall","xor","xori"
+            "xori","xor","usw","ush","ulw","ulhu","ulh","trunc.w.s","trunc.w.d","tnei",
+            "tne","tltu","tltiu","tlti","tlt","tgeu","tgeiu","tgei","tge","teqi","teq",
+            "syscall","swr","swl","swc1","sw","subu","subiu","subi","sub.s","sub.d","sub",
+            "srlv","srl","sra","sqrt.s","sqrt.d","sne","sltu","sltiu","slti","slt","sllv",
+            "sll","sleu","sle","sh","sgtu","sgt","sgeu","sge","seq","sdc1","sd","sc","sb",
+            "s.s","s.d","round.w.s","round.w.d","ror","rol","remu","rem","ori","or","not",
+            "nor","nop","noop","neg.s","neg.d","neg","mulu","multu","mult","mulou","mulo",
+            "mul.s","mul.d","mul","mtlo","mthi","mtcl.d","mtc1","mtc0","msubu","msub","movz.s",
+            "movz.d","movz","movt.s","movt.d","movt","movn.s","movn.d","movn","movf.s","movf.d",
+            "movf","move","mov.s","mov.d","mflo","mfhi","mfc1.d","mfc1","mfc0","maddu","madd",
+            "lwr","lwl","lwc1","lw","lur","lui","ll","li","lhu","lh","ldc1","ld","lbu","lb",
+            "la","l.s","l.d","jr","jalr","jal","j","floor.w.s","floor.w.d","eret","divu","div.s",
+            "div.d","div","cvt.w.s","cvt.w.d","cvt.s.w","cvt.s.d","cvt.d.w","cvt.d.s","clz",
+            "clo","ceil.w.s","ceil.w.d","c.lt.s","c.lt.d","c.le.s","c.le.d","c.eq.s","c.eq.d",
+            "break","bnez","bne","bltzal","bltz","bltu","blt","blez","bleu","ble","bgtz","bgtu",
+            "bgt","bgezal","bgez","bgeu","bge","beqz","beq","bc1t","bc1f","b","andi","and","addu",
+            "addiu","addi","add.s","add.d","add","abs.s","abs.d","abs"
     };
 
     // a list of strings that contain the directives for the IDE to identify.
     private static final String[] DIRECTIVE = new String[]{
-            "data","text","word","ascii","asciiz","byte","align","half","space",
-            "double","float","extern","kdata","ktext","globl","set","eqv","macro",
-            "end_macro","include"
+            "word","text","space","set","macro","ktext","kdata","include","half","globl","float",
+            "extern","eqv","end_macro","double","data","byte","asciiz","ascii","align"
     };
 
     // a list of strings that contain the registers for the IDE to identify.
     private static final String[] REGISTER = new String[]{
-            "zero","at","v0","v1","a0","a1","a2","a3","t0","t1","t2","t3",
-            "t4","t5","t6","t7","t8","t9","s0","s1","s2","s3","s4","s5","s6",
-            "s7","s8","k0","k1","gp","sp","fp","ra"
+            "zero","v1","v0","t9","t8","t7","t6","t5","t4","t3","t2","t1","t0","sp","s8","s7",
+            "s6","s5","s4","s3","s2","s1","s0","ra","k1","k0","gp","fp","at","a3","a2","a1","a0"
     };
 
     // the regex rules for the ide
