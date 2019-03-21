@@ -136,7 +136,6 @@ public class SemanticAnalyzer
         //         4. method calls with the wrong number or types of arguments
         //         5. use of an undeclared variable
         doTypeChecking();
-        System.out.println("type checked");
         // if errors were found, throw an exception, indicating failure
         if (errorHandler.errorsFound()) {
             throw new CompilationException("Checker errors found.");

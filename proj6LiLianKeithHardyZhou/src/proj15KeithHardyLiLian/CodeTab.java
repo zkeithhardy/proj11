@@ -55,7 +55,7 @@ public class CodeTab extends Tab{
     public void addCodeArea(String content, String filename){
         // creation of the codeArea
         CodeArea codeArea;
-        if(filename.endsWith(".asm"))
+        if(filename.endsWith(".asm") || filename.endsWith(".s"))
             codeArea = new MIPSCodeArea();
         else
             codeArea = new JavaCodeArea();

@@ -94,7 +94,7 @@ public class MasterController {
         this.editController = new EditController(this.codeTabPane);
         this.fileController = new FileController(this.vBox,this.codeTabPane,this);
         this.toolbarController = new ToolbarController(this.console, this.codeTabPane, this.stopMipsButton,
-                this.assembleButton,this.assembleRunButton);
+                this.assembleButton,this.assembleRunButton, scanButton, scanParseButton, checkButton);
 
         this.preferenceController = new PreferenceController(this.vBox, this.console, structureTabPane,
                 fileStructureItem,directoryTreeItem,this.fileStructureTree,this.directoryTree);
@@ -167,8 +167,10 @@ public class MasterController {
             this.stopMipsButton.setDisable(true);
 
         }
+
         this.updateStructureView();
         this.createDirectoryTree();
+        this.enableCorrectButtons();
     }
 
     /**
@@ -508,7 +510,13 @@ public class MasterController {
         }
     }
 
-
+    /**
+     * Update the correct button so that the proper buttons are enabled for different
+     * type of file
+     */
+    private void enableCorrectButtons(){
+        this.toolbarController.enableCorrectButtons();
+    }
     /**
      * Handles Semantic Analyzer
      */
