@@ -23,7 +23,8 @@
    IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A 
    PARTICULAR PURPOSE.
 
-   This file was modified by Dale Skrien, February, 2019.
+   Completed by Dale Skrien
+   January 2019
 */
 
 package proj15KeithHardyLiLian.bantam.semant;
@@ -40,13 +41,13 @@ import java.util.*;
  * In particular this class is able to perform (via the <tt>analyze()</tt>
  * method) the following tests and analyses: (1) legal inheritence
  * hierarchy (all classes have existing parent, no cycles), (2)
- * legal class member declaration, (3) there is a correct bantam.Main class
+ * legal class member declaration, (3) there is a correct Main class
  * and main() method, and (4) each class member is correctly typed.
- * <p>
- * This class is incomplete and will need to be implemented by the student.
+ * <p/>
  */
 public class SemanticAnalyzer
 {
+
     /**
      * reserved words that are tokens of type ID, but cannot be declared as the
      * names of (a) classes, (b) methods, (c) fields, (d) variables.
@@ -54,7 +55,7 @@ public class SemanticAnalyzer
      * However, class names can be used as variable names.
      */
     public static final Set<String> reservedIdentifiers = new HashSet<>(Arrays.asList(
-            "null", "this", "super", "void", "int", "boolean", "true", "false"));
+            "null", "this", "super", "void", "int", "boolean"));
 
     /**
      * Root of the AST
@@ -67,13 +68,13 @@ public class SemanticAnalyzer
     private ClassTreeNode root;
 
     /**
-     * Maps class names to ClassTreeNode objects representing the class
+     * Maps class names to ClassTreeNode objects describing the class
      */
     private Hashtable<String, ClassTreeNode> classMap = new Hashtable<String,
             ClassTreeNode>();
 
     /**
-     * error handling
+     * Object for error handling
      */
     private ErrorHandler errorHandler;
 
@@ -96,14 +97,14 @@ public class SemanticAnalyzer
      * Analyze the AST checking for semantic errors and annotating the tree
      * Also builds an auxiliary class hierarchy tree
      *
-     * @param program root of the AST to be checked
+     * @param program root of the AST
      * @return root of the class hierarchy tree (needed for code generation)
      * <p>
      * Must add code to do the following:
      * 1 - add built-in classes in classMap (already done)
      * 2 - add user-defined classes and build the inheritance tree of ClassTreeNodes
      * 3 - build the environment for each class (add class members only) and check
-     *     that members are declared properly
+     * that members are declared properly
      * 4 - check that the Main class and main method are declared properly
      * 5 - type check everything
      * See the lab manual for more details on each of these steps.
@@ -115,39 +116,174 @@ public class SemanticAnalyzer
         // step 1:  add built-in classes to classMap
         addBuiltins();
 
-        // step 2: add user-defined classes and build the inheritance tree of ClassTreeNodes
-        InheritanceTreeVisitor inheritanceTreeVisitor = new InheritanceTreeVisitor();
-        this.classMap = inheritanceTreeVisitor.buildClassMap(this.program, this.classMap, this.errorHandler);
+        //step 2:  add user-defined classes and build the inheritance tree of
+        // ClassTreeNodes
+        buildInheritanceTree();
 
-        // step 3: build the environment for each class (add class members only) and check
-        //          that members are declared properly
-        EnvironmentBuilderVisitor environmentBuilderVisitor = new EnvironmentBuilderVisitor();
-        this.classMap = environmentBuilderVisitor.buildEnvironment(this.program, this.classMap, this.errorHandler);
+        //step 3: build the field and method symbol tables for each ClassTreeNode
+        //        Just add the class's fields & methods and not the
+        //        inherited ones since the SymbolTable's lookup method checks
+        //        the superclasses for you.
+        buildFieldAndMethodTables();
 
-        // step 4: check that the Main class and main method are declared properly
-        MainMainVisitor mainMainVisitor = new MainMainVisitor();
-        //need to register error here if there is not a main class
-        boolean hasMain = mainMainVisitor.hasMain(this.program, this.classMap, this.errorHandler);
-
-        if(hasMain){
-            //step 5: type check everything
-            TypeCheckerVisitor typeCheckerVisitor = new TypeCheckerVisitor();
-            boolean checked = typeCheckerVisitor.typeCheck(this.program,this.classMap.get("Main"),
-                      this.classMap.get("Main").getVarSymbolTable(),this.errorHandler);
-            if(checked)
-                return root;
+        //step 4: check whether there is a Main class with a main method.
+        checkForMainClassWithMainMethod();
+        System.out.println("found main");
+        //step 5:  do type-checking for all expressions.  This includes checking for:
+        //         1. two local variables of the same name with overlapping scopes
+        //         2. break statements not in loops
+        //         3. calling a non-existent method
+        //         4. method calls with the wrong number or types of arguments
+        //         5. use of an undeclared variable
+        doTypeChecking();
+        System.out.println("type checked");
+        // if errors were found, throw an exception, indicating failure
+        if (errorHandler.errorsFound()) {
+            throw new CompilationException("Checker errors found.");
         }
-        return null;
+
+        return root;
+    }
+
+    public ErrorHandler getErrorHandler() { return errorHandler; }
+
+    private void doTypeChecking() {
+        TypeCheckerVisitor visitor = new TypeCheckerVisitor(errorHandler, root);
+        visitor.visit(program);
+    }
+
+    private void checkForMainClassWithMainMethod() {
+        ClassTreeNode mainNode = classMap.get("Main");
+        if (mainNode == null) {
+            errorHandler.register(Error.Kind.SEMANT_ERROR, "There is no Main class " +
+                    "(with a main() method).");
+        }
+        else {
+            Method mainMethod = (Method) mainNode.getMethodSymbolTable().lookup("main");
+            if (mainMethod == null || ! mainMethod.getReturnType().equals("void")
+                                   || mainMethod.getFormalList().getSize() > 0) {
+                errorHandler.register(Error.Kind.SEMANT_ERROR,
+                        "There is no main() method in the Main class with " +
+                                "no parameters and void return type.");
+            }
+        }
+    }
+
+    private void buildFieldAndMethodTables() {
+        /* NOTE:  This should have been implemented as a visitor,
+                  such as part of the ClassMapBuilderVisitor
+        */
+        for (ClassTreeNode treeNode : classMap.values()) {
+            SymbolTable fields = treeNode.getVarSymbolTable();
+            SymbolTable methods = treeNode.getMethodSymbolTable();
+            fields.enterScope();
+            fields.add("this", treeNode.getName());
+            fields.add("super", (treeNode.getParent() == null ? "" :
+                    treeNode.getParent().getName()));
+            methods.enterScope();
+            MemberList list = treeNode.getASTNode().getMemberList();
+            for (ASTNode member : list) {
+                if (member instanceof Field) {
+                    if (SemanticAnalyzer.reservedIdentifiers.contains(((Field) member).getName())) {
+                        errorHandler.register(Error.Kind.SEMANT_ERROR,
+                                treeNode.getASTNode().getFilename(),
+                                member.getLineNum(), "Class " + treeNode.getName() + " "
+                                        + "has a field " + "named: " + ((Field) member).getName()
+                                        + ", which is illegal.");
+                    }
+                    else if (fields.peek(((Field) member).getName()) != null) {
+                        errorHandler.register(Error.Kind.SEMANT_ERROR,
+                                treeNode.getASTNode().getFilename(), member.getLineNum(),
+                                "Class " + treeNode.getName()
+                                        + " has two fields of the same name: "
+                                        + ((Field) member).getName() + ".");
+                    }
+                    else {
+                        fields.add(((Field) member).getName(), ((Field) member).getType());
+                    }
+                }
+                else { // if(member instanceof Method)
+                    if (SemanticAnalyzer.reservedIdentifiers.contains(((Method) member).getName())) {
+                        errorHandler.register(Error.Kind.SEMANT_ERROR,
+                                treeNode.getASTNode().getFilename(),
+                                member.getLineNum(), "Class " + treeNode.getName() + " "
+                                        + "has a method named: "
+                                        + ((Method) member).getName() + ", which is illegal.");
+                    }
+                    else if (methods.peek(((Method) member).getName()) != null) {
+                        errorHandler.register(Error.Kind.SEMANT_ERROR,
+                                treeNode.getASTNode().getFilename(), member.getLineNum(),
+                                "Class " + treeNode.getName()
+                                        + " has two methods of the same name: "
+                                        + ((Method) member).getName() + ".");
+                    }
+                    else {
+                        methods.add(((Method) member).getName(), member);
+                    }
+                }
+            }
+        }
+    }
+
+    private void buildInheritanceTree() {
+        //step 1: add all user-defined classes to classMap
+        ClassMapBuilderVisitor visitor = new ClassMapBuilderVisitor(classMap,
+                errorHandler);
+        visitor.visit(program);
+
+        //step 2: fix parent pointers in all ClassTreeNodes in classMap
+        for (ClassTreeNode treeNode : classMap.values()) {
+            Class_ astNode = treeNode.getASTNode();
+            if (astNode.getName().equals("Object")) {
+                continue; //no parent
+            }
+
+            ClassTreeNode parentNode = classMap.get(astNode.getParent());
+            if (parentNode == null) {
+                errorHandler.register(Error.Kind.SEMANT_ERROR, astNode.getFilename(),
+                        astNode.getLineNum(), "Superclass " + astNode.getParent() + " " +
+                                "of class " + astNode.getName() + " does not exist.");
+                treeNode.setParent(classMap.get("Object")); //to allow checking to
+                // continue
+            }
+            else if (astNode.getParent().equals("Sys") || astNode.getParent().equals(
+                    "String") || astNode.getParent().equals("TextIO")) {
+                errorHandler.register(Error.Kind.SEMANT_ERROR, astNode.getFilename(),
+                        astNode.getLineNum(), "Superclass " + astNode.getParent() + " " +
+                                "of class " + astNode.getName() + " is not allowed to " +
+                                "have" + "subclasses (it is final).");
+            }
+            else {
+                treeNode.setParent(parentNode);
+            }
+        }
+
+        //step 3: check for cycles in inheritance digraph
+        for (ClassTreeNode treeNode : classMap.values()) {
+            // use a new HashSet for each node and its ancestors
+            HashSet<ClassTreeNode> marked = new HashSet<>();
+            while (treeNode != null) {
+                if (marked.contains(treeNode)) {
+                    errorHandler.register(Error.Kind.SEMANT_ERROR,
+                            treeNode.getASTNode().getFilename(),
+                            treeNode.getASTNode().getLineNum(),
+                            "Class " + treeNode.getName() + " is part of a cycle " + " " +
+                                    "of inheritances.");
+                    treeNode.getParent().removeChild(treeNode);
+                    treeNode.setParent(classMap.get("Object"));
+                    classMap.get("Object").addChild(treeNode);
+                    break;
+                }
+                else {
+                    marked.add(treeNode);
+                    treeNode = treeNode.getParent();
+                }
+            }
+        }
     }
 
     /**
-     * @return the ErrorHandler for this Parser
-     */
-    public ErrorHandler getErrorHandler() { return errorHandler; }
-
-    /**
-     * Add built-in classes to the classMap.
-     * These are the classes Object, String, Sys, and TextIO
+     * Add built in classes to the class tree
      */
     private void addBuiltins() {
         // create AST node for object
@@ -163,8 +299,7 @@ public class SemanticAnalyzer
         classMap.put("Object", root);
 
         // note: String, TextIO, and Sys all have fields that are not shown below.
-        // Because these classes cannot be extended and their fields are protected,
-        // they cannot be
+        // Because these classes cannot be extended and fields are protected, they cannot be
         // accessed by other classes, so they do not have to be included in the AST.
 
         // create AST node for String
@@ -211,35 +346,28 @@ public class SemanticAnalyzer
     }
 
 
-    public static void main(String[] argv){
-        if (argv.length==0){
-            System.out.println("Please provide test files\n");
-            return;
-        }
+    public static void main(String[] args) {
+        args = new String[]{"testsByDale/FindUsesTest.btm"};//Students/CheckerTestKeithHardyLiLian.btm"};
+        ErrorHandler errorHandler = new ErrorHandler();
+        Parser parser = new Parser(errorHandler);
+        SemanticAnalyzer analyzer = new SemanticAnalyzer(errorHandler);
 
-        for(String filename: argv){
-            ErrorHandler errorHandler = new ErrorHandler();
-            Parser testParser= new Parser(errorHandler);
-            SemanticAnalyzer semanticAnalyzer=new SemanticAnalyzer(errorHandler);
+        for (String inFile : args) {
+            System.out.println("\n========== Results for " + inFile + " =============");
             try {
-                Program astTree=testParser.parse(filename);
-                System.out.println("Parsing Successful.\n");
-                semanticAnalyzer.analyze(astTree);
-                List<Error> errorList= errorHandler.getErrorList();
-                for(Error error:errorList){
-                    System.out.println(error.toString()+"\n");
-                }
-            }catch(CompilationException e){
-                if(errorHandler.errorsFound()){
-                    System.out.println(filename + ": Parsing Failed");
-                    List<Error> errorList= errorHandler.getErrorList();
-                    for(Error error:errorList ){
-                        System.out.println(error.toString() + "\n");
-                    }
-                }else{
-                    System.out.println("Invalid filename: "+filename);
+                errorHandler.clear();
+                Program program = parser.parse(inFile);
+                analyzer.analyze(program);
+                System.out.println("  Checking was successful.");
+            } catch (CompilationException ex) {
+                System.out.println("  There were errors:");
+                List<Error> errors = errorHandler.getErrorList();
+                for (Error error : errors) {
+                    System.out.println("\t" + error.toString());
                 }
             }
         }
+
     }
+
 }

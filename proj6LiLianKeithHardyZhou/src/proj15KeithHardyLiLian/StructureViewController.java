@@ -74,7 +74,6 @@ public class StructureViewController
         Parser parser = new Parser(errorHandler);
         Program ast = parser.parse(fileName);
 
-        System.out.println(errorHandler.errorsFound());
         if(!errorHandler.errorsFound()) {
             NavigateStructureVisitor structureViewVisitor = new NavigateStructureVisitor();
             newRoot = structureViewVisitor.buildOrNavigateStructureTree(newRoot, ast, this.treeItemLineNumMap,

@@ -193,7 +193,6 @@ public class MasterController {
      */
     @FXML public void handleSave() {
         fileController.handleSave();
-        System.out.println("saving");
         structureViewController.updateStructureView();
     }
 

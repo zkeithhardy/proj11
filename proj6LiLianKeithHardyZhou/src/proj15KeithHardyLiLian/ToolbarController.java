@@ -335,6 +335,7 @@ public class ToolbarController {
                 Platform.runLater(()->ToolbarController.this.console.writeToConsole(
                         "Parsing Successful.\n", "Output"));
                 classTree = analyzer.analyze(AST);
+                System.out.println(classTree);
                 Platform.runLater(()-> {
                     if (errorHandler.errorsFound()) {
 
