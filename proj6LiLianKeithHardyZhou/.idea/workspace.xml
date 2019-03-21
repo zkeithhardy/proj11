@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3f9f4d53-dccb-439a-ad59-57724734fed7" name="Default Changelist" comment="Merge branch 'master' of https://github.com/zkeithhardy/proj11&#10;&#10;# Conflicts:&#10;#&#9;proj6LiLianKeithHardyZhou/out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/semant/TypeCheckerVisitor.class">
-      <change beforePath="$PROJECT_DIR$/src/proj15KeithHardyLiLian/JavaCodeArea.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/proj15KeithHardyLiLian/JavaCodeArea.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/proj15KeithHardyLiLian/ToolbarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/proj15KeithHardyLiLian/ToolbarController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/proj15KeithHardyLiLian/MIPSCodeArea.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/proj15KeithHardyLiLian/MIPSCodeArea.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,8 +17,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/proj15KeithHardyLiLian/ToolbarController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-560">
-              <caret line="223" column="23" selection-start-line="223" selection-start-column="23" selection-end-line="223" selection-end-column="23" />
+            <state relative-caret-position="-2091">
+              <caret line="266" column="27" selection-start-line="266" selection-start-column="21" selection-end-line="266" selection-end-column="27" />
               <folding>
                 <element signature="docComment;class#ToolbarController#0" />
                 <element signature="docComment;method#ToolbarController#0;class#ToolbarController#0" />
@@ -51,38 +51,19 @@
                 <element signature="docComment;method#checkIsDone#0;class#ToolbarController#0" />
                 <element signature="method#checkIsDone#0;class#ToolbarController#0" />
                 <element signature="method#getTaskStatus#0;class#ToolbarController#0" />
-                <element signature="e#10617#10676#1" />
                 <element signature="docComment;class#CheckTask#0;class#ToolbarController#0" />
                 <element signature="class#CheckTask#0;class#ToolbarController#0" />
                 <element signature="docComment;method#call#0;class#CheckTask#0;class#ToolbarController#0" />
                 <element signature="method#call#0;class#CheckTask#0;class#ToolbarController#0" />
-                <element signature="e#11452#12525#0" />
-                <element signature="e#11731#12509#0" />
-                <element signature="e#11790#12300#1" />
-                <element signature="e#12090#12277#1" />
-                <element signature="e#12304#12491#1" />
-                <element signature="e#12568#13561#0" />
-                <element signature="e#12604#13545#0" />
-                <element signature="e#13019#13527#1" />
-                <element signature="e#13318#13505#1" />
                 <element signature="docComment;class#ParseTask#0;class#ToolbarController#0" />
                 <element signature="class#ParseTask#0;class#ToolbarController#0" />
                 <element signature="docComment;method#call#0;class#ParseTask#0;class#ToolbarController#0" />
                 <element signature="method#call#0;class#ParseTask#0;class#ToolbarController#0" />
-                <element signature="e#14198#14405#0" />
-                <element signature="e#14448#15441#0" />
-                <element signature="e#14484#15425#0" />
-                <element signature="e#14899#15407#1" />
-                <element signature="e#15198#15385#1" />
                 <element signature="docComment;class#ScanTask#0;class#ToolbarController#0" />
                 <element signature="docComment;method#call#0;class#ScanTask#0;class#ToolbarController#0" />
-                <element signature="e#16444#17376#0" />
-                <element signature="e#16744#17217#1" />
-                <element signature="e#17024#17199#1" />
                 <element signature="docComment;class#AssembleOrRunTask#0;class#ToolbarController#0" />
                 <element signature="docComment;method#AssembleOrRunTask#0;class#AssembleOrRunTask#0;class#ToolbarController#0" />
                 <element signature="docComment;method#call#0;class#AssembleOrRunTask#0;class#ToolbarController#0" />
-                <element signature="e#19694#19768#0" />
                 <element signature="docComment;method#stop#0;class#AssembleOrRunTask#0;class#ToolbarController#0" />
               </folding>
             </state>
@@ -90,110 +71,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/proj15KeithHardyLiLian/MasterController.java">
+        <entry file="file://$PROJECT_DIR$/src/proj15KeithHardyLiLian/NavigateStructureVisitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="287">
-              <caret line="69" column="6" lean-forward="true" selection-start-line="69" selection-start-column="6" selection-end-line="69" selection-end-column="6" />
-              <folding>
-                <element signature="docComment;class#MasterController#0" />
-                <element signature="e#2643#2719#0" />
-                <element signature="e#2643#5135#0" />
-                <element signature="e#5142#5307#0" />
-                <element signature="e#5142#5386#0" />
-                <element signature="e#5392#5607#0" />
-                <element signature="e#5392#6079#0" />
-                <element signature="e#5723#6037#1" />
-                <element signature="e#6085#6951#0" />
-                <element signature="e#6558#6873#1" />
-                <element signature="e#6957#7216#0" />
-                <element signature="e#6957#7437#0" />
-                <element signature="e#7390#7431#1" />
-                <element signature="e#7443#7812#0" />
-                <element signature="e#7443#7880#0" />
-                <element signature="e#7886#8181#0" />
-                <element signature="e#7886#8254#0" />
-                <element signature="e#8260#8461#0" />
-                <element signature="e#8260#8545#0" />
-                <element signature="e#8551#8622#0" />
-                <element signature="e#8551#8694#0" />
-                <element signature="e#8700#8771#0" />
-                <element signature="e#8700#8843#0" />
-                <element signature="e#8849#8919#0" />
-                <element signature="e#8849#8989#0" />
-                <element signature="e#8995#9066#0" />
-                <element signature="e#8995#9137#0" />
-                <element signature="e#9143#9215#0" />
-                <element signature="e#9143#9289#0" />
-                <element signature="e#9295#9388#0" />
-                <element signature="e#9295#9473#0" />
-                <element signature="e#9479#9573#0" />
-                <element signature="e#9479#9660#0" />
-                <element signature="e#9666#9742#0" />
-                <element signature="e#9666#9824#0" />
-                <element signature="e#9830#9902#0" />
-                <element signature="e#10008#10080#0" />
-                <element signature="e#10186#10267#0" />
-                <element signature="e#10186#10353#0" />
-                <element signature="e#10359#10450#0" />
-                <element signature="e#10359#10537#0" />
-                <element signature="e#10543#10701#0" />
-                <element signature="e#10748#10809#0" />
-                <element signature="e#10815#10922#0" />
-                <element signature="e#10815#11031#0" />
-                <element signature="e#11037#11157#0" />
-                <element signature="e#11037#11262#0" />
-                <element signature="e#11268#11374#0" />
-                <element signature="e#11268#11475#0" />
-                <element signature="e#11481#11584#0" />
-                <element signature="e#11481#11685#0" />
-                <element signature="e#11691#11777#0" />
-                <element signature="e#11691#12427#0" />
-                <element signature="e#12227#12421#1" />
-                <element signature="e#12433#12555#0" />
-                <element signature="e#12433#13332#0" />
-                <element signature="e#12736#13326#1" />
-                <element signature="e#12966#13005#1" />
-                <element signature="e#13188#13316#1" />
-                <element signature="e#13338#13429#0" />
-                <element signature="e#13480#13547#0" />
-                <element signature="e#13553#13644#0" />
-                <element signature="e#13695#13762#0" />
-                <element signature="e#13768#13842#0" />
-                <element signature="e#13963#14054#0" />
-                <element signature="e#14092#14154#0" />
-                <element signature="e#14161#14266#0" />
-                <element signature="e#14310#14363#0" />
-                <element signature="e#14369#14406#0" />
-                <element signature="e#14443#14480#0" />
-                <element signature="e#14486#14837#0" />
-                <element signature="e#14486#15649#0" />
-                <element signature="e#15457#15500#1" />
-                <element signature="e#15542#15584#1" />
-                <element signature="e#15597#15643#1" />
-                <element signature="e#15655#15744#0" />
-                <element signature="e#15655#16051#0" />
-                <element signature="e#16057#16141#0" />
-                <element signature="e#16179#16242#0" />
-                <element signature="e#16248#16304#0" />
-                <element signature="e#16343#16394#0" />
-                <element signature="e#16400#16455#0" />
-                <element signature="e#16503#16559#0" />
-                <element signature="e#16565#17044#0" />
-                <element signature="e#16565#18279#0" />
-                <element signature="e#17228#17300#1" />
-                <element signature="e#17306#18273#1" />
-                <element signature="e#17460#18263#0" />
-                <element signature="e#17609#17705#1" />
-                <element signature="e#17831#18086#1" />
-                <element signature="e#18286#18330#0" />
-                <element signature="e#18374#18428#0" />
-                <element signature="e#18434#18473#0" />
-                <element signature="e#18434#18628#0" />
-                <element signature="e#18634#18674#0" />
-                <element signature="e#18634#18830#0" />
-                <element signature="e#18836#18881#0" />
-                <element signature="e#18836#19012#0" />
-              </folding>
+            <state relative-caret-position="-1340">
+              <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -201,53 +82,143 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/proj15KeithHardyLiLian/TabContextMenu.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-78">
+            <state relative-caret-position="198">
               <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/proj15KeithHardyLiLian/JavaCodeArea.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="99">
-              <caret line="101" column="72" selection-start-line="101" selection-start-column="72" selection-end-line="101" selection-end-column="72" />
+            <state relative-caret-position="-367">
+              <caret line="34" column="13" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/proj15KeithHardyLiLian/NavigateStructureVisitor.java">
+        <entry file="file://$PROJECT_DIR$/src/proj15KeithHardyLiLian/MasterController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-216">
-              <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
+            <state relative-caret-position="209">
+              <caret line="96" column="35" selection-start-line="96" selection-start-column="29" selection-end-line="96" selection-end-column="35" />
+              <folding>
+                <element signature="docComment;class#MasterController#0" />
+                <element signature="e#2643#2719#0" />
+                <element signature="e#5142#5307#0" />
+                <element signature="e#5142#5386#0" />
+                <element signature="e#5392#5607#0" />
+                <element signature="e#5392#6079#0" />
+                <element signature="e#5723#6037#1" />
+                <element signature="e#6085#6340#0" />
+                <element signature="e#6558#6872#1" />
+                <element signature="e#6956#7215#0" />
+                <element signature="e#6956#7436#0" />
+                <element signature="e#7389#7430#1" />
+                <element signature="e#7442#7811#0" />
+                <element signature="e#7442#7879#0" />
+                <element signature="e#7885#8180#0" />
+                <element signature="e#7885#8253#0" />
+                <element signature="e#8259#8460#0" />
+                <element signature="e#8259#8544#0" />
+                <element signature="e#8550#8621#0" />
+                <element signature="e#8550#8693#0" />
+                <element signature="e#8699#8770#0" />
+                <element signature="e#8699#8842#0" />
+                <element signature="e#8848#8918#0" />
+                <element signature="e#8848#8988#0" />
+                <element signature="e#8994#9065#0" />
+                <element signature="e#8994#9136#0" />
+                <element signature="e#9142#9214#0" />
+                <element signature="e#9142#9288#0" />
+                <element signature="e#9294#9387#0" />
+                <element signature="e#9294#9472#0" />
+                <element signature="e#9478#9572#0" />
+                <element signature="e#9478#9659#0" />
+                <element signature="e#9665#9741#0" />
+                <element signature="e#9665#9823#0" />
+                <element signature="e#9829#9901#0" />
+                <element signature="e#10007#10079#0" />
+                <element signature="e#10185#10266#0" />
+                <element signature="e#10185#10352#0" />
+                <element signature="e#10358#10449#0" />
+                <element signature="e#10358#10536#0" />
+                <element signature="e#10542#10700#0" />
+                <element signature="e#10747#10808#0" />
+                <element signature="e#10814#10921#0" />
+                <element signature="e#10814#11030#0" />
+                <element signature="e#11036#11156#0" />
+                <element signature="e#11036#11261#0" />
+                <element signature="e#11267#11373#0" />
+                <element signature="e#11267#11474#0" />
+                <element signature="e#11480#11583#0" />
+                <element signature="e#11480#11684#0" />
+                <element signature="e#11690#11776#0" />
+                <element signature="e#11690#12426#0" />
+                <element signature="e#12226#12420#1" />
+                <element signature="e#12432#12554#0" />
+                <element signature="e#12432#13331#0" />
+                <element signature="e#12735#13325#1" />
+                <element signature="e#12965#13004#1" />
+                <element signature="e#13187#13315#1" />
+                <element signature="e#13337#13428#0" />
+                <element signature="e#13479#13546#0" />
+                <element signature="e#13552#13643#0" />
+                <element signature="e#13694#13761#0" />
+                <element signature="e#13767#13841#0" />
+                <element signature="e#13962#14053#0" />
+                <element signature="e#14091#14153#0" />
+                <element signature="e#14160#14265#0" />
+                <element signature="e#14309#14362#0" />
+                <element signature="e#14368#14405#0" />
+                <element signature="e#14442#14479#0" />
+                <element signature="e#14485#14836#0" />
+                <element signature="e#14485#15648#0" />
+                <element signature="e#15456#15499#1" />
+                <element signature="e#15541#15583#1" />
+                <element signature="e#15596#15642#1" />
+                <element signature="e#15654#15743#0" />
+                <element signature="e#15654#16050#0" />
+                <element signature="e#16056#16140#0" />
+                <element signature="e#16178#16241#0" />
+                <element signature="e#16247#16303#0" />
+                <element signature="e#16342#16393#0" />
+                <element signature="e#16399#16454#0" />
+                <element signature="e#16502#16558#0" />
+                <element signature="e#16564#17043#0" />
+                <element signature="e#16564#18278#0" />
+                <element signature="e#17227#17299#1" />
+                <element signature="e#17305#18272#1" />
+                <element signature="e#17459#18262#0" />
+                <element signature="e#17608#17704#1" />
+                <element signature="e#17830#18085#1" />
+                <element signature="e#18285#18329#0" />
+                <element signature="e#18373#18427#0" />
+                <element signature="e#18433#18472#0" />
+                <element signature="e#18633#18673#0" />
+                <element signature="e#18835#18880#0" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/proj15KeithHardyLiLian/NavigationController.java">
+        <entry file="file://$PROJECT_DIR$/src/proj15KeithHardyLiLian/FileController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="29" column="13" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
+            <state relative-caret-position="-637">
+              <caret line="48" column="13" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/proj15KeithHardyLiLian/ConsoleContextMenu.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/proj15KeithHardyLiLian/MIPSCodeArea.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="84">
-              <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/proj15KeithHardyLiLian/DirectoryController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1368">
-              <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
+            <state relative-caret-position="648">
+              <caret line="141" column="63" selection-start-line="141" selection-start-column="63" selection-end-line="141" selection-end-column="63" />
+              <folding>
+                <element signature="e#0#8268#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -255,8 +226,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/proj15KeithHardyLiLian/StructureViewController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-205">
+            <state relative-caret-position="-1494">
               <caret line="36" column="13" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/proj15KeithHardyLiLian/SuperClassVisitor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="216">
+              <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -264,7 +244,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/proj15KeithHardyLiLian/PreferenceController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="388">
+            <state relative-caret-position="3798">
               <caret line="230" column="22" selection-start-line="230" selection-start-column="18" selection-end-line="230" selection-end-column="26" />
             </state>
           </provider>
@@ -300,6 +280,7 @@
       <find>fail</find>
       <find>system</find>
       <find>scanButton</find>
+      <find>button</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -330,6 +311,7 @@
         <option value="$PROJECT_DIR$/src/proj15KeithHardyLiLian/MasterController.java" />
         <option value="$PROJECT_DIR$/src/proj15KeithHardyLiLian/ToolbarController.java" />
         <option value="$PROJECT_DIR$/src/proj15KeithHardyLiLian/JavaCodeArea.java" />
+        <option value="$PROJECT_DIR$/src/proj15KeithHardyLiLian/MIPSCodeArea.java" />
       </list>
     </option>
   </component>
@@ -346,7 +328,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -372,15 +354,22 @@
               <item name="proj15KeithHardyLiLian" type="462c0819:PsiDirectoryNode" />
               <item name="JavaCodeArea.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
             </path>
+            <path>
+              <item name="proj6LiLianKeithHardyZhou" type="b2602c69:ProjectViewProjectNode" />
+              <item name="proj6LiLianKeithHardyZhou" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="proj15KeithHardyLiLian" type="462c0819:PsiDirectoryNode" />
+              <item name="MIPSCodeArea.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553052250569" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553053723110" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/proj15KeithHardyLiLian" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -446,9 +435,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2536913" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25637585" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -457,7 +445,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3555241" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3555241" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39943343" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -483,381 +471,46 @@
     <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'master' of https://github.com/zkeithhardy/proj11&#10;&#10;# Conflicts:&#10;#&#9;proj6LiLianKeithHardyZhou/out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/bantam/semant/TypeCheckerVisitor.class" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/parser/Parser.java" />
-    <entry file="file://$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/semant/MainMainVisitor.java" />
-    <entry file="file://$PROJECT_DIR$/src/proj12KeithHardyLiLian/Main.java" />
     <entry file="file://$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/semant/SemanticAnalyzer.java" />
     <entry file="file://$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/semant/TypeCheckerVisitor.java" />
     <entry file="file://$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/semant/InheritanceTreeVisitor.java" />
     <entry file="file://$PROJECT_DIR$/src/proj12KeithHardyLiLian/bantam/semant/StringConstantsVisitor.java" />
-    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="101">
-          <caret line="36" column="13" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/HelpMenuController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/bantam/lexer/SourceFile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-559">
-          <caret line="26" column="6" selection-start-line="26" selection-start-column="6" selection-end-line="26" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/FileController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="48" column="13" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/bantam/lexer/Scanner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-657">
-          <caret line="150" column="25" selection-start-line="150" selection-start-column="25" selection-end-line="150" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/MasterController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1253">
-          <caret line="404" column="76" selection-start-line="404" selection-start-column="76" selection-end-line="404" selection-end-column="76" />
-          <folding>
-            <element signature="docComment;class#MasterController#0" />
-            <element signature="e#2515#2591#0" />
-            <element signature="e#2515#4926#0" />
-            <element signature="e#4933#5098#0" />
-            <element signature="e#4933#5177#0" />
-            <element signature="e#5183#5398#0" />
-            <element signature="e#5183#5714#0" />
-            <element signature="e#5514#5672#1" />
-            <element signature="e#5720#5975#0" />
-            <element signature="e#5720#6430#0" />
-            <element signature="e#6193#6352#1" />
-            <element signature="e#6436#6695#0" />
-            <element signature="e#6436#6916#0" />
-            <element signature="e#6869#6910#1" />
-            <element signature="e#6922#7291#0" />
-            <element signature="e#6922#7359#0" />
-            <element signature="e#7365#7660#0" />
-            <element signature="e#7365#7733#0" />
-            <element signature="e#7739#7940#0" />
-            <element signature="e#7739#8024#0" />
-            <element signature="e#8030#8101#0" />
-            <element signature="e#8030#8173#0" />
-            <element signature="e#8179#8250#0" />
-            <element signature="e#8179#8322#0" />
-            <element signature="e#8328#8398#0" />
-            <element signature="e#8328#8468#0" />
-            <element signature="e#8474#8545#0" />
-            <element signature="e#8474#8616#0" />
-            <element signature="e#8622#8694#0" />
-            <element signature="e#8622#8768#0" />
-            <element signature="e#8774#8867#0" />
-            <element signature="e#8774#8952#0" />
-            <element signature="e#8958#9052#0" />
-            <element signature="e#8958#9139#0" />
-            <element signature="e#9145#9221#0" />
-            <element signature="e#9145#9303#0" />
-            <element signature="e#9309#9381#0" />
-            <element signature="e#9487#9559#0" />
-            <element signature="e#9665#9746#0" />
-            <element signature="e#9665#9832#0" />
-            <element signature="e#9838#9929#0" />
-            <element signature="e#9838#10016#0" />
-            <element signature="e#10022#10180#0" />
-            <element signature="e#10227#10288#0" />
-            <element signature="e#10294#10401#0" />
-            <element signature="e#10294#10510#0" />
-            <element signature="e#10516#10636#0" />
-            <element signature="e#10516#10741#0" />
-            <element signature="e#10747#10853#0" />
-            <element signature="e#10747#10954#0" />
-            <element signature="e#10960#11063#0" />
-            <element signature="e#10960#11164#0" />
-            <element signature="e#11170#11256#0" />
-            <element signature="e#11170#11906#0" />
-            <element signature="e#11706#11900#1" />
-            <element signature="e#11912#12034#0" />
-            <element signature="e#11912#12811#0" />
-            <element signature="e#12215#12805#1" />
-            <element signature="e#12445#12484#1" />
-            <element signature="e#12667#12795#1" />
-            <element signature="e#12817#12908#0" />
-            <element signature="e#12959#13026#0" />
-            <element signature="e#13032#13123#0" />
-            <element signature="e#13174#13241#0" />
-            <element signature="e#13247#13321#0" />
-            <element signature="e#13442#13533#0" />
-            <element signature="e#13571#13633#0" />
-            <element signature="e#13640#13745#0" />
-            <element signature="e#13789#13842#0" />
-            <element signature="e#13848#13885#0" />
-            <element signature="e#13922#13959#0" />
-            <element signature="e#13965#14316#0" />
-            <element signature="e#13965#15128#0" />
-            <element signature="e#14936#14979#1" />
-            <element signature="e#15021#15063#1" />
-            <element signature="e#15076#15122#1" />
-            <element signature="e#15134#15223#0" />
-            <element signature="e#15134#15389#0" />
-            <element signature="e#15395#15479#0" />
-            <element signature="e#15517#15580#0" />
-            <element signature="e#15586#15642#0" />
-            <element signature="e#15681#15732#0" />
-            <element signature="e#15738#15793#0" />
-            <element signature="e#15841#15897#0" />
-            <element signature="e#15903#16382#0" />
-            <element signature="e#15903#17617#0" />
-            <element signature="e#16566#16638#1" />
-            <element signature="e#16644#17611#1" />
-            <element signature="e#16798#17601#0" />
-            <element signature="e#16947#17043#1" />
-            <element signature="e#17169#17424#1" />
-            <element signature="e#17624#17668#0" />
-            <element signature="e#17712#17766#0" />
-            <element signature="e#17772#17811#0" />
-            <element signature="e#17772#17966#0" />
-            <element signature="e#17972#18012#0" />
-            <element signature="e#17972#18168#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/bantam/treedrawer/Drawer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/bantam/treedrawer/LayoutVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4993">
-          <caret line="177" column="5" selection-start-line="177" selection-start-column="5" selection-end-line="177" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/bantam/treedrawer/DrawerPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="35" column="32" selection-start-line="35" selection-start-column="32" selection-end-line="35" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/bantam/treedrawer/DrawerFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="101">
-          <caret line="19" column="6" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/bantam/treedrawer/Polyline.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="16" column="6" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/bantam/treedrawer/Polygon.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="16" column="6" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/bantam/treedrawer/DrawingTree.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="702">
-          <caret line="51" column="40" lean-forward="true" selection-start-line="51" selection-start-column="40" selection-end-line="51" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/bantam/visitor/Visitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="35" column="22" selection-start-line="35" selection-start-column="22" selection-end-line="35" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/bantam/util/CompilationException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/TabContextMenu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/StructureViewController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="36" column="13" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/PreferenceController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="107">
-          <caret line="28" column="11" selection-start-line="28" selection-end-line="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/NavigationController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="27" column="49" lean-forward="true" selection-start-line="27" selection-start-column="3" selection-end-line="27" selection-end-column="49" />
-          <folding>
-            <element signature="e#4819#4828#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/SuperClassVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="21" column="49" selection-start-line="21" selection-start-column="49" selection-end-line="21" selection-end-column="49" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/bantam/ast/ListNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="46" column="22" selection-start-line="46" selection-start-column="22" selection-end-line="46" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/bantam/ast/ClassList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="37" column="13" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/bantam/semant/EnvironmentBuilderVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/bantam/semant/InheritanceTreeVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/bantam/semant/MainMainVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="19" column="28" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/bantam/semant/NumLocalVarsVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/bantam/semant/SemanticAnalyzer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="47" column="13" selection-start-line="47" selection-start-column="13" selection-end-line="47" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/bantam/semant/StringConstantsVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/bantam/semant/TypeCheckerVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/CodeTabPane.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/NavigateStructureVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="21" column="49" selection-start-line="21" selection-start-column="49" selection-end-line="21" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/ToolbarController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="622">
-          <caret line="211" column="13" selection-start-line="211" selection-start-column="13" selection-end-line="211" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/Main.java" />
+    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/HelpMenuController.java" />
+    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/bantam/lexer/SourceFile.java" />
+    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/FileController.java" />
+    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/bantam/lexer/Scanner.java" />
+    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/MasterController.java" />
+    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/bantam/treedrawer/Drawer.java" />
+    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/bantam/treedrawer/LayoutVisitor.java" />
+    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/bantam/treedrawer/DrawerPanel.java" />
+    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/bantam/treedrawer/DrawerFrame.java" />
+    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/bantam/treedrawer/Polyline.java" />
+    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/bantam/treedrawer/Polygon.java" />
+    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/bantam/treedrawer/DrawingTree.java" />
+    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/bantam/visitor/Visitor.java" />
+    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/bantam/util/CompilationException.java" />
+    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/TabContextMenu.java" />
+    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/StructureViewController.java" />
+    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/PreferenceController.java" />
+    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/NavigationController.java" />
+    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/SuperClassVisitor.java" />
+    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/bantam/ast/ListNode.java" />
+    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/bantam/ast/ClassList.java" />
+    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/bantam/semant/EnvironmentBuilderVisitor.java" />
+    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/bantam/semant/InheritanceTreeVisitor.java" />
+    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/bantam/semant/MainMainVisitor.java" />
+    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/bantam/semant/NumLocalVarsVisitor.java" />
+    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/bantam/semant/SemanticAnalyzer.java" />
+    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/bantam/semant/StringConstantsVisitor.java" />
+    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/bantam/semant/TypeCheckerVisitor.java" />
+    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/CodeTabPane.java" />
+    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/NavigateStructureVisitor.java" />
+    <entry file="file://$PROJECT_DIR$/src/proj13KeithHardyLiLian/ToolbarController.java" />
     <entry file="file://$PROJECT_DIR$/src/proj15KeithHardyLiLian/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="227">
           <caret line="36" column="13" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/proj15KeithHardyLiLian/SuperClassVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/proj15KeithHardyLiLian/NavigateStructureVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-216">
-          <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/proj15KeithHardyLiLian/TabContextMenu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-78">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/proj15KeithHardyLiLian/StructureViewController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-205">
-          <caret line="36" column="13" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/proj15KeithHardyLiLian/PreferenceController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="230" column="22" selection-start-line="230" selection-start-column="18" selection-end-line="230" selection-end-column="26" />
         </state>
       </provider>
     </entry>
@@ -870,129 +523,153 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/proj15KeithHardyLiLian/ConsoleContextMenu.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
+        <state relative-caret-position="180">
           <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/proj15KeithHardyLiLian/DirectoryController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1368">
+        <state relative-caret-position="198">
           <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/proj15KeithHardyLiLian/PreferenceController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3798">
+          <caret line="230" column="22" selection-start-line="230" selection-start-column="18" selection-end-line="230" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/proj15KeithHardyLiLian/CodeTabPane.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-745">
+          <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/proj15KeithHardyLiLian/FileController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-637">
+          <caret line="48" column="13" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/proj15KeithHardyLiLian/NavigateStructureVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1340">
+          <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/proj15KeithHardyLiLian/MasterController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
-          <caret line="69" column="6" lean-forward="true" selection-start-line="69" selection-start-column="6" selection-end-line="69" selection-end-column="6" />
+        <state relative-caret-position="209">
+          <caret line="96" column="35" selection-start-line="96" selection-start-column="29" selection-end-line="96" selection-end-column="35" />
           <folding>
             <element signature="docComment;class#MasterController#0" />
             <element signature="e#2643#2719#0" />
-            <element signature="e#2643#5135#0" />
             <element signature="e#5142#5307#0" />
             <element signature="e#5142#5386#0" />
             <element signature="e#5392#5607#0" />
             <element signature="e#5392#6079#0" />
             <element signature="e#5723#6037#1" />
-            <element signature="e#6085#6951#0" />
-            <element signature="e#6558#6873#1" />
-            <element signature="e#6957#7216#0" />
-            <element signature="e#6957#7437#0" />
-            <element signature="e#7390#7431#1" />
-            <element signature="e#7443#7812#0" />
-            <element signature="e#7443#7880#0" />
-            <element signature="e#7886#8181#0" />
-            <element signature="e#7886#8254#0" />
-            <element signature="e#8260#8461#0" />
-            <element signature="e#8260#8545#0" />
-            <element signature="e#8551#8622#0" />
-            <element signature="e#8551#8694#0" />
-            <element signature="e#8700#8771#0" />
-            <element signature="e#8700#8843#0" />
-            <element signature="e#8849#8919#0" />
-            <element signature="e#8849#8989#0" />
-            <element signature="e#8995#9066#0" />
-            <element signature="e#8995#9137#0" />
-            <element signature="e#9143#9215#0" />
-            <element signature="e#9143#9289#0" />
-            <element signature="e#9295#9388#0" />
-            <element signature="e#9295#9473#0" />
-            <element signature="e#9479#9573#0" />
-            <element signature="e#9479#9660#0" />
-            <element signature="e#9666#9742#0" />
-            <element signature="e#9666#9824#0" />
-            <element signature="e#9830#9902#0" />
-            <element signature="e#10008#10080#0" />
-            <element signature="e#10186#10267#0" />
-            <element signature="e#10186#10353#0" />
-            <element signature="e#10359#10450#0" />
-            <element signature="e#10359#10537#0" />
-            <element signature="e#10543#10701#0" />
-            <element signature="e#10748#10809#0" />
-            <element signature="e#10815#10922#0" />
-            <element signature="e#10815#11031#0" />
-            <element signature="e#11037#11157#0" />
-            <element signature="e#11037#11262#0" />
-            <element signature="e#11268#11374#0" />
-            <element signature="e#11268#11475#0" />
-            <element signature="e#11481#11584#0" />
-            <element signature="e#11481#11685#0" />
-            <element signature="e#11691#11777#0" />
-            <element signature="e#11691#12427#0" />
-            <element signature="e#12227#12421#1" />
-            <element signature="e#12433#12555#0" />
-            <element signature="e#12433#13332#0" />
-            <element signature="e#12736#13326#1" />
-            <element signature="e#12966#13005#1" />
-            <element signature="e#13188#13316#1" />
-            <element signature="e#13338#13429#0" />
-            <element signature="e#13480#13547#0" />
-            <element signature="e#13553#13644#0" />
-            <element signature="e#13695#13762#0" />
-            <element signature="e#13768#13842#0" />
-            <element signature="e#13963#14054#0" />
-            <element signature="e#14092#14154#0" />
-            <element signature="e#14161#14266#0" />
-            <element signature="e#14310#14363#0" />
-            <element signature="e#14369#14406#0" />
-            <element signature="e#14443#14480#0" />
-            <element signature="e#14486#14837#0" />
-            <element signature="e#14486#15649#0" />
-            <element signature="e#15457#15500#1" />
-            <element signature="e#15542#15584#1" />
-            <element signature="e#15597#15643#1" />
-            <element signature="e#15655#15744#0" />
-            <element signature="e#15655#16051#0" />
-            <element signature="e#16057#16141#0" />
-            <element signature="e#16179#16242#0" />
-            <element signature="e#16248#16304#0" />
-            <element signature="e#16343#16394#0" />
-            <element signature="e#16400#16455#0" />
-            <element signature="e#16503#16559#0" />
-            <element signature="e#16565#17044#0" />
-            <element signature="e#16565#18279#0" />
-            <element signature="e#17228#17300#1" />
-            <element signature="e#17306#18273#1" />
-            <element signature="e#17460#18263#0" />
-            <element signature="e#17609#17705#1" />
-            <element signature="e#17831#18086#1" />
-            <element signature="e#18286#18330#0" />
-            <element signature="e#18374#18428#0" />
-            <element signature="e#18434#18473#0" />
-            <element signature="e#18434#18628#0" />
-            <element signature="e#18634#18674#0" />
-            <element signature="e#18634#18830#0" />
-            <element signature="e#18836#18881#0" />
-            <element signature="e#18836#19012#0" />
+            <element signature="e#6085#6340#0" />
+            <element signature="e#6558#6872#1" />
+            <element signature="e#6956#7215#0" />
+            <element signature="e#6956#7436#0" />
+            <element signature="e#7389#7430#1" />
+            <element signature="e#7442#7811#0" />
+            <element signature="e#7442#7879#0" />
+            <element signature="e#7885#8180#0" />
+            <element signature="e#7885#8253#0" />
+            <element signature="e#8259#8460#0" />
+            <element signature="e#8259#8544#0" />
+            <element signature="e#8550#8621#0" />
+            <element signature="e#8550#8693#0" />
+            <element signature="e#8699#8770#0" />
+            <element signature="e#8699#8842#0" />
+            <element signature="e#8848#8918#0" />
+            <element signature="e#8848#8988#0" />
+            <element signature="e#8994#9065#0" />
+            <element signature="e#8994#9136#0" />
+            <element signature="e#9142#9214#0" />
+            <element signature="e#9142#9288#0" />
+            <element signature="e#9294#9387#0" />
+            <element signature="e#9294#9472#0" />
+            <element signature="e#9478#9572#0" />
+            <element signature="e#9478#9659#0" />
+            <element signature="e#9665#9741#0" />
+            <element signature="e#9665#9823#0" />
+            <element signature="e#9829#9901#0" />
+            <element signature="e#10007#10079#0" />
+            <element signature="e#10185#10266#0" />
+            <element signature="e#10185#10352#0" />
+            <element signature="e#10358#10449#0" />
+            <element signature="e#10358#10536#0" />
+            <element signature="e#10542#10700#0" />
+            <element signature="e#10747#10808#0" />
+            <element signature="e#10814#10921#0" />
+            <element signature="e#10814#11030#0" />
+            <element signature="e#11036#11156#0" />
+            <element signature="e#11036#11261#0" />
+            <element signature="e#11267#11373#0" />
+            <element signature="e#11267#11474#0" />
+            <element signature="e#11480#11583#0" />
+            <element signature="e#11480#11684#0" />
+            <element signature="e#11690#11776#0" />
+            <element signature="e#11690#12426#0" />
+            <element signature="e#12226#12420#1" />
+            <element signature="e#12432#12554#0" />
+            <element signature="e#12432#13331#0" />
+            <element signature="e#12735#13325#1" />
+            <element signature="e#12965#13004#1" />
+            <element signature="e#13187#13315#1" />
+            <element signature="e#13337#13428#0" />
+            <element signature="e#13479#13546#0" />
+            <element signature="e#13552#13643#0" />
+            <element signature="e#13694#13761#0" />
+            <element signature="e#13767#13841#0" />
+            <element signature="e#13962#14053#0" />
+            <element signature="e#14091#14153#0" />
+            <element signature="e#14160#14265#0" />
+            <element signature="e#14309#14362#0" />
+            <element signature="e#14368#14405#0" />
+            <element signature="e#14442#14479#0" />
+            <element signature="e#14485#14836#0" />
+            <element signature="e#14485#15648#0" />
+            <element signature="e#15456#15499#1" />
+            <element signature="e#15541#15583#1" />
+            <element signature="e#15596#15642#1" />
+            <element signature="e#15654#15743#0" />
+            <element signature="e#15654#16050#0" />
+            <element signature="e#16056#16140#0" />
+            <element signature="e#16178#16241#0" />
+            <element signature="e#16247#16303#0" />
+            <element signature="e#16342#16393#0" />
+            <element signature="e#16399#16454#0" />
+            <element signature="e#16502#16558#0" />
+            <element signature="e#16564#17043#0" />
+            <element signature="e#16564#18278#0" />
+            <element signature="e#17227#17299#1" />
+            <element signature="e#17305#18272#1" />
+            <element signature="e#17459#18262#0" />
+            <element signature="e#17608#17704#1" />
+            <element signature="e#17830#18085#1" />
+            <element signature="e#18285#18329#0" />
+            <element signature="e#18373#18427#0" />
+            <element signature="e#18433#18472#0" />
+            <element signature="e#18633#18673#0" />
+            <element signature="e#18835#18880#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/proj15KeithHardyLiLian/ToolbarController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-560">
-          <caret line="223" column="23" selection-start-line="223" selection-start-column="23" selection-end-line="223" selection-end-column="23" />
+        <state relative-caret-position="-2091">
+          <caret line="266" column="27" selection-start-line="266" selection-start-column="21" selection-end-line="266" selection-end-column="27" />
           <folding>
             <element signature="docComment;class#ToolbarController#0" />
             <element signature="docComment;method#ToolbarController#0;class#ToolbarController#0" />
@@ -1025,47 +702,59 @@
             <element signature="docComment;method#checkIsDone#0;class#ToolbarController#0" />
             <element signature="method#checkIsDone#0;class#ToolbarController#0" />
             <element signature="method#getTaskStatus#0;class#ToolbarController#0" />
-            <element signature="e#10617#10676#1" />
             <element signature="docComment;class#CheckTask#0;class#ToolbarController#0" />
             <element signature="class#CheckTask#0;class#ToolbarController#0" />
             <element signature="docComment;method#call#0;class#CheckTask#0;class#ToolbarController#0" />
             <element signature="method#call#0;class#CheckTask#0;class#ToolbarController#0" />
-            <element signature="e#11452#12525#0" />
-            <element signature="e#11731#12509#0" />
-            <element signature="e#11790#12300#1" />
-            <element signature="e#12090#12277#1" />
-            <element signature="e#12304#12491#1" />
-            <element signature="e#12568#13561#0" />
-            <element signature="e#12604#13545#0" />
-            <element signature="e#13019#13527#1" />
-            <element signature="e#13318#13505#1" />
             <element signature="docComment;class#ParseTask#0;class#ToolbarController#0" />
             <element signature="class#ParseTask#0;class#ToolbarController#0" />
             <element signature="docComment;method#call#0;class#ParseTask#0;class#ToolbarController#0" />
             <element signature="method#call#0;class#ParseTask#0;class#ToolbarController#0" />
-            <element signature="e#14198#14405#0" />
-            <element signature="e#14448#15441#0" />
-            <element signature="e#14484#15425#0" />
-            <element signature="e#14899#15407#1" />
-            <element signature="e#15198#15385#1" />
             <element signature="docComment;class#ScanTask#0;class#ToolbarController#0" />
             <element signature="docComment;method#call#0;class#ScanTask#0;class#ToolbarController#0" />
-            <element signature="e#16444#17376#0" />
-            <element signature="e#16744#17217#1" />
-            <element signature="e#17024#17199#1" />
             <element signature="docComment;class#AssembleOrRunTask#0;class#ToolbarController#0" />
             <element signature="docComment;method#AssembleOrRunTask#0;class#AssembleOrRunTask#0;class#ToolbarController#0" />
             <element signature="docComment;method#call#0;class#AssembleOrRunTask#0;class#ToolbarController#0" />
-            <element signature="e#19694#19768#0" />
             <element signature="docComment;method#stop#0;class#AssembleOrRunTask#0;class#ToolbarController#0" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/proj15KeithHardyLiLian/StructureViewController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1494">
+          <caret line="36" column="13" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/proj15KeithHardyLiLian/SuperClassVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/proj15KeithHardyLiLian/TabContextMenu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/proj15KeithHardyLiLian/JavaCodeArea.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="99">
-          <caret line="101" column="72" selection-start-line="101" selection-start-column="72" selection-end-line="101" selection-end-column="72" />
+        <state relative-caret-position="-367">
+          <caret line="34" column="13" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/proj15KeithHardyLiLian/MIPSCodeArea.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="648">
+          <caret line="141" column="63" selection-start-line="141" selection-start-column="63" selection-end-line="141" selection-end-column="63" />
+          <folding>
+            <element signature="e#0#8268#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -1,12 +1,12 @@
 /*
- * File: JavaCodeArea.java
+ * File: MIPSCodeArea.java
  * Names: Zena Abulhab, Paige Hanssen, Kyle Slager, Kevin Zhou
  * Project 5
  * Date: October 12, 2018
  * ---------------------------
  * Edited By: Zeb Keith-Hardy, Michael Li, Iris Lian, Kevin Zhou
- * Project 6/7/9
- * Date: October 26, 2018/ November 3, 2018/ November 20, 2018
+ * Project 15
+ * Date: March 21 2019/October 26, 2018/ November 3, 2018/ November 20, 2018
  */
 
 package proj15KeithHardyLiLian;
@@ -23,8 +23,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * This class is the controller for all of the toolbar functionality.
- * Specifically the compile, compile and run, and stop buttons
+ * This class is the CodeArea when the user opened  a MIPS file. It contains various
+ * styles for MIPS file so that the highlighting is matching MARS style
  *
  * @author  Zeb Keith-Hardy, Michael Li, Iris Lian, Kevin Zhou
  * @author  Kevin Ahn, Jackie Hang, Matt Jones, Kevin Zhou
@@ -35,7 +35,7 @@ import java.util.regex.Pattern;
 public class MIPSCodeArea extends CodeArea{
 
     /**
-     * This is the constructor of JavaCodeArea
+     * This is the constructor of MIPS CodeArea
      */
     public MIPSCodeArea(){
         super();
@@ -66,7 +66,8 @@ public class MIPSCodeArea extends CodeArea{
 }
 
 /**
- * source:  https://moodle.colby.edu/pluginfile.php/294745/mod_resource/content/0/JavaKeywordsDemo.java
+ * This class defines the keywords in MIPS file that are about to be highlighted by the
+ * IDE. The keywords include the operations, directives and the list of all registers.
  * @author  Matt Jones, Kevin Zhou, Kevin Ahn, Jackie Hang
  * @author  Zena Abulhab, Paige Hanssen, Kyle Slager Kevin Zhou
  * @author  Iris Lian, Zeb Keith-Hardy, Michael Li
@@ -139,7 +140,6 @@ class MIPSStyle {
 
     /**
      * Method to highlight all of the regex rules and keywords.
-     * Code obtained from the RichTextFX Demo from GitHub.
      *
      * @param text a string analyzed for proper syntax highlighting
      */
