@@ -287,28 +287,35 @@ public class ToolbarController {
         this.stopMipsButton.setDisable(true);
     }
 
+    /**
+     * enable assemble, assemble run buttons when open a MIPS file and disable the rest
+     * enable scan, scan&parse, scan parse & check buttons when open a btm file
+     */
     public void enableCorrectButtons(){
-        if (this.codeTabPane.getFileName().endsWith(".asm") || this.codeTabPane.getFileName().endsWith(".s")) {
+        if (this.codeTabPane.getFileName()==null){
+            return;
+        }
+        else if (this.codeTabPane.getFileName().endsWith(".asm") || this.codeTabPane.getFileName().endsWith(".s")) {
             this.assembleButton.setDisable(false);
             this.assembleRunButton.setDisable(false);
             this.stopMipsButton.setDisable(true);
             this.scanButton.setDisable(true);
             this.scanParseButton.setDisable(true);
-            this.scanParseButton.setDisable(true);
+            this.checkButton.setDisable(true);
         } else if (this.codeTabPane.getFileName().endsWith(".btm")) {
             this.assembleButton.setDisable(true);
             this.assembleRunButton.setDisable(true);
             this.stopMipsButton.setDisable(true);
             this.scanButton.setDisable(false);
             this.scanParseButton.setDisable(false);
-            this.scanParseButton.setDisable(false);
+            this.checkButton.setDisable(false);
         }else{
             this.assembleButton.setDisable(true);
             this.assembleRunButton.setDisable(true);
             this.stopMipsButton.setDisable(true);
             this.scanButton.setDisable(true);
             this.scanParseButton.setDisable(true);
-            this.scanParseButton.setDisable(true);
+            this.checkButton.setDisable(true);
         }
     }
 

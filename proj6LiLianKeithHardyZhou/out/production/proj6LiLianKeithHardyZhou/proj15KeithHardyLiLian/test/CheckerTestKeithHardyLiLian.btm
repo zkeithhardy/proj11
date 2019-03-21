@@ -1,6 +1,6 @@
 class Main extends B{
     boolean a = true;
-    //illigeal type declaration 
+    //illegal type declaration 
     int b = true;
 
     //use of undeclared type

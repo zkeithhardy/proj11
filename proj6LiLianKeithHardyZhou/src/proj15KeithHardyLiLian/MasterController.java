@@ -167,8 +167,10 @@ public class MasterController {
             this.stopMipsButton.setDisable(true);
 
         }
+
         this.updateStructureView();
         this.createDirectoryTree();
+        this.enableCorrectButtons();
     }
 
     /**
@@ -508,7 +510,13 @@ public class MasterController {
         }
     }
 
-
+    /**
+     * Update the correct button so that the proper buttons are enabled for different
+     * type of file
+     */
+    private void enableCorrectButtons(){
+        this.toolbarController.enableCorrectButtons();
+    }
     /**
      * Handles Semantic Analyzer
      */
