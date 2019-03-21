@@ -145,7 +145,7 @@ public class FileController {
      * Changes the name of the current tab to match the newly saved file's name.
      */
     public boolean handleSaveAs() {
-        Tab curTab = this.codeTabPane.getSelectionModel().getSelectedItem();
+        CodeTab curTab = (CodeTab) this.codeTabPane.getSelectionModel().getSelectedItem();
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Save as...");
         Window stage = this.vBox.getScene().getWindow();
@@ -159,6 +159,10 @@ public class FileController {
             this.codeTabPane.updateSaveStatus(curTab,true);
         }
         curTab.setText(file.getName());
+        VirtualizedScrollPane<CodeArea> scrollPane = (VirtualizedScrollPane<CodeArea>) curTab.getContent();
+        CodeArea codeArea = scrollPane.getContent();
+        String text = codeArea.getText();
+        curTab.addCodeArea(text,file.getName());
         // open file directory
         this.masterController.createDirectoryTree();
         // update structure view

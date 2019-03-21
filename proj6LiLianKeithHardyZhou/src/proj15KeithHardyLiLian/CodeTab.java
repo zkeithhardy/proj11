@@ -55,10 +55,18 @@ public class CodeTab extends Tab{
     public void addCodeArea(String content, String filename){
         // creation of the codeArea
         CodeArea codeArea;
-        if(filename.endsWith(".asm") || filename.endsWith(".s"))
+        if(filename.endsWith(".asm") || filename.endsWith(".s")) {
+            if(this.codeTabPane.getCodeArea() instanceof MIPSCodeArea){
+                return;
+            }
             codeArea = new MIPSCodeArea();
-        else
+        }
+        else {
+            if(this.codeTabPane.getCodeArea() instanceof JavaCodeArea){
+                return;
+            }
             codeArea = new JavaCodeArea();
+        }
 
         codeArea.setOnKeyPressed(event -> this.codeTabPane.resetSaveStatus());
         codeArea.replaceText(content);
