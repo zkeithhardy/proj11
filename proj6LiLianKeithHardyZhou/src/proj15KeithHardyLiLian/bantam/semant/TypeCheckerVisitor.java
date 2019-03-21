@@ -148,13 +148,11 @@ public class TypeCheckerVisitor extends Visitor
             registerError(node,"The return type " + node.getReturnType() +
                     " of the method " + node.getName() + " is undefined.");
         }
-
         //create a new scope for the method
         currentSymbolTable.enterScope();
         currentMethod = node;
         node.getFormalList().accept(this);
         node.getStmtList().accept(this);
-
         //check that non-void methods end with a return stmt
         if(! node.getReturnType().equals("void")) {
             StmtList sList = node.getStmtList();
@@ -560,7 +558,7 @@ public class TypeCheckerVisitor extends Visitor
         // typecheck the expr and check compatability
         node.getExpr().accept(this);
         if(node.getExpr().getExprType() == null) {
-            System.out.println("Found a null expr type");
+            registerError(node,"Found a null expr type");
         }
         if (!isSubtype(node.getExpr().getExprType(), varType)) {
             registerError(node,"The type of the expr is " +
@@ -722,9 +720,18 @@ public class TypeCheckerVisitor extends Visitor
             registerError(node, "The index into the array must be an integer.");
         }
         //check the ref and check whether the ref's type is an array type
-        node.getRef().accept(this);
-        String refType = node.getRef().getExprType();
-        if (! refType.endsWith("[]")) {
+        String refType;
+        if (node.getRef() != null) {
+            node.getRef().accept(this);
+            refType = node.getRef().getExprType();
+        }else{
+            refType = (String) currentSymbolTable.lookup(node.getName());
+        }
+        if(refType == null){
+            registerError(node,"Array was not defined in the scope");
+            node.setExprType("null");
+        }
+        else if (! refType.endsWith("[]")) {
             registerError(node,"The  expression is not an array type.");
             node.setExprType(refType); // to continue analysis
         }
