@@ -63,6 +63,9 @@ public class ToolbarController {
     private Button stopMipsButton;
     private Button assembleButton;
     private Button assembleRunButton;
+    private Button scanButton;
+    private Button scanParseButton;
+    private Button checkButton;
 
     /**
      * This is the constructor of ToolbarController.
@@ -70,7 +73,8 @@ public class ToolbarController {
      * @param codeTabPane the tab pane
      */
     public ToolbarController(Console console, CodeTabPane codeTabPane, Button stopMipsButton,
-                             Button assembleButton, Button assembleRunButton){
+                             Button assembleButton, Button assembleRunButton, Button scanButton, Button scanParseButton,
+                             Button checkButton){
         this.console = console;
         this.codeTabPane = codeTabPane;
         this.scanIsDone = true;
@@ -79,6 +83,13 @@ public class ToolbarController {
         this.stopMipsButton = stopMipsButton;
         this.assembleButton = assembleButton;
         this.assembleRunButton = assembleRunButton;
+        this.scanButton = scanButton;
+        this.scanParseButton = scanParseButton;
+        this.checkButton = checkButton;
+
+        this.codeTabPane.getSelectionModel().selectedItemProperty().addListener((observableValue, oldTab, newTab) -> {
+            this.enableCorrectButtons();
+        });
     }
 
     /**
@@ -274,6 +285,31 @@ public class ToolbarController {
         this.assembleButton.setDisable(false);
         this.assembleRunButton.setDisable(false);
         this.stopMipsButton.setDisable(true);
+    }
+
+    public void enableCorrectButtons(){
+        if (this.codeTabPane.getFileName().endsWith(".asm") || this.codeTabPane.getFileName().endsWith(".s")) {
+            this.assembleButton.setDisable(false);
+            this.assembleRunButton.setDisable(false);
+            this.stopMipsButton.setDisable(true);
+            this.scanButton.setDisable(true);
+            this.scanParseButton.setDisable(true);
+            this.scanParseButton.setDisable(true);
+        } else if (this.codeTabPane.getFileName().endsWith(".btm")) {
+            this.assembleButton.setDisable(true);
+            this.assembleRunButton.setDisable(true);
+            this.stopMipsButton.setDisable(true);
+            this.scanButton.setDisable(false);
+            this.scanParseButton.setDisable(false);
+            this.scanParseButton.setDisable(false);
+        }else{
+            this.assembleButton.setDisable(true);
+            this.assembleRunButton.setDisable(true);
+            this.stopMipsButton.setDisable(true);
+            this.scanButton.setDisable(true);
+            this.scanParseButton.setDisable(true);
+            this.scanParseButton.setDisable(true);
+        }
     }
 
     /**
