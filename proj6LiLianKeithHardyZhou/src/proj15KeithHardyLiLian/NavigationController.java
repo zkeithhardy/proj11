@@ -45,8 +45,8 @@ public class NavigationController {
      */
     private void handleFindClassOrSymbol(){
         new Thread (()->{
-            ParseTask parseTask = new ParseTask();
-            FutureTask<TreeItem> curFutureTask = new FutureTask<TreeItem>(parseTask);
+            StructureTreeTask structureTreeTask = new StructureTreeTask();
+            FutureTask<TreeItem> curFutureTask = new FutureTask<TreeItem>(structureTreeTask);
             ExecutorService curExecutor = Executors.newFixedThreadPool(1);
             curExecutor.execute(curFutureTask);
             try{
@@ -155,7 +155,7 @@ public class NavigationController {
      * An inner class used to parse a file in a separate thread.
      * Prints error info to the console
      */
-    private class ParseTask implements Callable {
+    private class StructureTreeTask implements Callable {
 
         /**
          * Create a Parser and use it to create an AST
