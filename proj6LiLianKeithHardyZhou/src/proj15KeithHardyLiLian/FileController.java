@@ -159,6 +159,8 @@ public class FileController {
             this.codeTabPane.updateSaveStatus(curTab,true);
         }
         curTab.setText(file.getName());
+
+        // check if need to change code area to MIPSCodeArea or JavaCodeArea
         VirtualizedScrollPane<CodeArea> scrollPane = (VirtualizedScrollPane<CodeArea>) curTab.getContent();
         CodeArea codeArea = scrollPane.getContent();
         String text = codeArea.getText();

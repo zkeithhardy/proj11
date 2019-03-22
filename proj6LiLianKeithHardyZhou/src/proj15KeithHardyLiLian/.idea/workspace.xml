@@ -4,6 +4,7 @@
     <list default="true" id="f879a60c-fe6b-40ba-9c27-5a565e3c1524" name="Default Changelist" comment="changing code area when save file">
       <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/CodeTab.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/CodeTab.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/FileController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/FileController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/MIPSStyle.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/MIPSStyle.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/MasterController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/MasterController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/ToolbarController$AssembleOrRunTask.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/ToolbarController$AssembleOrRunTask.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/ToolbarController$CheckTask.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/ToolbarController$CheckTask.class" afterDir="false" />
@@ -13,6 +14,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CodeTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/CodeTab.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/FileController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaCodeArea.java" beforeDir="false" afterPath="$PROJECT_DIR$/JavaCodeArea.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MIPSCodeArea.java" beforeDir="false" afterPath="$PROJECT_DIR$/MIPSCodeArea.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MasterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/MasterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/CheckerTestKeithHardyLiLian.btm" beforeDir="false" afterPath="$PROJECT_DIR$/test/CheckerTestKeithHardyLiLian.btm" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/../../out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -71,37 +76,39 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="css" value="4" />
-          <entry key="java" value="3194" />
+          <entry key="java" value="3356" />
           <entry key="txt" value="153" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="4" />
-          <entry key="JAVA" value="3193" />
+          <entry key="JAVA" value="3355" />
           <entry key="PLAIN_TEXT" value="153" />
           <entry key="RegExp" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="26" />
+          <entry key="fxml" value="1" />
+          <entry key="java" value="28" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="26" />
+          <entry key="JAVA" value="28" />
+          <entry key="XML" value="1" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ToolbarController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="393">
-              <caret line="335" column="5" lean-forward="true" selection-start-line="335" selection-start-column="5" selection-end-line="335" selection-end-column="5" />
+            <state relative-caret-position="-916">
+              <caret line="250" lean-forward="true" selection-start-line="250" selection-end-line="250" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -112,8 +119,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MasterController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="714">
-              <caret line="123" lean-forward="true" selection-start-line="123" selection-end-line="123" />
+            <state relative-caret-position="238">
+              <caret line="140" column="44" lean-forward="true" selection-start-line="140" selection-start-column="44" selection-end-line="140" selection-end-column="44" />
               <folding>
                 <element signature="e#10089#10090#0" expanded="true" />
                 <element signature="e#10147#10148#0" expanded="true" />
@@ -147,19 +154,52 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/Main.fxml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-680" />
+          </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CodeTabPane.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="111">
+            <state relative-caret-position="281">
               <caret line="100" column="7" lean-forward="true" selection-start-line="100" selection-start-column="7" selection-end-line="100" selection-end-column="7" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CodeTab.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="44" column="49" selection-start-line="44" selection-start-column="49" selection-end-line="44" selection-end-column="49" />
+            <state relative-caret-position="-11">
+              <caret line="53" column="63" selection-start-line="53" selection-start-column="63" selection-end-line="53" selection-end-column="63" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MIPSCodeArea.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="118" column="60" selection-start-line="118" selection-start-column="60" selection-end-line="118" selection-end-column="60" />
+              <folding>
+                <element signature="e#0#8204#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/JavaCodeArea.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="275">
+              <caret line="101" column="54" selection-start-line="101" selection-start-column="54" selection-end-line="101" selection-end-column="92" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -167,26 +207,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/FileController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="841">
-              <caret line="164" column="51" selection-start-line="164" selection-start-column="51" selection-end-line="164" selection-end-column="51" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/StructureViewController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-51">
-              <caret line="50" column="7" lean-forward="true" selection-start-line="50" selection-start-column="7" selection-end-line="50" selection-end-column="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bantam/parser/Parser.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="35" selection-start-line="35" selection-end-line="35" />
+            <state relative-caret-position="1700">
+              <caret line="162" column="76" selection-start-line="162" selection-start-column="76" selection-end-line="162" selection-end-column="76" />
             </state>
           </provider>
         </entry>
@@ -230,7 +252,6 @@
         <option value="$PROJECT_DIR$/CodeAreaContextMenu.java" />
         <option value="$PROJECT_DIR$/Main.java" />
         <option value="$PROJECT_DIR$/resources/Main.css" />
-        <option value="$PROJECT_DIR$/MIPSCodeArea.java" />
         <option value="$PROJECT_DIR$/NavigationController.java" />
         <option value="$PROJECT_DIR$/bantam/parser/Parser.java" />
         <option value="$PROJECT_DIR$/bantam/semant/ClassMapBuilderVisitor.java" />
@@ -240,17 +261,19 @@
         <option value="$PROJECT_DIR$/bantam/visitor/Visitor.java" />
         <option value="$PROJECT_DIR$/bantam/semant/SemanticAnalyzer.java" />
         <option value="$PROJECT_DIR$/bantam/semant/TypeCheckerVisitor.java" />
-        <option value="$PROJECT_DIR$/MasterController.java" />
         <option value="$PROJECT_DIR$/ToolbarController.java" />
         <option value="$PROJECT_DIR$/FileController.java" />
         <option value="$PROJECT_DIR$/CodeTab.java" />
+        <option value="$PROJECT_DIR$/MasterController.java" />
+        <option value="$PROJECT_DIR$/MIPSCodeArea.java" />
+        <option value="$PROJECT_DIR$/JavaCodeArea.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-15" />
+    <option name="x" value="-10" />
     <option name="width" value="1440" />
-    <option name="height" value="810" />
+    <option name="height" value="805" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -299,6 +322,13 @@
               <item name="bantam" type="462c0819:PsiDirectoryNode" />
               <item name="visitor" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="proj15KeithHardyLiLian" type="b2602c69:ProjectViewProjectNode" />
+              <item name="proj6LiLianKeithHardyZhou" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="proj15KeithHardyLiLian" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -308,8 +338,8 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553209983504" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553213199616" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../CS361/CS361Proj6" />
   </component>
   <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
     <UpdatedFiles>
@@ -325,25 +355,17 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../../.idea/workspace.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/.idea/workspace.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/Main.css</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/CodeTab.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/JavaStyle.class</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/MIPSStyle.class</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/MasterController.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/NavigationController.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/StructureViewController$updateStructureViewTask.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/StructureViewController.class</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/ToolbarController$AssembleOrRunTask.class</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/ToolbarController$CheckTask.class</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/ToolbarController$ParseTask.class</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/ToolbarController$ScanTask.class</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/ToolbarController.class</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/bantam/semant/SemanticAnalyzer.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/bantam/semant/TypeCheckerVisitor.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/test/CheckerTestKeithHardyLiLian.btm</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/MasterController.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/ToolbarController.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/MIPSCodeArea.java</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Created" />
@@ -351,9 +373,6 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="CREATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/NavigationController$StructureTreeTask.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/bantam/semant/ClassMapBuilderVisitor.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/resources/Main.css</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Deleted" />
@@ -361,11 +380,12 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="true" />
           <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/MIPS-1.asm</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/MIPS-2.asm</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/NavigationController$ParseTask.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/include/MIPS-1.asm</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/include/MIPS-2.asm</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/META-INF/proj6LiLianKeithHardyZhou.kotlin_module</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/StructureViewController.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj12KeithHardyLiLian/resources/Main.css</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/resources/Main.css~869274e336267a7784947510c9f12ca578456839</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/resources/Main.css~HEAD</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/workspace.xml</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Restored" />
@@ -528,14 +548,21 @@
       <option name="project" value="LOCAL" />
       <updated>1553209343699</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="changing code area when save file">
+      <created>1553209997455</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1553209997455</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27248323" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27248323" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -544,13 +571,13 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3285968" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.6375839" visible="true" weight="0.27234042" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.6375839" visible="true" weight="0.2539007" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.36241612" side_tool="true" visible="true" weight="0.27234042" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.36241612" side_tool="true" visible="true" weight="0.2539007" />
       <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.88724834" weight="0.32907802" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.32765958" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -632,16 +659,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/JavaCodeArea.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="34" column="20" selection-end-line="153" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/NavigationController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1071">
@@ -663,16 +680,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2159">
           <caret line="127" selection-start-line="127" selection-end-line="127" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MIPSCodeArea.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="34" column="13" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -746,16 +753,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ToolbarController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="393">
-          <caret line="335" column="5" lean-forward="true" selection-start-line="335" selection-start-column="5" selection-end-line="335" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/StructureViewController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-51">
@@ -763,10 +760,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/CodeTabPane.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="100" column="7" lean-forward="true" selection-start-line="100" selection-start-column="7" selection-end-line="100" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CodeTab.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-11">
+          <caret line="53" column="63" selection-start-line="53" selection-start-column="63" selection-end-line="53" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FileController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1700">
+          <caret line="162" column="76" selection-start-line="162" selection-start-column="76" selection-end-line="162" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/MasterController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="123" lean-forward="true" selection-start-line="123" selection-end-line="123" />
+        <state relative-caret-position="238">
+          <caret line="140" column="44" lean-forward="true" selection-start-line="140" selection-start-column="44" selection-end-line="140" selection-end-column="44" />
           <folding>
             <element signature="e#10089#10090#0" expanded="true" />
             <element signature="e#10147#10148#0" expanded="true" />
@@ -798,24 +816,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CodeTabPane.java">
+    <entry file="file://$PROJECT_DIR$/resources/Main.fxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
-          <caret line="100" column="7" lean-forward="true" selection-start-line="100" selection-start-column="7" selection-end-line="100" selection-end-column="7" />
+        <state relative-caret-position="-680" />
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MIPSCodeArea.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="118" column="60" selection-start-line="118" selection-start-column="60" selection-end-line="118" selection-end-column="60" />
+          <folding>
+            <element signature="e#0#8204#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FileController.java">
+    <entry file="file://$PROJECT_DIR$/JavaCodeArea.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="841">
-          <caret line="164" column="51" selection-start-line="164" selection-start-column="51" selection-end-line="164" selection-end-column="51" />
+        <state relative-caret-position="275">
+          <caret line="101" column="54" selection-start-line="101" selection-start-column="54" selection-end-line="101" selection-end-column="92" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CodeTab.java">
+    <entry file="file://$PROJECT_DIR$/ToolbarController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="44" column="49" selection-start-line="44" selection-start-column="49" selection-end-line="44" selection-end-column="49" />
+        <state relative-caret-position="-916">
+          <caret line="250" lean-forward="true" selection-start-line="250" selection-end-line="250" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

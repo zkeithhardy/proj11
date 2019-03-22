@@ -116,7 +116,7 @@ class MIPSStyle {
     private static final String OPERATION_PATTERN = "\\b(" + String.join("|", OPERATION) + ")\\b";
     private static final String PAREN_PATTERN = "\\(|\\)";
     private static final String STRING_PATTERN = "\"([^\"\\\\]|\\\\.)*\"";
-    private static final String COMMENT_PATTERN = "#[^\n]*"; //"^([^#]*)#(.*)$"
+    private static final String COMMENT_PATTERN = "#[^\n]*";
     private static final String DIRECTIVE_PATTERN = "\\.(" + String.join("|", DIRECTIVE) + ")";
     private static final String REGISTER_PATTERN =  "\\$(" + String.join("|", REGISTER) + ")";
 

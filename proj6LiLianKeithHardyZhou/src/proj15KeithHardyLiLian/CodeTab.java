@@ -51,6 +51,7 @@ public class CodeTab extends Tab{
      * Creates a code area, adds it to a VirtualizedScrollPane, and then adds the scroll pane to the tab object.
      * @param content content to add to the code area if opening a file
      * @param filename
+     * @param saving true if saving file, false if opening file
      */
     public void addCodeArea(String content, String filename, boolean saving){
         // creation of the codeArea

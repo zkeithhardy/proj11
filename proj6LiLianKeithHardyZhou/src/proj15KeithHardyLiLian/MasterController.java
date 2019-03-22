@@ -196,6 +196,7 @@ public class MasterController {
     @FXML public void handleSave() {
         fileController.handleSave();
         structureViewController.updateStructureView();
+        toolbarController.enableCorrectButtons();
     }
 
     /**
@@ -204,7 +205,10 @@ public class MasterController {
      * Calls writeFile to save the file to memory.
      * Changes the name of the current tab to match the newly saved file's name.
      */
-    @FXML public void handleSaveAs( ) { fileController.handleSaveAs(); }
+    @FXML public void handleSaveAs( ) {
+        fileController.handleSaveAs();
+        toolbarController.enableCorrectButtons();
+    }
 
     /**
      * Handler for the "Exit" menu item in the "File" menu.
