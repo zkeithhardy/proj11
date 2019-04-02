@@ -252,7 +252,14 @@ public class MasterController {
      * Handler for the "Comment with Line Comments" menu item in the "Edit" menu.
      */
     @FXML
-    public void handleLineComment(){ editController.handleLineComment(); }
+    public void handleLineComment(){
+        String commentChar;
+        if(this.codeTabPane.getFileName().endsWith(".asm")||this.codeTabPane.getFileName().endsWith(".s"))
+            commentChar = "#";
+        else
+            commentChar = "//";
+        editController.handleLineComment(commentChar);
+    }
 
     /**
      * Handler for the "Comment with Block Comments" menu item in the "Edit" menu.

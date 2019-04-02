@@ -106,7 +106,9 @@ class MIPSStyle {
     // a list of strings that contain the registers for the IDE to identify.
     private static final String[] REGISTER = new String[]{
             "zero","v1","v0","t9","t8","t7","t6","t5","t4","t3","t2","t1","t0","sp","s8","s7",
-            "s6","s5","s4","s3","s2","s1","s0","ra","k1","k0","gp","fp","at","a3","a2","a1","a0"
+            "s6","s5","s4","s3","s2","s1","s0","ra","k1","k0","gp","fp","at","a3","a2","a1","a0","0","1",
+            "2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22",
+            "23","24","25","26","27","28","29","30","31"
     };
 
     // the regex rules for the ide

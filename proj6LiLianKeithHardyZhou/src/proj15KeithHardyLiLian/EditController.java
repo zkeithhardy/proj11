@@ -304,7 +304,7 @@ public class EditController {
     /**
      * handler for Line Comments. allows the user to toggle on or off line comments for multiple lines
      */
-    public void handleLineComment() {
+    public void handleLineComment(String commentChar) {
         //get codeArea, text, selectedText, and Selected Range
         CodeArea codeArea = this.codeTabPane.getCodeArea();
         String codeAreaText = codeArea.getText();
@@ -327,13 +327,14 @@ public class EditController {
             } else if (beforeComment.endsWith("\n ") && selectedText.startsWith(" ")) {
                 firstLineCommented = false;
             } else {
-                firstLineCommented = beforeComment.substring(lastNewLineBeforeComment + 1, lastNewLineBeforeComment + 3).equals("//");
+                firstLineCommented = beforeComment.substring(lastNewLineBeforeComment + 1, lastNewLineBeforeComment +
+                        commentChar.length() + 1).equals(commentChar);
             }
 
         } else if (beforeComment.endsWith("\n")) {
-            firstLineCommented = selectedText.startsWith("//");
+            firstLineCommented = selectedText.startsWith(commentChar);
         } else {
-            firstLineCommented = beforeComment.startsWith("//");
+            firstLineCommented = beforeComment.startsWith(commentChar);
         }
 
         String beforeCurrentLine;
@@ -345,7 +346,7 @@ public class EditController {
         //finds all new lines in the selected area
         ArrayList<Integer> newLineIndices = this.findNewLinesInString(selectedText);
         if (!newLineIndices.isEmpty()) {
-            selectedText = this.commentMultipleLines(newLineIndices, selectedText);
+            selectedText = this.commentMultipleLines(newLineIndices, selectedText, commentChar);
         }
 
         //finds text after selected area
@@ -381,20 +382,20 @@ public class EditController {
         //either comment lines or uncomment lines
         if (firstLineCommented) {
             //uncomment
-            selectedText = this.removeComments(selectedText, newLineIndices);
+            selectedText = this.removeComments(selectedText, newLineIndices,commentChar);
 
             partialCurrentLine = codeAreaText.substring(beforeCurrentLine.length(), selectedRange.getStart());
-            if (partialCurrentLine.startsWith("//")) {
-                partialCurrentLine = partialCurrentLine.substring(2);
+            if (partialCurrentLine.startsWith(commentChar)) {
+                partialCurrentLine = partialCurrentLine.substring(commentChar.length());
             }
             currentLine = partialCurrentLine + selectedText;
         } else {
             //comment
             if (!newLineIndices.isEmpty()) {
-                selectedText = this.commentMultipleLines(newLineIndices, selectedText);
+                selectedText = this.commentMultipleLines(newLineIndices, selectedText,commentChar);
             }
             partialCurrentLine = codeAreaText.substring(lastNewLineBeforeComment + 1, selectedRange.getStart());
-            currentLine = "//" + partialCurrentLine + selectedText;
+            currentLine = commentChar + partialCurrentLine + selectedText;
         }
 
         newContent = beforeCurrentLine + currentLine + afterComment;
@@ -414,14 +415,14 @@ public class EditController {
      * @param newLineIndices ArrayList of indices of new line characters in text
      * @return new String text with all comments removed after the new lines.
      */
-    private String removeComments(String text, ArrayList<Integer> newLineIndices) {
-        if (text.startsWith("//")) {
-            text = text.substring(2);
+    private String removeComments(String text, ArrayList<Integer> newLineIndices, String commentChar) {
+        if (text.startsWith(commentChar)) {
+            text = text.substring(commentChar.length());
 
             //decrements the new line indices by 2 if we remove 2 characters
             if (!newLineIndices.isEmpty()) {
                 for (int i = 0; i < newLineIndices.size(); i++) {
-                    newLineIndices.set(i, newLineIndices.get(i) - 2);
+                    newLineIndices.set(i, newLineIndices.get(i) - commentChar.length());
                 }
             }
         }
@@ -436,12 +437,12 @@ public class EditController {
             if (nextLine.length() == 0) {
                 continue;
             }
-            if (nextLine.startsWith("//")) {
+            if (nextLine.startsWith(commentChar)) {
                 String beforeComment = text.substring(0, newLineIndices.get(i));
-                String afterComment = nextLine.substring(2);
+                String afterComment = nextLine.substring(commentChar.length());
                 text = beforeComment + afterComment;
                 for (int j = i; j < newLineIndices.size(); j++) {
-                    newLineIndices.set(j, newLineIndices.get(j) - 2);
+                    newLineIndices.set(j, newLineIndices.get(j) - commentChar.length());
                 }
             }
         }
@@ -486,7 +487,7 @@ public class EditController {
      * @param text           string to add comments to
      * @return text with comments inserted after new line characters
      */
-    private String commentMultipleLines(ArrayList<Integer> newLineIndices, String text) {
+    private String commentMultipleLines(ArrayList<Integer> newLineIndices, String text,String commentChar) {
         String beforeComment;
         String afterComment;
 
@@ -496,17 +497,17 @@ public class EditController {
             afterComment = text.substring(newLineIndices.get(i));
 
             //makes sure there isn't a comment character already there
-            if (afterComment.startsWith("//")) {
-                afterComment = afterComment.substring(2);
+            if (afterComment.startsWith(commentChar)) {
+                afterComment = afterComment.substring(commentChar.length());
             } else {
                 if (newLineIndices.size() > 1) {
                     for (int j = i + 1; j < newLineIndices.size(); j++) {
-                        newLineIndices.set(j, newLineIndices.get(j) + 2);
+                        newLineIndices.set(j, newLineIndices.get(j) + commentChar.length());
                     }
                 }
 
             }
-            text = beforeComment + "//" + afterComment;
+            text = beforeComment + commentChar + afterComment;
         }
         return text;
     }

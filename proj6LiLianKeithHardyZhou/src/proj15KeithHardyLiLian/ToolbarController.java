@@ -23,7 +23,6 @@ package proj15KeithHardyLiLian;
 
 import javafx.application.Platform;
 import javafx.scene.control.Button;
-import mars.MarsLaunch;
 import proj15KeithHardyLiLian.bantam.ast.Program;
 import proj15KeithHardyLiLian.bantam.parser.Parser;
 import proj15KeithHardyLiLian.bantam.semant.*;
@@ -243,6 +242,9 @@ public class ToolbarController {
         try{
             this.curFutureTask.get();
             curExecutor.shutdown();
+            Platform.runLater(() ->
+                    this.console.writeToConsole("\nProcess was Successful.\n",
+                            "ProcessInfo"));
         }
         // if the program is interrupted, stop running
         catch (InterruptedException|ExecutionException|CancellationException e){

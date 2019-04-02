@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f879a60c-fe6b-40ba-9c27-5a565e3c1524" name="Default Changelist" comment="changing code area when save file">
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/CodeTab.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/CodeTab.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/EditController$findReplace.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/EditController$findReplace.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/EditController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/EditController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/FileController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/FileController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/JavaStyle.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/JavaStyle.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/MIPSStyle.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/MIPSStyle.class" afterDir="false" />
@@ -16,6 +19,10 @@
       <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/bantam/semant/InheritanceTreeVisitor.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/test/CheckerTestKeithHardyLiLian.btm" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/test/CheckerTestKeithHardyLiLian.btm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EditController.java" beforeDir="false" afterPath="$PROJECT_DIR$/EditController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MIPSCodeArea.java" beforeDir="false" afterPath="$PROJECT_DIR$/MIPSCodeArea.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MasterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/MasterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ToolbarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ToolbarController.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/../../out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -62,28 +69,28 @@
     <session id="89329359">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="7" />
+          <entry key="project.closed" value="8" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.19" value="1" />
           <entry key="project.open.time.22" value="1" />
           <entry key="project.open.time.31" value="1" />
           <entry key="project.open.time.6" value="2" />
           <entry key="project.open.time.7" value="1" />
-          <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="8" />
+          <entry key="project.open.time.8" value="2" />
+          <entry key="project.opened" value="9" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="css" value="4" />
-          <entry key="java" value="3402" />
+          <entry key="java" value="3985" />
           <entry key="txt" value="169" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="4" />
-          <entry key="JAVA" value="3401" />
+          <entry key="JAVA" value="3984" />
           <entry key="PLAIN_TEXT" value="169" />
           <entry key="RegExp" value="1" />
         </counts>
@@ -92,13 +99,13 @@
         <counts>
           <entry key="asm" value="1" />
           <entry key="fxml" value="1" />
-          <entry key="java" value="31" />
+          <entry key="java" value="34" />
           <entry key="s" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="31" />
+          <entry key="JAVA" value="34" />
           <entry key="PLAIN_TEXT" value="2" />
           <entry key="XML" value="1" />
         </counts>
@@ -108,61 +115,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/Main.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder" />
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CodeTabPane.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1700">
+            <state relative-caret-position="1294">
               <caret line="114" column="22" selection-start-line="114" selection-start-column="22" selection-end-line="114" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bantam/codegenmips/exceptions.s">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-4420" />
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bantam/codegenmips/Minimum.asm">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/bantam/codegenmips/MipsCodeGenerator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="87" column="28" selection-start-line="87" selection-start-column="28" selection-end-line="87" selection-end-column="28" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bantam/codegenmips/MipsSupport.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-7140">
-              <caret lean-forward="true" />
-              <folding>
-                <element signature="e#0#28297#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CodeTab.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="748">
-              <caret line="53" column="63" selection-start-line="53" selection-start-column="63" selection-end-line="53" selection-end-column="63" />
             </state>
           </provider>
         </entry>
@@ -170,8 +126,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MIPSCodeArea.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1700">
-              <caret line="118" column="60" selection-start-line="118" selection-start-column="60" selection-end-line="118" selection-end-column="60" />
+            <state relative-caret-position="255">
+              <caret line="60" column="55" lean-forward="true" selection-start-line="60" selection-start-column="55" selection-end-line="60" selection-end-column="55" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -180,26 +136,28 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/JavaCodeArea.java">
+        <entry file="file://$PROJECT_DIR$/ToolbarController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1411">
-              <caret line="101" column="54" selection-start-line="101" selection-start-column="54" selection-end-line="101" selection-end-column="92" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="85">
+              <caret line="24" column="35" selection-start-line="24" selection-start-column="35" selection-end-line="24" selection-end-column="35" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/FileController.java">
+        <entry file="file://$PROJECT_DIR$/EditController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="680">
-              <caret line="70" column="27" selection-start-line="70" selection-start-column="27" selection-end-line="70" selection-end-column="27" />
-              <folding>
-                <element signature="e#2120#2121#0" expanded="true" />
-                <element signature="e#2180#2181#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="5454">
+              <caret line="348" column="94" selection-start-line="348" selection-start-column="94" selection-end-line="348" selection-end-column="94" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/MasterController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2699">
+              <caret line="260" column="7" lean-forward="true" selection-start-line="260" selection-start-column="7" selection-end-line="260" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -229,6 +187,7 @@
       <find>system</find>
       <find>root</find>
       <find>writeFile</find>
+      <find>removeComm</find>
     </findStrings>
     <dirStrings>
       <dir>C:\Users\zkeit\Documents\CS461\proj15\proj6LiLianKeithHardyZhou</dir>
@@ -252,14 +211,15 @@
         <option value="$PROJECT_DIR$/bantam/visitor/Visitor.java" />
         <option value="$PROJECT_DIR$/bantam/semant/SemanticAnalyzer.java" />
         <option value="$PROJECT_DIR$/bantam/semant/TypeCheckerVisitor.java" />
-        <option value="$PROJECT_DIR$/ToolbarController.java" />
         <option value="$PROJECT_DIR$/FileController.java" />
         <option value="$PROJECT_DIR$/CodeTab.java" />
-        <option value="$PROJECT_DIR$/MasterController.java" />
-        <option value="$PROJECT_DIR$/MIPSCodeArea.java" />
         <option value="$PROJECT_DIR$/JavaCodeArea.java" />
         <option value="$PROJECT_DIR$/bantam/codegenmips/MipsSupport.java" />
         <option value="$PROJECT_DIR$/bantam/codegenmips/MipsCodeGenerator.java" />
+        <option value="$PROJECT_DIR$/MIPSCodeArea.java" />
+        <option value="$PROJECT_DIR$/ToolbarController.java" />
+        <option value="$PROJECT_DIR$/MasterController.java" />
+        <option value="$PROJECT_DIR$/EditController.java" />
       </list>
     </option>
   </component>
@@ -273,8 +233,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
       <pane id="PackagesPane" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -293,21 +253,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="proj15KeithHardyLiLian" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="proj15KeithHardyLiLian" type="b2602c69:ProjectViewProjectNode" />
-              <item name="proj6LiLianKeithHardyZhou" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="proj15KeithHardyLiLian" type="462c0819:PsiDirectoryNode" />
-              <item name="bantam" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="proj15KeithHardyLiLian" type="b2602c69:ProjectViewProjectNode" />
-              <item name="proj6LiLianKeithHardyZhou" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="proj15KeithHardyLiLian" type="462c0819:PsiDirectoryNode" />
-              <item name="bantam" type="462c0819:PsiDirectoryNode" />
-              <item name="codegenmips" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -316,7 +261,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554148902930" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554149004139" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../CS361/CS361Proj6" />
   </component>
   <component name="RunDashboard">
@@ -414,14 +359,30 @@
       <option name="project" value="LOCAL" />
       <updated>1553213295858</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="changing code area when save file">
+      <created>1554148960719</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1554148960719</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28053692" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28456375" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -429,14 +390,14 @@
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49932885" visible="true" weight="0.32765958" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.6375839" weight="0.2539007" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49932885" weight="0.32765958" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.63691276" visible="true" weight="0.1035461" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.4986577" weight="0.10212766" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50067115" side_tool="true" visible="true" weight="0.32765958" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.36308724" side_tool="true" visible="true" weight="0.1035461" />
       <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.88724834" weight="0.32907802" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.32765958" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -578,10 +539,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="348" column="15" lean-forward="true" selection-start-line="348" selection-start-column="15" selection-end-line="348" selection-end-column="15" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -599,43 +556,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ToolbarController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3638">
-          <caret line="250" selection-start-line="250" selection-end-line="250" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MasterController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1853">
-          <caret line="140" column="44" selection-start-line="140" selection-start-column="44" selection-end-line="140" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/bantam/generator/MipsCodeGenerator.java" />
     <entry file="file://$PROJECT_DIR$/resources/Main.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/CodeTab.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
-          <caret line="53" column="63" selection-start-line="53" selection-start-column="63" selection-end-line="53" selection-end-column="63" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/bantam/codegenmips/exceptions.s">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/MIPSCodeArea.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1700">
-          <caret line="118" column="60" selection-start-line="118" selection-start-column="60" selection-end-line="118" selection-end-column="60" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/bantam/codegenmips/Minimum.asm">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bantam/codegenmips/MipsSupport.java">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/JavaCodeArea.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -658,45 +591,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bantam/generator/MipsCodeGenerator.java">
+    <entry file="file://$PROJECT_DIR$/ToolbarController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3">
-          <caret line="26" column="8" lean-forward="true" selection-start-line="26" selection-start-column="8" selection-end-line="26" selection-end-column="8" />
+        <state relative-caret-position="85">
+          <caret line="24" column="35" selection-start-line="24" selection-start-column="35" selection-end-line="24" selection-end-column="35" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CodeTabPane.java">
+    <entry file="file://$PROJECT_DIR$/MIPSCodeArea.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1700">
-          <caret line="114" column="22" selection-start-line="114" selection-start-column="22" selection-end-line="114" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bantam/codegenmips/exceptions.s">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4420" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bantam/codegenmips/Minimum.asm">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bantam/codegenmips/MipsSupport.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7140">
-          <caret lean-forward="true" />
+        <state relative-caret-position="255">
+          <caret line="60" column="55" lean-forward="true" selection-start-line="60" selection-start-column="55" selection-end-line="60" selection-end-column="55" />
           <folding>
-            <element signature="e#0#28297#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EditController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5454">
+          <caret line="348" column="94" selection-start-line="348" selection-start-column="94" selection-end-line="348" selection-end-column="94" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bantam/codegenmips/MipsCodeGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
+        <state relative-caret-position="986">
           <caret line="87" column="28" selection-start-line="87" selection-start-column="28" selection-end-line="87" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CodeTab.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="597">
+          <caret line="53" column="63" selection-start-line="53" selection-start-column="63" selection-end-line="53" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CodeTabPane.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1294">
+          <caret line="114" column="22" selection-start-line="114" selection-start-column="22" selection-end-line="114" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MasterController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2699">
+          <caret line="260" column="7" lean-forward="true" selection-start-line="260" selection-start-column="7" selection-end-line="260" selection-end-column="7" />
         </state>
       </provider>
     </entry>
