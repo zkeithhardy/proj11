@@ -61,6 +61,7 @@ public class MasterController {
     @FXML private Button scanButton;
     @FXML private Button scanParseButton;
     @FXML private Button checkButton;
+    @FXML private Button compileButton;
     @FXML private Button assembleButton;
     @FXML private Button assembleRunButton;
     @FXML private Button stopMipsButton;
@@ -94,7 +95,7 @@ public class MasterController {
         this.editController = new EditController(this.codeTabPane);
         this.fileController = new FileController(this.vBox,this.codeTabPane,this);
         this.toolbarController = new ToolbarController(this.console, this.codeTabPane, this.stopMipsButton,
-                this.assembleButton,this.assembleRunButton, scanButton, scanParseButton, checkButton);
+                this.assembleButton,this.assembleRunButton, scanButton, scanParseButton, checkButton,compileButton);
 
         this.preferenceController = new PreferenceController(this.vBox, this.console, structureTabPane,
                 fileStructureItem,directoryTreeItem,this.fileStructureTree,this.directoryTree);
@@ -142,6 +143,7 @@ public class MasterController {
             this.scanButton.setDisable(false);
             this.scanParseButton.setDisable(false);
             this.checkButton.setDisable(false);
+            this.compileButton.setDisable(false);
             this.assembleButton.setDisable(false);
             this.assembleRunButton.setDisable(false);
             this.stopMipsButton.setDisable(false);
@@ -162,6 +164,7 @@ public class MasterController {
             this.scanButton.setDisable(false);
             this.scanParseButton.setDisable(false);
             this.checkButton.setDisable(false);
+            this.compileButton.setDisable(false);
             this.assembleButton.setDisable(false);
             this.assembleRunButton.setDisable(false);
             this.stopMipsButton.setDisable(true);
@@ -458,6 +461,7 @@ public class MasterController {
       this.scanButton.setDisable(true);
       this.scanParseButton.setDisable(true);
       this.checkButton.setDisable(true);
+      this.compileButton.setDisable(true);
         this.assembleButton.setDisable(true);
         this.assembleRunButton.setDisable(true);
         this.stopMipsButton.setDisable(true);
@@ -534,6 +538,14 @@ public class MasterController {
     @FXML
     private void handleChecking(){
         this.handleScanOrScanParse("checker");
+    }
+
+    /**
+     * Handles Code Generation
+     */
+    @FXML
+    private void handleCompile(){
+        this.handleScanOrScanParse("generator");
     }
 
     /**

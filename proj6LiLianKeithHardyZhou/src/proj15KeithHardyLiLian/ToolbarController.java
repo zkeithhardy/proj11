@@ -65,6 +65,7 @@ public class ToolbarController {
     private Button scanButton;
     private Button scanParseButton;
     private Button checkButton;
+    private Button compileButton;
 
     /**
      * This is the constructor of ToolbarController.
@@ -73,7 +74,7 @@ public class ToolbarController {
      */
     public ToolbarController(Console console, CodeTabPane codeTabPane, Button stopMipsButton,
                              Button assembleButton, Button assembleRunButton, Button scanButton, Button scanParseButton,
-                             Button checkButton){
+                             Button checkButton, Button compileButton){
         this.console = console;
         this.codeTabPane = codeTabPane;
         this.scanIsDone = true;
@@ -85,6 +86,7 @@ public class ToolbarController {
         this.scanButton = scanButton;
         this.scanParseButton = scanParseButton;
         this.checkButton = checkButton;
+        this.compileButton = compileButton;
 
         this.codeTabPane.getSelectionModel().selectedItemProperty().addListener((observableValue, oldTab, newTab) -> {
             this.enableCorrectButtons();
@@ -100,8 +102,10 @@ public class ToolbarController {
             this.handleScan();
         }else if (method.equals("scanParse")){
             this.handleParsing();
-        }else{
+        }else if (method.equals("checker")){
             this.handleChecking();
+        }else{
+            //this.handleCompile();
         }
     }
 
@@ -304,6 +308,7 @@ public class ToolbarController {
             this.scanButton.setDisable(true);
             this.scanParseButton.setDisable(true);
             this.checkButton.setDisable(true);
+            this.compileButton.setDisable(true);
         } else if (this.codeTabPane.getFileName().endsWith(".btm")) {
             this.assembleButton.setDisable(true);
             this.assembleRunButton.setDisable(true);
@@ -311,6 +316,7 @@ public class ToolbarController {
             this.scanButton.setDisable(false);
             this.scanParseButton.setDisable(false);
             this.checkButton.setDisable(false);
+            this.compileButton.setDisable(false);
         }else{
             this.assembleButton.setDisable(true);
             this.assembleRunButton.setDisable(true);
@@ -318,6 +324,7 @@ public class ToolbarController {
             this.scanButton.setDisable(true);
             this.scanParseButton.setDisable(true);
             this.checkButton.setDisable(true);
+            this.compileButton.setDisable(true);
         }
     }
 
