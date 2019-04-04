@@ -26,6 +26,9 @@
 
 package proj15KeithHardyLiLian.bantam.codegenmips;
 
+import proj15KeithHardyLiLian.bantam.ast.ASTNode;
+import proj15KeithHardyLiLian.bantam.ast.Program;
+import proj15KeithHardyLiLian.bantam.semant.StringConstantsVisitor;
 import proj15KeithHardyLiLian.bantam.util.ClassTreeNode;
 import proj15KeithHardyLiLian.bantam.util.CompilationException;
 import proj15KeithHardyLiLian.bantam.util.Error;
@@ -34,6 +37,9 @@ import proj15KeithHardyLiLian.bantam.util.ErrorHandler;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * The <tt>MipsCodeGenerator</tt> class generates mips assembly code
@@ -124,9 +130,43 @@ public class MipsCodeGenerator
         }
 
         // comment out
-        throw new RuntimeException("MIPS code generator unimplemented");
+        //throw new RuntimeException("MIPS code generator unimplemented");
 
         // add code here...
+        //Header for MIPS file
+        this.out.println("#Authors: Zeb Keith-Hardy, Michael Li, Iris Lian");
+        this.out.println("#Date: " + LocalDate.now());
+        this.out.println("#Compiled From Source: " + root.getASTNode().getFilename());
+
+        //start data section
+        this.assemblySupport.genDataStart();
+        this.out.println("gc_flag:");
+        int gc;
+        if(this.gc){
+            gc = -1;
+        }else{
+            gc = 0;
+        }
+        this.out.println("\t.word\t" + gc);
+        this.out.println();
+
+        this.generateStringConstants(root.getASTNode());
+    }
+
+    public void generateStringConstants(ASTNode root){
+        StringConstantsVisitor stringConstantsVisitor = new StringConstantsVisitor();
+        Map<String,String> stringConstants = stringConstantsVisitor.getStringConstants((Program)root);
+
+        for(Map.Entry<String,String> entry: stringConstants.entrySet()){
+            this.out.println(entry.getValue() + ":");
+            this.assemblySupport.genWord("1\t\t# String Identifier");
+            this.assemblySupport.genWord("24\t\t# Size of Object in Bytes");
+            this.assemblySupport.genWord("String_dispatch_table");
+            this.assemblySupport.genWord(Integer.toString(entry.getKey().length()));
+            this.assemblySupport.genAscii(entry.getKey());
+        }
+        this.out.println();
+
     }
 
     public static void main(String[] args) {
