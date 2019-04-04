@@ -101,6 +101,7 @@
         <Button fx:id ="scanButton" onAction="#handleScan" text = "Scan"/>
         <Button fx:id ="scanParseButton" onAction = "#handleScanAndParse" text = "Scan and Parse"/>
         <Button fx:id = "checkButton" onAction = "#handleChecking" text = "Scan, Parse &amp; Check"/>
+        <Button fx:id = "compileButton" onAction = "#handleCompile" text = "Compile"/>
         <Button fx:id = "assembleButton" onAction = "#handleAssemble" text = "Assemble"/>
         <Button fx:id = "assembleRunButton" onAction = "#handleAssembleRun" text="Assemble &amp; Run"/>
         <Button fx:id = "stopMipsButton" onAction = "#handleStopMips" text = "Stop MIPS"/>

@@ -24,6 +24,7 @@ package proj15KeithHardyLiLian;
 import javafx.application.Platform;
 import javafx.scene.control.Button;
 import proj15KeithHardyLiLian.bantam.ast.Program;
+import proj15KeithHardyLiLian.bantam.codegenmips.MipsCodeGenerator;
 import proj15KeithHardyLiLian.bantam.parser.Parser;
 import proj15KeithHardyLiLian.bantam.semant.*;
 import proj15KeithHardyLiLian.bantam.treedrawer.Drawer;
@@ -56,9 +57,9 @@ public class ToolbarController {
     private boolean scanIsDone;
     private boolean parseIsDone;
     private boolean checkIsDone;
+    private boolean assembleSuccessful;
     private Console console;
     private CodeTabPane codeTabPane;
-    private boolean assembleSuccessful;
     private Button stopMipsButton;
     private Button assembleButton;
     private Button assembleRunButton;
@@ -98,14 +99,16 @@ public class ToolbarController {
      * @param method type of button clicked on the toolbar
      */
     public void handleScanOrScanParse(String method){
-        if(method.equals("scan")){
-            this.handleScan();
-        }else if (method.equals("scanParse")){
-            this.handleParsing();
-        }else if (method.equals("checker")){
-            this.handleChecking();
-        }else{
-            //this.handleCompile();
+        switch (method){
+            case "scan":
+                this.handleScan();
+                break;
+            case "scanParse":
+                this.handleParsing();
+                break;
+            default: //checker or generator
+                this.handleCheckingOrCompiling(method);
+                break;
         }
     }
 
@@ -153,8 +156,9 @@ public class ToolbarController {
     /**
      * creates a new thread for semantically analyzing the AST
      * Prints out all errors found by Semantic Analyzer
+     * @param method
      */
-    public void handleChecking(){
+    public void handleCheckingOrCompiling(String method){
         this.checkIsDone = false;
         new Thread (()->{
             CheckTask checkTask = new CheckTask();
@@ -163,8 +167,31 @@ public class ToolbarController {
             curExecutor.execute(curFutureTask);
             try{
                 ClassTreeNode classTree = curFutureTask.get();
-
                 this.checkIsDone = true;
+                if(method.equals("generator")) {
+                    ErrorHandler errorHandler = new ErrorHandler();
+                    MipsCodeGenerator mipsCodeGenerator = new MipsCodeGenerator(errorHandler, true, true);
+                    String outFile = "";
+                    mipsCodeGenerator.generate(classTree, outFile);
+                    //print to a new tab
+                    this.codeTabPane.createTabWithContent(outFile);
+                    Platform.runLater(()-> {
+                        if (errorHandler.errorsFound()) {
+
+                            List<Error> errorList = errorHandler.getErrorList();
+                            Iterator<Error> errorIterator = errorList.iterator();
+                            ToolbarController.this.console.writeToConsole("\n", "Error");
+                            while (errorIterator.hasNext()) {
+                                ToolbarController.this.console.writeToConsole(errorIterator.next().toString() +
+                                        "\n", "Error");
+                            }
+
+                        }else{
+                            Platform.runLater(()->ToolbarController.this.console.writeToConsole(
+                                    "Code Generation Successful.\n", "Output"));
+                        }
+                    });
+                }
             }catch(InterruptedException| ExecutionException e){
                 Platform.runLater(()-> this.console.writeToConsole("Semantic Analyzer failed: " + e.toString()
                                 + "\n",
@@ -380,7 +407,7 @@ public class ToolbarController {
             Parser parser = new Parser(errorHandler);
             SemanticAnalyzer analyzer = new SemanticAnalyzer(errorHandler);
             String filename = ToolbarController.this.codeTabPane.getFileName();
-            Program AST = null;
+            Program AST;
             ClassTreeNode classTree = null;
             try{
                 AST = parser.parse(filename);
