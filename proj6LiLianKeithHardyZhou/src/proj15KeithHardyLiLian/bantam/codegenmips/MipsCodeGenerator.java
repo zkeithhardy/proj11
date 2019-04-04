@@ -28,6 +28,7 @@ package proj15KeithHardyLiLian.bantam.codegenmips;
 
 import proj15KeithHardyLiLian.bantam.ast.ASTNode;
 import proj15KeithHardyLiLian.bantam.ast.Program;
+import proj15KeithHardyLiLian.bantam.semant.ClassNameVisitor;
 import proj15KeithHardyLiLian.bantam.semant.StringConstantsVisitor;
 import proj15KeithHardyLiLian.bantam.util.ClassTreeNode;
 import proj15KeithHardyLiLian.bantam.util.CompilationException;
@@ -151,9 +152,13 @@ public class MipsCodeGenerator
         this.out.println();
 
         this.generateStringConstants(root.getASTNode());
+
+        this.generateClassNameTable(root.getASTNode());
+
+        this.generateObjectTemplates(root.getASTNode());
     }
 
-    public void generateStringConstants(ASTNode root){
+    private void generateStringConstants(ASTNode root){
         StringConstantsVisitor stringConstantsVisitor = new StringConstantsVisitor();
         Map<String,String> stringConstants = stringConstantsVisitor.getStringConstants((Program)root);
 
@@ -167,6 +172,76 @@ public class MipsCodeGenerator
         }
         this.out.println();
 
+    }
+
+    private void generateClassNameTable(ASTNode root){
+        ClassNameVisitor classNameVisitor = new ClassNameVisitor();
+        Map<String,String> classNames = classNameVisitor.getClassNames((Program)root);
+
+        for(Map.Entry<String,String> entry: classNames.entrySet()){
+            this.out.println(entry.getValue() + ":");
+            this.assemblySupport.genWord("1\t\t# String Identifier");
+            this.assemblySupport.genWord("24\t\t# Size of Object in Bytes");
+            this.assemblySupport.genWord("String_dispatch_table");
+            this.assemblySupport.genWord(Integer.toString(entry.getKey().length()));
+            this.assemblySupport.genAscii(entry.getKey());
+        }
+
+        this.out.println();
+        this.out.println("class_name_table:");
+        for(Map.Entry<String,String> entry: classNames.entrySet()){
+            this.assemblySupport.genWord(entry.getValue());
+        }
+        this.out.println();
+    }
+
+    private void generateObjectTemplates(ASTNode root){
+        ClassNameVisitor classNameVisitor = new ClassNameVisitor();
+        Map<String,String> classNames = classNameVisitor.getClassNames((Program)root);
+
+        this.assemblySupport.genGlobal("String_template");
+        this.assemblySupport.genGlobal("TextIO_template");
+        this.assemblySupport.genGlobal("Object_template");
+        this.assemblySupport.genGlobal("Sys_template");
+        for(Map.Entry<String,String> entry: classNames.entrySet()){
+            this.assemblySupport.genGlobal(entry.getKey() + "_template");
+        }
+        this.out.println();
+
+        this.out.println("String_template:");
+        this.assemblySupport.genWord("1");
+        this.assemblySupport.genWord("16");
+        this.assemblySupport.genWord("String_dispatch_table");
+        this.assemblySupport.genWord("0");
+        this.out.println();
+
+        this.out.println("Object_template:");
+        this.assemblySupport.genWord("0");
+        this.assemblySupport.genWord("12");
+        this.assemblySupport.genWord("Object_dispatch_table");
+        this.out.println();
+
+        this.out.println("Sys_template:");
+        this.assemblySupport.genWord("2");
+        this.assemblySupport.genWord("12");
+        this.assemblySupport.genWord("Sys_dispatch_table");
+        this.out.println();
+
+        this.out.println("TextIO_template:");
+        this.assemblySupport.genWord("3");
+        this.assemblySupport.genWord("20");
+        this.assemblySupport.genWord("TextIO_dispatch_table");
+        this.assemblySupport.genWord("0");
+        this.assemblySupport.genWord("0");
+        this.out.println();
+
+        int i = 4;
+        for(Map.Entry<String,String> entry: classNames.entrySet()){
+            this.out.println(entry.getKey()+"_template:");
+            this.assemblySupport.genWord(Integer.toString(i));
+
+            i++;
+        }
     }
 
     public static void main(String[] args) {
