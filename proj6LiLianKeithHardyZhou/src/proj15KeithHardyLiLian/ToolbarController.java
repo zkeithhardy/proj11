@@ -161,7 +161,7 @@ public class ToolbarController {
     public void handleCheckingOrCompiling(String method){
         this.checkIsDone = false;
         new Thread (()->{
-            CheckorCompileTask checkOrCompileTask = new CheckorCompileTask(method);
+            CheckerCompileTask checkOrCompileTask = new CheckerCompileTask(method);
             FutureTask<ClassTreeNode> curFutureTask = new FutureTask<ClassTreeNode>(checkOrCompileTask);
             ExecutorService curExecutor = Executors.newFixedThreadPool(1);
             curExecutor.execute(curFutureTask);
@@ -389,10 +389,10 @@ public class ToolbarController {
      * An inner class used to analyze a file in a separate thread.
      * Prints error info to the console
      */
-    private class CheckorCompileTask implements Callable{
+    private class CheckerCompileTask implements Callable{
         private String method;
 
-        private CheckorCompileTask(String method){
+        private CheckerCompileTask(String method){
             this.method = method;
         }
         /**

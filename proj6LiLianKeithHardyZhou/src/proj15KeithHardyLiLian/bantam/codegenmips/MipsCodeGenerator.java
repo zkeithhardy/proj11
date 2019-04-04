@@ -86,6 +86,8 @@ public class MipsCodeGenerator
 
     private int classMapSize;
 
+    private Hashtable<String,ClassTreeNode> classMap;
+
     /**
      * MipsCodeGenerator constructor
      *
@@ -155,12 +157,13 @@ public class MipsCodeGenerator
         ClassNameVisitor classNameVisitor = new ClassNameVisitor();
         Map<String,String> classNames = classNameVisitor.getClassNames(rootAST);
         this.classMapSize = classNames.size();
+        this.classMap = root.getClassMap();
 
         this.generateStringConstants(rootAST);
 
         this.generateClassNameTable(classNames);
 
-        this.generateObjectTemplates(classNames,root);
+        this.generateObjectTemplates(classNames);
 
         this.generateDispatchTables(classNames);
 
@@ -202,67 +205,66 @@ public class MipsCodeGenerator
 
         this.out.println();
 
-        this.out.println("Class"+Integer.toString(size));
-        this.assemblySupport.genWord("1");
-        this.assemblySupport.genWord("24");
-        this.assemblySupport.genWord("String_dispatch_table");
-        this.assemblySupport.genWord("6");
-        this.assemblySupport.genAscii("String");
-        this.out.println();
-
-        this.out.println("Class"+Integer.toString(size+1));
-        this.assemblySupport.genWord("1");
-        this.assemblySupport.genWord("24");
-        this.assemblySupport.genWord("String_dispatch_table");
-        this.assemblySupport.genWord("6");
-        this.assemblySupport.genAscii("TextIO");
-        this.out.println();
-
-        this.out.println("Class"+Integer.toString(size+2));
-        this.assemblySupport.genWord("1");
-        this.assemblySupport.genWord("24");
-        this.assemblySupport.genWord("String_dispatch_table");
-        this.assemblySupport.genWord("6");
-        this.assemblySupport.genAscii("Object");
-        this.out.println();
-
-        this.out.println("Class"+Integer.toString(size+3));
-        this.assemblySupport.genWord("1");
-        this.assemblySupport.genWord("20");
-        this.assemblySupport.genWord("String_dispatch_table");
-        this.assemblySupport.genWord("3");
-        this.assemblySupport.genAscii("Sys");
-        this.out.println();
+//        this.out.println("Class"+Integer.toString(size));
+//        this.assemblySupport.genWord("1");
+//        this.assemblySupport.genWord("24");
+//        this.assemblySupport.genWord("String_dispatch_table");
+//        this.assemblySupport.genWord("6");
+//        this.assemblySupport.genAscii("String");
+//        this.out.println();
+//
+//        this.out.println("Class"+Integer.toString(size+1));
+//        this.assemblySupport.genWord("1");
+//        this.assemblySupport.genWord("24");
+//        this.assemblySupport.genWord("String_dispatch_table");
+//        this.assemblySupport.genWord("6");
+//        this.assemblySupport.genAscii("TextIO");
+//        this.out.println();
+//
+//        this.out.println("Class"+Integer.toString(size+2));
+//        this.assemblySupport.genWord("1");
+//        this.assemblySupport.genWord("24");
+//        this.assemblySupport.genWord("String_dispatch_table");
+//        this.assemblySupport.genWord("6");
+//        this.assemblySupport.genAscii("Object");
+//        this.out.println();
+//
+//        this.out.println("Class"+Integer.toString(size+3));
+//        this.assemblySupport.genWord("1");
+//        this.assemblySupport.genWord("20");
+//        this.assemblySupport.genWord("String_dispatch_table");
+//        this.assemblySupport.genWord("3");
+//        this.assemblySupport.genAscii("Sys");
+//        this.out.println();
 
         this.out.println("class_name_table:");
         for(Map.Entry<String,String> entry: classNames.entrySet()){
             this.assemblySupport.genWord(entry.getValue());
-            this.assemblySupport.genWord("Class"+Integer.toString(size));
-            this.assemblySupport.genWord("Class"+Integer.toString(size+1));
-            this.assemblySupport.genWord("Class"+Integer.toString(size+2));
-            this.assemblySupport.genWord("Class"+Integer.toString(size+3));
-
+//            this.assemblySupport.genWord("Class"+Integer.toString(size));
+//            this.assemblySupport.genWord("Class"+Integer.toString(size+1));
+//            this.assemblySupport.genWord("Class"+Integer.toString(size+2));
+//            this.assemblySupport.genWord("Class"+Integer.toString(size+3));
         }
         this.out.println();
     }
 
-    private void generateObjectTemplates(Map<String,String> classNames,ClassTreeNode rootNode){
+    private void generateObjectTemplates(Map<String,String> classNames){
 
-        this.assemblySupport.genGlobal("String_template");
-        this.assemblySupport.genGlobal("TextIO_template");
-        this.assemblySupport.genGlobal("Object_template");
-        this.assemblySupport.genGlobal("Sys_template");
+//        this.assemblySupport.genGlobal("String_template");
+//        this.assemblySupport.genGlobal("TextIO_template");
+//        this.assemblySupport.genGlobal("Object_template");
+//        this.assemblySupport.genGlobal("Sys_template");
         for(Map.Entry<String,String> entry: classNames.entrySet()){
             this.assemblySupport.genGlobal(entry.getKey() + "_template");
         }
         this.out.println();
 
-        Hashtable<String,ClassTreeNode> classMap = rootNode.getClassMap();
+//        Hashtable<String,ClassTreeNode> classMap = rootNode.getClassMap();
         int i = 0;
         for(Map.Entry<String,String> entry: classNames.entrySet()){
             this.out.println(entry.getKey()+"_template:");
             this.assemblySupport.genWord(Integer.toString(i));
-            SymbolTable fields = classMap.get(entry.getKey()).getVarSymbolTable();
+            SymbolTable fields = this.classMap.get(entry.getKey()).getVarSymbolTable();
             int size = fields.getSize();
             this.assemblySupport.genWord(Integer.toString(12 + size*4));
             this.assemblySupport.genWord(entry.getKey()+"_dispatch_table");
@@ -273,84 +275,84 @@ public class MipsCodeGenerator
             i++;
             this.out.println();
         }
-        this.out.println("String_template:");
-        this.assemblySupport.genWord(Integer.toString(this.classMapSize));
-        this.assemblySupport.genWord("16");
-        this.assemblySupport.genWord("String_dispatch_table");
-        this.assemblySupport.genWord("0");
-        this.out.println();
-
-        this.out.println("TextIO_template:");
-        this.assemblySupport.genWord(Integer.toString(this.classMapSize+1));
-        this.assemblySupport.genWord("20");
-        this.assemblySupport.genWord("TextIO_dispatch_table");
-        this.assemblySupport.genWord("0");
-        this.assemblySupport.genWord("0");
-        this.out.println();
-
-        this.out.println("Object_template:");
-        this.assemblySupport.genWord(Integer.toString(this.classMapSize+2));
-        this.assemblySupport.genWord("12");
-        this.assemblySupport.genWord("Object_dispatch_table");
-        this.out.println();
-
-        this.out.println("Sys_template:");
-        this.assemblySupport.genWord(Integer.toString(this.classMapSize+3));
-        this.assemblySupport.genWord("12");
-        this.assemblySupport.genWord("Sys_dispatch_table");
-        this.out.println();
+//        this.out.println("String_template:");
+//        this.assemblySupport.genWord(Integer.toString(this.classMapSize));
+//        this.assemblySupport.genWord("16");
+//        this.assemblySupport.genWord("String_dispatch_table");
+//        this.assemblySupport.genWord("0");
+//        this.out.println();
+//
+//        this.out.println("TextIO_template:");
+//        this.assemblySupport.genWord(Integer.toString(this.classMapSize+1));
+//        this.assemblySupport.genWord("20");
+//        this.assemblySupport.genWord("TextIO_dispatch_table");
+//        this.assemblySupport.genWord("0");
+//        this.assemblySupport.genWord("0");
+//        this.out.println();
+//
+//        this.out.println("Object_template:");
+//        this.assemblySupport.genWord(Integer.toString(this.classMapSize+2));
+//        this.assemblySupport.genWord("12");
+//        this.assemblySupport.genWord("Object_dispatch_table");
+//        this.out.println();
+//
+//        this.out.println("Sys_template:");
+//        this.assemblySupport.genWord(Integer.toString(this.classMapSize+3));
+//        this.assemblySupport.genWord("12");
+//        this.assemblySupport.genWord("Sys_dispatch_table");
+//        this.out.println();
     }
 
     private void generateDispatchTables(Map<String,String> classNames){
 
-        this.assemblySupport.genGlobal("String_dispatch_table");
-        this.assemblySupport.genGlobal("TextIO_dispatch_table");
-        this.assemblySupport.genGlobal("Object_dispatch_table");
-        this.assemblySupport.genGlobal("Sys_dispatch_table");
+//        this.assemblySupport.genGlobal("String_dispatch_table");
+//        this.assemblySupport.genGlobal("TextIO_dispatch_table");
+//        this.assemblySupport.genGlobal("Object_dispatch_table");
+//        this.assemblySupport.genGlobal("Sys_dispatch_table");
         for(Map.Entry<String,String> entry: classNames.entrySet()){
             this.assemblySupport.genGlobal(entry.getKey() + "_dispatch_table");
         }
 
-        this.out.println("String_dispatch_table:");
-        this.assemblySupport.genWord("Object.clone");
-        this.assemblySupport.genWord("String.equals");
-        this.assemblySupport.genWord("String.toString");
-        this.assemblySupport.genWord("String.length");
-        this.assemblySupport.genWord("String.substring");
-        this.assemblySupport.genWord("String.concat");
-
-        this.out.println("Object_dispatch_table:");
-        this.assemblySupport.genWord("Object.clone");
-        this.assemblySupport.genWord("Object.equals");
-        this.assemblySupport.genWord("Object.toString");
-
-        this.out.println("Sys_dispatch_table:");
-        this.assemblySupport.genWord("Object.clone");
-        this.assemblySupport.genWord("Object.equals");
-        this.assemblySupport.genWord("Object.toString");
-        this.assemblySupport.genWord("Sys.exit");
-        this.assemblySupport.genWord("Sys.time");
-        this.assemblySupport.genWord("Sys.random");
-
-        this.out.println("TextIO_dispatch_table:");
-        this.assemblySupport.genWord("Object.clone");
-        this.assemblySupport.genWord("Object.equals");
-        this.assemblySupport.genWord("Object.toString");
-        this.assemblySupport.genWord("TextIO.readStdin");
-        this.assemblySupport.genWord("TextIO.readFile");
-        this.assemblySupport.genWord("TextIO.writeStdout");
-        this.assemblySupport.genWord("TextIO.writeStderr");
-        this.assemblySupport.genWord("TextIO.writeFile");
-        this.assemblySupport.genWord("TextIO.getString");
-        this.assemblySupport.genWord("TextIO.getInt");
-        this.assemblySupport.genWord("TextIO.putString");
-        this.assemblySupport.genWord("TextIO.putInt");
+//        this.out.println("String_dispatch_table:");
+//        this.assemblySupport.genWord("Object.clone");
+//        this.assemblySupport.genWord("String.equals");
+//        this.assemblySupport.genWord("String.toString");
+//        this.assemblySupport.genWord("String.length");
+//        this.assemblySupport.genWord("String.substring");
+//        this.assemblySupport.genWord("String.concat");
+//
+//        this.out.println("Object_dispatch_table:");
+//        this.assemblySupport.genWord("Object.clone");
+//        this.assemblySupport.genWord("Object.equals");
+//        this.assemblySupport.genWord("Object.toString");
+//
+//        this.out.println("Sys_dispatch_table:");
+//        this.assemblySupport.genWord("Object.clone");
+//        this.assemblySupport.genWord("Object.equals");
+//        this.assemblySupport.genWord("Object.toString");
+//        this.assemblySupport.genWord("Sys.exit");
+//        this.assemblySupport.genWord("Sys.time");
+//        this.assemblySupport.genWord("Sys.random");
+//
+//        this.out.println("TextIO_dispatch_table:");
+//        this.assemblySupport.genWord("Object.clone");
+//        this.assemblySupport.genWord("Object.equals");
+//        this.assemblySupport.genWord("Object.toString");
+//        this.assemblySupport.genWord("TextIO.readStdin");
+//        this.assemblySupport.genWord("TextIO.readFile");
+//        this.assemblySupport.genWord("TextIO.writeStdout");
+//        this.assemblySupport.genWord("TextIO.writeStderr");
+//        this.assemblySupport.genWord("TextIO.writeFile");
+//        this.assemblySupport.genWord("TextIO.getString");
+//        this.assemblySupport.genWord("TextIO.getInt");
+//        this.assemblySupport.genWord("TextIO.putString");
+//        this.assemblySupport.genWord("TextIO.putInt");
 
         for(Map.Entry<String,String> entry: classNames.entrySet()){
             this.out.println(entry.getKey()+"_dispatch_table:");
-            this.assemblySupport.genWord("Object.clone");
-            this.assemblySupport.genWord("Object.equals");
-            this.assemblySupport.genWord("Object.toString");
+//            this.assemblySupport.genWord("Object.clone");
+//            this.assemblySupport.genWord("Object.equals");
+//            this.assemblySupport.genWord("Object.toString");
 
         }
 
