@@ -146,7 +146,7 @@ public class MipsCodeGenerator
         }else{
             gc = 0;
         }
-        this.out.println("\t.word\t" + gc);
+        this.assemblySupport.genWord(Integer.toString(gc));
         this.out.println();
 
         this.generateStringConstants(root.getASTNode());
