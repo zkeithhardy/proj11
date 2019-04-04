@@ -417,7 +417,7 @@ public class ToolbarController {
                 if(method.equals("generator")) {
 
                     MipsCodeGenerator mipsCodeGenerator = new MipsCodeGenerator(errorHandler, true, true);
-                    String outFile = "";
+                    String outFile = ToolbarController.this.codeTabPane.getFileName().split(".")[0] + ".asm";
                     mipsCodeGenerator.generate(classTree, outFile, AST);
                     //print to a new tab
                     ToolbarController.this.codeTabPane.createTabWithContent(outFile);
