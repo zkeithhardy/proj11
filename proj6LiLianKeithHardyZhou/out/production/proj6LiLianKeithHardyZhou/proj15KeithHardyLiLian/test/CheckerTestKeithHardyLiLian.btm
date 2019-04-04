@@ -2,11 +2,10 @@ class Main extends B{
     boolean a = true;
     //illegal type declaration 
     int b = true;
-
     //use of undeclared type
     //incompatible type declaration
     ood c = null;
-
+    
     //the type D does not exist
     D[] l = new D[6];
 
