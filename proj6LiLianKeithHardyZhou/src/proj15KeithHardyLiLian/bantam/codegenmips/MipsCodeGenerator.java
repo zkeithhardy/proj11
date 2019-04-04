@@ -178,7 +178,7 @@ public class MipsCodeGenerator
     private void generateClassNameTable(ASTNode root){
         ClassNameVisitor classNameVisitor = new ClassNameVisitor();
         Map<String,String> classNames = classNameVisitor.getClassNames((Program)root);
-
+        int size = classNames.size();
         for(Map.Entry<String,String> entry: classNames.entrySet()){
             this.out.println(entry.getValue() + ":");
             this.assemblySupport.genWord("1\t\t# String Identifier");
@@ -189,6 +189,39 @@ public class MipsCodeGenerator
         }
 
         this.out.println();
+
+        this.out.println("Class"+Integer.toString(size));
+        this.assemblySupport.genWord("1");
+        this.assemblySupport.genWord("24");
+        this.assemblySupport.genWord("String_dispatch_table");
+        this.assemblySupport.genWord("6");
+        this.assemblySupport.genAscii("String");
+        this.out.println();
+
+        this.out.println("Class"+Integer.toString(size+1));
+        this.assemblySupport.genWord("1");
+        this.assemblySupport.genWord("24");
+        this.assemblySupport.genWord("String_dispatch_table");
+        this.assemblySupport.genWord("6");
+        this.assemblySupport.genAscii("TextIO");
+        this.out.println();
+
+        this.out.println("Class"+Integer.toString(size+2));
+        this.assemblySupport.genWord("1");
+        this.assemblySupport.genWord("24");
+        this.assemblySupport.genWord("String_dispatch_table");
+        this.assemblySupport.genWord("6");
+        this.assemblySupport.genAscii("Object");
+        this.out.println();
+
+        this.out.println("Class"+Integer.toString(size+3));
+        this.assemblySupport.genWord("1");
+        this.assemblySupport.genWord("20");
+        this.assemblySupport.genWord("String_dispatch_table");
+        this.assemblySupport.genWord("3");
+        this.assemblySupport.genAscii("Sys");
+        this.out.println();
+
         this.out.println("class_name_table:");
         for(Map.Entry<String,String> entry: classNames.entrySet()){
             this.assemblySupport.genWord(entry.getValue());
