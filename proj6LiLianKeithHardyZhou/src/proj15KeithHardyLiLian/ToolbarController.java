@@ -161,37 +161,32 @@ public class ToolbarController {
     public void handleCheckingOrCompiling(String method){
         this.checkIsDone = false;
         new Thread (()->{
-            CheckTask checkTask = new CheckTask();
-            FutureTask<ClassTreeNode> curFutureTask = new FutureTask<ClassTreeNode>(checkTask);
+            CheckorCompileTask checkOrCompileTask = new CheckorCompileTask(method);
+            FutureTask<ClassTreeNode> curFutureTask = new FutureTask<ClassTreeNode>(checkOrCompileTask);
             ExecutorService curExecutor = Executors.newFixedThreadPool(1);
             curExecutor.execute(curFutureTask);
             try{
                 ClassTreeNode classTree = curFutureTask.get();
                 this.checkIsDone = true;
-                if(method.equals("generator")) {
-                    ErrorHandler errorHandler = new ErrorHandler();
-                    MipsCodeGenerator mipsCodeGenerator = new MipsCodeGenerator(errorHandler, true, true);
-                    String outFile = "";
-                    mipsCodeGenerator.generate(classTree, outFile);
-                    //print to a new tab
-                    this.codeTabPane.createTabWithContent(outFile);
-                    Platform.runLater(()-> {
-                        if (errorHandler.errorsFound()) {
+//                ErrorHandler errorHandler = new ErrorHandler();
+//
+//                Platform.runLater(()-> {
+//                    if (errorHandler.errorsFound()) {
+//
+//                        List<Error> errorList = errorHandler.getErrorList();
+//                        Iterator<Error> errorIterator = errorList.iterator();
+//                        ToolbarController.this.console.writeToConsole("\n", "Error");
+//                        while (errorIterator.hasNext()) {
+//                            ToolbarController.this.console.writeToConsole(errorIterator.next().toString() +
+//                                    "\n", "Error");
+//                        }
+//
+//                    }else{
+//                        Platform.runLater(()->ToolbarController.this.console.writeToConsole(
+//                                "Code Generation Successful.\n", "Output"));
+//                    }
+//                });
 
-                            List<Error> errorList = errorHandler.getErrorList();
-                            Iterator<Error> errorIterator = errorList.iterator();
-                            ToolbarController.this.console.writeToConsole("\n", "Error");
-                            while (errorIterator.hasNext()) {
-                                ToolbarController.this.console.writeToConsole(errorIterator.next().toString() +
-                                        "\n", "Error");
-                            }
-
-                        }else{
-                            Platform.runLater(()->ToolbarController.this.console.writeToConsole(
-                                    "Code Generation Successful.\n", "Output"));
-                        }
-                    });
-                }
             }catch(InterruptedException| ExecutionException e){
                 Platform.runLater(()-> this.console.writeToConsole("Semantic Analyzer failed: " + e.toString()
                                 + "\n",
@@ -394,8 +389,12 @@ public class ToolbarController {
      * An inner class used to analyze a file in a separate thread.
      * Prints error info to the console
      */
-    private class CheckTask implements Callable{
+    private class CheckorCompileTask implements Callable{
+        private String method;
 
+        private CheckorCompileTask(String method){
+            this.method = method;
+        }
         /**
          * Create a Parser and use it to create an AST
          * Passes AST to the semantic analyzer
@@ -414,7 +413,16 @@ public class ToolbarController {
                 Platform.runLater(()->ToolbarController.this.console.writeToConsole(
                         "Parsing Successful.\n", "Output"));
                 classTree = analyzer.analyze(AST);
-                System.out.println(classTree);
+
+                if(method.equals("generator")) {
+
+                    MipsCodeGenerator mipsCodeGenerator = new MipsCodeGenerator(errorHandler, true, true);
+                    String outFile = "";
+                    mipsCodeGenerator.generate(classTree, outFile, AST);
+                    //print to a new tab
+                    ToolbarController.this.codeTabPane.createTabWithContent(outFile);
+                }
+
                 Platform.runLater(()-> {
                     if (errorHandler.errorsFound()) {
 
@@ -428,7 +436,7 @@ public class ToolbarController {
 
                     }else{
                         Platform.runLater(()->ToolbarController.this.console.writeToConsole(
-                                "Analyzing Successful.\n", "Output"));
+                                "Compilation Successful.\n", "Output"));
                     }
                 });
             }
