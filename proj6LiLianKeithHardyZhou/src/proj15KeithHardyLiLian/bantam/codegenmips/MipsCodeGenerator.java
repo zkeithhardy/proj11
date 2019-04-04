@@ -30,16 +30,14 @@ import proj15KeithHardyLiLian.bantam.ast.ASTNode;
 import proj15KeithHardyLiLian.bantam.ast.Program;
 import proj15KeithHardyLiLian.bantam.semant.ClassNameVisitor;
 import proj15KeithHardyLiLian.bantam.semant.StringConstantsVisitor;
-import proj15KeithHardyLiLian.bantam.util.ClassTreeNode;
-import proj15KeithHardyLiLian.bantam.util.CompilationException;
+import proj15KeithHardyLiLian.bantam.util.*;
 import proj15KeithHardyLiLian.bantam.util.Error;
-import proj15KeithHardyLiLian.bantam.util.ErrorHandler;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.time.LocalDate;
-import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.Map;
 
 /**
@@ -155,7 +153,10 @@ public class MipsCodeGenerator
 
         this.generateClassNameTable(root.getASTNode());
 
-        this.generateObjectTemplates(root.getASTNode());
+        this.generateObjectTemplates(root.getASTNode(),root);
+
+        this.generateDispatchTables(root.getASTNode(),root);
+
     }
 
     private void generateStringConstants(ASTNode root){
@@ -195,7 +196,7 @@ public class MipsCodeGenerator
         this.out.println();
     }
 
-    private void generateObjectTemplates(ASTNode root){
+    private void generateObjectTemplates(ASTNode root,ClassTreeNode rootNode){
         ClassNameVisitor classNameVisitor = new ClassNameVisitor();
         Map<String,String> classNames = classNameVisitor.getClassNames((Program)root);
 
@@ -228,20 +229,93 @@ public class MipsCodeGenerator
         this.out.println();
 
         this.out.println("TextIO_template:");
-        this.assemblySupport.genWord("3");
+        this.assemblySupport.genWord("4");
         this.assemblySupport.genWord("20");
         this.assemblySupport.genWord("TextIO_dispatch_table");
         this.assemblySupport.genWord("0");
         this.assemblySupport.genWord("0");
         this.out.println();
 
-        int i = 4;
+        Hashtable<String,ClassTreeNode> classMap = rootNode.getClassMap();
+        int i = 5;
         for(Map.Entry<String,String> entry: classNames.entrySet()){
             this.out.println(entry.getKey()+"_template:");
-            this.assemblySupport.genWord(Integer.toString(i));
+            if(entry.getKey().equals("Main")){
+                this.assemblySupport.genWord("3");
+                i--;
+            }else{
+                this.assemblySupport.genWord(Integer.toString(i));
+            }
+            SymbolTable fields = classMap.get(entry.getKey()).getVarSymbolTable();
+            int size = fields.getSize();
+            this.assemblySupport.genWord(Integer.toString(12 + size*4));
+            this.assemblySupport.genWord(entry.getKey()+"_dispatch_table");
+            for(int j = 0; j< size; j++){
+                this.assemblySupport.genWord("0");
+            }
 
             i++;
+            this.out.println();
         }
+    }
+
+    private void generateDispatchTables(ASTNode root, ClassTreeNode rootNode){
+        ClassNameVisitor classNameVisitor = new ClassNameVisitor();
+        Map<String,String> classNames = classNameVisitor.getClassNames((Program)root);
+
+        this.assemblySupport.genGlobal("String_dispatch_table");
+        this.assemblySupport.genGlobal("TextIO_dispatch_table");
+        this.assemblySupport.genGlobal("Object_dispatch_table");
+        this.assemblySupport.genGlobal("Sys_dispatch_table");
+        for(Map.Entry<String,String> entry: classNames.entrySet()){
+            this.assemblySupport.genGlobal(entry.getKey() + "_dispatch_table");
+        }
+
+        this.out.println("String_dispatch_table:");
+        this.assemblySupport.genWord("Object.clone");
+        this.assemblySupport.genWord("String.equals");
+        this.assemblySupport.genWord("String.toString");
+        this.assemblySupport.genWord("String.length");
+        this.assemblySupport.genWord("String.substring");
+        this.assemblySupport.genWord("String.concat");
+
+        this.out.println("Object_dispatch_table:");
+        this.assemblySupport.genWord("Object.clone");
+        this.assemblySupport.genWord("Object.equals");
+        this.assemblySupport.genWord("Object.toString");
+
+        this.out.println("Sys_dispatch_table:");
+        this.assemblySupport.genWord("Object.clone");
+        this.assemblySupport.genWord("Object.equals");
+        this.assemblySupport.genWord("Object.toString");
+        this.assemblySupport.genWord("Sys.exit");
+        this.assemblySupport.genWord("Sys.time");
+        this.assemblySupport.genWord("Sys.random");
+
+        this.out.println("TextIO_dispatch_table:");
+        this.assemblySupport.genWord("Object.clone");
+        this.assemblySupport.genWord("Object.equals");
+        this.assemblySupport.genWord("Object.toString");
+        this.assemblySupport.genWord("TextIO.readStdin");
+        this.assemblySupport.genWord("TextIO.readFile");
+        this.assemblySupport.genWord("TextIO.writeStdout");
+        this.assemblySupport.genWord("TextIO.writeStderr");
+        this.assemblySupport.genWord("TextIO.writeFile");
+        this.assemblySupport.genWord("TextIO.getString");
+        this.assemblySupport.genWord("TextIO.getInt");
+        this.assemblySupport.genWord("TextIO.putString");
+        this.assemblySupport.genWord("TextIO.putInt");
+
+        Hashtable<String,ClassTreeNode> classMap = rootNode.getClassMap();
+        for(Map.Entry<String,String> entry: classNames.entrySet()){
+            this.out.println(entry.getKey()+"_dispatch_table:");
+            this.assemblySupport.genWord("Object.clone");
+            this.assemblySupport.genWord("Object.equals");
+            this.assemblySupport.genWord("Object.toString");
+            SymbolTable methods = classMap.get(entry.getKey()).getMethodSymbolTable();
+
+        }
+
     }
 
     public static void main(String[] args) {
