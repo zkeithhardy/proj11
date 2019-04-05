@@ -239,9 +239,9 @@ public class SemanticAnalyzer
 
             ClassTreeNode parentNode = classMap.get(astNode.getParent());
             if (parentNode == null) {
-                errorHandler.register(Error.Kind.SEMANT_ERROR, astNode.getFilename(),
-                        astNode.getLineNum(), "Superclass " + astNode.getParent() + " " +
-                                "of class " + astNode.getName() + " does not exist.");
+//                errorHandler.register(Error.Kind.SEMANT_ERROR, astNode.getFilename(),
+//                        astNode.getLineNum(), "Superclass " + astNode.getParent() + " " +
+//                                "of class " + astNode.getName() + " does not exist.");
                 treeNode.setParent(classMap.get("Object")); //to allow checking to
                 // continue
             }
