@@ -26,9 +26,7 @@
 
 package proj15KeithHardyLiLian.bantam.codegenmips;
 
-import proj15KeithHardyLiLian.bantam.ast.ASTNode;
-import proj15KeithHardyLiLian.bantam.ast.Class_;
-import proj15KeithHardyLiLian.bantam.ast.Program;
+import proj15KeithHardyLiLian.bantam.ast.*;
 import proj15KeithHardyLiLian.bantam.semant.ClassNameVisitor;
 import proj15KeithHardyLiLian.bantam.semant.StringConstantsVisitor;
 import proj15KeithHardyLiLian.bantam.util.*;
@@ -350,6 +348,13 @@ public class MipsCodeGenerator
 
         for(Map.Entry<String,String> entry: classNames.entrySet()){
             this.out.println(entry.getKey()+"_dispatch_table:");
+            ClassTreeNode tempNode = classMap.get(entry.getKey());
+            MemberList tempMemberList = tempNode.getASTNode().getMemberList();
+            for(ASTNode m: tempMemberList){
+                if(m instanceof Method){
+                    System.out.println(m.getLineNum());
+                }
+            }
 //            this.assemblySupport.genWord("Object.clone");
 //            this.assemblySupport.genWord("Object.equals");
 //            this.assemblySupport.genWord("Object.toString");
