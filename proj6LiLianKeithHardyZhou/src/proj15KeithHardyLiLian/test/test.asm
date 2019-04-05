@@ -11,8 +11,8 @@ StringConst_0:
 	.word	1		# String Identifier
 	.word	24		# Size of Object in Bytes
 	.word	String_dispatch_table
-	.word	6
-	.ascii	""Main""
+	.word	4
+	.ascii	"Main"
 	.byte	0
 	.align	2
 
@@ -69,4 +69,20 @@ Main_template:
 	.globl	SubMain_dispatch_table
 	.globl	Main_dispatch_table
 SubMain_dispatch_table:
+	.word	SubMain.foo
+	.word	SubMain.equals
+	.word	Main.foo
+	.word	Main.equals
+	.word	Main.toString
+	.word	Main.main
+	.word	Object.clone
+	.word	Object.equals
+	.word	Object.toString
 Main_dispatch_table:
+	.word	Main.foo
+	.word	Main.equals
+	.word	Main.toString
+	.word	Main.main
+	.word	Object.clone
+	.word	Object.equals
+	.word	Object.toString

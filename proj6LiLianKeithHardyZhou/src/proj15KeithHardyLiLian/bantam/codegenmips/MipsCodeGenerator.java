@@ -178,8 +178,8 @@ public class MipsCodeGenerator
             this.assemblySupport.genWord("1\t\t# String Identifier");
             this.assemblySupport.genWord("24\t\t# Size of Object in Bytes");
             this.assemblySupport.genWord("String_dispatch_table");
-            this.assemblySupport.genWord(Integer.toString(entry.getKey().length()));
-            this.assemblySupport.genAscii(entry.getKey());
+            this.assemblySupport.genWord(Integer.toString(entry.getKey().substring(1,entry.getKey().length()-1).length()));
+            this.assemblySupport.genAscii(entry.getKey().substring(1,entry.getKey().length()-1));
         }
         this.out.println();
 
@@ -355,8 +355,21 @@ public class MipsCodeGenerator
             ArrayList<String> methodNames = new ArrayList<>();
             for(ASTNode m: tempMemberList){
                 if(m instanceof Method){
-                    methodNames.add(((Method) m).getName());
+                    methodNames.add(tempNode.getName()+"."+((Method) m).getName());
                 }
+            }
+            while(tempNode.getParent()!=null){
+                tempNode=tempNode.getParent();
+                tempMemberList=tempNode.getASTNode().getMemberList();
+                for(ASTNode m: tempMemberList){
+                    if(m instanceof Method){
+                        methodNames.add(tempNode.getName()+"."+((Method) m).getName());
+                    }
+                }
+            }
+
+            for(String method: methodNames){
+                this.assemblySupport.genWord(method);
             }
 //            this.assemblySupport.genWord("Object.clone");
 //            this.assemblySupport.genWord("Object.equals");
