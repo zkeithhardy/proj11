@@ -418,10 +418,11 @@ public class ToolbarController {
                     MipsCodeGenerator mipsCodeGenerator = new MipsCodeGenerator(errorHandler, true, true);
                     System.out.println(ToolbarController.this.codeTabPane.getFileName());
                     String outFile = ToolbarController.this.codeTabPane.getFileName().split("\\.")[0] + ".asm";
-                    System.out.println(outFile);
                     mipsCodeGenerator.generate(classTree, outFile, AST);
+                    File outString = new File(outFile);
                     //print to a new tab
-                    ToolbarController.this.codeTabPane.createTabWithContent(outFile);
+                    Platform.runLater(()-> {
+                        ToolbarController.this.codeTabPane.makeTabFromFile(outString,true);});
                 }
 
                 Platform.runLater(()-> {

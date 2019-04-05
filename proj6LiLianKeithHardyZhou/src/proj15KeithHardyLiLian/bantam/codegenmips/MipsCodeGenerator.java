@@ -159,13 +159,10 @@ public class MipsCodeGenerator
         this.classMap = root.getClassMap();
 
         this.generateStringConstants(rootAST);
-        System.out.println("after string consts");
 
         this.generateClassNameTable(classNames);
-        System.out.println("after class name table");
 
         this.generateObjectTemplates(classNames);
-        System.out.println("after object templates");
 
         this.generateDispatchTables(classNames);
         System.out.println("after dispatch tables");
