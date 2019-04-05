@@ -415,9 +415,10 @@ public class ToolbarController {
                 classTree = analyzer.analyze(AST);
 
                 if(method.equals("generator")) {
-
                     MipsCodeGenerator mipsCodeGenerator = new MipsCodeGenerator(errorHandler, true, true);
-                    String outFile = ToolbarController.this.codeTabPane.getFileName().split(".")[0] + ".asm";
+                    System.out.println(ToolbarController.this.codeTabPane.getFileName());
+                    String outFile = ToolbarController.this.codeTabPane.getFileName().split("\\.")[0] + ".asm";
+                    System.out.println(outFile);
                     mipsCodeGenerator.generate(classTree, outFile, AST);
                     //print to a new tab
                     ToolbarController.this.codeTabPane.createTabWithContent(outFile);

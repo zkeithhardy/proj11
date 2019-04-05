@@ -36,6 +36,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Map;
 
@@ -158,12 +159,16 @@ public class MipsCodeGenerator
         this.classMap = root.getClassMap();
 
         this.generateStringConstants(rootAST);
+        System.out.println("after string consts");
 
         this.generateClassNameTable(classNames);
+        System.out.println("after class name table");
 
         this.generateObjectTemplates(classNames);
+        System.out.println("after object templates");
 
         this.generateDispatchTables(classNames);
+        System.out.println("after dispatch tables");
 
     }
 
@@ -185,7 +190,7 @@ public class MipsCodeGenerator
 
     private void generateClassNameTable(Map<String,String> classNames){
 
-        int size = classNames.size();
+//        int size = classNames.size();
         for(Map.Entry<String,String> entry: classNames.entrySet()){
             this.out.println(entry.getValue() + ":");
             this.assemblySupport.genWord("1\t\t# String Identifier");
@@ -350,9 +355,10 @@ public class MipsCodeGenerator
             this.out.println(entry.getKey()+"_dispatch_table:");
             ClassTreeNode tempNode = classMap.get(entry.getKey());
             MemberList tempMemberList = tempNode.getASTNode().getMemberList();
+            ArrayList<String> methodNames = new ArrayList<>();
             for(ASTNode m: tempMemberList){
                 if(m instanceof Method){
-                    System.out.println(m.getLineNum());
+                    methodNames.add(((Method) m).getName());
                 }
             }
 //            this.assemblySupport.genWord("Object.clone");
