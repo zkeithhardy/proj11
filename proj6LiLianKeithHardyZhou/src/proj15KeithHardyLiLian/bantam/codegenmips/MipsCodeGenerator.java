@@ -32,6 +32,7 @@ import proj15KeithHardyLiLian.bantam.semant.StringConstantsVisitor;
 import proj15KeithHardyLiLian.bantam.util.*;
 import proj15KeithHardyLiLian.bantam.util.Error;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
@@ -39,6 +40,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 /**
  * The <tt>MipsCodeGenerator</tt> class generates mips assembly code
@@ -137,9 +139,16 @@ public class MipsCodeGenerator
 
         // add code here...
         //Header for MIPS file
+        this.classMap = root.getClassMap();
+
         this.out.println("#Authors: Zeb Keith-Hardy, Michael Li, Iris Lian");
         this.out.println("#Date: " + LocalDate.now());
-        this.out.println("#Compiled From Source: " + root.getASTNode().getFilename());
+
+        Class_ mainNode = this.classMap.get("Main").getASTNode();
+        String pattern = Pattern.quote(System.getProperty("file.separator"));
+        String[] filename = mainNode.getFilename().split(pattern);
+
+        this.out.println("#Compiled From Source: " + filename[filename.length-1]);
 
         //start data section
         this.assemblySupport.genDataStart();
@@ -156,7 +165,7 @@ public class MipsCodeGenerator
         ClassNameVisitor classNameVisitor = new ClassNameVisitor();
         Map<String,String> classNames = classNameVisitor.getClassNames(rootAST);
         this.classMapSize = classNames.size();
-        this.classMap = root.getClassMap();
+
 
         this.generateStringConstants(rootAST);
 

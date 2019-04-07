@@ -1,6 +1,6 @@
 #Authors: Zeb Keith-Hardy, Michael Li, Iris Lian
 #Date: 2019-04-07
-#Compiled From Source: <built-in class>
+#Compiled From Source: test.btm
 	.data
 	.globl	gc_flag
 	.globl	class_name_table
