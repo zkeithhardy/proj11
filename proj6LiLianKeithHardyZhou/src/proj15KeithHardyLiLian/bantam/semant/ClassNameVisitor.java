@@ -25,8 +25,13 @@ public class ClassNameVisitor extends Visitor {
      * @return the map of string constants
      */
     public Map<String, String> getClassNames(Program ast) {
-        numClassConsts = 0;
         classNameMap = new HashMap<>();
+        classNameMap.put("Object", "Class_" + 0);
+        classNameMap.put("TextIO", "Class_" + 1);
+        classNameMap.put("String", "Class_" + 2);
+        classNameMap.put("Sys", "Class_" + 3);
+        numClassConsts = 4;
+        
         ast.accept(this);
         return classNameMap;
     }

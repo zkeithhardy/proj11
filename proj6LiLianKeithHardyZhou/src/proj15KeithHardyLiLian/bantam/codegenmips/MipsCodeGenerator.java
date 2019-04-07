@@ -157,6 +157,7 @@ public class MipsCodeGenerator
         Map<String,String> classNames = classNameVisitor.getClassNames(rootAST);
         this.classMapSize = classNames.size();
         this.classMap = root.getClassMap();
+        System.out.println("Object::" + classMap.get("Object"));
 
         this.generateStringConstants(rootAST);
 

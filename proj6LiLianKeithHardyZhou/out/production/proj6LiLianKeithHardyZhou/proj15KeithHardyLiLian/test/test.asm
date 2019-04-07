@@ -1,5 +1,5 @@
 #Authors: Zeb Keith-Hardy, Michael Li, Iris Lian
-#Date: 2019-04-04
+#Date: 2019-04-07
 #Compiled From Source: <built-in class>
 	.data
 	.globl	gc_flag
@@ -11,8 +11,8 @@ StringConst_0:
 	.word	1		# String Identifier
 	.word	24		# Size of Object in Bytes
 	.word	String_dispatch_table
-	.word	3
-	.ascii	"Mai"
+	.word	4
+	.ascii	"Main"
 	.byte	0
 	.align	2
 
