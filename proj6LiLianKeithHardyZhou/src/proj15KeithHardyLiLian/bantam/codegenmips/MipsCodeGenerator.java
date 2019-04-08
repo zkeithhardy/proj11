@@ -277,7 +277,7 @@ public class MipsCodeGenerator
             this.out.println(entry.getKey()+"_template:");
             this.assemblySupport.genWord(Integer.toString(i));
             SymbolTable fields = this.classMap.get(entry.getKey()).getVarSymbolTable();
-            int size = fields.getSize();
+            int size = fields.getSize() - 2*fields.getCurrScopeLevel();
             this.assemblySupport.genWord(Integer.toString(12 + size*4));
             this.assemblySupport.genWord(entry.getKey()+"_dispatch_table");
             for(int j = 0; j< size; j++){

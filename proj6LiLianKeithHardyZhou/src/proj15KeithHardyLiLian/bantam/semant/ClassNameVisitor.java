@@ -31,7 +31,7 @@ public class ClassNameVisitor extends Visitor {
         classNameMap.put("String", "Class_" + 2);
         classNameMap.put("Sys", "Class_" + 3);
         numClassConsts = 4;
-        
+
         ast.accept(this);
         return classNameMap;
     }
