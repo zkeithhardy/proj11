@@ -131,10 +131,6 @@ public class MipsCodeGenerator
             throw new CompilationException("Couldn't write to output file.");
         }
 
-        // comment out
-        //throw new RuntimeException("MIPS code generator unimplemented");
-
-        // add code here...
         //Header for MIPS file
         this.classMap = root.getClassMap();
 
@@ -188,6 +184,10 @@ public class MipsCodeGenerator
 
     }
 
+    /**
+     * Generates the string constants
+     * @param rootAST the ast root
+     */
     private void generateStringConstants(Program rootAST){
         this.assemblySupport.genComment("String Constants:");
         StringConstantsVisitor stringConstantsVisitor = new StringConstantsVisitor();
@@ -243,7 +243,7 @@ public class MipsCodeGenerator
 
     /**
      * Generates globals and class templates for objects
-     * @param classNames
+     * @param classNames the name of the classes
      */
     private void generateObjectTemplates(Map<String,String> classNames){
         this.assemblySupport.genComment("Object Templates:");
