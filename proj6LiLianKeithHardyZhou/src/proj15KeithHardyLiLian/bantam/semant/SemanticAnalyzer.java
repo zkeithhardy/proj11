@@ -128,7 +128,6 @@ public class SemanticAnalyzer
 
         //step 4: check whether there is a Main class with a main method.
         checkForMainClassWithMainMethod();
-        System.out.println("found main");
         //step 5:  do type-checking for all expressions.  This includes checking for:
         //         1. two local variables of the same name with overlapping scopes
         //         2. break statements not in loops
