@@ -2,26 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f879a60c-fe6b-40ba-9c27-5a565e3c1524" name="Default Changelist" comment="changing code area when save file">
-      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/Main.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/Main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/Main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/Main.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/CodeTab.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/CodeTab.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/EditController$findReplace.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/EditController$findReplace.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/EditController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/EditController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/FileController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/FileController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/JavaStyle.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/JavaStyle.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/MIPSStyle.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/MIPSStyle.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/MasterController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/MasterController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/ToolbarController$AssembleOrRunTask.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/ToolbarController$AssembleOrRunTask.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/ToolbarController$CheckTask.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/ToolbarController$CheckTask.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/ToolbarController$ParseTask.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/ToolbarController$ParseTask.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/ToolbarController$ScanTask.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/ToolbarController$ScanTask.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/ToolbarController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/ToolbarController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/resources/Main.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/resources/Main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/resources/Main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/resources/Main.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/test/CheckerTestKeithHardyLiLian.btm" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/test/CheckerTestKeithHardyLiLian.btm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/bantam/codegenmips/MipsCodeGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/bantam/codegenmips/MipsCodeGenerator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/test/test.asm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/test/test.btm" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj15KeithHardyLiLian/test/test.btm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ToolbarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ToolbarController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bantam/codegenmips/MipsCodeGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/codegenmips/MipsCodeGenerator.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/../../out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,64 +16,64 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="89329359">
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="java" value="302" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JAVA" value="302" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="java" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="JAVA" value="1" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/bantam/codegenmips/MipsCodeGenerator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-57">
-              <caret line="257" selection-start-line="257" selection-end-line="257" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bantam/semant/SemanticAnalyzer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-162">
-              <caret line="293" column="69" lean-forward="true" selection-start-line="293" selection-start-column="69" selection-end-line="293" selection-end-column="69" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bantam/codegenmips/MipsSupport.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6384">
-              <caret line="412" column="40" selection-start-line="412" selection-start-column="40" selection-end-line="412" selection-end-column="40" />
+            <state relative-caret-position="141">
+              <caret line="871" column="21" selection-start-line="871" selection-start-column="16" selection-end-line="871" selection-end-column="21" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ToolbarController.java">
+        <entry file="file://$PROJECT_DIR$/bantam/codegenmips/MipsCodeGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="346">
-              <caret line="424" column="93" selection-start-line="424" selection-start-column="93" selection-end-line="424" selection-end-column="93" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#13501#13502#0" expanded="true" />
-                <element signature="e#13539#13540#0" expanded="true" />
-                <element signature="e#13701#13702#0" expanded="true" />
-                <element signature="e#13740#13741#0" expanded="true" />
-                <element signature="e#14443#14444#0" expanded="true" />
-                <element signature="e#14487#14488#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-1481">
+              <caret line="170" column="8" selection-start-line="170" selection-start-column="8" selection-end-line="170" selection-end-column="8" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/MasterController.java">
+        <entry file="file://$PROJECT_DIR$/bantam/ast/ASTNode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2451">
-              <caret line="160" column="46" selection-start-line="160" selection-start-column="35" selection-end-line="160" selection-end-column="51" />
+            <state relative-caret-position="128">
+              <caret line="253" column="22" selection-start-line="253" selection-start-column="22" selection-end-line="253" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bantam/ast/Class_.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="192">
+              <caret line="49" lean-forward="true" selection-start-line="49" selection-end-line="49" />
             </state>
           </provider>
         </entry>
@@ -95,28 +81,54 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bantam/semant/ClassNameVisitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-490">
-              <caret line="26" column="59" lean-forward="true" selection-start-line="26" selection-start-column="59" selection-end-line="26" selection-end-column="59" />
+            <state relative-caret-position="-19">
+              <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bantam/util/ClassTreeNode.java">
+        <entry file="file://$PROJECT_DIR$/bantam/semant/NumFieldsVisitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="665">
-              <caret line="63" column="53" selection-start-line="63" selection-start-column="45" selection-end-line="63" selection-end-column="53" />
+            <state relative-caret-position="204">
+              <caret line="40" column="19" lean-forward="true" selection-start-line="40" selection-start-column="19" selection-end-line="40" selection-end-column="19" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/bantam/semant/SemanticAnalyzer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-3538">
+              <caret line="138" column="41" lean-forward="true" selection-start-line="138" selection-start-column="41" selection-end-line="138" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bantam/util/SymbolTable.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2793">
+              <caret line="244" column="43" lean-forward="true" selection-start-line="244" selection-start-column="43" selection-end-line="244" selection-end-column="43" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bantam/semant/StringConstantsVisitor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="918">
+              <caret line="67" column="1" selection-start-line="67" selection-start-column="1" selection-end-line="67" selection-end-column="1" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bantam/codegenmips/Minimum.asm">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="10" column="19" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
-            </state>
-          </provider>
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -127,6 +139,13 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>system.out.pr</find>
+      <find>genText</find>
+      <find>genre</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
@@ -143,7 +162,6 @@
         <option value="$PROJECT_DIR$/bantam/semant/SemanticAnalyzer_old.java" />
         <option value="$PROJECT_DIR$/StructureViewController.java" />
         <option value="$PROJECT_DIR$/bantam/visitor/Visitor.java" />
-        <option value="$PROJECT_DIR$/bantam/semant/SemanticAnalyzer.java" />
         <option value="$PROJECT_DIR$/bantam/semant/TypeCheckerVisitor.java" />
         <option value="$PROJECT_DIR$/FileController.java" />
         <option value="$PROJECT_DIR$/CodeTab.java" />
@@ -158,6 +176,7 @@
         <option value="$PROJECT_DIR$/ToolbarController.java" />
         <option value="$PROJECT_DIR$/bantam/semant/StringConstantsVisitor.java" />
         <option value="$PROJECT_DIR$/bantam/semant/ClassNameVisitor.java" />
+        <option value="$PROJECT_DIR$/bantam/semant/SemanticAnalyzer.java" />
         <option value="$PROJECT_DIR$/bantam/codegenmips/MipsCodeGenerator.java" />
       </list>
     </option>
@@ -167,6 +186,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -191,14 +211,59 @@
               <item name="proj6LiLianKeithHardyZhou" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="proj15KeithHardyLiLian" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="bantam" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="proj15KeithHardyLiLian" type="b2602c69:ProjectViewProjectNode" />
+              <item name="proj6LiLianKeithHardyZhou" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="proj15KeithHardyLiLian" type="462c0819:PsiDirectoryNode" />
+              <item name="bantam" type="462c0819:PsiDirectoryNode" />
+              <item name="ast" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="proj15KeithHardyLiLian" type="b2602c69:ProjectViewProjectNode" />
+              <item name="proj6LiLianKeithHardyZhou" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="proj15KeithHardyLiLian" type="462c0819:PsiDirectoryNode" />
+              <item name="bantam" type="462c0819:PsiDirectoryNode" />
+              <item name="codegenmips" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="proj15KeithHardyLiLian" type="b2602c69:ProjectViewProjectNode" />
+              <item name="proj6LiLianKeithHardyZhou" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="proj15KeithHardyLiLian" type="462c0819:PsiDirectoryNode" />
+              <item name="bantam" type="462c0819:PsiDirectoryNode" />
+              <item name="semant" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="proj15KeithHardyLiLian" type="b2602c69:ProjectViewProjectNode" />
+              <item name="proj6LiLianKeithHardyZhou" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="proj15KeithHardyLiLian" type="462c0819:PsiDirectoryNode" />
+              <item name="bantam" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="proj15KeithHardyLiLian" type="b2602c69:ProjectViewProjectNode" />
+              <item name="proj6LiLianKeithHardyZhou" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="proj15KeithHardyLiLian" type="462c0819:PsiDirectoryNode" />
+              <item name="include" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="proj15KeithHardyLiLian" type="b2602c69:ProjectViewProjectNode" />
+              <item name="proj6LiLianKeithHardyZhou" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="proj15KeithHardyLiLian" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="PackagesPane" />
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="RunDashboard">
@@ -233,12 +298,12 @@
       <option name="presentableId" value="Default" />
       <updated>1553045404552</updated>
     </task>
-    <task id="LOCAL-00001" summary="fixed regex">
-      <created>1553100561068</created>
+    <task id="LOCAL-00001" summary="changing code area when save file">
+      <created>1554683808204</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1553100561068</updated>
+      <updated>1554683808204</updated>
     </task>
     <task id="LOCAL-00002" summary="fixed regex">
       <created>1553180810814</created>
@@ -352,12 +417,14 @@
       <option name="project" value="LOCAL" />
       <updated>1554393071254</updated>
     </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23562753" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23892617" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -366,7 +433,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49878544" weight="0.3268206" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.6404858" visible="true" weight="0.060390763" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.6404858" visible="true" weight="0.28794327" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -384,8 +451,77 @@
       <window_info anchor="right" id="Palette&#9;" order="6" />
       <window_info anchor="right" id="Maven Projects" order="7" />
     </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27248323" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3285968" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.8852349" weight="0.27234042" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50067115" side_tool="true" visible="true" weight="0.32907802" />
+      <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49932885" visible="true" weight="0.32907802" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.32765958" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="Palette&#9;" order="6" />
+      <window_info anchor="right" id="Maven Projects" order="7" />
+    </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="changing code area when save file" />
+    <option name="LAST_COMMIT_MESSAGE" value="changing code area when save file" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/bantam/ast/Program.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="38" column="13" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bantam/semant/ClassNameVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-19">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bantam/codegenmips/MipsCodeGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1481">
+          <caret line="170" column="8" selection-start-line="170" selection-start-column="8" selection-end-line="170" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bantam/codegenmips/MipsSupport.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="141">
+          <caret line="871" column="21" selection-start-line="871" selection-start-column="16" selection-end-line="871" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bantam/semant/SemanticAnalyzer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3538">
+          <caret line="138" column="41" lean-forward="true" selection-start-line="138" selection-start-column="41" selection-end-line="138" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>
