@@ -6,9 +6,6 @@
  * Date: February 13, 2019
  */
 
-
-
-
 package proj16KeithHardyLiLian.bantam.semant;
 
 import proj16KeithHardyLiLian.bantam.ast.*;
@@ -16,7 +13,6 @@ import proj16KeithHardyLiLian.bantam.visitor.Visitor;
 
 import java.util.Map;
 import java.util.HashMap;
-
 
 
 /**
