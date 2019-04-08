@@ -17,6 +17,11 @@
  * Class: CS 461
  * Project 11
  * Date: February 13, 2019
+ *  ---------------------------
+ * Edited By: Zeb Keith-Hardy, Michael Li, Iris Lian
+ * Class: CS 461
+ * Project 16
+ * Date: April 11, 2019
  */
 
 package proj16KeithHardyLiLian;

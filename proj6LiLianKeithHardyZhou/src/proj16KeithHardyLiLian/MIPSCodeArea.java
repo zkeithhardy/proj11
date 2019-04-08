@@ -1,12 +1,8 @@
 /*
  * File: MIPSCodeArea.java
- * Names: Zena Abulhab, Paige Hanssen, Kyle Slager, Kevin Zhou
- * Project 5
- * Date: October 12, 2018
- * ---------------------------
- * Edited By: Zeb Keith-Hardy, Michael Li, Iris Lian, Kevin Zhou
- * Project 15
- * Date: March 21 2019/October 26, 2018/ November 3, 2018/ November 20, 2018
+ * Names: Zeb Keith-Hardy, Michael Li, Iris Lian
+ * Project 16
+ * Date: April 11, 2019
  */
 
 package proj16KeithHardyLiLian;

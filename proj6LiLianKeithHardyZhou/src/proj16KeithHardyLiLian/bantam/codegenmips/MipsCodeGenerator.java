@@ -146,6 +146,7 @@ public class MipsCodeGenerator
 
         this.out.println("#Compiled From Source: " + filename[filename.length-1]);
 
+        // Step 1-2
         //start data section
         this.assemblySupport.genDataStart();
         this.out.println("gc_flag:");
@@ -161,22 +162,25 @@ public class MipsCodeGenerator
         ClassNameVisitor classNameVisitor = new ClassNameVisitor();
         Map<String,String> classNames = classNameVisitor.getClassNames(rootAST);
 
+        // Step 3
         this.generateStringConstants(rootAST);
-
+        // Step 4
         this.generateClassNameTable(classNames);
-
+        // Step 5
         this.generateObjectTemplates(classNames);
 
         this.userDefinedMethodsMap = new HashMap<>();
-
+        // Step 6
         this.generateDispatchTables(classNames);
 
+        // Step 7-8
         //start text section
         this.assemblySupport.genTextStart();
         for(Map.Entry<String, String> entry: classNames.entrySet()){
             this.assemblySupport.genLabel(entry.getKey()+"_init");
         }
 
+        // Step 9
         //generate methods
         for(Map.Entry<String, ArrayList<String>> entry: userDefinedMethodsMap.entrySet()){
             for(int i=0; i < entry.getValue().size(); i++) {
@@ -339,12 +343,10 @@ public class MipsCodeGenerator
 
 
     public static void main(String[] args) {
-        // ... add testing code here ...
         ErrorHandler errorHandler = new ErrorHandler();
         MipsCodeGenerator generator = new MipsCodeGenerator(errorHandler, true , true);
         Parser parser = new Parser(errorHandler);
         SemanticAnalyzer analyzer = new SemanticAnalyzer(errorHandler);
-
 
         for (String inFile : args) {
             String pattern = Pattern.quote(System.getProperty("file.separator"));
@@ -358,7 +360,7 @@ public class MipsCodeGenerator
                 generator.generate(root, outString, program);
                 File outFile = new File(outString);
 
-                if(errorHandler.errorsFound()==true){
+                if(errorHandler.errorsFound()){
                     List<Error> errors = errorHandler.getErrorList();
                     for (Error error : errors) {
                         System.out.println("\t" + error.toString());
@@ -369,7 +371,7 @@ public class MipsCodeGenerator
                 }
             } catch (CompilationException ex) {
                 System.out.println(" Compilation is unsuccessful");
-                if(errorHandler.errorsFound()==true){
+                if(errorHandler.errorsFound()){
                     List<Error> errors = errorHandler.getErrorList();
                     for (Error error : errors) {
                         System.out.println("\t" + error.toString());
