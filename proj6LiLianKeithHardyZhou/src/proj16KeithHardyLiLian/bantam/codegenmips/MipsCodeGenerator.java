@@ -27,11 +27,14 @@
 package proj16KeithHardyLiLian.bantam.codegenmips;
 
 import proj16KeithHardyLiLian.bantam.ast.*;
+import proj16KeithHardyLiLian.bantam.parser.Parser;
 import proj16KeithHardyLiLian.bantam.semant.ClassNameVisitor;
+import proj16KeithHardyLiLian.bantam.semant.SemanticAnalyzer;
 import proj16KeithHardyLiLian.bantam.semant.StringConstantsVisitor;
 import proj16KeithHardyLiLian.bantam.util.*;
 import proj16KeithHardyLiLian.bantam.util.Error;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
@@ -334,7 +337,45 @@ public class MipsCodeGenerator
         }
     }
 
+
     public static void main(String[] args) {
         // ... add testing code here ...
+        ErrorHandler errorHandler = new ErrorHandler();
+        MipsCodeGenerator generator = new MipsCodeGenerator(errorHandler, true , true);
+        Parser parser = new Parser(errorHandler);
+        SemanticAnalyzer analyzer = new SemanticAnalyzer(errorHandler);
+
+
+        for (String inFile : args) {
+            String pattern = Pattern.quote(System.getProperty("file.separator"));
+            String[] filename = inFile.split(pattern);
+            System.out.println("\n========== Results for " + filename[filename.length-1] + " =============");
+            try {
+                errorHandler.clear();
+                Program program = parser.parse(inFile);
+                ClassTreeNode root = analyzer.analyze(program);
+                String outString = inFile.split("\\.")[0] + ".asm";
+                generator.generate(root, outString, program);
+                File outFile = new File(outString);
+
+                if(errorHandler.errorsFound()==true){
+                    List<Error> errors = errorHandler.getErrorList();
+                    for (Error error : errors) {
+                        System.out.println("\t" + error.toString());
+                    }
+                }
+                else{
+                    System.out.println("\n========== Compilation Was Successful  =============");
+                }
+            } catch (CompilationException ex) {
+                System.out.println(" Compilation is unsuccessful");
+                if(errorHandler.errorsFound()==true){
+                    List<Error> errors = errorHandler.getErrorList();
+                    for (Error error : errors) {
+                        System.out.println("\t" + error.toString());
+                    }
+                }
+            }
+        }
     }
 }

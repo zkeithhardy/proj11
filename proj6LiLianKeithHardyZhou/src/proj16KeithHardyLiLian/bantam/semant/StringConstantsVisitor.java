@@ -48,7 +48,6 @@ public class StringConstantsVisitor extends Visitor {
      */
     @Override
     public Object visit(ConstStringExpr node) {
-        System.out.println(node.getConstant());
         stringConstMap.put(node.getConstant(), "StringConst_" + numStringConsts);
         //It's a terminal node, so there shouldn't be a need to call super.visit()
         numStringConsts += 1;
