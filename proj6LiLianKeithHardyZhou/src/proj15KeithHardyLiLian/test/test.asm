@@ -184,10 +184,6 @@ Sys_init:
 SubMain_init:
 TextIO_init:
 Main_init:
-SubMain.toString:
-	jr $ra
-SubMain.main:
-	jr $ra
 SubMain.foo:
 	jr $ra
 SubMain.equals:
