@@ -358,7 +358,6 @@ public class MipsCodeGenerator
                 ClassTreeNode root = analyzer.analyze(program);
                 String outString = inFile.split("\\.")[0] + ".asm";
                 generator.generate(root, outString, program);
-                File outFile = new File(outString);
 
                 if(errorHandler.errorsFound()){
                     List<Error> errors = errorHandler.getErrorList();
