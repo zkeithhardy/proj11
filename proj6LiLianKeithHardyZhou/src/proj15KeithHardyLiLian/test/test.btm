@@ -11,4 +11,6 @@ class SubMain extends Main {
     int z;
     int foo(int x) { return 1; }
     boolean equals(Object o) { return false; }
+
+    
 }
