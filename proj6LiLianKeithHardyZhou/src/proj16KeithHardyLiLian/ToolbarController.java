@@ -41,6 +41,7 @@ import proj16KeithHardyLiLian.bantam.lexer.Scanner;
 import proj16KeithHardyLiLian.bantam.lexer.Token;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.*;
@@ -181,7 +182,7 @@ public class ToolbarController {
                         "Error"));
             }
         }).start();
-        
+
     }
 
     /**
@@ -201,9 +202,18 @@ public class ToolbarController {
      * handles Assembling MIPS code
      */
     public void handleAssemble(){
+        this.disableAssembleRun();
         // create assemble task and run it
-        ProcessBuilder processBuilder = new ProcessBuilder("java","-jar", "include/Mars4_5.jar",
-                "a", this.codeTabPane.getFileName());
+        List<String> command = new ArrayList<>();
+        command.add("java");
+        command.add("-jar");
+        command.add("include/Mars4_5.jar");
+        command.add("a");
+        command.add(this.codeTabPane.getFileName());
+        command.add("bantam/codegenmips/exceptions.s");
+        ProcessBuilder processBuilder = new ProcessBuilder(command);
+        //ProcessBuilder processBuilder = new ProcessBuilder("java","-jar", "include/Mars4_5.jar",
+        //        "a", this.codeTabPane.getFileName(), "bantam/codegenmips/exceptions.s");
         AssembleOrRunTask AssembleTask = new AssembleOrRunTask(this.console, processBuilder);
         this.curFutureTask = new FutureTask<Boolean>(AssembleTask);
         ExecutorService compileExecutor = Executors.newFixedThreadPool(1);
@@ -247,9 +257,14 @@ public class ToolbarController {
         // Disable appropriate assemble buttons
         this.disableAssembleRun();
         // Run the MIPS program
-        System.out.println(System.getProperty("user.dir"));
-        ProcessBuilder processBuilder = new ProcessBuilder("java","-jar", System.getProperty("user.dir") + "include/Mars4_5.jar",
-                this.codeTabPane.getFileName()/*,System.getProperty("user.dir") + "/bantam/codegenmips/exceptions.s"*/);
+
+        List<String> command = new ArrayList<>();
+        command.add("java");
+        command.add("-jar");
+        command.add("include/Mars4_5.jar");
+        command.add(this.codeTabPane.getFileName());
+        command.add("bantam/codegenmips/exceptions.s");
+        ProcessBuilder processBuilder = new ProcessBuilder(command);
         AssembleOrRunTask runTask = new AssembleOrRunTask(this.console,processBuilder);
         this.curFutureTask = new FutureTask<Boolean>(runTask);
         ExecutorService curExecutor = Executors.newFixedThreadPool(1);
