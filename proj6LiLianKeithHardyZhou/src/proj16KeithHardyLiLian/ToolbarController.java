@@ -173,24 +173,7 @@ public class ToolbarController {
             try{
                 ClassTreeNode classTree = curFutureTask.get();
                 this.checkIsDone = true;
-//                ErrorHandler errorHandler = new ErrorHandler();
-//
-//                Platform.runLater(()-> {
-//                    if (errorHandler.errorsFound()) {
-//
-//                        List<Error> errorList = errorHandler.getErrorList();
-//                        Iterator<Error> errorIterator = errorList.iterator();
-//                        ToolbarController.this.console.writeToConsole("\n", "Error");
-//                        while (errorIterator.hasNext()) {
-//                            ToolbarController.this.console.writeToConsole(errorIterator.next().toString() +
-//                                    "\n", "Error");
-//                        }
-//
-//                    }else{
-//                        Platform.runLater(()->ToolbarController.this.console.writeToConsole(
-//                                "Code Generation Successful.\n", "Output"));
-//                    }
-//                });
+                Platform.runLater(()->this.enableCorrectButtons());
 
             }catch(InterruptedException| ExecutionException e){
                 Platform.runLater(()-> this.console.writeToConsole("Semantic Analyzer failed: " + e.toString()
@@ -198,6 +181,7 @@ public class ToolbarController {
                         "Error"));
             }
         }).start();
+        
     }
 
     /**
@@ -263,8 +247,9 @@ public class ToolbarController {
         // Disable appropriate assemble buttons
         this.disableAssembleRun();
         // Run the MIPS program
-        ProcessBuilder processBuilder = new ProcessBuilder("java","-jar", "include/Mars4_5.jar",
-                this.codeTabPane.getFileName());
+        System.out.println(System.getProperty("user.dir"));
+        ProcessBuilder processBuilder = new ProcessBuilder("java","-jar", System.getProperty("user.dir") + "include/Mars4_5.jar",
+                this.codeTabPane.getFileName()/*,System.getProperty("user.dir") + "/bantam/codegenmips/exceptions.s"*/);
         AssembleOrRunTask runTask = new AssembleOrRunTask(this.console,processBuilder);
         this.curFutureTask = new FutureTask<Boolean>(runTask);
         ExecutorService curExecutor = Executors.newFixedThreadPool(1);
@@ -426,9 +411,10 @@ public class ToolbarController {
                     mipsCodeGenerator.generate(classTree, outFile, AST);
                     File outString = new File(outFile);
                     //print to a new tab
-                    Platform.runLater(()-> {
-                        ToolbarController.this.codeTabPane.makeTabFromFile(outString,true);});
+                    Platform.runLater(() ->
+                            ToolbarController.this.codeTabPane.makeTabFromFile(outString, true));
                 }
+
 
                 Platform.runLater(()-> {
                     if (errorHandler.errorsFound()) {
