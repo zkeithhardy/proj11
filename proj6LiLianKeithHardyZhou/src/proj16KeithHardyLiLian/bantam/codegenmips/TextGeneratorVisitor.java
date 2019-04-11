@@ -9,10 +9,15 @@ import java.util.Iterator;
 public class TextGeneratorVisitor extends Visitor {
     private PrintStream out;
     private MipsSupport assemblySupport;
+    private String currentClass;
 
     public TextGeneratorVisitor(PrintStream out, MipsSupport assemblySupport){
         this.out = out;
         this.assemblySupport = assemblySupport;
+    }
+
+    public void generateTextSection(Program root){
+        root.accept(this);
     }
 
     /**
@@ -34,32 +39,8 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(Class_ node) {
+        this.currentClass = node.getName();
         node.getMemberList().accept(this);
-        return null;
-    }
-
-    /**
-     * Visit a list node of members
-     *
-     * @param node the member list node
-     * @return result of the visit
-     */
-    public Object visit(MemberList node) {
-        for (ASTNode child : node)
-            child.accept(this);
-        return null;
-    }
-
-    /**
-     * Visit a field node
-     *
-     * @param node the field node
-     * @return result of the visit
-     */
-    public Object visit(Field node) {
-        if (node.getInit() != null) {
-            node.getInit().accept(this);
-        }
         return null;
     }
 
@@ -70,6 +51,7 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(Method node) {
+        this.assemblySupport.genLabel(this.currentClass+"."+node.getName());
         node.getFormalList().accept(this);
         node.getStmtList().accept(this);
         return null;
@@ -363,6 +345,7 @@ public class TextGeneratorVisitor extends Visitor {
      */
     public Object visit(BinaryCompGeqExpr node) {
         node.getLeftExpr().accept(this);
+        this.assemblySupport.genMove("$v1","$v0");
         node.getRightExpr().accept(this);
         return null;
     }

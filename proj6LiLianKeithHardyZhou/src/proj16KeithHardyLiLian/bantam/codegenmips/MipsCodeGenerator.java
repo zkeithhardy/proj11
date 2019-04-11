@@ -180,14 +180,16 @@ public class MipsCodeGenerator
             this.assemblySupport.genLabel(entry.getKey()+"_init");
         }
 
+        TextGeneratorVisitor textGeneratorVisitor = new TextGeneratorVisitor(this.out,this.assemblySupport);
+        textGeneratorVisitor.generateTextSection(rootAST);
         // Step 9
         //generate methods
-        for(Map.Entry<String, ArrayList<String>> entry: userDefinedMethodsMap.entrySet()){
-            for(int i=0; i < entry.getValue().size(); i++) {
-                this.assemblySupport.genLabel(entry.getKey()+"."+entry.getValue().get(i));
-                this.assemblySupport.genRetn();
-            }
-        }
+//        for(Map.Entry<String, ArrayList<String>> entry: userDefinedMethodsMap.entrySet()){
+//            for(int i=0; i < entry.getValue().size(); i++) {
+//                this.assemblySupport.genLabel(entry.getKey()+"."+entry.getValue().get(i));
+//                this.assemblySupport.genRetn();
+//            }
+//        }
 
     }
 
