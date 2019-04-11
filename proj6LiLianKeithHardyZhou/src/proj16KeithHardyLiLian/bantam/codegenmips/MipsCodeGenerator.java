@@ -298,7 +298,7 @@ public class MipsCodeGenerator
             this.out.println(entry.getKey()+"_dispatch_table:");
             ClassTreeNode tempNode = classMap.get(entry.getKey());
             LinkedHashMap<String,String> methodNames =
-                    new LinkedHashMap<>(0,0.75f,true);
+                    new LinkedHashMap<>(0,0.75f,false);
             this.addMethods(tempNode, methodNames);
 
             for(Map.Entry<String,String> methodEntry: methodNames.entrySet()){

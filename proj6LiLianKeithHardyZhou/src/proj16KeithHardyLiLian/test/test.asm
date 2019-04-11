@@ -134,9 +134,9 @@ Object_dispatch_table:
 	.word	Object.toString
 String_dispatch_table:
 	.word	Object.clone
-	.word	String.length
 	.word	String.equals
 	.word	String.toString
+	.word	String.length
 	.word	String.substring
 	.word	String.concat
 Sys_dispatch_table:
@@ -148,10 +148,10 @@ Sys_dispatch_table:
 	.word	Sys.random
 SubMain_dispatch_table:
 	.word	Object.clone
-	.word	Main.toString
-	.word	Main.main
-	.word	SubMain.foo
 	.word	SubMain.equals
+	.word	Main.toString
+	.word	SubMain.foo
+	.word	Main.main
 TextIO_dispatch_table:
 	.word	Object.clone
 	.word	Object.equals
@@ -167,9 +167,9 @@ TextIO_dispatch_table:
 	.word	TextIO.putInt
 Main_dispatch_table:
 	.word	Object.clone
-	.word	Main.foo
 	.word	Main.equals
 	.word	Main.toString
+	.word	Main.foo
 	.word	Main.main
 
 	.text
@@ -184,15 +184,15 @@ Sys_init:
 SubMain_init:
 TextIO_init:
 Main_init:
-SubMain.foo:
-	jr $ra
 SubMain.equals:
 	jr $ra
-Main.foo:
+SubMain.foo:
 	jr $ra
 Main.equals:
 	jr $ra
 Main.toString:
+	jr $ra
+Main.foo:
 	jr $ra
 Main.main:
 	jr $ra
