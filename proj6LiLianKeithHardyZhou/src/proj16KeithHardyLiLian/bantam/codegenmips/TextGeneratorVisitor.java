@@ -139,10 +139,20 @@ public class TextGeneratorVisitor extends Visitor {
      */
     public Object visit(IfStmt node) {
         node.getPredExpr().accept(this);
+        String thenLabel = this.assemblySupport.getLabel();
+        String elseLabel = this.assemblySupport.getLabel();
+        String afterLabel = this.assemblySupport.getLabel();
+        this.assemblySupport.genCondBeq("$v0","$zero",elseLabel);
+        this.assemblySupport.genLabel(thenLabel);
         node.getThenStmt().accept(this);
+        this.assemblySupport.genUncondBr(afterLabel);
+
+        this.assemblySupport.genLabel(elseLabel);
+
         if (node.getElseStmt() != null) {
             node.getElseStmt().accept(this);
         }
+        this.assemblySupport.genLabel(afterLabel);
         return null;
     }
 
