@@ -223,6 +223,7 @@ public class TextGeneratorVisitor extends Visitor {
         if (node.getExpr() != null) {
             node.getExpr().accept(this);
         }
+        this.assemblySupport.genRetn();
         return null;
     }
 
@@ -258,6 +259,16 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(NewExpr node) {
+//        // load the address of the template to $a0
+//        this.assemblySupport.genLoadAddr("$a0", node.getType()+"_template");
+//        // load the address of the dispatch table to $v0
+//        this.assemblySupport.genLoadAddr("$v0", node.getType()+"_dispatch_table");
+//        // get the address of the clone method, save it to $v0
+//        this.assemblySupport.genLoadWord("$v0", 0, "$v0" );
+//        // jump to that clone method
+//        this.assemblySupport.genInDirCall("$v0");
+
+        this.assemblySupport.genDirCall(node.getType()+"_init");
         return null;
     }
 
@@ -269,6 +280,9 @@ public class TextGeneratorVisitor extends Visitor {
      */
     public Object visit(InstanceofExpr node) {
         node.getExpr().accept(this);
+        // Instanceof will always return true, otherwise the code wouldn't pass the type checker
+        this.assemblySupport.genLoadImm("$v0", -1);
+
         return null;
     }
 
