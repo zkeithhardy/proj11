@@ -20,6 +20,10 @@ public class TextGeneratorVisitor extends Visitor {
         root.accept(this);
     }
 
+    public void generateFieldInitialization(Class_ classNode){
+        classNode.getMemberList().accept(this);
+    }
+
     /**
      * Visit a list node of classes
      *
@@ -41,6 +45,18 @@ public class TextGeneratorVisitor extends Visitor {
     public Object visit(Class_ node) {
         this.currentClass = node.getName();
         node.getMemberList().accept(this);
+        return null;
+    }
+
+    /**
+     * Visit a list node of members
+     *
+     * @param node the member list node
+     * @return result of the visit
+     */
+    public Object visit(MemberList node) {
+        for (ASTNode child : node)
+            child.accept(this);
         return null;
     }
 
@@ -145,8 +161,14 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(WhileStmt node) {
+        String startWhile = this.assemblySupport.getLabel();
+        String afterWhile = this.assemblySupport.getLabel();
+        this.assemblySupport.genLabel(startWhile);
         node.getPredExpr().accept(this);
+        this.assemblySupport.genCondBeq("$v0","$zero",afterWhile);
         node.getBodyStmt().accept(this);
+        this.assemblySupport.genUncondBr(startWhile);
+        this.assemblySupport.genLabel(afterWhile);
         return null;
     }
 
@@ -282,6 +304,7 @@ public class TextGeneratorVisitor extends Visitor {
         node.getLeftExpr().accept(this);
         this.assemblySupport.genMove("$v1","$v0");
         node.getRightExpr().accept(this);
+        this.out.println("seq $v0 $v0 $v1");
         return null;
     }
 
@@ -295,6 +318,7 @@ public class TextGeneratorVisitor extends Visitor {
         node.getLeftExpr().accept(this);
         this.assemblySupport.genMove("$v1","$v0");
         node.getRightExpr().accept(this);
+        this.out.println("sne $v0 $v0 $v1");
         return null;
     }
 
@@ -308,6 +332,7 @@ public class TextGeneratorVisitor extends Visitor {
         node.getLeftExpr().accept(this);
         this.assemblySupport.genMove("$v1","$v0");
         node.getRightExpr().accept(this);
+        this.out.println("slt $v0 $v0 $v1");
         return null;
     }
 
@@ -321,6 +346,7 @@ public class TextGeneratorVisitor extends Visitor {
         node.getLeftExpr().accept(this);
         this.assemblySupport.genMove("$v1","$v0");
         node.getRightExpr().accept(this);
+        this.out.println("sle $v0 $v0 $v1");
         return null;
     }
 
@@ -334,6 +360,7 @@ public class TextGeneratorVisitor extends Visitor {
         node.getLeftExpr().accept(this);
         this.assemblySupport.genMove("$v1","$v0");
         node.getRightExpr().accept(this);
+        this.out.println("sgt $v0 $v0 $v1");
         return null;
     }
 
@@ -347,6 +374,7 @@ public class TextGeneratorVisitor extends Visitor {
         node.getLeftExpr().accept(this);
         this.assemblySupport.genMove("$v1","$v0");
         node.getRightExpr().accept(this);
+        this.out.println("sge $v0 $v0 $v1");
         return null;
     }
 
