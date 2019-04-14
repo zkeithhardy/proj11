@@ -1,15 +1,18 @@
 package proj16KeithHardyLiLian.bantam.codegenmips;
 
 import proj16KeithHardyLiLian.bantam.ast.*;
+import proj16KeithHardyLiLian.bantam.util.SymbolTable;
 import proj16KeithHardyLiLian.bantam.visitor.Visitor;
 
 import java.io.PrintStream;
+import java.util.HashMap;
 import java.util.Iterator;
 
 public class TextGeneratorVisitor extends Visitor {
     private PrintStream out;
     private MipsSupport assemblySupport;
     private String currentClass;
+    private HashMap<String, SymbolTable> classSymbolTables;
 
     public TextGeneratorVisitor(PrintStream out, MipsSupport assemblySupport){
         this.out = out;
@@ -21,6 +24,7 @@ public class TextGeneratorVisitor extends Visitor {
     }
 
     public void generateFieldInitialization(Class_ classNode){
+        classSymbolTables.put(classNode.getName(), new SymbolTable());
         classNode.getMemberList().accept(this);
     }
 
@@ -294,6 +298,11 @@ public class TextGeneratorVisitor extends Visitor {
      */
     public Object visit(CastExpr node) {
         node.getExpr().accept(this);
+        if(!node.getUpCast()){
+            return null;
+        }
+        String objectType = node.getExpr().getExprType();
+
         return null;
     }
 
