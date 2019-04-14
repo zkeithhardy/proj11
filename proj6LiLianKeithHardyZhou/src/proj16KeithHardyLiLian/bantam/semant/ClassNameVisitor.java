@@ -11,7 +11,7 @@ import java.util.HashMap;
 
 
 /**
- * Visitor class that visits the nodes of an AST and logs all the string constants in a map
+ * Visitor class that visits the nodes of an AST and logs all the classes in a map
  */
 public class ClassNameVisitor extends Visitor {
     private int numClassConsts; //How many string constants have been counted so far, used for constants' map values
@@ -47,17 +47,6 @@ public class ClassNameVisitor extends Visitor {
         classNameMap.put(node.getName(), "Class_" + numClassConsts);
         //It's a terminal node, so there shouldn't be a need to call super.visit()
         numClassConsts += 1;
-        return null;
-    }
-
-
-    /**
-     * Method for the "visit" to FormalList nodes, which causes it to retreat from the node and skip its children
-     *
-     * @param node is the FormalList node to be visited (and ignored)
-     */
-    @Override
-    public Object visit(FormalList node) {
         return null;
     }
 }

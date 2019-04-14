@@ -169,7 +169,7 @@ public class Scanner
      */
     private Token readString(){
         List<Character> legalEscapeChars = Arrays.asList('t','n','"','f');
-        StringBuilder result = new StringBuilder().append('"');
+        StringBuilder result = new StringBuilder();
         int lineNumber = sourceFile.getCurrentLineNumber();
         boolean hasError = false;
         boolean inBackslash = false;
@@ -181,7 +181,10 @@ public class Scanner
                 prevChar = ' ';
                 inBackslash = false;
             }
-            result.append(currentChar);
+            if(currentChar !='"'){
+                result.append(currentChar);
+            }
+
 
             //string too long
             if(result.length()>5000){

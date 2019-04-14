@@ -1,5 +1,5 @@
 #Authors: Zeb Keith-Hardy, Michael Li, Iris Lian
-#Date: 2019-04-09
+#Date: 2019-04-14
 #Compiled From Source: test.btm
 	.data
 	.globl	gc_flag
@@ -8,15 +8,6 @@ gc_flag:
 	.word	-1
 
 	# String Constants:
-StringConst_0:
-	.word	1		# String Identifier
-	.word	24		# Size of Object in Bytes
-	.word	String_dispatch_table
-	.word	4
-	.ascii	"Main"
-	.byte	0
-	.align	2
-
 Class_0:
 	.word	1		# String Identifier
 	.word	24		# Size of Object in Bytes
@@ -65,6 +56,15 @@ Class_4:
 	.ascii	"Main"
 	.byte	0
 	.align	2
+StringConst_1:
+	.word	1		# String Identifier
+	.word	24		# Size of Object in Bytes
+	.word	String_dispatch_table
+	.word	7
+	.ascii	"dskrien"
+	.byte	0
+	.align	2
+
 
 class_name_table:
 	.word	Class_0
@@ -184,15 +184,18 @@ Sys_init:
 SubMain_init:
 TextIO_init:
 Main_init:
-SubMain.equals:
-	jr $ra
-SubMain.foo:
+Main.foo:
+	li $v0 0
 	jr $ra
 Main.equals:
+	li $v0 -1
 	jr $ra
 Main.toString:
 	jr $ra
-Main.foo:
-	jr $ra
 Main.main:
+SubMain.foo:
+	li $v0 1
+	jr $ra
+SubMain.equals:
+	li $v0 0
 	jr $ra
