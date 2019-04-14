@@ -176,13 +176,28 @@ public class MipsCodeGenerator
         // Step 7-8
         //start text section
         this.assemblySupport.genTextStart();
-        for(Map.Entry<String, String> entry: classNames.entrySet()){
-            this.assemblySupport.genLabel(entry.getKey()+"_init");
-        }
 
         TextGeneratorVisitor textGeneratorVisitor = new TextGeneratorVisitor(this.out,this.assemblySupport);
         textGeneratorVisitor.generateTextSection(rootAST);
+
+        for(Map.Entry<String, String> entry: classNames.entrySet()){
+            this.assemblySupport.genLabel(entry.getKey()+"_init");
+
+            //generate the field
+            ClassTreeNode tempNode= classMap.get(entry.getKey());
+            List<ClassTreeNode> parents= new LinkedList<>();
+            while (tempNode.getParent()!=null){
+                tempNode=tempNode.getParent();
+                ((LinkedList<ClassTreeNode>) parents).addFirst(tempNode);
+            }
+            for(ClassTreeNode tempParent: parents){
+                this.assemblySupport.genInDirCall(tempParent.getASTNode().getName()+ "_init");
+            }
+        }
+
+
     }
+
 
     /**
      * Generates the string constants
