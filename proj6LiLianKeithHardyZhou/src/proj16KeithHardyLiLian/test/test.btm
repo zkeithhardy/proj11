@@ -7,7 +7,7 @@ class Main {
     void main() {}
 }
 class SubMain extends Main {
-    String y;
+    String y = "dskrien";
     int z;
     int foo(int x) { return 1; }
     boolean equals(Object o) { return false; }
