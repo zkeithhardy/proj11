@@ -197,18 +197,85 @@ Main_init:
 	jal Object_init
 	li $v0 3
 	sw $v0 12($a0)
+	sub $sp $sp 4
+	sw $ra 0($sp)
+	sub $sp $sp 4
+	sw $fp 0($sp)
+	sub $fp $sp 4
+	move $sp $fp
 Main.foo:
+	add $sp $fp 4
+	lw $fp 0($sp)
+	add $sp $sp 4
+	lw $ra 0($sp)
+	add $sp $sp 4
 	jr $ra
+	sub $sp $sp 4
+	sw $ra 0($sp)
+	sub $sp $sp 4
+	sw $fp 0($sp)
+	sub $fp $sp 4
+	move $sp $fp
 Main.equals:
 	li $v0 -1
+	add $sp $fp 4
+	lw $fp 0($sp)
+	add $sp $sp 4
+	lw $ra 0($sp)
+	add $sp $sp 4
 	jr $ra
+	sub $sp $sp 4
+	sw $ra 0($sp)
+	sub $sp $sp 4
+	sw $fp 0($sp)
+	sub $fp $sp 0
+	move $sp $fp
 Main.toString:
 	la $v0 StringConst_0
+	add $sp $fp 0
+	lw $fp 0($sp)
+	add $sp $sp 4
+	lw $ra 0($sp)
+	add $sp $sp 4
 	jr $ra
+	sub $sp $sp 4
+	sw $ra 0($sp)
+	sub $sp $sp 4
+	sw $fp 0($sp)
+	sub $fp $sp 0
+	move $sp $fp
 Main.main:
+	add $sp $fp 0
+	lw $fp 0($sp)
+	add $sp $sp 4
+	lw $ra 0($sp)
+	add $sp $sp 4
+	jr $ra
+	sub $sp $sp 4
+	sw $ra 0($sp)
+	sub $sp $sp 4
+	sw $fp 0($sp)
+	sub $fp $sp 4
+	move $sp $fp
 SubMain.foo:
 	li $v0 1
+	add $sp $fp 4
+	lw $fp 0($sp)
+	add $sp $sp 4
+	lw $ra 0($sp)
+	add $sp $sp 4
 	jr $ra
+	sub $sp $sp 4
+	sw $ra 0($sp)
+	sub $sp $sp 4
+	sw $fp 0($sp)
+	sub $fp $sp 4
+	move $sp $fp
 SubMain.equals:
 	li $v0 0
+	add $sp $fp 4
+	lw $fp 0($sp)
+	add $sp $sp 4
+	lw $ra 0($sp)
+	add $sp $sp 4
 	jr $ra

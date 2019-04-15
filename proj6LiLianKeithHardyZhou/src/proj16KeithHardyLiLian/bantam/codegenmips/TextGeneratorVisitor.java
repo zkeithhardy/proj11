@@ -153,13 +153,14 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(Method node) {
+        numLocalVars = 0;
+        node.getFormalList().accept(this);
         this.methodLocalVars = this.numLocalVarsMap.get(this.currentClass + "." + node.getName());
         this.generateMethodPrologue();
 
         this.currentSymbolTable.enterScope();
-        numLocalVars = 0;
+
         this.assemblySupport.genLabel(this.currentClass+"."+node.getName());
-        node.getFormalList().accept(this);
         node.getStmtList().accept(this);
         this.currentSymbolTable.exitScope();
         this.generateMethodEpilogue();
@@ -182,7 +183,8 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genLoadWord("$fp",0,"$sp");
         this.assemblySupport.genAdd("$sp","$sp", 4);
         this.assemblySupport.genLoadWord("$ra",0,"$sp");
-        this.assemblySupport.genSub("$sp","$sp", 4);
+        this.assemblySupport.genAdd("$sp","$sp", 4);
+        this.assemblySupport.genRetn();
     }
 
     /**
@@ -346,7 +348,6 @@ public class TextGeneratorVisitor extends Visitor {
         if (node.getExpr() != null) {
             node.getExpr().accept(this);
         }
-        this.assemblySupport.genRetn();
         return null;
     }
 
