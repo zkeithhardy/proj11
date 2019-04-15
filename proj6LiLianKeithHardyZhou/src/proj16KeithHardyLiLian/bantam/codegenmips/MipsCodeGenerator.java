@@ -162,7 +162,8 @@ public class MipsCodeGenerator
         ClassNameVisitor classNameVisitor = new ClassNameVisitor();
         Map<String,String> classNames = classNameVisitor.getClassNames(rootAST);
 
-        this.generateStringConstants(rootAST,classNames);
+        Map<String, String> stringNameMap=this.generateStringConstants(rootAST,classNames);
+
         // Step 4
         this.generateClassNameTable(classNames);
         // Step 5
@@ -178,7 +179,6 @@ public class MipsCodeGenerator
 
         TextGeneratorVisitor textGeneratorVisitor = new TextGeneratorVisitor(this.out,this.assemblySupport);
         textGeneratorVisitor.generateTextSection(rootAST);
-
         for(Map.Entry<String, String> entry: classNames.entrySet()){
             this.assemblySupport.genLabel(entry.getKey()+"_init");
 
