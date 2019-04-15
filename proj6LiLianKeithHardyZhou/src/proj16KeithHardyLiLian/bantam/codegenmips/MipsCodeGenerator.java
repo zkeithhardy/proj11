@@ -175,6 +175,25 @@ public class MipsCodeGenerator
         // Step 7-8
         //start text section
         this.assemblySupport.genTextStart();
+
+        // create the inits for default classes
+        for(Map.Entry<String, String> entry: classNames.entrySet()){
+            if(entry.getKey().equals("Object")||entry.getKey().equals("String")||entry.getKey().equals("TextIO")
+                    ||entry.getKey().equals("Sys")) {
+                this.assemblySupport.genLabel(entry.getKey() + "_init");
+                if(entry.getKey().equals("String")){
+                    this.assemblySupport.genLoadImm("$v0", 0);
+                    this.assemblySupport.genStoreWord("$v0", 0, "$a0");
+                }
+                else if(entry.getKey().equals("TextIO")){
+                    this.assemblySupport.genLoadImm("$v0", 0);
+                    this.assemblySupport.genStoreWord("$v0", 0, "$a0");
+                    this.assemblySupport.genLoadImm("$v0", 1);
+                    this.assemblySupport.genStoreWord("$v0", 4, "$a0");
+                }
+            }
+        }
+
         for(Map.Entry<String, String> entry: classNames.entrySet()){
             this.assemblySupport.genLabel(entry.getKey()+"_init");
         }
