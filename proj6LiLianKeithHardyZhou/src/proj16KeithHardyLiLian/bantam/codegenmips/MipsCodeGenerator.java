@@ -162,7 +162,8 @@ public class MipsCodeGenerator
         ClassNameVisitor classNameVisitor = new ClassNameVisitor();
         Map<String,String> classNames = classNameVisitor.getClassNames(rootAST);
 
-        this.generateStringConstants(rootAST,classNames);
+        Map<String, String> stringNameMap=this.generateStringConstants(rootAST,classNames);
+
         // Step 4
         this.generateClassNameTable(classNames);
         // Step 5
@@ -175,13 +176,47 @@ public class MipsCodeGenerator
         // Step 7-8
         //start text section
         this.assemblySupport.genTextStart();
-        for(Map.Entry<String, String> entry: classNames.entrySet()){
-            this.assemblySupport.genLabel(entry.getKey()+"_init");
-        }
 
         TextGeneratorVisitor textGeneratorVisitor = new TextGeneratorVisitor(this.out,this.assemblySupport);
+
+        // create the inits for default classes
+        for(Map.Entry<String, String> entry: classNames.entrySet()){
+            if(entry.getKey().equals("Object")||entry.getKey().equals("String")||entry.getKey().equals("TextIO")
+                    ||entry.getKey().equals("Sys")) {
+                this.assemblySupport.genLabel(entry.getKey() + "_init");
+                if(entry.getKey().equals("String")){
+                    this.assemblySupport.genLoadImm("$v0", 0);
+                    this.assemblySupport.genStoreWord("$v0", 0, "$a0");
+                }
+                else if(entry.getKey().equals("TextIO")){
+                    this.assemblySupport.genLoadImm("$v0", 0);
+                    this.assemblySupport.genStoreWord("$v0", 0, "$a0");
+                    this.assemblySupport.genLoadImm("$v0", 1);
+                    this.assemblySupport.genStoreWord("$v0", 4, "$a0");
+                }
+            }
+        }
+
+        for(Map.Entry<String, String> entry: classNames.entrySet()){
+            this.assemblySupport.genLabel(entry.getKey()+"_init");
+
+            //generate the field
+            ClassTreeNode tempNode= classMap.get(entry.getKey());
+            List<ClassTreeNode> parents= new LinkedList<>();
+            while (tempNode.getParent()!=null){
+                tempNode=tempNode.getParent();
+                ((LinkedList<ClassTreeNode>) parents).addFirst(tempNode);
+            }
+            for(ClassTreeNode tempParent: parents){
+                this.assemblySupport.genInDirCall(tempParent.getASTNode().getName()+ "_init");
+            }
+        }
+
         textGeneratorVisitor.generateTextSection(rootAST);
+
+
     }
+
 
     /**
      * Generates the string constants

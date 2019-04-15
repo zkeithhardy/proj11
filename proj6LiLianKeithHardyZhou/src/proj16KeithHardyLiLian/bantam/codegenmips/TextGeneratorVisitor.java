@@ -1,6 +1,7 @@
 package proj16KeithHardyLiLian.bantam.codegenmips;
 
 import proj16KeithHardyLiLian.bantam.ast.*;
+import proj16KeithHardyLiLian.bantam.util.Location;
 import proj16KeithHardyLiLian.bantam.util.ClassTreeNode;
 import proj16KeithHardyLiLian.bantam.util.Location;
 import proj16KeithHardyLiLian.bantam.util.SymbolTable;
@@ -9,6 +10,7 @@ import proj16KeithHardyLiLian.bantam.visitor.Visitor;
 import java.io.PrintStream;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Stack;
 
 public class TextGeneratorVisitor extends Visitor {
@@ -16,10 +18,12 @@ public class TextGeneratorVisitor extends Visitor {
     private MipsSupport assemblySupport;
     private String currentClass;
     private SymbolTable currentSymbolTable;
+    private int fieldCount=0;
     private HashMap<String, SymbolTable> classSymbolTables;
     private int fpOffset = 0;
     private Stack<Stmt> currentLoop;
     private int currentClassFieldLevel;
+    private Map<String, String> stringNameMap;
 
     public TextGeneratorVisitor(PrintStream out, MipsSupport assemblySupport){
         this.out = out;
@@ -30,8 +34,11 @@ public class TextGeneratorVisitor extends Visitor {
         root.accept(this);
     }
 
-    public void generateFieldInitialization(Class_ classNode){
+    public void generateFieldInitialization(Class_ classNode, Map<String, String> stringNameMap){
         classSymbolTables.put(classNode.getName(), new SymbolTable());
+        this.stringNameMap=stringNameMap;
+        this.currentClass=classNode.getName();
+
         classNode.getMemberList().accept(this);
     }
 
@@ -58,6 +65,45 @@ public class TextGeneratorVisitor extends Visitor {
         this.currentSymbolTable = classSymbolTables.get(this.currentClass);
         currentClassFieldLevel = currentSymbolTable.getCurrScopeLevel();
         node.getMemberList().accept(this);
+        return null;
+    }
+
+    /**
+     *
+     * @param node the field node
+     * @return
+     */
+    public Object visit(Field node){
+
+        if(node.getType().equals("Int")){
+            ConstIntExpr tempIntExpr= (ConstIntExpr)node.getInit();
+
+            this.assemblySupport.genLoadImm("$v0", tempIntExpr.getIntConstant());
+        }
+        else if(node.getType().equals("String")){
+            ConstStringExpr tempStringExpr= (ConstStringExpr)node.getInit();
+            this.assemblySupport.genLoadWord("$v0",4*fieldCount,  stringNameMap.get(tempStringExpr.getConstant()));
+        }
+        else if(node.getType().equals("boolean")){
+            ConstBooleanExpr tempBoolExpr= (ConstBooleanExpr)node.getInit();
+            if (tempBoolExpr.getConstant().equals("true")){
+                this.assemblySupport.genLoadImm("$v0", -1);
+            }
+            else if (tempBoolExpr.getConstant().equals("false")){
+                this.assemblySupport.genLoadImm("$v0", 0);
+            }
+        }
+        else{
+            this.assemblySupport.genStoreWord("$a0", 0, "$fp");
+            this.assemblySupport.genInDirCall(node.getName()+ "_init");
+            this.assemblySupport.genMove("$v0", "$a0");
+            this.assemblySupport.genLoadWord("$a0", 0,"$fp");
+        }
+
+        Location fieldLocation= new Location("$v0", 4*fieldCount);
+        classSymbolTables.get(currentClass).add(node.getName(), fieldLocation);
+        this.assemblySupport.genStoreWord("$v0", 4*fieldCount, "$a0");
+        fieldCount+=1;
         return null;
     }
 
@@ -274,14 +320,14 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(NewExpr node) {
-//        // load the address of the template to $a0
-//        this.assemblySupport.genLoadAddr("$a0", node.getType()+"_template");
-//        // load the address of the dispatch table to $v0
-//        this.assemblySupport.genLoadAddr("$v0", node.getType()+"_dispatch_table");
-//        // get the address of the clone method, save it to $v0
-//        this.assemblySupport.genLoadWord("$v0", 0, "$v0" );
-//        // jump to that clone method
-//        this.assemblySupport.genInDirCall("$v0");
+        // load the address of the template to $a0
+        this.assemblySupport.genLoadAddr("$a0", node.getType()+"_template");
+        // load the address of the dispatch table to $v0
+        this.assemblySupport.genLoadAddr("$v0", node.getType()+"_dispatch_table");
+        // get the address of the clone method, save it to $v0
+        this.assemblySupport.genLoadWord("$v0", 0, "$v0" );
+        // jump to that clone method
+        this.assemblySupport.genInDirCall("$v0");
 
         this.assemblySupport.genDirCall(node.getType()+"_init");
         return null;
