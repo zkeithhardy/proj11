@@ -178,7 +178,25 @@ public class MipsCodeGenerator
         this.assemblySupport.genTextStart();
 
         TextGeneratorVisitor textGeneratorVisitor = new TextGeneratorVisitor(this.out,this.assemblySupport);
-        textGeneratorVisitor.generateTextSection(rootAST);
+
+        // create the inits for default classes
+        for(Map.Entry<String, String> entry: classNames.entrySet()){
+            if(entry.getKey().equals("Object")||entry.getKey().equals("String")||entry.getKey().equals("TextIO")
+                    ||entry.getKey().equals("Sys")) {
+                this.assemblySupport.genLabel(entry.getKey() + "_init");
+                if(entry.getKey().equals("String")){
+                    this.assemblySupport.genLoadImm("$v0", 0);
+                    this.assemblySupport.genStoreWord("$v0", 0, "$a0");
+                }
+                else if(entry.getKey().equals("TextIO")){
+                    this.assemblySupport.genLoadImm("$v0", 0);
+                    this.assemblySupport.genStoreWord("$v0", 0, "$a0");
+                    this.assemblySupport.genLoadImm("$v0", 1);
+                    this.assemblySupport.genStoreWord("$v0", 4, "$a0");
+                }
+            }
+        }
+
         for(Map.Entry<String, String> entry: classNames.entrySet()){
             this.assemblySupport.genLabel(entry.getKey()+"_init");
 
@@ -193,6 +211,8 @@ public class MipsCodeGenerator
                 this.assemblySupport.genInDirCall(tempParent.getASTNode().getName()+ "_init");
             }
         }
+
+        textGeneratorVisitor.generateTextSection(rootAST);
 
 
     }
