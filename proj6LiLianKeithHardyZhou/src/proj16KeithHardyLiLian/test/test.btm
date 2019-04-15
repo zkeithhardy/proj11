@@ -1,5 +1,5 @@
 class Main {
-    int x;
+    int x = 3;
     int y;
     int foo(int x) { return 0; }
     boolean equals(Object o) { return true; }

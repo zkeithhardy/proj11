@@ -195,7 +195,7 @@ public class MipsCodeGenerator
                     this.assemblySupport.genStoreWord("$v0", 4, "$a0");
                 }
             }else{
-                //generate the field
+                //generate the fields
                 ClassTreeNode tempNode= classMap.get(entry.getKey());
                 List<ClassTreeNode> parents= new LinkedList<>();
                 while (tempNode.getParent()!=null){
@@ -205,7 +205,9 @@ public class MipsCodeGenerator
                 for(ClassTreeNode tempParent: parents){
                     this.assemblySupport.genDirCall(tempParent.getASTNode().getName()+ "_init");
                 }
+                textGeneratorVisitor.generateFieldInitialization(classMap.get(entry.getKey()).getASTNode(),stringNameMap);
             }
+
         }
 
 //        for(Map.Entry<String, String> entry: classNames.entrySet()){
@@ -225,7 +227,7 @@ public class MipsCodeGenerator
 //            }
 //        }
 
-        //textGeneratorVisitor.generateTextSection(rootAST);
+        textGeneratorVisitor.generateTextSection(rootAST);
 
 
     }

@@ -186,6 +186,8 @@ Sys_init:
 SubMain_init:
 	jal Object_init
 	jal Main_init
+	la $v0 StringConst_1
+	sw $v0 12($a0)
 TextIO_init:
 	li $v0 0
 	sw $v0 0($a0)
@@ -193,3 +195,21 @@ TextIO_init:
 	sw $v0 4($a0)
 Main_init:
 	jal Object_init
+	li $v0 3
+	sw $v0 12($a0)
+Main.foo:
+	li $v0 0
+	jr $ra
+Main.equals:
+	li $v0 -1
+	jr $ra
+Main.toString:
+	la $v0 StringConst_0
+	jr $ra
+Main.main:
+SubMain.foo:
+	li $v0 1
+	jr $ra
+SubMain.equals:
+	li $v0 0
+	jr $ra

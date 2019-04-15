@@ -15,13 +15,14 @@ public class TextGeneratorVisitor extends Visitor {
     private MipsSupport assemblySupport;
     private String currentClass;
     private SymbolTable currentSymbolTable;
-    private int fieldCount=0;
-    private HashMap<String, SymbolTable> classSymbolTables;
+    private int fieldCount=3;
+    private HashMap<String, SymbolTable> classSymbolTables = new HashMap<>();
     private int fpOffset = 0;
     private Stack<Stmt> currentLoop;
     private int currentClassFieldLevel;
     private Map<String, String> stringNameMap;
     private Hashtable<String,ClassTreeNode> classMap;
+    private String initOrGenMethods;
 
 
     public TextGeneratorVisitor(PrintStream out, MipsSupport assemblySupport, Hashtable<String,ClassTreeNode> classMap){
@@ -31,13 +32,18 @@ public class TextGeneratorVisitor extends Visitor {
     }
 
     public void generateTextSection(Program root){
+        this.initOrGenMethods = "genMethods";
+        fpOffset = 0;
         root.accept(this);
     }
 
     public void generateFieldInitialization(Class_ classNode, Map<String, String> stringNameMap){
         classSymbolTables.put(classNode.getName(), new SymbolTable());
+        classSymbolTables.get(classNode.getName()).enterScope();
         this.stringNameMap=stringNameMap;
         this.currentClass=classNode.getName();
+        this.initOrGenMethods = "init";
+        fieldCount = 3;
 
         classNode.getMemberList().accept(this);
     }
@@ -71,13 +77,43 @@ public class TextGeneratorVisitor extends Visitor {
     }
 
     /**
+     * Visit a list node of members
+     *
+     * @param node the member list node
+     * @return result of the visit
+     */
+    public Object visit(MemberList node) {
+        for (ASTNode child : node) {
+            if (this.initOrGenMethods.equals("init")) {
+                if(child instanceof Field){
+                    child.accept(this);
+                }
+            }else{
+                if(child instanceof Method){
+                    child.accept(this);
+                }
+            }
+        }
+        return null;
+    }
+
+    /**
      *
      * @param node the field node
      * @return
      */
     public Object visit(Field node){
+        System.out.println(node.getName());
+        if(node.getInit() != null){
+            node.getInit().accept(this);
+            this.assemblySupport.genStoreWord("$v0", 4*fieldCount, "$a0");
+        }
+        Location fieldLocation= new Location("$v0", 4*fieldCount);
+        classSymbolTables.get(currentClass).add(node.getName(), fieldLocation);
+        fieldCount+=1;
+        return null;
 
-        if(node.getType().equals("Int")){
+        /*if(node.getType().equals("int")){
             ConstIntExpr tempIntExpr= (ConstIntExpr)node.getInit();
 
             this.assemblySupport.genLoadImm("$v0", tempIntExpr.getIntConstant());
@@ -97,28 +133,12 @@ public class TextGeneratorVisitor extends Visitor {
         }
         else{
             this.assemblySupport.genStoreWord("$a0", 0, "$fp");
-            this.assemblySupport.genInDirCall(node.getName()+ "_init");
+            this.assemblySupport.genDirCall(node.getName()+ "_init");
             this.assemblySupport.genMove("$v0", "$a0");
             this.assemblySupport.genLoadWord("$a0", 0,"$fp");
-        }
+        }*/
 
-        Location fieldLocation= new Location("$v0", 4*fieldCount);
-        classSymbolTables.get(currentClass).add(node.getName(), fieldLocation);
-        this.assemblySupport.genStoreWord("$v0", 4*fieldCount, "$a0");
-        fieldCount+=1;
-        return null;
-    }
 
-    /**
-     * Visit a list node of members
-     *
-     * @param node the member list node
-     * @return result of the visit
-     */
-    public Object visit(MemberList node) {
-        for (ASTNode child : node)
-            child.accept(this);
-        return null;
     }
 
     /**
@@ -322,6 +342,9 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(NewExpr node) {
+        this.assemblySupport.genComment("save $a0 onto stack in case init creates a new object.");
+        this.assemblySupport.genSub("$sp","$sp",4);
+        this.assemblySupport.genStoreWord("$a0",0,"$sp");
         // load the address of the template to $a0
         this.assemblySupport.genLoadAddr("$a0", node.getType()+"_template");
         // load the address of the dispatch table to $v0
@@ -332,6 +355,11 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genInDirCall("$v0");
 
         this.assemblySupport.genDirCall(node.getType()+"_init");
+
+        this.assemblySupport.genComment("restore $a0");
+        this.assemblySupport.genLoadWord("$a0",0,"$sp");
+        this.assemblySupport.genAdd("$sp","$sp",4);
+
         return null;
     }
 
@@ -692,6 +720,7 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(ConstStringExpr node) {
+        this.assemblySupport.genLoadAddr("$v0",stringNameMap.get(node.getConstant()));
         return null;
     }
 }
