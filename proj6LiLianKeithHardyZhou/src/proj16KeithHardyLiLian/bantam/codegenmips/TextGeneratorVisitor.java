@@ -1,18 +1,25 @@
 package proj16KeithHardyLiLian.bantam.codegenmips;
 
 import proj16KeithHardyLiLian.bantam.ast.*;
+import proj16KeithHardyLiLian.bantam.util.ClassTreeNode;
+import proj16KeithHardyLiLian.bantam.util.Location;
 import proj16KeithHardyLiLian.bantam.util.SymbolTable;
 import proj16KeithHardyLiLian.bantam.visitor.Visitor;
 
 import java.io.PrintStream;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Stack;
 
 public class TextGeneratorVisitor extends Visitor {
     private PrintStream out;
     private MipsSupport assemblySupport;
     private String currentClass;
+    private SymbolTable currentSymbolTable;
     private HashMap<String, SymbolTable> classSymbolTables;
+    private int fpOffset = 0;
+    private Stack<Stmt> currentLoop;
+    private int currentClassFieldLevel;
 
     public TextGeneratorVisitor(PrintStream out, MipsSupport assemblySupport){
         this.out = out;
@@ -48,6 +55,8 @@ public class TextGeneratorVisitor extends Visitor {
      */
     public Object visit(Class_ node) {
         this.currentClass = node.getName();
+        this.currentSymbolTable = classSymbolTables.get(this.currentClass);
+        currentClassFieldLevel = currentSymbolTable.getCurrScopeLevel();
         node.getMemberList().accept(this);
         return null;
     }
@@ -71,9 +80,12 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(Method node) {
+        this.currentSymbolTable.enterScope();
+        fpOffset = 0;
         this.assemblySupport.genLabel(this.currentClass+"."+node.getName());
         node.getFormalList().accept(this);
         node.getStmtList().accept(this);
+        this.currentSymbolTable.exitScope();
         return null;
     }
 
@@ -96,6 +108,8 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(Formal node) {
+        this.currentSymbolTable.add(node.getName(),new Location("$fp",fpOffset));
+        fpOffset += 4;
         return null;
     }
 
@@ -119,17 +133,9 @@ public class TextGeneratorVisitor extends Visitor {
      */
     public Object visit(DeclStmt node) {
         node.getInit().accept(this);
-        return null;
-    }
-
-    /**
-     * Visit an expression statement node
-     *
-     * @param node the expression statement node
-     * @return result of the visit
-     */
-    public Object visit(ExprStmt node) {
-        node.getExpr().accept(this);
+        fpOffset += 4;
+        this.assemblySupport.genStoreWord("$v0",fpOffset,"$fp");
+        this.currentSymbolTable.add(node.getName(),new Location("$fp",fpOffset));
         return null;
     }
 
@@ -146,13 +152,17 @@ public class TextGeneratorVisitor extends Visitor {
         String afterLabel = this.assemblySupport.getLabel();
         this.assemblySupport.genCondBeq("$v0","$zero",elseLabel);
         this.assemblySupport.genLabel(thenLabel);
+        currentSymbolTable.enterScope();
         node.getThenStmt().accept(this);
+        currentSymbolTable.exitScope();
         this.assemblySupport.genUncondBr(afterLabel);
 
         this.assemblySupport.genLabel(elseLabel);
 
         if (node.getElseStmt() != null) {
+            currentSymbolTable.enterScope();
             node.getElseStmt().accept(this);
+            currentSymbolTable.exitScope();
         }
         this.assemblySupport.genLabel(afterLabel);
         return null;
@@ -170,7 +180,13 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genLabel(startWhile);
         node.getPredExpr().accept(this);
         this.assemblySupport.genCondBeq("$v0","$zero",afterWhile);
+
+        currentSymbolTable.enterScope();
+        currentLoop.push(node);
         node.getBodyStmt().accept(this);
+        currentLoop.pop();
+        currentSymbolTable.exitScope();
+
         this.assemblySupport.genUncondBr(startWhile);
         this.assemblySupport.genLabel(afterWhile);
         return null;
@@ -192,7 +208,12 @@ public class TextGeneratorVisitor extends Visitor {
         if (node.getUpdateExpr() != null) {
             node.getUpdateExpr().accept(this);
         }
+        currentSymbolTable.enterScope();
+        currentLoop.push(node);
         node.getBodyStmt().accept(this);
+        currentLoop.pop();
+        currentSymbolTable.exitScope();
+
         return null;
     }
 
@@ -213,7 +234,9 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(BlockStmt node) {
+        currentSymbolTable.enterScope();
         node.getStmtList().accept(this);
+        currentSymbolTable.exitScope();
         return null;
     }
 
@@ -228,18 +251,6 @@ public class TextGeneratorVisitor extends Visitor {
             node.getExpr().accept(this);
         }
         this.assemblySupport.genRetn();
-        return null;
-    }
-
-    /**
-     * Visit a list node of expressions
-     *
-     * @param node the expression list node
-     * @return result of the visit
-     */
-    public Object visit(ExprList node) {
-        for (Iterator it = node.iterator(); it.hasNext(); )
-            ((Expr) it.next()).accept(this);
         return null;
     }
 
@@ -313,6 +324,27 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(AssignExpr node) {
+        Location location = null;
+        String varName = node.getName();
+        String refName = node.getRefName();
+        if (refName == null) { //local var or field of "this"
+            location = (Location) currentSymbolTable.lookup(varName);
+        }
+        else if (refName.equals("this")) {
+            location = (Location) currentSymbolTable.lookup(varName, currentClassFieldLevel);
+        }
+        else if (refName.equals("super")) {
+            location = (Location) currentSymbolTable.lookup(varName,
+                    currentClassFieldLevel - 1);
+        }
+        else { // refName is not "this" or "super" or varName is not "length" for an array
+            Location refVarLocation = (Location) currentSymbolTable.lookup(refName);
+            //HERE: NEED TO GET THE CLASS SUMBOL TABLE SO I CAN GET THE LOCATION OBJECT OF THE FIELD.
+
+
+            //SymbolTable refTable = refVarType.getVarSymbolTable();
+            //location = (String) refTable.lookup(varName);
+        }
         node.getExpr().accept(this);
         return null;
     }
