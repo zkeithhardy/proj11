@@ -1,6 +1,7 @@
 package proj16KeithHardyLiLian.bantam.codegenmips;
 
 import proj16KeithHardyLiLian.bantam.ast.*;
+import proj16KeithHardyLiLian.bantam.semant.NumLocalVarsVisitor;
 import proj16KeithHardyLiLian.bantam.util.Location;
 import proj16KeithHardyLiLian.bantam.util.ClassTreeNode;
 import proj16KeithHardyLiLian.bantam.util.Location;
@@ -17,12 +18,14 @@ public class TextGeneratorVisitor extends Visitor {
     private SymbolTable currentSymbolTable;
     private int fieldCount=3;
     private HashMap<String, SymbolTable> classSymbolTables = new HashMap<>();
-    private int fpOffset = 0;
+    private int numLocalVars = 0;
     private Stack<Stmt> currentLoop;
     private int currentClassFieldLevel;
     private Map<String, String> stringNameMap;
     private Hashtable<String,ClassTreeNode> classMap;
     private String initOrGenMethods;
+    private Map<String,Integer> numLocalVarsMap;
+    private int methodLocalVars;
 
 
     public TextGeneratorVisitor(PrintStream out, MipsSupport assemblySupport, Hashtable<String,ClassTreeNode> classMap){
@@ -33,7 +36,9 @@ public class TextGeneratorVisitor extends Visitor {
 
     public void generateTextSection(Program root){
         this.initOrGenMethods = "genMethods";
-        fpOffset = 0;
+        numLocalVars = 0;
+        NumLocalVarsVisitor numLocalVarsVisitor = new NumLocalVarsVisitor();
+        this.numLocalVarsMap = numLocalVarsVisitor.getNumLocalVars(root);
         root.accept(this);
     }
 
@@ -148,13 +153,36 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(Method node) {
+        this.methodLocalVars = this.numLocalVarsMap.get(this.currentClass + "." + node.getName());
+        this.generateMethodPrologue();
+
         this.currentSymbolTable.enterScope();
-        fpOffset = 0;
+        numLocalVars = 0;
         this.assemblySupport.genLabel(this.currentClass+"."+node.getName());
         node.getFormalList().accept(this);
         node.getStmtList().accept(this);
         this.currentSymbolTable.exitScope();
+        this.generateMethodEpilogue();
         return null;
+    }
+
+    private void generateMethodPrologue(){
+        this.assemblySupport.genSub("$sp","$sp", 4);
+        this.assemblySupport.genStoreWord("$ra",0,"$sp");
+        this.assemblySupport.genSub("$sp","$sp", 4);
+        this.assemblySupport.genStoreWord("$fp",0,"$sp");
+
+        this.assemblySupport.genSub("$fp","$sp", 4*methodLocalVars);
+        this.assemblySupport.genMove("$sp","$fp");
+
+    }
+
+    private void generateMethodEpilogue(){
+        this.assemblySupport.genAdd("$sp","$fp", 4*methodLocalVars);
+        this.assemblySupport.genLoadWord("$fp",0,"$sp");
+        this.assemblySupport.genAdd("$sp","$sp", 4);
+        this.assemblySupport.genLoadWord("$ra",0,"$sp");
+        this.assemblySupport.genSub("$sp","$sp", 4);
     }
 
     /**
@@ -176,8 +204,8 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(Formal node) {
-        this.currentSymbolTable.add(node.getName(),new Location("$fp",fpOffset));
-        fpOffset += 4;
+        this.currentSymbolTable.add(node.getName(),new Location("$fp",numLocalVars * 4));
+        numLocalVars += 1;
         return null;
     }
 
@@ -201,9 +229,9 @@ public class TextGeneratorVisitor extends Visitor {
      */
     public Object visit(DeclStmt node) {
         node.getInit().accept(this);
-        fpOffset += 4;
-        this.assemblySupport.genStoreWord("$v0",fpOffset,"$fp");
-        this.currentSymbolTable.add(node.getName(),new Location("$fp",fpOffset));
+        numLocalVars += 1;
+        this.assemblySupport.genStoreWord("$v0",numLocalVars*4,"$fp");
+        this.currentSymbolTable.add(node.getName(),new Location("$fp",numLocalVars));
         return null;
     }
 
@@ -681,9 +709,41 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(VarExpr node) {
-        if (node.getRef() != null) {
+        Location location = null;
+        String varName = node.getName();
+
+        if (node.getRef() != null) { // expr = "null"
             node.getRef().accept(this);
         }
+        if(node.getRef() == null){
+            location = (Location) currentSymbolTable.lookup(varName);
+        }
+        else if ((node.getRef() instanceof VarExpr) &&
+                ((VarExpr) node.getRef()).getName().equals("this")) {
+            location = (Location) currentSymbolTable.lookup(varName, currentClassFieldLevel-1);
+            this.assemblySupport.genLoadWord("$v0", location.getOffset(),location.getBaseReg());
+
+        }
+        else if ((node.getRef() instanceof VarExpr) &&
+                ((VarExpr) node.getRef()).getName().equals("super")) {
+            location = (Location) currentSymbolTable.lookup(varName,
+                    currentClassFieldLevel - 1);
+            this.assemblySupport.genLoadWord("$v0", location.getOffset(),location.getBaseReg());
+
+        }
+        else { // ref is not null, "this", or "super"
+            node.getRef().accept(this);
+            String refTypeName = node.getRef().getExprType();
+
+            Location refVarLocation = (Location) currentSymbolTable.lookup(((VarExpr) node.getRef()).getName());
+            SymbolTable currentSymbolTable = this.classMap.get(this.currentClass).getVarSymbolTable();
+            String varType = (String) currentSymbolTable.lookup(((VarExpr) node.getRef()).getName());
+            location = (Location) this.classSymbolTables.get(varType).lookup(varName);
+            this.assemblySupport.genComment("loading a field from an object");
+            this.assemblySupport.genLoadWord("$t0",refVarLocation.getOffset(),refVarLocation.getBaseReg());
+            this.assemblySupport.genLoadWord("$v0",location.getOffset(),"$t0");
+        }
+
         return null;
     }
 

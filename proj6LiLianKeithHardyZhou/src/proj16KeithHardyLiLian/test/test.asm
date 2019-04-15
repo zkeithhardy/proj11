@@ -198,7 +198,6 @@ Main_init:
 	li $v0 3
 	sw $v0 12($a0)
 Main.foo:
-	li $v0 0
 	jr $ra
 Main.equals:
 	li $v0 -1
