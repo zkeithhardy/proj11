@@ -177,13 +177,13 @@ public class MipsCodeGenerator
         //start text section
         this.assemblySupport.genTextStart();
 
-        TextGeneratorVisitor textGeneratorVisitor = new TextGeneratorVisitor(this.out,this.assemblySupport);
+        TextGeneratorVisitor textGeneratorVisitor = new TextGeneratorVisitor(this.out,this.assemblySupport, classMap);
 
         // create the inits for default classes
         for(Map.Entry<String, String> entry: classNames.entrySet()){
+            this.assemblySupport.genLabel(entry.getKey() + "_init");
             if(entry.getKey().equals("Object")||entry.getKey().equals("String")||entry.getKey().equals("TextIO")
                     ||entry.getKey().equals("Sys")) {
-                this.assemblySupport.genLabel(entry.getKey() + "_init");
                 if(entry.getKey().equals("String")){
                     this.assemblySupport.genLoadImm("$v0", 0);
                     this.assemblySupport.genStoreWord("$v0", 0, "$a0");
@@ -194,25 +194,38 @@ public class MipsCodeGenerator
                     this.assemblySupport.genLoadImm("$v0", 1);
                     this.assemblySupport.genStoreWord("$v0", 4, "$a0");
                 }
+            }else{
+                //generate the field
+                ClassTreeNode tempNode= classMap.get(entry.getKey());
+                List<ClassTreeNode> parents= new LinkedList<>();
+                while (tempNode.getParent()!=null){
+                    tempNode=tempNode.getParent();
+                    ((LinkedList<ClassTreeNode>) parents).addFirst(tempNode);
+                }
+                for(ClassTreeNode tempParent: parents){
+                    this.assemblySupport.genDirCall(tempParent.getASTNode().getName()+ "_init");
+                }
             }
         }
 
-        for(Map.Entry<String, String> entry: classNames.entrySet()){
-            this.assemblySupport.genLabel(entry.getKey()+"_init");
+//        for(Map.Entry<String, String> entry: classNames.entrySet()){
+//            System.out.println(entry.getKey());
+//            this.assemblySupport.genLabel(entry.getKey()+"_init");
+//
+//            //generate the field
+//            ClassTreeNode tempNode= classMap.get(entry.getKey());
+//            List<ClassTreeNode> parents= new LinkedList<>();
+//            while (tempNode.getParent()!=null){
+//                tempNode=tempNode.getParent();
+//                ((LinkedList<ClassTreeNode>) parents).addFirst(tempNode);
+//            }
+//            System.out.println(parents.size());
+//            for(ClassTreeNode tempParent: parents){
+//                this.assemblySupport.genDirCall(tempParent.getASTNode().getName()+ "_init");
+//            }
+//        }
 
-            //generate the field
-            ClassTreeNode tempNode= classMap.get(entry.getKey());
-            List<ClassTreeNode> parents= new LinkedList<>();
-            while (tempNode.getParent()!=null){
-                tempNode=tempNode.getParent();
-                ((LinkedList<ClassTreeNode>) parents).addFirst(tempNode);
-            }
-            for(ClassTreeNode tempParent: parents){
-                this.assemblySupport.genInDirCall(tempParent.getASTNode().getName()+ "_init");
-            }
-        }
-
-        textGeneratorVisitor.generateTextSection(rootAST);
+        //textGeneratorVisitor.generateTextSection(rootAST);
 
 
     }
@@ -226,7 +239,7 @@ public class MipsCodeGenerator
         this.assemblySupport.genComment("String Constants:");
 
         for(Map.Entry<String,String> entry: classNames.entrySet()){
-            System.out.println(entry.getKey());
+
             this.out.println(entry.getValue() + ":");
             this.assemblySupport.genWord("1\t\t# String Identifier");
 

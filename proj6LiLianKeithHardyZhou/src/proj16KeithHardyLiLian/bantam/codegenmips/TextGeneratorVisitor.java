@@ -8,10 +8,7 @@ import proj16KeithHardyLiLian.bantam.util.SymbolTable;
 import proj16KeithHardyLiLian.bantam.visitor.Visitor;
 
 import java.io.PrintStream;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Stack;
+import java.util.*;
 
 public class TextGeneratorVisitor extends Visitor {
     private PrintStream out;
@@ -24,10 +21,13 @@ public class TextGeneratorVisitor extends Visitor {
     private Stack<Stmt> currentLoop;
     private int currentClassFieldLevel;
     private Map<String, String> stringNameMap;
+    private Hashtable<String,ClassTreeNode> classMap;
 
-    public TextGeneratorVisitor(PrintStream out, MipsSupport assemblySupport){
+
+    public TextGeneratorVisitor(PrintStream out, MipsSupport assemblySupport, Hashtable<String,ClassTreeNode> classMap){
         this.out = out;
         this.assemblySupport = assemblySupport;
+        this.classMap = classMap;
     }
 
     public void generateTextSection(Program root){
@@ -64,6 +64,8 @@ public class TextGeneratorVisitor extends Visitor {
         this.currentClass = node.getName();
         this.currentSymbolTable = classSymbolTables.get(this.currentClass);
         currentClassFieldLevel = currentSymbolTable.getCurrScopeLevel();
+        System.out.println(this.currentClass);
+        System.out.println(currentClassFieldLevel);
         node.getMemberList().accept(this);
         return null;
     }
@@ -373,25 +375,32 @@ public class TextGeneratorVisitor extends Visitor {
         Location location = null;
         String varName = node.getName();
         String refName = node.getRefName();
+        node.getExpr().accept(this);
         if (refName == null) { //local var or field of "this"
             location = (Location) currentSymbolTable.lookup(varName);
+            this.assemblySupport.genStoreWord("$v0", location.getOffset(),location.getBaseReg());
         }
         else if (refName.equals("this")) {
             location = (Location) currentSymbolTable.lookup(varName, currentClassFieldLevel);
+            this.assemblySupport.genStoreWord("$v0", location.getOffset(),location.getBaseReg());
         }
         else if (refName.equals("super")) {
             location = (Location) currentSymbolTable.lookup(varName,
                     currentClassFieldLevel - 1);
+            this.assemblySupport.genStoreWord("$v0", location.getOffset(),location.getBaseReg());
+
         }
         else { // refName is not "this" or "super" or varName is not "length" for an array
+
             Location refVarLocation = (Location) currentSymbolTable.lookup(refName);
-            //HERE: NEED TO GET THE CLASS SUMBOL TABLE SO I CAN GET THE LOCATION OBJECT OF THE FIELD.
+            SymbolTable currentSymbolTable = this.classMap.get(this.currentClass).getVarSymbolTable();
+            String varType = (String) currentSymbolTable.lookup(refName);
+            location = (Location) this.classSymbolTables.get(varType).lookup(varName);
 
-
-            //SymbolTable refTable = refVarType.getVarSymbolTable();
-            //location = (String) refTable.lookup(varName);
+            this.assemblySupport.genComment("storing a field from an object");
+            this.assemblySupport.genLoadWord("$t0",refVarLocation.getOffset(),refVarLocation.getBaseReg());
+            this.assemblySupport.genStoreWord("$v0",location.getOffset(),"$t0");
         }
-        node.getExpr().accept(this);
         return null;
     }
 
@@ -556,10 +565,14 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(BinaryLogicAndExpr node) {
+        this.assemblySupport.genComment("and expression");
         node.getLeftExpr().accept(this);
         this.assemblySupport.genMove("$v1","$v0");
         node.getRightExpr().accept(this);
         //now compare two values
+        this.assemblySupport.genAdd("$v0","$v0","$v1");
+        this.assemblySupport.genLoadImm("$v1",-2);
+        this.out.println("seq $v0 $v0 $v1");
         return null;
     }
 
@@ -575,6 +588,8 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genMove("$v1","$v0");
         node.getRightExpr().accept(this);
         //now compare two values
+        this.assemblySupport.genAdd("$v0","$v0","$v1");
+        this.out.println("seq $v0 $v0 $zero");
         return null;
     }
 

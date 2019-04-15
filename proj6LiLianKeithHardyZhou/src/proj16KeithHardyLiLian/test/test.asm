@@ -1,6 +1,5 @@
-
 #Authors: Zeb Keith-Hardy, Michael Li, Iris Lian
-#Date: 2019-04-14
+#Date: 2019-04-15
 #Compiled From Source: test.btm
 	.data
 	.globl	gc_flag
@@ -181,22 +180,16 @@ main:
 	jal __start
 Object_init:
 String_init:
+	li $v0 0
+	sw $v0 0($a0)
 Sys_init:
 SubMain_init:
+	jal Object_init
+	jal Main_init
 TextIO_init:
-Main_init:
-Main.foo:
 	li $v0 0
-	jr $ra
-Main.equals:
-	li $v0 -1
-	jr $ra
-Main.toString:
-	jr $ra
-Main.main:
-SubMain.foo:
+	sw $v0 0($a0)
 	li $v0 1
-	jr $ra
-SubMain.equals:
-	li $v0 0
-	jr $ra
+	sw $v0 4($a0)
+Main_init:
+	jal Object_init
