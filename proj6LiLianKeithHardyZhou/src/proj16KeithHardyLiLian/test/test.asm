@@ -197,26 +197,29 @@ Main_init:
 	jal Object_init
 	li $v0 3
 	sw $v0 12($a0)
+Main.foo:
 	sub $sp $sp 4
 	sw $ra 0($sp)
 	sub $sp $sp 4
 	sw $fp 0($sp)
-	sub $fp $sp 4
+	sub $fp $sp 8
 	move $sp $fp
-Main.foo:
-	add $sp $fp 4
+	lw $v0 0($fp)
+	sw $v0 4($fp)
+	lw $v0 4($fp)
+	add $sp $fp 8
 	lw $fp 0($sp)
 	add $sp $sp 4
 	lw $ra 0($sp)
 	add $sp $sp 4
 	jr $ra
+Main.equals:
 	sub $sp $sp 4
 	sw $ra 0($sp)
 	sub $sp $sp 4
 	sw $fp 0($sp)
 	sub $fp $sp 4
 	move $sp $fp
-Main.equals:
 	li $v0 -1
 	add $sp $fp 4
 	lw $fp 0($sp)
@@ -224,13 +227,13 @@ Main.equals:
 	lw $ra 0($sp)
 	add $sp $sp 4
 	jr $ra
+Main.toString:
 	sub $sp $sp 4
 	sw $ra 0($sp)
 	sub $sp $sp 4
 	sw $fp 0($sp)
 	sub $fp $sp 0
 	move $sp $fp
-Main.toString:
 	la $v0 StringConst_0
 	add $sp $fp 0
 	lw $fp 0($sp)
@@ -238,26 +241,26 @@ Main.toString:
 	lw $ra 0($sp)
 	add $sp $sp 4
 	jr $ra
+Main.main:
 	sub $sp $sp 4
 	sw $ra 0($sp)
 	sub $sp $sp 4
 	sw $fp 0($sp)
 	sub $fp $sp 0
 	move $sp $fp
-Main.main:
 	add $sp $fp 0
 	lw $fp 0($sp)
 	add $sp $sp 4
 	lw $ra 0($sp)
 	add $sp $sp 4
 	jr $ra
+SubMain.foo:
 	sub $sp $sp 4
 	sw $ra 0($sp)
 	sub $sp $sp 4
 	sw $fp 0($sp)
 	sub $fp $sp 4
 	move $sp $fp
-SubMain.foo:
 	li $v0 1
 	add $sp $fp 4
 	lw $fp 0($sp)
@@ -265,13 +268,13 @@ SubMain.foo:
 	lw $ra 0($sp)
 	add $sp $sp 4
 	jr $ra
+SubMain.equals:
 	sub $sp $sp 4
 	sw $ra 0($sp)
 	sub $sp $sp 4
 	sw $fp 0($sp)
 	sub $fp $sp 4
 	move $sp $fp
-SubMain.equals:
 	li $v0 0
 	add $sp $fp 4
 	lw $fp 0($sp)

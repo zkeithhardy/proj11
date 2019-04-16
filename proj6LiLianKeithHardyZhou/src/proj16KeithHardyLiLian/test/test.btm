@@ -1,7 +1,11 @@
 class Main {
     int x = 3;
     int y;
-    int foo(int x) { return x; }
+    int foo(int x) {
+	var y = x;
+	
+	return y; 
+    }
     boolean equals(Object o) { return true; }
     String toString() { return "Main"; }
     void main() {}
