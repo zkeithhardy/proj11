@@ -534,6 +534,7 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genMove("$v1","$v0");
         node.getRightExpr().accept(this);
         this.out.println("seq $v0 $v0 $v1");
+        this.assemblySupport.genSub("$v0","$zero","$v0");
         return null;
     }
 
@@ -548,6 +549,7 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genMove("$v1","$v0");
         node.getRightExpr().accept(this);
         this.out.println("sne $v0 $v0 $v1");
+        this.assemblySupport.genSub("$v0","$zero","$v0");
         return null;
     }
 
@@ -562,6 +564,7 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genMove("$v1","$v0");
         node.getRightExpr().accept(this);
         this.out.println("slt $v0 $v0 $v1");
+        this.assemblySupport.genSub("$v0","$zero","$v0");
         return null;
     }
 
@@ -576,6 +579,7 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genMove("$v1","$v0");
         node.getRightExpr().accept(this);
         this.out.println("sle $v0 $v0 $v1");
+        this.assemblySupport.genSub("$v0","$zero","$v0");
         return null;
     }
 
@@ -590,6 +594,7 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genMove("$v1","$v0");
         node.getRightExpr().accept(this);
         this.out.println("sgt $v0 $v0 $v1");
+        this.assemblySupport.genSub("$v0","$zero","$v0");
         return null;
     }
 
@@ -604,6 +609,7 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genMove("$v1","$v0");
         node.getRightExpr().accept(this);
         this.out.println("sge $v0 $v0 $v1");
+        this.assemblySupport.genSub("$v0","$zero","$v0");
         return null;
     }
 
@@ -686,12 +692,11 @@ public class TextGeneratorVisitor extends Visitor {
     public Object visit(BinaryLogicAndExpr node) {
         this.assemblySupport.genComment("and expression");
         node.getLeftExpr().accept(this);
-        this.assemblySupport.genMove("$v1","$v0");
+        String afterAnd = this.assemblySupport.getLabel();
+        this.assemblySupport.genCondBeq("$v0","$zero",afterAnd);
         node.getRightExpr().accept(this);
-        //now compare two values
-        this.assemblySupport.genAdd("$v0","$v0","$v1");
-        this.assemblySupport.genLoadImm("$v1",-2);
-        this.out.println("seq $v0 $v0 $v1");
+
+        this.assemblySupport.genLabel(afterAnd);
         return null;
     }
 
@@ -704,11 +709,13 @@ public class TextGeneratorVisitor extends Visitor {
     public Object visit(BinaryLogicOrExpr node) {
         this.assemblySupport.genComment("or expression");
         node.getLeftExpr().accept(this);
-        this.assemblySupport.genMove("$v1","$v0");
+        //lazy evaluation
+        this.assemblySupport.genLoadImm("$v1",-1);
+        String afterOr = this.assemblySupport.getLabel();
+        this.assemblySupport.genCondBeq("$v0","$v1",afterOr);
         node.getRightExpr().accept(this);
-        //now compare two values
-        this.assemblySupport.genAdd("$v0","$v0","$v1");
-        this.out.println("seq $v0 $v0 $zero");
+
+        this.assemblySupport.genLabel(afterOr);
         return null;
     }
 

@@ -250,9 +250,7 @@ public class MipsCodeGenerator
             this.assemblySupport.genWord("1\t\t# String Identifier");
 
             int length = 17 + entry.getKey().length();
-            double div4 = length/4.0;
-            div4 = Math.ceil(div4);
-            length = (int)div4 *4;
+            length = (4-length%4)%4;
             this.assemblySupport.genWord(length+"\t\t# Size of Object in Bytes");
 
             this.assemblySupport.genWord("String_dispatch_table");
@@ -265,15 +263,14 @@ public class MipsCodeGenerator
 
         for(Map.Entry<String,String> entry: stringConstants.entrySet()){
             if(classNames.containsKey(entry.getKey())){
+                stringConstants.put(entry.getKey(),classNames.get(entry.getKey()));
                 continue;
             }
             this.out.println(entry.getValue() + ":");
             this.assemblySupport.genWord("1\t\t# String Identifier");
 
-            int length = 17 + entry.getKey().length()-2;
-            double div4 = length/4.0;
-            div4 = Math.ceil(div4);
-            length = (int)div4 *4;
+            int length = 17 + entry.getKey().length();
+            length = (4-length%4)%4;
             this.assemblySupport.genWord(Integer.toString(length) +"\t\t# Size of Object in Bytes");
             this.assemblySupport.genWord("String_dispatch_table");
             this.assemblySupport.genWord(Integer.toString(entry.getKey().length()));
