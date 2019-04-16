@@ -456,8 +456,19 @@ public class TextGeneratorVisitor extends Visitor {
      */
     public Object visit(InstanceofExpr node) {
         node.getExpr().accept(this);
-        // Instanceof will always return true, otherwise the code wouldn't pass the type checker
-        this.assemblySupport.genLoadImm("$v0", -1);
+        this.assemblySupport.genLoadWord("$v0", 0, "$v0"); // i is in v0 now
+
+        int j = this.idTable.indexOf(this.classMap.get(node.getType())); // id in the table
+        int k = this.classMap.get(node.getType()).getNumDescendants();
+
+        this.assemblySupport.genLoadImm("$t0", j);
+        this.assemblySupport.genLoadImm("$t1", j+k);
+
+        this.out.println("sle $t0 $t0 $v0"); // j <= i
+        this.out.println("sle $v0 $v0 $t1"); // i <= j+k
+
+        this.assemblySupport.genAnd("$v0", "$t0", "$v0");
+        this.assemblySupport.genSub("$v0", "$zero", "$v0"); // b/c we're using -1 as true
 
         return null;
     }
@@ -485,7 +496,7 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(AssignExpr node) {
-        Location location = null;
+        Location location;
         String varName = node.getName();
         String refName = node.getRefName();
         this.assemblySupport.genSub("$sp","$sp",4);
