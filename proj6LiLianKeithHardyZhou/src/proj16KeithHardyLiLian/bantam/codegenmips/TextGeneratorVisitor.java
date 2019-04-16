@@ -370,12 +370,28 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(DispatchExpr node) {
-        if(node.getRefExpr() != null) {
-            node.getRefExpr().accept(this);
+        String type;
+        if (node.getRefExpr() == null) { //local var or field of "this"
+            type = this.currentClass;
         }
+        else if ((node.getRefExpr() instanceof VarExpr) &&
+                ((VarExpr) node.getRefExpr()).getName().equals("this")) {
+            type = this.currentClass;
+
+        }
+        else if ((node.getRefExpr() instanceof VarExpr) &&
+                ((VarExpr) node.getRefExpr()).getName().equals("super")) {
+            type = this.classMap.get(this.currentClass).getParent().getName();
+        }else{
+            node.getRefExpr().accept(this);
+            type = node.getRefExpr().getExprType();
+        }
+
+
+
         this.assemblySupport.genComment("move v0 to a0");
         this.assemblySupport.genMove("$a0","$v0");
-        String type = node.getRefExpr().getExprType();
+
         this.assemblySupport.genComment("access " + type +"_dispatch_table");
         this.assemblySupport.genLoadAddr("$v0",type + "_dispatch_table");
         ArrayList currentDispatchTable = this.dispatchTableMap.get(type);
