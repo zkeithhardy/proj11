@@ -170,6 +170,7 @@ public class TextGeneratorVisitor extends Visitor {
     }
 
     private void generateMethodPrologue(){
+        this.assemblySupport.genComment("Start Prologue");
         this.assemblySupport.genSub("$sp","$sp", 4);
         this.assemblySupport.genStoreWord("$ra",0,"$sp");
         this.assemblySupport.genSub("$sp","$sp", 4);
@@ -180,9 +181,11 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genSub("$fp","$sp", 4*methodLocalVars);
         this.assemblySupport.genMove("$sp","$fp");
 
+        this.assemblySupport.genComment("End Prologue");
     }
 
     private void generateMethodEpilogue(){
+        this.assemblySupport.genComment("Start Epilogue");
         this.assemblySupport.genAdd("$sp","$fp", 4*methodLocalVars);
         this.assemblySupport.genLoadWord("$a0",0,"$sp");
         this.assemblySupport.genAdd("$sp", "$sp", 4);
@@ -192,6 +195,7 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genAdd("$sp","$sp", 4);
         this.assemblySupport.genMove("$sp","$fp");
         this.assemblySupport.genRetn();
+        this.assemblySupport.genComment("End Epilogue");
     }
 
     /**
@@ -369,15 +373,19 @@ public class TextGeneratorVisitor extends Visitor {
         if(node.getRefExpr() != null) {
             node.getRefExpr().accept(this);
         }
+        this.assemblySupport.genComment("move v0 to a0");
         this.assemblySupport.genMove("$a0","$v0");
         String type = node.getRefExpr().getExprType();
+        this.assemblySupport.genComment("access " + type +"_dispatch_table");
         this.assemblySupport.genLoadAddr("$v0",type + "_dispatch_table");
         ArrayList currentDispatchTable = this.dispatchTableMap.get(type);
         int idx = currentDispatchTable.indexOf(node.getMethodName());
-        this.assemblySupport.genLoadWord("$v0",idx*4, "$v0");
-        this.assemblySupport.genInDirCall("$v0");
-
+        this.assemblySupport.genComment("load method address");
+        this.assemblySupport.genLoadWord("$a1",idx*4, "$v0");
         node.getActualList().accept(this);
+
+        this.assemblySupport.genInDirCall("$a1");
+
         return null;
     }
 
@@ -390,6 +398,7 @@ public class TextGeneratorVisitor extends Visitor {
     public Object visit(ExprList node) {
         for (Iterator it = node.iterator(); it.hasNext(); ){
             ((Expr) it.next()).accept(this);
+            this.assemblySupport.genComment("save parameters on stack");
             this.assemblySupport.genSub("$sp","$sp",4);
             this.assemblySupport.genStoreWord("$v0",0,"$sp");
         }
@@ -416,7 +425,7 @@ public class TextGeneratorVisitor extends Visitor {
         // jump to that clone method
         this.assemblySupport.genInDirCall("$v0");
 
-        this.assemblySupport.genDirCall(node.getType()+"_init");
+        this.assemblySupport.genDirCall(node.getType()+"_init"); // todo: not global. can we still jump and link to init?
 
         this.assemblySupport.genComment("restore $a0");
         this.assemblySupport.genLoadWord("$a0",0,"$sp");

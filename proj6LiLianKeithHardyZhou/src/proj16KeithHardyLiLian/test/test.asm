@@ -198,17 +198,19 @@ Main_init:
 	li $v0 3
 	sw $v0 12($a0)
 Main.foo:
+	# Start Prologue
 	sub $sp $sp 4
 	sw $ra 0($sp)
 	sub $sp $sp 4
 	sw $fp 0($sp)
 	sub $sp $sp 4
 	sw $a0 0($sp)
-	sub $fp $sp 8
+	sub $fp $sp 4
 	move $sp $fp
+	# End Prologue
 	sub $sp $sp 4
 	sw $a0 0($sp)
-	lw $v0 0($fp)
+	lw $v0 20($fp)
 	lw $a0 0($sp)
 	add $sp $sp 4
 	sw $v0 4($fp)
@@ -217,6 +219,104 @@ Main.foo:
 	lw $v0 4($fp)
 	lw $a0 0($sp)
 	add $sp $sp 4
+	# Start Epilogue
+	add $sp $fp 4
+	lw $a0 0($sp)
+	add $sp $sp 4
+	lw $fp 0($sp)
+	add $sp $sp 4
+	lw $ra 0($sp)
+	add $sp $sp 4
+	move $sp $fp
+	jr $ra
+	# End Epilogue
+Main.equals:
+	# Start Prologue
+	sub $sp $sp 4
+	sw $ra 0($sp)
+	sub $sp $sp 4
+	sw $fp 0($sp)
+	sub $sp $sp 4
+	sw $a0 0($sp)
+	sub $fp $sp 0
+	move $sp $fp
+	# End Prologue
+	li $v0 -1
+	# Start Epilogue
+	add $sp $fp 0
+	lw $a0 0($sp)
+	add $sp $sp 4
+	lw $fp 0($sp)
+	add $sp $sp 4
+	lw $ra 0($sp)
+	add $sp $sp 4
+	move $sp $fp
+	jr $ra
+	# End Epilogue
+Main.toString:
+	# Start Prologue
+	sub $sp $sp 4
+	sw $ra 0($sp)
+	sub $sp $sp 4
+	sw $fp 0($sp)
+	sub $sp $sp 4
+	sw $a0 0($sp)
+	sub $fp $sp 0
+	move $sp $fp
+	# End Prologue
+	la $v0 StringConst_0
+	# Start Epilogue
+	add $sp $fp 0
+	lw $a0 0($sp)
+	add $sp $sp 4
+	lw $fp 0($sp)
+	add $sp $sp 4
+	lw $ra 0($sp)
+	add $sp $sp 4
+	move $sp $fp
+	jr $ra
+	# End Epilogue
+Main.main:
+	# Start Prologue
+	sub $sp $sp 4
+	sw $ra 0($sp)
+	sub $sp $sp 4
+	sw $fp 0($sp)
+	sub $sp $sp 4
+	sw $a0 0($sp)
+	sub $fp $sp 8
+	move $sp $fp
+	# End Prologue
+	# save $a0 onto stack in case init creates a new object.
+	sub $sp $sp 4
+	sw $a0 0($sp)
+	la $a0 SubMain_template
+	la $v0 SubMain_dispatch_table
+	lw $v0 0($v0)
+	jalr $v0
+	jal SubMain_init
+	# restore $a0
+	lw $a0 0($sp)
+	add $sp $sp 4
+	sw $v0 0($fp)
+	sub $sp $sp 4
+	sw $a0 0($sp)
+	lw $v0 0($fp)
+	lw $a0 0($sp)
+	add $sp $sp 4
+	# move v0 to a0
+	move $a0 $v0
+	# access SubMain_dispatch_table
+	la $v0 SubMain_dispatch_table
+	# load method address
+	lw $v0 12($v0)
+	li $v0 1
+	# save parameters on stack
+	sub $sp $sp 4
+	sw $v0 0($sp)
+	jalr $v0
+	sw $v0 4($fp)
+	# Start Epilogue
 	add $sp $fp 8
 	lw $a0 0($sp)
 	add $sp $sp 4
@@ -224,93 +324,52 @@ Main.foo:
 	add $sp $sp 4
 	lw $ra 0($sp)
 	add $sp $sp 4
-	jr $ra
-Main.equals:
-	sub $sp $sp 4
-	sw $ra 0($sp)
-	sub $sp $sp 4
-	sw $fp 0($sp)
-	sub $sp $sp 4
-	sw $a0 0($sp)
-	sub $fp $sp 4
 	move $sp $fp
-	li $v0 -1
-	add $sp $fp 4
-	lw $a0 0($sp)
-	add $sp $sp 4
-	lw $fp 0($sp)
-	add $sp $sp 4
-	lw $ra 0($sp)
-	add $sp $sp 4
 	jr $ra
-Main.toString:
-	sub $sp $sp 4
-	sw $ra 0($sp)
-	sub $sp $sp 4
-	sw $fp 0($sp)
-	sub $sp $sp 4
-	sw $a0 0($sp)
-	sub $fp $sp 0
-	move $sp $fp
-	la $v0 StringConst_0
-	add $sp $fp 0
-	lw $a0 0($sp)
-	add $sp $sp 4
-	lw $fp 0($sp)
-	add $sp $sp 4
-	lw $ra 0($sp)
-	add $sp $sp 4
-	jr $ra
-Main.main:
-	sub $sp $sp 4
-	sw $ra 0($sp)
-	sub $sp $sp 4
-	sw $fp 0($sp)
-	sub $sp $sp 4
-	sw $a0 0($sp)
-	sub $fp $sp 0
-	move $sp $fp
-	add $sp $fp 0
-	lw $a0 0($sp)
-	add $sp $sp 4
-	lw $fp 0($sp)
-	add $sp $sp 4
-	lw $ra 0($sp)
-	add $sp $sp 4
-	jr $ra
+	# End Epilogue
 SubMain.foo:
+	# Start Prologue
 	sub $sp $sp 4
 	sw $ra 0($sp)
 	sub $sp $sp 4
 	sw $fp 0($sp)
 	sub $sp $sp 4
 	sw $a0 0($sp)
-	sub $fp $sp 4
+	sub $fp $sp 0
 	move $sp $fp
+	# End Prologue
 	li $v0 1
-	add $sp $fp 4
+	# Start Epilogue
+	add $sp $fp 0
 	lw $a0 0($sp)
 	add $sp $sp 4
 	lw $fp 0($sp)
 	add $sp $sp 4
 	lw $ra 0($sp)
 	add $sp $sp 4
+	move $sp $fp
 	jr $ra
+	# End Epilogue
 SubMain.equals:
+	# Start Prologue
 	sub $sp $sp 4
 	sw $ra 0($sp)
 	sub $sp $sp 4
 	sw $fp 0($sp)
 	sub $sp $sp 4
 	sw $a0 0($sp)
-	sub $fp $sp 4
+	sub $fp $sp 0
 	move $sp $fp
+	# End Prologue
 	li $v0 0
-	add $sp $fp 4
+	# Start Epilogue
+	add $sp $fp 0
 	lw $a0 0($sp)
 	add $sp $sp 4
 	lw $fp 0($sp)
 	add $sp $sp 4
 	lw $ra 0($sp)
 	add $sp $sp 4
+	move $sp $fp
 	jr $ra
+	# End Epilogue
