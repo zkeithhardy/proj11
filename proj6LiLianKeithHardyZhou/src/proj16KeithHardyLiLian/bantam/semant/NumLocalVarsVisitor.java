@@ -113,6 +113,8 @@ public class NumLocalVarsVisitor extends Visitor {
      * @param node the variable expression node
      */
     public Object visit(ForStmt node){
+        if(node.getInitExpr() != null)
+            node.getInitExpr().accept(this);
         node.getBodyStmt().accept(this);
         return null;
     }

@@ -19,7 +19,7 @@ public class TextGeneratorVisitor extends Visitor {
     private int fieldCount=3;
     private HashMap<String, SymbolTable> classSymbolTables = new HashMap<>();
     private int numLocalVars = 0;
-    private Stack<Stmt> currentLoop;
+    private Stack<String> currentLoop;
     private int currentClassFieldLevel;
     private Map<String, String> stringNameMap;
     private Hashtable<String,ClassTreeNode> classMap;
@@ -266,18 +266,19 @@ public class TextGeneratorVisitor extends Visitor {
     public Object visit(WhileStmt node) {
         String startWhile = this.assemblySupport.getLabel();
         String afterWhile = this.assemblySupport.getLabel();
+
         this.assemblySupport.genLabel(startWhile);
         node.getPredExpr().accept(this);
         this.assemblySupport.genCondBeq("$v0","$zero",afterWhile);
 
         currentSymbolTable.enterScope();
-        currentLoop.push(node);
+        currentLoop.push(afterWhile);
         node.getBodyStmt().accept(this);
-        currentLoop.pop();
-        currentSymbolTable.exitScope();
 
+        currentSymbolTable.exitScope();
         this.assemblySupport.genUncondBr(startWhile);
         this.assemblySupport.genLabel(afterWhile);
+        currentLoop.pop();
         return null;
     }
 
@@ -288,18 +289,25 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(ForStmt node) {
+        currentSymbolTable.enterScope();
         if (node.getInitExpr() != null) {
             node.getInitExpr().accept(this);
         }
+        String beforeFor = this.assemblySupport.getLabel();
+        String afterFor = this.assemblySupport.getLabel();
+        this.assemblySupport.genLabel(beforeFor);
         if (node.getPredExpr() != null) {
             node.getPredExpr().accept(this);
         }
+        this.assemblySupport.genCondBeq("$zero","$v0",afterFor);
+        currentLoop.push(afterFor);
+        node.getBodyStmt().accept(this);
+
         if (node.getUpdateExpr() != null) {
             node.getUpdateExpr().accept(this);
         }
-        currentSymbolTable.enterScope();
-        currentLoop.push(node);
-        node.getBodyStmt().accept(this);
+        this.assemblySupport.genUncondBr(beforeFor);
+        this.assemblySupport.genLabel(afterFor);
         currentLoop.pop();
         currentSymbolTable.exitScope();
 
@@ -313,6 +321,8 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(BreakStmt node) {
+        this.assemblySupport.genComment("breaking out of loop to label " + currentLoop.peek());
+        this.assemblySupport.genUncondBr(currentLoop.peek());
         return null;
     }
 
