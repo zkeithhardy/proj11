@@ -202,12 +202,24 @@ Main.foo:
 	sw $ra 0($sp)
 	sub $sp $sp 4
 	sw $fp 0($sp)
+	sub $sp $sp 4
+	sw $a0 0($sp)
 	sub $fp $sp 8
 	move $sp $fp
+	sub $sp $sp 4
+	sw $a0 0($sp)
 	lw $v0 0($fp)
+	lw $a0 0($sp)
+	add $sp $sp 4
 	sw $v0 4($fp)
+	sub $sp $sp 4
+	sw $a0 0($sp)
 	lw $v0 4($fp)
+	lw $a0 0($sp)
+	add $sp $sp 4
 	add $sp $fp 8
+	lw $a0 0($sp)
+	add $sp $sp 4
 	lw $fp 0($sp)
 	add $sp $sp 4
 	lw $ra 0($sp)
@@ -218,10 +230,14 @@ Main.equals:
 	sw $ra 0($sp)
 	sub $sp $sp 4
 	sw $fp 0($sp)
+	sub $sp $sp 4
+	sw $a0 0($sp)
 	sub $fp $sp 4
 	move $sp $fp
 	li $v0 -1
 	add $sp $fp 4
+	lw $a0 0($sp)
+	add $sp $sp 4
 	lw $fp 0($sp)
 	add $sp $sp 4
 	lw $ra 0($sp)
@@ -232,10 +248,14 @@ Main.toString:
 	sw $ra 0($sp)
 	sub $sp $sp 4
 	sw $fp 0($sp)
+	sub $sp $sp 4
+	sw $a0 0($sp)
 	sub $fp $sp 0
 	move $sp $fp
 	la $v0 StringConst_0
 	add $sp $fp 0
+	lw $a0 0($sp)
+	add $sp $sp 4
 	lw $fp 0($sp)
 	add $sp $sp 4
 	lw $ra 0($sp)
@@ -246,9 +266,13 @@ Main.main:
 	sw $ra 0($sp)
 	sub $sp $sp 4
 	sw $fp 0($sp)
+	sub $sp $sp 4
+	sw $a0 0($sp)
 	sub $fp $sp 0
 	move $sp $fp
 	add $sp $fp 0
+	lw $a0 0($sp)
+	add $sp $sp 4
 	lw $fp 0($sp)
 	add $sp $sp 4
 	lw $ra 0($sp)
@@ -259,10 +283,14 @@ SubMain.foo:
 	sw $ra 0($sp)
 	sub $sp $sp 4
 	sw $fp 0($sp)
+	sub $sp $sp 4
+	sw $a0 0($sp)
 	sub $fp $sp 4
 	move $sp $fp
 	li $v0 1
 	add $sp $fp 4
+	lw $a0 0($sp)
+	add $sp $sp 4
 	lw $fp 0($sp)
 	add $sp $sp 4
 	lw $ra 0($sp)
@@ -273,10 +301,14 @@ SubMain.equals:
 	sw $ra 0($sp)
 	sub $sp $sp 4
 	sw $fp 0($sp)
+	sub $sp $sp 4
+	sw $a0 0($sp)
 	sub $fp $sp 4
 	move $sp $fp
 	li $v0 0
 	add $sp $fp 4
+	lw $a0 0($sp)
+	add $sp $sp 4
 	lw $fp 0($sp)
 	add $sp $sp 4
 	lw $ra 0($sp)

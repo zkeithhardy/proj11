@@ -89,6 +89,9 @@ public class MipsCodeGenerator
 
     private HashMap<String, ArrayList<String>> userDefinedMethodsMap;
 
+    private HashMap<String, ArrayList<String>> dispatchTableMap = new HashMap<>();
+
+
     /**
      * MipsCodeGenerator constructor
      *
@@ -177,7 +180,8 @@ public class MipsCodeGenerator
         //start text section
         this.assemblySupport.genTextStart();
 
-        TextGeneratorVisitor textGeneratorVisitor = new TextGeneratorVisitor(this.out,this.assemblySupport, classMap);
+        TextGeneratorVisitor textGeneratorVisitor = new TextGeneratorVisitor(this.out,this.assemblySupport,
+                classMap, dispatchTableMap);
 
         // create the inits for default classes
         for(Map.Entry<String, String> entry: classNames.entrySet()){
@@ -347,7 +351,7 @@ public class MipsCodeGenerator
             LinkedHashMap<String,String> methodNames =
                     new LinkedHashMap<>(0,0.75f,false);
             this.addMethods(tempNode, methodNames);
-
+            this.dispatchTableMap.put(entry.getKey(),new ArrayList<>(methodNames.keySet()));
             for(Map.Entry<String,String> methodEntry: methodNames.entrySet()){
                 this.assemblySupport.genWord(methodEntry.getValue()+ "." + methodEntry.getKey());
             }

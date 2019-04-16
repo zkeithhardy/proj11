@@ -26,12 +26,15 @@ public class TextGeneratorVisitor extends Visitor {
     private String initOrGenMethods;
     private Map<String,Integer> numLocalVarsMap;
     private int methodLocalVars;
+    private HashMap<String, ArrayList<String>> dispatchTableMap;
+    private int currentParameterOffset = 0;
 
-
-    public TextGeneratorVisitor(PrintStream out, MipsSupport assemblySupport, Hashtable<String,ClassTreeNode> classMap){
+    public TextGeneratorVisitor(PrintStream out, MipsSupport assemblySupport, Hashtable<String,ClassTreeNode> classMap,
+                                HashMap<String, ArrayList<String>> dispatchTableMap){
         this.out = out;
         this.assemblySupport = assemblySupport;
         this.classMap = classMap;
+        this.dispatchTableMap = dispatchTableMap;
     }
 
     public void generateTextSection(Program root){
@@ -155,8 +158,8 @@ public class TextGeneratorVisitor extends Visitor {
     public Object visit(Method node) {
         numLocalVars = 0;
         this.currentSymbolTable.enterScope();
-        node.getFormalList().accept(this);
         this.methodLocalVars = this.numLocalVarsMap.get(this.currentClass + "." + node.getName());
+        node.getFormalList().accept(this);
         this.assemblySupport.genLabel(this.currentClass+"."+node.getName());
         this.generateMethodPrologue();
 
@@ -187,6 +190,7 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genAdd("$sp","$sp", 4);
         this.assemblySupport.genLoadWord("$ra",0,"$sp");
         this.assemblySupport.genAdd("$sp","$sp", 4);
+        this.assemblySupport.genMove("$sp","$fp");
         this.assemblySupport.genRetn();
     }
 
@@ -197,6 +201,7 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(FormalList node) {
+        this.currentParameterOffset = node.getSize()*4;
         for (Iterator it = node.iterator(); it.hasNext(); )
             ((Formal) it.next()).accept(this);
         return null;
@@ -209,7 +214,9 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(Formal node) {
-        this.currentSymbolTable.add(node.getName(),new Location("$fp",numLocalVars * 4));
+        this.currentSymbolTable.add(node.getName(),new Location("$fp",this.methodLocalVars * 4 +
+                12 + this.currentParameterOffset));
+        this.currentParameterOffset -= 4;
         numLocalVars += 1;
         return null;
     }
@@ -362,7 +369,31 @@ public class TextGeneratorVisitor extends Visitor {
         if(node.getRefExpr() != null) {
             node.getRefExpr().accept(this);
         }
+        this.assemblySupport.genMove("$a0","$v0");
+        String type = node.getRefExpr().getExprType();
+        this.assemblySupport.genLoadAddr("$v0",type + "_dispatch_table");
+        ArrayList currentDispatchTable = this.dispatchTableMap.get(type);
+        int idx = currentDispatchTable.indexOf(node.getMethodName());
+        this.assemblySupport.genLoadWord("$v0",idx*4, "$v0");
+        this.assemblySupport.genInDirCall("$v0");
+
         node.getActualList().accept(this);
+        return null;
+    }
+
+    /**
+     * Visit a list node of expressions
+     *
+     * @param node the expression list node
+     * @return result of the visit
+     */
+    public Object visit(ExprList node) {
+        for (Iterator it = node.iterator(); it.hasNext(); ){
+            ((Expr) it.next()).accept(this);
+            this.assemblySupport.genSub("$sp","$sp",4);
+            this.assemblySupport.genStoreWord("$v0",0,"$sp");
+        }
+
         return null;
     }
 

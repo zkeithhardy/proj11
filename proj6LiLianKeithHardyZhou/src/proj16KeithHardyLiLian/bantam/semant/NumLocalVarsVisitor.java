@@ -60,7 +60,7 @@ public class NumLocalVarsVisitor extends Visitor {
         numLocalVars = 0;
         methodName = node.getName();
         super.visit(node);
-        varMap.put(className + "." + methodName,numLocalVars + node.getFormalList().getSize());
+        varMap.put(className + "." + methodName,numLocalVars);
         return null;
 
     }
