@@ -547,9 +547,13 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(BinaryCompEqExpr node) {
+        this.assemblySupport.genComment("gen left side of expression");
         node.getLeftExpr().accept(this);
+        this.assemblySupport.genComment("move v0 to v1");
         this.assemblySupport.genMove("$v1","$v0");
+        this.assemblySupport.genComment("gen right side of expression");
         node.getRightExpr().accept(this);
+        this.out.println("compare left and right sides of expression");
         this.out.println("seq $v0 $v0 $v1");
         this.assemblySupport.genSub("$v0","$zero","$v0");
         return null;
@@ -562,9 +566,13 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(BinaryCompNeExpr node) {
+        this.assemblySupport.genComment("gen left side of expression");
         node.getLeftExpr().accept(this);
+        this.assemblySupport.genComment("move v0 to v1");
         this.assemblySupport.genMove("$v1","$v0");
+        this.assemblySupport.genComment("gen right side of expression");
         node.getRightExpr().accept(this);
+        this.out.println("compare left and right sides of expression");
         this.out.println("sne $v0 $v0 $v1");
         this.assemblySupport.genSub("$v0","$zero","$v0");
         return null;
@@ -577,9 +585,13 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(BinaryCompLtExpr node) {
+        this.assemblySupport.genComment("gen left side of expression");
         node.getLeftExpr().accept(this);
+        this.assemblySupport.genComment("move v0 to v1");
         this.assemblySupport.genMove("$v1","$v0");
+        this.assemblySupport.genComment("gen right side of expression");
         node.getRightExpr().accept(this);
+        this.out.println("compare left and right sides of expression");
         this.out.println("slt $v0 $v0 $v1");
         this.assemblySupport.genSub("$v0","$zero","$v0");
         return null;
@@ -592,9 +604,13 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(BinaryCompLeqExpr node) {
+        this.assemblySupport.genComment("gen left side of expression");
         node.getLeftExpr().accept(this);
+        this.assemblySupport.genComment("move v0 to v1");
         this.assemblySupport.genMove("$v1","$v0");
+        this.assemblySupport.genComment("gen right side of expression");
         node.getRightExpr().accept(this);
+        this.out.println("compare left and right sides of expression");
         this.out.println("sle $v0 $v0 $v1");
         this.assemblySupport.genSub("$v0","$zero","$v0");
         return null;
@@ -607,9 +623,13 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(BinaryCompGtExpr node) {
+        this.assemblySupport.genComment("gen left side of expression");
         node.getLeftExpr().accept(this);
+        this.assemblySupport.genComment("move v0 to v1");
         this.assemblySupport.genMove("$v1","$v0");
+        this.assemblySupport.genComment("gen right side of expression");
         node.getRightExpr().accept(this);
+        this.out.println("compare left and right sides of expression");
         this.out.println("sgt $v0 $v0 $v1");
         this.assemblySupport.genSub("$v0","$zero","$v0");
         return null;
@@ -622,9 +642,13 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(BinaryCompGeqExpr node) {
+        this.assemblySupport.genComment("gen left side of expression");
         node.getLeftExpr().accept(this);
+        this.assemblySupport.genComment("move v0 to v1");
         this.assemblySupport.genMove("$v1","$v0");
+        this.assemblySupport.genComment("gen right side of expression");
         node.getRightExpr().accept(this);
+        this.out.println("compare left and right sides of expression");
         this.out.println("sge $v0 $v0 $v1");
         this.assemblySupport.genSub("$v0","$zero","$v0");
         return null;
@@ -637,9 +661,13 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(BinaryArithPlusExpr node) {
+        this.assemblySupport.genComment("gen left side of expression");
         node.getLeftExpr().accept(this);
-        this.assemblySupport.genMove("$v1","$v1");
+        this.assemblySupport.genComment("move v0 to v1");
+        this.assemblySupport.genMove("$v1","$v0");
+        this.assemblySupport.genComment("gen right side of expression");
         node.getRightExpr().accept(this);
+        this.out.println("add left and right sides of expression");
         this.assemblySupport.genAdd("$v0","$v0","$v1");
         return null;
     }
@@ -651,9 +679,13 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(BinaryArithMinusExpr node) {
+        this.assemblySupport.genComment("gen left side of expression");
         node.getLeftExpr().accept(this);
-        this.assemblySupport.genMove("$v1","$v1");
+        this.assemblySupport.genComment("move v0 to v1");
+        this.assemblySupport.genMove("$v1","$v0");
+        this.assemblySupport.genComment("gen right side of expression");
         node.getRightExpr().accept(this);
+        this.out.println("subtract left and right sides of expression");
         this.assemblySupport.genSub("$v0","$v0","$v1");
         return null;
     }
@@ -665,9 +697,13 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(BinaryArithTimesExpr node) {
+        this.assemblySupport.genComment("gen left side of expression");
         node.getLeftExpr().accept(this);
-        this.assemblySupport.genMove("$v1","$v1");
+        this.assemblySupport.genComment("move v0 to v1");
+        this.assemblySupport.genMove("$v1","$v0");
+        this.assemblySupport.genComment("gen right side of expression");
         node.getRightExpr().accept(this);
+        this.out.println("multiply left and right sides of expression");
         this.assemblySupport.genMul("$v0","$v0","$v1");
         return null;
     }
@@ -679,9 +715,13 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(BinaryArithDivideExpr node) {
+        this.assemblySupport.genComment("gen left side of expression");
         node.getLeftExpr().accept(this);
-        this.assemblySupport.genMove("$v1","$v1");
+        this.assemblySupport.genComment("move v0 to v1");
+        this.assemblySupport.genMove("$v1","$v0");
+        this.assemblySupport.genComment("gen right side of expression");
         node.getRightExpr().accept(this);
+        this.out.println("divide left and right sides of expression");
         this.assemblySupport.genDiv("$v0","$v0","$v1");
         return null;
     }
@@ -693,9 +733,13 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(BinaryArithModulusExpr node) {
+        this.assemblySupport.genComment("gen left side of expression");
         node.getLeftExpr().accept(this);
-        this.assemblySupport.genMove("$v1","$v1");
+        this.assemblySupport.genComment("move v0 to v1");
+        this.assemblySupport.genMove("$v1","$v0");
+        this.assemblySupport.genComment("gen right side of expression");
         node.getRightExpr().accept(this);
+        this.out.println("mod left and right sides of expression");
         this.assemblySupport.genMod("$v0","$v0","$v1");
         return null;
     }
@@ -744,8 +788,8 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(UnaryNegExpr node) {
-        node.getExpr().accept(this);
         this.assemblySupport.genComment("negation");
+        node.getExpr().accept(this);
         this.assemblySupport.genSub("$v0","$zero","$v0");
         return null;
     }
@@ -771,8 +815,8 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(UnaryIncrExpr node) {
-        node.getExpr().accept(this);
         this.assemblySupport.genComment("increment");
+        node.getExpr().accept(this);
         this.assemblySupport.genAdd("$v0","$v0",1);
         return null;
     }
@@ -784,8 +828,8 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(UnaryDecrExpr node) {
-        node.getExpr().accept(this);
         this.assemblySupport.genComment("decrement");
+        node.getExpr().accept(this);
         this.assemblySupport.genSub("$v0","$v0",1);
         return null;
     }

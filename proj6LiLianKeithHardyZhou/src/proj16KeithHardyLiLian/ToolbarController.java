@@ -249,11 +249,6 @@ public class ToolbarController {
      * handles Assembling and Running MIPS Code
      */
     public void handleAssembleRun(){
-
-        // Try to assemble
-        if(!this.assembleSuccessful){
-            return;
-        }
         // Disable appropriate assemble buttons
         this.disableAssembleRun();
         // Run the MIPS program
