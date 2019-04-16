@@ -91,6 +91,8 @@ public class MipsCodeGenerator
 
     private HashMap<String, ArrayList<String>> dispatchTableMap = new HashMap<>();
 
+    private ArrayList<ClassTreeNode> idTable = new ArrayList<>();
+
 
     /**
      * MipsCodeGenerator constructor
@@ -149,6 +151,9 @@ public class MipsCodeGenerator
 
         this.out.println("#Compiled From Source: " + filename[filename.length-1]);
 
+        //create idtable from inheritance tree
+        this.genIDTable();
+
         // Step 1-2
         //start data section
         this.assemblySupport.genDataStart();
@@ -181,7 +186,7 @@ public class MipsCodeGenerator
         this.assemblySupport.genTextStart();
 
         TextGeneratorVisitor textGeneratorVisitor = new TextGeneratorVisitor(this.out,this.assemblySupport,
-                classMap, dispatchTableMap);
+                classMap, dispatchTableMap,idTable);
 
         // create the inits for default classes
         for(Map.Entry<String, String> entry: classNames.entrySet()){
@@ -214,25 +219,22 @@ public class MipsCodeGenerator
 
         }
 
-//        for(Map.Entry<String, String> entry: classNames.entrySet()){
-//            System.out.println(entry.getKey());
-//            this.assemblySupport.genLabel(entry.getKey()+"_init");
-//
-//            //generate the field
-//            ClassTreeNode tempNode= classMap.get(entry.getKey());
-//            List<ClassTreeNode> parents= new LinkedList<>();
-//            while (tempNode.getParent()!=null){
-//                tempNode=tempNode.getParent();
-//                ((LinkedList<ClassTreeNode>) parents).addFirst(tempNode);
-//            }
-//            System.out.println(parents.size());
-//            for(ClassTreeNode tempParent: parents){
-//                this.assemblySupport.genDirCall(tempParent.getASTNode().getName()+ "_init");
-//            }
-//        }
-
         textGeneratorVisitor.generateTextSection(rootAST);
 
+
+    }
+
+    private void genIDTable(){
+        ClassTreeNode root = this.classMap.get("Object");
+        this.addChildren(root);
+    }
+
+    private void addChildren(ClassTreeNode root){
+        this.idTable.add(root);
+        for(Iterator<ClassTreeNode> children = root.getChildrenList();children.hasNext();){
+            ClassTreeNode child = children.next();
+            this.addChildren(child);
+        }
 
     }
 
@@ -250,7 +252,7 @@ public class MipsCodeGenerator
             this.assemblySupport.genWord("1\t\t# String Identifier");
 
             int length = 17 + entry.getKey().length();
-            length = (4-length%4)%4;
+            length = length + (4-length%4)%4;
             this.assemblySupport.genWord(length+"\t\t# Size of Object in Bytes");
 
             this.assemblySupport.genWord("String_dispatch_table");
@@ -270,7 +272,7 @@ public class MipsCodeGenerator
             this.assemblySupport.genWord("1\t\t# String Identifier");
 
             int length = 17 + entry.getKey().length();
-            length = (4-length%4)%4;
+            length = length + (4-length%4)%4;
             this.assemblySupport.genWord(Integer.toString(length) +"\t\t# Size of Object in Bytes");
             this.assemblySupport.genWord("String_dispatch_table");
             this.assemblySupport.genWord(Integer.toString(entry.getKey().length()));
@@ -288,9 +290,12 @@ public class MipsCodeGenerator
         this.out.println();
 
         this.out.println("class_name_table:");
-        for(Map.Entry<String,String> entry: classNames.entrySet()){
-            this.assemblySupport.genWord(entry.getValue());
+        for(int i = 0; i < this.idTable.size();i++){
+            this.assemblySupport.genWord(classNames.get(this.idTable.get(i).getName()));
         }
+//        for(Map.Entry<String,String> entry: classNames.entrySet()){
+//            this.assemblySupport.genWord(entry.getValue());
+//        }
         this.out.println();
     }
 
@@ -306,11 +311,9 @@ public class MipsCodeGenerator
         }
         this.out.println();
 
-        int i = 0;
-
         for(Map.Entry<String,String> entry: classNames.entrySet()){
             this.out.println(entry.getKey()+"_template:");
-            this.assemblySupport.genWord(Integer.toString(i));
+            this.assemblySupport.genWord(Integer.toString(this.idTable.indexOf(this.classMap.get(entry.getKey()))));
 
             SymbolTable fields = this.classMap.get(entry.getKey()).getVarSymbolTable();
 
@@ -323,8 +326,6 @@ public class MipsCodeGenerator
             for(int j = 0; j< size; j++){
                 this.assemblySupport.genWord("0");
             }
-
-            i++;
             this.out.println();
         }
     }

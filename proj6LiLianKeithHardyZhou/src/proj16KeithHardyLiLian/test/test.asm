@@ -1,5 +1,5 @@
 #Authors: Zeb Keith-Hardy, Michael Li, Iris Lian
-#Date: 2019-04-15
+#Date: 2019-04-16
 #Compiled From Source: test.btm
 	.data
 	.globl	gc_flag
@@ -70,9 +70,9 @@ class_name_table:
 	.word	Class_0
 	.word	Class_2
 	.word	Class_3
+	.word	Class_4
 	.word	Class_5
 	.word	Class_1
-	.word	Class_4
 
 	# Object Templates:
 	.globl	Object_template
@@ -99,7 +99,7 @@ Sys_template:
 	.word	Sys_dispatch_table
 
 SubMain_template:
-	.word	3
+	.word	4
 	.word	28
 	.word	SubMain_dispatch_table
 	.word	0
@@ -108,14 +108,14 @@ SubMain_template:
 	.word	0
 
 TextIO_template:
-	.word	4
+	.word	5
 	.word	20
 	.word	TextIO_dispatch_table
 	.word	0
 	.word	0
 
 Main_template:
-	.word	5
+	.word	3
 	.word	20
 	.word	Main_dispatch_table
 	.word	0
@@ -264,7 +264,7 @@ Main.toString:
 	sub $fp $sp 0
 	move $sp $fp
 	# End Prologue
-	la $v0 StringConst_0
+	la $v0 Class_4
 	# Start Epilogue
 	add $sp $fp 0
 	lw $a0 0($sp)
@@ -309,12 +309,12 @@ Main.main:
 	# access SubMain_dispatch_table
 	la $v0 SubMain_dispatch_table
 	# load method address
-	lw $v0 12($v0)
+	lw $a1 12($v0)
 	li $v0 1
 	# save parameters on stack
 	sub $sp $sp 4
 	sw $v0 0($sp)
-	jalr $v0
+	jalr $a1
 	sw $v0 4($fp)
 	# Start Epilogue
 	add $sp $fp 8

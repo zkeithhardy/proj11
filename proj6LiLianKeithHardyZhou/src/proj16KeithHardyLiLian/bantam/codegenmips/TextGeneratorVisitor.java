@@ -4,7 +4,6 @@ import proj16KeithHardyLiLian.bantam.ast.*;
 import proj16KeithHardyLiLian.bantam.semant.NumLocalVarsVisitor;
 import proj16KeithHardyLiLian.bantam.util.Location;
 import proj16KeithHardyLiLian.bantam.util.ClassTreeNode;
-import proj16KeithHardyLiLian.bantam.util.Location;
 import proj16KeithHardyLiLian.bantam.util.SymbolTable;
 import proj16KeithHardyLiLian.bantam.visitor.Visitor;
 
@@ -28,13 +27,15 @@ public class TextGeneratorVisitor extends Visitor {
     private int methodLocalVars;
     private HashMap<String, ArrayList<String>> dispatchTableMap;
     private int currentParameterOffset = 0;
+    private ArrayList<ClassTreeNode> idTable;
 
     public TextGeneratorVisitor(PrintStream out, MipsSupport assemblySupport, Hashtable<String,ClassTreeNode> classMap,
-                                HashMap<String, ArrayList<String>> dispatchTableMap){
+                                HashMap<String, ArrayList<String>> dispatchTableMap, ArrayList<ClassTreeNode> idTable){
         this.out = out;
         this.assemblySupport = assemblySupport;
         this.classMap = classMap;
         this.dispatchTableMap = dispatchTableMap;
+        this.idTable = idTable;
     }
 
     public void generateTextSection(Program root){
@@ -78,8 +79,6 @@ public class TextGeneratorVisitor extends Visitor {
         this.currentClass = node.getName();
         this.currentSymbolTable = classSymbolTables.get(this.currentClass);
         currentClassFieldLevel = currentSymbolTable.getCurrScopeLevel();
-        System.out.println(this.currentClass);
-        System.out.println(currentClassFieldLevel);
         node.getMemberList().accept(this);
         return null;
     }
@@ -111,7 +110,6 @@ public class TextGeneratorVisitor extends Visitor {
      * @return
      */
     public Object visit(Field node){
-        System.out.println(node.getName());
         if(node.getInit() != null){
             node.getInit().accept(this);
             this.assemblySupport.genStoreWord("$v0", 4*fieldCount, "$a0");
@@ -826,7 +824,6 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(ConstIntExpr node) {
-        System.out.println(node.getIntConstant());
         this.assemblySupport.genLoadImm("$v0",node.getIntConstant());
         return null;
     }
