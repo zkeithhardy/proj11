@@ -80,21 +80,21 @@ public class TextGeneratorVisitor extends Visitor {
         this.currentSymbolTable = classSymbolTables.get(this.currentClass);
 
         if(initOrGenMethods.equals("init")) {
-            this.assemblySupport.genComment("save $a0 onto stack");
-            this.assemblySupport.genComment("subtract 4 from $sp");
-            this.assemblySupport.genSub("$sp", "$sp", 4);
-            this.assemblySupport.genComment("store $sp to $a0");
-            this.assemblySupport.genStoreWord("$a0", 0, "$sp");
+//            this.assemblySupport.genComment("save $a0 onto stack");
+//            this.assemblySupport.genComment("subtract 4 from $sp");
+//            this.assemblySupport.genSub("$sp", "$sp", 4);
+//            this.assemblySupport.genComment("store $sp to $a0");
+//            this.assemblySupport.genStoreWord("$a0", 0, "$sp");
 
-            String parentName = this.classMap.get(currentClass).getParent().getName();
-            this.assemblySupport.genLoadAddr("$a0", parentName + "_template");
+//            String parentName = this.classMap.get(currentClass).getParent().getName();
+//            this.assemblySupport.genLoadAddr("$a0", parentName + "_template");
             this.currentSymbolTable.add("super", new Location("$a0", 0));
 
-            this.assemblySupport.genComment("restore $a0");
-            this.assemblySupport.genComment("load $sp to $a0");
-            this.assemblySupport.genLoadWord("$a0", 0, "$sp");
-            this.assemblySupport.genComment("add 4 to $sp");
-            this.assemblySupport.genAdd("$sp", "$sp", 4);
+//            this.assemblySupport.genComment("restore $a0");
+//            this.assemblySupport.genComment("load $sp to $a0");
+//            this.assemblySupport.genLoadWord("$a0", 0, "$sp");
+//            this.assemblySupport.genComment("add 4 to $sp");
+//            this.assemblySupport.genAdd("$sp", "$sp", 4);
 
             this.currentSymbolTable.enterScope();
 

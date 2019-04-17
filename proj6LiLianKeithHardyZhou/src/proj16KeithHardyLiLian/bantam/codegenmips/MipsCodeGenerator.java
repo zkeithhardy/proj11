@@ -195,21 +195,21 @@ public class MipsCodeGenerator
                     ||entry.getKey().equals("Sys")) {
                 if(entry.getKey().equals("String")){
                     this.assemblySupport.genLoadImm("$v0", 0);
-                    this.assemblySupport.genStoreWord("$v0", 0, "$a0");
+                    this.assemblySupport.genStoreWord("$v0", 12, "$a0");
                 }
                 else if(entry.getKey().equals("TextIO")){
                     this.assemblySupport.genLoadImm("$v0", 0);
-                    this.assemblySupport.genStoreWord("$v0", 0, "$a0");
+                    this.assemblySupport.genStoreWord("$v0", 12, "$a0");
                     this.assemblySupport.genLoadImm("$v0", 1);
-                    this.assemblySupport.genStoreWord("$v0", 4, "$a0");
+                    this.assemblySupport.genStoreWord("$v0", 16, "$a0");
                 }
             }else{
                 //generate the fields
                 ClassTreeNode tempNode= classMap.get(entry.getKey());
-                List<ClassTreeNode> parents= new LinkedList<>();
+                LinkedList<ClassTreeNode> parents= new LinkedList<>();
                 while (tempNode.getParent()!=null){
                     tempNode=tempNode.getParent();
-                    ((LinkedList<ClassTreeNode>) parents).addFirst(tempNode);
+                    parents.addFirst(tempNode);
                 }
                 for(ClassTreeNode tempParent: parents){
                     this.assemblySupport.genDirCall(tempParent.getASTNode().getName()+ "_init");
