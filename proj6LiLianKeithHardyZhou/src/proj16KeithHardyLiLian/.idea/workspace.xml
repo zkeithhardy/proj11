@@ -154,12 +154,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="3201" />
+          <entry key="java" value="3221" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="3201" />
+          <entry key="JAVA" value="3221" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -220,8 +220,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/bantam/codegenmips/TextGeneratorVisitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-211">
-              <caret line="57" column="5" lean-forward="true" selection-start-line="57" selection-start-column="5" selection-end-line="57" selection-end-column="5" />
+            <state relative-caret-position="161">
+              <caret line="699" column="37" selection-start-line="699" selection-start-column="30" selection-end-line="699" selection-end-column="37" />
               <folding>
                 <element signature="e#1664#1966#0" />
                 <element signature="e#2415#2543#0" />
@@ -250,7 +250,6 @@
                 <element signature="e#11911#12046#0" />
                 <element signature="e#11911#12205#0" />
                 <element signature="e#12211#12352#0" />
-                <element signature="e#12211#13711#0" />
                 <element signature="e#13717#13854#0" />
                 <element signature="e#13717#14230#0" />
                 <element signature="e#14236#14367#0" />
@@ -282,8 +281,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>s</find>
-      <find>loadad</find>
       <find>clone</find>
       <find>object.clone</find>
       <find>genloadwor</find>
@@ -312,6 +309,8 @@
       <find>field</find>
       <find>restore</find>
       <find>varexpr</find>
+      <find>dispatchex</find>
+      <find>arithme</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -455,7 +454,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555460867323" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555461976244" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunDashboard">
@@ -885,8 +884,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/bantam/codegenmips/TextGeneratorVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-211">
-          <caret line="57" column="5" lean-forward="true" selection-start-line="57" selection-start-column="5" selection-end-line="57" selection-end-column="5" />
+        <state relative-caret-position="161">
+          <caret line="699" column="37" selection-start-line="699" selection-start-column="30" selection-end-line="699" selection-end-column="37" />
           <folding>
             <element signature="e#1664#1966#0" />
             <element signature="e#2415#2543#0" />
@@ -915,7 +914,6 @@
             <element signature="e#11911#12046#0" />
             <element signature="e#11911#12205#0" />
             <element signature="e#12211#12352#0" />
-            <element signature="e#12211#13711#0" />
             <element signature="e#13717#13854#0" />
             <element signature="e#13717#14230#0" />
             <element signature="e#14236#14367#0" />
