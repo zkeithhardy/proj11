@@ -18,7 +18,7 @@ public class TextGeneratorVisitor extends Visitor {
     private int fieldCount=3;
     private HashMap<String, SymbolTable> classSymbolTables = new HashMap<>();
     private int numLocalVars = 0;
-    private Stack<String> currentLoop;
+    private Stack<String> currentLoop = new Stack<>();
     private int currentClassFieldLevel;
     private Map<String, String> stringNameMap;
     private Hashtable<String,ClassTreeNode> classMap;
@@ -54,7 +54,7 @@ public class TextGeneratorVisitor extends Visitor {
         this.initOrGenMethods = "init";
         fieldCount = 3;
 
-        classNode.getMemberList().accept(this);
+        classNode.accept(this);
     }
 
     /**
@@ -78,6 +78,29 @@ public class TextGeneratorVisitor extends Visitor {
     public Object visit(Class_ node) {
         this.currentClass = node.getName();
         this.currentSymbolTable = classSymbolTables.get(this.currentClass);
+
+        if(initOrGenMethods.equals("init")) {
+            this.assemblySupport.genComment("save $a0 onto stack");
+            this.assemblySupport.genComment("subtract 4 from $sp");
+            this.assemblySupport.genSub("$sp", "$sp", 4);
+            this.assemblySupport.genComment("store $sp to $a0");
+            this.assemblySupport.genStoreWord("$a0", 0, "$sp");
+
+            String parentName = this.classMap.get(currentClass).getParent().getName();
+            this.assemblySupport.genLoadAddr("$a0", parentName + "_template");
+            this.currentSymbolTable.add("super", new Location("$a0", 0));
+
+            this.assemblySupport.genComment("restore $a0");
+            this.assemblySupport.genComment("load $sp to $a0");
+            this.assemblySupport.genLoadWord("$a0", 0, "$sp");
+            this.assemblySupport.genComment("add 4 to $sp");
+            this.assemblySupport.genAdd("$sp", "$sp", 4);
+
+            this.currentSymbolTable.enterScope();
+
+            this.currentSymbolTable.add("this", new Location("$a0", 0)); // template of this object
+        }
+
         currentClassFieldLevel = currentSymbolTable.getCurrScopeLevel();
         node.getMemberList().accept(this);
         return null;

@@ -154,12 +154,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="2963" />
+          <entry key="java" value="3201" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="2963" />
+          <entry key="JAVA" value="3201" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -220,12 +220,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/bantam/codegenmips/TextGeneratorVisitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
-              <caret line="466" column="53" selection-start-line="466" selection-start-column="53" selection-end-line="466" selection-end-column="53" />
+            <state relative-caret-position="-211">
+              <caret line="57" column="5" lean-forward="true" selection-start-line="57" selection-start-column="5" selection-end-line="57" selection-end-column="5" />
               <folding>
-                <element signature="e#1229#1658#0" />
                 <element signature="e#1664#1966#0" />
-                <element signature="e#1972#2409#0" />
                 <element signature="e#2415#2543#0" />
                 <element signature="e#2685#2798#0" />
                 <element signature="e#3106#3235#0" />
@@ -243,7 +241,6 @@
                 <element signature="e#8408#8536#0" />
                 <element signature="e#8408#9405#0" />
                 <element signature="e#9411#9544#0" />
-                <element signature="e#9411#10189#0" />
                 <element signature="e#10195#10324#0" />
                 <element signature="e#10195#11209#0" />
                 <element signature="e#11215#11348#0" />
@@ -258,53 +255,8 @@
                 <element signature="e#13717#14230#0" />
                 <element signature="e#14236#14367#0" />
                 <element signature="e#15417#15563#0" />
-                <element signature="e#15417#15824#0" />
-                <element signature="e#15830#15963#0" />
-                <element signature="e#15830#16193#0" />
-                <element signature="e#16199#16345#0" />
-                <element signature="e#16199#18267#0" />
-                <element signature="e#18273#18446#0" />
-                <element signature="e#18273#18759#0" />
-                <element signature="e#18765#18946#0" />
-                <element signature="e#18765#19259#0" />
-                <element signature="e#19265#19444#0" />
-                <element signature="e#19265#19757#0" />
-                <element signature="e#19763#19966#0" />
-                <element signature="e#19763#20280#0" />
-                <element signature="e#20286#20471#0" />
-                <element signature="e#20286#20784#0" />
-                <element signature="e#20790#20997#0" />
-                <element signature="e#20790#21311#0" />
-                <element signature="e#21317#21486#0" />
-                <element signature="e#21317#21755#0" />
-                <element signature="e#21761#21932#0" />
-                <element signature="e#21761#22202#0" />
-                <element signature="e#22208#22379#0" />
-                <element signature="e#22208#22649#0" />
-                <element signature="e#22655#22828#0" />
-                <element signature="e#22655#23099#0" />
-                <element signature="e#23105#23280#0" />
-                <element signature="e#23105#23552#0" />
-                <element signature="e#23558#23719#0" />
-                <element signature="e#23558#24113#0" />
-                <element signature="e#24119#24278#0" />
-                <element signature="e#24119#24742#0" />
-                <element signature="e#24748#24901#0" />
-                <element signature="e#24748#25121#0" />
-                <element signature="e#25127#25270#0" />
-                <element signature="e#25127#25549#0" />
-                <element signature="e#25555#25710#0" />
-                <element signature="e#25555#25926#0" />
-                <element signature="e#25932#26087#0" />
-                <element signature="e#25932#26303#0" />
-                <element signature="e#26309#26450#0" />
-                <element signature="e#26309#28605#0" />
-                <element signature="e#28611#28761#0" />
-                <element signature="e#28611#28903#0" />
-                <element signature="e#25315#25472#0" />
-                <element signature="e#25315#25729#0" />
-                <element signature="e#25735#25890#0" />
-                <element signature="e#25735#26052#0" />
+                <element signature="e#16508#17679#0" />
+                <element signature="e#35290#35678#0" />
               </folding>
             </state>
           </provider>
@@ -330,9 +282,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>getlabel</find>
-      <find>assign</find>
-      <find>genretn</find>
       <find>s</find>
       <find>loadad</find>
       <find>clone</find>
@@ -357,9 +306,12 @@
       <find>prol</find>
       <find>instanceof</find>
       <find>castexpr</find>
-      <find>field</find>
       <find>dispatch</find>
       <find>gen</find>
+      <find>castex</find>
+      <find>field</find>
+      <find>restore</find>
+      <find>varexpr</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -503,7 +455,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555459229646" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555460867323" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunDashboard">
@@ -672,8 +624,8 @@
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4979757" weight="0.09413854" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.6396761" visible="true" weight="0.11722913" />
+      <window_info active="true" anchor="bottom" id="Find" order="1" sideWeight="0.4979757" visible="true" weight="0.003552398" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.6396761" weight="0.11722913" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -933,12 +885,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/bantam/codegenmips/TextGeneratorVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="466" column="53" selection-start-line="466" selection-start-column="53" selection-end-line="466" selection-end-column="53" />
+        <state relative-caret-position="-211">
+          <caret line="57" column="5" lean-forward="true" selection-start-line="57" selection-start-column="5" selection-end-line="57" selection-end-column="5" />
           <folding>
-            <element signature="e#1229#1658#0" />
             <element signature="e#1664#1966#0" />
-            <element signature="e#1972#2409#0" />
             <element signature="e#2415#2543#0" />
             <element signature="e#2685#2798#0" />
             <element signature="e#3106#3235#0" />
@@ -956,7 +906,6 @@
             <element signature="e#8408#8536#0" />
             <element signature="e#8408#9405#0" />
             <element signature="e#9411#9544#0" />
-            <element signature="e#9411#10189#0" />
             <element signature="e#10195#10324#0" />
             <element signature="e#10195#11209#0" />
             <element signature="e#11215#11348#0" />
@@ -971,53 +920,8 @@
             <element signature="e#13717#14230#0" />
             <element signature="e#14236#14367#0" />
             <element signature="e#15417#15563#0" />
-            <element signature="e#15417#15824#0" />
-            <element signature="e#15830#15963#0" />
-            <element signature="e#15830#16193#0" />
-            <element signature="e#16199#16345#0" />
-            <element signature="e#16199#18267#0" />
-            <element signature="e#18273#18446#0" />
-            <element signature="e#18273#18759#0" />
-            <element signature="e#18765#18946#0" />
-            <element signature="e#18765#19259#0" />
-            <element signature="e#19265#19444#0" />
-            <element signature="e#19265#19757#0" />
-            <element signature="e#19763#19966#0" />
-            <element signature="e#19763#20280#0" />
-            <element signature="e#20286#20471#0" />
-            <element signature="e#20286#20784#0" />
-            <element signature="e#20790#20997#0" />
-            <element signature="e#20790#21311#0" />
-            <element signature="e#21317#21486#0" />
-            <element signature="e#21317#21755#0" />
-            <element signature="e#21761#21932#0" />
-            <element signature="e#21761#22202#0" />
-            <element signature="e#22208#22379#0" />
-            <element signature="e#22208#22649#0" />
-            <element signature="e#22655#22828#0" />
-            <element signature="e#22655#23099#0" />
-            <element signature="e#23105#23280#0" />
-            <element signature="e#23105#23552#0" />
-            <element signature="e#23558#23719#0" />
-            <element signature="e#23558#24113#0" />
-            <element signature="e#24119#24278#0" />
-            <element signature="e#24119#24742#0" />
-            <element signature="e#24748#24901#0" />
-            <element signature="e#24748#25121#0" />
-            <element signature="e#25127#25270#0" />
-            <element signature="e#25127#25549#0" />
-            <element signature="e#25555#25710#0" />
-            <element signature="e#25555#25926#0" />
-            <element signature="e#25932#26087#0" />
-            <element signature="e#25932#26303#0" />
-            <element signature="e#26309#26450#0" />
-            <element signature="e#26309#28605#0" />
-            <element signature="e#28611#28761#0" />
-            <element signature="e#28611#28903#0" />
-            <element signature="e#25315#25472#0" />
-            <element signature="e#25315#25729#0" />
-            <element signature="e#25735#25890#0" />
-            <element signature="e#25735#26052#0" />
+            <element signature="e#16508#17679#0" />
+            <element signature="e#35290#35678#0" />
           </folding>
         </state>
       </provider>
