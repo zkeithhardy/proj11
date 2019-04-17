@@ -1,0 +1,16 @@
+class Main {
+    int x = 3;
+    int y;
+    int foo(int x) { return x; }
+    boolean equals(Object o) { return true; }
+    String toString() { return "Main"; }
+    void main() {}
+}
+class SubMain extends Main {
+    String y = "dskrien";
+    int z;
+    int foo(int x) { return 1; }
+    boolean equals(Object o) { return false; }
+
+    
+}

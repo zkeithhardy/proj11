@@ -478,14 +478,18 @@ public class TextGeneratorVisitor extends Visitor {
      */
     public Object visit(InstanceofExpr node) {
         node.getExpr().accept(this);
+        this.assemblySupport.genComment("handle instanceof expression");
+        this.assemblySupport.genComment("load i into $v0");
         this.assemblySupport.genLoadWord("$v0", 0, "$v0"); // i is in v0 now
 
         int j = this.idTable.indexOf(this.classMap.get(node.getType())); // id in the table
         int k = this.classMap.get(node.getType()).getNumDescendants();
 
+        this.assemblySupport.genComment("load j into $t0 and j+k into $t1");
         this.assemblySupport.genLoadImm("$t0", j);
         this.assemblySupport.genLoadImm("$t1", j+k);
 
+        this.assemblySupport.genComment("compare j<=i and i<=j+k, if both true, return true");
         this.out.println("sle $t0 $t0 $v0"); // j <= i
         this.out.println("sle $v0 $v0 $t1"); // i <= j+k
 
@@ -521,25 +525,30 @@ public class TextGeneratorVisitor extends Visitor {
         Location location;
         String varName = node.getName();
         String refName = node.getRefName();
+        this.assemblySupport.genComment("assign expr");
         this.assemblySupport.genSub("$sp","$sp",4);
         this.assemblySupport.genStoreWord("$a0",0,"$sp");
         node.getExpr().accept(this);
+
         if (refName == null) { //local var or field of "this"
+            this.assemblySupport.genComment("case where the reference name is null");
             location = (Location) currentSymbolTable.lookup(varName);
             this.assemblySupport.genStoreWord("$v0", location.getOffset(),location.getBaseReg());
         }
         else if (refName.equals("this")) {
+            this.assemblySupport.genComment("case where the reference name is /this/");
             location = (Location) currentSymbolTable.lookup(varName, currentClassFieldLevel);
             this.assemblySupport.genStoreWord("$v0", location.getOffset(),location.getBaseReg());
         }
         else if (refName.equals("super")) {
+            this.assemblySupport.genComment("case where the reference name is /super/");
             location = (Location) currentSymbolTable.lookup(varName,
                     currentClassFieldLevel - 1);
             this.assemblySupport.genStoreWord("$v0", location.getOffset(),location.getBaseReg());
 
         }
         else { // refName is not "this" or "super" or varName is not "length" for an array
-
+            this.assemblySupport.genComment("case where the reference name is user define field that is not lenght");
             Location refVarLocation = (Location) currentSymbolTable.lookup(refName);
             SymbolTable currentSymbolTable = this.classMap.get(this.currentClass).getVarSymbolTable();
             String varType = (String) currentSymbolTable.lookup(refName);
@@ -561,9 +570,13 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(BinaryCompEqExpr node) {
+        this.assemblySupport.genComment("gen left side of expression");
         node.getLeftExpr().accept(this);
+        this.assemblySupport.genComment("move v0 to v1");
         this.assemblySupport.genMove("$v1","$v0");
+        this.assemblySupport.genComment("gen right side of expression");
         node.getRightExpr().accept(this);
+        this.out.println("compare left and right sides of expression");
         this.out.println("seq $v0 $v0 $v1");
         this.assemblySupport.genSub("$v0","$zero","$v0");
         return null;
@@ -576,9 +589,13 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(BinaryCompNeExpr node) {
+        this.assemblySupport.genComment("gen left side of expression");
         node.getLeftExpr().accept(this);
+        this.assemblySupport.genComment("move v0 to v1");
         this.assemblySupport.genMove("$v1","$v0");
+        this.assemblySupport.genComment("gen right side of expression");
         node.getRightExpr().accept(this);
+        this.out.println("compare left and right sides of expression");
         this.out.println("sne $v0 $v0 $v1");
         this.assemblySupport.genSub("$v0","$zero","$v0");
         return null;
@@ -591,9 +608,13 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(BinaryCompLtExpr node) {
+        this.assemblySupport.genComment("gen left side of expression");
         node.getLeftExpr().accept(this);
+        this.assemblySupport.genComment("move v0 to v1");
         this.assemblySupport.genMove("$v1","$v0");
+        this.assemblySupport.genComment("gen right side of expression");
         node.getRightExpr().accept(this);
+        this.out.println("compare left and right sides of expression");
         this.out.println("slt $v0 $v0 $v1");
         this.assemblySupport.genSub("$v0","$zero","$v0");
         return null;
@@ -606,9 +627,13 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(BinaryCompLeqExpr node) {
+        this.assemblySupport.genComment("gen left side of expression");
         node.getLeftExpr().accept(this);
+        this.assemblySupport.genComment("move v0 to v1");
         this.assemblySupport.genMove("$v1","$v0");
+        this.assemblySupport.genComment("gen right side of expression");
         node.getRightExpr().accept(this);
+        this.out.println("compare left and right sides of expression");
         this.out.println("sle $v0 $v0 $v1");
         this.assemblySupport.genSub("$v0","$zero","$v0");
         return null;
@@ -621,9 +646,13 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(BinaryCompGtExpr node) {
+        this.assemblySupport.genComment("gen left side of expression");
         node.getLeftExpr().accept(this);
+        this.assemblySupport.genComment("move v0 to v1");
         this.assemblySupport.genMove("$v1","$v0");
+        this.assemblySupport.genComment("gen right side of expression");
         node.getRightExpr().accept(this);
+        this.out.println("compare left and right sides of expression");
         this.out.println("sgt $v0 $v0 $v1");
         this.assemblySupport.genSub("$v0","$zero","$v0");
         return null;
@@ -636,9 +665,13 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(BinaryCompGeqExpr node) {
+        this.assemblySupport.genComment("gen left side of expression");
         node.getLeftExpr().accept(this);
+        this.assemblySupport.genComment("move v0 to v1");
         this.assemblySupport.genMove("$v1","$v0");
+        this.assemblySupport.genComment("gen right side of expression");
         node.getRightExpr().accept(this);
+        this.out.println("compare left and right sides of expression");
         this.out.println("sge $v0 $v0 $v1");
         this.assemblySupport.genSub("$v0","$zero","$v0");
         return null;
@@ -651,9 +684,13 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(BinaryArithPlusExpr node) {
+        this.assemblySupport.genComment("gen left side of expression");
         node.getLeftExpr().accept(this);
-        this.assemblySupport.genMove("$v1","$v1");
+        this.assemblySupport.genComment("move v0 to v1");
+        this.assemblySupport.genMove("$v1","$v0");
+        this.assemblySupport.genComment("gen right side of expression");
         node.getRightExpr().accept(this);
+        this.out.println("add left and right sides of expression");
         this.assemblySupport.genAdd("$v0","$v0","$v1");
         return null;
     }
@@ -665,9 +702,13 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(BinaryArithMinusExpr node) {
+        this.assemblySupport.genComment("gen left side of expression");
         node.getLeftExpr().accept(this);
-        this.assemblySupport.genMove("$v1","$v1");
+        this.assemblySupport.genComment("move v0 to v1");
+        this.assemblySupport.genMove("$v1","$v0");
+        this.assemblySupport.genComment("gen right side of expression");
         node.getRightExpr().accept(this);
+        this.out.println("subtract left and right sides of expression");
         this.assemblySupport.genSub("$v0","$v0","$v1");
         return null;
     }
@@ -679,9 +720,13 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(BinaryArithTimesExpr node) {
+        this.assemblySupport.genComment("gen left side of expression");
         node.getLeftExpr().accept(this);
-        this.assemblySupport.genMove("$v1","$v1");
+        this.assemblySupport.genComment("move v0 to v1");
+        this.assemblySupport.genMove("$v1","$v0");
+        this.assemblySupport.genComment("gen right side of expression");
         node.getRightExpr().accept(this);
+        this.out.println("multiply left and right sides of expression");
         this.assemblySupport.genMul("$v0","$v0","$v1");
         return null;
     }
@@ -693,9 +738,13 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(BinaryArithDivideExpr node) {
+        this.assemblySupport.genComment("gen left side of expression");
         node.getLeftExpr().accept(this);
-        this.assemblySupport.genMove("$v1","$v1");
+        this.assemblySupport.genComment("move v0 to v1");
+        this.assemblySupport.genMove("$v1","$v0");
+        this.assemblySupport.genComment("gen right side of expression");
         node.getRightExpr().accept(this);
+        this.out.println("divide left and right sides of expression");
         this.assemblySupport.genDiv("$v0","$v0","$v1");
         return null;
     }
@@ -707,9 +756,13 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(BinaryArithModulusExpr node) {
+        this.assemblySupport.genComment("gen left side of expression");
         node.getLeftExpr().accept(this);
-        this.assemblySupport.genMove("$v1","$v1");
+        this.assemblySupport.genComment("move v0 to v1");
+        this.assemblySupport.genMove("$v1","$v0");
+        this.assemblySupport.genComment("gen right side of expression");
         node.getRightExpr().accept(this);
+        this.out.println("mod left and right sides of expression");
         this.assemblySupport.genMod("$v0","$v0","$v1");
         return null;
     }
@@ -750,6 +803,7 @@ public class TextGeneratorVisitor extends Visitor {
         return null;
     }
 
+
     /**
      * Visit a unary negation expression node
      *
@@ -757,8 +811,8 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(UnaryNegExpr node) {
-        node.getExpr().accept(this);
         this.assemblySupport.genComment("negation");
+        node.getExpr().accept(this);
         this.assemblySupport.genSub("$v0","$zero","$v0");
         return null;
     }
@@ -784,8 +838,8 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(UnaryIncrExpr node) {
-        node.getExpr().accept(this);
         this.assemblySupport.genComment("increment");
+        node.getExpr().accept(this);
         this.assemblySupport.genAdd("$v0","$v0",1);
         return null;
     }
@@ -797,8 +851,8 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(UnaryDecrExpr node) {
-        node.getExpr().accept(this);
         this.assemblySupport.genComment("decrement");
+        node.getExpr().accept(this);
         this.assemblySupport.genSub("$v0","$v0",1);
         return null;
     }
@@ -810,31 +864,41 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(VarExpr node) {
+        this.assemblySupport.genComment("var expression");
         Location location = null;
         String varName = node.getName();
         this.assemblySupport.genSub("$sp","$sp",4);
         this.assemblySupport.genStoreWord("$a0",0,"$sp");
-        if (node.getRef() != null) { // expr = "null"
+
+        this.assemblySupport.genComment("accept the reference object and save its location $v0");
+        if (node.getRef() != null) {
             node.getRef().accept(this);
         }
+
         if(node.getRef() == null){
+            this.assemblySupport.genComment("case where the reference object is null");
             location = (Location) currentSymbolTable.lookup(varName);
             this.assemblySupport.genLoadWord("$v0",location.getOffset(),location.getBaseReg());
         }
+
         else if ((node.getRef() instanceof VarExpr) &&
                 ((VarExpr) node.getRef()).getName().equals("this")) {
+            this.assemblySupport.genComment("case where the reference object is /this./");
             location = (Location) currentSymbolTable.lookup(varName, currentClassFieldLevel);
             this.assemblySupport.genLoadWord("$v0", location.getOffset(),location.getBaseReg());
 
         }
+
         else if ((node.getRef() instanceof VarExpr) &&
                 ((VarExpr) node.getRef()).getName().equals("super")) {
+            this.assemblySupport.genComment("case where the reference object is /.super/");
             location = (Location) currentSymbolTable.lookup(varName,
                     currentClassFieldLevel - 1);
             this.assemblySupport.genLoadWord("$v0", location.getOffset(),location.getBaseReg());
 
         }
         else { // ref is not null, "this", or "super"
+            this.assemblySupport.genComment("case where the reference object is user defined class");
             String refTypeName = node.getRef().getExprType();
 
             Location refVarLocation = (Location) currentSymbolTable.lookup(((VarExpr) node.getRef()).getName());
@@ -857,6 +921,7 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(ConstIntExpr node) {
+        this.assemblySupport.genComment("constant int expression");
         this.assemblySupport.genLoadImm("$v0",node.getIntConstant());
         return null;
     }
@@ -868,6 +933,7 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(ConstBooleanExpr node) {
+        this.assemblySupport.genComment("constant boolean expression");
         if(node.getConstant().equals("true")){
             this.assemblySupport.genLoadImm("$v0",-1);
         }else{
@@ -883,6 +949,7 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(ConstStringExpr node) {
+        this.assemblySupport.genComment("constant string expression");
         this.assemblySupport.genLoadAddr("$v0",stringNameMap.get(node.getConstant()));
         return null;
     }
