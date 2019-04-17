@@ -112,38 +112,13 @@ public class TextGeneratorVisitor extends Visitor {
     public Object visit(Field node){
         if(node.getInit() != null){
             node.getInit().accept(this);
+            this.assemblySupport.genComment("store the field "+4*fieldCount+" away from $a0 to $v0");
             this.assemblySupport.genStoreWord("$v0", 4*fieldCount, "$a0");
         }
         Location fieldLocation= new Location("$v0", 4*fieldCount);
         classSymbolTables.get(currentClass).add(node.getName(), fieldLocation);
         fieldCount+=1;
         return null;
-
-        /*if(node.getType().equals("int")){
-            ConstIntExpr tempIntExpr= (ConstIntExpr)node.getInit();
-
-            this.assemblySupport.genLoadImm("$v0", tempIntExpr.getIntConstant());
-        }
-        else if(node.getType().equals("String")){
-            ConstStringExpr tempStringExpr= (ConstStringExpr)node.getInit();
-            this.assemblySupport.genLoadWord("$v0",4*fieldCount,  stringNameMap.get(tempStringExpr.getConstant()));
-        }
-        else if(node.getType().equals("boolean")){
-            ConstBooleanExpr tempBoolExpr= (ConstBooleanExpr)node.getInit();
-            if (tempBoolExpr.getConstant().equals("true")){
-                this.assemblySupport.genLoadImm("$v0", -1);
-            }
-            else if (tempBoolExpr.getConstant().equals("false")){
-                this.assemblySupport.genLoadImm("$v0", 0);
-            }
-        }
-        else{
-            this.assemblySupport.genStoreWord("$a0", 0, "$fp");
-            this.assemblySupport.genDirCall(node.getName()+ "_init");
-            this.assemblySupport.genMove("$v0", "$a0");
-            this.assemblySupport.genLoadWord("$a0", 0,"$fp");
-        }*/
-
 
     }
 
@@ -169,14 +144,29 @@ public class TextGeneratorVisitor extends Visitor {
 
     private void generateMethodPrologue(){
         this.assemblySupport.genComment("Start Prologue");
+
+        this.assemblySupport.genComment("subtract 4 from $sp");
         this.assemblySupport.genSub("$sp","$sp", 4);
+
+        this.assemblySupport.genComment("store $sp to $ra");
         this.assemblySupport.genStoreWord("$ra",0,"$sp");
+
+        this.assemblySupport.genComment("subtract 4 from $sp");
         this.assemblySupport.genSub("$sp","$sp", 4);
+
+        this.assemblySupport.genComment("store $sp to $fp");
         this.assemblySupport.genStoreWord("$fp",0,"$sp");
+
+        this.assemblySupport.genComment("subtract 4 from $sp");
         this.assemblySupport.genSub("$sp", "$sp", 4);
+
+        this.assemblySupport.genComment("store $sp to $a0");
         this.assemblySupport.genStoreWord("$a0",0,"$sp");
 
+        this.assemblySupport.genComment("subtract "+4*methodLocalVars+" from $sp and store the result to $fp");
         this.assemblySupport.genSub("$fp","$sp", 4*methodLocalVars);
+
+        this.assemblySupport.genComment("move $fp to $sp");
         this.assemblySupport.genMove("$sp","$fp");
 
         this.assemblySupport.genComment("End Prologue");
@@ -184,13 +174,29 @@ public class TextGeneratorVisitor extends Visitor {
 
     private void generateMethodEpilogue(){
         this.assemblySupport.genComment("Start Epilogue");
+
+        this.assemblySupport.genComment("add "+4*methodLocalVars+" to $fp and store the result to $sp");
         this.assemblySupport.genAdd("$sp","$fp", 4*methodLocalVars);
+
+        this.assemblySupport.genComment("load $sp to $a0");
         this.assemblySupport.genLoadWord("$a0",0,"$sp");
+
+        this.assemblySupport.genComment("add 4 to $sp");
         this.assemblySupport.genAdd("$sp", "$sp", 4);
+
+        this.assemblySupport.genComment("load $sp to $fp");
         this.assemblySupport.genLoadWord("$fp",0,"$sp");
+
+        this.assemblySupport.genComment("add 4 to $sp");
         this.assemblySupport.genAdd("$sp","$sp", 4);
+
+        this.assemblySupport.genComment("load $sp to $ra");
         this.assemblySupport.genLoadWord("$ra",0,"$sp");
+
+        this.assemblySupport.genComment("add 4 to $sp");
         this.assemblySupport.genAdd("$sp","$sp", 4);
+
+        this.assemblySupport.genComment("move $fp to $sp");
         this.assemblySupport.genMove("$sp","$fp");
         this.assemblySupport.genRetn();
         this.assemblySupport.genComment("End Epilogue");
@@ -231,6 +237,7 @@ public class TextGeneratorVisitor extends Visitor {
      */
     public Object visit(DeclStmt node) {
         node.getInit().accept(this);
+        this.assemblySupport.genComment("store ("+numLocalVars*4+")$fp to $v0");
         this.assemblySupport.genStoreWord("$v0",numLocalVars*4,"$fp");
         this.currentSymbolTable.add(node.getName(),new Location("$fp",numLocalVars*4));
         numLocalVars += 1;
@@ -248,11 +255,13 @@ public class TextGeneratorVisitor extends Visitor {
         String thenLabel = this.assemblySupport.getLabel();
         String elseLabel = this.assemblySupport.getLabel();
         String afterLabel = this.assemblySupport.getLabel();
+        this.assemblySupport.genComment("branch to "+elseLabel+" if $v0 is equal to 0");
         this.assemblySupport.genCondBeq("$v0","$zero",elseLabel);
         this.assemblySupport.genLabel(thenLabel);
         currentSymbolTable.enterScope();
         node.getThenStmt().accept(this);
         currentSymbolTable.exitScope();
+        this.assemblySupport.genComment("unconditional branch to "+afterLabel);
         this.assemblySupport.genUncondBr(afterLabel);
 
         this.assemblySupport.genLabel(elseLabel);
@@ -278,6 +287,8 @@ public class TextGeneratorVisitor extends Visitor {
 
         this.assemblySupport.genLabel(startWhile);
         node.getPredExpr().accept(this);
+
+        this.assemblySupport.genComment("branch to "+afterWhile+" if $v0 is equal to 0");
         this.assemblySupport.genCondBeq("$v0","$zero",afterWhile);
 
         currentSymbolTable.enterScope();
@@ -285,6 +296,7 @@ public class TextGeneratorVisitor extends Visitor {
         node.getBodyStmt().accept(this);
 
         currentSymbolTable.exitScope();
+        this.assemblySupport.genComment("unconditional branch to "+startWhile);
         this.assemblySupport.genUncondBr(startWhile);
         this.assemblySupport.genLabel(afterWhile);
         currentLoop.pop();
@@ -308,6 +320,7 @@ public class TextGeneratorVisitor extends Visitor {
         if (node.getPredExpr() != null) {
             node.getPredExpr().accept(this);
         }
+        this.assemblySupport.genComment("branch to "+afterFor+" if $v0 is equal to 0");
         this.assemblySupport.genCondBeq("$zero","$v0",afterFor);
         currentLoop.push(afterFor);
         node.getBodyStmt().accept(this);
@@ -315,6 +328,7 @@ public class TextGeneratorVisitor extends Visitor {
         if (node.getUpdateExpr() != null) {
             node.getUpdateExpr().accept(this);
         }
+        this.assemblySupport.genComment("unconditional branch to "+beforeFor);
         this.assemblySupport.genUncondBr(beforeFor);
         this.assemblySupport.genLabel(afterFor);
         currentLoop.pop();
@@ -413,7 +427,9 @@ public class TextGeneratorVisitor extends Visitor {
         for (Iterator it = node.iterator(); it.hasNext(); ){
             ((Expr) it.next()).accept(this);
             this.assemblySupport.genComment("save parameters on stack");
+            this.assemblySupport.genComment("subtract 4 from $sp");
             this.assemblySupport.genSub("$sp","$sp",4);
+            this.assemblySupport.genComment("store $sp to $v0");
             this.assemblySupport.genStoreWord("$v0",0,"$sp");
         }
 
@@ -428,21 +444,27 @@ public class TextGeneratorVisitor extends Visitor {
      */
     public Object visit(NewExpr node) {
         this.assemblySupport.genComment("save $a0 onto stack in case init creates a new object.");
+        this.assemblySupport.genComment("subtract 4 from $sp");
         this.assemblySupport.genSub("$sp","$sp",4);
+        this.assemblySupport.genComment("store $sp to $a0");
         this.assemblySupport.genStoreWord("$a0",0,"$sp");
         // load the address of the template to $a0
+        this.assemblySupport.genComment("load the address of "+node.getType()+"_template to $a0");
         this.assemblySupport.genLoadAddr("$a0", node.getType()+"_template");
-        // load the address of the dispatch table to $v0
-//        this.assemblySupport.genLoadAddr("$v0", node.getType()+"_dispatch_table");
         // get the address of the clone method, save it to $v0
-        this.assemblySupport.genLoadWord("$v0", 0, "$v0" );
+        this.assemblySupport.genComment("load (8)$a0 to $v0");
+        this.assemblySupport.genLoadWord("$v0", 8, "$a0" );
         // jump to that clone method
+        this.assemblySupport.genComment("jump to $v0");
         this.assemblySupport.genInDirCall("$v0");
 
+        this.assemblySupport.genComment("jump to "+node.getType()+"_init");
         this.assemblySupport.genDirCall(node.getType()+"_init");
 
         this.assemblySupport.genComment("restore $a0");
+        this.assemblySupport.genComment("load $sp to $a0");
         this.assemblySupport.genLoadWord("$a0",0,"$sp");
+        this.assemblySupport.genComment("add 4 to $sp");
         this.assemblySupport.genAdd("$sp","$sp",4);
 
         return null;
