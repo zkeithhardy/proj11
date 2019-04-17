@@ -9,8 +9,11 @@ class Main {
     boolean equals(Object o) { return true; }
     String toString() { return "Main"; }
     void main() {
+	var out = new TextIO();
+	out.writeStdout();
 	var x = new SubMain();
-	var z = x.foo(1);}
+	var z = x.foo(1);
+    }
 }
 class SubMain extends Main {
     String y = "dskrien";
