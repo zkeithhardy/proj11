@@ -406,13 +406,9 @@ public class TextGeneratorVisitor extends Visitor {
      */
     public Object visit(DispatchExpr node) {
         String type;
-        if (node.getRefExpr() == null) { //local var or field of "this"
+        if (node.getRefExpr() == null || ((node.getRefExpr() instanceof VarExpr) && //local var or field of "this"
+                ((VarExpr) node.getRefExpr()).getName().equals("this"))) {
             type = this.currentClass;
-        }
-        else if ((node.getRefExpr() instanceof VarExpr) &&
-                ((VarExpr) node.getRefExpr()).getName().equals("this")) {
-            type = this.currentClass;
-
         }
         else if ((node.getRefExpr() instanceof VarExpr) &&
                 ((VarExpr) node.getRefExpr()).getName().equals("super")) {
@@ -421,8 +417,6 @@ public class TextGeneratorVisitor extends Visitor {
             node.getRefExpr().accept(this);
             type = node.getRefExpr().getExprType();
         }
-
-
 
         this.assemblySupport.genComment("move v0 to a0");
         this.assemblySupport.genMove("$a0","$v0");
