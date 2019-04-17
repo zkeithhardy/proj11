@@ -186,6 +186,17 @@ Sys_init:
 SubMain_init:
 	jal Object_init
 	jal Main_init
+	# save $a0 onto stack
+	# subtract 4 from $sp
+	sub $sp $sp 4
+	# store $sp to $a0
+	sw $a0 0($sp)
+	la $a0 Main_template
+	# restore $a0
+	# load $sp to $a0
+	lw $a0 0($sp)
+	# add 4 to $sp
+	add $sp $sp 4
 	# constant string expression
 	la $v0 StringConst_1
 	# store the field 12 away from $a0 to $v0
@@ -197,6 +208,17 @@ TextIO_init:
 	sw $v0 4($a0)
 Main_init:
 	jal Object_init
+	# save $a0 onto stack
+	# subtract 4 from $sp
+	sub $sp $sp 4
+	# store $sp to $a0
+	sw $a0 0($sp)
+	la $a0 Object_template
+	# restore $a0
+	# load $sp to $a0
+	lw $a0 0($sp)
+	# add 4 to $sp
+	add $sp $sp 4
 	# constant int expression
 	li $v0 3
 	# store the field 12 away from $a0 to $v0

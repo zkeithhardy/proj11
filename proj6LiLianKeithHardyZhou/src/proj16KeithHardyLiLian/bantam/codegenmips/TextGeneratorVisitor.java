@@ -709,10 +709,14 @@ public class TextGeneratorVisitor extends Visitor {
     public Object visit(BinaryArithPlusExpr node) {
         this.assemblySupport.genComment("gen left side of expression");
         node.getLeftExpr().accept(this);
-        this.assemblySupport.genComment("move v0 to v1");
-        this.assemblySupport.genMove("$v1","$v0");
+        this.assemblySupport.genComment("store left expression on stack");
+        this.assemblySupport.genSub("$sp","$sp",4);
+        this.assemblySupport.genStoreWord("$v0",0,"$sp");
         this.assemblySupport.genComment("gen right side of expression");
         node.getRightExpr().accept(this);
+        this.assemblySupport.genComment("load left expression on stack");
+        this.assemblySupport.genLoadWord("$v1",0,"$sp");
+        this.assemblySupport.genAdd("$sp","$sp",4);
         this.assemblySupport.genComment("add left and right sides of expression");
         this.assemblySupport.genAdd("$v0","$v0","$v1");
         return null;
@@ -727,10 +731,14 @@ public class TextGeneratorVisitor extends Visitor {
     public Object visit(BinaryArithMinusExpr node) {
         this.assemblySupport.genComment("gen left side of expression");
         node.getLeftExpr().accept(this);
-        this.assemblySupport.genComment("move v0 to v1");
-        this.assemblySupport.genMove("$v1","$v0");
+        this.assemblySupport.genComment("store left expression on stack");
+        this.assemblySupport.genSub("$sp","$sp",4);
+        this.assemblySupport.genStoreWord("$v0",0,"$sp");
         this.assemblySupport.genComment("gen right side of expression");
         node.getRightExpr().accept(this);
+        this.assemblySupport.genComment("load left expression on stack");
+        this.assemblySupport.genLoadWord("$v1",0,"$sp");
+        this.assemblySupport.genAdd("$sp","$sp",4);
         this.assemblySupport.genComment("subtract left and right sides of expression");
         this.assemblySupport.genSub("$v0","$v0","$v1");
         return null;
@@ -745,10 +753,14 @@ public class TextGeneratorVisitor extends Visitor {
     public Object visit(BinaryArithTimesExpr node) {
         this.assemblySupport.genComment("gen left side of expression");
         node.getLeftExpr().accept(this);
-        this.assemblySupport.genComment("move v0 to v1");
-        this.assemblySupport.genMove("$v1","$v0");
+        this.assemblySupport.genComment("store left expression on stack");
+        this.assemblySupport.genSub("$sp","$sp",4);
+        this.assemblySupport.genStoreWord("$v0",0,"$sp");
         this.assemblySupport.genComment("gen right side of expression");
         node.getRightExpr().accept(this);
+        this.assemblySupport.genComment("load left expression on stack");
+        this.assemblySupport.genLoadWord("$v1",0,"$sp");
+        this.assemblySupport.genAdd("$sp","$sp",4);
         this.assemblySupport.genComment("multiply left and right sides of expression");
         this.assemblySupport.genMul("$v0","$v0","$v1");
         return null;
@@ -763,10 +775,14 @@ public class TextGeneratorVisitor extends Visitor {
     public Object visit(BinaryArithDivideExpr node) {
         this.assemblySupport.genComment("gen left side of expression");
         node.getLeftExpr().accept(this);
-        this.assemblySupport.genComment("move v0 to v1");
-        this.assemblySupport.genMove("$v1","$v0");
+        this.assemblySupport.genComment("store left expression on stack");
+        this.assemblySupport.genSub("$sp","$sp",4);
+        this.assemblySupport.genStoreWord("$v0",0,"$sp");
         this.assemblySupport.genComment("gen right side of expression");
         node.getRightExpr().accept(this);
+        this.assemblySupport.genComment("load left expression on stack");
+        this.assemblySupport.genLoadWord("$v1",0,"$sp");
+        this.assemblySupport.genAdd("$sp","$sp",4);
         this.assemblySupport.genComment("divide left and right sides of expression");
         this.assemblySupport.genDiv("$v0","$v0","$v1");
         return null;
@@ -781,10 +797,14 @@ public class TextGeneratorVisitor extends Visitor {
     public Object visit(BinaryArithModulusExpr node) {
         this.assemblySupport.genComment("gen left side of expression");
         node.getLeftExpr().accept(this);
-        this.assemblySupport.genComment("move v0 to v1");
-        this.assemblySupport.genMove("$v1","$v0");
+        this.assemblySupport.genComment("store left expression on stack");
+        this.assemblySupport.genSub("$sp","$sp",4);
+        this.assemblySupport.genStoreWord("$v0",0,"$sp");
         this.assemblySupport.genComment("gen right side of expression");
         node.getRightExpr().accept(this);
+        this.assemblySupport.genComment("load left expression from stack");
+        this.assemblySupport.genLoadWord("$v1",0,"$sp");
+        this.assemblySupport.genAdd("$sp","$sp",4);
         this.out.println("mod left and right sides of expression");
         this.assemblySupport.genMod("$v0","$v0","$v1");
         return null;
