@@ -576,8 +576,8 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genMove("$v1","$v0");
         this.assemblySupport.genComment("gen right side of expression");
         node.getRightExpr().accept(this);
-        this.out.println("compare left and right sides of expression");
-        this.out.println("seq $v0 $v0 $v1");
+        this.assemblySupport.genComment("compare left and right sides of expression");
+        this.out.println("\tseq $v0 $v0 $v1");
         this.assemblySupport.genSub("$v0","$zero","$v0");
         return null;
     }
@@ -595,8 +595,8 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genMove("$v1","$v0");
         this.assemblySupport.genComment("gen right side of expression");
         node.getRightExpr().accept(this);
-        this.out.println("compare left and right sides of expression");
-        this.out.println("sne $v0 $v0 $v1");
+        this.assemblySupport.genComment("compare left and right sides of expression");
+        this.out.println("\tsne $v0 $v0 $v1");
         this.assemblySupport.genSub("$v0","$zero","$v0");
         return null;
     }
@@ -614,8 +614,8 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genMove("$v1","$v0");
         this.assemblySupport.genComment("gen right side of expression");
         node.getRightExpr().accept(this);
-        this.out.println("compare left and right sides of expression");
-        this.out.println("slt $v0 $v0 $v1");
+        this.assemblySupport.genComment("compare left and right sides of expression");
+        this.out.println("\tslt $v0 $v0 $v1");
         this.assemblySupport.genSub("$v0","$zero","$v0");
         return null;
     }
@@ -633,8 +633,8 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genMove("$v1","$v0");
         this.assemblySupport.genComment("gen right side of expression");
         node.getRightExpr().accept(this);
-        this.out.println("compare left and right sides of expression");
-        this.out.println("sle $v0 $v0 $v1");
+        this.assemblySupport.genComment("compare left and right sides of expression");
+        this.out.println("\tsle $v0 $v0 $v1");
         this.assemblySupport.genSub("$v0","$zero","$v0");
         return null;
     }
@@ -652,8 +652,8 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genMove("$v1","$v0");
         this.assemblySupport.genComment("gen right side of expression");
         node.getRightExpr().accept(this);
-        this.out.println("compare left and right sides of expression");
-        this.out.println("sgt $v0 $v0 $v1");
+        this.assemblySupport.genComment("compare left and right sides of expression");
+        this.out.println("\tsgt $v0 $v0 $v1");
         this.assemblySupport.genSub("$v0","$zero","$v0");
         return null;
     }
@@ -671,8 +671,8 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genMove("$v1","$v0");
         this.assemblySupport.genComment("gen right side of expression");
         node.getRightExpr().accept(this);
-        this.out.println("compare left and right sides of expression");
-        this.out.println("sge $v0 $v0 $v1");
+        this.assemblySupport.genComment("compare left and right sides of expression");
+        this.out.println("\tsge $v0 $v0 $v1");
         this.assemblySupport.genSub("$v0","$zero","$v0");
         return null;
     }
@@ -690,7 +690,7 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genMove("$v1","$v0");
         this.assemblySupport.genComment("gen right side of expression");
         node.getRightExpr().accept(this);
-        this.out.println("add left and right sides of expression");
+        this.assemblySupport.genComment("add left and right sides of expression");
         this.assemblySupport.genAdd("$v0","$v0","$v1");
         return null;
     }
@@ -708,7 +708,7 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genMove("$v1","$v0");
         this.assemblySupport.genComment("gen right side of expression");
         node.getRightExpr().accept(this);
-        this.out.println("subtract left and right sides of expression");
+        this.assemblySupport.genComment("subtract left and right sides of expression");
         this.assemblySupport.genSub("$v0","$v0","$v1");
         return null;
     }
@@ -726,7 +726,7 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genMove("$v1","$v0");
         this.assemblySupport.genComment("gen right side of expression");
         node.getRightExpr().accept(this);
-        this.out.println("multiply left and right sides of expression");
+        this.assemblySupport.genComment("multiply left and right sides of expression");
         this.assemblySupport.genMul("$v0","$v0","$v1");
         return null;
     }
@@ -744,7 +744,7 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genMove("$v1","$v0");
         this.assemblySupport.genComment("gen right side of expression");
         node.getRightExpr().accept(this);
-        this.out.println("divide left and right sides of expression");
+        this.assemblySupport.genComment("divide left and right sides of expression");
         this.assemblySupport.genDiv("$v0","$v0","$v1");
         return null;
     }

@@ -186,7 +186,9 @@ Sys_init:
 SubMain_init:
 	jal Object_init
 	jal Main_init
+	# constant string expression
 	la $v0 StringConst_1
+	# store the field 12 away from $a0 to $v0
 	sw $v0 12($a0)
 TextIO_init:
 	li $v0 0
@@ -195,181 +197,326 @@ TextIO_init:
 	sw $v0 4($a0)
 Main_init:
 	jal Object_init
+	# constant int expression
 	li $v0 3
+	# store the field 12 away from $a0 to $v0
 	sw $v0 12($a0)
 Main.foo:
 	# Start Prologue
+	# subtract 4 from $sp
 	sub $sp $sp 4
+	# store $sp to $ra
 	sw $ra 0($sp)
+	# subtract 4 from $sp
 	sub $sp $sp 4
+	# store $sp to $fp
 	sw $fp 0($sp)
+	# subtract 4 from $sp
 	sub $sp $sp 4
+	# store $sp to $a0
 	sw $a0 0($sp)
+	# subtract 4 from $sp and store the result to $fp
 	sub $fp $sp 4
+	# move $fp to $sp
 	move $sp $fp
 	# End Prologue
+	# var expression
 	sub $sp $sp 4
 	sw $a0 0($sp)
+	# accept the reference object and save its location $v0
+	# case where the reference object is null
 	lw $v0 20($fp)
 	lw $a0 0($sp)
 	add $sp $sp 4
+	# store (4)$fp to $v0
 	sw $v0 4($fp)
+	# var expression
 	sub $sp $sp 4
 	sw $a0 0($sp)
+	# accept the reference object and save its location $v0
+	# case where the reference object is null
 	lw $v0 4($fp)
 	lw $a0 0($sp)
 	add $sp $sp 4
 	# Start Epilogue
+	# add 4 to $fp and store the result to $sp
 	add $sp $fp 4
+	# load $sp to $a0
 	lw $a0 0($sp)
+	# add 4 to $sp
 	add $sp $sp 4
+	# load $sp to $fp
 	lw $fp 0($sp)
+	# add 4 to $sp
 	add $sp $sp 4
+	# load $sp to $ra
 	lw $ra 0($sp)
+	# add 4 to $sp
 	add $sp $sp 4
+	# move $fp to $sp
 	move $sp $fp
 	jr $ra
 	# End Epilogue
 Main.equals:
 	# Start Prologue
+	# subtract 4 from $sp
 	sub $sp $sp 4
+	# store $sp to $ra
 	sw $ra 0($sp)
+	# subtract 4 from $sp
 	sub $sp $sp 4
+	# store $sp to $fp
 	sw $fp 0($sp)
+	# subtract 4 from $sp
 	sub $sp $sp 4
+	# store $sp to $a0
 	sw $a0 0($sp)
+	# subtract 0 from $sp and store the result to $fp
 	sub $fp $sp 0
+	# move $fp to $sp
 	move $sp $fp
 	# End Prologue
+	# constant boolean expression
 	li $v0 -1
 	# Start Epilogue
+	# add 0 to $fp and store the result to $sp
 	add $sp $fp 0
+	# load $sp to $a0
 	lw $a0 0($sp)
+	# add 4 to $sp
 	add $sp $sp 4
+	# load $sp to $fp
 	lw $fp 0($sp)
+	# add 4 to $sp
 	add $sp $sp 4
+	# load $sp to $ra
 	lw $ra 0($sp)
+	# add 4 to $sp
 	add $sp $sp 4
+	# move $fp to $sp
 	move $sp $fp
 	jr $ra
 	# End Epilogue
 Main.toString:
 	# Start Prologue
+	# subtract 4 from $sp
 	sub $sp $sp 4
+	# store $sp to $ra
 	sw $ra 0($sp)
+	# subtract 4 from $sp
 	sub $sp $sp 4
+	# store $sp to $fp
 	sw $fp 0($sp)
+	# subtract 4 from $sp
 	sub $sp $sp 4
+	# store $sp to $a0
 	sw $a0 0($sp)
+	# subtract 0 from $sp and store the result to $fp
 	sub $fp $sp 0
+	# move $fp to $sp
 	move $sp $fp
 	# End Prologue
+	# constant string expression
 	la $v0 Class_4
 	# Start Epilogue
+	# add 0 to $fp and store the result to $sp
 	add $sp $fp 0
+	# load $sp to $a0
 	lw $a0 0($sp)
+	# add 4 to $sp
 	add $sp $sp 4
+	# load $sp to $fp
 	lw $fp 0($sp)
+	# add 4 to $sp
 	add $sp $sp 4
+	# load $sp to $ra
 	lw $ra 0($sp)
+	# add 4 to $sp
 	add $sp $sp 4
+	# move $fp to $sp
 	move $sp $fp
 	jr $ra
 	# End Epilogue
 Main.main:
 	# Start Prologue
+	# subtract 4 from $sp
 	sub $sp $sp 4
+	# store $sp to $ra
 	sw $ra 0($sp)
+	# subtract 4 from $sp
 	sub $sp $sp 4
+	# store $sp to $fp
 	sw $fp 0($sp)
+	# subtract 4 from $sp
 	sub $sp $sp 4
+	# store $sp to $a0
 	sw $a0 0($sp)
+	# subtract 8 from $sp and store the result to $fp
 	sub $fp $sp 8
+	# move $fp to $sp
 	move $sp $fp
 	# End Prologue
-	# save $a0 onto stack in case init creates a new object.
-	sub $sp $sp 4
-	sw $a0 0($sp)
-	la $a0 SubMain_template
-	la $v0 SubMain_dispatch_table
-	lw $v0 0($v0)
-	jalr $v0
-	jal SubMain_init
-	# restore $a0
-	lw $a0 0($sp)
-	add $sp $sp 4
+	# constant int expression
+	li $v0 3
+	# store (0)$fp to $v0
 	sw $v0 0($fp)
+	# gen left side of expression
+	# var expression
 	sub $sp $sp 4
 	sw $a0 0($sp)
+	# accept the reference object and save its location $v0
+	# case where the reference object is null
 	lw $v0 0($fp)
 	lw $a0 0($sp)
 	add $sp $sp 4
-	# move v0 to a0
-	move $a0 $v0
-	# access SubMain_dispatch_table
-	la $v0 SubMain_dispatch_table
-	# load method address
-	lw $a1 12($v0)
-	li $v0 1
-	# save parameters on stack
-	sub $sp $sp 4
-	sw $v0 0($sp)
-	jalr $a1
+	# move v0 to v1
+	move $v1 $v0
+	# gen right side of expression
+	# constant int expression
+	li $v0 4
+	# compare left and right sides of expression
+	slt $v0 $v0 $v1
+	sub $v0 $zero $v0
+	# branch to label1 if $v0 is equal to 0
+	beq $v0 $zero label1
+label0:
+	# constant int expression
+	li $v0 3
+	# store (4)$fp to $v0
 	sw $v0 4($fp)
-	# Start Epilogue
-	add $sp $fp 8
+	# increment
+	# var expression
+	sub $sp $sp 4
+	sw $a0 0($sp)
+	# accept the reference object and save its location $v0
+	# case where the reference object is null
+	lw $v0 4($fp)
 	lw $a0 0($sp)
 	add $sp $sp 4
+	add $v0 $v0 1
+	# assign expr
+	sub $sp $sp 4
+	sw $a0 0($sp)
+	# gen left side of expression
+	# var expression
+	sub $sp $sp 4
+	sw $a0 0($sp)
+	# accept the reference object and save its location $v0
+	# case where the reference object is null
+	lw $v0 4($fp)
+	lw $a0 0($sp)
+	add $sp $sp 4
+	# move v0 to v1
+	move $v1 $v0
+	# gen right side of expression
+	# constant int expression
+	li $v0 3
+	# divide left and right sides of expression
+	div $v0 $v0 $v1
+	# case where the reference name is null
+	sw $v0 4($fp)
+	lw $a0 0($sp)
+	add $sp $sp 4
+	# unconditional branch to label2
+	b label2
+label1:
+label2:
+	# Start Epilogue
+	# add 8 to $fp and store the result to $sp
+	add $sp $fp 8
+	# load $sp to $a0
+	lw $a0 0($sp)
+	# add 4 to $sp
+	add $sp $sp 4
+	# load $sp to $fp
 	lw $fp 0($sp)
+	# add 4 to $sp
 	add $sp $sp 4
+	# load $sp to $ra
 	lw $ra 0($sp)
+	# add 4 to $sp
 	add $sp $sp 4
+	# move $fp to $sp
 	move $sp $fp
 	jr $ra
 	# End Epilogue
 SubMain.foo:
 	# Start Prologue
+	# subtract 4 from $sp
 	sub $sp $sp 4
+	# store $sp to $ra
 	sw $ra 0($sp)
+	# subtract 4 from $sp
 	sub $sp $sp 4
+	# store $sp to $fp
 	sw $fp 0($sp)
+	# subtract 4 from $sp
 	sub $sp $sp 4
+	# store $sp to $a0
 	sw $a0 0($sp)
+	# subtract 0 from $sp and store the result to $fp
 	sub $fp $sp 0
+	# move $fp to $sp
 	move $sp $fp
 	# End Prologue
+	# constant int expression
 	li $v0 1
 	# Start Epilogue
+	# add 0 to $fp and store the result to $sp
 	add $sp $fp 0
+	# load $sp to $a0
 	lw $a0 0($sp)
+	# add 4 to $sp
 	add $sp $sp 4
+	# load $sp to $fp
 	lw $fp 0($sp)
+	# add 4 to $sp
 	add $sp $sp 4
+	# load $sp to $ra
 	lw $ra 0($sp)
+	# add 4 to $sp
 	add $sp $sp 4
+	# move $fp to $sp
 	move $sp $fp
 	jr $ra
 	# End Epilogue
 SubMain.equals:
 	# Start Prologue
+	# subtract 4 from $sp
 	sub $sp $sp 4
+	# store $sp to $ra
 	sw $ra 0($sp)
+	# subtract 4 from $sp
 	sub $sp $sp 4
+	# store $sp to $fp
 	sw $fp 0($sp)
+	# subtract 4 from $sp
 	sub $sp $sp 4
+	# store $sp to $a0
 	sw $a0 0($sp)
+	# subtract 0 from $sp and store the result to $fp
 	sub $fp $sp 0
+	# move $fp to $sp
 	move $sp $fp
 	# End Prologue
+	# constant boolean expression
 	li $v0 0
 	# Start Epilogue
+	# add 0 to $fp and store the result to $sp
 	add $sp $fp 0
+	# load $sp to $a0
 	lw $a0 0($sp)
+	# add 4 to $sp
 	add $sp $sp 4
+	# load $sp to $fp
 	lw $fp 0($sp)
+	# add 4 to $sp
 	add $sp $sp 4
+	# load $sp to $ra
 	lw $ra 0($sp)
+	# add 4 to $sp
 	add $sp $sp 4
+	# move $fp to $sp
 	move $sp $fp
 	jr $ra
 	# End Epilogue
