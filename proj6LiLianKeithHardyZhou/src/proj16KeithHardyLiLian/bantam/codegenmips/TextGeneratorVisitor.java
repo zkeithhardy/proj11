@@ -777,8 +777,19 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genComment("load left expression on stack");
         this.assemblySupport.genLoadWord("$v1",0,"$sp");
         this.assemblySupport.genAdd("$sp","$sp",4);
+
+        String zeroError = this.assemblySupport.getLabel();
+        String afterError = this.assemblySupport.getLabel();
+
+        this.assemblySupport.genComment("check for divide by zero error");
+        this.assemblySupport.genCondBeq("$zero", "$v1", zeroError);
         this.assemblySupport.genComment("divide left and right sides of expression");
         this.assemblySupport.genDiv("$v0","$v0","$v1");
+        this.assemblySupport.genComment("branch to afterError");
+        this.assemblySupport.genUncondBr(afterError);
+        this.assemblySupport.genLabel(zeroError);
+        this.assemblySupport.genDirCall("_divide_zero_error");
+        this.assemblySupport.genLabel(afterError);
         return null;
     }
 
