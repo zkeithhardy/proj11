@@ -525,9 +525,14 @@ public class TextGeneratorVisitor extends Visitor {
     public Object visit(CastExpr node) {
         node.getExpr().accept(this);
         if(!node.getUpCast()){
+            this.assemblySupport.genComment("case where the cast expression is down-casting");
+            String objectType = node.getExpr().getExprType();
+            InstanceofExpr instanceChecker= new InstanceofExpr(node.getLineNum(), node.getExpr(), objectType);
+            instanceChecker.accept(this);
+            this.assemblySupport.genComment("and the expression is not instance of target type, then handle error");
+            this.out.println("jal _class_cast_error");
             return null;
         }
-        String objectType = node.getExpr().getExprType();
 
         return null;
     }
