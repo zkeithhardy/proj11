@@ -191,6 +191,7 @@ public class MipsCodeGenerator
         // create the inits for default classes
         for(Map.Entry<String, String> entry: classNames.entrySet()){
             this.assemblySupport.genLabel(entry.getKey() + "_init");
+            textGeneratorVisitor.generateMethodPrologue();
             if(entry.getKey().equals("Object")||entry.getKey().equals("String")||entry.getKey().equals("TextIO")
                     ||entry.getKey().equals("Sys")) {
                 if(entry.getKey().equals("String")){
@@ -216,6 +217,7 @@ public class MipsCodeGenerator
                 }
                 textGeneratorVisitor.generateFieldInitialization(classMap.get(entry.getKey()).getASTNode(),stringNameMap);
             }
+            textGeneratorVisitor.generateMethodEpilogue();
 
         }
 

@@ -165,7 +165,7 @@ public class TextGeneratorVisitor extends Visitor {
         return null;
     }
 
-    private void generateMethodPrologue(){
+    public void generateMethodPrologue(){
         this.assemblySupport.genComment("Start Prologue");
 
         this.assemblySupport.genComment("subtract 4 from $sp");
@@ -195,7 +195,7 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genComment("End Prologue");
     }
 
-    private void generateMethodEpilogue(){
+    public void generateMethodEpilogue(){
         this.assemblySupport.genComment("Start Epilogue");
 
         this.assemblySupport.genComment("add "+4*methodLocalVars+" to $fp and store the result to $sp");
