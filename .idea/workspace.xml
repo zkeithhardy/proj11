@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8c7a2aeb-d440-4298-8971-4b09cf8ec87c" name="Default Changelist" comment="Merge branch 'master' of https://github.com/zkeithhardy/proj11&#10;&#10;# Conflicts:&#10;#&#9;proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/bantam/codegenmips/MipsCodeGenerator.java">
-      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/codegenmips/TextGeneratorVisitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/codegenmips/TextGeneratorVisitor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/test/test.asm" beforeDir="false" afterPath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/test/test.asm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/test/test.btm" beforeDir="false" afterPath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/test/test.btm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/bantam/codegenmips/TextGeneratorVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/bantam/codegenmips/TextGeneratorVisitor.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,8 +24,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/bantam/codegenmips/MipsSupport.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3150">
-              <caret line="574" column="22" selection-start-line="574" selection-start-column="16" selection-end-line="574" selection-end-column="22" />
+            <state relative-caret-position="428">
+              <caret line="899" column="4" lean-forward="true" selection-start-line="899" selection-start-column="4" selection-end-line="899" selection-end-column="4" />
               <folding>
                 <element signature="docComment;class#MipsSupport#0" />
                 <element signature="e#1198#1229#0" />
@@ -151,7 +148,6 @@
                 <element signature="e#24359#24450#0" />
                 <element signature="e#24543#24790#0" />
                 <element signature="e#24543#25023#0" />
-                <element signature="e#25029#25276#0" />
                 <element signature="e#25402#25653#0" />
                 <element signature="e#25779#26039#0" />
                 <element signature="e#26165#26413#0" />
@@ -175,8 +171,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/bantam/codegenmips/TextGeneratorVisitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="564">
-              <caret line="534" column="9" lean-forward="true" selection-start-line="534" selection-start-column="9" selection-end-line="534" selection-end-column="9" />
+            <state relative-caret-position="191">
+              <caret line="530" column="99" selection-start-line="530" selection-start-column="99" selection-end-line="530" selection-end-column="99" />
             </state>
           </provider>
         </entry>
@@ -250,6 +246,7 @@
       <find>dispatchexpr</find>
       <find>dispatch</find>
       <find>prologu</find>
+      <find>genlab</find>
       <find>cast</find>
     </findStrings>
   </component>
@@ -382,7 +379,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555629749121" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555631342867" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/include/richtextfx-fat-0.9.1.jar!/" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -624,10 +621,45 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/bantam/semant/NumLocalVarsVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="850">
+          <caret line="62" column="60" selection-start-line="62" selection-start-column="60" selection-end-line="62" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/bantam/semant/TypeCheckerVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7599">
+          <caret line="462" column="33" selection-start-line="462" selection-start-column="23" selection-end-line="462" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/bantam/ast/InstanceofExpr.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="39" column="13" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/bantam/codegenmips/MipsCodeGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5148">
+          <caret line="326" selection-start-line="326" selection-end-line="326" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/bantam/ast/CastExpr.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="522">
+          <caret line="96" column="37" selection-start-line="96" selection-start-column="37" selection-end-line="96" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/bantam/codegenmips/MipsSupport.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3150">
-          <caret line="574" column="22" selection-start-line="574" selection-start-column="16" selection-end-line="574" selection-end-column="22" />
+        <state relative-caret-position="428">
+          <caret line="899" column="4" lean-forward="true" selection-start-line="899" selection-start-column="4" selection-end-line="899" selection-end-column="4" />
           <folding>
             <element signature="docComment;class#MipsSupport#0" />
             <element signature="e#1198#1229#0" />
@@ -750,7 +782,6 @@
             <element signature="e#24359#24450#0" />
             <element signature="e#24543#24790#0" />
             <element signature="e#24543#25023#0" />
-            <element signature="e#25029#25276#0" />
             <element signature="e#25402#25653#0" />
             <element signature="e#25779#26039#0" />
             <element signature="e#26165#26413#0" />
@@ -770,45 +801,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/bantam/semant/NumLocalVarsVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="850">
-          <caret line="62" column="60" selection-start-line="62" selection-start-column="60" selection-end-line="62" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/bantam/semant/TypeCheckerVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7599">
-          <caret line="462" column="33" selection-start-line="462" selection-start-column="23" selection-end-line="462" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/bantam/ast/InstanceofExpr.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="39" column="13" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/bantam/codegenmips/MipsCodeGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5148">
-          <caret line="326" selection-start-line="326" selection-end-line="326" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/bantam/ast/CastExpr.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="96" column="37" selection-start-line="96" selection-start-column="37" selection-end-line="96" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/bantam/codegenmips/TextGeneratorVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="564">
-          <caret line="534" column="9" lean-forward="true" selection-start-line="534" selection-start-column="9" selection-end-line="534" selection-end-column="9" />
+        <state relative-caret-position="191">
+          <caret line="530" column="99" selection-start-line="530" selection-start-column="99" selection-end-line="530" selection-end-column="99" />
         </state>
       </provider>
     </entry>
