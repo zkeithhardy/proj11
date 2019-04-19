@@ -410,8 +410,7 @@ public class TextGeneratorVisitor extends Visitor {
      */
     public Object visit(DispatchExpr node) {
         String type;
-        this.assemblySupport.genComment("move v0 to a0");
-        this.assemblySupport.genMove("$a0","$v0");
+
         if (node.getRefExpr() == null || ((node.getRefExpr() instanceof VarExpr) && //local var or field of "this"
                 ((VarExpr) node.getRefExpr()).getName().equals("this"))) {
             type = this.currentClass;
@@ -427,9 +426,6 @@ public class TextGeneratorVisitor extends Visitor {
         }else{
             node.getRefExpr().accept(this);
             type = node.getRefExpr().getExprType();
-            Location location = (Location) this.currentSymbolTable.lookup(((VarExpr)node.getRefExpr()).getName());
-            this.assemblySupport.genComment("load ref dispatch table into v0");
-            this.assemblySupport.genLoadWord("$v0",location.getOffset(),location.getBaseReg());
             this.assemblySupport.genLoadWord("$v0",8,"$v0");
         }
 
