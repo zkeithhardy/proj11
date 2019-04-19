@@ -100,8 +100,9 @@ Sys_template:
 
 SubMain_template:
 	.word	4
-	.word	28
+	.word	32
 	.word	SubMain_dispatch_table
+	.word	0
 	.word	0
 	.word	0
 	.word	0
@@ -116,8 +117,9 @@ TextIO_template:
 
 Main_template:
 	.word	3
-	.word	20
+	.word	24
 	.word	Main_dispatch_table
+	.word	0
 	.word	0
 	.word	0
 
@@ -573,8 +575,8 @@ Main.main:
 	sub $sp $sp 4
 	# store $sp to $a0
 	sw $a0 0($sp)
-	# subtract 8 from $sp and store the result to $fp
-	sub $fp $sp 8
+	# subtract 16 from $sp and store the result to $fp
+	sub $fp $sp 16
 	# move $fp to $sp
 	move $sp $fp
 	# End Prologue
@@ -637,8 +639,15 @@ label0:
 	# load left expression on stack
 	lw $v1 0($sp)
 	add $sp $sp 4
+	# check for divide by zero error
+	beq $zero $v1 label3
 	# divide left and right sides of expression
 	div $v0 $v0 $v1
+	# branch to afterError
+	b label4
+label3:
+	jal _divide_zero_error
+label4:
 	# case where the reference name is null
 	sw $v0 4($fp)
 	lw $a0 0($sp)
@@ -647,9 +656,61 @@ label0:
 	b label2
 label1:
 label2:
+	# var expression
+	sub $sp $sp 4
+	sw $a0 0($sp)
+	# accept the reference object and save its location $v0
+	# var expression
+	sub $sp $sp 4
+	sw $a0 0($sp)
+	# accept the reference object and save its location $v0
+	# case where the reference object is null
+	lw $v0 20($v0)
+	lw $a0 0($sp)
+	add $sp $sp 4
+	# case where the reference object is user defined class
+	# load to $v0 temporarily
+	lw $v0 20($v0)
+	# check for null pointer errors
+	# if $v0 == 0, branch to nullError
+	beq $zero $v0 label5
+	b label6
+label5:
+	jal _null_pointer_error
+label6:
+	# move $v0 to $a0
+	move $a0 $v0
+	# load (16)$a0 to $v0
+	lw $v0 16($a0)
+	lw $a0 0($sp)
+	add $sp $sp 4
+	# store (8)$fp to $v0
+	sw $v0 8($fp)
+	# move v0 to a0
+	move $a0 $v0
+	# access Main_dispatch_table
+	la $v0 Main_dispatch_table
+	# load method address
+	lw $a1 8($v0)
+	# var expression
+	sub $sp $sp 4
+	sw $a0 0($sp)
+	# accept the reference object and save its location $v0
+	# case where the reference object is null
+	lw $v0 8($fp)
+	lw $a0 0($sp)
+	add $sp $sp 4
+	# save parameters on stack
+	# subtract 4 from $sp
+	sub $sp $sp 4
+	# store $sp to $v0
+	sw $v0 0($sp)
+	jalr $a1
+	# store (12)$fp to $v0
+	sw $v0 12($fp)
 	# Start Epilogue
-	# add 8 to $fp and store the result to $sp
-	add $sp $fp 8
+	# add 16 to $fp and store the result to $sp
+	add $sp $fp 16
 	# load $sp to $a0
 	lw $a0 0($sp)
 	# add 4 to $sp
