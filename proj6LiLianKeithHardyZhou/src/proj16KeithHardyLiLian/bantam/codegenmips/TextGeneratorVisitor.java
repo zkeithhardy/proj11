@@ -83,7 +83,11 @@ public class TextGeneratorVisitor extends Visitor {
 //            this.assemblySupport.genComment("save $a0 onto stack");
 //            this.assemblySupport.genComment("subtract 4 from $sp");
 //            this.assemblySupport.genSub("$sp", "$sp", 4);
-//            this.assemblySupport.genComment("store $sp to $a0");
+//            this.assemblySupport.genComment("store $a0 to $sp
+//
+//
+//
+// ");
 //            this.assemblySupport.genStoreWord("$a0", 0, "$sp");
 
 //            String parentName = this.classMap.get(currentClass).getParent().getName();
@@ -452,7 +456,7 @@ public class TextGeneratorVisitor extends Visitor {
             this.assemblySupport.genComment("save parameters on stack");
             this.assemblySupport.genComment("subtract 4 from $sp");
             this.assemblySupport.genSub("$sp","$sp",4);
-            this.assemblySupport.genComment("store $sp to $v0");
+            this.assemblySupport.genComment("store $v0 to $sp");
             this.assemblySupport.genStoreWord("$v0",0,"$sp");
         }
 
@@ -469,7 +473,7 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genComment("save $a0 onto stack in case init creates a new object.");
         this.assemblySupport.genComment("subtract 4 from $sp");
         this.assemblySupport.genSub("$sp","$sp",4);
-        this.assemblySupport.genComment("store $sp to $a0");
+        this.assemblySupport.genComment("store $a0 to $sp");
         this.assemblySupport.genStoreWord("$a0",0,"$sp");
         // load the address of the template to $a0
         this.assemblySupport.genComment("load the address of "+node.getType()+"_template to $a0");
@@ -485,7 +489,7 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genDirCall(node.getType()+"_init");
 
         this.assemblySupport.genComment("restore $a0");
-        this.assemblySupport.genComment("load $sp to $a0");
+        this.assemblySupport.genComment("load $a0 to $sp");
         this.assemblySupport.genLoadWord("$a0",0,"$sp");
         this.assemblySupport.genComment("add 4 to $sp");
         this.assemblySupport.genAdd("$sp","$sp",4);
