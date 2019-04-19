@@ -529,11 +529,29 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(CastExpr node) {
+        this.assemblySupport.genComment("handle Cast Expression");
         node.getExpr().accept(this);
         if(!node.getUpCast()){
+            this.assemblySupport.genComment("case where the cast expression is down-casting");
+            String objectType = node.getExpr().getExprType();
+            this.assemblySupport.genComment("check if the expression is an instance of target class");
+            InstanceofExpr instanceChecker= new InstanceofExpr(node.getLineNum(), node.getExpr(), objectType);
+            instanceChecker.accept(this);
+
+            String ifZero= this.assemblySupport.getLabel();
+            String ifNotZero = this.assemblySupport.getLabel();
+            this.assemblySupport.genCondBeq("$v0", "$zero", ifZero);
+            this.assemblySupport.genUncondBr(ifNotZero);
+            //false, handle error
+            this.assemblySupport.genComment("case where the expression is not a proper subtype of target class, handle error");
+            this.assemblySupport.genLabel(ifZero);
+            this.assemblySupport.genDirCall("_class_cast_error");
+            //true, bypass handle error
+            this.assemblySupport.genComment("case where the expression is a proper subtype of target class");
+            this.assemblySupport.genLabel(ifNotZero);
+
             return null;
         }
-        String objectType = node.getExpr().getExprType();
 
         return null;
     }
@@ -771,8 +789,19 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genComment("load left expression on stack");
         this.assemblySupport.genLoadWord("$v1",0,"$sp");
         this.assemblySupport.genAdd("$sp","$sp",4);
+
+        String zeroError = this.assemblySupport.getLabel();
+        String afterError = this.assemblySupport.getLabel();
+
+        this.assemblySupport.genComment("check for divide by zero error");
+        this.assemblySupport.genCondBeq("$zero", "$v1", zeroError);
         this.assemblySupport.genComment("divide left and right sides of expression");
         this.assemblySupport.genDiv("$v0","$v0","$v1");
+        this.assemblySupport.genComment("branch to afterError");
+        this.assemblySupport.genUncondBr(afterError);
+        this.assemblySupport.genLabel(zeroError);
+        this.assemblySupport.genDirCall("_divide_zero_error");
+        this.assemblySupport.genLabel(afterError);
         return null;
     }
 

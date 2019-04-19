@@ -1,5 +1,5 @@
 #Authors: Zeb Keith-Hardy, Michael Li, Iris Lian
-#Date: 2019-04-15
+#Date: 2019-04-16
 #Compiled From Source: test.btm
 	.data
 	.globl	gc_flag
@@ -70,9 +70,9 @@ class_name_table:
 	.word	Class_0
 	.word	Class_2
 	.word	Class_3
+	.word	Class_4
 	.word	Class_5
 	.word	Class_1
-	.word	Class_4
 
 	# Object Templates:
 	.globl	Object_template
@@ -99,7 +99,7 @@ Sys_template:
 	.word	Sys_dispatch_table
 
 SubMain_template:
-	.word	3
+	.word	4
 	.word	28
 	.word	SubMain_dispatch_table
 	.word	0
@@ -108,14 +108,14 @@ SubMain_template:
 	.word	0
 
 TextIO_template:
-	.word	4
+	.word	5
 	.word	20
 	.word	TextIO_dispatch_table
 	.word	0
 	.word	0
 
 Main_template:
-	.word	5
+	.word	3
 	.word	20
 	.word	Main_dispatch_table
 	.word	0
@@ -186,7 +186,20 @@ Sys_init:
 SubMain_init:
 	jal Object_init
 	jal Main_init
+	# save $a0 onto stack
+	# subtract 4 from $sp
+	sub $sp $sp 4
+	# store $sp to $a0
+	sw $a0 0($sp)
+	la $a0 Main_template
+	# restore $a0
+	# load $sp to $a0
+	lw $a0 0($sp)
+	# add 4 to $sp
+	add $sp $sp 4
+	# constant string expression
 	la $v0 StringConst_1
+	# store the field 12 away from $a0 to $v0
 	sw $v0 12($a0)
 TextIO_init:
 	li $v0 0
@@ -195,87 +208,337 @@ TextIO_init:
 	sw $v0 4($a0)
 Main_init:
 	jal Object_init
+	# save $a0 onto stack
+	# subtract 4 from $sp
+	sub $sp $sp 4
+	# store $sp to $a0
+	sw $a0 0($sp)
+	la $a0 Object_template
+	# restore $a0
+	# load $sp to $a0
+	lw $a0 0($sp)
+	# add 4 to $sp
+	add $sp $sp 4
+	# constant int expression
 	li $v0 3
+	# store the field 12 away from $a0 to $v0
 	sw $v0 12($a0)
-	sub $sp $sp 4
-	sw $ra 0($sp)
-	sub $sp $sp 4
-	sw $fp 0($sp)
-	sub $fp $sp 4
-	move $sp $fp
 Main.foo:
-	add $sp $fp 4
-	lw $fp 0($sp)
-	add $sp $sp 4
-	lw $ra 0($sp)
-	add $sp $sp 4
-	jr $ra
+	# Start Prologue
+	# subtract 4 from $sp
 	sub $sp $sp 4
+	# store $sp to $ra
 	sw $ra 0($sp)
+	# subtract 4 from $sp
 	sub $sp $sp 4
+	# store $sp to $fp
 	sw $fp 0($sp)
+	# subtract 4 from $sp
+	sub $sp $sp 4
+	# store $sp to $a0
+	sw $a0 0($sp)
+	# subtract 4 from $sp and store the result to $fp
 	sub $fp $sp 4
+	# move $fp to $sp
 	move $sp $fp
+	# End Prologue
+	# var expression
+	sub $sp $sp 4
+	sw $a0 0($sp)
+	# accept the reference object and save its location $v0
+	# case where the reference object is null
+	lw $v0 20($fp)
+	lw $a0 0($sp)
+	add $sp $sp 4
+	# store (4)$fp to $v0
+	sw $v0 4($fp)
+	# var expression
+	sub $sp $sp 4
+	sw $a0 0($sp)
+	# accept the reference object and save its location $v0
+	# case where the reference object is null
+	lw $v0 4($fp)
+	lw $a0 0($sp)
+	add $sp $sp 4
+	# Start Epilogue
+	# add 4 to $fp and store the result to $sp
+	add $sp $fp 4
+	# load $sp to $a0
+	lw $a0 0($sp)
+	# add 4 to $sp
+	add $sp $sp 4
+	# load $sp to $fp
+	lw $fp 0($sp)
+	# add 4 to $sp
+	add $sp $sp 4
+	# load $sp to $ra
+	lw $ra 0($sp)
+	# add 4 to $sp
+	add $sp $sp 4
+	# move $fp to $sp
+	move $sp $fp
+	jr $ra
+	# End Epilogue
 Main.equals:
+	# Start Prologue
+	# subtract 4 from $sp
+	sub $sp $sp 4
+	# store $sp to $ra
+	sw $ra 0($sp)
+	# subtract 4 from $sp
+	sub $sp $sp 4
+	# store $sp to $fp
+	sw $fp 0($sp)
+	# subtract 4 from $sp
+	sub $sp $sp 4
+	# store $sp to $a0
+	sw $a0 0($sp)
+	# subtract 0 from $sp and store the result to $fp
+	sub $fp $sp 0
+	# move $fp to $sp
+	move $sp $fp
+	# End Prologue
+	# constant boolean expression
 	li $v0 -1
-	add $sp $fp 4
+	# Start Epilogue
+	# add 0 to $fp and store the result to $sp
+	add $sp $fp 0
+	# load $sp to $a0
+	lw $a0 0($sp)
+	# add 4 to $sp
+	add $sp $sp 4
+	# load $sp to $fp
 	lw $fp 0($sp)
+	# add 4 to $sp
 	add $sp $sp 4
+	# load $sp to $ra
 	lw $ra 0($sp)
+	# add 4 to $sp
 	add $sp $sp 4
-	jr $ra
-	sub $sp $sp 4
-	sw $ra 0($sp)
-	sub $sp $sp 4
-	sw $fp 0($sp)
-	sub $fp $sp 0
+	# move $fp to $sp
 	move $sp $fp
+	jr $ra
+	# End Epilogue
 Main.toString:
-	la $v0 StringConst_0
-	add $sp $fp 0
-	lw $fp 0($sp)
-	add $sp $sp 4
-	lw $ra 0($sp)
-	add $sp $sp 4
-	jr $ra
+	# Start Prologue
+	# subtract 4 from $sp
 	sub $sp $sp 4
+	# store $sp to $ra
 	sw $ra 0($sp)
+	# subtract 4 from $sp
 	sub $sp $sp 4
+	# store $sp to $fp
 	sw $fp 0($sp)
+	# subtract 4 from $sp
+	sub $sp $sp 4
+	# store $sp to $a0
+	sw $a0 0($sp)
+	# subtract 0 from $sp and store the result to $fp
 	sub $fp $sp 0
+	# move $fp to $sp
 	move $sp $fp
-Main.main:
+	# End Prologue
+	# constant string expression
+	la $v0 Class_4
+	# Start Epilogue
+	# add 0 to $fp and store the result to $sp
 	add $sp $fp 0
+	# load $sp to $a0
+	lw $a0 0($sp)
+	# add 4 to $sp
+	add $sp $sp 4
+	# load $sp to $fp
 	lw $fp 0($sp)
+	# add 4 to $sp
 	add $sp $sp 4
+	# load $sp to $ra
 	lw $ra 0($sp)
+	# add 4 to $sp
 	add $sp $sp 4
-	jr $ra
-	sub $sp $sp 4
-	sw $ra 0($sp)
-	sub $sp $sp 4
-	sw $fp 0($sp)
-	sub $fp $sp 4
+	# move $fp to $sp
 	move $sp $fp
+	jr $ra
+	# End Epilogue
+Main.main:
+	# Start Prologue
+	# subtract 4 from $sp
+	sub $sp $sp 4
+	# store $sp to $ra
+	sw $ra 0($sp)
+	# subtract 4 from $sp
+	sub $sp $sp 4
+	# store $sp to $fp
+	sw $fp 0($sp)
+	# subtract 4 from $sp
+	sub $sp $sp 4
+	# store $sp to $a0
+	sw $a0 0($sp)
+	# subtract 8 from $sp and store the result to $fp
+	sub $fp $sp 8
+	# move $fp to $sp
+	move $sp $fp
+	# End Prologue
+	# constant int expression
+	li $v0 3
+	# store (0)$fp to $v0
+	sw $v0 0($fp)
+	# gen left side of expression
+	# var expression
+	sub $sp $sp 4
+	sw $a0 0($sp)
+	# accept the reference object and save its location $v0
+	# case where the reference object is null
+	lw $v0 0($fp)
+	lw $a0 0($sp)
+	add $sp $sp 4
+	# move v0 to v1
+	move $v1 $v0
+	# gen right side of expression
+	# constant int expression
+	li $v0 4
+	# compare left and right sides of expression
+	slt $v0 $v0 $v1
+	sub $v0 $zero $v0
+	# branch to label1 if $v0 is equal to 0
+	beq $v0 $zero label1
+label0:
+	# constant int expression
+	li $v0 3
+	# store (4)$fp to $v0
+	sw $v0 4($fp)
+	# increment
+	# var expression
+	sub $sp $sp 4
+	sw $a0 0($sp)
+	# accept the reference object and save its location $v0
+	# case where the reference object is null
+	lw $v0 4($fp)
+	lw $a0 0($sp)
+	add $sp $sp 4
+	add $v0 $v0 1
+	# assign expr
+	sub $sp $sp 4
+	sw $a0 0($sp)
+	# gen left side of expression
+	# var expression
+	sub $sp $sp 4
+	sw $a0 0($sp)
+	# accept the reference object and save its location $v0
+	# case where the reference object is null
+	lw $v0 4($fp)
+	lw $a0 0($sp)
+	add $sp $sp 4
+	# move v0 to v1
+	move $v1 $v0
+	# gen right side of expression
+	# constant int expression
+	li $v0 3
+	# divide left and right sides of expression
+	div $v0 $v0 $v1
+	# case where the reference name is null
+	sw $v0 4($fp)
+	lw $a0 0($sp)
+	add $sp $sp 4
+	# unconditional branch to label2
+	b label2
+label1:
+label2:
+	# Start Epilogue
+	# add 8 to $fp and store the result to $sp
+	add $sp $fp 8
+	# load $sp to $a0
+	lw $a0 0($sp)
+	# add 4 to $sp
+	add $sp $sp 4
+	# load $sp to $fp
+	lw $fp 0($sp)
+	# add 4 to $sp
+	add $sp $sp 4
+	# load $sp to $ra
+	lw $ra 0($sp)
+	# add 4 to $sp
+	add $sp $sp 4
+	# move $fp to $sp
+	move $sp $fp
+	jr $ra
+	# End Epilogue
 SubMain.foo:
-	li $v0 1
-	add $sp $fp 4
-	lw $fp 0($sp)
-	add $sp $sp 4
-	lw $ra 0($sp)
-	add $sp $sp 4
-	jr $ra
+	# Start Prologue
+	# subtract 4 from $sp
 	sub $sp $sp 4
+	# store $sp to $ra
 	sw $ra 0($sp)
+	# subtract 4 from $sp
 	sub $sp $sp 4
+	# store $sp to $fp
 	sw $fp 0($sp)
-	sub $fp $sp 4
+	# subtract 4 from $sp
+	sub $sp $sp 4
+	# store $sp to $a0
+	sw $a0 0($sp)
+	# subtract 0 from $sp and store the result to $fp
+	sub $fp $sp 0
+	# move $fp to $sp
 	move $sp $fp
-SubMain.equals:
-	li $v0 0
-	add $sp $fp 4
+	# End Prologue
+	# constant int expression
+	li $v0 1
+	# Start Epilogue
+	# add 0 to $fp and store the result to $sp
+	add $sp $fp 0
+	# load $sp to $a0
+	lw $a0 0($sp)
+	# add 4 to $sp
+	add $sp $sp 4
+	# load $sp to $fp
 	lw $fp 0($sp)
+	# add 4 to $sp
 	add $sp $sp 4
+	# load $sp to $ra
 	lw $ra 0($sp)
+	# add 4 to $sp
 	add $sp $sp 4
+	# move $fp to $sp
+	move $sp $fp
 	jr $ra
+	# End Epilogue
+SubMain.equals:
+	# Start Prologue
+	# subtract 4 from $sp
+	sub $sp $sp 4
+	# store $sp to $ra
+	sw $ra 0($sp)
+	# subtract 4 from $sp
+	sub $sp $sp 4
+	# store $sp to $fp
+	sw $fp 0($sp)
+	# subtract 4 from $sp
+	sub $sp $sp 4
+	# store $sp to $a0
+	sw $a0 0($sp)
+	# subtract 0 from $sp and store the result to $fp
+	sub $fp $sp 0
+	# move $fp to $sp
+	move $sp $fp
+	# End Prologue
+	# constant boolean expression
+	li $v0 0
+	# Start Epilogue
+	# add 0 to $fp and store the result to $sp
+	add $sp $fp 0
+	# load $sp to $a0
+	lw $a0 0($sp)
+	# add 4 to $sp
+	add $sp $sp 4
+	# load $sp to $fp
+	lw $fp 0($sp)
+	# add 4 to $sp
+	add $sp $sp 4
+	# load $sp to $ra
+	lw $ra 0($sp)
+	# add 4 to $sp
+	add $sp $sp 4
+	# move $fp to $sp
+	move $sp $fp
+	jr $ra
+	# End Epilogue
