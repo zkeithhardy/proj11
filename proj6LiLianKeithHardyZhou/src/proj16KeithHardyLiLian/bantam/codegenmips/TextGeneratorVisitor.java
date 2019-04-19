@@ -406,23 +406,29 @@ public class TextGeneratorVisitor extends Visitor {
      */
     public Object visit(DispatchExpr node) {
         String type;
+        this.assemblySupport.genComment("move v0 to a0");
+        this.assemblySupport.genMove("$a0","$v0");
         if (node.getRefExpr() == null || ((node.getRefExpr() instanceof VarExpr) && //local var or field of "this"
                 ((VarExpr) node.getRefExpr()).getName().equals("this"))) {
             type = this.currentClass;
+            this.assemblySupport.genComment("access dispatch_table");
+            this.assemblySupport.genLoadAddr("$v0",type + "_dispatch_table");
         }
         else if ((node.getRefExpr() instanceof VarExpr) &&
                 ((VarExpr) node.getRefExpr()).getName().equals("super")) {
             type = this.classMap.get(this.currentClass).getParent().getName();
+
+            this.assemblySupport.genComment("access dispatch_table");
+            this.assemblySupport.genLoadAddr("$v0",type + "_dispatch_table");
         }else{
             node.getRefExpr().accept(this);
             type = node.getRefExpr().getExprType();
+            Location location = (Location) this.currentSymbolTable.lookup(((VarExpr)node.getRefExpr()).getName());
+            this.assemblySupport.genComment("load ref dispatch table into v0");
+            this.assemblySupport.genLoadWord("$v0",location.getOffset(),location.getBaseReg());
+            this.assemblySupport.genLoadWord("$v0",8,"$v0");
         }
 
-        this.assemblySupport.genComment("move v0 to a0");
-        this.assemblySupport.genMove("$a0","$v0");
-
-        this.assemblySupport.genComment("access " + type +"_dispatch_table");
-        this.assemblySupport.genLoadAddr("$v0",type + "_dispatch_table");
         ArrayList currentDispatchTable = this.dispatchTableMap.get(type);
         int idx = currentDispatchTable.indexOf(node.getMethodName());
         this.assemblySupport.genComment("load method address");
@@ -562,18 +568,6 @@ public class TextGeneratorVisitor extends Visitor {
             location = (Location) currentSymbolTable.lookup(varName,
                     currentClassFieldLevel - 1);
             this.assemblySupport.genStoreWord("$v0", location.getOffset(),location.getBaseReg());
-
-        }
-        else { // refName is not "this" or "super" or varName is not "length" for an array
-            this.assemblySupport.genComment("case where the reference name is user define field that is not lenght");
-            Location refVarLocation = (Location) currentSymbolTable.lookup(refName);
-            SymbolTable currentSymbolTable = this.classMap.get(this.currentClass).getVarSymbolTable();
-            String varType = (String) currentSymbolTable.lookup(refName);
-            location = (Location) this.classSymbolTables.get(varType).lookup(varName);
-
-            this.assemblySupport.genComment("storing a field from an object");
-            this.assemblySupport.genLoadWord("$a0",refVarLocation.getOffset(),refVarLocation.getBaseReg());
-            this.assemblySupport.genStoreWord("$v0",location.getOffset(),"$a0");
         }
         this.assemblySupport.genLoadWord("$a0",0,"$sp");
         this.assemblySupport.genAdd("$sp","$sp", 4);
@@ -841,6 +835,7 @@ public class TextGeneratorVisitor extends Visitor {
     }
 
 
+
     /**
      * Visit a unary negation expression node
      *
@@ -850,7 +845,28 @@ public class TextGeneratorVisitor extends Visitor {
     public Object visit(UnaryNegExpr node) {
         this.assemblySupport.genComment("negation");
         node.getExpr().accept(this);
+        Location location = null;
+        String varName =((VarExpr) node.getExpr()).getName();
+
+        if(((VarExpr) node.getExpr()).getRef() == null){
+            this.assemblySupport.genComment("case where the reference object is null");
+            location = (Location) currentSymbolTable.lookup(varName);
+        }
+
+        else if (((VarExpr)((VarExpr) node.getExpr()).getRef()).getName().equals("this")) {
+            this.assemblySupport.genComment("case where the reference object is /this./");
+            location = (Location) currentSymbolTable.lookup(varName, currentClassFieldLevel);
+
+        }
+
+        else if (((VarExpr)((VarExpr) node.getExpr()).getRef()).getName().equals("super")) {
+            this.assemblySupport.genComment("case where the reference object is /.super/");
+            location = (Location) currentSymbolTable.lookup(varName,
+                    currentClassFieldLevel - 1);
+
+        }
         this.assemblySupport.genSub("$v0","$zero","$v0");
+        this.assemblySupport.genStoreWord("$v0",location.getOffset(),location.getBaseReg());
         return null;
     }
 
@@ -863,8 +879,29 @@ public class TextGeneratorVisitor extends Visitor {
     public Object visit(UnaryNotExpr node) {
         node.getExpr().accept(this);
         this.assemblySupport.genComment("unary not expression");
+        Location location = null;
+        String varName =((VarExpr) node.getExpr()).getName();
+
+        if(((VarExpr) node.getExpr()).getRef() == null){
+            this.assemblySupport.genComment("case where the reference object is null");
+            location = (Location) currentSymbolTable.lookup(varName);
+        }
+
+        else if (((VarExpr)((VarExpr) node.getExpr()).getRef()).getName().equals("this")) {
+            this.assemblySupport.genComment("case where the reference object is /this./");
+            location = (Location) currentSymbolTable.lookup(varName, currentClassFieldLevel);
+
+        }
+
+        else if (((VarExpr)((VarExpr) node.getExpr()).getRef()).getName().equals("super")) {
+            this.assemblySupport.genComment("case where the reference object is /.super/");
+            location = (Location) currentSymbolTable.lookup(varName,
+                    currentClassFieldLevel - 1);
+
+        }
         this.assemblySupport.genAdd("$v0","$v0",1);
         this.assemblySupport.genMul("$v0","$v0",-1);
+        this.assemblySupport.genStoreWord("$v0",location.getOffset(),location.getBaseReg());
         return null;
     }
 
@@ -877,7 +914,28 @@ public class TextGeneratorVisitor extends Visitor {
     public Object visit(UnaryIncrExpr node) {
         this.assemblySupport.genComment("increment");
         node.getExpr().accept(this);
+        Location location = null;
+        String varName =((VarExpr) node.getExpr()).getName();
+
+        if(((VarExpr) node.getExpr()).getRef() == null){
+            this.assemblySupport.genComment("case where the reference object is null");
+            location = (Location) currentSymbolTable.lookup(varName);
+        }
+
+        else if (((VarExpr)((VarExpr) node.getExpr()).getRef()).getName().equals("this")) {
+            this.assemblySupport.genComment("case where the reference object is /this./");
+            location = (Location) currentSymbolTable.lookup(varName, currentClassFieldLevel);
+
+        }
+
+        else if (((VarExpr)((VarExpr) node.getExpr()).getRef()).getName().equals("super")) {
+            this.assemblySupport.genComment("case where the reference object is /.super/");
+            location = (Location) currentSymbolTable.lookup(varName,
+                    currentClassFieldLevel - 1);
+
+        }
         this.assemblySupport.genAdd("$v0","$v0",1);
+        this.assemblySupport.genStoreWord("$v0",location.getOffset(),location.getBaseReg());
         return null;
     }
 
@@ -890,7 +948,28 @@ public class TextGeneratorVisitor extends Visitor {
     public Object visit(UnaryDecrExpr node) {
         this.assemblySupport.genComment("decrement");
         node.getExpr().accept(this);
+        Location location = null;
+        String varName =((VarExpr) node.getExpr()).getName();
+
+        if(((VarExpr) node.getExpr()).getRef() == null){
+            this.assemblySupport.genComment("case where the reference object is null");
+            location = (Location) currentSymbolTable.lookup(varName);
+        }
+
+        else if (((VarExpr)((VarExpr) node.getExpr()).getRef()).getName().equals("this")) {
+            this.assemblySupport.genComment("case where the reference object is /this./");
+            location = (Location) currentSymbolTable.lookup(varName, currentClassFieldLevel);
+
+        }
+
+        else if (((VarExpr)((VarExpr) node.getExpr()).getRef()).getName().equals("super")) {
+            this.assemblySupport.genComment("case where the reference object is /.super/");
+            location = (Location) currentSymbolTable.lookup(varName,
+                    currentClassFieldLevel - 1);
+
+        }
         this.assemblySupport.genSub("$v0","$v0",1);
+        this.assemblySupport.genStoreWord("$v0",location.getOffset(),location.getBaseReg());
         return null;
     }
 

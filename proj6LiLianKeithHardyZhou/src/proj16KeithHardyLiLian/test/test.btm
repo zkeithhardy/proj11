@@ -5,6 +5,7 @@ class Main {
 	var y = x;
 	
 	return y; 
+	
     }
     boolean equals(Object o) { return true; }
     String toString() { return "Main"; }
