@@ -685,7 +685,7 @@ public class TypeCheckerVisitor extends Visitor
                 ClassTreeNode refType = currentClass.lookupClass(refTypeName);
                 SymbolTable refTable = refType.getVarSymbolTable();
                 int refFieldLevel = getClassFieldLevel(refType);
-                varType = (String) refTable.lookup(varName, refFieldLevel-1); //check if it is a field
+                varType = (String) refTable.lookup(varName, refFieldLevel); //check if it is a field
             }
         }
 

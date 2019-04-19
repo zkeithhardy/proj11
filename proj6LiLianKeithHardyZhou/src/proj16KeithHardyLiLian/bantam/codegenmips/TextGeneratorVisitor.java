@@ -971,8 +971,21 @@ public class TextGeneratorVisitor extends Visitor {
             SymbolTable currentSymbolTable = this.classMap.get(this.currentClass).getVarSymbolTable();
             String varType = (String) currentSymbolTable.lookup(((VarExpr) node.getRef()).getName());
             location = (Location) this.classSymbolTables.get(varType).lookup(varName);
-            this.assemblySupport.genComment("loading a field from an object");
-            this.assemblySupport.genLoadWord("$a0",refVarLocation.getOffset(),refVarLocation.getBaseReg());
+            this.assemblySupport.genComment("load to $v0 temporarily");
+            this.assemblySupport.genLoadWord("$v0",refVarLocation.getOffset(),refVarLocation.getBaseReg());
+            //check for null pointer
+            String nullError = this.assemblySupport.getLabel();
+            String afterError = this.assemblySupport.getLabel();
+            this.assemblySupport.genComment("check for null pointer errors");
+            this.assemblySupport.genComment("if $v0 == 0, branch to nullError");
+            this.assemblySupport.genCondBeq("$zero", "$v0", nullError);
+            this.assemblySupport.genUncondBr(afterError);
+            this.assemblySupport.genLabel(nullError);
+            this.assemblySupport.genDirCall("_null_pointer_error");
+            this.assemblySupport.genLabel(afterError);
+            this.assemblySupport.genComment("move $v0 to $a0");
+            this.assemblySupport.genMove("$a0", "$v0");
+            this.assemblySupport.genComment("load ("+location.getOffset()+")$a0 to $v0");
             this.assemblySupport.genLoadWord("$v0",location.getOffset(),"$a0");
         }
         this.assemblySupport.genLoadWord("$a0",0,"$sp");

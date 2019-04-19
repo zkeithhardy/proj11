@@ -1,13 +1,16 @@
 class Main {
     int x = 3;
     int y;
+
+    SubMain m;
+
     int foo(int x) {
 	var y = x;
 	
 	return y; 
     }
     boolean equals(Object o) { return true; }
-    String toString() { return "Main"; }
+    String toString(String a) { return "Main"; }
     void main() {
 	var x = 3;
 	if(x < 4){
@@ -15,11 +18,13 @@ class Main {
 	    y++;
 	    y = y / 3;
 	}
+	var a = m.z;
+	var s = toString(a);
     }
 }
 class SubMain extends Main {
-    String y = "dskrien";
-    int z;
+    String f = "dskrien";
+    String z;
     int foo(int x) { return 1; }
     boolean equals(Object o) { return false; }
 
