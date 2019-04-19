@@ -34,7 +34,6 @@ import proj16KeithHardyLiLian.bantam.semant.StringConstantsVisitor;
 import proj16KeithHardyLiLian.bantam.util.*;
 import proj16KeithHardyLiLian.bantam.util.Error;
 
-import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
@@ -86,8 +85,6 @@ public class MipsCodeGenerator
     private ErrorHandler errorHandler;
 
     private Hashtable<String,ClassTreeNode> classMap;
-
-    private HashMap<String, ArrayList<String>> userDefinedMethodsMap;
 
     private HashMap<String, ArrayList<String>> dispatchTableMap = new HashMap<>();
 
@@ -176,8 +173,6 @@ public class MipsCodeGenerator
         this.generateClassNameTable(classNames);
         // Step 5
         this.generateObjectTemplates(classNames);
-
-        this.userDefinedMethodsMap = new HashMap<>();
         // Step 6
         this.generateDispatchTables(classNames);
 
@@ -355,18 +350,6 @@ public class MipsCodeGenerator
             for(Map.Entry<String,String> methodEntry: methodNames.entrySet()){
                 this.assemblySupport.genWord(methodEntry.getValue()+ "." + methodEntry.getKey());
             }
-
-            //this part is to get all of the unique user defined methods for each class to create the inits.
-            //easiest to do it here where we have access to the hashmap of method names.
-            if(!Arrays.asList(builtIns).contains(entry.getKey())){
-                ArrayList<String> userDefinedMethods = new ArrayList<>();
-                for(Map.Entry<String, String> e: methodNames.entrySet()){
-                    if(e.getValue().equals(entry.getKey()))
-                        userDefinedMethods.add(e.getKey());
-                }
-                this.userDefinedMethodsMap.put(entry.getKey(), userDefinedMethods);
-            }
-
         }
 
         this.out.println();

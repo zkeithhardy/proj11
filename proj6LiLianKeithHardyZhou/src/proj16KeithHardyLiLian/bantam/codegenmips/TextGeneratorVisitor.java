@@ -80,25 +80,7 @@ public class TextGeneratorVisitor extends Visitor {
         this.currentSymbolTable = classSymbolTables.get(this.currentClass);
 
         if(initOrGenMethods.equals("init")) {
-//            this.assemblySupport.genComment("save $a0 onto stack");
-//            this.assemblySupport.genComment("subtract 4 from $sp");
-//            this.assemblySupport.genSub("$sp", "$sp", 4);
-//            this.assemblySupport.genComment("store $a0 to $sp
-//
-//
-//
-// ");
-//            this.assemblySupport.genStoreWord("$a0", 0, "$sp");
-
-//            String parentName = this.classMap.get(currentClass).getParent().getName();
-//            this.assemblySupport.genLoadAddr("$a0", parentName + "_template");
             this.currentSymbolTable.add("super", new Location("$a0", 0));
-
-//            this.assemblySupport.genComment("restore $a0");
-//            this.assemblySupport.genComment("load $sp to $a0");
-//            this.assemblySupport.genLoadWord("$a0", 0, "$sp");
-//            this.assemblySupport.genComment("add 4 to $sp");
-//            this.assemblySupport.genAdd("$sp", "$sp", 4);
 
             this.currentSymbolTable.enterScope();
 
@@ -410,8 +392,7 @@ public class TextGeneratorVisitor extends Visitor {
      */
     public Object visit(DispatchExpr node) {
         String type;
-        this.assemblySupport.genComment("move v0 to a0");
-        this.assemblySupport.genMove("$a0","$v0");
+
         if (node.getRefExpr() == null || ((node.getRefExpr() instanceof VarExpr) && //local var or field of "this"
                 ((VarExpr) node.getRefExpr()).getName().equals("this"))) {
             type = this.currentClass;
@@ -427,9 +408,6 @@ public class TextGeneratorVisitor extends Visitor {
         }else{
             node.getRefExpr().accept(this);
             type = node.getRefExpr().getExprType();
-            Location location = (Location) this.currentSymbolTable.lookup(((VarExpr)node.getRefExpr()).getName());
-            this.assemblySupport.genComment("load ref dispatch table into v0");
-            this.assemblySupport.genLoadWord("$v0",location.getOffset(),location.getBaseReg());
             this.assemblySupport.genLoadWord("$v0",8,"$v0");
         }
 
@@ -567,6 +545,7 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(AssignExpr node) {
+        // todo add comments
         Location location;
         String varName = node.getName();
         String refName = node.getRefName();
@@ -1013,6 +992,7 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(VarExpr node) {
+        //todo more comments
         this.assemblySupport.genComment("var expression");
         Location location = null;
         String varName = node.getName();
