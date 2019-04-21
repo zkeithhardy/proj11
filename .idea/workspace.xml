@@ -12,7 +12,10 @@
       <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/codegenmips/MipsCodeGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/codegenmips/MipsCodeGenerator.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/codegenmips/TextGeneratorVisitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/codegenmips/TextGeneratorVisitor.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/semant/NumLocalVarsVisitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/semant/NumLocalVarsVisitor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/bantam/codegenmips/MipsCodeGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/bantam/codegenmips/MipsCodeGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/bantam/codegenmips/TextGeneratorVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/bantam/codegenmips/TextGeneratorVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/test/test.asm" beforeDir="false" afterPath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/test/test.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/test/test.btm" beforeDir="false" afterPath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/test/test.btm" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,22 +27,23 @@
     <session id="-402954254">
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="1002" />
-          <entry key="txt" value="133" />
+          <entry key="java" value="1031" />
+          <entry key="txt" value="165" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="1002" />
-          <entry key="PLAIN_TEXT" value="133" />
+          <entry key="JAVA" value="1031" />
+          <entry key="PLAIN_TEXT" value="165" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="3" />
           <entry key="project.open.time.7" value="1" />
           <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.open.time.9" value="1" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -61,8 +65,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/bantam/codegenmips/MipsCodeGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="737">
-              <caret line="219" column="58" selection-start-line="219" selection-start-column="58" selection-end-line="219" selection-end-column="58" />
+            <state relative-caret-position="-3066">
+              <caret line="203" column="26" selection-start-line="203" selection-start-column="26" selection-end-line="203" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -73,8 +77,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/bantam/codegenmips/TextGeneratorVisitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-8671">
-              <caret line="572" column="47" selection-start-line="572" selection-start-column="41" selection-end-line="572" selection-end-column="47" />
+            <state relative-caret-position="207">
+              <caret line="126" column="48" selection-start-line="126" selection-start-column="48" selection-end-line="126" selection-end-column="48" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -85,17 +89,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/bantam/ast/AssignExpr.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
+            <state relative-caret-position="272">
               <caret line="40" column="13" selection-start-line="40" selection-start-column="13" selection-end-line="40" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/bantam/codegenmips/exceptions.s">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-334">
-              <caret line="1710" column="11" selection-start-line="1710" selection-start-column="1" selection-end-line="1710" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -115,8 +110,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/bantam/codegenmips/MipsSupport.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="392">
-              <caret line="464" column="33" selection-start-line="464" selection-start-column="25" selection-end-line="464" selection-end-column="33" />
+            <state relative-caret-position="-294">
+              <caret line="35" column="47" selection-start-line="35" selection-start-column="37" selection-end-line="35" selection-end-column="47" />
             </state>
           </provider>
         </entry>
@@ -124,7 +119,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/bantam/semant/TypeCheckerVisitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
+            <state relative-caret-position="10625">
               <caret line="640" column="30" selection-start-line="640" selection-start-column="24" selection-end-line="640" selection-end-column="30" />
             </state>
           </provider>
@@ -162,7 +157,14 @@
       <find>store</find>
       <find>varExp</find>
       <find>error_hand</find>
+      <find>print_string</find>
+      <find>li $v0 1</find>
+      <find>syscall</find>
+      <find>userDefinedMet</find>
       <find>assign</find>
+      <find>&quot;$a0&quot;</find>
+      <find>$a0</find>
+      <find>gensyscall</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -172,9 +174,9 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/bantam/codegenmips/FieldValueVisitor.java" />
+        <option value="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/bantam/semant/TypeCheckerVisitor.java" />
         <option value="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/bantam/codegenmips/MipsCodeGenerator.java" />
         <option value="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/bantam/codegenmips/TextGeneratorVisitor.java" />
-        <option value="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/bantam/semant/TypeCheckerVisitor.java" />
       </list>
     </option>
   </component>
@@ -189,6 +191,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -270,9 +275,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -281,119 +283,6 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-  </component>
-  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
-    <UpdatedFiles>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Updated from server" />
-        <option name="myStatusName" value="Changed on server" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="CHANGED_ON_SERVER" />
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Updated" />
-          <option name="myStatusName" value="Changed" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/codegenmips/TextGeneratorVisitor.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/test/test.asm</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/test/test.btm</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/bantam/codegenmips/TextGeneratorVisitor.java</PATH>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Created" />
-          <option name="myStatusName" value="Created" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="CREATED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Deleted" />
-          <option name="myStatusName" value="Deleted" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="true" />
-          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Restored" />
-          <option name="myStatusName" value="Will be restored" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="RESTORED" />
-        </FILE-GROUP>
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Modified" />
-        <option name="myStatusName" value="Modified" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MODIFIED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Skipped" />
-        <option name="myStatusName" value="Skipped" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SKIPPED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with conflicts" />
-        <option name="myStatusName" value="Will be merged with conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_CONFLICTS" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with tree conflicts" />
-        <option name="myStatusName" value="Merged with tree conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with property conflicts" />
-        <option name="myStatusName" value="Will be merged with property conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged" />
-        <option name="myStatusName" value="Will be merged" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Not in repository" />
-        <option name="myStatusName" value="Not in repository" />
-        <option name="mySupportsDeletion" value="true" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="UNKNOWN" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally added" />
-        <option name="myStatusName" value="Locally added" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_ADDED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally removed" />
-        <option name="myStatusName" value="Locally removed" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_REMOVED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Switched" />
-        <option name="myStatusName" value="Switched" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SWITCHED" />
-      </FILE-GROUP>
-    </UpdatedFiles>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -462,14 +351,28 @@
       <option name="project" value="LOCAL" />
       <updated>1555633627889</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="fixed bugs">
+      <created>1555636546152</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1555636546152</updated>
+    </task>
+    <task id="LOCAL-00006" summary="minor changes">
+      <created>1555637755344</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1555637755344</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.30738255" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.31208053" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -478,14 +381,14 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32765958" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32765958" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="9" visible="true" weight="0.17021276" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.17021276" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.3286119" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -506,7 +409,9 @@
     <MESSAGE value="fixed arith expr" />
     <MESSAGE value="added prologues and epilogues to inits" />
     <MESSAGE value="work on unary expressions, dispatch, assign, var" />
-    <option name="LAST_COMMIT_MESSAGE" value="work on unary expressions, dispatch, assign, var" />
+    <MESSAGE value="fixed bugs" />
+    <MESSAGE value="minor changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="minor changes" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj15KeithHardyLiLian/MIPSCodeArea.java" />
@@ -633,16 +538,6 @@
     <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/test/test.asm">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/ToolbarController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3706">
-          <caret line="260" column="46" selection-start-line="260" selection-start-column="46" selection-end-line="260" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/bantam/semant/NumLocalVarsVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="850">
@@ -657,48 +552,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/bantam/codegenmips/MipsCodeGenerator.java">
+    <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/bantam/ast/AssignExpr.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="737">
-          <caret line="219" column="58" selection-start-line="219" selection-start-column="58" selection-end-line="219" selection-end-column="58" />
+        <state relative-caret-position="272">
+          <caret line="40" column="13" selection-start-line="40" selection-start-column="13" selection-end-line="40" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/bantam/codegenmips/exceptions.s">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46563">
+          <caret line="2739" column="12" selection-start-line="2739" selection-start-column="4" selection-end-line="2739" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/ToolbarController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3706">
+          <caret line="260" column="46" selection-start-line="260" selection-start-column="46" selection-end-line="260" selection-end-column="46" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/bantam/codegenmips/MipsSupport.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="464" column="33" selection-start-line="464" selection-start-column="25" selection-end-line="464" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/bantam/semant/TypeCheckerVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
+        <state relative-caret-position="10625">
           <caret line="640" column="30" selection-start-line="640" selection-start-column="24" selection-end-line="640" selection-end-column="30" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/bantam/codegenmips/exceptions.s">
+    <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/bantam/codegenmips/MipsSupport.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-334">
-          <caret line="1710" column="11" selection-start-line="1710" selection-start-column="1" selection-end-line="1710" selection-end-column="11" />
+        <state relative-caret-position="-294">
+          <caret line="35" column="47" selection-start-line="35" selection-start-column="37" selection-end-line="35" selection-end-column="47" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/bantam/ast/AssignExpr.java">
+    <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/bantam/codegenmips/MipsCodeGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="40" column="13" selection-start-line="40" selection-start-column="13" selection-end-line="40" selection-end-column="13" />
+        <state relative-caret-position="-3066">
+          <caret line="203" column="26" selection-start-line="203" selection-start-column="26" selection-end-line="203" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/bantam/codegenmips/TextGeneratorVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-8671">
-          <caret line="572" column="47" selection-start-line="572" selection-start-column="41" selection-end-line="572" selection-end-column="47" />
+        <state relative-caret-position="207">
+          <caret line="126" column="48" selection-start-line="126" selection-start-column="48" selection-end-line="126" selection-end-column="48" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

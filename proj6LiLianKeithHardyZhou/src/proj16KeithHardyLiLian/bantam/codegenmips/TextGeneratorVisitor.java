@@ -124,7 +124,7 @@ public class TextGeneratorVisitor extends Visitor {
             this.assemblySupport.genComment("store the field "+4*fieldCount+" away from $a0 to $v0");
             this.assemblySupport.genStoreWord("$v0", 4*fieldCount, "$a0");
         }
-        Location fieldLocation= new Location("$v0", 4*fieldCount);
+        Location fieldLocation= new Location("$a0", 4*fieldCount);
         classSymbolTables.get(currentClass).add(node.getName(), fieldLocation);
         fieldCount+=1;
         return null;
@@ -627,7 +627,7 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genComment("gen right side of expression");
         node.getRightExpr().accept(this);
         this.assemblySupport.genComment("compare left and right sides of expression");
-        this.out.println("\tslt $v0 $v0 $v1");
+        this.out.println("\tslt $v0 $v1 $v0");
         this.assemblySupport.genSub("$v0","$zero","$v0");
         return null;
     }
@@ -646,7 +646,7 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genComment("gen right side of expression");
         node.getRightExpr().accept(this);
         this.assemblySupport.genComment("compare left and right sides of expression");
-        this.out.println("\tsle $v0 $v0 $v1");
+        this.out.println("\tsle $v0 $v1 $v0");
         this.assemblySupport.genSub("$v0","$zero","$v0");
         return null;
     }
@@ -665,7 +665,7 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genComment("gen right side of expression");
         node.getRightExpr().accept(this);
         this.assemblySupport.genComment("compare left and right sides of expression");
-        this.out.println("\tsgt $v0 $v0 $v1");
+        this.out.println("\tsgt $v0 $v1 $v0");
         this.assemblySupport.genSub("$v0","$zero","$v0");
         return null;
     }
@@ -1000,9 +1000,6 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genStoreWord("$a0",0,"$sp");
 
         this.assemblySupport.genComment("accept the reference object and save its location $v0");
-        if (node.getRef() != null) {
-            node.getRef().accept(this);
-        }
 
         if(node.getRef() == null){
             this.assemblySupport.genComment("case where the reference object is null");
@@ -1027,6 +1024,7 @@ public class TextGeneratorVisitor extends Visitor {
 
         }
         else { // ref is not null, "this", or "super"
+            node.getRef().accept(this);
             this.assemblySupport.genComment("case where the reference object is user defined class");
             String refTypeName = node.getRef().getExprType();
 

@@ -218,7 +218,6 @@ public class MipsCodeGenerator
 
         textGeneratorVisitor.generateTextSection(rootAST);
 
-
     }
 
     private void genIDTable(){
