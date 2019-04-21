@@ -157,19 +157,19 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genComment("subtract 4 from $sp");
         this.assemblySupport.genSub("$sp","$sp", 4);
 
-        this.assemblySupport.genComment("store $sp to $ra");
+        this.assemblySupport.genComment("store $ra to $sp");
         this.assemblySupport.genStoreWord("$ra",0,"$sp");
 
         this.assemblySupport.genComment("subtract 4 from $sp");
         this.assemblySupport.genSub("$sp","$sp", 4);
 
-        this.assemblySupport.genComment("store $sp to $fp");
+        this.assemblySupport.genComment("store $fp to $sp");
         this.assemblySupport.genStoreWord("$fp",0,"$sp");
 
         this.assemblySupport.genComment("subtract 4 from $sp");
         this.assemblySupport.genSub("$sp", "$sp", 4);
 
-        this.assemblySupport.genComment("store $sp to $a0");
+        this.assemblySupport.genComment("store $a0 to $sp");
         this.assemblySupport.genStoreWord("$a0",0,"$sp");
 
         this.assemblySupport.genComment("subtract "+4*methodLocalVars+" from $sp and store the result to $fp");
@@ -246,7 +246,7 @@ public class TextGeneratorVisitor extends Visitor {
      */
     public Object visit(DeclStmt node) {
         node.getInit().accept(this);
-        this.assemblySupport.genComment("store ("+numLocalVars*4+")$fp to $v0");
+        this.assemblySupport.genComment("store $v0 to ("+numLocalVars*4+")$fp");
         this.assemblySupport.genStoreWord("$v0",numLocalVars*4,"$fp");
         this.currentSymbolTable.add(node.getName(),new Location("$fp",numLocalVars*4));
         numLocalVars += 1;

@@ -1,5 +1,5 @@
 #Authors: Zeb Keith-Hardy, Michael Li, Iris Lian
-#Date: 2019-04-18
+#Date: 2019-04-21
 #Compiled From Source: test.btm
 	.data
 	.globl	gc_flag
@@ -445,20 +445,26 @@ Main.foo:
 	move $sp $fp
 	# End Prologue
 	# var expression
+	# subtract stack pointer with 4
 	sub $sp $sp 4
+	# save value in $a0 to stack pointer with 0 offset
 	sw $a0 0($sp)
 	# accept the reference object and save its location $v0
 	# case where the reference object is null
+	# load (20)$fp to $v0 
 	lw $v0 20($fp)
 	lw $a0 0($sp)
 	add $sp $sp 4
 	# store (4)$fp to $v0
 	sw $v0 4($fp)
 	# var expression
+	# subtract stack pointer with 4
 	sub $sp $sp 4
+	# save value in $a0 to stack pointer with 0 offset
 	sw $a0 0($sp)
 	# accept the reference object and save its location $v0
 	# case where the reference object is null
+	# load (4)$fp to $v0 
 	lw $v0 4($fp)
 	lw $a0 0($sp)
 	add $sp $sp 4
@@ -586,10 +592,13 @@ Main.main:
 	sw $v0 0($fp)
 	# gen left side of expression
 	# var expression
+	# subtract stack pointer with 4
 	sub $sp $sp 4
+	# save value in $a0 to stack pointer with 0 offset
 	sw $a0 0($sp)
 	# accept the reference object and save its location $v0
 	# case where the reference object is null
+	# load (0)$fp to $v0 
 	lw $v0 0($fp)
 	lw $a0 0($sp)
 	add $sp $sp 4
@@ -605,28 +614,38 @@ Main.main:
 	beq $v0 $zero label1
 label0:
 	# constant int expression
-	li $v0 3
+	li $v0 8
 	# store (4)$fp to $v0
 	sw $v0 4($fp)
 	# increment
 	# var expression
+	# subtract stack pointer with 4
 	sub $sp $sp 4
+	# save value in $a0 to stack pointer with 0 offset
 	sw $a0 0($sp)
 	# accept the reference object and save its location $v0
 	# case where the reference object is null
+	# load (4)$fp to $v0 
 	lw $v0 4($fp)
 	lw $a0 0($sp)
 	add $sp $sp 4
+	# case where the reference object is null
 	add $v0 $v0 1
+	sw $v0 4($fp)
 	# assign expr
+	# subtrack 4 from the the stack pointer
 	sub $sp $sp 4
+	# save $a0 to stack pointer with offset of 0
 	sw $a0 0($sp)
 	# gen left side of expression
 	# var expression
+	# subtract stack pointer with 4
 	sub $sp $sp 4
+	# save value in $a0 to stack pointer with 0 offset
 	sw $a0 0($sp)
 	# accept the reference object and save its location $v0
 	# case where the reference object is null
+	# load (4)$fp to $v0 
 	lw $v0 4($fp)
 	lw $a0 0($sp)
 	add $sp $sp 4
@@ -650,26 +669,33 @@ label3:
 label4:
 	# case where the reference name is null
 	sw $v0 4($fp)
+	# save stack pointer result to $a0
 	lw $a0 0($sp)
+	# add stack pointer with 4
 	add $sp $sp 4
 	# unconditional branch to label2
 	b label2
 label1:
 label2:
 	# var expression
+	# subtract stack pointer with 4
 	sub $sp $sp 4
+	# save value in $a0 to stack pointer with 0 offset
 	sw $a0 0($sp)
 	# accept the reference object and save its location $v0
 	# var expression
+	# subtract stack pointer with 4
 	sub $sp $sp 4
+	# save value in $a0 to stack pointer with 0 offset
 	sw $a0 0($sp)
 	# accept the reference object and save its location $v0
 	# case where the reference object is null
+	# load (20)$v0 to $v0 
 	lw $v0 20($v0)
 	lw $a0 0($sp)
 	add $sp $sp 4
 	# case where the reference object is user defined class
-	# load to $v0 temporarily
+	# load (16)$v0 to $v0 
 	lw $v0 20($v0)
 	# check for null pointer errors
 	# if $v0 == 0, branch to nullError
@@ -686,24 +712,25 @@ label6:
 	add $sp $sp 4
 	# store (8)$fp to $v0
 	sw $v0 8($fp)
-	# move v0 to a0
-	move $a0 $v0
-	# access Main_dispatch_table
+	# access dispatch_table
 	la $v0 Main_dispatch_table
 	# load method address
 	lw $a1 8($v0)
 	# var expression
+	# subtract stack pointer with 4
 	sub $sp $sp 4
+	# save value in $a0 to stack pointer with 0 offset
 	sw $a0 0($sp)
 	# accept the reference object and save its location $v0
 	# case where the reference object is null
+	# load (8)$fp to $v0 
 	lw $v0 8($fp)
 	lw $a0 0($sp)
 	add $sp $sp 4
 	# save parameters on stack
 	# subtract 4 from $sp
 	sub $sp $sp 4
-	# store $sp to $v0
+	# store $v0 to $sp
 	sw $v0 0($sp)
 	jalr $a1
 	# store (12)$fp to $v0

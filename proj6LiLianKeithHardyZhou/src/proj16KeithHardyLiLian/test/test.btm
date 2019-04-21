@@ -15,7 +15,7 @@ class Main {
     void main() {
 	var x = 3;
 	if(x < 4){
-	    var y = 3;
+	    var y = 8;
 	    y++;
 	    y = y / 3;
 	}
