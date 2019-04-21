@@ -157,19 +157,19 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genComment("subtract 4 from $sp");
         this.assemblySupport.genSub("$sp","$sp", 4);
 
-        this.assemblySupport.genComment("store $sp to $ra");
+        this.assemblySupport.genComment("store $ra to $sp");
         this.assemblySupport.genStoreWord("$ra",0,"$sp");
 
         this.assemblySupport.genComment("subtract 4 from $sp");
         this.assemblySupport.genSub("$sp","$sp", 4);
 
-        this.assemblySupport.genComment("store $sp to $fp");
+        this.assemblySupport.genComment("store $fp to $sp");
         this.assemblySupport.genStoreWord("$fp",0,"$sp");
 
         this.assemblySupport.genComment("subtract 4 from $sp");
         this.assemblySupport.genSub("$sp", "$sp", 4);
 
-        this.assemblySupport.genComment("store $sp to $a0");
+        this.assemblySupport.genComment("store $a0 to $sp");
         this.assemblySupport.genStoreWord("$a0",0,"$sp");
 
         this.assemblySupport.genComment("subtract "+4*methodLocalVars+" from $sp and store the result to $fp");
@@ -246,7 +246,7 @@ public class TextGeneratorVisitor extends Visitor {
      */
     public Object visit(DeclStmt node) {
         node.getInit().accept(this);
-        this.assemblySupport.genComment("store ("+numLocalVars*4+")$fp to $v0");
+        this.assemblySupport.genComment("store $v0 to ("+numLocalVars*4+")$fp");
         this.assemblySupport.genStoreWord("$v0",numLocalVars*4,"$fp");
         this.currentSymbolTable.add(node.getName(),new Location("$fp",numLocalVars*4));
         numLocalVars += 1;
@@ -545,12 +545,13 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(AssignExpr node) {
-        // todo add comments
         Location location;
         String varName = node.getName();
         String refName = node.getRefName();
         this.assemblySupport.genComment("assign expr");
+        this.assemblySupport.genComment("subtrack 4 from the the stack pointer");
         this.assemblySupport.genSub("$sp","$sp",4);
+        this.assemblySupport.genComment("save $a0 to stack pointer with offset of 0");
         this.assemblySupport.genStoreWord("$a0",0,"$sp");
         node.getExpr().accept(this);
 
@@ -570,7 +571,9 @@ public class TextGeneratorVisitor extends Visitor {
                     currentClassFieldLevel - 1);
             this.assemblySupport.genStoreWord("$v0", location.getOffset(),location.getBaseReg());
         }
+        this.assemblySupport.genComment("save stack pointer result to $a0");
         this.assemblySupport.genLoadWord("$a0",0,"$sp");
+        this.assemblySupport.genComment("add stack pointer with 4");
         this.assemblySupport.genAdd("$sp","$sp", 4);
         return null;
     }
@@ -992,11 +995,12 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(VarExpr node) {
-        //todo more comments
         this.assemblySupport.genComment("var expression");
         Location location = null;
         String varName = node.getName();
+        this.assemblySupport.genComment("subtract stack pointer with 4");
         this.assemblySupport.genSub("$sp","$sp",4);
+        this.assemblySupport.genComment("save value in $a0 to stack pointer with 0 offset");
         this.assemblySupport.genStoreWord("$a0",0,"$sp");
 
         this.assemblySupport.genComment("accept the reference object and save its location $v0");
@@ -1004,6 +1008,7 @@ public class TextGeneratorVisitor extends Visitor {
         if(node.getRef() == null){
             this.assemblySupport.genComment("case where the reference object is null");
             location = (Location) currentSymbolTable.lookup(varName);
+            this.assemblySupport.genComment("load ("+ location.getOffset()+")"+ location.getBaseReg() +" to $v0 ");
             this.assemblySupport.genLoadWord("$v0",location.getOffset(),location.getBaseReg());
         }
 
@@ -1011,6 +1016,7 @@ public class TextGeneratorVisitor extends Visitor {
                 ((VarExpr) node.getRef()).getName().equals("this")) {
             this.assemblySupport.genComment("case where the reference object is /this./");
             location = (Location) currentSymbolTable.lookup(varName, currentClassFieldLevel);
+            this.assemblySupport.genComment("load ("+ location.getOffset()+")"+ location.getBaseReg() +" to $v0 ");
             this.assemblySupport.genLoadWord("$v0", location.getOffset(),location.getBaseReg());
 
         }
@@ -1020,6 +1026,7 @@ public class TextGeneratorVisitor extends Visitor {
             this.assemblySupport.genComment("case where the reference object is /.super/");
             location = (Location) currentSymbolTable.lookup(varName,
                     currentClassFieldLevel - 1);
+            this.assemblySupport.genComment("load ("+ location.getOffset()+")"+ location.getBaseReg() +" to $v0 ");
             this.assemblySupport.genLoadWord("$v0", location.getOffset(),location.getBaseReg());
 
         }
@@ -1032,7 +1039,7 @@ public class TextGeneratorVisitor extends Visitor {
             SymbolTable currentSymbolTable = this.classMap.get(this.currentClass).getVarSymbolTable();
             String varType = (String) currentSymbolTable.lookup(((VarExpr) node.getRef()).getName());
             location = (Location) this.classSymbolTables.get(varType).lookup(varName);
-            this.assemblySupport.genComment("load to $v0 temporarily");
+            this.assemblySupport.genComment("load ("+ location.getOffset()+")"+ location.getBaseReg() +" to $v0 ");
             this.assemblySupport.genLoadWord("$v0",refVarLocation.getOffset(),refVarLocation.getBaseReg());
             //check for null pointer
             String nullError = this.assemblySupport.getLabel();

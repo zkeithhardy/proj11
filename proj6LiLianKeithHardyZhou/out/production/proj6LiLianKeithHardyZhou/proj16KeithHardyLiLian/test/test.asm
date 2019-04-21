@@ -674,7 +674,7 @@ label2:
 	# check for null pointer errors
 	# if $v0 == 0, branch to nullError
 	beq $zero $v0 label5
-	b afterError
+	b label6
 label5:
 	jal _null_pointer_error
 label6:
