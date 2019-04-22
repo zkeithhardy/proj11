@@ -217,7 +217,6 @@ public class TypeCheckerVisitor extends Visitor
         if (SemanticAnalyzer.reservedIdentifiers.contains(node.getName())) {
             registerError(node,"The name of the variable is: " + node.getName() + " which is illegal.");
         }
-
         currentSymbolTable.add(node.getName(), node.getType());
         return null;
     }

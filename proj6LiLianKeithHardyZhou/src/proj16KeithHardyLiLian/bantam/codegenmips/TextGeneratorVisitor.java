@@ -1068,16 +1068,11 @@ public class TextGeneratorVisitor extends Visitor {
 
         }
         else { // ref is not null, "this", or "super"
+            //TODO: fix accepting the ref
             node.getRef().accept(this);
             this.assemblySupport.genComment("case where the reference object is user defined class");
             String refTypeName = node.getRef().getExprType();
-
-            Location refVarLocation = (Location) currentSymbolTable.lookup(((VarExpr) node.getRef()).getName());
-            SymbolTable currentSymbolTable = this.classMap.get(this.currentClass).getVarSymbolTable();
-            String varType = (String) currentSymbolTable.lookup(((VarExpr) node.getRef()).getName());
-            location = (Location) this.classSymbolTables.get(varType).lookup(varName);
-            this.assemblySupport.genComment("load ("+ location.getOffset()+")"+ location.getBaseReg() +" to $v0 ");
-            this.assemblySupport.genLoadWord("$v0",refVarLocation.getOffset(),refVarLocation.getBaseReg());
+            location = (Location) this.classSymbolTables.get(refTypeName).lookup(varName);
             //check for null pointer
             String nullError = this.assemblySupport.getLabel();
             String afterError = this.assemblySupport.getLabel();
