@@ -14,9 +14,13 @@ class Main {
 //    String toString(String a) { return "Main"; }
    // int foo(int x) { return 100; }
     void main() {
-	var y = new SubMain();
+	var y = new B();
+
+	//var z = y.x;
+	//var q = y.getX();
 	//var z  = y.foo(this.x);
 	var q = y.newSubMain().z;
+	var z = y.x;
 	
 	
 	
@@ -47,4 +51,19 @@ class SubMain extends Main {
     boolean equals(Object o) { return false; }
 
     
+}
+
+class A{
+    int x = 4;
+    int y = 2;
+
+}
+
+
+class B extends A{
+    int x = 5;
+    int z = 3;
+    int getX(){return x;}
+    SubMain newSubMain(){return new SubMain();}
+
 }
