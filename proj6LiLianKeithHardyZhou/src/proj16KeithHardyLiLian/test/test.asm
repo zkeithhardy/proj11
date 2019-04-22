@@ -147,15 +147,15 @@ Object_init:
 	# Start Prologue
 	# subtract 4 from $sp
 	sub $sp $sp 4
-	# store $sp to $ra
+	# store $ra to $sp
 	sw $ra 0($sp)
 	# subtract 4 from $sp
 	sub $sp $sp 4
-	# store $sp to $fp
+	# store $fp to $sp
 	sw $fp 0($sp)
 	# subtract 4 from $sp
 	sub $sp $sp 4
-	# store $sp to $a0
+	# store $a0 to $sp
 	sw $a0 0($sp)
 	# subtract 0 from $sp and store the result to $fp
 	sub $fp $sp 0
@@ -185,15 +185,15 @@ String_init:
 	# Start Prologue
 	# subtract 4 from $sp
 	sub $sp $sp 4
-	# store $sp to $ra
+	# store $ra to $sp
 	sw $ra 0($sp)
 	# subtract 4 from $sp
 	sub $sp $sp 4
-	# store $sp to $fp
+	# store $fp to $sp
 	sw $fp 0($sp)
 	# subtract 4 from $sp
 	sub $sp $sp 4
-	# store $sp to $a0
+	# store $a0 to $sp
 	sw $a0 0($sp)
 	# subtract 0 from $sp and store the result to $fp
 	sub $fp $sp 0
@@ -225,15 +225,15 @@ Sys_init:
 	# Start Prologue
 	# subtract 4 from $sp
 	sub $sp $sp 4
-	# store $sp to $ra
+	# store $ra to $sp
 	sw $ra 0($sp)
 	# subtract 4 from $sp
 	sub $sp $sp 4
-	# store $sp to $fp
+	# store $fp to $sp
 	sw $fp 0($sp)
 	# subtract 4 from $sp
 	sub $sp $sp 4
-	# store $sp to $a0
+	# store $a0 to $sp
 	sw $a0 0($sp)
 	# subtract 0 from $sp and store the result to $fp
 	sub $fp $sp 0
@@ -263,15 +263,15 @@ TextIO_init:
 	# Start Prologue
 	# subtract 4 from $sp
 	sub $sp $sp 4
-	# store $sp to $ra
+	# store $ra to $sp
 	sw $ra 0($sp)
 	# subtract 4 from $sp
 	sub $sp $sp 4
-	# store $sp to $fp
+	# store $fp to $sp
 	sw $fp 0($sp)
 	# subtract 4 from $sp
 	sub $sp $sp 4
-	# store $sp to $a0
+	# store $a0 to $sp
 	sw $a0 0($sp)
 	# subtract 0 from $sp and store the result to $fp
 	sub $fp $sp 0
@@ -305,15 +305,15 @@ Main_init:
 	# Start Prologue
 	# subtract 4 from $sp
 	sub $sp $sp 4
-	# store $sp to $ra
+	# store $ra to $sp
 	sw $ra 0($sp)
 	# subtract 4 from $sp
 	sub $sp $sp 4
-	# store $sp to $fp
+	# store $fp to $sp
 	sw $fp 0($sp)
 	# subtract 4 from $sp
 	sub $sp $sp 4
-	# store $sp to $a0
+	# store $a0 to $sp
 	sw $a0 0($sp)
 	# subtract 0 from $sp and store the result to $fp
 	sub $fp $sp 0
@@ -348,27 +348,30 @@ Main.main:
 	# Start Prologue
 	# subtract 4 from $sp
 	sub $sp $sp 4
-	# store $sp to $ra
+	# store $ra to $sp
 	sw $ra 0($sp)
 	# subtract 4 from $sp
 	sub $sp $sp 4
-	# store $sp to $fp
+	# store $fp to $sp
 	sw $fp 0($sp)
 	# subtract 4 from $sp
 	sub $sp $sp 4
-	# store $sp to $a0
+	# store $a0 to $sp
 	sw $a0 0($sp)
-	# subtract 4 from $sp and store the result to $fp
-	sub $fp $sp 4
+	# subtract 8 from $sp and store the result to $fp
+	sub $fp $sp 8
 	# move $fp to $sp
 	move $sp $fp
 	# End Prologue
 	# gen left side of expression
 	# var expression
+	# subtract stack pointer with 4
 	sub $sp $sp 4
+	# save value in $a0 to stack pointer with 0 offset
 	sw $a0 0($sp)
 	# accept the reference object and save its location $v0
 	# case where the reference object is /this./
+	# load (12)$a0 to $v0 
 	lw $v0 12($a0)
 	lw $a0 0($sp)
 	add $sp $sp 4
@@ -380,11 +383,48 @@ Main.main:
 	# compare left and right sides of expression
 	sle $v0 $v1 $v0
 	sub $v0 $zero $v0
-	# store (0)$fp to $v0
+	# store $v0 to (0)$fp
 	sw $v0 0($fp)
+	# constant int expression
+	li $v0 3
+	# store $v0 to (4)$fp
+	sw $v0 4($fp)
+	# gen left side of expression
+	# var expression
+	# subtract stack pointer with 4
+	sub $sp $sp 4
+	# save value in $a0 to stack pointer with 0 offset
+	sw $a0 0($sp)
+	# accept the reference object and save its location $v0
+	# case where the reference object is null
+	# load (4)$fp to $v0 
+	lw $v0 4($fp)
+	lw $a0 0($sp)
+	add $sp $sp 4
+	# move v0 to v1
+	move $v1 $v0
+	# gen right side of expression
+	# constant int expression
+	li $v0 4
+	# compare left and right sides of expression
+	slt $v0 $v1 $v0
+	sub $v0 $zero $v0
+	# branch to label1 if $v0 is equal to 0
+	beq $v0 $zero label1
+label0:
+	# unconditional branch to label2
+	b label2
+label1:
+label2:
+	move $t7 $a0
+	move $t6 $v0
+	li $v0 1
+	syscall
+	move $a0 $t7
+	move $v0 $t6
 	# Start Epilogue
-	# add 4 to $fp and store the result to $sp
-	add $sp $fp 4
+	# add 8 to $fp and store the result to $sp
+	add $sp $fp 8
 	# load $sp to $a0
 	lw $a0 0($sp)
 	# add 4 to $sp

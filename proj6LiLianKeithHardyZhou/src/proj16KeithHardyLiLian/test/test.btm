@@ -15,14 +15,18 @@ class Main {
     void main() {
 	var y = this.x <= 3;
 	
-//	var x = 3;
-//	if(x < 4){
+	var x = 3;
+	if(x < 4){
+	
 //	    var y = 3;
 //	    y++;
 //	    y = y / 3;
-//	}
+	}
 //	var a = m.z;
 //	var s = toString(a);
+//    	while(x > 4){
+//	
+//	}
     }
 }
 //class SubMain extends Main {

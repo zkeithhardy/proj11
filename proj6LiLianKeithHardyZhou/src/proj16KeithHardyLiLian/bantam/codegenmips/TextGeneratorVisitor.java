@@ -57,6 +57,28 @@ public class TextGeneratorVisitor extends Visitor {
         classNode.accept(this);
     }
 
+    public void printSysCall(int indicator){
+
+        this.assemblySupport.genMove("$t7", "$a0");
+        this.assemblySupport.genMove("$t6", "$v0");
+        this.assemblySupport.genLoadImm("$a0", indicator);
+        this.out.println("\tli $v0 1");
+        this.out.println("\tsyscall");
+        //restore the a0 v0 register values
+        this.assemblySupport.genMove("$a0", "$t7");
+        this.assemblySupport.genMove("$v0", "$t6");
+
+    }
+    public void printSysCall(){
+        this.assemblySupport.genMove("$t7", "$a0");
+        this.assemblySupport.genMove("$t6", "$v0");
+        this.out.println("\tli $v0 1");
+        this.out.println("\tsyscall");
+        //restore the a0 v0 register values
+        this.assemblySupport.genMove("$a0", "$t7");
+        this.assemblySupport.genMove("$v0", "$t6");
+    }
+
     /**
      * Visit a list node of classes
      *
@@ -281,6 +303,7 @@ public class TextGeneratorVisitor extends Visitor {
             currentSymbolTable.exitScope();
         }
         this.assemblySupport.genLabel(afterLabel);
+        this.printSysCall();
         return null;
     }
 
@@ -309,6 +332,7 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genUncondBr(startWhile);
         this.assemblySupport.genLabel(afterWhile);
         currentLoop.pop();
+        printSysCall();
         return null;
     }
 

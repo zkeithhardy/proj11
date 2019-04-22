@@ -1,27 +1,39 @@
 class Main {
     int x = 3;
     int y;
-    int foo(int x) {
-	var y = x;
-	
-	return y; 
-    }
-    boolean equals(Object o) { return true; }
-    String toString() { return "Main"; }
+
+//    SubMain m;
+//
+//    int foo(int x) {
+//	var y = x;
+//	
+//	return y; 
+//	
+//    }
+//    boolean equals(Object o) { return true; }
+//    String toString(String a) { return "Main"; }
     void main() {
+	var y = this.x <= 3;
+	
 	var x = 3;
 	if(x < 4){
-	    var y = 3;
-	    y++;
-	    y = y / 3;
+	
+//	    var y = 3;
+//	    y++;
+//	    y = y / 3;
+	}
+//	var a = m.z;
+//	var s = toString(a);
+    	while(x > 4){
+	
 	}
     }
 }
-class SubMain extends Main {
-    String y = "dskrien";
-    int z;
-    int foo(int x) { return 1; }
-    boolean equals(Object o) { return false; }
-
-    
-}
+//class SubMain extends Main {
+//    String f = "dskrien";
+//    String z;
+//    int foo(int x) { return 1; }
+//    boolean equals(Object o) { return false; }
+//
+//    
+//}
