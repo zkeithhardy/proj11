@@ -29,6 +29,13 @@ public class TextGeneratorVisitor extends Visitor {
     private int currentParameterOffset = 0;
     private ArrayList<ClassTreeNode> idTable;
 
+    //fixme: delete this after checking is done
+    private final String[] registers =
+            {"$zero", "$at", "$v0", "$v1", "$a0", "$a1", "$a2", "$a3",
+                    "$t0", "$t1", "$t2", "$t3", "$t4", "$t5", "$t6", "$t7", "$t8", "$t9",
+                    "$s0", "$s1", "$s2", "$s3", "$s4", "$s5", "$s6", "$s7",
+                    "$k0", "$k1", "$gp", "$sp", "$fp", "$ra"};
+    
     public TextGeneratorVisitor(PrintStream out, MipsSupport assemblySupport, Hashtable<String,ClassTreeNode> classMap,
                                 HashMap<String, ArrayList<String>> dispatchTableMap, ArrayList<ClassTreeNode> idTable){
         this.out = out;
@@ -57,21 +64,21 @@ public class TextGeneratorVisitor extends Visitor {
         classNode.accept(this);
     }
 
-    public void printSysCall(int indicator){
 
+    /**
+     * peek at sepcific register with different indicator
+     * @param reg name of the register to look at
+     *
+     */
+    //fixme: delete this after checking is done
+    public void printRegister(String reg){
         this.assemblySupport.genMove("$t7", "$a0");
         this.assemblySupport.genMove("$t6", "$v0");
-        this.assemblySupport.genLoadImm("$a0", indicator);
-        this.out.println("\tli $v0 1");
-        this.out.println("\tsyscall");
-        //restore the a0 v0 register values
-        this.assemblySupport.genMove("$a0", "$t7");
-        this.assemblySupport.genMove("$v0", "$t6");
-
-    }
-    public void printSysCall(){
-        this.assemblySupport.genMove("$t7", "$a0");
-        this.assemblySupport.genMove("$t6", "$v0");
+        for (String register : registers) {
+            if (reg.equals(register)) {
+                this.assemblySupport.genMove("$a0", reg);
+            }
+        }
         this.out.println("\tli $v0 1");
         this.out.println("\tsyscall");
         //restore the a0 v0 register values
@@ -303,7 +310,7 @@ public class TextGeneratorVisitor extends Visitor {
             currentSymbolTable.exitScope();
         }
         this.assemblySupport.genLabel(afterLabel);
-        this.printSysCall();
+        this.printRegister("$a0");
         return null;
     }
 
@@ -332,7 +339,7 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genUncondBr(startWhile);
         this.assemblySupport.genLabel(afterWhile);
         currentLoop.pop();
-        printSysCall();
+        printRegister("$v1");
         return null;
     }
 

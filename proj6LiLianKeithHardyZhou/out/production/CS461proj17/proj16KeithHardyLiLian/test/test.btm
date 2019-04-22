@@ -24,9 +24,9 @@ class Main {
 	}
 //	var a = m.z;
 //	var s = toString(a);
-    	while(x > 4){
-	
-	}
+//    	while(x > 4){
+//	
+//	}
     }
 }
 //class SubMain extends Main {
