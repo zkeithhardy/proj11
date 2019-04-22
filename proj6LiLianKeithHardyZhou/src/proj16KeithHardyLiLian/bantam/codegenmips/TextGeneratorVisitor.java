@@ -482,10 +482,12 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genLoadAddr("$a0", node.getType()+"_template");
         // get the address of the clone method, save it to $v0
         this.assemblySupport.genComment("load (8)$a0 to $v0");
-        this.assemblySupport.genLoadWord("$v0", 8, "$a0" );
+        //this.assemblySupport.genLoadWord("$v0", 8, "$a0" );
         // jump to that clone method
         this.assemblySupport.genComment("jump to $v0");
-        this.assemblySupport.genInDirCall("$v0");
+        //this.assemblySupport.genInDirCall("$v0");
+        this.assemblySupport.genDirCall("Object.clone");
+        this.assemblySupport.genMove("$a0","$v0");
 
         this.assemblySupport.genComment("jump to "+node.getType()+"_init");
         this.assemblySupport.genDirCall(node.getType()+"_init");
