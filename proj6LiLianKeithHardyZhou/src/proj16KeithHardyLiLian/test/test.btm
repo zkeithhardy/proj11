@@ -19,13 +19,18 @@ class Main {
 
 	
 	
-	//var x = 3;
-	//if(x < 4){
+	var x = 1;
+	for(x = 0; x < 4; x++){
 	
-//	    var y = 3;
-//	    y++;
-//	    y = y / 3;
-	//}
+	    var h = 3;
+	    z++;
+	    h = h / 3;
+	    if(x == 2){
+		break;
+		}
+
+	}
+	var q = z;
 //	var a = m.z;
 //	var s = toString(a);
 //    	while(x > 4){
