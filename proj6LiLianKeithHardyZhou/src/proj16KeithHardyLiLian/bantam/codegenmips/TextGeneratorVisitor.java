@@ -429,8 +429,7 @@ public class TextGeneratorVisitor extends Visitor {
             type = this.currentClass;
             this.assemblySupport.genComment("access dispatch_table");
             this.assemblySupport.genLoadAddr("$v0",type + "_dispatch_table");
-        }
-        else if ((node.getRefExpr() instanceof VarExpr) &&
+        } else if ((node.getRefExpr() instanceof VarExpr) &&
                 ((VarExpr) node.getRefExpr()).getName().equals("super")) {
             type = this.classMap.get(this.currentClass).getParent().getName();
 
