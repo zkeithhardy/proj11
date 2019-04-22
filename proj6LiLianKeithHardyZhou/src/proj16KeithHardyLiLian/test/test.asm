@@ -418,6 +418,7 @@ label1:
 label2:
 	move $t7 $a0
 	move $t6 $v0
+	move $a0 $a0
 	li $v0 1
 	syscall
 	move $a0 $t7
