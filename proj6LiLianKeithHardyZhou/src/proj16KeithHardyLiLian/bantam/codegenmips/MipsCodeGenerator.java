@@ -213,7 +213,7 @@ public class MipsCodeGenerator
                 textGeneratorVisitor.generateFieldInitialization(classMap.get(entry.getKey()).getASTNode(),stringNameMap);
             }
             this.assemblySupport.genMove("$v0","$a0");
-            textGeneratorVisitor.generateMethodEpilogue();
+            textGeneratorVisitor.generateMethodEpilogue(0);
 
         }
 
