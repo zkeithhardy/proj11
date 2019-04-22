@@ -1068,7 +1068,6 @@ public class TextGeneratorVisitor extends Visitor {
 
         }
         else { // ref is not null, "this", or "super"
-            //TODO: fix accepting the ref
             node.getRef().accept(this);
             this.assemblySupport.genComment("case where the reference object is user defined class");
             String refTypeName = node.getRef().getExprType();
