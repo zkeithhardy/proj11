@@ -1,6 +1,6 @@
 class Main {
     int x = 3;
-    int y;
+    int y = 4;
 
 //    SubMain m;
 //
@@ -15,22 +15,23 @@ class Main {
    // int foo(int x) { return 100; }
     void main() {
 	var y = new SubMain();
-	var z  = y.foo(this.x);
-
+	//var z  = y.foo(this.x);
+	var q = y.newSubMain().z;
 	
 	
-	var x = 1;
-	for(x = 0; x < 4; x++){
 	
-	    var h = 3;
-	    z++;
-	    h = h / 3;
-	    if(x == 2){
-		break;
-		}
-
-	}
-	var q = z;
+//	var x = 1;
+//	for(x = 0; x < 4; x++){
+//	
+//	    var h = 3;
+//	    z++;
+//	    h = h / 3;
+//	    if(x == 2){
+//		break;
+//		}
+//
+//	}
+	//var q = z;
 //	var a = m.z;
 //	var s = toString(a);
 //    	while(x > 4){
@@ -39,8 +40,9 @@ class Main {
     }
 }
 class SubMain extends Main {
-    String f = "dskrien";
-    String z;
+    int z = 400;
+
+    SubMain newSubMain(){return new SubMain();}
     int foo(int x) { return 1; }
     boolean equals(Object o) { return false; }
 

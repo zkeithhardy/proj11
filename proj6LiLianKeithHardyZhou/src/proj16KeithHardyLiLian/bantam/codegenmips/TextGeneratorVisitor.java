@@ -433,8 +433,7 @@ public class TextGeneratorVisitor extends Visitor {
             type = this.currentClass;
             this.assemblySupport.genComment("access dispatch_table");
             this.assemblySupport.genLoadAddr("$v0",type + "_dispatch_table");
-        }
-        else if ((node.getRefExpr() instanceof VarExpr) &&
+        } else if ((node.getRefExpr() instanceof VarExpr) &&
                 ((VarExpr) node.getRefExpr()).getName().equals("super")) {
             type = this.classMap.get(this.currentClass).getParent().getName();
 
@@ -1074,13 +1073,7 @@ public class TextGeneratorVisitor extends Visitor {
             node.getRef().accept(this);
             this.assemblySupport.genComment("case where the reference object is user defined class");
             String refTypeName = node.getRef().getExprType();
-
-            Location refVarLocation = (Location) currentSymbolTable.lookup(((VarExpr) node.getRef()).getName());
-            SymbolTable currentSymbolTable = this.classMap.get(this.currentClass).getVarSymbolTable();
-            String varType = (String) currentSymbolTable.lookup(((VarExpr) node.getRef()).getName());
-            location = (Location) this.classSymbolTables.get(varType).lookup(varName);
-            this.assemblySupport.genComment("load ("+ location.getOffset()+")"+ location.getBaseReg() +" to $v0 ");
-            this.assemblySupport.genLoadWord("$v0",refVarLocation.getOffset(),refVarLocation.getBaseReg());
+            location = (Location) this.classSymbolTables.get(refTypeName).lookup(varName);
             //check for null pointer
             String nullError = this.assemblySupport.getLabel();
             String afterError = this.assemblySupport.getLabel();
