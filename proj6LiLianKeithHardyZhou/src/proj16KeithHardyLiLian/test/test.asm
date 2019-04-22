@@ -212,8 +212,8 @@ Object_init:
 	lw $ra 0($sp)
 	# add 4 to $sp
 	add $sp $sp 4
-	# move $fp to $sp
-	move $sp $fp
+	# add 0 to $fp and store the result to $sp
+	add $sp $fp 0
 	jr $ra
 	# End Epilogue
 String_init:
@@ -253,8 +253,8 @@ String_init:
 	lw $ra 0($sp)
 	# add 4 to $sp
 	add $sp $sp 4
-	# move $fp to $sp
-	move $sp $fp
+	# add 0 to $fp and store the result to $sp
+	add $sp $fp 0
 	jr $ra
 	# End Epilogue
 Sys_init:
@@ -292,8 +292,8 @@ Sys_init:
 	lw $ra 0($sp)
 	# add 4 to $sp
 	add $sp $sp 4
-	# move $fp to $sp
-	move $sp $fp
+	# add 0 to $fp and store the result to $sp
+	add $sp $fp 0
 	jr $ra
 	# End Epilogue
 SubMain_init:
@@ -337,8 +337,8 @@ SubMain_init:
 	lw $ra 0($sp)
 	# add 4 to $sp
 	add $sp $sp 4
-	# move $fp to $sp
-	move $sp $fp
+	# add 0 to $fp and store the result to $sp
+	add $sp $fp 0
 	jr $ra
 	# End Epilogue
 TextIO_init:
@@ -380,8 +380,8 @@ TextIO_init:
 	lw $ra 0($sp)
 	# add 4 to $sp
 	add $sp $sp 4
-	# move $fp to $sp
-	move $sp $fp
+	# add 0 to $fp and store the result to $sp
+	add $sp $fp 0
 	jr $ra
 	# End Epilogue
 Main_init:
@@ -424,8 +424,8 @@ Main_init:
 	lw $ra 0($sp)
 	# add 4 to $sp
 	add $sp $sp 4
-	# move $fp to $sp
-	move $sp $fp
+	# add 0 to $fp and store the result to $sp
+	add $sp $fp 0
 	jr $ra
 	# End Epilogue
 Main.main:
@@ -442,16 +442,11 @@ Main.main:
 	sub $sp $sp 4
 	# store $a0 to $sp
 	sw $a0 0($sp)
-	# subtract 8 from $sp and store the result to $fp
-	sub $fp $sp 8
+	# subtract 20 from $sp and store the result to $fp
+	sub $fp $sp 20
 	# move $fp to $sp
 	move $sp $fp
 	# End Prologue
-	# save $a0 onto stack in case init creates a new object.
-	# subtract 4 from $sp
-	sub $sp $sp 4
-	# store $a0 to $sp
-	sw $a0 0($sp)
 	# load the address of SubMain_template to $a0
 	la $a0 SubMain_template
 	# load (8)$a0 to $v0
@@ -460,11 +455,7 @@ Main.main:
 	move $a0 $v0
 	# jump to SubMain_init
 	jal SubMain_init
-	# restore $a0
-	# load $a0 to $sp
-	lw $a0 0($sp)
-	# add 4 to $sp
-	add $sp $sp 4
+	lw $a0 20($fp)
 	# store $v0 to (0)$fp
 	sw $v0 0($fp)
 	# var expression
@@ -500,9 +491,173 @@ Main.main:
 	jalr $a1
 	# store $v0 to (4)$fp
 	sw $v0 4($fp)
+	# constant int expression
+	li $v0 1
+	# store $v0 to (8)$fp
+	sw $v0 8($fp)
+	# assign expr
+	# subtrack 4 from the the stack pointer
+	sub $sp $sp 4
+	# save $a0 to stack pointer with offset of 0
+	sw $a0 0($sp)
+	# constant int expression
+	li $v0 0
+	# case where the reference name is null
+	sw $v0 8($fp)
+	# save stack pointer result to $a0
+	lw $a0 0($sp)
+	# add stack pointer with 4
+	add $sp $sp 4
+label0:
+	# gen left side of expression
+	# var expression
+	# subtract stack pointer with 4
+	sub $sp $sp 4
+	# save value in $a0 to stack pointer with 0 offset
+	sw $a0 0($sp)
+	# accept the reference object and save its location $v0
+	# case where the reference object is null
+	# load (8)$fp to $v0 
+	lw $v0 8($fp)
+	lw $a0 0($sp)
+	add $sp $sp 4
+	# move v0 to v1
+	move $v1 $v0
+	# gen right side of expression
+	# constant int expression
+	li $v0 4
+	# compare left and right sides of expression
+	slt $v0 $v1 $v0
+	sub $v0 $zero $v0
+	# branch to label1 if $v0 is equal to 0
+	beq $zero $v0 label1
+	# constant int expression
+	li $v0 3
+	# store $v0 to (12)$fp
+	sw $v0 12($fp)
+	# increment
+	# var expression
+	# subtract stack pointer with 4
+	sub $sp $sp 4
+	# save value in $a0 to stack pointer with 0 offset
+	sw $a0 0($sp)
+	# accept the reference object and save its location $v0
+	# case where the reference object is null
+	# load (4)$fp to $v0 
+	lw $v0 4($fp)
+	lw $a0 0($sp)
+	add $sp $sp 4
+	# case where the reference object is null
+	add $v0 $v0 1
+	sw $v0 4($fp)
+	# assign expr
+	# subtrack 4 from the the stack pointer
+	sub $sp $sp 4
+	# save $a0 to stack pointer with offset of 0
+	sw $a0 0($sp)
+	# gen left side of expression
+	# var expression
+	# subtract stack pointer with 4
+	sub $sp $sp 4
+	# save value in $a0 to stack pointer with 0 offset
+	sw $a0 0($sp)
+	# accept the reference object and save its location $v0
+	# case where the reference object is null
+	# load (12)$fp to $v0 
+	lw $v0 12($fp)
+	lw $a0 0($sp)
+	add $sp $sp 4
+	# store left expression on stack
+	sub $sp $sp 4
+	sw $v0 0($sp)
+	# gen right side of expression
+	# constant int expression
+	li $v0 3
+	# load left expression on stack
+	lw $v1 0($sp)
+	add $sp $sp 4
+	# check for divide by zero error
+	beq $zero $v1 label2
+	# divide left and right sides of expression
+	div $v0 $v0 $v1
+	# branch to afterError
+	b label3
+label2:
+	jal _divide_zero_error
+label3:
+	# case where the reference name is null
+	sw $v0 12($fp)
+	# save stack pointer result to $a0
+	lw $a0 0($sp)
+	# add stack pointer with 4
+	add $sp $sp 4
+	# gen left side of expression
+	# var expression
+	# subtract stack pointer with 4
+	sub $sp $sp 4
+	# save value in $a0 to stack pointer with 0 offset
+	sw $a0 0($sp)
+	# accept the reference object and save its location $v0
+	# case where the reference object is null
+	# load (8)$fp to $v0 
+	lw $v0 8($fp)
+	lw $a0 0($sp)
+	add $sp $sp 4
+	# move v0 to v1
+	move $v1 $v0
+	# gen right side of expression
+	# constant int expression
+	li $v0 2
+	# compare left and right sides of expression
+	seq $v0 $v0 $v1
+	sub $v0 $zero $v0
+	# branch to label5 if $v0 is equal to 0
+	beq $v0 $zero label5
+label4:
+	# breaking out of loop to label label1
+	b label1
+	# unconditional branch to label6
+	b label6
+label5:
+label6:
+	# increment
+	# var expression
+	# subtract stack pointer with 4
+	sub $sp $sp 4
+	# save value in $a0 to stack pointer with 0 offset
+	sw $a0 0($sp)
+	# accept the reference object and save its location $v0
+	# case where the reference object is null
+	# load (8)$fp to $v0 
+	lw $v0 8($fp)
+	lw $a0 0($sp)
+	add $sp $sp 4
+	# case where the reference object is null
+	add $v0 $v0 1
+	sw $v0 8($fp)
+	# unconditional branch to label0
+	b label0
+label1:
+	# var expression
+	# subtract stack pointer with 4
+	sub $sp $sp 4
+	# save value in $a0 to stack pointer with 0 offset
+	sw $a0 0($sp)
+	# accept the reference object and save its location $v0
+	# case where the reference object is null
+	# load (4)$fp to $v0 
+	lw $v0 4($fp)
+	lw $a0 0($sp)
+	add $sp $sp 4
+	# store $v0 to (16)$fp
+	sw $v0 16($fp)
+
+	move $a0 $v0
+	li $v0 1
+	syscall
 	# Start Epilogue
-	# add 8 to $fp and store the result to $sp
-	add $sp $fp 8
+	# add 20 to $fp and store the result to $sp
+	add $sp $fp 20
 	# load $sp to $a0
 	lw $a0 0($sp)
 	# add 4 to $sp
@@ -515,8 +670,8 @@ Main.main:
 	lw $ra 0($sp)
 	# add 4 to $sp
 	add $sp $sp 4
-	# move $fp to $sp
-	move $sp $fp
+	# add 0 to $fp and store the result to $sp
+	add $sp $fp 0
 	jr $ra
 	# End Epilogue
 SubMain.foo:
@@ -555,8 +710,8 @@ SubMain.foo:
 	lw $ra 0($sp)
 	# add 4 to $sp
 	add $sp $sp 4
-	# move $fp to $sp
-	move $sp $fp
+	# add 4 to $fp and store the result to $sp
+	add $sp $fp 4
 	jr $ra
 	# End Epilogue
 SubMain.equals:
@@ -595,7 +750,7 @@ SubMain.equals:
 	lw $ra 0($sp)
 	# add 4 to $sp
 	add $sp $sp 4
-	# move $fp to $sp
-	move $sp $fp
+	# add 4 to $fp and store the result to $sp
+	add $sp $fp 4
 	jr $ra
 	# End Epilogue

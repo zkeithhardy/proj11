@@ -154,12 +154,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="3353" />
+          <entry key="java" value="3505" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="3353" />
+          <entry key="JAVA" value="3505" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -181,8 +181,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bantam/codegenmips/MipsCodeGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3249">
-              <caret line="351" column="13" selection-start-line="351" selection-start-column="13" selection-end-line="351" selection-end-column="13" />
+            <state relative-caret-position="158">
+              <caret line="216" lean-forward="true" selection-start-line="216" selection-end-line="216" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -193,14 +193,19 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/bantam/codegenmips/TextGeneratorVisitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="1019" column="74" lean-forward="true" selection-start-line="1019" selection-start-column="74" selection-end-line="1019" selection-end-column="74" />
+            <state relative-caret-position="158">
+              <caret line="74" column="51" lean-forward="true" selection-start-line="74" selection-start-column="51" selection-end-line="74" selection-end-column="51" />
               <folding>
-                <element signature="e#2415#2543#0" />
-                <element signature="e#2685#2798#0" />
                 <element signature="e#35290#35678#0" />
               </folding>
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/test.asm">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-171" />
           </provider>
         </entry>
       </file>
@@ -216,8 +221,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bantam/codegenmips/exceptions.s">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="2729" column="13" selection-start-line="2729" selection-start-column="7" selection-end-line="2729" selection-end-column="13" />
+            <state relative-caret-position="33">
+              <caret line="2097" column="12" selection-start-line="2097" selection-end-line="2097" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -225,7 +230,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/test.btm">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
+            <state relative-caret-position="-139">
               <caret line="8" column="4" lean-forward="true" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
             </state>
           </provider>
@@ -242,13 +247,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>newexp</find>
-      <find>NewExp</find>
-      <find>immed</find>
-      <find>generatestring</find>
-      <find>stringconstantsvis</find>
-      <find>decl</find>
-      <find>prol</find>
       <find>instanceof</find>
       <find>castexpr</find>
       <find>dispatch</find>
@@ -263,7 +261,6 @@
       <find>generatefieldini</find>
       <find>_div</find>
       <find>init</find>
-      <find>syscall</find>
       <find>li $v</find>
       <find>putint</find>
       <find>$a0</find>
@@ -272,6 +269,14 @@
       <find>genstore</find>
       <find>varexpr</find>
       <find>genloadwor</find>
+      <find>gensub</find>
+      <find>generateFieldInitialization</find>
+      <find>method</find>
+      <find>epil</find>
+      <find>sp</find>
+      <find>newexpr</find>
+      <find>syscall</find>
+      <find>printre</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -303,8 +308,8 @@
         <option value="$PROJECT_DIR$/ToolbarController.java" />
         <option value="$PROJECT_DIR$/bantam/semant/StringConstantsVisitor.java" />
         <option value="$PROJECT_DIR$/MIPSCodeArea.java" />
-        <option value="$PROJECT_DIR$/bantam/codegenmips/MipsCodeGenerator.java" />
         <option value="$PROJECT_DIR$/StructureViewController.java" />
+        <option value="$PROJECT_DIR$/bantam/codegenmips/MipsCodeGenerator.java" />
         <option value="$PROJECT_DIR$/bantam/codegenmips/TextGeneratorVisitor.java" />
       </list>
     </option>
@@ -414,7 +419,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555889820980" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555899514249" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunDashboard">
@@ -815,8 +820,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/bantam/codegenmips/exceptions.s">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="2729" column="13" selection-start-line="2729" selection-start-column="7" selection-end-line="2729" selection-end-column="13" />
+        <state relative-caret-position="33">
+          <caret line="2097" column="12" selection-start-line="2097" selection-end-line="2097" selection-end-column="12" />
         </state>
       </provider>
     </entry>
@@ -836,17 +841,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/test.asm">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4446" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bantam/codegenmips/MipsCodeGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3249">
-          <caret line="351" column="13" selection-start-line="351" selection-start-column="13" selection-end-line="351" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
+        <state relative-caret-position="-171" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bantam/codegenmips/MipsSupport.java">
@@ -872,18 +867,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/test.btm">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
+        <state relative-caret-position="-139">
           <caret line="8" column="4" lean-forward="true" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bantam/codegenmips/MipsCodeGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="158">
+          <caret line="216" lean-forward="true" selection-start-line="216" selection-end-line="216" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bantam/codegenmips/TextGeneratorVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="1019" column="74" lean-forward="true" selection-start-line="1019" selection-start-column="74" selection-end-line="1019" selection-end-column="74" />
+        <state relative-caret-position="158">
+          <caret line="74" column="51" lean-forward="true" selection-start-line="74" selection-start-column="51" selection-end-line="74" selection-end-column="51" />
           <folding>
-            <element signature="e#2415#2543#0" />
-            <element signature="e#2685#2798#0" />
             <element signature="e#35290#35678#0" />
           </folding>
         </state>
