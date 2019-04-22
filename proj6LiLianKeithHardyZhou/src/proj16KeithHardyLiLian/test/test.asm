@@ -533,16 +533,16 @@ SubMain.foo:
 	sub $sp $sp 4
 	# store $a0 to $sp
 	sw $a0 0($sp)
-	# subtract 0 from $sp and store the result to $fp
-	sub $fp $sp 0
+	# subtract 4 from $sp and store the result to $fp
+	sub $fp $sp 4
 	# move $fp to $sp
 	move $sp $fp
 	# End Prologue
 	# constant int expression
 	li $v0 1
 	# Start Epilogue
-	# add 0 to $fp and store the result to $sp
-	add $sp $fp 0
+	# add 4 to $fp and store the result to $sp
+	add $sp $fp 4
 	# load $sp to $a0
 	lw $a0 0($sp)
 	# add 4 to $sp
@@ -573,16 +573,16 @@ SubMain.equals:
 	sub $sp $sp 4
 	# store $a0 to $sp
 	sw $a0 0($sp)
-	# subtract 0 from $sp and store the result to $fp
-	sub $fp $sp 0
+	# subtract 4 from $sp and store the result to $fp
+	sub $fp $sp 4
 	# move $fp to $sp
 	move $sp $fp
 	# End Prologue
 	# constant boolean expression
 	li $v0 0
 	# Start Epilogue
-	# add 0 to $fp and store the result to $sp
-	add $sp $fp 0
+	# add 4 to $fp and store the result to $sp
+	add $sp $fp 4
 	# load $sp to $a0
 	lw $a0 0($sp)
 	# add 4 to $sp

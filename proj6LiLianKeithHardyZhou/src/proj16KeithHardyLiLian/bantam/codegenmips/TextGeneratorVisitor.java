@@ -72,6 +72,7 @@ public class TextGeneratorVisitor extends Visitor {
      */
     //fixme: delete this after checking is done
     public void printRegister(String reg){
+        this.assemblySupport.genComment("peeking register "+ reg);
         this.assemblySupport.genMove("$t7", "$a0");
         this.assemblySupport.genMove("$t6", "$v0");
         for (String register : registers) {
@@ -84,6 +85,7 @@ public class TextGeneratorVisitor extends Visitor {
         //restore the a0 v0 register values
         this.assemblySupport.genMove("$a0", "$t7");
         this.assemblySupport.genMove("$v0", "$t6");
+        this.assemblySupport.genComment("end peeking register " + reg);
     }
 
     /**
@@ -504,7 +506,6 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genLoadWord("$a0",0,"$sp");
         this.assemblySupport.genComment("add 4 to $sp");
         this.assemblySupport.genAdd("$sp","$sp",4);
-
         return null;
     }
 
