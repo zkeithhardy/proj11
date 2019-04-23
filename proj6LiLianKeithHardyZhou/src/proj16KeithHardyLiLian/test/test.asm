@@ -165,8 +165,6 @@ B_dispatch_table:
 	.word	Object.clone
 	.word	Object.equals
 	.word	Object.toString
-	.word	B.getX
-	.word	B.newSubMain
 Object_dispatch_table:
 	.word	Object.clone
 	.word	Object.equals
@@ -187,11 +185,9 @@ Sys_dispatch_table:
 	.word	Sys.random
 SubMain_dispatch_table:
 	.word	Object.clone
-	.word	SubMain.equals
+	.word	Object.equals
 	.word	Object.toString
 	.word	Main.main
-	.word	SubMain.newSubMain
-	.word	SubMain.foo
 TextIO_dispatch_table:
 	.word	Object.clone
 	.word	Object.equals
@@ -583,11 +579,23 @@ Main.main:
 	sub $sp $sp 4
 	# store $a0 to $sp
 	sw $a0 0($sp)
-	# subtract 8 from $sp and store the result to $fp
-	sub $fp $sp 8
+	# subtract 16 from $sp and store the result to $fp
+	sub $fp $sp 16
 	# move $fp to $sp
 	move $sp $fp
 	# End Prologue
+	# constant int expression
+	li $v0 4
+	# store $v0 to (0)$fp
+	sw $v0 0($fp)
+	# constant int expression
+	li $v0 5
+	# store $v0 to (4)$fp
+	sw $v0 4($fp)
+	# constant int expression
+	li $v0 6
+	# store $v0 to (8)$fp
+	sw $v0 8($fp)
 	# load the address of B_template to $a0
 	la $a0 B_template
 	# load (8)$a0 to $v0
@@ -596,15 +604,9 @@ Main.main:
 	move $a0 $v0
 	# jump to B_init
 	jal B_init
-	lw $a0 8($fp)
-	# store $v0 to (0)$fp
-	sw $v0 0($fp)
-	# var expression
-	# subtract stack pointer with 4
-	sub $sp $sp 4
-	# save value in $a0 to stack pointer with 0 offset
-	sw $a0 0($sp)
-	# accept the reference object and save its location $v0
+	lw $a0 16($fp)
+	# store $v0 to (12)$fp
+	sw $v0 12($fp)
 	# var expression
 	# subtract stack pointer with 4
 	sub $sp $sp 4
@@ -612,195 +614,46 @@ Main.main:
 	sw $a0 0($sp)
 	# accept the reference object and save its location $v0
 	# case where the reference object is null
-	# load (0)$fp to $v0 
-	lw $v0 0($fp)
+	# load (12)$fp to $v0 
+	lw $v0 12($fp)
 	lw $a0 0($sp)
 	add $sp $sp 4
-	lw $v0 8($v0)
-	# load method address
-	lw $a1 16($v0)
-	jalr $a1
-	# case where the reference object is user defined class
-	# check for null pointer errors
-	# if $v0 == 0, branch to nullError
-	beq $zero $v0 label0
-	b label1
+	# handle instanceof expression
+	# load i into $v0
+	lw $v0 0($v0)
+	# load j into $t0 and j+k into $t1
+	li $t0 1
+	li $t1 2
+	# compare j<=i and i<=j+k, if both true, return true
+sle $t0 $t0 $v0
+sle $v0 $v0 $t1
+	and $v0 $t0 $v0
+	sub $v0 $zero $v0
+	# branch to label1 if $v0 is equal to 0
+	beq $v0 $zero label1
 label0:
-	jal _null_pointer_error
-label1:
-	# move $v0 to $a0
-	move $a0 $v0
-	# load (12)$a0 to $v0
-	lw $v0 12($a0)
-	lw $a0 0($sp)
-	add $sp $sp 4
-	# store $v0 to (4)$fp
-	sw $v0 4($fp)
-	# Start Epilogue
-	# add 8 to $fp and store the result to $sp
-	add $sp $fp 8
-	# load $sp to $a0
-	lw $a0 0($sp)
-	# add 4 to $sp
-	add $sp $sp 4
-	# load $sp to $fp
-	lw $fp 0($sp)
-	# add 4 to $sp
-	add $sp $sp 4
-	# load $sp to $ra
-	lw $ra 0($sp)
-	# add 4 to $sp
-	add $sp $sp 4
-	# add 0 to $fp and store the result to $sp
-	add $sp $fp 0
-	jr $ra
-	# End Epilogue
-SubMain.newSubMain:
-	# Start Prologue
-	# subtract 4 from $sp
+	# assign expr
+	# subtrack 4 from the the stack pointer
 	sub $sp $sp 4
-	# store $ra to $sp
-	sw $ra 0($sp)
-	# subtract 4 from $sp
-	sub $sp $sp 4
-	# store $fp to $sp
-	sw $fp 0($sp)
-	# subtract 4 from $sp
-	sub $sp $sp 4
-	# store $a0 to $sp
+	# save $a0 to stack pointer with offset of 0
 	sw $a0 0($sp)
-	# subtract 0 from $sp and store the result to $fp
-	sub $fp $sp 0
-	# move $fp to $sp
-	move $sp $fp
-	# End Prologue
-	# load the address of SubMain_template to $a0
-	la $a0 SubMain_template
-	# load (8)$a0 to $v0
-	# jump to $v0
-	jal Object.clone
-	move $a0 $v0
-	# jump to SubMain_init
-	jal SubMain_init
-	lw $a0 0($fp)
-	# Start Epilogue
-	# add 0 to $fp and store the result to $sp
-	add $sp $fp 0
-	# load $sp to $a0
-	lw $a0 0($sp)
-	# add 4 to $sp
-	add $sp $sp 4
-	# load $sp to $fp
-	lw $fp 0($sp)
-	# add 4 to $sp
-	add $sp $sp 4
-	# load $sp to $ra
-	lw $ra 0($sp)
-	# add 4 to $sp
-	add $sp $sp 4
-	# add 0 to $fp and store the result to $sp
-	add $sp $fp 0
-	jr $ra
-	# End Epilogue
-SubMain.foo:
-	# Start Prologue
-	# subtract 4 from $sp
-	sub $sp $sp 4
-	# store $ra to $sp
-	sw $ra 0($sp)
-	# subtract 4 from $sp
-	sub $sp $sp 4
-	# store $fp to $sp
-	sw $fp 0($sp)
-	# subtract 4 from $sp
-	sub $sp $sp 4
-	# store $a0 to $sp
-	sw $a0 0($sp)
-	# subtract 4 from $sp and store the result to $fp
-	sub $fp $sp 4
-	# move $fp to $sp
-	move $sp $fp
-	# End Prologue
 	# constant int expression
-	li $v0 1
-	# Start Epilogue
-	# add 4 to $fp and store the result to $sp
-	add $sp $fp 4
-	# load $sp to $a0
+	li $v0 3
+	# case where the reference name is null
+	sw $v0 8($fp)
+	# save stack pointer result to $a0
 	lw $a0 0($sp)
-	# add 4 to $sp
+	# add stack pointer with 4
 	add $sp $sp 4
-	# load $sp to $fp
-	lw $fp 0($sp)
-	# add 4 to $sp
-	add $sp $sp 4
-	# load $sp to $ra
-	lw $ra 0($sp)
-	# add 4 to $sp
-	add $sp $sp 4
-	# add 4 to $fp and store the result to $sp
-	add $sp $fp 4
-	jr $ra
-	# End Epilogue
-SubMain.equals:
-	# Start Prologue
-	# subtract 4 from $sp
+	# unconditional branch to label2
+	b label2
+label1:
+label2:
+	# assign expr
+	# subtrack 4 from the the stack pointer
 	sub $sp $sp 4
-	# store $ra to $sp
-	sw $ra 0($sp)
-	# subtract 4 from $sp
-	sub $sp $sp 4
-	# store $fp to $sp
-	sw $fp 0($sp)
-	# subtract 4 from $sp
-	sub $sp $sp 4
-	# store $a0 to $sp
+	# save $a0 to stack pointer with offset of 0
 	sw $a0 0($sp)
-	# subtract 4 from $sp and store the result to $fp
-	sub $fp $sp 4
-	# move $fp to $sp
-	move $sp $fp
-	# End Prologue
-	# constant boolean expression
-	li $v0 0
-	# Start Epilogue
-	# add 4 to $fp and store the result to $sp
-	add $sp $fp 4
-	# load $sp to $a0
-	lw $a0 0($sp)
-	# add 4 to $sp
-	add $sp $sp 4
-	# load $sp to $fp
-	lw $fp 0($sp)
-	# add 4 to $sp
-	add $sp $sp 4
-	# load $sp to $ra
-	lw $ra 0($sp)
-	# add 4 to $sp
-	add $sp $sp 4
-	# add 4 to $fp and store the result to $sp
-	add $sp $fp 4
-	jr $ra
-	# End Epilogue
-B.getX:
-	# Start Prologue
-	# subtract 4 from $sp
-	sub $sp $sp 4
-	# store $ra to $sp
-	sw $ra 0($sp)
-	# subtract 4 from $sp
-	sub $sp $sp 4
-	# store $fp to $sp
-	sw $fp 0($sp)
-	# subtract 4 from $sp
-	sub $sp $sp 4
-	# store $a0 to $sp
-	sw $a0 0($sp)
-	# subtract 0 from $sp and store the result to $fp
-	sub $fp $sp 0
-	# move $fp to $sp
-	move $sp $fp
-	# End Prologue
 	# var expression
 	# subtract stack pointer with 4
 	sub $sp $sp 4
@@ -808,60 +661,22 @@ B.getX:
 	sw $a0 0($sp)
 	# accept the reference object and save its location $v0
 	# case where the reference object is null
-	# load (12)$a0 to $v0 
-	lw $v0 12($a0)
+	# load (8)$fp to $v0 
+	lw $v0 8($fp)
 	lw $a0 0($sp)
 	add $sp $sp 4
-	# Start Epilogue
-	# add 0 to $fp and store the result to $sp
-	add $sp $fp 0
-	# load $sp to $a0
+	# case where the reference name is null
+	sw $v0 4($fp)
+	# save stack pointer result to $a0
 	lw $a0 0($sp)
-	# add 4 to $sp
+	# add stack pointer with 4
 	add $sp $sp 4
-	# load $sp to $fp
-	lw $fp 0($sp)
-	# add 4 to $sp
-	add $sp $sp 4
-	# load $sp to $ra
-	lw $ra 0($sp)
-	# add 4 to $sp
-	add $sp $sp 4
-	# add 0 to $fp and store the result to $sp
-	add $sp $fp 0
-	jr $ra
-	# End Epilogue
-B.newSubMain:
-	# Start Prologue
-	# subtract 4 from $sp
-	sub $sp $sp 4
-	# store $ra to $sp
-	sw $ra 0($sp)
-	# subtract 4 from $sp
-	sub $sp $sp 4
-	# store $fp to $sp
-	sw $fp 0($sp)
-	# subtract 4 from $sp
-	sub $sp $sp 4
-	# store $a0 to $sp
-	sw $a0 0($sp)
-	# subtract 0 from $sp and store the result to $fp
-	sub $fp $sp 0
-	# move $fp to $sp
-	move $sp $fp
-	# End Prologue
-	# load the address of SubMain_template to $a0
-	la $a0 SubMain_template
-	# load (8)$a0 to $v0
-	# jump to $v0
-	jal Object.clone
 	move $a0 $v0
-	# jump to SubMain_init
-	jal SubMain_init
-	lw $a0 0($fp)
+	li $v0 1
+	syscall
 	# Start Epilogue
-	# add 0 to $fp and store the result to $sp
-	add $sp $fp 0
+	# add 16 to $fp and store the result to $sp
+	add $sp $fp 16
 	# load $sp to $a0
 	lw $a0 0($sp)
 	# add 4 to $sp

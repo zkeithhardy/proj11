@@ -482,12 +482,6 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(NewExpr node) {
-//        this.assemblySupport.genComment("save $a0 onto stack in case init creates a new object.");
-//        this.assemblySupport.genComment("subtract 4 from $sp");
-//        this.assemblySupport.genSub("$sp","$sp",4);
-//        this.assemblySupport.genComment("store $a0 to $sp");
-//        this.assemblySupport.genStoreWord("$a0",0,"$sp");
-
         // load the address of the template to $a0
         this.assemblySupport.genComment("load the address of "+node.getType()+"_template to $a0");
         this.assemblySupport.genLoadAddr("$a0", node.getType()+"_template");
@@ -504,13 +498,6 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genDirCall(node.getType()+"_init");
 
         this.assemblySupport.genLoadWord("$a0", 4*(methodLocalVars), "$fp");
-
-//        this.assemblySupport.genComment("restore $a0");
-//        this.assemblySupport.genComment("load $a0 to $sp");
-//        this.assemblySupport.genLoadWord("$a0",0,"$sp");
-//        this.assemblySupport.genComment("add 4 to $sp");
-//        this.assemblySupport.genAdd("$sp","$sp",4);
-
         return null;
     }
 
@@ -847,8 +834,8 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genComment("load left expression from stack");
         this.assemblySupport.genLoadWord("$v1",0,"$sp");
         this.assemblySupport.genAdd("$sp","$sp",4);
-        this.out.println("mod left and right sides of expression");
-        this.assemblySupport.genMod("$v0","$v0","$v1");
+        this.assemblySupport.genComment("mod left and right sides of expression");
+        this.assemblySupport.genMod("$v0","$v1","$v0");
         return null;
     }
 

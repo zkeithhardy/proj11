@@ -14,6 +14,7 @@ import proj16KeithHardyLiLian.bantam.util.SymbolTable;
 import proj16KeithHardyLiLian.bantam.visitor.Visitor;
 
 import java.util.ArrayList;
+import java.util.Currency;
 import java.util.List;
 import java.util.Stack;
 
@@ -218,6 +219,7 @@ public class TypeCheckerVisitor extends Visitor
             registerError(node,"The name of the variable is: " + node.getName() + " which is illegal.");
         }
         currentSymbolTable.add(node.getName(), node.getType());
+        //currentSymbolTable.dump();
         return null;
     }
 
@@ -646,6 +648,7 @@ public class TypeCheckerVisitor extends Visitor
         }
         else if (node.getRef() == null) { //local var or field of "this"
             varType = (String) currentSymbolTable.lookup(varName);
+            //System.out.print(currentClass.lookupClass("SubMain").getVarSymbolTable().equals(currentSymbolTable));
         }
         else if ((node.getRef() instanceof VarExpr) &&
                 ((VarExpr) node.getRef()).getName().equals("this")) {
@@ -682,9 +685,11 @@ public class TypeCheckerVisitor extends Visitor
             }
             else {
                 ClassTreeNode refType = currentClass.lookupClass(refTypeName);
+                //refType.getVarSymbolTable().dump();
                 SymbolTable refTable = refType.getVarSymbolTable();
                 int refFieldLevel = getClassFieldLevel(refType);
-                varType = (String) refTable.lookup(varName, refFieldLevel); //check if it is a field
+                //refTable.dump();
+                varType = (String) refTable.lookup(varName, refFieldLevel);//check if it is a field
             }
         }
 
@@ -698,7 +703,7 @@ public class TypeCheckerVisitor extends Visitor
     }
 
     private int getClassFieldLevel(ClassTreeNode node) {
-        int level = 1;
+        int level = 0;
         while(node.getParent() != null) {
             level++;
             node = node.getParent();
