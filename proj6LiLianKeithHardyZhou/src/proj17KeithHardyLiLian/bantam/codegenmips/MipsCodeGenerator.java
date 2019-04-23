@@ -148,8 +148,8 @@ public class MipsCodeGenerator
 
         this.out.println("#Compiled From Source: " + filename[filename.length-1]);
 
-        //create idtable from inheritance tree
-        this.genIDTable();
+        //create id table from inheritance tree
+        this.addChildren(this.classMap.get("Object"));
 
         // Step 1-2
         //start data section
@@ -221,10 +221,6 @@ public class MipsCodeGenerator
 
     }
 
-    private void genIDTable(){
-        ClassTreeNode root = this.classMap.get("Object");
-        this.addChildren(root);
-    }
 
     private void addChildren(ClassTreeNode root){
         this.idTable.add(root);
