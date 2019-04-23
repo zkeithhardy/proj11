@@ -704,9 +704,8 @@ public class TypeCheckerVisitor extends Visitor
 
     private int getClassFieldLevel(ClassTreeNode node) {
         int level = 0;
-        while(node.getParent() != null) {
-            level++;
-            node = node.getParent();
+        if(node.getParent() != null) {
+            level = node.getParent().getVarSymbolTable().getCurrScopeLevel();
         }
         return level;
     }
