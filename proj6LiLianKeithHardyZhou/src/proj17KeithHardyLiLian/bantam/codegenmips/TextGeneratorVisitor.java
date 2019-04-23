@@ -29,13 +29,17 @@ public class TextGeneratorVisitor extends Visitor {
     private int currentParameterOffset = 0;
     private ArrayList<ClassTreeNode> idTable;
 
-    //fixme: delete this after checking is done
-    private final String[] registers =
-            {"$zero", "$at", "$v0", "$v1", "$a0", "$a1", "$a2", "$a3",
-                    "$t0", "$t1", "$t2", "$t3", "$t4", "$t5", "$t6", "$t7", "$t8", "$t9",
-                    "$s0", "$s1", "$s2", "$s3", "$s4", "$s5", "$s6", "$s7",
-                    "$k0", "$k1", "$gp", "$sp", "$fp", "$ra"};
-    
+
+    /**
+     * constructor for a text generator visitor
+     * @param out print stream to print out in console
+     * @param assemblySupport Mips support class to generate MIPS code
+     * @param classMap class map that match class names to their corresponding class tree node
+     * @param dispatchTableMap a hash map of string and arraylist of string that keep track of each
+     *                         class's members
+     * @param idTable a array list of class tree node that keep track of each class's id number under
+     *                pre-order sorting
+     */
     public TextGeneratorVisitor(PrintStream out, MipsSupport assemblySupport, Hashtable<String,ClassTreeNode> classMap,
                                 HashMap<String, ArrayList<String>> dispatchTableMap, ArrayList<ClassTreeNode> idTable){
         this.out = out;
@@ -45,6 +49,10 @@ public class TextGeneratorVisitor extends Visitor {
         this.idTable = idTable;
     }
 
+    /**
+     * method that generate .text section given a root node
+     * @param root root program node
+     */
     public void generateTextSection(Program root){
         this.initOrGenMethods = "genMethods";
         numLocalVars = 0;
@@ -53,6 +61,11 @@ public class TextGeneratorVisitor extends Visitor {
         root.accept(this);
     }
 
+    /**
+     * method that generate the field .init section
+     * @param classNode node for root class
+     * @param stringNameMap the map of strings that documents the string constants
+     */
     public void generateFieldInitialization(Class_ classNode, Map<String, String> stringNameMap){
         classSymbolTables.put(classNode.getName(), new SymbolTable());
         classSymbolTables.get(classNode.getName()).enterScope();
@@ -64,29 +77,6 @@ public class TextGeneratorVisitor extends Visitor {
         classNode.accept(this);
     }
 
-
-    /**
-     * peek at sepcific register with different indicator
-     * @param reg name of the register to look at
-     *
-     */
-    //fixme: delete this after checking is done
-    public void printRegister(String reg){
-        this.assemblySupport.genComment("peeking register "+ reg);
-        this.assemblySupport.genMove("$t7", "$a0");
-        this.assemblySupport.genMove("$t6", "$v0");
-        for (String register : registers) {
-            if (reg.equals(register)) {
-                this.assemblySupport.genMove("$a0", reg);
-            }
-        }
-        this.out.println("\tli $v0 1");
-        this.out.println("\tsyscall");
-        //restore the a0 v0 register values
-        this.assemblySupport.genMove("$a0", "$t7");
-        this.assemblySupport.genMove("$v0", "$t6");
-        this.assemblySupport.genComment("end peeking register " + reg);
-    }
 
     /**
      * Visit a list node of classes
@@ -182,6 +172,9 @@ public class TextGeneratorVisitor extends Visitor {
         return null;
     }
 
+    /**
+     * generate the prologue including setting up the return address and frame pointer
+     */
     public void generateMethodPrologue(){
         this.assemblySupport.genComment("Start Prologue");
 
@@ -212,6 +205,12 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genComment("End Prologue");
     }
 
+    /**
+     * generate the epilogue that deals with adding frame pointer back to earlier state location and
+     * jump to return address
+     * @param numParams the number of parameters which is used to keep track of how many steps the frame
+     *                  pointer need to go down
+     */
     public void generateMethodEpilogue(int numParams){
         this.assemblySupport.genComment("Start Epilogue");
 
@@ -474,7 +473,6 @@ public class TextGeneratorVisitor extends Visitor {
             this.assemblySupport.genComment("store $v0 to $sp");
             this.assemblySupport.genStoreWord("$v0",0,"$sp");
         }
-
         return null;
     }
 
@@ -544,6 +542,8 @@ public class TextGeneratorVisitor extends Visitor {
             InstanceofExpr instanceChecker= new InstanceofExpr(node.getLineNum(), node.getExpr(), objectType);
             instanceChecker.accept(this);
 
+            //load the expression and target type ids to the t0 and t1 so that the _class_cast_error can
+            //catch the correct type names
             this.assemblySupport.genComment("load the class id of the object to $t0");
             this.assemblySupport.genLoadImm("$t0", idTable.indexOf(classMap.get(node.getExpr().getExprType())));
             this.assemblySupport.genComment("load the class id of the type to $t1");
@@ -902,7 +902,7 @@ public class TextGeneratorVisitor extends Visitor {
         }
 
         else if (((VarExpr)((VarExpr) node.getExpr()).getRef()).getName().equals("super")) {
-            this.assemblySupport.genComment("case where the reference object is /.super/");
+            this.assemblySupport.genComment("case where the reference object is /super./");
             location = (Location) currentSymbolTable.lookup(varName,
                     currentClassFieldLevel - 1);
 
@@ -936,7 +936,7 @@ public class TextGeneratorVisitor extends Visitor {
         }
 
         else if (((VarExpr)((VarExpr) node.getExpr()).getRef()).getName().equals("super")) {
-            this.assemblySupport.genComment("case where the reference object is /.super/");
+            this.assemblySupport.genComment("case where the reference object is /super./");
             location = (Location) currentSymbolTable.lookup(varName,
                     currentClassFieldLevel - 1);
 
@@ -971,7 +971,7 @@ public class TextGeneratorVisitor extends Visitor {
         }
 
         else if (((VarExpr)((VarExpr) node.getExpr()).getRef()).getName().equals("super")) {
-            this.assemblySupport.genComment("case where the reference object is /.super/");
+            this.assemblySupport.genComment("case where the reference object is /super./");
             location = (Location) currentSymbolTable.lookup(varName,
                     currentClassFieldLevel - 1);
 
@@ -1005,7 +1005,7 @@ public class TextGeneratorVisitor extends Visitor {
         }
 
         else if (((VarExpr)((VarExpr) node.getExpr()).getRef()).getName().equals("super")) {
-            this.assemblySupport.genComment("case where the reference object is /.super/");
+            this.assemblySupport.genComment("case where the reference object is /super./");
             location = (Location) currentSymbolTable.lookup(varName,
                     currentClassFieldLevel - 1);
 
