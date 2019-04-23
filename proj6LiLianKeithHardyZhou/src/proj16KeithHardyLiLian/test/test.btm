@@ -4,7 +4,7 @@ class Main {
 
     void main() {
 //	var r  = 4;
-//	var y = 5;
+//	var t = 5;
 //	var q = 6;
 //	//var z = (r*t)+(q%y);
 //	var t = new B();
@@ -12,8 +12,8 @@ class Main {
 //		q = 3;
 //	}
 //	y = q;
-	var y = new SubMain();
-	var q = y.z;
+	var y = new B();
+	var q =y.getX();
 
 	//var z = y.x;
 	//var q = y.getX();
@@ -35,14 +35,14 @@ class SubMain extends Main {
 class A{
     int x = 4;
     int y = 2;
-
+    int getX(){return this.x;}
 }
 
 
 class B extends A{
     int x = 5;
     int z = 3;
-    //int getX(){return super.x;}
+    int getX(){return this.x + super.getX();}
     //SubMain newSubMain(){return new SubMain();}
 
 }

@@ -439,6 +439,9 @@ public class TextGeneratorVisitor extends Visitor {
             type = this.classMap.get(this.currentClass).getParent().getName();
 
             this.assemblySupport.genComment("access dispatch_table");
+            NewExpr temp = new NewExpr(node.getLineNum(),type);
+            temp.accept(this);
+            this.assemblySupport.genMove("$a0","$v0");
             this.assemblySupport.genLoadAddr("$v0",type + "_dispatch_table");
         }else{
             node.getRefExpr().accept(this);

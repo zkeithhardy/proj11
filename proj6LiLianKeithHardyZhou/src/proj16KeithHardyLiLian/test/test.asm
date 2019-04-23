@@ -161,10 +161,12 @@ A_dispatch_table:
 	.word	Object.clone
 	.word	Object.equals
 	.word	Object.toString
+	.word	A.getX
 B_dispatch_table:
 	.word	Object.clone
 	.word	Object.equals
 	.word	Object.toString
+	.word	B.getX
 Object_dispatch_table:
 	.word	Object.clone
 	.word	Object.equals
@@ -257,8 +259,8 @@ A_init:
 	lw $ra 0($sp)
 	# add 4 to $sp
 	add $sp $sp 4
-	# add 0 to $fp and store the result to $sp
-	add $sp $fp 0
+	# add 0 to $sp and store the result to $sp
+	add $sp $sp 0
 	jr $ra
 	# End Epilogue
 B_init:
@@ -306,8 +308,8 @@ B_init:
 	lw $ra 0($sp)
 	# add 4 to $sp
 	add $sp $sp 4
-	# add 0 to $fp and store the result to $sp
-	add $sp $fp 0
+	# add 0 to $sp and store the result to $sp
+	add $sp $sp 0
 	jr $ra
 	# End Epilogue
 Object_init:
@@ -345,8 +347,8 @@ Object_init:
 	lw $ra 0($sp)
 	# add 4 to $sp
 	add $sp $sp 4
-	# add 0 to $fp and store the result to $sp
-	add $sp $fp 0
+	# add 0 to $sp and store the result to $sp
+	add $sp $sp 0
 	jr $ra
 	# End Epilogue
 String_init:
@@ -386,8 +388,8 @@ String_init:
 	lw $ra 0($sp)
 	# add 4 to $sp
 	add $sp $sp 4
-	# add 0 to $fp and store the result to $sp
-	add $sp $fp 0
+	# add 0 to $sp and store the result to $sp
+	add $sp $sp 0
 	jr $ra
 	# End Epilogue
 Sys_init:
@@ -425,8 +427,8 @@ Sys_init:
 	lw $ra 0($sp)
 	# add 4 to $sp
 	add $sp $sp 4
-	# add 0 to $fp and store the result to $sp
-	add $sp $fp 0
+	# add 0 to $sp and store the result to $sp
+	add $sp $sp 0
 	jr $ra
 	# End Epilogue
 SubMain_init:
@@ -470,8 +472,8 @@ SubMain_init:
 	lw $ra 0($sp)
 	# add 4 to $sp
 	add $sp $sp 4
-	# add 0 to $fp and store the result to $sp
-	add $sp $fp 0
+	# add 0 to $sp and store the result to $sp
+	add $sp $sp 0
 	jr $ra
 	# End Epilogue
 TextIO_init:
@@ -513,8 +515,8 @@ TextIO_init:
 	lw $ra 0($sp)
 	# add 4 to $sp
 	add $sp $sp 4
-	# add 0 to $fp and store the result to $sp
-	add $sp $fp 0
+	# add 0 to $sp and store the result to $sp
+	add $sp $sp 0
 	jr $ra
 	# End Epilogue
 Main_init:
@@ -561,8 +563,8 @@ Main_init:
 	lw $ra 0($sp)
 	# add 4 to $sp
 	add $sp $sp 4
-	# add 0 to $fp and store the result to $sp
-	add $sp $fp 0
+	# add 0 to $sp and store the result to $sp
+	add $sp $sp 0
 	jr $ra
 	# End Epilogue
 Main.main:
@@ -584,23 +586,19 @@ Main.main:
 	# move $fp to $sp
 	move $sp $fp
 	# End Prologue
-	# load the address of SubMain_template to $a0
-	la $a0 SubMain_template
+	# load the address of B_template to $a0
+	la $a0 B_template
 	# load (8)$a0 to $v0
 	# jump to $v0
 	jal Object.clone
 	move $a0 $v0
-	# jump to SubMain_init
-	jal SubMain_init
+	# jump to B_init
+	jal B_init
 	lw $a0 8($fp)
 	# store $v0 to (0)$fp
 	sw $v0 0($fp)
-	# var expression
-	# subtract stack pointer with 4
 	sub $sp $sp 4
-	# save value in $a0 to stack pointer with 0 offset
 	sw $a0 0($sp)
-	# accept the reference object and save its location $v0
 	# var expression
 	# subtract stack pointer with 4
 	sub $sp $sp 4
@@ -612,23 +610,16 @@ Main.main:
 	lw $v0 0($fp)
 	lw $a0 0($sp)
 	add $sp $sp 4
-	# case where the reference object is user defined class
-	# check for null pointer errors
-	# if $v0 == 0, branch to nullError
-	beq $zero $v0 label0
-	b label1
-label0:
-	jal _null_pointer_error
-label1:
-	# move $v0 to $a0
 	move $a0 $v0
-	# load (12)$a0 to $v0
-	lw $v0 12($a0)
+	lw $v0 8($v0)
+	# load method address
+	lw $a1 12($v0)
+	jalr $a1
 	lw $a0 0($sp)
 	add $sp $sp 4
 	# store $v0 to (4)$fp
 	sw $v0 4($fp)
-	move $a0 $v0
+	move $a0 $v0 
 	li $v0 1
 	syscall
 	# Start Epilogue
@@ -646,7 +637,134 @@ label1:
 	lw $ra 0($sp)
 	# add 4 to $sp
 	add $sp $sp 4
+	# add 0 to $sp and store the result to $sp
+	add $sp $sp 0
+	jr $ra
+	# End Epilogue
+A.getX:
+	# Start Prologue
+	# subtract 4 from $sp
+	sub $sp $sp 4
+	# store $ra to $sp
+	sw $ra 0($sp)
+	# subtract 4 from $sp
+	sub $sp $sp 4
+	# store $fp to $sp
+	sw $fp 0($sp)
+	# subtract 4 from $sp
+	sub $sp $sp 4
+	# store $a0 to $sp
+	sw $a0 0($sp)
+	# subtract 0 from $sp and store the result to $fp
+	sub $fp $sp 0
+	# move $fp to $sp
+	move $sp $fp
+	# End Prologue
+	# var expression
+	# subtract stack pointer with 4
+	sub $sp $sp 4
+	# save value in $a0 to stack pointer with 0 offset
+	sw $a0 0($sp)
+	# accept the reference object and save its location $v0
+	# case where the reference object is /this./
+	# load (12)$a0 to $v0 
+	lw $v0 12($a0)
+	lw $a0 0($sp)
+	add $sp $sp 4
+	# Start Epilogue
 	# add 0 to $fp and store the result to $sp
 	add $sp $fp 0
+	# load $sp to $a0
+	lw $a0 0($sp)
+	# add 4 to $sp
+	add $sp $sp 4
+	# load $sp to $fp
+	lw $fp 0($sp)
+	# add 4 to $sp
+	add $sp $sp 4
+	# load $sp to $ra
+	lw $ra 0($sp)
+	# add 4 to $sp
+	add $sp $sp 4
+	# add 0 to $sp and store the result to $sp
+	add $sp $sp 0
+	jr $ra
+	# End Epilogue
+B.getX:
+	# Start Prologue
+	# subtract 4 from $sp
+	sub $sp $sp 4
+	# store $ra to $sp
+	sw $ra 0($sp)
+	# subtract 4 from $sp
+	sub $sp $sp 4
+	# store $fp to $sp
+	sw $fp 0($sp)
+	# subtract 4 from $sp
+	sub $sp $sp 4
+	# store $a0 to $sp
+	sw $a0 0($sp)
+	# subtract 0 from $sp and store the result to $fp
+	sub $fp $sp 0
+	# move $fp to $sp
+	move $sp $fp
+	# End Prologue
+	# gen left side of expression
+	# var expression
+	# subtract stack pointer with 4
+	sub $sp $sp 4
+	# save value in $a0 to stack pointer with 0 offset
+	sw $a0 0($sp)
+	# accept the reference object and save its location $v0
+	# case where the reference object is /this./
+	# load (12)$a0 to $v0 
+	lw $v0 12($a0)
+	lw $a0 0($sp)
+	add $sp $sp 4
+	# store left expression on stack
+	sub $sp $sp 4
+	sw $v0 0($sp)
+	# gen right side of expression
+	sub $sp $sp 4
+	sw $a0 0($sp)
+	# access dispatch_table
+	# load the address of A_template to $a0
+	la $a0 A_template
+	# load (8)$a0 to $v0
+	# jump to $v0
+	jal Object.clone
+	move $a0 $v0
+	# jump to A_init
+	jal A_init
+	lw $a0 0($fp)
+	move $a0 $v0
+	la $v0 A_dispatch_table
+	# load method address
+	lw $a1 12($v0)
+	jalr $a1
+	lw $a0 0($sp)
+	add $sp $sp 4
+	# load left expression on stack
+	lw $v1 0($sp)
+	add $sp $sp 4
+	# add left and right sides of expression
+	add $v0 $v0 $v1
+	# Start Epilogue
+	# add 0 to $fp and store the result to $sp
+	add $sp $fp 0
+	# load $sp to $a0
+	lw $a0 0($sp)
+	# add 4 to $sp
+	add $sp $sp 4
+	# load $sp to $fp
+	lw $fp 0($sp)
+	# add 4 to $sp
+	add $sp $sp 4
+	# load $sp to $ra
+	lw $ra 0($sp)
+	# add 4 to $sp
+	add $sp $sp 4
+	# add 0 to $sp and store the result to $sp
+	add $sp $sp 0
 	jr $ra
 	# End Epilogue
