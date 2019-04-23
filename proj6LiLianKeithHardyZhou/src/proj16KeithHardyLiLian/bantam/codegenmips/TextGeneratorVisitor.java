@@ -239,8 +239,8 @@ public class TextGeneratorVisitor extends Visitor {
 //        this.assemblySupport.genComment("move $fp to $sp");
 //        this.assemblySupport.genMove("$sp","$fp");
 
-        this.assemblySupport.genComment("add "+4*numParams+" to $fp and store the result to $sp");
-        this.assemblySupport.genAdd("$sp","$fp", 4*numParams);
+        this.assemblySupport.genComment("add "+4*numParams+" to $sp and store the result to $sp");
+        this.assemblySupport.genAdd("$sp","$sp", 4*numParams);
 
         this.assemblySupport.genRetn();
         this.assemblySupport.genComment("End Epilogue");
@@ -253,7 +253,7 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(FormalList node) {
-        this.currentParameterOffset = node.getSize()*4;
+        this.currentParameterOffset = (node.getSize()-1)*4;
         for (Iterator it = node.iterator(); it.hasNext(); )
             ((Formal) it.next()).accept(this);
         return null;
@@ -267,7 +267,7 @@ public class TextGeneratorVisitor extends Visitor {
      */
     public Object visit(Formal node) {
         this.currentSymbolTable.add(node.getName(),new Location("$fp",this.methodLocalVars * 4 +
-                12 + this.currentParameterOffset));
+                12+ this.currentParameterOffset));
         this.currentParameterOffset -= 4;
         numLocalVars += 1;
         return null;
@@ -427,7 +427,8 @@ public class TextGeneratorVisitor extends Visitor {
      */
     public Object visit(DispatchExpr node) {
         String type;
-
+        this.assemblySupport.genSub("$sp","$sp",4);
+        this.assemblySupport.genStoreWord("$a0",0,"$sp");
         if (node.getRefExpr() == null || ((node.getRefExpr() instanceof VarExpr) && //local var or field of "this"
                 ((VarExpr) node.getRefExpr()).getName().equals("this"))) {
             type = this.currentClass;
@@ -442,6 +443,7 @@ public class TextGeneratorVisitor extends Visitor {
         }else{
             node.getRefExpr().accept(this);
             type = node.getRefExpr().getExprType();
+            this.assemblySupport.genMove("$a0","$v0");
             this.assemblySupport.genLoadWord("$v0",8,"$v0");
         }
 
@@ -452,7 +454,8 @@ public class TextGeneratorVisitor extends Visitor {
         node.getActualList().accept(this);
 
         this.assemblySupport.genInDirCall("$a1");
-
+        this.assemblySupport.genLoadWord("$a0",0,"$sp");
+        this.assemblySupport.genAdd("$sp","$sp",4);
         return null;
     }
 
@@ -521,8 +524,8 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genLoadImm("$t1", j+k);
 
         this.assemblySupport.genComment("compare j<=i and i<=j+k, if both true, return true");
-        this.out.println("sle $t0 $t0 $v0"); // j <= i
-        this.out.println("sle $v0 $v0 $t1"); // i <= j+k
+        this.out.println("\tsle $t0 $t0 $v0"); // j <= i
+        this.out.println("\tsle $v0 $v0 $t1"); // i <= j+k
 
         this.assemblySupport.genAnd("$v0", "$t0", "$v0");
         this.assemblySupport.genSub("$v0", "$zero", "$v0"); // b/c we're using -1 as true
