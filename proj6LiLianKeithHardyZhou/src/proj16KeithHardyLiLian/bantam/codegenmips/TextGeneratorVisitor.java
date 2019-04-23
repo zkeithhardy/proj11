@@ -758,7 +758,7 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genLoadWord("$v1",0,"$sp");
         this.assemblySupport.genAdd("$sp","$sp",4);
         this.assemblySupport.genComment("subtract left and right sides of expression");
-        this.assemblySupport.genSub("$v0","$v0","$v1");
+        this.assemblySupport.genSub("$v0","$v1","$v0");
         return null;
     }
 
@@ -808,7 +808,7 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genComment("check for divide by zero error");
         this.assemblySupport.genCondBeq("$zero", "$v1", zeroError);
         this.assemblySupport.genComment("divide left and right sides of expression");
-        this.assemblySupport.genDiv("$v0","$v0","$v1");
+        this.assemblySupport.genDiv("$v0","$v1","$v0");
         this.assemblySupport.genComment("branch to afterError");
         this.assemblySupport.genUncondBr(afterError);
         this.assemblySupport.genLabel(zeroError);
