@@ -12,8 +12,13 @@ class Main {
 //		q = 3;
 //	}
 //	y = q;
-	var y = new SubMain();
-	var q = y.z;
+//	var y = new SubMain();
+//	var q = y.z;
+	
+	var a = new A();
+	
+	cast(B, a);
+	
 
 	//var z = y.x;
 	//var q = y.getX();

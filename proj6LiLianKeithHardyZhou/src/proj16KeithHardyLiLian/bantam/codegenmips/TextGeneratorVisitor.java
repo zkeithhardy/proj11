@@ -486,11 +486,6 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genComment("load the address of "+node.getType()+"_template to $a0");
         this.assemblySupport.genLoadAddr("$a0", node.getType()+"_template");
         // get the address of the clone method, save it to $v0
-        this.assemblySupport.genComment("load (8)$a0 to $v0");
-        //this.assemblySupport.genLoadWord("$v0", 8, "$a0" );
-        // jump to that clone method
-        this.assemblySupport.genComment("jump to $v0");
-        //this.assemblySupport.genInDirCall("$v0");
         this.assemblySupport.genDirCall("Object.clone");
         this.assemblySupport.genMove("$a0","$v0");
 
@@ -521,8 +516,8 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genLoadImm("$t1", j+k);
 
         this.assemblySupport.genComment("compare j<=i and i<=j+k, if both true, return true");
-        this.out.println("sle $t0 $t0 $v0"); // j <= i
-        this.out.println("sle $v0 $v0 $t1"); // i <= j+k
+        this.out.println("\tsle $t0 $t0 $v0"); // j <= i
+        this.out.println("\tsle $v0 $v0 $t1"); // i <= j+k
 
         this.assemblySupport.genAnd("$v0", "$t0", "$v0");
         this.assemblySupport.genSub("$v0", "$zero", "$v0"); // b/c we're using -1 as true
@@ -541,10 +536,13 @@ public class TextGeneratorVisitor extends Visitor {
         node.getExpr().accept(this);
         if(!node.getUpCast()){
             this.assemblySupport.genComment("case where the cast expression is down-casting");
-            String objectType = node.getExpr().getExprType();
+            String objectType = node.getType();
             this.assemblySupport.genComment("check if the expression is an instance of target class");
             InstanceofExpr instanceChecker= new InstanceofExpr(node.getLineNum(), node.getExpr(), objectType);
             instanceChecker.accept(this);
+
+
+            printRegister("$v0");
 
             String ifZero= this.assemblySupport.getLabel();
             String ifNotZero = this.assemblySupport.getLabel();
@@ -557,8 +555,6 @@ public class TextGeneratorVisitor extends Visitor {
             //true, bypass handle error
             this.assemblySupport.genComment("case where the expression is a proper subtype of target class");
             this.assemblySupport.genLabel(ifNotZero);
-
-            return null;
         }
 
         return null;
