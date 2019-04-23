@@ -1,5 +1,5 @@
 #Authors: Zeb Keith-Hardy, Michael Li, Iris Lian
-#Date: 2019-04-22
+#Date: 2019-04-23
 #Compiled From Source: test.btm
 	.data
 	.globl	gc_flag
@@ -128,8 +128,9 @@ Sys_template:
 
 SubMain_template:
 	.word	6
-	.word	24
+	.word	28
 	.word	SubMain_dispatch_table
+	.word	0
 	.word	0
 	.word	0
 	.word	0
@@ -143,8 +144,9 @@ TextIO_template:
 
 Main_template:
 	.word	5
-	.word	20
+	.word	24
 	.word	Main_dispatch_table
+	.word	0
 	.word	0
 	.word	0
 
@@ -167,6 +169,7 @@ B_dispatch_table:
 	.word	Object.equals
 	.word	Object.toString
 	.word	B.getX
+	.word	B.setX
 Object_dispatch_table:
 	.word	Object.clone
 	.word	Object.equals
@@ -588,8 +591,6 @@ Main.main:
 	# End Prologue
 	# load the address of B_template to $a0
 	la $a0 B_template
-	# load (8)$a0 to $v0
-	# jump to $v0
 	jal Object.clone
 	move $a0 $v0
 	# jump to B_init
@@ -613,13 +614,13 @@ Main.main:
 	move $a0 $v0
 	lw $v0 8($v0)
 	# load method address
-	lw $a1 12($v0)
+	lw $a1 16($v0)
 	jalr $a1
 	lw $a0 0($sp)
 	add $sp $sp 4
 	# store $v0 to (4)$fp
 	sw $v0 4($fp)
-	move $a0 $v0 
+	move $a0 $v0
 	li $v0 1
 	syscall
 	# Start Epilogue
@@ -730,8 +731,6 @@ B.getX:
 	# access dispatch_table
 	# load the address of A_template to $a0
 	la $a0 A_template
-	# load (8)$a0 to $v0
-	# jump to $v0
 	jal Object.clone
 	move $a0 $v0
 	# jump to A_init
@@ -749,6 +748,68 @@ B.getX:
 	add $sp $sp 4
 	# add left and right sides of expression
 	add $v0 $v0 $v1
+	# Start Epilogue
+	# add 0 to $fp and store the result to $sp
+	add $sp $fp 0
+	# load $sp to $a0
+	lw $a0 0($sp)
+	# add 4 to $sp
+	add $sp $sp 4
+	# load $sp to $fp
+	lw $fp 0($sp)
+	# add 4 to $sp
+	add $sp $sp 4
+	# load $sp to $ra
+	lw $ra 0($sp)
+	# add 4 to $sp
+	add $sp $sp 4
+	# add 0 to $sp and store the result to $sp
+	add $sp $sp 0
+	jr $ra
+	# End Epilogue
+B.setX:
+	# Start Prologue
+	# subtract 4 from $sp
+	sub $sp $sp 4
+	# store $ra to $sp
+	sw $ra 0($sp)
+	# subtract 4 from $sp
+	sub $sp $sp 4
+	# store $fp to $sp
+	sw $fp 0($sp)
+	# subtract 4 from $sp
+	sub $sp $sp 4
+	# store $a0 to $sp
+	sw $a0 0($sp)
+	# subtract 0 from $sp and store the result to $fp
+	sub $fp $sp 0
+	# move $fp to $sp
+	move $sp $fp
+	# End Prologue
+	# assign expr
+	# subtrack 4 from the the stack pointer
+	sub $sp $sp 4
+	# save $a0 to stack pointer with offset of 0
+	sw $a0 0($sp)
+	# constant int expression
+	li $v0 8
+	# case where the reference name is /super/
+	sw $v0 12($a0)
+	# save stack pointer result to $a0
+	lw $a0 0($sp)
+	# add stack pointer with 4
+	add $sp $sp 4
+	# var expression
+	# subtract stack pointer with 4
+	sub $sp $sp 4
+	# save value in $a0 to stack pointer with 0 offset
+	sw $a0 0($sp)
+	# accept the reference object and save its location $v0
+	# case where the reference object is /.super/
+	# load (12)$a0 to $v0 
+	lw $v0 12($a0)
+	lw $a0 0($sp)
+	add $sp $sp 4
 	# Start Epilogue
 	# add 0 to $fp and store the result to $sp
 	add $sp $fp 0

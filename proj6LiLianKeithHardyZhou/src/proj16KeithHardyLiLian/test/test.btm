@@ -1,6 +1,7 @@
 class Main {
     int x = 3;
     int y = 4;
+    B b;
 
     void main() {
 //	var r  = 4;
@@ -13,8 +14,8 @@ class Main {
 //	}
 //	y = q;
 	var y = new B();
-	var q =y.getX();
-
+	//var q =y.getX();;
+	var t = y.setX();
 	//var z = y.x;
 	//var q = y.getX();
 	//var z  = y.foo(this.x);
@@ -43,6 +44,10 @@ class B extends A{
     int x = 5;
     int z = 3;
     int getX(){return this.x + super.getX();}
+    int setX(){
+	super.x = 8;
+	return super.x;
+    }
     //SubMain newSubMain(){return new SubMain();}
 
 }
