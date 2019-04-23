@@ -1,0 +1,54 @@
+class Main {
+    int x = 3;
+    int y = 4;
+    B b;
+
+    void main() {
+//	var r  = 4;
+//	var t = 5;
+//	var q = 6;
+//	//var z = (r*t)+(q%y);
+//	var t = new B();
+//	if (t instanceof A){
+//		q = 3;
+//	}
+//	y = q;
+	var y = new A();
+	cast(B, y);
+	//var q =y.getX();
+//	var t = y.setX();
+	//var z = y.x;
+	//var q = y.getX();
+	//var z  = y.foo(this.x);
+	//var q = y.newSubMain().z;
+	//var z = y.x;
+    }
+}
+class SubMain extends Main {
+    int z = 400;
+
+    //SubMain newSubMain(){return new SubMain();}
+    //int foo(int x) { return x; }
+    //boolean equals(Object o) { return false; }
+
+    
+}
+
+class A{
+    int x = 4;
+    int y = 2;
+    int getX(){return this.x;}
+}
+
+
+class B extends A{
+    int x = 5;
+    int z = 3;
+    int getX(){return this.x + super.getX();}
+    int setX(){
+	super.x = 8;
+	return super.x;
+    }
+    //SubMain newSubMain(){return new SubMain();}
+
+}
