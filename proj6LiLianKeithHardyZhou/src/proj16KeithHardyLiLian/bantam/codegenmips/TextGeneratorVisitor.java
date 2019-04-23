@@ -547,8 +547,10 @@ public class TextGeneratorVisitor extends Visitor {
             InstanceofExpr instanceChecker= new InstanceofExpr(node.getLineNum(), node.getExpr(), objectType);
             instanceChecker.accept(this);
 
-
-            printRegister("$v0");
+            this.assemblySupport.genComment("load the class id of the object to $t0");
+            this.assemblySupport.genLoadImm("$t0", idTable.indexOf(classMap.get(node.getExpr().getExprType())));
+            this.assemblySupport.genComment("load the class id of the type to $t1");
+            this.assemblySupport.genLoadImm("$t1", idTable.indexOf(classMap.get(objectType)));
 
             String ifZero= this.assemblySupport.getLabel();
             String ifNotZero = this.assemblySupport.getLabel();

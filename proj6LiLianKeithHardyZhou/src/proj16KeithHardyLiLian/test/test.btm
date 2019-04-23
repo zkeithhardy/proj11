@@ -13,9 +13,10 @@ class Main {
 //		q = 3;
 //	}
 //	y = q;
-	var y = new B();
-	//var q =y.getX();;
-	var t = y.setX();
+	var y = new A();
+	cast(B, y);
+	//var q =y.getX();
+//	var t = y.setX();
 	//var z = y.x;
 	//var q = y.getX();
 	//var z  = y.foo(this.x);

@@ -1,5 +1,5 @@
 #Authors: Zeb Keith-Hardy, Michael Li, Iris Lian
-#Date: 2019-04-22
+#Date: 2019-04-23
 #Compiled From Source: test.btm
 	.data
 	.globl	gc_flag
@@ -128,8 +128,9 @@ Sys_template:
 
 SubMain_template:
 	.word	6
-	.word	24
+	.word	28
 	.word	SubMain_dispatch_table
+	.word	0
 	.word	0
 	.word	0
 	.word	0
@@ -143,8 +144,9 @@ TextIO_template:
 
 Main_template:
 	.word	5
-	.word	20
+	.word	24
 	.word	Main_dispatch_table
+	.word	0
 	.word	0
 	.word	0
 
@@ -161,10 +163,13 @@ A_dispatch_table:
 	.word	Object.clone
 	.word	Object.equals
 	.word	Object.toString
+	.word	A.getX
 B_dispatch_table:
 	.word	Object.clone
 	.word	Object.equals
 	.word	Object.toString
+	.word	B.getX
+	.word	B.setX
 Object_dispatch_table:
 	.word	Object.clone
 	.word	Object.equals
@@ -257,8 +262,8 @@ A_init:
 	lw $ra 0($sp)
 	# add 4 to $sp
 	add $sp $sp 4
-	# add 0 to $fp and store the result to $sp
-	add $sp $fp 0
+	# add 0 to $sp and store the result to $sp
+	add $sp $sp 0
 	jr $ra
 	# End Epilogue
 B_init:
@@ -306,8 +311,8 @@ B_init:
 	lw $ra 0($sp)
 	# add 4 to $sp
 	add $sp $sp 4
-	# add 0 to $fp and store the result to $sp
-	add $sp $fp 0
+	# add 0 to $sp and store the result to $sp
+	add $sp $sp 0
 	jr $ra
 	# End Epilogue
 Object_init:
@@ -345,8 +350,8 @@ Object_init:
 	lw $ra 0($sp)
 	# add 4 to $sp
 	add $sp $sp 4
-	# add 0 to $fp and store the result to $sp
-	add $sp $fp 0
+	# add 0 to $sp and store the result to $sp
+	add $sp $sp 0
 	jr $ra
 	# End Epilogue
 String_init:
@@ -386,8 +391,8 @@ String_init:
 	lw $ra 0($sp)
 	# add 4 to $sp
 	add $sp $sp 4
-	# add 0 to $fp and store the result to $sp
-	add $sp $fp 0
+	# add 0 to $sp and store the result to $sp
+	add $sp $sp 0
 	jr $ra
 	# End Epilogue
 Sys_init:
@@ -425,8 +430,8 @@ Sys_init:
 	lw $ra 0($sp)
 	# add 4 to $sp
 	add $sp $sp 4
-	# add 0 to $fp and store the result to $sp
-	add $sp $fp 0
+	# add 0 to $sp and store the result to $sp
+	add $sp $sp 0
 	jr $ra
 	# End Epilogue
 SubMain_init:
@@ -470,8 +475,8 @@ SubMain_init:
 	lw $ra 0($sp)
 	# add 4 to $sp
 	add $sp $sp 4
-	# add 0 to $fp and store the result to $sp
-	add $sp $fp 0
+	# add 0 to $sp and store the result to $sp
+	add $sp $sp 0
 	jr $ra
 	# End Epilogue
 TextIO_init:
@@ -513,8 +518,8 @@ TextIO_init:
 	lw $ra 0($sp)
 	# add 4 to $sp
 	add $sp $sp 4
-	# add 0 to $fp and store the result to $sp
-	add $sp $fp 0
+	# add 0 to $sp and store the result to $sp
+	add $sp $sp 0
 	jr $ra
 	# End Epilogue
 Main_init:
@@ -561,8 +566,8 @@ Main_init:
 	lw $ra 0($sp)
 	# add 4 to $sp
 	add $sp $sp 4
-	# add 0 to $fp and store the result to $sp
-	add $sp $fp 0
+	# add 0 to $sp and store the result to $sp
+	add $sp $sp 0
 	jr $ra
 	# End Epilogue
 Main.main:
@@ -607,6 +612,8 @@ Main.main:
 	add $sp $sp 4
 	# case where the cast expression is down-casting
 	# check if the expression is an instance of target class
+	li $t0 1
+	li $t1 2
 	# var expression
 	# subtract stack pointer with 4
 	sub $sp $sp 4
@@ -629,6 +636,15 @@ Main.main:
 	sle $v0 $v0 $t1
 	and $v0 $t0 $v0
 	sub $v0 $zero $v0
+	# peeking register $t0
+	move $t7 $a0
+	move $t6 $v0
+	move $a0 $t0
+	li $v0 1
+	syscall
+	move $a0 $t7
+	move $v0 $t6
+	# end peeking register $t0
 	# peeking register $v0
 	move $t7 $a0
 	move $t6 $v0
@@ -660,7 +676,194 @@ label1:
 	lw $ra 0($sp)
 	# add 4 to $sp
 	add $sp $sp 4
+	# add 0 to $sp and store the result to $sp
+	add $sp $sp 0
+	jr $ra
+	# End Epilogue
+A.getX:
+	# Start Prologue
+	# subtract 4 from $sp
+	sub $sp $sp 4
+	# store $ra to $sp
+	sw $ra 0($sp)
+	# subtract 4 from $sp
+	sub $sp $sp 4
+	# store $fp to $sp
+	sw $fp 0($sp)
+	# subtract 4 from $sp
+	sub $sp $sp 4
+	# store $a0 to $sp
+	sw $a0 0($sp)
+	# subtract 0 from $sp and store the result to $fp
+	sub $fp $sp 0
+	# move $fp to $sp
+	move $sp $fp
+	# End Prologue
+	# var expression
+	# subtract stack pointer with 4
+	sub $sp $sp 4
+	# save value in $a0 to stack pointer with 0 offset
+	sw $a0 0($sp)
+	# accept the reference object and save its location $v0
+	# case where the reference object is /this./
+	# load (12)$a0 to $v0 
+	lw $v0 12($a0)
+	lw $a0 0($sp)
+	add $sp $sp 4
+	# Start Epilogue
 	# add 0 to $fp and store the result to $sp
 	add $sp $fp 0
+	# load $sp to $a0
+	lw $a0 0($sp)
+	# add 4 to $sp
+	add $sp $sp 4
+	# load $sp to $fp
+	lw $fp 0($sp)
+	# add 4 to $sp
+	add $sp $sp 4
+	# load $sp to $ra
+	lw $ra 0($sp)
+	# add 4 to $sp
+	add $sp $sp 4
+	# add 0 to $sp and store the result to $sp
+	add $sp $sp 0
+	jr $ra
+	# End Epilogue
+B.getX:
+	# Start Prologue
+	# subtract 4 from $sp
+	sub $sp $sp 4
+	# store $ra to $sp
+	sw $ra 0($sp)
+	# subtract 4 from $sp
+	sub $sp $sp 4
+	# store $fp to $sp
+	sw $fp 0($sp)
+	# subtract 4 from $sp
+	sub $sp $sp 4
+	# store $a0 to $sp
+	sw $a0 0($sp)
+	# subtract 0 from $sp and store the result to $fp
+	sub $fp $sp 0
+	# move $fp to $sp
+	move $sp $fp
+	# End Prologue
+	# gen left side of expression
+	# var expression
+	# subtract stack pointer with 4
+	sub $sp $sp 4
+	# save value in $a0 to stack pointer with 0 offset
+	sw $a0 0($sp)
+	# accept the reference object and save its location $v0
+	# case where the reference object is /this./
+	# load (12)$a0 to $v0 
+	lw $v0 12($a0)
+	lw $a0 0($sp)
+	add $sp $sp 4
+	# store left expression on stack
+	sub $sp $sp 4
+	sw $v0 0($sp)
+	# gen right side of expression
+	sub $sp $sp 4
+	sw $a0 0($sp)
+	# access dispatch_table
+	# load the address of A_template to $a0
+	la $a0 A_template
+	jal Object.clone
+	move $a0 $v0
+	# jump to A_init
+	jal A_init
+	lw $a0 0($fp)
+	move $a0 $v0
+	la $v0 A_dispatch_table
+	# load method address
+	lw $a1 12($v0)
+	jalr $a1
+	lw $a0 0($sp)
+	add $sp $sp 4
+	# load left expression on stack
+	lw $v1 0($sp)
+	add $sp $sp 4
+	# add left and right sides of expression
+	add $v0 $v0 $v1
+	# Start Epilogue
+	# add 0 to $fp and store the result to $sp
+	add $sp $fp 0
+	# load $sp to $a0
+	lw $a0 0($sp)
+	# add 4 to $sp
+	add $sp $sp 4
+	# load $sp to $fp
+	lw $fp 0($sp)
+	# add 4 to $sp
+	add $sp $sp 4
+	# load $sp to $ra
+	lw $ra 0($sp)
+	# add 4 to $sp
+	add $sp $sp 4
+	# add 0 to $sp and store the result to $sp
+	add $sp $sp 0
+	jr $ra
+	# End Epilogue
+B.setX:
+	# Start Prologue
+	# subtract 4 from $sp
+	sub $sp $sp 4
+	# store $ra to $sp
+	sw $ra 0($sp)
+	# subtract 4 from $sp
+	sub $sp $sp 4
+	# store $fp to $sp
+	sw $fp 0($sp)
+	# subtract 4 from $sp
+	sub $sp $sp 4
+	# store $a0 to $sp
+	sw $a0 0($sp)
+	# subtract 0 from $sp and store the result to $fp
+	sub $fp $sp 0
+	# move $fp to $sp
+	move $sp $fp
+	# End Prologue
+	# assign expr
+	# subtrack 4 from the the stack pointer
+	sub $sp $sp 4
+	# save $a0 to stack pointer with offset of 0
+	sw $a0 0($sp)
+	# constant int expression
+	li $v0 8
+	# case where the reference name is /super/
+	sw $v0 12($a0)
+	# save stack pointer result to $a0
+	lw $a0 0($sp)
+	# add stack pointer with 4
+	add $sp $sp 4
+	# var expression
+	# subtract stack pointer with 4
+	sub $sp $sp 4
+	# save value in $a0 to stack pointer with 0 offset
+	sw $a0 0($sp)
+	# accept the reference object and save its location $v0
+	# case where the reference object is /.super/
+	# load (12)$a0 to $v0 
+	lw $v0 12($a0)
+	lw $a0 0($sp)
+	add $sp $sp 4
+	# Start Epilogue
+	# add 0 to $fp and store the result to $sp
+	add $sp $fp 0
+	# load $sp to $a0
+	lw $a0 0($sp)
+	# add 4 to $sp
+	add $sp $sp 4
+	# load $sp to $fp
+	lw $fp 0($sp)
+	# add 4 to $sp
+	add $sp $sp 4
+	# load $sp to $ra
+	lw $ra 0($sp)
+	# add 4 to $sp
+	add $sp $sp 4
+	# add 0 to $sp and store the result to $sp
+	add $sp $sp 0
 	jr $ra
 	# End Epilogue
