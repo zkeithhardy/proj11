@@ -1,45 +1,53 @@
 class Main {
     int x = 3;
-    int y;
+    int y = 4;
 
-//    SubMain m;
-//
-//    int foo(int x) {
-//	var y = x;
-//	
-//	return y; 
-//	
-//    }
-//    boolean equals(Object o) { return true; }
-//    String toString(String a) { return "Main"; }
-   // int foo(int x) { return 100; }
     void main() {
-	var y = new SubMain();
-	var z  = y.foo(this.x);
-
-	
-	
-	var x = 1;
-	while(x < 4){
-	
-	    var h = 3;
-	    x++;
-	    z++;
-	    h = h / 3;
-	}
-	var q = z;
-//	var a = m.z;
-//	var s = toString(a);
-//    	while(x > 4){
-//	
+//	var r  = 4;
+//	var y = 5;
+//	var q = 6;
+//	//var z = (r*t)+(q%y);
+//	var t = new B();
+//	if (t instanceof A){
+//		q = 3;
 //	}
+//	y = q;
+//	var y = new SubMain();
+//	var q = y.z;
+	
+	var a = new A();
+	
+	cast(B, a);
+	
+
+	//var z = y.x;
+	//var q = y.getX();
+	//var z  = y.foo(this.x);
+	//var q = y.newSubMain().z;
+	//var z = y.x;
     }
 }
 class SubMain extends Main {
-    String f = "dskrien";
-    String z;
-    int foo(int x) { return 1; }
-    boolean equals(Object o) { return false; }
+    int z = 400;
+
+    //SubMain newSubMain(){return new SubMain();}
+    //int foo(int x) { return x; }
+    //boolean equals(Object o) { return false; }
 
     
+}
+
+class A{
+    int x = 4;
+    int y = 2;
+
+}
+
+
+class B extends A{
+    int x = 5;
+    int z = 3;
+    //int getX(){return super.x;}
+    //SubMain newSubMain(){return new SubMain();}
+
 }
