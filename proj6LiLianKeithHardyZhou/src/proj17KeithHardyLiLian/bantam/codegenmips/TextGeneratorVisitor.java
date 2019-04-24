@@ -295,6 +295,9 @@ public class TextGeneratorVisitor extends Visitor {
         String thenLabel = this.assemblySupport.getLabel();
         String elseLabel = this.assemblySupport.getLabel();
         String afterLabel = this.assemblySupport.getLabel();
+
+        //the predicament expression write 0 to v0 to indicate success, so set up conditional branch and
+        //unconditional branch when the if stmt predicament failed
         this.assemblySupport.genComment("branch to "+elseLabel+" if $v0 is equal to 0");
         this.assemblySupport.genCondBeq("$v0","$zero",elseLabel);
         this.assemblySupport.genLabel(thenLabel);
@@ -325,9 +328,12 @@ public class TextGeneratorVisitor extends Visitor {
         String startWhile = this.assemblySupport.getLabel();
         String afterWhile = this.assemblySupport.getLabel();
 
+        //generate stat of the while flag to jump back to it
         this.assemblySupport.genLabel(startWhile);
         node.getPredExpr().accept(this);
 
+        //predicate expression writes 0 to v0 if the conditions are met
+        //so branch to outside of the while loop when v0 is zero
         this.assemblySupport.genComment("branch to "+afterWhile+" if $v0 is equal to 0");
         this.assemblySupport.genCondBeq("$v0","$zero",afterWhile);
 
@@ -336,6 +342,8 @@ public class TextGeneratorVisitor extends Visitor {
         node.getBodyStmt().accept(this);
 
         currentSymbolTable.exitScope();
+
+        //if the predicate conditions are not met, branch to start while flag
         this.assemblySupport.genComment("unconditional branch to "+startWhile);
         this.assemblySupport.genUncondBr(startWhile);
         this.assemblySupport.genLabel(afterWhile);
@@ -856,7 +864,9 @@ public class TextGeneratorVisitor extends Visitor {
         node.getExpr().accept(this);
         Location location = this.getUnaryLocation(node);
 
+        this.assemblySupport.genComment("subtract $v0 from 0");
         this.assemblySupport.genSub("$v0","$zero","$v0");
+        this.assemblySupport.genComment("store ("+location.getOffset()+")"+location.getBaseReg()+" to $v0");
         this.assemblySupport.genStoreWord("$v0",location.getOffset(),location.getBaseReg());
         return null;
     }
@@ -872,8 +882,11 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genComment("unary not expression");
         Location location = this.getUnaryLocation(node);
 
+        this.assemblySupport.genComment("add 1 to $v0");
         this.assemblySupport.genAdd("$v0","$v0",1);
+        this.assemblySupport.genComment("multiple $v0 by -1");
         this.assemblySupport.genMul("$v0","$v0",-1);
+        this.assemblySupport.genComment("store ("+location.getOffset()+")"+location.getBaseReg()+" to $v0");
         this.assemblySupport.genStoreWord("$v0",location.getOffset(),location.getBaseReg());
         return null;
     }
@@ -889,7 +902,9 @@ public class TextGeneratorVisitor extends Visitor {
         node.getExpr().accept(this);
         Location location = this.getUnaryLocation(node);
 
+        this.assemblySupport.genComment("add 1 to $v0");
         this.assemblySupport.genAdd("$v0","$v0",1);
+        this.assemblySupport.genComment("store ("+location.getOffset()+")"+location.getBaseReg()+" to $v0");
         this.assemblySupport.genStoreWord("$v0",location.getOffset(),location.getBaseReg());
         return null;
     }
@@ -905,7 +920,9 @@ public class TextGeneratorVisitor extends Visitor {
         node.getExpr().accept(this);
         Location location = this.getUnaryLocation(node);
 
+        this.assemblySupport.genComment("subtract 1 from $v0");
         this.assemblySupport.genSub("$v0","$v0",1);
+        this.assemblySupport.genComment("store ("+location.getOffset()+")"+location.getBaseReg()+" to $v0");
         this.assemblySupport.genStoreWord("$v0",location.getOffset(),location.getBaseReg());
         return null;
     }
@@ -946,7 +963,7 @@ public class TextGeneratorVisitor extends Visitor {
      */
     public Object visit(VarExpr node) {
         this.assemblySupport.genComment("var expression");
-        Location location = null;
+        Location location;
         String varName = node.getName();
         this.assemblySupport.genComment("subtract stack pointer with 4");
         this.assemblySupport.genSub("$sp","$sp",4);
@@ -1012,7 +1029,8 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(ConstIntExpr node) {
-        this.assemblySupport.genComment("constant int expression");
+        this.assemblySupport.genComment("constant int expression: load "+node.getIntConstant()
+                +" to $v0");
         this.assemblySupport.genLoadImm("$v0",node.getIntConstant());
         return null;
     }
@@ -1026,8 +1044,10 @@ public class TextGeneratorVisitor extends Visitor {
     public Object visit(ConstBooleanExpr node) {
         this.assemblySupport.genComment("constant boolean expression");
         if(node.getConstant().equals("true")){
+            this.assemblySupport.genComment("load -1 to $v0 (true)");
             this.assemblySupport.genLoadImm("$v0",-1);
         }else{
+            this.assemblySupport.genComment("load 0 to $v0 (false)");
             this.assemblySupport.genLoadImm("$v0",0);
         }
         return null;
@@ -1040,7 +1060,8 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(ConstStringExpr node) {
-        this.assemblySupport.genComment("constant string expression");
+        this.assemblySupport.genComment("constant string expression: load "+stringNameMap.get(node.getConstant())
+                                    +" to $v0");
         this.assemblySupport.genLoadAddr("$v0",stringNameMap.get(node.getConstant()));
         return null;
     }
