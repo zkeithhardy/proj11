@@ -40,24 +40,17 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/bantam/codegenmips/TextGeneratorVisitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="121">
-              <caret line="545" column="42" selection-start-line="545" selection-start-column="42" selection-end-line="545" selection-end-column="42" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="-9095">
+              <caret line="598" column="83" selection-start-line="598" selection-start-column="83" selection-end-line="598" selection-end-column="83" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bantam/ast/CastExpr.java">
+        <entry file="file://$PROJECT_DIR$/bantam/ast/ForStmt.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="684">
-              <caret line="62" column="44" selection-start-line="62" selection-start-column="40" selection-end-line="62" selection-end-column="44" />
-              <folding>
-                <element signature="e#2309#2310#0" expanded="true" />
-                <element signature="e#2338#2339#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="31">
+              <caret line="41" column="13" selection-start-line="41" selection-start-column="13" selection-end-line="41" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -223,6 +216,21 @@
               <item name="proj6LiLianKeithHardyZhou" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="proj17KeithHardyLiLian" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="proj17KeithHardyLiLian" type="b2602c69:ProjectViewProjectNode" />
+              <item name="proj6LiLianKeithHardyZhou" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="proj17KeithHardyLiLian" type="462c0819:PsiDirectoryNode" />
+              <item name="bantam" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="proj17KeithHardyLiLian" type="b2602c69:ProjectViewProjectNode" />
+              <item name="proj6LiLianKeithHardyZhou" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="proj17KeithHardyLiLian" type="462c0819:PsiDirectoryNode" />
+              <item name="bantam" type="462c0819:PsiDirectoryNode" />
+              <item name="ast" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -396,7 +404,7 @@
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24228188" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24228188" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -698,13 +706,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/bantam/ast/ForStmt.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="31">
+          <caret line="41" column="13" selection-start-line="41" selection-start-column="13" selection-end-line="41" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/bantam/codegenmips/TextGeneratorVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="545" column="42" selection-start-line="545" selection-start-column="42" selection-end-line="545" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="-9095">
+          <caret line="598" column="83" selection-start-line="598" selection-start-column="83" selection-end-line="598" selection-end-column="83" />
         </state>
       </provider>
     </entry>

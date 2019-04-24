@@ -351,12 +351,16 @@ public class TextGeneratorVisitor extends Visitor {
      */
     public Object visit(ForStmt node) {
         currentSymbolTable.enterScope();
+        //first visit the initialization expression
         if (node.getInitExpr() != null) {
             node.getInitExpr().accept(this);
         }
         String beforeFor = this.assemblySupport.getLabel();
         String afterFor = this.assemblySupport.getLabel();
+        //generate label for before for loop
         this.assemblySupport.genLabel(beforeFor);
+
+        //visit the predicate expression
         if (node.getPredExpr() != null) {
             node.getPredExpr().accept(this);
         }
@@ -430,7 +434,7 @@ public class TextGeneratorVisitor extends Visitor {
             type = this.currentClass;
             this.assemblySupport.genComment("access dispatch_table");
             this.assemblySupport.genLoadAddr("$v0",type + "_dispatch_table");
-        } else if ((node.getRefExpr() instanceof VarExpr) &&
+        } else if ((node.getRefExpr() instanceof VarExpr) && //when calling for parent method
                 ((VarExpr) node.getRefExpr()).getName().equals("super")) {
             type = this.classMap.get(this.currentClass).getParent().getName();
 
@@ -439,7 +443,7 @@ public class TextGeneratorVisitor extends Visitor {
             temp.accept(this);
             this.assemblySupport.genMove("$a0","$v0");
             this.assemblySupport.genLoadAddr("$v0",type + "_dispatch_table");
-        }else{
+        }else{ // when calling user defined class
             node.getRefExpr().accept(this);
             type = node.getRefExpr().getExprType();
             this.assemblySupport.genMove("$a0","$v0");
@@ -582,17 +586,17 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genStoreWord("$a0",0,"$sp");
         node.getExpr().accept(this);
 
-        if (refName == null) { //local var or field of "this"
+        if (refName == null) { //local var or field
             this.assemblySupport.genComment("case where the reference name is null");
             location = (Location) currentSymbolTable.lookup(varName);
             this.assemblySupport.genStoreWord("$v0", location.getOffset(),location.getBaseReg());
         }
-        else if (refName.equals("this")) {
+        else if (refName.equals("this")) { //when calling local method with reference of "this."
             this.assemblySupport.genComment("case where the reference name is /this/");
             location = (Location) currentSymbolTable.lookup(varName, currentClassFieldLevel);
             this.assemblySupport.genStoreWord("$v0", location.getOffset(),location.getBaseReg());
         }
-        else if (refName.equals("super")) {
+        else if (refName.equals("super")) { //when referring parent method or field
             this.assemblySupport.genComment("case where the reference name is /super/");
             location = (Location) currentSymbolTable.lookup(varName,
                     currentClassFieldLevel - 1);
