@@ -295,6 +295,9 @@ public class TextGeneratorVisitor extends Visitor {
         String thenLabel = this.assemblySupport.getLabel();
         String elseLabel = this.assemblySupport.getLabel();
         String afterLabel = this.assemblySupport.getLabel();
+
+        //the predicament expression write 0 to v0 to indicate success, so set up conditional branch and
+        //unconditional branch when the if stmt predicament failed
         this.assemblySupport.genComment("branch to "+elseLabel+" if $v0 is equal to 0");
         this.assemblySupport.genCondBeq("$v0","$zero",elseLabel);
         this.assemblySupport.genLabel(thenLabel);
@@ -325,9 +328,12 @@ public class TextGeneratorVisitor extends Visitor {
         String startWhile = this.assemblySupport.getLabel();
         String afterWhile = this.assemblySupport.getLabel();
 
+        //generate stat of the while flag to jump back to it
         this.assemblySupport.genLabel(startWhile);
         node.getPredExpr().accept(this);
 
+        //predicate expression writes 0 to v0 if the conditions are met
+        //so branch to outside of the while loop when v0 is zero
         this.assemblySupport.genComment("branch to "+afterWhile+" if $v0 is equal to 0");
         this.assemblySupport.genCondBeq("$v0","$zero",afterWhile);
 
@@ -336,6 +342,8 @@ public class TextGeneratorVisitor extends Visitor {
         node.getBodyStmt().accept(this);
 
         currentSymbolTable.exitScope();
+
+        //if the predicate conditions are not met, branch to start while flag
         this.assemblySupport.genComment("unconditional branch to "+startWhile);
         this.assemblySupport.genUncondBr(startWhile);
         this.assemblySupport.genLabel(afterWhile);
