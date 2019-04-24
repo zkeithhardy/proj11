@@ -94,18 +94,6 @@ public class TextGeneratorVisitor extends Visitor {
     }
 
     /**
-     * Visit a list node of classes
-     *
-     * @param node the class list node
-     * @return result of the visit
-     */
-    public Object visit(ClassList node) {
-        for (ASTNode aNode : node)
-            aNode.accept(this);
-        return null;
-    }
-
-    /**
      * Visit a class node
      *
      * @param node the class node
@@ -430,19 +418,6 @@ public class TextGeneratorVisitor extends Visitor {
     }
 
     /**
-     * Visit a return statement node
-     *
-     * @param node the return statement node
-     * @return result of the visit
-     */
-    public Object visit(ReturnStmt node) {
-        if (node.getExpr() != null) {
-            node.getExpr().accept(this);
-        }
-        return null;
-    }
-
-    /**
      * Visit a dispatch expression node
      *
      * @param node the dispatch expression node
@@ -593,6 +568,7 @@ public class TextGeneratorVisitor extends Visitor {
 
             String ifZero= this.assemblySupport.getLabel();
             String ifNotZero = this.assemblySupport.getLabel();
+            this.assemblySupport.genComment("conditionally branch to label indicating the cast is unsuccessful");
             this.assemblySupport.genCondBeq("$v0", "$zero", ifZero);
             this.assemblySupport.genUncondBr(ifNotZero);
             //false, handle error
@@ -626,18 +602,21 @@ public class TextGeneratorVisitor extends Visitor {
 
         if (refName == null) { //local var or field
             this.assemblySupport.genComment("case where the reference name is null");
+            this.assemblySupport.genComment("move current location's base register with offset to v0");
             location = (Location) currentSymbolTable.lookup(varName);
             this.assemblySupport.genStoreWord("$v0", location.getOffset(),location.getBaseReg());
         }
         else if (refName.equals("this")) { //when calling local method with reference of "this."
             this.assemblySupport.genComment("case where the reference name is /this/");
             location = (Location) currentSymbolTable.lookup(varName, currentClassFieldLevel);
+            this.assemblySupport.genComment("move current location's base register with offset to v0");
             this.assemblySupport.genStoreWord("$v0", location.getOffset(),location.getBaseReg());
         }
         else if (refName.equals("super")) { //when referring parent method or field
             this.assemblySupport.genComment("case where the reference name is /super/");
             location = (Location) currentSymbolTable.lookup(varName,
                     currentClassFieldLevel - 1);
+            this.assemblySupport.genComment("move current location's base register with offset to v0");
             this.assemblySupport.genStoreWord("$v0", location.getOffset(),location.getBaseReg());
         }
         this.assemblySupport.genComment("save stack pointer result to $a0");
@@ -696,7 +675,9 @@ public class TextGeneratorVisitor extends Visitor {
      */
     public Object visit(BinaryCompLeqExpr node) {
         this.genBinaryCompMips(node);
+        this.assemblySupport.genComment("set v0 to 1 if v0 is less than or equal to v1 and 0 otherwise");
         this.out.println("\tsle $v0 $v1 $v0");
+        this.assemblySupport.genComment("subtract zero from v0 and store in v0 to reverse the signs");
         this.assemblySupport.genSub("$v0","$zero","$v0");
         return null;
     }
@@ -709,7 +690,9 @@ public class TextGeneratorVisitor extends Visitor {
      */
     public Object visit(BinaryCompGtExpr node) {
         this.genBinaryCompMips(node);
+        this.assemblySupport.genComment("set v0 to 1 if v0 is greater than v1 and 0 otherwise");
         this.out.println("\tsgt $v0 $v1 $v0");
+        this.assemblySupport.genComment("subtract zero from v0 and store in v0 to reverse the signs");
         this.assemblySupport.genSub("$v0", "$zero", "$v0");
         return null;
     }
@@ -722,7 +705,9 @@ public class TextGeneratorVisitor extends Visitor {
      */
     public Object visit(BinaryCompGeqExpr node) {
         this.genBinaryCompMips(node);
+        this.assemblySupport.genComment("set v0 to 1 if v0 is greater than or equal to v1 and 0 otherwise");
         this.out.println("\tsge $v0 $v0 $v1");
+        this.assemblySupport.genComment("subtract zero from v0 and store in v0 to reverse the signs");
         this.assemblySupport.genSub("$v0","$zero","$v0");
         return null;
     }
@@ -844,6 +829,7 @@ public class TextGeneratorVisitor extends Visitor {
         node.getRightExpr().accept(this);
         this.assemblySupport.genComment("load left expression on stack");
         this.assemblySupport.genLoadWord("$v1",0,"$sp");
+        this.assemblySupport.genComment("increment sp by 4");
         this.assemblySupport.genAdd("$sp","$sp",4);
     }
 
@@ -857,6 +843,7 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genComment("and expression");
         node.getLeftExpr().accept(this);
         String afterAnd = this.assemblySupport.getLabel();
+        this.assemblySupport.genComment("conditional equality branch between $v0 and $zero");
         this.assemblySupport.genCondBeq("$v0","$zero",afterAnd);
         node.getRightExpr().accept(this);
 
@@ -874,8 +861,10 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genComment("or expression");
         node.getLeftExpr().accept(this);
         //lazy evaluation
+        this.assemblySupport.genComment("load -1 to $v1");
         this.assemblySupport.genLoadImm("$v1",-1);
         String afterOr = this.assemblySupport.getLabel();
+        this.assemblySupport.genComment("conditional equality branch between $v0 and $v1");
         this.assemblySupport.genCondBeq("$v0","$v1",afterOr);
         node.getRightExpr().accept(this);
 
