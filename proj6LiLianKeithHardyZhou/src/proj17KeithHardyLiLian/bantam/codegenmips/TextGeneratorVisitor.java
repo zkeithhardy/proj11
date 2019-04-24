@@ -450,12 +450,14 @@ public class TextGeneratorVisitor extends Visitor {
      */
     public Object visit(DispatchExpr node) {
         String type;
+        this.assemblySupport.genComment("subtract 4 from $sp");
         this.assemblySupport.genSub("$sp","$sp",4);
+        this.assemblySupport.genComment("store $a0 to (0)$sp");
         this.assemblySupport.genStoreWord("$a0",0,"$sp");
         if (node.getRefExpr() == null || ((node.getRefExpr() instanceof VarExpr) && //local var or field of "this"
                 ((VarExpr) node.getRefExpr()).getName().equals("this"))) {
             type = this.currentClass;
-            this.assemblySupport.genComment("access dispatch_table");
+            this.assemblySupport.genComment("access dispatch_table: load "+type + "_dispatch_table to $v0");
             this.assemblySupport.genLoadAddr("$v0",type + "_dispatch_table");
         } else if ((node.getRefExpr() instanceof VarExpr) && //when calling for parent method
                 ((VarExpr) node.getRefExpr()).getName().equals("super")) {
@@ -464,23 +466,31 @@ public class TextGeneratorVisitor extends Visitor {
             this.assemblySupport.genComment("access dispatch_table");
             NewExpr temp = new NewExpr(node.getLineNum(),type);
             temp.accept(this);
+            this.assemblySupport.genComment("move $v0 to $a0");
             this.assemblySupport.genMove("$a0","$v0");
+            this.assemblySupport.genComment("load "+type + "_dispatch_table to $v0");
             this.assemblySupport.genLoadAddr("$v0",type + "_dispatch_table");
         }else{ // when calling user defined class
             node.getRefExpr().accept(this);
             type = node.getRefExpr().getExprType();
+            this.assemblySupport.genComment("move $v0 to $a0");
             this.assemblySupport.genMove("$a0","$v0");
+            this.assemblySupport.genComment("load (8)$v0 to $v0");
             this.assemblySupport.genLoadWord("$v0",8,"$v0");
         }
 
         ArrayList currentDispatchTable = this.dispatchTableMap.get(type);
         int idx = currentDispatchTable.indexOf(node.getMethodName());
         this.assemblySupport.genComment("load method address");
+        this.assemblySupport.genComment("load ("+idx*4+")$v0 to $a1");
         this.assemblySupport.genLoadWord("$a1",idx*4, "$v0");
         node.getActualList().accept(this);
 
+        this.assemblySupport.genComment("jump to $a1");
         this.assemblySupport.genInDirCall("$a1");
+        this.assemblySupport.genComment("load (0)$sp to $a0");
         this.assemblySupport.genLoadWord("$a0",0,"$sp");
+        this.assemblySupport.genComment("add 4 to $sp");
         this.assemblySupport.genAdd("$sp","$sp",4);
         return null;
     }
@@ -514,12 +524,15 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genComment("load the address of "+node.getType()+"_template to $a0");
         this.assemblySupport.genLoadAddr("$a0", node.getType()+"_template");
         // get the address of the clone method, save it to $v0
+        this.assemblySupport.genComment("jump to Object.clone");
         this.assemblySupport.genDirCall("Object.clone");
+        this.assemblySupport.genComment("move $v0 to $a0");
         this.assemblySupport.genMove("$a0","$v0");
 
         this.assemblySupport.genComment("jump to "+node.getType()+"_init");
         this.assemblySupport.genDirCall(node.getType()+"_init");
 
+        this.assemblySupport.genComment("load ("+4*methodLocalVars+")$fp to $a0");
         this.assemblySupport.genLoadWord("$a0", 4*(methodLocalVars), "$fp");
         return null;
     }
@@ -547,7 +560,9 @@ public class TextGeneratorVisitor extends Visitor {
         this.out.println("\tsle $t0 $t0 $v0"); // j <= i
         this.out.println("\tsle $v0 $v0 $t1"); // i <= j+k
 
+        this.assemblySupport.genComment("$t0 AND $v0, store in $v0");
         this.assemblySupport.genAnd("$v0", "$t0", "$v0");
+        this.assemblySupport.genComment("subtract $v0 from $zero, save to $v0");
         this.assemblySupport.genSub("$v0", "$zero", "$v0"); // b/c we're using -1 as true
 
         return null;
@@ -603,7 +618,7 @@ public class TextGeneratorVisitor extends Visitor {
         String varName = node.getName();
         String refName = node.getRefName();
         this.assemblySupport.genComment("assign expr");
-        this.assemblySupport.genComment("subtrack 4 from the the stack pointer");
+        this.assemblySupport.genComment("subtract 4 from the the stack pointer");
         this.assemblySupport.genSub("$sp","$sp",4);
         this.assemblySupport.genComment("save $a0 to stack pointer with offset of 0");
         this.assemblySupport.genStoreWord("$a0",0,"$sp");
@@ -640,7 +655,9 @@ public class TextGeneratorVisitor extends Visitor {
      */
     public Object visit(BinaryCompEqExpr node) {
         this.genBinaryCompMips(node);
+        this.assemblySupport.genComment("set $v0 to 1 if $v0 equals $v1 and to be 0 otherwise.");
         this.out.println("\tseq $v0 $v0 $v1");
+        this.assemblySupport.genComment("subtract $v0 from $zero, save to $v0");
         this.assemblySupport.genSub("$v0","$zero","$v0");
         return null;
     }
