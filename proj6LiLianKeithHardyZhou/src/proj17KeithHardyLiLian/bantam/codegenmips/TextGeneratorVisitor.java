@@ -747,16 +747,7 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(BinaryArithDivideExpr node) {
-        this.assemblySupport.genComment("gen left side of expression");
-        node.getLeftExpr().accept(this);
-        this.assemblySupport.genComment("store left expression on stack");
-        this.assemblySupport.genSub("$sp","$sp",4);
-        this.assemblySupport.genStoreWord("$v0",0,"$sp");
-        this.assemblySupport.genComment("gen right side of expression");
-        node.getRightExpr().accept(this);
-        this.assemblySupport.genComment("load left expression on stack");
-        this.assemblySupport.genLoadWord("$v1",0,"$sp");
-        this.assemblySupport.genAdd("$sp","$sp",4);
+        this.genBinaryArithMips(node);
 
         this.handleDivZeroErrAndExecute("div");
         return null;
@@ -769,16 +760,7 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(BinaryArithModulusExpr node) {
-        this.assemblySupport.genComment("gen left side of expression");
-        node.getLeftExpr().accept(this);
-        this.assemblySupport.genComment("store left expression on stack");
-        this.assemblySupport.genSub("$sp","$sp",4);
-        this.assemblySupport.genStoreWord("$v0",0,"$sp");
-        this.assemblySupport.genComment("gen right side of expression");
-        node.getRightExpr().accept(this);
-        this.assemblySupport.genComment("load left expression from stack");
-        this.assemblySupport.genLoadWord("$v1",0,"$sp");
-        this.assemblySupport.genAdd("$sp","$sp",4);
+        this.genBinaryArithMips(node);
 
         this.handleDivZeroErrAndExecute("mod");
         return null;

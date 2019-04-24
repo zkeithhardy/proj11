@@ -2,21 +2,158 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8c7a2aeb-d440-4298-8971-4b09cf8ec87c" name="Default Changelist" comment="Merge branch 'master' of https://github.com/zkeithhardy/proj11&#10;&#10;# Conflicts:&#10;#&#9;proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/bantam/codegenmips/MipsCodeGenerator.java">
+      <change beforePath="$PROJECT_DIR$/.idea/CS461proj17.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/CS461proj17.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/ToolbarController$AssembleOrRunTask.class" beforeDir="false" afterPath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/ToolbarController$AssembleOrRunTask.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/ToolbarController$CheckerCompileTask.class" beforeDir="false" afterPath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/ToolbarController$CheckerCompileTask.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/ToolbarController$ParseTask.class" beforeDir="false" afterPath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/ToolbarController$ParseTask.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/ToolbarController$ScanTask.class" beforeDir="false" afterPath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/ToolbarController$ScanTask.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/ToolbarController.class" beforeDir="false" afterPath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/ToolbarController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/codegenmips/MipsCodeGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/codegenmips/MipsCodeGenerator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/codegenmips/TextGeneratorVisitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/codegenmips/TextGeneratorVisitor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/semant/NumLocalVarsVisitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/semant/NumLocalVarsVisitor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/semant/TypeCheckerVisitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/semant/TypeCheckerVisitor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/test/test.asm" beforeDir="false" afterPath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/test/test.asm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/test/test.btm" beforeDir="false" afterPath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/test/test.btm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/bantam/codegenmips/TextGeneratorVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/bantam/codegenmips/TextGeneratorVisitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/test/test.asm" beforeDir="false" afterPath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/test/test.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/Main.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/Main.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/NightMode.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/c.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/f.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/m.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/.idea/proj6LiLianKeithHardyZhou.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/CodeAreaContextMenu.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/CodeTab.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/CodeTabPane.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/Console.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/ConsoleContextMenu.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/DirectoryController$createDirectoryTreeTask.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/DirectoryController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/EditController$findReplace.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/EditController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/FileController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/HelpMenuController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/JavaCodeArea.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/JavaStyle.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/MIPSCodeArea.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/MIPSStyle.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/MasterController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/NavigateStructureVisitor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/NavigationController$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/NavigationController$StructureTreeTask.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/NavigationController$SuperClassTask.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/NavigationController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/PreferenceController$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/PreferenceController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/StructureViewController$UpdateStructureViewTask.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/StructureViewController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/SuperClassVisitor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/TabContextMenu.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/ToolbarController$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/ToolbarController$AssembleOrRunTask.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/ToolbarController$CheckerCompileTask.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/ToolbarController$ParseTask.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/ToolbarController$ScanTask.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/ToolbarController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/ast/ASTNode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/ast/ArrayAssignExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/ast/ArrayExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/ast/AssignExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/ast/BinaryArithDivideExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/ast/BinaryArithExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/ast/BinaryArithMinusExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/ast/BinaryArithModulusExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/ast/BinaryArithPlusExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/ast/BinaryArithTimesExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/ast/BinaryCompEqExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/ast/BinaryCompExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/ast/BinaryCompGeqExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/ast/BinaryCompGtExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/ast/BinaryCompLeqExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/ast/BinaryCompLtExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/ast/BinaryCompNeExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/ast/BinaryExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/ast/BinaryLogicAndExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/ast/BinaryLogicExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/ast/BinaryLogicOrExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/ast/BlockStmt.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/ast/BreakStmt.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/ast/CastExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/ast/ClassList.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/ast/Class_.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/ast/ConstBooleanExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/ast/ConstExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/ast/ConstIntExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/ast/ConstStringExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/ast/DeclStmt.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/ast/DispatchExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/ast/Expr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/ast/ExprList.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/ast/ExprStmt.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/ast/Field.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/ast/ForStmt.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/ast/Formal.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/ast/FormalList.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/ast/IfStmt.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/ast/InstanceofExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/ast/ListNode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/ast/Member.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/ast/MemberList.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/ast/Method.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/ast/NewArrayExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/ast/NewExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/ast/Program.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/ast/ReturnStmt.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/ast/Stmt.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/ast/StmtList.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/ast/UnaryDecrExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/ast/UnaryExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/ast/UnaryIncrExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/ast/UnaryNegExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/ast/UnaryNotExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/ast/VarExpr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/ast/WhileStmt.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/codegenmips/Minimum.asm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/codegenmips/MipsCodeGenerator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/codegenmips/MipsSupport.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/codegenmips/TextGeneratorVisitor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/codegenmips/exceptions.s" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/lexer/Scanner.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/lexer/SourceFile.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/lexer/Token$Kind.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/lexer/Token.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/parser/Parser$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/parser/Parser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/semant/ClassMapBuilderVisitor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/semant/ClassNameVisitor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/semant/MainMainVisitor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/semant/NumFieldsVisitor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/semant/NumLocalVarsVisitor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/semant/SemanticAnalyzer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/semant/StringConstantsVisitor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/semant/TypeCheckerVisitor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/treedrawer/Drawer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/treedrawer/DrawerFrame.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/treedrawer/DrawerPanel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/treedrawer/DrawingTree.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/treedrawer/LayoutVisitor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/treedrawer/Polygon.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/treedrawer/Polyline.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/util/ClassTreeNode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/util/CompilationException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/util/Error$Kind.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/util/Error.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/util/ErrorHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/util/Location.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/util/SymbolTable.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/bantam/visitor/Visitor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/resources/Main.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/resources/Main.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/resources/NightMode.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/resources/c.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/resources/f.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/resources/m.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/test/CheckerTestKeithHardyLiLian.btm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/test/test.asm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/CS461proj17/proj16KeithHardyLiLian/test/test.btm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj17KeithHardyLiLian/bantam/codegenmips/TextGeneratorVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj17KeithHardyLiLian/bantam/codegenmips/TextGeneratorVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj17KeithHardyLiLian/test/test.asm" beforeDir="false" afterPath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj17KeithHardyLiLian/test/test.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj17KeithHardyLiLian/test/test.btm" beforeDir="false" afterPath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj17KeithHardyLiLian/test/test.btm" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,14 +165,14 @@
     <session id="-402954254">
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="3847" />
-          <entry key="txt" value="463" />
+          <entry key="java" value="3892" />
+          <entry key="txt" value="504" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="3847" />
-          <entry key="PLAIN_TEXT" value="463" />
+          <entry key="JAVA" value="3892" />
+          <entry key="PLAIN_TEXT" value="504" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.lifecycle.project">
@@ -50,13 +187,13 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="10" />
+          <entry key="java" value="12" />
           <entry key="s" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="10" />
+          <entry key="JAVA" value="12" />
           <entry key="PLAIN_TEXT" value="2" />
         </counts>
       </usages-collector>
@@ -65,52 +202,22 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/bantam/codegenmips/MipsCodeGenerator.java">
+        <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj17KeithHardyLiLian/bantam/codegenmips/MipsCodeGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="131">
-              <caret line="388" column="20" selection-start-line="388" selection-start-column="12" selection-end-line="388" selection-end-column="20" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="-2278">
+              <caret line="48" column="3" lean-forward="true" selection-start-line="48" selection-start-column="3" selection-end-line="48" selection-end-column="3" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/bantam/codegenmips/TextGeneratorVisitor.java">
+        <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj17KeithHardyLiLian/bantam/codegenmips/TextGeneratorVisitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="123">
-              <caret line="764" column="42" selection-start-line="764" selection-start-column="42" selection-end-line="764" selection-end-column="42" />
+            <state relative-caret-position="78">
+              <caret line="749" column="36" selection-start-line="749" selection-start-column="36" selection-end-line="749" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/EditController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="149">
-              <caret line="329" selection-start-line="329" selection-end-line="329" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/bantam/codegenmips/exceptions.s">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="2044" column="17" selection-start-line="2044" selection-start-column="1" selection-end-line="2044" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/bantam/codegenmips/MipsSupport.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="668" column="54" lean-forward="true" selection-start-line="668" selection-start-column="54" selection-end-line="668" selection-end-column="54" />
             </state>
           </provider>
         </entry>
@@ -151,10 +258,10 @@
       <find>null po</find>
       <find>System.</find>
       <find>size</find>
-      <find>genMo</find>
-      <find>System.o</find>
       <find>System</find>
       <find>indexOf</find>
+      <find>genMo</find>
+      <find>System.o</find>
       <find>class_cast_error</find>
     </findStrings>
   </component>
@@ -168,6 +275,7 @@
         <option value="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/bantam/codegenmips/MipsCodeGenerator.java" />
         <option value="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/bantam/semant/TypeCheckerVisitor.java" />
         <option value="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/bantam/codegenmips/TextGeneratorVisitor.java" />
+        <option value="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj17KeithHardyLiLian/bantam/codegenmips/TextGeneratorVisitor.java" />
       </list>
     </option>
   </component>
@@ -205,14 +313,14 @@
               <item name="proj16" type="462c0819:PsiDirectoryNode" />
               <item name="proj6LiLianKeithHardyZhou" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="proj16KeithHardyLiLian" type="462c0819:PsiDirectoryNode" />
+              <item name="proj17KeithHardyLiLian" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="proj16" type="b2602c69:ProjectViewProjectNode" />
               <item name="proj16" type="462c0819:PsiDirectoryNode" />
               <item name="proj6LiLianKeithHardyZhou" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="proj16KeithHardyLiLian" type="462c0819:PsiDirectoryNode" />
+              <item name="proj17KeithHardyLiLian" type="462c0819:PsiDirectoryNode" />
               <item name="bantam" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -220,61 +328,9 @@
               <item name="proj16" type="462c0819:PsiDirectoryNode" />
               <item name="proj6LiLianKeithHardyZhou" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="proj16KeithHardyLiLian" type="462c0819:PsiDirectoryNode" />
-              <item name="bantam" type="462c0819:PsiDirectoryNode" />
-              <item name="ast" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="proj16" type="b2602c69:ProjectViewProjectNode" />
-              <item name="proj16" type="462c0819:PsiDirectoryNode" />
-              <item name="proj6LiLianKeithHardyZhou" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="proj16KeithHardyLiLian" type="462c0819:PsiDirectoryNode" />
+              <item name="proj17KeithHardyLiLian" type="462c0819:PsiDirectoryNode" />
               <item name="bantam" type="462c0819:PsiDirectoryNode" />
               <item name="codegenmips" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="proj16" type="b2602c69:ProjectViewProjectNode" />
-              <item name="proj16" type="462c0819:PsiDirectoryNode" />
-              <item name="proj6LiLianKeithHardyZhou" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="proj16KeithHardyLiLian" type="462c0819:PsiDirectoryNode" />
-              <item name="bantam" type="462c0819:PsiDirectoryNode" />
-              <item name="parser" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="proj16" type="b2602c69:ProjectViewProjectNode" />
-              <item name="proj16" type="462c0819:PsiDirectoryNode" />
-              <item name="proj6LiLianKeithHardyZhou" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="proj16KeithHardyLiLian" type="462c0819:PsiDirectoryNode" />
-              <item name="bantam" type="462c0819:PsiDirectoryNode" />
-              <item name="semant" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="proj16" type="b2602c69:ProjectViewProjectNode" />
-              <item name="proj16" type="462c0819:PsiDirectoryNode" />
-              <item name="proj6LiLianKeithHardyZhou" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="proj16KeithHardyLiLian" type="462c0819:PsiDirectoryNode" />
-              <item name="bantam" type="462c0819:PsiDirectoryNode" />
-              <item name="util" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="proj16" type="b2602c69:ProjectViewProjectNode" />
-              <item name="proj16" type="462c0819:PsiDirectoryNode" />
-              <item name="proj6LiLianKeithHardyZhou" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="proj16KeithHardyLiLian" type="462c0819:PsiDirectoryNode" />
-              <item name="include" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="proj16" type="b2602c69:ProjectViewProjectNode" />
-              <item name="proj16" type="462c0819:PsiDirectoryNode" />
-              <item name="proj6LiLianKeithHardyZhou" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="proj16KeithHardyLiLian" type="462c0819:PsiDirectoryNode" />
-              <item name="MIPSCodeArea.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
             </path>
           </expand>
           <select />
@@ -286,8 +342,8 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556063585345" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/include/richtextfx-fat-0.9.1.jar!/" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556064166438" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj17KeithHardyLiLian/include/richtextfx-fat-0.9.1.jar!/" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -306,14 +362,8 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/proj6LiLianKeithHardyZhou/proj16KeithHardyLiLian/bantam/codegenmips/TextGeneratorVisitor.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/proj6LiLianKeithHardyZhou/proj16KeithHardyLiLian/bantam/semant/TypeCheckerVisitor.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/proj6LiLianKeithHardyZhou/proj16KeithHardyLiLian/test/test.asm</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/proj6LiLianKeithHardyZhou/out/production/proj6LiLianKeithHardyZhou/proj16KeithHardyLiLian/test/test.btm</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/.idea/workspace.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/bantam/codegenmips/TextGeneratorVisitor.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/test/test.asm</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/test/test.btm</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj17KeithHardyLiLian/.idea/workspace.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj17KeithHardyLiLian/bantam/codegenmips/TextGeneratorVisitor.java</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Created" />
@@ -429,9 +479,9 @@
       </method>
     </configuration>
     <configuration name="proj17" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="proj16KeithHardyLiLian.Main" />
+      <option name="MAIN_CLASS_NAME" value="proj17KeithHardyLiLian.Main" />
       <module name="CS461proj17" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj17KeithHardyLiLian" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -581,7 +631,14 @@
       <option name="project" value="LOCAL" />
       <updated>1556024890316</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="removed significant code duplication">
+      <created>1556063653060</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1556063653060</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -597,14 +654,14 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32765958" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32765958" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="9" weight="0.17021276" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="9" visible="true" weight="0.17021276" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.32765958" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -637,7 +694,8 @@
     <MESSAGE value="lots of small fixes" />
     <MESSAGE value="fixed dispatch expressions" />
     <MESSAGE value="assign expressions work" />
-    <option name="LAST_COMMIT_MESSAGE" value="assign expressions work" />
+    <MESSAGE value="removed significant code duplication" />
+    <option name="LAST_COMMIT_MESSAGE" value="removed significant code duplication" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj15KeithHardyLiLian/MIPSCodeArea.java" />
@@ -815,7 +873,7 @@
     <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/bantam/codegenmips/MipsSupport.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
-          <caret line="668" column="54" lean-forward="true" selection-start-line="668" selection-start-column="54" selection-end-line="668" selection-end-column="54" />
+          <caret line="668" column="54" selection-start-line="668" selection-start-column="54" selection-end-line="668" selection-end-column="54" />
         </state>
       </provider>
     </entry>
@@ -859,8 +917,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/bantam/codegenmips/TextGeneratorVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
-          <caret line="764" column="42" selection-start-line="764" selection-start-column="42" selection-end-line="764" selection-end-column="42" />
+        <state relative-caret-position="-12678">
+          <caret line="254" column="5" selection-start-line="254" selection-start-column="5" selection-end-line="254" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj17KeithHardyLiLian/bantam/codegenmips/MipsCodeGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2278">
+          <caret line="48" column="3" lean-forward="true" selection-start-line="48" selection-start-column="3" selection-end-line="48" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj17KeithHardyLiLian/bantam/codegenmips/TextGeneratorVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="78">
+          <caret line="749" column="36" selection-start-line="749" selection-start-column="36" selection-end-line="749" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
