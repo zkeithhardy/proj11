@@ -13,20 +13,35 @@ import java.util.*;
 public class TextGeneratorVisitor extends Visitor {
     private PrintStream out;
     private MipsSupport assemblySupport;
+    //keeps track of which ast currently working on
     private String currentClass;
+    //location symbol table of the current class node
     private SymbolTable currentSymbolTable;
+    //offset into an object when we init the field
     private int fieldCount=3;
+    //hash map of all location symbol tables
     private HashMap<String, SymbolTable> classSymbolTables = new HashMap<>();
-    private int numLocalVars = 0;
+    //the offset to the frame pointer when creating new variable
+    private int framePointerOffset = 0;
+    //stack of labels for after loop for break statement
     private Stack<String> currentLoop = new Stack<>();
+    //level in the location symbol table of the field's scope
     private int currentClassFieldLevel;
+    //string and their respective id
     private Map<String, String> stringNameMap;
+    //store class name and corresponding class tree node
     private Hashtable<String,ClassTreeNode> classMap;
+    //indicator for generating fields or method
     private String initOrGenMethods;
+    //returned by num local var visitor
     private Map<String,Integer> numLocalVarsMap;
+    //number of local variables in current method
     private int methodLocalVars;
+    //store class name and array list of all method
     private HashMap<String, ArrayList<String>> dispatchTableMap;
+    //keep track of number of parameters that is used in moving stack pointer
     private int currentParameterOffset = 0;
+    //pre-order traversing of the ast
     private ArrayList<ClassTreeNode> idTable;
 
 
@@ -56,7 +71,7 @@ public class TextGeneratorVisitor extends Visitor {
      */
     public void generateTextSection(Program root){
         this.initOrGenMethods = "genMethods";
-        numLocalVars = 0;
+        framePointerOffset = 0;
         NumLocalVarsVisitor numLocalVarsVisitor = new NumLocalVarsVisitor();
         this.numLocalVarsMap = numLocalVarsVisitor.getNumLocalVars(root);
         root.accept(this);
@@ -159,7 +174,7 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(Method node) {
-        numLocalVars = 0;
+        framePointerOffset = 0;
         this.currentSymbolTable.enterScope();
         this.methodLocalVars = this.numLocalVarsMap.get(this.currentClass + "." + node.getName());
         node.getFormalList().accept(this);
@@ -265,7 +280,7 @@ public class TextGeneratorVisitor extends Visitor {
         this.currentSymbolTable.add(node.getName(),new Location("$fp",this.methodLocalVars * 4 +
                 12+ this.currentParameterOffset));
         this.currentParameterOffset -= 4;
-        numLocalVars += 1;
+        framePointerOffset += 1;
         return null;
     }
 
@@ -277,10 +292,10 @@ public class TextGeneratorVisitor extends Visitor {
      */
     public Object visit(DeclStmt node) {
         node.getInit().accept(this);
-        this.assemblySupport.genComment("store $v0 to ("+numLocalVars*4+")$fp");
-        this.assemblySupport.genStoreWord("$v0",numLocalVars*4,"$fp");
-        this.currentSymbolTable.add(node.getName(),new Location("$fp",numLocalVars*4));
-        numLocalVars += 1;
+        this.assemblySupport.genComment("store $v0 to ("+ framePointerOffset *4+")$fp");
+        this.assemblySupport.genStoreWord("$v0", framePointerOffset *4,"$fp");
+        this.currentSymbolTable.add(node.getName(),new Location("$fp", framePointerOffset *4));
+        framePointerOffset += 1;
         return null;
     }
 
@@ -868,8 +883,6 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genLabel(afterOr);
         return null;
     }
-
-
 
     /**
      * Visit a unary negation expression node
