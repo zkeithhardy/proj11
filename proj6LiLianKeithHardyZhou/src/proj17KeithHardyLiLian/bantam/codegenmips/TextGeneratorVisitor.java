@@ -94,18 +94,6 @@ public class TextGeneratorVisitor extends Visitor {
     }
 
     /**
-     * Visit a list node of classes
-     *
-     * @param node the class list node
-     * @return result of the visit
-     */
-    public Object visit(ClassList node) {
-        for (ASTNode aNode : node)
-            aNode.accept(this);
-        return null;
-    }
-
-    /**
      * Visit a class node
      *
      * @param node the class node
@@ -426,19 +414,6 @@ public class TextGeneratorVisitor extends Visitor {
         currentSymbolTable.enterScope();
         node.getStmtList().accept(this);
         currentSymbolTable.exitScope();
-        return null;
-    }
-
-    /**
-     * Visit a return statement node
-     *
-     * @param node the return statement node
-     * @return result of the visit
-     */
-    public Object visit(ReturnStmt node) {
-        if (node.getExpr() != null) {
-            node.getExpr().accept(this);
-        }
         return null;
     }
 
