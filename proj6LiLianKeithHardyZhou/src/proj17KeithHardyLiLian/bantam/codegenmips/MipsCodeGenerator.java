@@ -216,12 +216,15 @@ public class MipsCodeGenerator
             textGeneratorVisitor.generateMethodEpilogue(0);
 
         }
-
         textGeneratorVisitor.generateTextSection(rootAST);
 
     }
 
-
+    /**
+     * a recursive helper function to build the class id table
+     * adds all the class to the idtable in the order that parent classes are followed by child classes
+     * @param root the root
+     */
     private void addChildren(ClassTreeNode root){
         this.idTable.add(root);
         for(Iterator<ClassTreeNode> children = root.getChildrenList();children.hasNext();){
@@ -286,9 +289,7 @@ public class MipsCodeGenerator
         for(int i = 0; i < this.idTable.size();i++){
             this.assemblySupport.genWord(classNames.get(this.idTable.get(i).getName()));
         }
-//        for(Map.Entry<String,String> entry: classNames.entrySet()){
-//            this.assemblySupport.genWord(entry.getValue());
-//        }
+
         this.out.println();
     }
 
@@ -306,14 +307,14 @@ public class MipsCodeGenerator
 
         for(Map.Entry<String,String> entry: classNames.entrySet()){
             this.out.println(entry.getKey()+"_template:");
-            this.assemblySupport.genWord(Integer.toString(this.idTable.indexOf(this.classMap.get(entry.getKey()))));
+            this.assemblySupport.genWord(Integer.toString(this.idTable.indexOf(this.classMap.get(entry.getKey())))+"\t\t# Class ID");
 
             SymbolTable fields = this.classMap.get(entry.getKey()).getVarSymbolTable();
 
             //subtract 2*fields.getCurrScopeLevel() because symbol table includes
             //this and super which we do not need to count here.
             int size = fields.getSize() - 2*fields.getCurrScopeLevel();
-            this.assemblySupport.genWord(Integer.toString(12 + size*4));
+            this.assemblySupport.genWord(Integer.toString(12 + size*4)+"\t\t# Size of Object in Bytes");
             this.assemblySupport.genWord(entry.getKey()+"_dispatch_table");
 
             for(int j = 0; j< size; j++){
@@ -333,8 +334,6 @@ public class MipsCodeGenerator
         for(Map.Entry<String,String> entry: classNames.entrySet()){
             this.assemblySupport.genGlobal(entry.getKey() + "_dispatch_table");
         }
-
-        String[] builtIns = {"Object", "String", "TextIO", "Sys"};
 
         for(Map.Entry<String,String> entry: classNames.entrySet()){
             this.out.println(entry.getKey()+"_dispatch_table:");
