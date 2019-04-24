@@ -95,15 +95,15 @@ class_name_table:
 	.globl	Main_template
 
 A_template:
-	.word	1
-	.word	20
+	.word	1		# Class ID
+	.word	20		# Size of Object in Bytes
 	.word	A_dispatch_table
 	.word	0
 	.word	0
 
 B_template:
-	.word	2
-	.word	28
+	.word	2		# Class ID
+	.word	28		# Size of Object in Bytes
 	.word	B_dispatch_table
 	.word	0
 	.word	0
@@ -111,24 +111,24 @@ B_template:
 	.word	0
 
 Object_template:
-	.word	0
-	.word	12
+	.word	0		# Class ID
+	.word	12		# Size of Object in Bytes
 	.word	Object_dispatch_table
 
 String_template:
-	.word	3
-	.word	16
+	.word	3		# Class ID
+	.word	16		# Size of Object in Bytes
 	.word	String_dispatch_table
 	.word	0
 
 Sys_template:
-	.word	4
-	.word	12
+	.word	4		# Class ID
+	.word	12		# Size of Object in Bytes
 	.word	Sys_dispatch_table
 
 SubMain_template:
-	.word	6
-	.word	28
+	.word	6		# Class ID
+	.word	28		# Size of Object in Bytes
 	.word	SubMain_dispatch_table
 	.word	0
 	.word	0
@@ -136,15 +136,15 @@ SubMain_template:
 	.word	0
 
 TextIO_template:
-	.word	7
-	.word	20
+	.word	7		# Class ID
+	.word	20		# Size of Object in Bytes
 	.word	TextIO_dispatch_table
 	.word	0
 	.word	0
 
 Main_template:
-	.word	5
-	.word	24
+	.word	5		# Class ID
+	.word	24		# Size of Object in Bytes
 	.word	Main_dispatch_table
 	.word	0
 	.word	0
