@@ -589,78 +589,29 @@ Main.main:
 	# move $fp to $sp
 	move $sp $fp
 	# End Prologue
-	# load the address of A_template to $a0
-	la $a0 A_template
-	jal Object.clone
-	move $a0 $v0
-	# jump to A_init
-	jal A_init
-	lw $a0 4($fp)
+	# gen left side of expression
+	# constant int expression
+	li $v0 1
+	# store left expression on stack
+	sub $sp $sp 4
+	sw $v0 0($sp)
+	# gen right side of expression
+	# constant int expression
+	li $v0 0
+	# load left expression from stack
+	lw $v1 0($sp)
+	add $sp $sp 4
+	# check for divide by zero error
+	beq $zero $v0 label0
+	# mod left and right sides of expression
+	rem $v0 $v1 $v0
+	# branch to afterError
+	b label1
+label0:
+	jal _divide_zero_error
+label1:
 	# store $v0 to (0)$fp
 	sw $v0 0($fp)
-	# handle Cast Expression
-	# var expression
-	# subtract stack pointer with 4
-	sub $sp $sp 4
-	# save value in $a0 to stack pointer with 0 offset
-	sw $a0 0($sp)
-	# accept the reference object and save its location $v0
-	# case where the reference object is null
-	# load (0)$fp to $v0 
-	lw $v0 0($fp)
-	lw $a0 0($sp)
-	add $sp $sp 4
-	# case where the cast expression is down-casting
-	# check if the expression is an instance of target class
-	# var expression
-	# subtract stack pointer with 4
-	sub $sp $sp 4
-	# save value in $a0 to stack pointer with 0 offset
-	sw $a0 0($sp)
-	# accept the reference object and save its location $v0
-	# case where the reference object is null
-	# load (0)$fp to $v0 
-	lw $v0 0($fp)
-	lw $a0 0($sp)
-	add $sp $sp 4
-	# handle instanceof expression
-	# load i into $v0
-	lw $v0 0($v0)
-	# load j into $t0 and j+k into $t1
-	li $t0 2
-	li $t1 2
-	# compare j<=i and i<=j+k, if both true, return true
-	sle $t0 $t0 $v0
-	sle $v0 $v0 $t1
-	and $v0 $t0 $v0
-	sub $v0 $zero $v0
-	li $t0 1
-	li $t1 2
-	# peeking register $t0
-	move $t7 $a0
-	move $t6 $v0
-	move $a0 $t0
-	li $v0 1
-	syscall
-	move $a0 $t7
-	move $v0 $t6
-	# end peeking register $t0
-	# peeking register $v0
-	move $t7 $a0
-	move $t6 $v0
-	move $a0 $v0
-	li $v0 1
-	syscall
-	move $a0 $t7
-	move $v0 $t6
-	# end peeking register $v0
-	beq $v0 $zero label0
-	b label1
-	# case where the expression is not a proper subtype of target class, handle error
-label0:
-	jal _class_cast_error
-	# case where the expression is a proper subtype of target class
-label1:
 	# Start Epilogue
 	# add 4 to $fp and store the result to $sp
 	add $sp $fp 4

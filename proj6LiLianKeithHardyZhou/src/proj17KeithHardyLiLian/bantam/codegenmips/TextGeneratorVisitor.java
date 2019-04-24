@@ -807,18 +807,7 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genLoadWord("$v1",0,"$sp");
         this.assemblySupport.genAdd("$sp","$sp",4);
 
-        String zeroError = this.assemblySupport.getLabel();
-        String afterError = this.assemblySupport.getLabel();
-
-        this.assemblySupport.genComment("check for divide by zero error");
-        this.assemblySupport.genCondBeq("$zero", "$v1", zeroError);
-        this.assemblySupport.genComment("divide left and right sides of expression");
-        this.assemblySupport.genDiv("$v0","$v1","$v0");
-        this.assemblySupport.genComment("branch to afterError");
-        this.assemblySupport.genUncondBr(afterError);
-        this.assemblySupport.genLabel(zeroError);
-        this.assemblySupport.genDirCall("_divide_zero_error");
-        this.assemblySupport.genLabel(afterError);
+        this.handleDivZeroErrAndExecute("div");
         return null;
     }
 
@@ -839,9 +828,33 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genComment("load left expression from stack");
         this.assemblySupport.genLoadWord("$v1",0,"$sp");
         this.assemblySupport.genAdd("$sp","$sp",4);
-        this.assemblySupport.genComment("mod left and right sides of expression");
-        this.assemblySupport.genMod("$v0","$v1","$v0");
+
+        this.handleDivZeroErrAndExecute("mod");
         return null;
+    }
+
+    /**
+     * helper function to handle _divide_zero_error based on the input string
+     * @param execution the type of execution
+     */
+    private void handleDivZeroErrAndExecute(String execution){
+        String zeroError = this.assemblySupport.getLabel();
+        String afterError = this.assemblySupport.getLabel();
+        this.assemblySupport.genComment("check for divide by zero error");
+        this.assemblySupport.genCondBeq("$zero", "$v0", zeroError);
+
+        if(execution.equals("div")){
+            this.assemblySupport.genComment("divide left and right sides of expression");
+            this.assemblySupport.genDiv("$v0","$v1","$v0");}
+        else if(execution.equals("mod")){
+            this.assemblySupport.genComment("mod left and right sides of expression");
+            this.assemblySupport.genMod("$v0","$v1","$v0");}
+
+        this.assemblySupport.genComment("branch to afterError");
+        this.assemblySupport.genUncondBr(afterError);
+        this.assemblySupport.genLabel(zeroError);
+        this.assemblySupport.genDirCall("_divide_zero_error");
+        this.assemblySupport.genLabel(afterError);
     }
 
     /**
