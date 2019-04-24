@@ -216,6 +216,7 @@ public class MipsCodeGenerator
             textGeneratorVisitor.generateMethodEpilogue(0);
 
         }
+        //Step 9: generate User Defined Methods
         textGeneratorVisitor.generateTextSection(rootAST);
 
     }

@@ -13,9 +13,8 @@ class Main {
 //		q = 3;
 //	}
 //	y = q;
-//	var y = new A();
-//	cast(B, y);
-	var test = 1 % 0;
+	var y = 3+4*5+6;
+	//cast(B, y);
 	//var q =y.getX();
 //	var t = y.setX();
 	//var z = y.x;

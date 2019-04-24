@@ -590,28 +590,48 @@ Main.main:
 	move $sp $fp
 	# End Prologue
 	# gen left side of expression
+	# gen left side of expression
 	# constant int expression
-	li $v0 1
+	li $v0 3
+	# store left expression on stack
+	sub $sp $sp 4
+	sw $v0 0($sp)
+	# gen right side of expression
+	# gen left side of expression
+	# constant int expression
+	li $v0 4
 	# store left expression on stack
 	sub $sp $sp 4
 	sw $v0 0($sp)
 	# gen right side of expression
 	# constant int expression
-	li $v0 0
-	# load left expression from stack
+	li $v0 5
+	# load left expression on stack
 	lw $v1 0($sp)
 	add $sp $sp 4
-	# check for divide by zero error
-	beq $zero $v0 label0
-	# mod left and right sides of expression
-	rem $v0 $v1 $v0
-	# branch to afterError
-	b label1
-label0:
-	jal _divide_zero_error
-label1:
+	# multiply left and right sides of expression
+	mul $v0 $v0 $v1
+	# load left expression on stack
+	lw $v1 0($sp)
+	add $sp $sp 4
+	# add left and right sides of expression
+	add $v0 $v0 $v1
+	# store left expression on stack
+	sub $sp $sp 4
+	sw $v0 0($sp)
+	# gen right side of expression
+	# constant int expression
+	li $v0 6
+	# load left expression on stack
+	lw $v1 0($sp)
+	add $sp $sp 4
+	# add left and right sides of expression
+	add $v0 $v0 $v1
 	# store $v0 to (0)$fp
 	sw $v0 0($fp)
+	move $a0 $v0 
+	li $v0 1
+	syscall
 	# Start Epilogue
 	# add 4 to $fp and store the result to $sp
 	add $sp $fp 4
