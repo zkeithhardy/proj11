@@ -94,18 +94,6 @@ public class TextGeneratorVisitor extends Visitor {
     }
 
     /**
-     * Visit a list node of classes
-     *
-     * @param node the class list node
-     * @return result of the visit
-     */
-    public Object visit(ClassList node) {
-        for (ASTNode aNode : node)
-            aNode.accept(this);
-        return null;
-    }
-
-    /**
      * Visit a class node
      *
      * @param node the class node
@@ -430,19 +418,6 @@ public class TextGeneratorVisitor extends Visitor {
     }
 
     /**
-     * Visit a return statement node
-     *
-     * @param node the return statement node
-     * @return result of the visit
-     */
-    public Object visit(ReturnStmt node) {
-        if (node.getExpr() != null) {
-            node.getExpr().accept(this);
-        }
-        return null;
-    }
-
-    /**
      * Visit a dispatch expression node
      *
      * @param node the dispatch expression node
@@ -644,7 +619,8 @@ public class TextGeneratorVisitor extends Visitor {
      */
     public Object visit(BinaryCompEqExpr node) {
         this.genBinaryCompMips(node);
-        this.out.println("\tseq $v0 $v0 $v1");
+        this.assemblySupport.genComment("store equal comparison between v1 and $v0 to $v0");
+        this.out.println("\tseq $v0 $v1 $v0");
         this.assemblySupport.genSub("$v0","$zero","$v0");
         return null;
     }
@@ -657,9 +633,7 @@ public class TextGeneratorVisitor extends Visitor {
      */
     public Object visit(BinaryCompNeExpr node) {
         this.genBinaryCompMips(node);
-        this.assemblySupport.genComment("set v0 to 1 if v0 is not equal to v1 and 0 otherwise");
         this.out.println("\tsne $v0 $v0 $v1");
-        this.assemblySupport.genComment("subtract zero from v0 and store in v0 to reverse the signs");
         this.assemblySupport.genSub("$v0","$zero","$v0");
         return null;
     }
@@ -672,9 +646,7 @@ public class TextGeneratorVisitor extends Visitor {
      */
     public Object visit(BinaryCompLtExpr node) {
         this.genBinaryCompMips(node);
-        this.assemblySupport.genComment("set v0 to 1 if v0 is less than v1 and 0 otherwise");
         this.out.println("\tslt $v0 $v1 $v0");
-        this.assemblySupport.genComment("subtract zero from v0 and store in v0 to reverse the signs");
         this.assemblySupport.genSub("$v0","$zero","$v0");
         return null;
     }
@@ -841,6 +813,7 @@ public class TextGeneratorVisitor extends Visitor {
         node.getRightExpr().accept(this);
         this.assemblySupport.genComment("load left expression on stack");
         this.assemblySupport.genLoadWord("$v1",0,"$sp");
+        this.assemblySupport.genComment("increment sp by 4");
         this.assemblySupport.genAdd("$sp","$sp",4);
     }
 
@@ -854,6 +827,7 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genComment("and expression");
         node.getLeftExpr().accept(this);
         String afterAnd = this.assemblySupport.getLabel();
+        this.assemblySupport.genComment("conditional equality branch between $v0 and $zero");
         this.assemblySupport.genCondBeq("$v0","$zero",afterAnd);
         node.getRightExpr().accept(this);
 
@@ -871,8 +845,10 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genComment("or expression");
         node.getLeftExpr().accept(this);
         //lazy evaluation
+        this.assemblySupport.genComment("load -1 to $v1");
         this.assemblySupport.genLoadImm("$v1",-1);
         String afterOr = this.assemblySupport.getLabel();
+        this.assemblySupport.genComment("conditional equality branch between $v0 and $v1");
         this.assemblySupport.genCondBeq("$v0","$v1",afterOr);
         node.getRightExpr().accept(this);
 
