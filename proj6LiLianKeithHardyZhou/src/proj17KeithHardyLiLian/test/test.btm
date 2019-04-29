@@ -27,7 +27,7 @@ class Main {
 class SubMain extends Main {
     int z = 400;
 
-    //SubMain newSubMain(){return new SubMain();}
+    SubMain newSubMain(){return new SubMain();}
     //int foo(int x) { return x; }
     //boolean equals(Object o) { return false; }
 
