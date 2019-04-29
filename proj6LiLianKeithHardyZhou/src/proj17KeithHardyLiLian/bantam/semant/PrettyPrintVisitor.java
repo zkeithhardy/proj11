@@ -1,32 +1,24 @@
 package proj17KeithHardyLiLian.bantam.semant;
 
 import proj17KeithHardyLiLian.bantam.ast.*;
-import proj17KeithHardyLiLian.bantam.util.ClassTreeNode;
-import proj17KeithHardyLiLian.bantam.util.Error;
-import proj17KeithHardyLiLian.bantam.util.ErrorHandler;
-import proj17KeithHardyLiLian.bantam.util.SymbolTable;
 import proj17KeithHardyLiLian.bantam.visitor.Visitor;
 
-import java.io.PrintStream;
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
-import java.util.Stack;
 
 public class PrettyPrintVisitor extends Visitor{
 
-    String sourceCode;
-    int scope;
+    private String sourceCode;
+    private int indentLevel;
 
     public String sourceCode(ASTNode node){
         this.sourceCode= null;
-        this.scope =0;
+        this.indentLevel =0;
         node.accept(this);
         return this.sourceCode;
     }
 
     private void printScopeIndent(){
-        for (int i = 0 ; i< scope; i++){
+        for (int i = 0; i< indentLevel; i++){
             this.sourceCode += "\t";
         }
     }
@@ -37,7 +29,7 @@ public class PrettyPrintVisitor extends Visitor{
      * @return result of the visit
      */
     public Object visit(Class_ node) {
-        this.scope += 1;
+        this.indentLevel += 1;
         if (node.getParent().equals("") ){
             this.sourceCode= this.sourceCode + "class " +node.getName() + "{" + "\n";
         }
@@ -47,7 +39,7 @@ public class PrettyPrintVisitor extends Visitor{
         node.getMemberList().accept(this);
 
         this.sourceCode += "}";
-        this.scope -= 1;
+        this.indentLevel -= 1;
         return null;
     }
 
@@ -82,10 +74,10 @@ public class PrettyPrintVisitor extends Visitor{
         this.sourceCode += returnType + " " + identifier ;
         node.getFormalList().accept(this);
         this.sourceCode += "{";
-        this.scope += 1;
+        this.indentLevel += 1;
         node.getStmtList().accept(this);
         this.sourceCode += "}\n";
-        this.scope -= 1;
+        this.indentLevel -= 1;
         return null;
     }
 
@@ -153,13 +145,13 @@ public class PrettyPrintVisitor extends Visitor{
         this.sourceCode += "if(";
         node.getPredExpr().accept(this);
         this.sourceCode += "){\n";
-        this.scope += 1;
+        this.indentLevel += 1;
         node.getThenStmt().accept(this);
-        this.scope -= 1;
+        this.indentLevel -= 1;
         if (node.getElseStmt() != null) {
-            this.scope += 1;
+            this.indentLevel += 1;
             node.getElseStmt().accept(this);
-            this.scope -= 1;
+            this.indentLevel -= 1;
         }
         return null;
     }
@@ -174,9 +166,9 @@ public class PrettyPrintVisitor extends Visitor{
         this.sourceCode += "while(";
         node.getPredExpr().accept(this);
         this.sourceCode += "){\n";
-        this.scope += 1;
+        this.indentLevel += 1;
         node.getBodyStmt().accept(this);
-        this.scope -= 1;
+        this.indentLevel -= 1;
         this.sourceCode += "}\n";
         return null;
     }
@@ -201,9 +193,9 @@ public class PrettyPrintVisitor extends Visitor{
             node.getUpdateExpr().accept(this);
         }
         this.sourceCode += "){\n";
-        this.scope += 1;
+        this.indentLevel += 1;
         node.getBodyStmt().accept(this);
-        this.scope -= 1;
+        this.indentLevel -= 1;
         this.sourceCode += "}\n";
         return null;
     }
