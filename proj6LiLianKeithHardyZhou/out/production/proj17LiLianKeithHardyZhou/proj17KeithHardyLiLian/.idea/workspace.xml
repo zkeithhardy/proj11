@@ -1,122 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f879a60c-fe6b-40ba-9c27-5a565e3c1524" name="Default Changelist" comment="changing code area when save file">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj16KeithHardyLiLian/.idea/proj6LiLianKeithHardyZhou.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj16KeithHardyLiLian/.idea/proj6LiLianKeithHardyZhou.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj16KeithHardyLiLian/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj16KeithHardyLiLian/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj16KeithHardyLiLian/bantam/codegenmips/TextGeneratorVisitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj16KeithHardyLiLian/bantam/codegenmips/TextGeneratorVisitor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj16KeithHardyLiLian/test/test.asm" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj6LiLianKeithHardyZhou/proj16KeithHardyLiLian/test/test.asm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/proj6LiLianKeithHardyZhou.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/proj6LiLianKeithHardyZhou.iml" afterDir="false" />
+    <list default="true" id="6ba3b47e-03c3-466e-bdc1-e598e38494ef" name="Default Changelist" comment="more comments">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CodeAreaContextMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/CodeAreaContextMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CodeTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/CodeTab.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CodeTabPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/CodeTabPane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Console.java" beforeDir="false" afterPath="$PROJECT_DIR$/Console.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsoleContextMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/ConsoleContextMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DirectoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/DirectoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EditController.java" beforeDir="false" afterPath="$PROJECT_DIR$/EditController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/FileController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HelpMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/HelpMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaCodeArea.java" beforeDir="false" afterPath="$PROJECT_DIR$/JavaCodeArea.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MIPSCodeArea.java" beforeDir="false" afterPath="$PROJECT_DIR$/MIPSCodeArea.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MasterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/MasterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NavigateStructureVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/NavigateStructureVisitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NavigationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/NavigationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PreferenceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/PreferenceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StructureViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/StructureViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SuperClassVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/SuperClassVisitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TabContextMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/TabContextMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ToolbarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ToolbarController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/ast/ASTNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/ast/ASTNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/ast/ArrayAssignExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/ast/ArrayAssignExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/ast/ArrayExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/ast/ArrayExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/ast/AssignExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/ast/AssignExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/ast/BinaryArithDivideExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/ast/BinaryArithDivideExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/ast/BinaryArithExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/ast/BinaryArithExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/ast/BinaryArithMinusExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/ast/BinaryArithMinusExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/ast/BinaryArithModulusExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/ast/BinaryArithModulusExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/ast/BinaryArithPlusExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/ast/BinaryArithPlusExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/ast/BinaryArithTimesExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/ast/BinaryArithTimesExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/ast/BinaryCompEqExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/ast/BinaryCompEqExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/ast/BinaryCompExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/ast/BinaryCompExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/ast/BinaryCompGeqExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/ast/BinaryCompGeqExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/ast/BinaryCompGtExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/ast/BinaryCompGtExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/ast/BinaryCompLeqExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/ast/BinaryCompLeqExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/ast/BinaryCompLtExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/ast/BinaryCompLtExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/ast/BinaryCompNeExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/ast/BinaryCompNeExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/ast/BinaryExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/ast/BinaryExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/ast/BinaryLogicAndExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/ast/BinaryLogicAndExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/ast/BinaryLogicExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/ast/BinaryLogicExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/ast/BinaryLogicOrExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/ast/BinaryLogicOrExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/ast/BlockStmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/ast/BlockStmt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/ast/BreakStmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/ast/BreakStmt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/ast/CastExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/ast/CastExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/ast/ClassList.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/ast/ClassList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/ast/Class_.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/ast/Class_.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/ast/ConstBooleanExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/ast/ConstBooleanExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/ast/ConstExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/ast/ConstExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/ast/ConstIntExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/ast/ConstIntExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/ast/ConstStringExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/ast/ConstStringExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/ast/DeclStmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/ast/DeclStmt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/ast/DispatchExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/ast/DispatchExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/ast/Expr.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/ast/Expr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/ast/ExprList.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/ast/ExprList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/ast/ExprStmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/ast/ExprStmt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/ast/Field.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/ast/Field.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/ast/ForStmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/ast/ForStmt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/ast/Formal.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/ast/Formal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/ast/FormalList.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/ast/FormalList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/ast/IfStmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/ast/IfStmt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/ast/InstanceofExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/ast/InstanceofExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/ast/ListNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/ast/ListNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/ast/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/ast/Member.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/ast/MemberList.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/ast/MemberList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/ast/Method.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/ast/Method.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/ast/NewArrayExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/ast/NewArrayExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/ast/NewExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/ast/NewExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/ast/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/ast/Program.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/ast/ReturnStmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/ast/ReturnStmt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/ast/Stmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/ast/Stmt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/ast/StmtList.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/ast/StmtList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/ast/UnaryDecrExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/ast/UnaryDecrExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/ast/UnaryExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/ast/UnaryExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/ast/UnaryIncrExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/ast/UnaryIncrExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/ast/UnaryNegExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/ast/UnaryNegExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/ast/UnaryNotExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/ast/UnaryNotExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/ast/VarExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/ast/VarExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/ast/WhileStmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/ast/WhileStmt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/codegenmips/MipsCodeGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/codegenmips/MipsCodeGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/codegenmips/MipsSupport.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/codegenmips/MipsSupport.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/codegenmips/TextGeneratorVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/codegenmips/TextGeneratorVisitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/lexer/Scanner.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/lexer/Scanner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/lexer/SourceFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/lexer/SourceFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/lexer/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/lexer/Token.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/parser/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/parser/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/semant/ClassMapBuilderVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/semant/ClassMapBuilderVisitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/semant/ClassNameVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/semant/ClassNameVisitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/semant/MainMainVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/semant/MainMainVisitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/semant/NumFieldsVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/semant/NumFieldsVisitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/semant/NumLocalVarsVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/semant/NumLocalVarsVisitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/semant/SemanticAnalyzer.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/semant/SemanticAnalyzer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/semant/StringConstantsVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/semant/StringConstantsVisitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/semant/TypeCheckerVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/semant/TypeCheckerVisitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/treedrawer/Drawer.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/treedrawer/Drawer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/treedrawer/DrawerFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/treedrawer/DrawerFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/treedrawer/DrawerPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/treedrawer/DrawerPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/treedrawer/DrawingTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/treedrawer/DrawingTree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/treedrawer/LayoutVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/treedrawer/LayoutVisitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/treedrawer/Polygon.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/treedrawer/Polygon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/treedrawer/Polyline.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/treedrawer/Polyline.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/util/ClassTreeNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/util/ClassTreeNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/util/CompilationException.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/util/CompilationException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/util/Error.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/util/Error.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/util/ErrorHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/util/ErrorHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/util/Location.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/util/Location.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/util/SymbolTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/util/SymbolTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/visitor/Visitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/visitor/Visitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/Main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/Main.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bantam/semant/PrettyPrintVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/semant/PrettyPrintVisitor.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/../../out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -125,25 +12,43 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-170845527">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.open.time.19" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="java" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="JAVA" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="java" value="44" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JAVA" value="44" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/bantam/codegenmips/MipsCodeGenerator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-324">
-              <caret line="215" column="33" selection-start-line="215" selection-start-column="33" selection-end-line="215" selection-end-column="33" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bantam/codegenmips/TextGeneratorVisitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
-              <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+            <state relative-caret-position="161">
+              <caret line="1032" column="52" selection-start-line="1032" selection-start-column="46" selection-end-line="1032" selection-end-column="52" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -152,14 +57,31 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bantam/ast/CastExpr.java">
+        <entry file="file://$PROJECT_DIR$/bantam/codegenmips/MipsSupport.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="684">
-              <caret line="62" column="44" selection-start-line="62" selection-start-column="40" selection-end-line="62" selection-end-column="44" />
+            <state relative-caret-position="16036">
+              <caret line="978" column="37" selection-start-line="978" selection-start-column="25" selection-end-line="978" selection-end-column="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bantam/semant/PrettyPrintVisitor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="13129">
+              <caret line="691" selection-start-line="691" selection-end-line="691" />
               <folding>
-                <element signature="e#2309#2310#0" expanded="true" />
-                <element signature="e#2338#2339#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bantam/ast/Class_.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="475">
+              <caret line="49" selection-start-line="49" selection-end-line="49" />
             </state>
           </provider>
         </entry>
@@ -167,44 +89,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bantam/semant/SemanticAnalyzer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5004">
+            <state relative-caret-position="5282">
               <caret line="312" column="67" selection-start-line="312" selection-start-column="67" selection-end-line="312" selection-end-column="67" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bantam/semant/TypeCheckerVisitor.java">
+        <entry file="file://$PROJECT_DIR$/bantam/semant/StringConstantsVisitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4833">
-              <caret line="359" column="47" selection-start-line="359" selection-start-column="40" selection-end-line="359" selection-end-column="47" />
-              <folding>
-                <element signature="e#2923#2924#0" expanded="true" />
-                <element signature="e#2986#2987#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="95">
+              <caret line="15" selection-start-line="8" selection-end-line="15" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bantam/util/SymbolTable.java">
+        <entry file="file://$PROJECT_DIR$/bantam/semant/ClassMapBuilderVisitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6876">
-              <caret line="410" column="21" selection-start-line="410" selection-start-column="15" selection-end-line="410" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/test.asm">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bantam/codegenmips/MipsSupport.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3945">
-              <caret line="754" column="64" selection-start-line="754" selection-start-column="64" selection-end-line="754" selection-end-column="64" />
+            <state relative-caret-position="190">
+              <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -212,8 +116,124 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/test.btm">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="4" selection-start-line="4" selection-end-line="4" />
+            <state relative-caret-position="551">
+              <caret line="29" column="47" selection-start-line="29" selection-start-column="47" selection-end-line="29" selection-end-column="47" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bantam/semant/TypeCheckerVisitor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="133">
+              <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
+              <folding>
+                <element signature="docComment;class#TypeCheckerVisitor#0" />
+                <element signature="e#1000#1293#0" />
+                <element signature="e#1683#1964#0" />
+                <element signature="e#1683#2847#0" />
+                <element signature="e#2966#3202#0" />
+                <element signature="e#3209#3414#0" />
+                <element signature="e#3420#3533#0" />
+                <element signature="e#3420#3889#0" />
+                <element signature="e#3895#4008#0" />
+                <element signature="e#3895#5049#0" />
+                <element signature="e#4055#4136#0" />
+                <element signature="e#4895#4971#0" />
+                <element signature="e#5055#5170#0" />
+                <element signature="e#5055#6403#0" />
+                <element signature="e#6409#6524#0" />
+                <element signature="e#6409#6912#0" />
+                <element signature="e#6918#7063#0" />
+                <element signature="e#6918#8281#0" />
+                <element signature="e#8287#8415#0" />
+                <element signature="e#8287#9107#0" />
+                <element signature="e#9113#9246#0" />
+                <element signature="e#9113#9765#0" />
+                <element signature="e#9771#9900#0" />
+                <element signature="e#9771#10687#0" />
+                <element signature="e#10693#10826#0" />
+                <element signature="e#10693#11025#0" />
+                <element signature="e#11031#11164#0" />
+                <element signature="e#11031#11355#0" />
+                <element signature="e#11361#11496#0" />
+                <element signature="e#11361#12285#0" />
+                <element signature="e#12291#12439#0" />
+                <element signature="e#12291#14766#0" />
+                <element signature="e#13541#13593#0" />
+                <element signature="e#14772#14994#0" />
+                <element signature="e#14772#15240#0" />
+                <element signature="e#15246#15383#0" />
+                <element signature="e#15246#15705#0" />
+                <element signature="e#15711#15849#0" />
+                <element signature="e#15711#16217#0" />
+                <element signature="e#16223#16373#0" />
+                <element signature="e#16223#16822#0" />
+                <element signature="e#16828#16981#0" />
+                <element signature="e#16828#17723#0" />
+                <element signature="e#17729#17869#0" />
+                <element signature="e#17729#18596#0" />
+                <element signature="e#18602#18755#0" />
+                <element signature="e#18602#21418#0" />
+                <element signature="e#21424#21589#0" />
+                <element signature="e#21424#24247#0" />
+                <element signature="e#24253#24401#0" />
+                <element signature="e#24253#27143#0" />
+                <element signature="e#25658#25696#0" />
+                <element signature="e#27149#27379#0" />
+                <element signature="e#27385#27528#0" />
+                <element signature="e#27385#28595#0" />
+                <element signature="e#28601#28781#0" />
+                <element signature="e#28601#29285#0" />
+                <element signature="e#29291#29479#0" />
+                <element signature="e#29291#29840#0" />
+                <element signature="e#29846#30032#0" />
+                <element signature="e#29846#30368#0" />
+                <element signature="e#30374#30676#0" />
+                <element signature="e#30682#30892#0" />
+                <element signature="e#30682#31231#0" />
+                <element signature="e#31237#31429#0" />
+                <element signature="e#31237#31765#0" />
+                <element signature="e#31771#31985#0" />
+                <element signature="e#31771#32324#0" />
+                <element signature="e#32330#32506#0" />
+                <element signature="e#32330#32829#0" />
+                <element signature="e#32835#33013#0" />
+                <element signature="e#32835#33341#0" />
+                <element signature="e#33347#33525#0" />
+                <element signature="e#33347#33854#0" />
+                <element signature="e#33860#34040#0" />
+                <element signature="e#33860#34367#0" />
+                <element signature="e#34373#34555#0" />
+                <element signature="e#34373#34894#0" />
+                <element signature="e#34900#35068#0" />
+                <element signature="e#34900#35425#0" />
+                <element signature="e#35431#35597#0" />
+                <element signature="e#35431#35953#0" />
+                <element signature="e#35959#36119#0" />
+                <element signature="e#35959#36453#0" />
+                <element signature="e#36459#36609#0" />
+                <element signature="e#36459#37012#0" />
+                <element signature="e#37018#37180#0" />
+                <element signature="e#37018#37752#0" />
+                <element signature="e#37758#37920#0" />
+                <element signature="e#37758#38259#0" />
+                <element signature="e#38265#38422#0" />
+                <element signature="e#38265#38527#0" />
+                <element signature="e#38533#38697#0" />
+                <element signature="e#38533#38810#0" />
+                <element signature="e#38816#38978#0" />
+                <element signature="e#38816#39089#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bantam/visitor/Visitor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="12578">
+              <caret line="700" column="5" selection-start-line="42" selection-start-column="4" selection-end-line="700" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -229,18 +249,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>init</find>
-      <find>li $v</find>
-      <find>putint</find>
-      <find>$a0</find>
-      <find>image</find>
-      <find>gensys</find>
-      <find>genstore</find>
-      <find>varexpr</find>
-      <find>genloadwor</find>
-      <find>gensub</find>
-      <find>generateFieldInitialization</find>
-      <find>method</find>
       <find>sp</find>
       <find>newexpr</find>
       <find>syscall</find>
@@ -259,6 +267,18 @@
       <find>convert ob</find>
       <find>_String_const_17</find>
       <find>castex</find>
+      <find>dispatchTableMap</find>
+      <find>idTable</find>
+      <find>generateFieldInitialization</find>
+      <find>initOrGenMethods</find>
+      <find>mod</find>
+      <find>currentLoop</find>
+      <find>classSymbolTables</find>
+      <find>numLocalVars</find>
+      <find>methodLocalVars</find>
+      <find>stringNameMap</find>
+      <find>dispatchtabl</find>
+      <find>assemblysupport.gen</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -267,31 +287,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/CodeAreaContextMenu.java" />
-        <option value="$PROJECT_DIR$/Main.java" />
-        <option value="$PROJECT_DIR$/NavigationController.java" />
-        <option value="$PROJECT_DIR$/bantam/parser/Parser.java" />
-        <option value="$PROJECT_DIR$/bantam/semant/ClassMapBuilderVisitor.java" />
-        <option value="$PROJECT_DIR$/bantam/semant/TypeCheckerVisitor-old.java" />
-        <option value="$PROJECT_DIR$/bantam/semant/SemanticAnalyzer_old.java" />
-        <option value="$PROJECT_DIR$/bantam/visitor/Visitor.java" />
-        <option value="$PROJECT_DIR$/bantam/semant/TypeCheckerVisitor.java" />
-        <option value="$PROJECT_DIR$/FileController.java" />
-        <option value="$PROJECT_DIR$/CodeTab.java" />
-        <option value="$PROJECT_DIR$/JavaCodeArea.java" />
-        <option value="$PROJECT_DIR$/bantam/codegenmips/MipsSupport.java" />
-        <option value="$PROJECT_DIR$/EditController.java" />
-        <option value="$PROJECT_DIR$/resources/Main.css" />
-        <option value="$PROJECT_DIR$/resources/Main.fxml" />
-        <option value="$PROJECT_DIR$/MasterController.java" />
-        <option value="$PROJECT_DIR$/bantam/semant/NumFieldsVisitor.java" />
-        <option value="$PROJECT_DIR$/bantam/semant/ClassNameVisitor.java" />
-        <option value="$PROJECT_DIR$/bantam/semant/SemanticAnalyzer.java" />
-        <option value="$PROJECT_DIR$/ToolbarController.java" />
-        <option value="$PROJECT_DIR$/bantam/semant/StringConstantsVisitor.java" />
-        <option value="$PROJECT_DIR$/MIPSCodeArea.java" />
-        <option value="$PROJECT_DIR$/StructureViewController.java" />
-        <option value="$PROJECT_DIR$/bantam/codegenmips/MipsCodeGenerator.java" />
+        <option value="$PROJECT_DIR$/test/test.btm" />
+        <option value="$PROJECT_DIR$/bantam/semant/PrettyPrintVisitor.java" />
         <option value="$PROJECT_DIR$/bantam/codegenmips/TextGeneratorVisitor.java" />
       </list>
     </option>
@@ -300,13 +297,15 @@
     <option name="width" value="1440" />
     <option name="height" value="810" />
   </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -328,17 +327,57 @@
               <item name="proj17KeithHardyLiLian" type="b2602c69:ProjectViewProjectNode" />
               <item name="proj6LiLianKeithHardyZhou" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="proj16KeithHardyLiLian" type="462c0819:PsiDirectoryNode" />
+              <item name="proj17KeithHardyLiLian" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="proj17KeithHardyLiLian" type="b2602c69:ProjectViewProjectNode" />
+              <item name="proj6LiLianKeithHardyZhou" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="proj17KeithHardyLiLian" type="462c0819:PsiDirectoryNode" />
+              <item name="bantam" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="proj17KeithHardyLiLian" type="b2602c69:ProjectViewProjectNode" />
+              <item name="proj6LiLianKeithHardyZhou" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="proj17KeithHardyLiLian" type="462c0819:PsiDirectoryNode" />
+              <item name="bantam" type="462c0819:PsiDirectoryNode" />
+              <item name="ast" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="proj17KeithHardyLiLian" type="b2602c69:ProjectViewProjectNode" />
+              <item name="proj6LiLianKeithHardyZhou" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="proj17KeithHardyLiLian" type="462c0819:PsiDirectoryNode" />
+              <item name="bantam" type="462c0819:PsiDirectoryNode" />
+              <item name="codegenmips" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="proj17KeithHardyLiLian" type="b2602c69:ProjectViewProjectNode" />
+              <item name="proj6LiLianKeithHardyZhou" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="proj17KeithHardyLiLian" type="462c0819:PsiDirectoryNode" />
+              <item name="bantam" type="462c0819:PsiDirectoryNode" />
+              <item name="semant" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="proj17KeithHardyLiLian" type="b2602c69:ProjectViewProjectNode" />
+              <item name="proj6LiLianKeithHardyZhou" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="proj17KeithHardyLiLian" type="462c0819:PsiDirectoryNode" />
+              <item name="bantam" type="462c0819:PsiDirectoryNode" />
+              <item name="visitor" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556062058282" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556503834690" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -371,7 +410,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="f879a60c-fe6b-40ba-9c27-5a565e3c1524" name="Default Changelist" comment="" />
+      <changelist id="6ba3b47e-03c3-466e-bdc1-e598e38494ef" name="Default Changelist" comment="more comments" />
       <created>1553045404552</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -391,12 +430,12 @@
       <option name="project" value="LOCAL" />
       <updated>1554685771262</updated>
     </task>
-    <task id="LOCAL-00003" summary="fixed structure view">
-      <created>1553182968515</created>
+    <task id="LOCAL-00003" summary="more comments">
+      <created>1556064312119</created>
       <option name="number" value="00003" />
       <option name="presentableId" value="LOCAL-00003" />
       <option name="project" value="LOCAL" />
-      <updated>1553182968515</updated>
+      <updated>1556064312119</updated>
     </task>
     <task id="LOCAL-00004" summary="added dale's semantic analyzer">
       <created>1553187876467</created>
@@ -496,13 +535,13 @@
       <option name="project" value="LOCAL" />
       <updated>1554393071254</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.24291497" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2534413" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -510,7 +549,7 @@
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4979757" weight="0.20071048" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4979757" weight="0.46458924" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.6396761" weight="0.14164306" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -519,15 +558,16 @@
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5020243" side_tool="true" weight="0.09413854" />
       <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.88724834" weight="0.04964539" />
-      <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.49932885" weight="0.32765958" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="right" id="Palette&#9;" order="6" />
-      <window_info anchor="right" id="Maven Projects" order="7" />
+      <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.49932885" weight="0.32719547" />
+      <window_info anchor="right" id="Maven" order="0" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="4" />
+      <window_info anchor="right" id="Capture Analysis" order="5" />
+      <window_info anchor="right" id="Theme Preview" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Maven Projects" order="8" />
     </layout>
     <layout-to-restore>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24291497" />
@@ -558,9 +598,8 @@
       <window_info anchor="right" id="Maven Projects" order="7" />
     </layout-to-restore>
   </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="changing code area when save file" />
-    <option name="LAST_COMMIT_MESSAGE" value="changing code area when save file" />
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/bantam/ast/Program.java">
@@ -574,13 +613,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="128">
           <caret line="253" column="22" selection-start-line="253" selection-start-column="22" selection-end-line="253" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bantam/ast/Class_.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="49" selection-start-line="49" selection-end-line="49" />
         </state>
       </provider>
     </entry>
@@ -657,13 +689,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bantam/util/SymbolTable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6876">
-          <caret line="410" column="21" selection-start-line="410" selection-start-column="15" selection-end-line="410" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bantam/ast/InstanceofExpr.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="702">
@@ -682,20 +707,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1111">
           <caret line="84" column="35" selection-start-line="84" selection-start-column="34" selection-end-line="84" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bantam/semant/StringConstantsVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-323">
-          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bantam/ast/Field.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-495">
-          <caret line="52" column="23" selection-start-line="52" selection-start-column="19" selection-end-line="52" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -734,27 +745,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/test.asm">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bantam/codegenmips/MipsSupport.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3945">
-          <caret line="754" column="64" selection-start-line="754" selection-start-column="64" selection-end-line="754" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bantam/ast/DispatchExpr.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-171">
           <caret line="39" column="13" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/test.btm">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
         </state>
       </provider>
     </entry>
@@ -772,24 +766,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bantam/semant/SemanticAnalyzer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5004">
-          <caret line="312" column="67" selection-start-line="312" selection-start-column="67" selection-end-line="312" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bantam/ast/CastExpr.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="684">
-          <caret line="62" column="44" selection-start-line="62" selection-start-column="40" selection-end-line="62" selection-end-column="44" />
-          <folding>
-            <element signature="e#2309#2310#0" expanded="true" />
-            <element signature="e#2338#2339#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bantam/codegenmips/exceptions.s">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="579">
@@ -797,111 +773,237 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/bantam/codegenmips/MipsCodeGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3500">
+          <caret line="344" column="29" selection-start-line="344" selection-start-column="17" selection-end-line="344" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bantam/ast/CastExpr.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="684">
+          <caret line="62" column="44" selection-start-line="62" selection-start-column="40" selection-end-line="62" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bantam/util/SymbolTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6876">
+          <caret line="410" column="21" selection-start-line="410" selection-start-column="15" selection-end-line="410" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/test.asm">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Console.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="13" column="7" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ConsoleContextMenu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="9" column="7" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bantam/ast/ForStmt.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="41" column="13" selection-start-line="41" selection-start-column="13" selection-end-line="41" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bantam/ast/Field.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="532">
+          <caret line="52" column="23" selection-start-line="52" selection-start-column="19" selection-end-line="52" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bantam/ast/Class_.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="49" selection-start-line="49" selection-end-line="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bantam/semant/SemanticAnalyzer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5282">
+          <caret line="312" column="67" selection-start-line="312" selection-start-column="67" selection-end-line="312" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bantam/semant/StringConstantsVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="15" selection-start-line="8" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bantam/semant/ClassMapBuilderVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/test.btm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="551">
+          <caret line="29" column="47" selection-start-line="29" selection-start-column="47" selection-end-line="29" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/bantam/semant/TypeCheckerVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4833">
-          <caret line="359" column="47" selection-start-line="359" selection-start-column="40" selection-end-line="359" selection-end-column="47" />
+        <state relative-caret-position="133">
+          <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
           <folding>
-            <element signature="e#2923#2924#0" expanded="true" />
-            <element signature="e#2986#2987#0" expanded="true" />
+            <element signature="docComment;class#TypeCheckerVisitor#0" />
+            <element signature="e#1000#1293#0" />
+            <element signature="e#1683#1964#0" />
+            <element signature="e#1683#2847#0" />
+            <element signature="e#2966#3202#0" />
+            <element signature="e#3209#3414#0" />
+            <element signature="e#3420#3533#0" />
+            <element signature="e#3420#3889#0" />
+            <element signature="e#3895#4008#0" />
+            <element signature="e#3895#5049#0" />
+            <element signature="e#4055#4136#0" />
+            <element signature="e#4895#4971#0" />
+            <element signature="e#5055#5170#0" />
+            <element signature="e#5055#6403#0" />
+            <element signature="e#6409#6524#0" />
+            <element signature="e#6409#6912#0" />
+            <element signature="e#6918#7063#0" />
+            <element signature="e#6918#8281#0" />
+            <element signature="e#8287#8415#0" />
+            <element signature="e#8287#9107#0" />
+            <element signature="e#9113#9246#0" />
+            <element signature="e#9113#9765#0" />
+            <element signature="e#9771#9900#0" />
+            <element signature="e#9771#10687#0" />
+            <element signature="e#10693#10826#0" />
+            <element signature="e#10693#11025#0" />
+            <element signature="e#11031#11164#0" />
+            <element signature="e#11031#11355#0" />
+            <element signature="e#11361#11496#0" />
+            <element signature="e#11361#12285#0" />
+            <element signature="e#12291#12439#0" />
+            <element signature="e#12291#14766#0" />
+            <element signature="e#13541#13593#0" />
+            <element signature="e#14772#14994#0" />
+            <element signature="e#14772#15240#0" />
+            <element signature="e#15246#15383#0" />
+            <element signature="e#15246#15705#0" />
+            <element signature="e#15711#15849#0" />
+            <element signature="e#15711#16217#0" />
+            <element signature="e#16223#16373#0" />
+            <element signature="e#16223#16822#0" />
+            <element signature="e#16828#16981#0" />
+            <element signature="e#16828#17723#0" />
+            <element signature="e#17729#17869#0" />
+            <element signature="e#17729#18596#0" />
+            <element signature="e#18602#18755#0" />
+            <element signature="e#18602#21418#0" />
+            <element signature="e#21424#21589#0" />
+            <element signature="e#21424#24247#0" />
+            <element signature="e#24253#24401#0" />
+            <element signature="e#24253#27143#0" />
+            <element signature="e#25658#25696#0" />
+            <element signature="e#27149#27379#0" />
+            <element signature="e#27385#27528#0" />
+            <element signature="e#27385#28595#0" />
+            <element signature="e#28601#28781#0" />
+            <element signature="e#28601#29285#0" />
+            <element signature="e#29291#29479#0" />
+            <element signature="e#29291#29840#0" />
+            <element signature="e#29846#30032#0" />
+            <element signature="e#29846#30368#0" />
+            <element signature="e#30374#30676#0" />
+            <element signature="e#30682#30892#0" />
+            <element signature="e#30682#31231#0" />
+            <element signature="e#31237#31429#0" />
+            <element signature="e#31237#31765#0" />
+            <element signature="e#31771#31985#0" />
+            <element signature="e#31771#32324#0" />
+            <element signature="e#32330#32506#0" />
+            <element signature="e#32330#32829#0" />
+            <element signature="e#32835#33013#0" />
+            <element signature="e#32835#33341#0" />
+            <element signature="e#33347#33525#0" />
+            <element signature="e#33347#33854#0" />
+            <element signature="e#33860#34040#0" />
+            <element signature="e#33860#34367#0" />
+            <element signature="e#34373#34555#0" />
+            <element signature="e#34373#34894#0" />
+            <element signature="e#34900#35068#0" />
+            <element signature="e#34900#35425#0" />
+            <element signature="e#35431#35597#0" />
+            <element signature="e#35431#35953#0" />
+            <element signature="e#35959#36119#0" />
+            <element signature="e#35959#36453#0" />
+            <element signature="e#36459#36609#0" />
+            <element signature="e#36459#37012#0" />
+            <element signature="e#37018#37180#0" />
+            <element signature="e#37018#37752#0" />
+            <element signature="e#37758#37920#0" />
+            <element signature="e#37758#38259#0" />
+            <element signature="e#38265#38422#0" />
+            <element signature="e#38265#38527#0" />
+            <element signature="e#38533#38697#0" />
+            <element signature="e#38533#38810#0" />
+            <element signature="e#38816#38978#0" />
+            <element signature="e#38816#39089#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bantam/visitor/Visitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="12578">
+          <caret line="700" column="5" selection-start-line="42" selection-start-column="4" selection-end-line="700" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bantam/semant/PrettyPrintVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="13129">
+          <caret line="691" selection-start-line="691" selection-end-line="691" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bantam/codegenmips/MipsSupport.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="16036">
+          <caret line="978" column="37" selection-start-line="978" selection-start-column="25" selection-end-line="978" selection-end-column="37" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bantam/codegenmips/TextGeneratorVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        <state relative-caret-position="161">
+          <caret line="1032" column="52" selection-start-line="1032" selection-start-column="46" selection-end-line="1032" selection-end-column="52" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bantam/codegenmips/MipsCodeGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-324">
-          <caret line="215" column="33" selection-start-line="215" selection-start-column="33" selection-end-line="215" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ArtifactsStructureConfigurable.UI">
-        <settings>
-          <artifact-editor />
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="FacetStructureConfigurable.UI">
-        <settings>
-          <last-edited>No facets are configured</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="GlobalLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="JdkListConfigurable.UI">
-        <settings>
-          <last-edited>1.8</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ModuleStructureConfigurable.UI">
-        <settings>
-          <last-edited>proj6LiLianKeithHardyZhou</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.20993915" />
-                <option value="0.6" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.20993915" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
   </component>
 </project>
