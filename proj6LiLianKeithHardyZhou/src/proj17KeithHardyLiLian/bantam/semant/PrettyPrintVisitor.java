@@ -11,6 +11,7 @@ public class PrettyPrintVisitor extends Visitor{
     private int indentLevel;
     private boolean inConditionBraces;
 
+    //TODO: figure out comments
     public String sourceCode(ASTNode node){
         this.sourceCode= "";
         this.indentLevel =0;
