@@ -13,7 +13,7 @@ package proj17KeithHardyLiLian.bantam.parser;
 
 import static proj17KeithHardyLiLian.bantam.lexer.Token.Kind.*;
 
-import proj17KeithHardyLiLian.bantam.builder.ParserBuilder;
+import proj17KeithHardyLiLian.bantam.builder.ASTNodeBuilder;
 import proj17KeithHardyLiLian.bantam.lexer.Scanner;
 import proj17KeithHardyLiLian.bantam.lexer.Token;
 import proj17KeithHardyLiLian.bantam.util.Error;
@@ -34,12 +34,12 @@ public class Parser
     private Token currentToken; // the lookahead token
     private ErrorHandler errorHandler;
     private String filename;
-    private ParserBuilder parserBuilder;
+    private ASTNodeBuilder astNodeBuilder;
 
     // constructor
     public Parser(ErrorHandler errorHandler) {
         this.errorHandler = errorHandler;
-        this.parserBuilder = new ParserBuilder();
+        this.astNodeBuilder = new ASTNodeBuilder();
     }
 
 
@@ -88,14 +88,14 @@ public class Parser
     private Program parseProgram(){
         updateCurrentToken();
         int position = currentToken.position;
-        ClassList classList = parserBuilder.buildClassList(position);//new ClassList(position);
+        ClassList classList = astNodeBuilder.buildClassList(position);//new ClassList(position);
 
         while (currentToken.kind != EOF) {
             Class_ aClass = parseClass();
             classList.addElement(aClass);
             updateCurrentToken();
         }
-        return parserBuilder.buildProgram(position, classList);//new Program(position, classList);
+        return astNodeBuilder.buildProgram(position, classList);//new Program(position, classList);
     }
 
 
@@ -125,7 +125,7 @@ public class Parser
             }
             memberList.addElement(parseMember());
         }
-        return parserBuilder.buildClass(position,filename, name, parent, memberList);//new Class_(position,filename,name, parent, memberList);
+        return astNodeBuilder.buildClass(position,filename, name, parent, memberList);//new Class_(position,filename,name, parent, memberList);
     }
 
 
@@ -154,7 +154,7 @@ public class Parser
             updateCurrentToken();
             BlockStmt block = (BlockStmt)this.parseBlock();
             stmtList = block.getStmtList();
-            return parserBuilder.buildMethod(position, type, identifier, formalList, stmtList);//new Method(position,type, identifier, formalList, stmtList );
+            return astNodeBuilder.buildMethod(position, type, identifier, formalList, stmtList);//new Method(position,type, identifier, formalList, stmtList );
         }
 
          else if (currentToken.kind== ASSIGN){
@@ -162,14 +162,14 @@ public class Parser
              updateCurrentToken();
              expr=parseExpression();
              this.checkToken(SEMICOLON, "When parsing field, \";\" expected.");
-             return parserBuilder.buildField(position, type, identifier, expr);//new Field(position, type, identifier, expr);
+             return astNodeBuilder.buildField(position, type, identifier, expr);//new Field(position, type, identifier, expr);
 
          }
 
          else if (currentToken.kind==SEMICOLON){
              //empty field case
              updateCurrentToken();
-             return parserBuilder.buildField(position,type,identifier,null);//new Field(position,type, identifier, null);
+             return astNodeBuilder.buildField(position,type,identifier,null);//new Field(position,type, identifier, null);
          }
          else {
              this.registerError("When parsing field, \"(\", \"=\", or \";\" expected.",
@@ -228,7 +228,7 @@ public class Parser
         Expr predExpr = this.parseExpression();
 
         this.checkToken(RPAREN,"When parsing while, \")\" expected.");
-        return parserBuilder.buildWhileStmt(position,predExpr,this.parseStatement());//new WhileStmt(position, predExpr, this.parseStatement());
+        return astNodeBuilder.buildWhileStmt(position,predExpr,this.parseStatement());//new WhileStmt(position, predExpr, this.parseStatement());
     }
 
 
@@ -240,11 +240,11 @@ public class Parser
 	    int position = this.currentToken.position;
 	    if(this.currentToken.kind == SEMICOLON){
 	        updateCurrentToken();
-	        return parserBuilder.buildReturnStmt(position,null);//new ReturnStmt(position, null);
+	        return astNodeBuilder.buildReturnStmt(position,null);//new ReturnStmt(position, null);
         }else{
 	        Expr expr = this.parseExpression();
 	        this.checkToken(SEMICOLON, "When parsing Return, \";\" expected.");
-            return parserBuilder.buildReturnStmt(position,expr);//new ReturnStmt(position,expr);
+            return astNodeBuilder.buildReturnStmt(position,expr);//new ReturnStmt(position,expr);
         }
     }
 
@@ -256,7 +256,7 @@ public class Parser
 	    updateCurrentToken();
 	    int position = this.currentToken.position;
 	    this.checkToken(SEMICOLON,"When parsing Break, \";\" expected");
-        return parserBuilder.buildBreakStmt(this.currentToken.position);//new BreakStmt(this.currentToken.position);
+        return astNodeBuilder.buildBreakStmt(this.currentToken.position);//new BreakStmt(this.currentToken.position);
     }
 
 
@@ -267,7 +267,7 @@ public class Parser
 	    Expr expr = this.parseExpression();
 	    int position = this.currentToken.position;
 	    this.checkToken(SEMICOLON, "When parsing ExpressionStmt\";\" expected");
-	    return parserBuilder.buildExprStmt(position,expr);//new ExprStmt(position,expr);
+	    return astNodeBuilder.buildExprStmt(position,expr);//new ExprStmt(position,expr);
     }
 
 
@@ -284,7 +284,7 @@ public class Parser
         Expr expr = this.parseExpression();
 
         this.checkToken(SEMICOLON,"When parsing DeclStmt, \";\" expected");
-        return parserBuilder.buildDeclStmt(position,name,expr);//new DeclStmt(position,name,expr);
+        return astNodeBuilder.buildDeclStmt(position,name,expr);//new DeclStmt(position,name,expr);
     }
 
 
@@ -309,7 +309,7 @@ public class Parser
         Expr incExpr = this.parseExpression();
 
         this.checkToken(RPAREN,"When parsing For, \")\" expected");
-        return parserBuilder.buildForStmt(position,startExpr,predExpr,incExpr,this.parseStatement());//new ForStmt(position, startExpr, predExpr, incExpr, this.parseStatement());
+        return astNodeBuilder.buildForStmt(position,startExpr,predExpr,incExpr,this.parseStatement());//new ForStmt(position, startExpr, predExpr, incExpr, this.parseStatement());
     }
 
 
@@ -319,7 +319,7 @@ public class Parser
      */
 	private Stmt parseBlock() {
         int position = this.currentToken.position;
-        StmtList stmtList = parserBuilder.buildStmtList(position);//new StmtList(position);
+        StmtList stmtList = astNodeBuilder.buildStmtList(position);//new StmtList(position);
         this.checkToken(LCURLY,"When parsing Block\"{\" expected" );
 
         while(this.currentToken.kind != RCURLY){
@@ -330,7 +330,7 @@ public class Parser
 
         }
         updateCurrentToken();
-	    return parserBuilder.buildBlockStmt(position,stmtList);//new BlockStmt(position, stmtList);
+	    return astNodeBuilder.buildBlockStmt(position,stmtList);//new BlockStmt(position, stmtList);
     }
 
 
@@ -355,7 +355,7 @@ public class Parser
         else{
             elseStmt = null;
         }
-        return parserBuilder.buildIfStmt(position,predExpr,thenStmt,elseStmt);//new IfStmt(position, predExpr, thenStmt, elseStmt);
+        return astNodeBuilder.buildIfStmt(position,predExpr,thenStmt,elseStmt);//new IfStmt(position, predExpr, thenStmt, elseStmt);
     }
 
 
@@ -380,7 +380,7 @@ public class Parser
                 String name = ((VarExpr) left).getName();
                 updateCurrentToken();
 
-                return parserBuilder.buildAssignExpr(position,refName,name,this.parseExpression());//new AssignExpr(position,refName,name,this.parseExpression());
+                return astNodeBuilder.buildAssignExpr(position,refName,name,this.parseExpression());//new AssignExpr(position,refName,name,this.parseExpression());
             }
             else if(left instanceof ArrayExpr){
                 String refName = null;
@@ -390,7 +390,7 @@ public class Parser
                 String name = ((ArrayExpr) left).getName();
                 Expr index = ((ArrayExpr) left).getIndex();
                 updateCurrentToken();
-                return parserBuilder.buildArrayAssignExpr(position,refName,name,index,this.parseExpression());//new ArrayAssignExpr(position,refName,name,index, this.parseExpression());
+                return astNodeBuilder.buildArrayAssignExpr(position,refName,name,index,this.parseExpression());//new ArrayAssignExpr(position,refName,name,index, this.parseExpression());
             }
             else{
                 this.registerError("When parsing Expr, Variable name Expected",
@@ -416,7 +416,7 @@ public class Parser
         while (this.currentToken.spelling.equals("||")) {
             updateCurrentToken();
             Expr right = parseAndExpr();
-            left = parserBuilder.buildBinaryLogicOrExpr(position,left,right);//new BinaryLogicOrExpr(position, left, right);
+            left = astNodeBuilder.buildBinaryLogicOrExpr(position,left,right);//new BinaryLogicOrExpr(position, left, right);
         }
 
         return left;
@@ -433,7 +433,7 @@ public class Parser
 	    while (this.currentToken.spelling.equals("&&")){
 	        updateCurrentToken();
 	        Expr right=parseEqualityExpr();
-	        left= parserBuilder.buildBinaryLogicAndExpr(position,left,right);//new BinaryLogicAndExpr(position,left, right);
+	        left= astNodeBuilder.buildBinaryLogicAndExpr(position,left,right);//new BinaryLogicAndExpr(position,left, right);
 
         }
         return left;
@@ -452,12 +452,12 @@ public class Parser
 	    if(operator.equals("==")){
 	        updateCurrentToken();
 	        Expr right= parseRelationalExpr();
-	        left=parserBuilder.buildBinaryCompEqExpr(position,left,right);//new BinaryCompEqExpr(position,left,right);
+	        left=astNodeBuilder.buildBinaryCompEqExpr(position,left,right);//new BinaryCompEqExpr(position,left,right);
         }
         else if(operator.equals("!=")){
             updateCurrentToken();
             Expr right= parseRelationalExpr();
-            left=parserBuilder.buildBinaryCompNeExpr(position,left,right);//new BinaryCompNeExpr(position,left,right);
+            left=astNodeBuilder.buildBinaryCompNeExpr(position,left,right);//new BinaryCompNeExpr(position,left,right);
         }
 	    return left;
     }
@@ -474,19 +474,19 @@ public class Parser
         switch (operator) {
             case "<":
                 updateCurrentToken();
-                return parserBuilder.buildBinaryCompLtExpr(position,left,this.parseAddExpr());//new BinaryCompLtExpr(position, left, this.parseAddExpr());
+                return astNodeBuilder.buildBinaryCompLtExpr(position,left,this.parseAddExpr());//new BinaryCompLtExpr(position, left, this.parseAddExpr());
             case "<=":
                 updateCurrentToken();
-                return parserBuilder.buildBinaryCompLeqExpr(position,left,this.parseAddExpr());//new BinaryCompLeqExpr(position, left, this.parseAddExpr());
+                return astNodeBuilder.buildBinaryCompLeqExpr(position,left,this.parseAddExpr());//new BinaryCompLeqExpr(position, left, this.parseAddExpr());
             case ">":
                 updateCurrentToken();
-                return parserBuilder.buildBinaryCompGtExpr(position,left,this.parseAddExpr());//new BinaryCompGtExpr(position, left, this.parseAddExpr());
+                return astNodeBuilder.buildBinaryCompGtExpr(position,left,this.parseAddExpr());//new BinaryCompGtExpr(position, left, this.parseAddExpr());
             case ">=":
                 updateCurrentToken();
-                return parserBuilder.buildBinaryCompGeqExpr(position,left,this.parseAddExpr());//new BinaryCompGeqExpr(position, left, this.parseAddExpr());
+                return astNodeBuilder.buildBinaryCompGeqExpr(position,left,this.parseAddExpr());//new BinaryCompGeqExpr(position, left, this.parseAddExpr());
             case "instanceof":
                 updateCurrentToken();
-                return parserBuilder.buildInstanceOfExpr(position,left, this.parseType()); //new InstanceofExpr(position, left, this.parseType());
+                return astNodeBuilder.buildInstanceOfExpr(position,left, this.parseType()); //new InstanceofExpr(position, left, this.parseType());
             default:
                 return left;
         }
@@ -505,12 +505,12 @@ public class Parser
             if(this.currentToken.spelling.equals("+")){
                 updateCurrentToken();
                 Expr right = parseMultExpr();
-                left = parserBuilder.buildBinaryArithPlusExpr(position,left,right);//new BinaryArithPlusExpr(position, left, right);
+                left = astNodeBuilder.buildBinaryArithPlusExpr(position,left,right);//new BinaryArithPlusExpr(position, left, right);
             }
             else if(this.currentToken.spelling.equals("-")){
                 updateCurrentToken();
                 Expr right= parseMultExpr();
-                left = parserBuilder.buildBinaryArithMinusExpr(position,left,right);//new BinaryArithMinusExpr(position, left, right);
+                left = astNodeBuilder.buildBinaryArithMinusExpr(position,left,right);//new BinaryArithMinusExpr(position, left, right);
             }
 
         }
@@ -536,17 +536,17 @@ public class Parser
                 case "*":
                     updateCurrentToken();
                     right = parseNewCastOrUnary();
-                    left = parserBuilder.buildBinaryArithTimesExpr(position,left,right);//new BinaryArithTimesExpr(position, left, right);
+                    left = astNodeBuilder.buildBinaryArithTimesExpr(position,left,right);//new BinaryArithTimesExpr(position, left, right);
                     break;
                 case "/":
                     updateCurrentToken();
                     right = parseNewCastOrUnary();
-                    left = parserBuilder.buildBinaryArithDivideExpr(position,left,right);//new BinaryArithDivideExpr(position, left, right);
+                    left = astNodeBuilder.buildBinaryArithDivideExpr(position,left,right);//new BinaryArithDivideExpr(position, left, right);
                     break;
                 case "%":
                     updateCurrentToken();
                     right = parseNewCastOrUnary();
-                    left = parserBuilder.buildBinaryArithModulusExpr(position,left,right);//new BinaryArithModulusExpr(position, left, right);
+                    left = astNodeBuilder.buildBinaryArithModulusExpr(position,left,right);//new BinaryArithModulusExpr(position, left, right);
                     break;
             }
         }
@@ -582,12 +582,12 @@ public class Parser
 	    if(this.currentToken.kind == LPAREN){
             updateCurrentToken();
             this.checkToken(RPAREN,"When parsing New, \")\" expected");
-            return parserBuilder.buildNewExpr(this.currentToken.position,id);//new NewExpr(this.currentToken.position,id);
+            return astNodeBuilder.buildNewExpr(this.currentToken.position,id);//new NewExpr(this.currentToken.position,id);
         }else if(this.currentToken.kind == LBRACKET){
             updateCurrentToken();
             Expr expr = this.parseExpression();
             this.checkToken(RBRACKET,"When parsing New, \"]\" expected");
-            return parserBuilder.buildNewArrayExpr(this.currentToken.position,id,expr);//new NewArrayExpr(this.currentToken.position,id,expr);
+            return astNodeBuilder.buildNewArrayExpr(this.currentToken.position,id,expr);//new NewArrayExpr(this.currentToken.position,id,expr);
         }else{
             this.registerError("When parsing New, \"(\" or \"[\" expected",
                     "Unexpected Token");
@@ -606,7 +606,7 @@ public class Parser
         this.checkToken(COMMA,"When parsing Cast, \",\" expected");
         Expr expr = this.parseExpression();
         this.checkToken(RPAREN, "When parsing Cast, \")\" expected");
-        return parserBuilder.buildCastExpr(this.currentToken.position,type,expr);//new CastExpr( this.currentToken.position, type, expr);
+        return astNodeBuilder.buildCastExpr(this.currentToken.position,type,expr);//new CastExpr( this.currentToken.position, type, expr);
     }
 
 
@@ -619,17 +619,17 @@ public class Parser
 	    switch (operator) {
             case "-":
                 updateCurrentToken();
-                return parserBuilder.buildUnaryNegExpr(this.currentToken.position,this.parseUnaryPrefix());//new UnaryNegExpr(this.currentToken.position, this.parseUnaryPrefix());
+                return astNodeBuilder.buildUnaryNegExpr(this.currentToken.position,this.parseUnaryPrefix());//new UnaryNegExpr(this.currentToken.position, this.parseUnaryPrefix());
             case "!":
                 updateCurrentToken();
-                return parserBuilder.buildUnaryNotExpr(this.currentToken.position,this.parseUnaryPrefix());//new UnaryNotExpr(this.currentToken.position, this.parseUnaryPrefix());
+                return astNodeBuilder.buildUnaryNotExpr(this.currentToken.position,this.parseUnaryPrefix());//new UnaryNotExpr(this.currentToken.position, this.parseUnaryPrefix());
             case "++":
                 updateCurrentToken();
-                return parserBuilder.buildUnaryIncrExpr(this.currentToken.position,
+                return astNodeBuilder.buildUnaryIncrExpr(this.currentToken.position,
                         this.parseUnaryPrefix(),false);//new UnaryIncrExpr(this.currentToken.position, this.parseUnaryPrefix(), false);
             case "--":
                 updateCurrentToken();
-                return parserBuilder.buildUnaryDecrExpr(this.currentToken.position,
+                return astNodeBuilder.buildUnaryDecrExpr(this.currentToken.position,
                         this.parseUnaryPrefix(),false);//new UnaryDecrExpr(this.currentToken.position, this.parseUnaryPrefix(), false);
             default:
                 return this.parseUnaryPostfix();
@@ -645,10 +645,10 @@ public class Parser
 	    Expr primary = this.parsePrimary();
 	    if(this.currentToken.spelling.equals("++")){
 	        updateCurrentToken();
-	        return parserBuilder.buildUnaryIncrExpr(this.currentToken.position,primary,true);//new UnaryIncrExpr(this.currentToken.position,primary,true);
+	        return astNodeBuilder.buildUnaryIncrExpr(this.currentToken.position,primary,true);//new UnaryIncrExpr(this.currentToken.position,primary,true);
         }else if(this.currentToken.spelling.equals("--")){
 	        updateCurrentToken();
-	        return parserBuilder.buildUnaryDecrExpr(this.currentToken.position,primary,true);//new UnaryDecrExpr(this.currentToken.position,primary,true);
+	        return astNodeBuilder.buildUnaryDecrExpr(this.currentToken.position,primary,true);//new UnaryDecrExpr(this.currentToken.position,primary,true);
         }
         return primary;
     }
@@ -678,7 +678,7 @@ public class Parser
                     updateCurrentToken();
                     Expr index = this.parseExpression();
                     this.checkToken(RBRACKET, "When parsing (Expr), \"]\" expected");
-                    tempExpr = parserBuilder.buildArrayExpr(this.currentToken.position,expr,null,index);//new ArrayExpr(this.currentToken.position,expr,null,index);
+                    tempExpr = astNodeBuilder.buildArrayExpr(this.currentToken.position,expr,null,index);//new ArrayExpr(this.currentToken.position,expr,null,index);
                 }else{
                     tempExpr = expr;
                 }
@@ -717,16 +717,16 @@ public class Parser
             updateCurrentToken();
             Expr varExprSuffix = this.parseExpression();
             this.checkToken(RBRACKET, "When parsing varExpr, \"]\" expected");
-            tempExpr= parserBuilder.buildArrayExpr(this.currentToken.position,prefix,null,varExprSuffix);//new ArrayExpr(this.currentToken.position, prefix, identifier, varExprSuffix);
+            tempExpr= astNodeBuilder.buildArrayExpr(this.currentToken.position,prefix,null,varExprSuffix);//new ArrayExpr(this.currentToken.position, prefix, identifier, varExprSuffix);
         }
         else if(this.currentToken.kind==LPAREN) {
             updateCurrentToken();
             ExprList argument = parseArguments();
             this.checkToken(RPAREN, "When parsing varExpr, \")\" expected");
-            tempExpr = parserBuilder.buildDispatchExpr(this.currentToken.position, prefix, identifier, argument);//new DispatchExpr(this.currentToken.position, prefix, identifier, argument);
+            tempExpr = astNodeBuilder.buildDispatchExpr(this.currentToken.position, prefix, identifier, argument);//new DispatchExpr(this.currentToken.position, prefix, identifier, argument);
         }
         else{
-            tempExpr = parserBuilder.buildVarExpr(this.currentToken.position, prefix, identifier);//new VarExpr( this.currentToken.position, prefix, identifier);
+            tempExpr = astNodeBuilder.buildVarExpr(this.currentToken.position, prefix, identifier);//new VarExpr( this.currentToken.position, prefix, identifier);
         }
 
         return tempExpr;
@@ -739,7 +739,7 @@ public class Parser
      */
 	private ExprList parseArguments() {
         int position = this.currentToken.position;
-	    ExprList exprList = parserBuilder.buildExprList(position);//new ExprList(position);
+	    ExprList exprList = astNodeBuilder.buildExprList(position);//new ExprList(position);
 	    while (this.currentToken.kind != RPAREN) {
 	        exprList.addElement(this.parseExpression());
 	        if (this.currentToken.kind != COMMA ) {
@@ -761,7 +761,7 @@ public class Parser
      */
 	private FormalList parseParameters() {
 	    int position = this.currentToken.position;
-	    FormalList formalList = parserBuilder.buildFormalList(position);//new FormalList(position);
+	    FormalList formalList = astNodeBuilder.buildFormalList(position);//new FormalList(position);
 	    while (this.currentToken.kind != RPAREN) {
 	        formalList.addElement(this.parseFormal());
 	        if (this.currentToken.kind != COMMA) {
@@ -784,7 +784,7 @@ public class Parser
 	    String type = this.parseType();
 	    String id = this.parseIdentifier();
 
-        return parserBuilder.buildFormal(this.currentToken.position, type, id);//new Formal(this.currentToken.position, type, id);
+        return astNodeBuilder.buildFormal(this.currentToken.position, type, id);//new Formal(this.currentToken.position, type, id);
     }
 
 
@@ -822,7 +822,7 @@ public class Parser
 
     private ConstStringExpr parseStringConst() {
 	    ConstStringExpr constStringExpr =
-                parserBuilder.buildConstStringExpr(this.currentToken.position,this.currentToken.spelling);
+                astNodeBuilder.buildConstStringExpr(this.currentToken.position,this.currentToken.spelling);
 	    updateCurrentToken();
 	    return constStringExpr;
     }
@@ -830,7 +830,7 @@ public class Parser
 
     private ConstIntExpr parseIntConst() {
 	    ConstIntExpr constIntExpr =
-                parserBuilder.buildConstIntExpr(this.currentToken.position,this.currentToken.spelling);
+                astNodeBuilder.buildConstIntExpr(this.currentToken.position,this.currentToken.spelling);
 	    updateCurrentToken();
         return constIntExpr;
     }
@@ -838,7 +838,7 @@ public class Parser
 
     private ConstBooleanExpr parseBoolean() {
 	    ConstBooleanExpr constBooleanExpr =
-                this.parserBuilder.buildConstBooleanExpr(this.currentToken.position,this.currentToken.spelling);
+                this.astNodeBuilder.buildConstBooleanExpr(this.currentToken.position,this.currentToken.spelling);
 	    updateCurrentToken();
         return constBooleanExpr;
     }
