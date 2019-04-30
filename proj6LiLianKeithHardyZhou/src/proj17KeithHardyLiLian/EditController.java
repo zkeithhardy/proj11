@@ -16,15 +16,23 @@
 
 package proj17KeithHardyLiLian;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import org.fxmisc.richtext.CodeArea;
+import proj17KeithHardyLiLian.bantam.ast.Program;
+import proj17KeithHardyLiLian.bantam.parser.Parser;
+import proj17KeithHardyLiLian.bantam.semant.PrettyPrintVisitor;
+import proj17KeithHardyLiLian.bantam.util.CompilationException;
+import proj17KeithHardyLiLian.bantam.util.Error;
+import proj17KeithHardyLiLian.bantam.util.ErrorHandler;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Stack;
+import java.io.File;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.regex.Pattern;
 
 /**
  * This is the controller class for all of the edit functions
@@ -40,13 +48,16 @@ public class EditController {
 
     // Reference to the tab pane of the IDE
     private CodeTabPane codeTabPane;
+    private Console console;
+    private String sourceCode;
 
     /**
      * Constructor for the class. Initializes
      * the current tab to null
      */
-    public EditController(CodeTabPane codeTabPane) {
+    public EditController(CodeTabPane codeTabPane,Console console) {
         this.codeTabPane = codeTabPane;
+        this.console = console;
     }
 
     /**
@@ -564,6 +575,33 @@ public class EditController {
         codeArea.setStyleSpans(0, JavaStyle.computeHighlighting(codeArea.getText()));
     }
 
+    public void handleRebuildFile(){
+        this.sourceCode = null;
+        new Thread (()->{
+            ParseTask parseTask = new ParseTask();
+            FutureTask<Program> curFutureTask = new FutureTask<Program>(parseTask);
+            ExecutorService curExecutor = Executors.newFixedThreadPool(1);
+            curExecutor.execute(curFutureTask);
+            try{
+                Program AST = curFutureTask.get();
+                if(AST != null){
+                    PrettyPrintVisitor prettyPrintVisitor = new PrettyPrintVisitor();
+                    String sourceCode = prettyPrintVisitor.sourceCode(AST);
+                    String pattern = Pattern.quote(System.getProperty("file.separator"));
+                    String fileName = this.codeTabPane.getFileName().split(pattern)
+                            [this.codeTabPane.getFileName().split(pattern).length-1];
+                    Platform.runLater(() ->
+                            //FOR LATER WHEN IT WORKS, JUST OVERWRITE THE FILE.
+                            //this.codeTabPane.createNewTab(fileName,
+                            //        sourceCode,true, this.codeTabPane.getCurrentFile()));
+                            this.codeTabPane.createNewTab(fileName,sourceCode,false,null));
+                }
+            }catch(InterruptedException| ExecutionException e){
+                Platform.runLater(()-> this.console.writeToConsole("Parsing failed \n", "Error"));
+            }
+        }).start();
+    }
+
     /**
      * A inner class that handles find and replace functionality
      */
@@ -775,5 +813,49 @@ public class EditController {
             this.replaceAllButton.setDisable(!enable);
         }
     }
+
+    /**
+     * An inner class used to parse a file in a separate thread.
+     * Prints error info to the console
+     */
+    private class ParseTask implements Callable {
+
+        /**
+         * Create a Parser and use it to create an AST
+         * @return AST tree created by a parser
+         */
+        @Override
+        public Program call(){
+            ErrorHandler errorHandler = new ErrorHandler();
+            Parser parser = new Parser(errorHandler);
+            String filename = EditController.this.codeTabPane.getFileName();
+            Program AST = null;
+            try{
+                AST = parser.parse(filename);
+                Platform.runLater(()->EditController.this.console.writeToConsole(
+                        "Parsing Successful.\n", "Output"));
+            }
+            catch (CompilationException e){
+                Platform.runLater(()-> {
+                    EditController.this.console.writeToConsole("Parsing Failed\n","Error");
+                    EditController.this.console.writeToConsole("There were: " +
+                            errorHandler.getErrorList().size() + " errors in " +
+                            EditController.this.codeTabPane.getFileName() + "\n", "Output");
+
+                    if (errorHandler.errorsFound()) {
+                        List<Error> errorList = errorHandler.getErrorList();
+                        Iterator<Error> errorIterator = errorList.iterator();
+                        EditController.this.console.writeToConsole("\n", "Error");
+                        while (errorIterator.hasNext()) {
+                            EditController.this.console.writeToConsole(errorIterator.next().toString() +
+                                    "\n", "Error");
+                        }
+                    }
+                });
+            }
+            return AST;
+        }
+    }
+
 }
 

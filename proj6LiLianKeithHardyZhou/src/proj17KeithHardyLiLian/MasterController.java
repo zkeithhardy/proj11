@@ -92,7 +92,7 @@ public class MasterController {
         ConsoleContextMenu consoleContextMenu = new ConsoleContextMenu(this);
 
         //initialize the controllers
-        this.editController = new EditController(this.codeTabPane);
+        this.editController = new EditController(this.codeTabPane,this.console);
         this.fileController = new FileController(this.vBox,this.codeTabPane,this);
         this.toolbarController = new ToolbarController(this.console, this.codeTabPane, this.stopMipsButton,
                 this.assembleButton,this.assembleRunButton, scanButton, scanParseButton, checkButton,compileButton);
@@ -293,10 +293,19 @@ public class MasterController {
     }
 
     /**
-     * Handler for the "Find & Replace" menu item in the "Edit menu.
+     * Handler for the "Find & Replace" menu item in the "Edit" menu.
       */
     @FXML
     public void handleFindReplace(){ editController.handleFindReplace();  }
+
+    /**
+     * Handler for the "Rebuild File" menu item in the "Edit" menu.
+     */
+    @FXML
+    public void handleRebuildFile(){
+        this.handleSave();
+        editController.handleRebuildFile();
+    }
 
     /**
      * Handler for the "NightMode" Toggle menu item in the "Preferences" Menu.

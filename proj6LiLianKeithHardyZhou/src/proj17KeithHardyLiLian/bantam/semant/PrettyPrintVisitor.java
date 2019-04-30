@@ -12,7 +12,7 @@ public class PrettyPrintVisitor extends Visitor{
     private boolean inConditionBraces;
 
     public String sourceCode(ASTNode node){
-        this.sourceCode= null;
+        this.sourceCode= "";
         this.indentLevel =0;
         this.inConditionBraces = false;
         node.accept(this);
@@ -41,9 +41,10 @@ public class PrettyPrintVisitor extends Visitor{
             this.sourceCode= this.sourceCode + "class " +node.getName() + " extends "+ node.getParent()+ "{" + "\n";
 
         node.getMemberList().accept(this);
-
-        this.sourceCode += "}";
         this.indentLevel -= 1;
+        this.printScopeIndent();
+        this.sourceCode += "}\n";
+
         return null;
     }
 
@@ -77,11 +78,13 @@ public class PrettyPrintVisitor extends Visitor{
         printScopeIndent();
         this.sourceCode += returnType + " " + identifier ;
         node.getFormalList().accept(this);
-        this.sourceCode += "{";
+        this.sourceCode += "{\n";
         this.indentLevel += 1;
         node.getStmtList().accept(this);
-        this.sourceCode += "}\n";
         this.indentLevel -= 1;
+        this.printScopeIndent();
+        this.sourceCode += "}\n";
+
         return null;
     }
 
@@ -105,8 +108,12 @@ public class PrettyPrintVisitor extends Visitor{
      */
     public Object visit(FormalList node) {
         this.sourceCode += "(";
-        for (Iterator it = node.iterator(); it.hasNext(); )
+        for (Iterator it = node.iterator(); it.hasNext(); ) {
             ((Formal) it.next()).accept(this);
+            this.sourceCode += ", ";
+        }
+        if(this.sourceCode.endsWith(", "))
+            this.sourceCode = this.sourceCode.substring(0,this.sourceCode.length()-2);
         this.sourceCode += ")";
         return null;
     }
@@ -122,7 +129,7 @@ public class PrettyPrintVisitor extends Visitor{
         printScopeIndent();
         this.sourceCode += "var " + name + " = ";
         node.getInit().accept(this);
-        this.sourceCode += ";";
+        this.sourceCode += ";\n";
         return null;
     }
 
@@ -133,8 +140,9 @@ public class PrettyPrintVisitor extends Visitor{
      * @return result of the visit
      */
     public Object visit(ExprStmt node) {
+        this.printScopeIndent();
         node.getExpr().accept(this);
-        this.sourceCode += ";";
+        this.sourceCode += ";\n";
         return null;
     }
 
@@ -146,18 +154,24 @@ public class PrettyPrintVisitor extends Visitor{
      */
     public Object visit(IfStmt node) {
         printScopeIndent();
-        this.sourceCode += "if(";
+        this.sourceCode += "if( ";
         this.inConditionBraces = true;
         node.getPredExpr().accept(this);
         this.inConditionBraces = false;
-        this.sourceCode += "){\n";
+        this.sourceCode += " ){\n";
         this.indentLevel += 1;
         node.getThenStmt().accept(this);
         this.indentLevel -= 1;
+        this.printScopeIndent();
+        this.sourceCode += "}\n";
         if (node.getElseStmt() != null) {
+            this.printScopeIndent();
+            this.sourceCode += "else {\n";
             this.indentLevel += 1;
             node.getElseStmt().accept(this);
             this.indentLevel -= 1;
+            this.printScopeIndent();
+            this.sourceCode += "}\n";
         }
         return null;
     }
@@ -169,14 +183,16 @@ public class PrettyPrintVisitor extends Visitor{
      * @return result of the visit
      */
     public Object visit(WhileStmt node) {
-        this.sourceCode += "while(";
+        this.printScopeIndent();
+        this.sourceCode += "while( ";
         this.inConditionBraces = true;
         node.getPredExpr().accept(this);
         this.inConditionBraces = false;
-        this.sourceCode += "){\n";
+        this.sourceCode += " ){\n";
         this.indentLevel += 1;
         node.getBodyStmt().accept(this);
         this.indentLevel -= 1;
+        this.printScopeIndent();
         this.sourceCode += "}\n";
         return null;
     }
@@ -188,7 +204,8 @@ public class PrettyPrintVisitor extends Visitor{
      * @return result of the visit
      */
     public Object visit(ForStmt node) {
-        this.sourceCode += "for(";
+        this.printScopeIndent();
+        this.sourceCode += "for( ";
         this.inConditionBraces = true;
         if (node.getInitExpr() != null) {
             node.getInitExpr().accept(this);
@@ -202,10 +219,11 @@ public class PrettyPrintVisitor extends Visitor{
             node.getUpdateExpr().accept(this);
         }
         this.inConditionBraces = false;
-        this.sourceCode += "){\n";
+        this.sourceCode += " ){\n";
         this.indentLevel += 1;
         node.getBodyStmt().accept(this);
         this.indentLevel -= 1;
+        this.printScopeIndent();
         this.sourceCode += "}\n";
         return null;
     }
@@ -218,7 +236,7 @@ public class PrettyPrintVisitor extends Visitor{
      */
     public Object visit(BreakStmt node) {
         printScopeIndent();
-        this.sourceCode += "Break;\n";
+        this.sourceCode += "break;\n";
         return null;
     }
 
@@ -241,8 +259,9 @@ public class PrettyPrintVisitor extends Visitor{
      */
     public Object visit(ReturnStmt node) {
         printScopeIndent();
-        this.sourceCode += "return ";
+        this.sourceCode += "return";
         if (node.getExpr() != null) {
+            this.sourceCode += " ";
             node.getExpr().accept(this);
         }
         this.sourceCode += ";\n";
@@ -258,7 +277,10 @@ public class PrettyPrintVisitor extends Visitor{
     public Object visit(ExprList node) {
         for (Iterator it = node.iterator(); it.hasNext(); ){
             ((Expr) it.next()).accept(this);
+            this.sourceCode += ", ";
         }
+        if(this.sourceCode.endsWith(", "))
+            this.sourceCode = this.sourceCode.substring(0,this.sourceCode.length()-2);
         return null;
     }
 
@@ -270,12 +292,19 @@ public class PrettyPrintVisitor extends Visitor{
      * @return result of the visit
      */
     public Object visit(DispatchExpr node) {
-        printScopeIndent();
-        if(node.getRefExpr() != null)
+        if(node.getRefExpr() != null){
+            if(!((node.getRefExpr() instanceof VarExpr) || (node.getRefExpr() instanceof DispatchExpr)
+                    || (node.getRefExpr() instanceof ArrayExpr)))
+                this.sourceCode += "( ";
             node.getRefExpr().accept(this);
+            if(!((node.getRefExpr() instanceof VarExpr) || (node.getRefExpr() instanceof DispatchExpr)
+                    || (node.getRefExpr() instanceof ArrayExpr)))
+                this.sourceCode += " )";
+            this.sourceCode += ".";
+        }
         this.sourceCode += node.getMethodName() + "(";
         node.getActualList().accept(this);
-        this.sourceCode += ");\n";
+        this.sourceCode += ")";
         return null;
     }
 
@@ -286,8 +315,7 @@ public class PrettyPrintVisitor extends Visitor{
      * @return result of the visit
      */
     public Object visit(NewExpr node) {
-        printScopeIndent();
-        this.sourceCode += "new " + node.getType() +"();\n";
+        this.sourceCode += "new " + node.getType() +"()";
         return null;
     }
 
@@ -298,10 +326,9 @@ public class PrettyPrintVisitor extends Visitor{
      * @return result of the visit
      */
     public Object visit(NewArrayExpr node) {
-        printScopeIndent();
-        this.sourceCode += "new " + node.getType() + "(";
+        this.sourceCode += "new " + node.getType() + "[";
         node.getSize().accept(this);
-        this.sourceCode += ")\n";
+        this.sourceCode += "]";
         return null;
     }
 
@@ -312,7 +339,6 @@ public class PrettyPrintVisitor extends Visitor{
      * @return result of the visit
      */
     public Object visit(InstanceofExpr node) {
-        printScopeIndent();
         node.getExpr().accept(this);
         this.sourceCode += " instanceof " + node.getType()+";\n";
         return null;
@@ -325,10 +351,9 @@ public class PrettyPrintVisitor extends Visitor{
      * @return result of the visit
      */
     public Object visit(CastExpr node) {
-        printScopeIndent();
         this.sourceCode += "cast("+ node.getType() + ",";
         node.getExpr().accept(this);
-        this.sourceCode += ");\n";
+        this.sourceCode += ")";
         return null;
     }
 
@@ -339,13 +364,11 @@ public class PrettyPrintVisitor extends Visitor{
      * @return result of the visit
      */
     public Object visit(AssignExpr node) {
-        printScopeIndent();
         if(node.getRefName()!=null){
             this.sourceCode += node.getRefName() + ".";
         }
         this.sourceCode += node.getName() + " = ";
         node.getExpr().accept(this);
-        this.sourceCode += ";\n";
         return null;
     }
 
@@ -356,15 +379,13 @@ public class PrettyPrintVisitor extends Visitor{
      * @return result of the visit
      */
     public Object visit(ArrayAssignExpr node) {
-        printScopeIndent();
         if(node.getRefName()!=null){
             this.sourceCode += node.getRefName() + ".";
         }
-        this.sourceCode += node.getName() + "[ ";
+        this.sourceCode += node.getName() + "[";
         node.getIndex().accept(this);
         this.sourceCode += "] = ";
         node.getExpr().accept(this);
-        this.sourceCode += ";\n";
         return null;
     }
 
@@ -376,12 +397,9 @@ public class PrettyPrintVisitor extends Visitor{
      * @return result of the visit
      */
     public Object visit(BinaryCompEqExpr node) {
-        printScopeIndent();
-        printScopeIndent();
         node.getLeftExpr().accept(this);
         this.sourceCode += " "+ node.getOpName()+ " ";
         node.getRightExpr().accept(this);
-        this.sourceCode += ";\n";
         return null;
     }
 
@@ -392,7 +410,6 @@ public class PrettyPrintVisitor extends Visitor{
      * @return result of the visit
      */
     public Object visit(BinaryCompNeExpr node) {
-        printScopeIndent();
         node.getLeftExpr().accept(this);
         this.sourceCode += " "+ node.getOpName()+ " ";
         node.getRightExpr().accept(this);
@@ -406,7 +423,6 @@ public class PrettyPrintVisitor extends Visitor{
      * @return result of the visit
      */
     public Object visit(BinaryCompLtExpr node) {
-        printScopeIndent();
         node.getLeftExpr().accept(this);
         this.sourceCode += " "+ node.getOpName()+ " ";
         node.getRightExpr().accept(this);
@@ -420,7 +436,6 @@ public class PrettyPrintVisitor extends Visitor{
      * @return result of the visit
      */
     public Object visit(BinaryCompLeqExpr node) {
-        printScopeIndent();
         node.getLeftExpr().accept(this);
         this.sourceCode += " "+ node.getOpName()+ " ";
         node.getRightExpr().accept(this);
@@ -434,7 +449,6 @@ public class PrettyPrintVisitor extends Visitor{
      * @return result of the visit
      */
     public Object visit(BinaryCompGtExpr node) {
-        printScopeIndent();
         node.getLeftExpr().accept(this);
         this.sourceCode += " "+ node.getOpName()+ " ";
         node.getRightExpr().accept(this);
@@ -448,7 +462,6 @@ public class PrettyPrintVisitor extends Visitor{
      * @return result of the visit
      */
     public Object visit(BinaryCompGeqExpr node) {
-        printScopeIndent();
         node.getLeftExpr().accept(this);
         this.sourceCode += " "+ node.getOpName()+ " ";
         node.getRightExpr().accept(this);
@@ -462,7 +475,6 @@ public class PrettyPrintVisitor extends Visitor{
      * @return result of the visit
      */
     public Object visit(BinaryArithPlusExpr node) {
-        printScopeIndent();
         node.getLeftExpr().accept(this);
         this.sourceCode += " "+ node.getOpName()+ " ";
         node.getRightExpr().accept(this);
@@ -476,7 +488,6 @@ public class PrettyPrintVisitor extends Visitor{
      * @return result of the visit
      */
     public Object visit(BinaryArithMinusExpr node) {
-        printScopeIndent();
         node.getLeftExpr().accept(this);
         this.sourceCode += " "+ node.getOpName()+ " ";
         node.getRightExpr().accept(this);
@@ -490,7 +501,6 @@ public class PrettyPrintVisitor extends Visitor{
      * @return result of the visit
      */
     public Object visit(BinaryArithTimesExpr node) {
-        printScopeIndent();
         node.getLeftExpr().accept(this);
         this.sourceCode += " "+ node.getOpName()+ " ";
         node.getRightExpr().accept(this);
@@ -504,7 +514,6 @@ public class PrettyPrintVisitor extends Visitor{
      * @return result of the visit
      */
     public Object visit(BinaryArithDivideExpr node) {
-        printScopeIndent();
         node.getLeftExpr().accept(this);
         this.sourceCode += " "+ node.getOpName()+ " ";
         node.getRightExpr().accept(this);
@@ -518,7 +527,6 @@ public class PrettyPrintVisitor extends Visitor{
      * @return result of the visit
      */
     public Object visit(BinaryArithModulusExpr node) {
-        printScopeIndent();
         node.getLeftExpr().accept(this);
         this.sourceCode += " "+ node.getOpName()+ " ";
         node.getRightExpr().accept(this);
@@ -533,7 +541,6 @@ public class PrettyPrintVisitor extends Visitor{
      * @return result of the visit
      */
     public Object visit(BinaryLogicAndExpr node) {
-        printScopeIndent();
         node.getLeftExpr().accept(this);
         this.sourceCode += " "+ node.getOpName()+ " ";
         node.getRightExpr().accept(this);
@@ -547,7 +554,6 @@ public class PrettyPrintVisitor extends Visitor{
      * @return result of the visit
      */
     public Object visit(BinaryLogicOrExpr node) {
-        printScopeIndent();
         node.getLeftExpr().accept(this);
         this.sourceCode += " "+ node.getOpName()+ " ";
         node.getRightExpr().accept(this);
@@ -562,7 +568,6 @@ public class PrettyPrintVisitor extends Visitor{
      * @return result of the visit
      */
     public Object visit(UnaryNegExpr node) {
-        printScopeIndent();
         this.sourceCode += node.getOpName();
         node.getExpr().accept(this);
         return null;
@@ -575,7 +580,6 @@ public class PrettyPrintVisitor extends Visitor{
      * @return result of the visit
      */
     public Object visit(UnaryNotExpr node) {
-        printScopeIndent();
         this.sourceCode += node.getOpName();
         node.getExpr().accept(this);
         return null;
@@ -588,7 +592,6 @@ public class PrettyPrintVisitor extends Visitor{
      * @return result of the visit
      */
     public Object visit(UnaryIncrExpr node) {
-        printScopeIndent();
         if(!node.isPostfix()){
             this.sourceCode += node.getOpName();
         }
@@ -606,7 +609,6 @@ public class PrettyPrintVisitor extends Visitor{
      * @return result of the visit
      */
     public Object visit(UnaryDecrExpr node) {
-        printScopeIndent();
         if(!node.isPostfix()){
             this.sourceCode += node.getOpName();
         }
@@ -624,10 +626,14 @@ public class PrettyPrintVisitor extends Visitor{
      * @return result of the visit
      */
     public Object visit(VarExpr node) {
-        printScopeIndent();
-        this.sourceCode += "var";
         if (node.getRef() != null) {
+            if(!((node.getRef() instanceof VarExpr) || (node.getRef() instanceof DispatchExpr)
+                    || (node.getRef() instanceof ArrayExpr)))
+                this.sourceCode += "( ";
             node.getRef().accept(this);
+            if(!((node.getRef() instanceof VarExpr) || (node.getRef() instanceof DispatchExpr)
+                    || (node.getRef() instanceof ArrayExpr)))
+                this.sourceCode += " )";
             this.sourceCode += ".";
         }
         this.sourceCode += node.getName();
