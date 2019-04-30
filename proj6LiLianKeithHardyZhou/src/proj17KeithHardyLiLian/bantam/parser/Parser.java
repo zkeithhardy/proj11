@@ -13,6 +13,7 @@ package proj17KeithHardyLiLian.bantam.parser;
 
 import static proj17KeithHardyLiLian.bantam.lexer.Token.Kind.*;
 
+import proj17KeithHardyLiLian.bantam.builder.ParserBuilder;
 import proj17KeithHardyLiLian.bantam.lexer.Scanner;
 import proj17KeithHardyLiLian.bantam.lexer.Token;
 import proj17KeithHardyLiLian.bantam.util.Error;
@@ -33,10 +34,12 @@ public class Parser
     private Token currentToken; // the lookahead token
     private ErrorHandler errorHandler;
     private String filename;
+    private ParserBuilder parserBuilder;
 
     // constructor
     public Parser(ErrorHandler errorHandler) {
         this.errorHandler = errorHandler;
+        this.parserBuilder = new ParserBuilder();
     }
 
 
@@ -85,14 +88,14 @@ public class Parser
     private Program parseProgram(){
         updateCurrentToken();
         int position = currentToken.position;
-        ClassList classList = new ClassList(position);
+        ClassList classList = parserBuilder.buildClassList(position);//new ClassList(position);
 
         while (currentToken.kind != EOF) {
             Class_ aClass = parseClass();
             classList.addElement(aClass);
             updateCurrentToken();
         }
-        return new Program(position, classList);
+        return parserBuilder.buildProgram(position, classList);//new Program(position, classList);
     }
 
 
@@ -122,7 +125,7 @@ public class Parser
             }
             memberList.addElement(parseMember());
         }
-        return new Class_(position,filename,name, parent, memberList);
+        return parserBuilder.buildClass(position,filename, name, parent, memberList);//new Class_(position,filename,name, parent, memberList);
     }
 
 
@@ -151,7 +154,7 @@ public class Parser
             updateCurrentToken();
             BlockStmt block = (BlockStmt)this.parseBlock();
             stmtList = block.getStmtList();
-            return new Method(position,type, identifier, formalList, stmtList );
+            return parserBuilder.buildMethod(position, type, identifier, formalList, stmtList);//new Method(position,type, identifier, formalList, stmtList );
         }
 
          else if (currentToken.kind== ASSIGN){
@@ -159,14 +162,14 @@ public class Parser
              updateCurrentToken();
              expr=parseExpression();
              this.checkToken(SEMICOLON, "When parsing field, \";\" expected.");
-             return new Field(position, type, identifier, expr);
+             return parserBuilder.buildField(position, type, identifier, expr);//new Field(position, type, identifier, expr);
 
          }
 
          else if (currentToken.kind==SEMICOLON){
              //empty field case
              updateCurrentToken();
-             return new Field(position,type, identifier, null);
+             return parserBuilder.buildField(position,type,identifier,null);//new Field(position,type, identifier, null);
          }
          else {
              this.registerError("When parsing field, \"(\", \"=\", or \";\" expected.",
@@ -225,7 +228,7 @@ public class Parser
         Expr predExpr = this.parseExpression();
 
         this.checkToken(RPAREN,"When parsing while, \")\" expected.");
-        return new WhileStmt(position, predExpr, this.parseStatement());
+        return parserBuilder.buildWhileStmt(position,predExpr,this.parseStatement());//new WhileStmt(position, predExpr, this.parseStatement());
     }
 
 
@@ -237,11 +240,11 @@ public class Parser
 	    int position = this.currentToken.position;
 	    if(this.currentToken.kind == SEMICOLON){
 	        updateCurrentToken();
-	        return new ReturnStmt(position, null);
+	        return parserBuilder.buildReturnStmt(position,null);//new ReturnStmt(position, null);
         }else{
 	        Expr expr = this.parseExpression();
 	        this.checkToken(SEMICOLON, "When parsing Return, \";\" expected.");
-            return new ReturnStmt(position,expr);
+            return parserBuilder.buildReturnStmt(position,expr);//new ReturnStmt(position,expr);
         }
     }
 
@@ -253,7 +256,7 @@ public class Parser
 	    updateCurrentToken();
 	    int position = this.currentToken.position;
 	    this.checkToken(SEMICOLON,"When parsing Break, \";\" expected");
-        return new BreakStmt(this.currentToken.position);
+        return parserBuilder.buildBreakStmt(this.currentToken.position);//new BreakStmt(this.currentToken.position);
     }
 
 
@@ -264,7 +267,7 @@ public class Parser
 	    Expr expr = this.parseExpression();
 	    int position = this.currentToken.position;
 	    this.checkToken(SEMICOLON, "When parsing ExpressionStmt\";\" expected");
-	    return new ExprStmt(position,expr);
+	    return parserBuilder.buildExprStmt(position,expr);//new ExprStmt(position,expr);
     }
 
 
@@ -281,7 +284,7 @@ public class Parser
         Expr expr = this.parseExpression();
 
         this.checkToken(SEMICOLON,"When parsing DeclStmt, \";\" expected");
-        return new DeclStmt(position,name,expr);
+        return parserBuilder.buildDeclStmt(position,name,expr);//new DeclStmt(position,name,expr);
     }
 
 
@@ -306,7 +309,7 @@ public class Parser
         Expr incExpr = this.parseExpression();
 
         this.checkToken(RPAREN,"When parsing For, \")\" expected");
-        return new ForStmt(position, startExpr, predExpr, incExpr, this.parseStatement());
+        return parserBuilder.buildForStmt(position,startExpr,predExpr,incExpr,this.parseStatement());//new ForStmt(position, startExpr, predExpr, incExpr, this.parseStatement());
     }
 
 
@@ -316,7 +319,7 @@ public class Parser
      */
 	private Stmt parseBlock() {
         int position = this.currentToken.position;
-        StmtList stmtList = new StmtList(position);
+        StmtList stmtList = parserBuilder.buildStmtList(position);//new StmtList(position);
         this.checkToken(LCURLY,"When parsing Block\"{\" expected" );
 
         while(this.currentToken.kind != RCURLY){
@@ -327,7 +330,7 @@ public class Parser
 
         }
         updateCurrentToken();
-	    return new BlockStmt(position, stmtList);
+	    return parserBuilder.buildBlockStmt(position,stmtList);//new BlockStmt(position, stmtList);
     }
 
 
@@ -352,7 +355,7 @@ public class Parser
         else{
             elseStmt = null;
         }
-        return new IfStmt(position, predExpr, thenStmt, elseStmt);
+        return parserBuilder.buildIfStmt(position,predExpr,thenStmt,elseStmt);//new IfStmt(position, predExpr, thenStmt, elseStmt);
     }
 
 
@@ -377,7 +380,7 @@ public class Parser
                 String name = ((VarExpr) left).getName();
                 updateCurrentToken();
 
-                return new AssignExpr(position,refName,name,this.parseExpression());
+                return parserBuilder.buildAssignExpr(position,refName,name,this.parseExpression());//new AssignExpr(position,refName,name,this.parseExpression());
             }
             else if(left instanceof ArrayExpr){
                 String refName = null;
@@ -387,7 +390,7 @@ public class Parser
                 String name = ((ArrayExpr) left).getName();
                 Expr index = ((ArrayExpr) left).getIndex();
                 updateCurrentToken();
-                return new ArrayAssignExpr(position,refName,name,index, this.parseExpression());
+                return parserBuilder.buildArrayAssignExpr(position,refName,name,index,this.parseExpression());//new ArrayAssignExpr(position,refName,name,index, this.parseExpression());
             }
             else{
                 this.registerError("When parsing Expr, Variable name Expected",
@@ -413,7 +416,7 @@ public class Parser
         while (this.currentToken.spelling.equals("||")) {
             updateCurrentToken();
             Expr right = parseAndExpr();
-            left = new BinaryLogicOrExpr(position, left, right);
+            left = parserBuilder.buildBinaryLogicOrExpr(position,left,right);//new BinaryLogicOrExpr(position, left, right);
         }
 
         return left;
@@ -430,7 +433,7 @@ public class Parser
 	    while (this.currentToken.spelling.equals("&&")){
 	        updateCurrentToken();
 	        Expr right=parseEqualityExpr();
-	        left= new BinaryLogicAndExpr(position,left, right);
+	        left= parserBuilder.buildBinaryLogicAndExpr(position,left,right);//new BinaryLogicAndExpr(position,left, right);
 
         }
         return left;
@@ -449,12 +452,12 @@ public class Parser
 	    if(operator.equals("==")){
 	        updateCurrentToken();
 	        Expr right= parseRelationalExpr();
-	        left=new BinaryCompEqExpr(position,left,right);
+	        left=parserBuilder.buildBinaryCompEqExpr(position,left,right);//new BinaryCompEqExpr(position,left,right);
         }
         else if(operator.equals("!=")){
             updateCurrentToken();
             Expr right= parseRelationalExpr();
-            left=new BinaryCompNeExpr(position,left,right);
+            left=parserBuilder.buildBinaryCompNeExpr(position,left,right);//new BinaryCompNeExpr(position,left,right);
         }
 	    return left;
     }
@@ -471,19 +474,19 @@ public class Parser
         switch (operator) {
             case "<":
                 updateCurrentToken();
-                return new BinaryCompLtExpr(position, left, this.parseAddExpr());
+                return parserBuilder.buildBinaryCompLtExpr(position,left,this.parseAddExpr());//new BinaryCompLtExpr(position, left, this.parseAddExpr());
             case "<=":
                 updateCurrentToken();
-                return new BinaryCompLeqExpr(position, left, this.parseAddExpr());
+                return parserBuilder.buildBinaryCompLeqExpr(position,left,this.parseAddExpr());//new BinaryCompLeqExpr(position, left, this.parseAddExpr());
             case ">":
                 updateCurrentToken();
-                return new BinaryCompGtExpr(position, left, this.parseAddExpr());
+                return parserBuilder.buildBinaryCompGtExpr(position,left,this.parseAddExpr());//new BinaryCompGtExpr(position, left, this.parseAddExpr());
             case ">=":
                 updateCurrentToken();
-                return new BinaryCompGeqExpr(position, left, this.parseAddExpr());
+                return parserBuilder.buildBinaryCompGeqExpr(position,left,this.parseAddExpr());//new BinaryCompGeqExpr(position, left, this.parseAddExpr());
             case "instanceof":
                 updateCurrentToken();
-                return new InstanceofExpr(position, left, this.parseType());
+                return parserBuilder.buildInstanceOfExpr(position,left, this.parseType()); //new InstanceofExpr(position, left, this.parseType());
             default:
                 return left;
         }
@@ -502,12 +505,12 @@ public class Parser
             if(this.currentToken.spelling.equals("+")){
                 updateCurrentToken();
                 Expr right = parseMultExpr();
-                left = new BinaryArithPlusExpr(position, left, right);
+                left = parserBuilder.buildBinaryArithPlusExpr(position,left,right);//new BinaryArithPlusExpr(position, left, right);
             }
             else if(this.currentToken.spelling.equals("-")){
                 updateCurrentToken();
                 Expr right= parseMultExpr();
-                left = new BinaryArithMinusExpr(position, left, right);
+                left = parserBuilder.buildBinaryArithMinusExpr(position,left,right);//new BinaryArithMinusExpr(position, left, right);
             }
 
         }
@@ -533,17 +536,17 @@ public class Parser
                 case "*":
                     updateCurrentToken();
                     right = parseNewCastOrUnary();
-                    left = new BinaryArithTimesExpr(position, left, right);
+                    left = parserBuilder.buildBinaryArithTimesExpr(position,left,right);//new BinaryArithTimesExpr(position, left, right);
                     break;
                 case "/":
                     updateCurrentToken();
                     right = parseNewCastOrUnary();
-                    left = new BinaryArithDivideExpr(position, left, right);
+                    left = parserBuilder.buildBinaryArithDivideExpr(position,left,right);//new BinaryArithDivideExpr(position, left, right);
                     break;
                 case "%":
                     updateCurrentToken();
                     right = parseNewCastOrUnary();
-                    left = new BinaryArithModulusExpr(position, left, right);
+                    left = parserBuilder.buildBinaryArithModulusExpr(position,left,right);//new BinaryArithModulusExpr(position, left, right);
                     break;
             }
         }
@@ -579,12 +582,12 @@ public class Parser
 	    if(this.currentToken.kind == LPAREN){
             updateCurrentToken();
             this.checkToken(RPAREN,"When parsing New, \")\" expected");
-            return new NewExpr(this.currentToken.position,id);
+            return parserBuilder.buildNewExpr(this.currentToken.position,id);//new NewExpr(this.currentToken.position,id);
         }else if(this.currentToken.kind == LBRACKET){
             updateCurrentToken();
             Expr expr = this.parseExpression();
             this.checkToken(RBRACKET,"When parsing New, \"]\" expected");
-            return new NewArrayExpr(this.currentToken.position,id,expr);
+            return parserBuilder.buildNewArrayExpr(this.currentToken.position,id,expr);//new NewArrayExpr(this.currentToken.position,id,expr);
         }else{
             this.registerError("When parsing New, \"(\" or \"[\" expected",
                     "Unexpected Token");
@@ -603,7 +606,7 @@ public class Parser
         this.checkToken(COMMA,"When parsing Cast, \",\" expected");
         Expr expr = this.parseExpression();
         this.checkToken(RPAREN, "When parsing Cast, \")\" expected");
-        return new CastExpr( this.currentToken.position, type, expr);
+        return parserBuilder.buildCastExpr(this.currentToken.position,type,expr);//new CastExpr( this.currentToken.position, type, expr);
     }
 
 
@@ -616,16 +619,18 @@ public class Parser
 	    switch (operator) {
             case "-":
                 updateCurrentToken();
-                return new UnaryNegExpr(this.currentToken.position, this.parseUnaryPrefix());
+                return parserBuilder.buildUnaryNegExpr(this.currentToken.position,this.parseUnaryPrefix());//new UnaryNegExpr(this.currentToken.position, this.parseUnaryPrefix());
             case "!":
                 updateCurrentToken();
-                return new UnaryNotExpr(this.currentToken.position, this.parseUnaryPrefix());
+                return parserBuilder.buildUnaryNotExpr(this.currentToken.position,this.parseUnaryPrefix());//new UnaryNotExpr(this.currentToken.position, this.parseUnaryPrefix());
             case "++":
                 updateCurrentToken();
-                return new UnaryIncrExpr(this.currentToken.position, this.parseUnaryPrefix(), false);
+                return parserBuilder.buildUnaryIncrExpr(this.currentToken.position,
+                        this.parseUnaryPrefix(),false);//new UnaryIncrExpr(this.currentToken.position, this.parseUnaryPrefix(), false);
             case "--":
                 updateCurrentToken();
-                return new UnaryDecrExpr(this.currentToken.position, this.parseUnaryPrefix(), false);
+                return parserBuilder.buildUnaryDecrExpr(this.currentToken.position,
+                        this.parseUnaryPrefix(),false);//new UnaryDecrExpr(this.currentToken.position, this.parseUnaryPrefix(), false);
             default:
                 return this.parseUnaryPostfix();
 	    }
@@ -640,10 +645,10 @@ public class Parser
 	    Expr primary = this.parsePrimary();
 	    if(this.currentToken.spelling.equals("++")){
 	        updateCurrentToken();
-	        return new UnaryIncrExpr(this.currentToken.position,primary,true);
+	        return parserBuilder.buildUnaryIncrExpr(this.currentToken.position,primary,true);//new UnaryIncrExpr(this.currentToken.position,primary,true);
         }else if(this.currentToken.spelling.equals("--")){
 	        updateCurrentToken();
-	        return new UnaryDecrExpr(this.currentToken.position,primary,true);
+	        return parserBuilder.buildUnaryDecrExpr(this.currentToken.position,primary,true);//new UnaryDecrExpr(this.currentToken.position,primary,true);
         }
         return primary;
     }
@@ -673,7 +678,7 @@ public class Parser
                     updateCurrentToken();
                     Expr index = this.parseExpression();
                     this.checkToken(RBRACKET, "When parsing (Expr), \"]\" expected");
-                    tempExpr = new ArrayExpr(this.currentToken.position,expr,null,index);
+                    tempExpr = parserBuilder.buildArrayExpr(this.currentToken.position,expr,null,index);//new ArrayExpr(this.currentToken.position,expr,null,index);
                 }else{
                     tempExpr = expr;
                 }
@@ -712,16 +717,16 @@ public class Parser
             updateCurrentToken();
             Expr varExprSuffix = this.parseExpression();
             this.checkToken(RBRACKET, "When parsing varExpr, \"]\" expected");
-            tempExpr= new ArrayExpr(this.currentToken.position, prefix, identifier, varExprSuffix);
+            tempExpr= parserBuilder.buildArrayExpr(this.currentToken.position,prefix,null,varExprSuffix);//new ArrayExpr(this.currentToken.position, prefix, identifier, varExprSuffix);
         }
         else if(this.currentToken.kind==LPAREN) {
             updateCurrentToken();
             ExprList argument = parseArguments();
             this.checkToken(RPAREN, "When parsing varExpr, \")\" expected");
-            tempExpr = new DispatchExpr(this.currentToken.position, prefix, identifier, argument);
+            tempExpr = parserBuilder.buildDispatchExpr(this.currentToken.position, prefix, identifier, argument);//new DispatchExpr(this.currentToken.position, prefix, identifier, argument);
         }
         else{
-            tempExpr = new VarExpr( this.currentToken.position, prefix, identifier);
+            tempExpr = parserBuilder.buildVarExpr(this.currentToken.position, prefix, identifier);//new VarExpr( this.currentToken.position, prefix, identifier);
         }
 
         return tempExpr;
@@ -734,7 +739,7 @@ public class Parser
      */
 	private ExprList parseArguments() {
         int position = this.currentToken.position;
-	    ExprList exprList = new ExprList(position);
+	    ExprList exprList = parserBuilder.buildExprList(position);//new ExprList(position);
 	    while (this.currentToken.kind != RPAREN) {
 	        exprList.addElement(this.parseExpression());
 	        if (this.currentToken.kind != COMMA ) {
@@ -756,7 +761,7 @@ public class Parser
      */
 	private FormalList parseParameters() {
 	    int position = this.currentToken.position;
-	    FormalList formalList = new FormalList(position);
+	    FormalList formalList = parserBuilder.buildFormalList(position);//new FormalList(position);
 	    while (this.currentToken.kind != RPAREN) {
 	        formalList.addElement(this.parseFormal());
 	        if (this.currentToken.kind != COMMA) {
@@ -779,7 +784,7 @@ public class Parser
 	    String type = this.parseType();
 	    String id = this.parseIdentifier();
 
-        return new Formal(this.currentToken.position, type, id);
+        return parserBuilder.buildFormal(this.currentToken.position, type, id);//new Formal(this.currentToken.position, type, id);
     }
 
 
@@ -816,21 +821,24 @@ public class Parser
 
 
     private ConstStringExpr parseStringConst() {
-	    ConstStringExpr constStringExpr = new ConstStringExpr(this.currentToken.position,this.currentToken.spelling);
+	    ConstStringExpr constStringExpr =
+                parserBuilder.buildConstStringExpr(this.currentToken.position,this.currentToken.spelling);
 	    updateCurrentToken();
 	    return constStringExpr;
     }
 
 
     private ConstIntExpr parseIntConst() {
-	    ConstIntExpr constIntExpr = new ConstIntExpr(this.currentToken.position,this.currentToken.spelling);
+	    ConstIntExpr constIntExpr =
+                parserBuilder.buildConstIntExpr(this.currentToken.position,this.currentToken.spelling);
 	    updateCurrentToken();
         return constIntExpr;
     }
 
 
     private ConstBooleanExpr parseBoolean() {
-	    ConstBooleanExpr constBooleanExpr = new ConstBooleanExpr(this.currentToken.position,this.currentToken.spelling);
+	    ConstBooleanExpr constBooleanExpr =
+                this.parserBuilder.buildConstBooleanExpr(this.currentToken.position,this.currentToken.spelling);
 	    updateCurrentToken();
         return constBooleanExpr;
     }
