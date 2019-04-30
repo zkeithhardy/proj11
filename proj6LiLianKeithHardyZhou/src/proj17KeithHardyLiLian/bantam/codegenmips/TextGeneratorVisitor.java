@@ -575,6 +575,7 @@ public class TextGeneratorVisitor extends Visitor {
             this.assemblySupport.genComment("case where the expression is not a proper subtype of target class, handle error");
             this.assemblySupport.genLabel(ifZero);
             this.assemblySupport.genDirCall("_class_cast_error");
+            this.assemblySupport.genSyscall(this.assemblySupport.SYSCALL_EXIT);
             //true, bypass handle error
             this.assemblySupport.genComment("case where the expression is a proper subtype of target class");
             this.assemblySupport.genLabel(ifNotZero);
@@ -812,6 +813,7 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genUncondBr(afterError);
         this.assemblySupport.genLabel(zeroError);
         this.assemblySupport.genDirCall("_divide_zero_error");
+        this.assemblySupport.genSyscall(this.assemblySupport.SYSCALL_EXIT);
         this.assemblySupport.genLabel(afterError);
     }
 
@@ -879,14 +881,16 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(UnaryNegExpr node) {
+//        System.out.println("In UnaryNegExpr");
+//        System.out.println(node.getExpr().getExprType());
         this.assemblySupport.genComment("negation");
         node.getExpr().accept(this);
-        Location location = this.getUnaryLocation(node);
+//        Location location = this.getUnaryLocation(node);
 
         this.assemblySupport.genComment("subtract $v0 from 0");
         this.assemblySupport.genSub("$v0","$zero","$v0");
-        this.assemblySupport.genComment("store ("+location.getOffset()+")"+location.getBaseReg()+" to $v0");
-        this.assemblySupport.genStoreWord("$v0",location.getOffset(),location.getBaseReg());
+//        this.assemblySupport.genComment("store ("+location.getOffset()+")"+location.getBaseReg()+" to $v0");
+//        this.assemblySupport.genStoreWord("$v0",location.getOffset(),location.getBaseReg());
         return null;
     }
 
@@ -897,16 +901,18 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(UnaryNotExpr node) {
+//        System.out.println("In UnaryNotExpr");
+//        System.out.println(node.getExpr().getExprType());
         node.getExpr().accept(this);
         this.assemblySupport.genComment("unary not expression");
-        Location location = this.getUnaryLocation(node);
+//        Location location = this.getUnaryLocation(node);
 
         this.assemblySupport.genComment("add 1 to $v0");
         this.assemblySupport.genAdd("$v0","$v0",1);
         this.assemblySupport.genComment("multiple $v0 by -1");
         this.assemblySupport.genMul("$v0","$v0",-1);
-        this.assemblySupport.genComment("store ("+location.getOffset()+")"+location.getBaseReg()+" to $v0");
-        this.assemblySupport.genStoreWord("$v0",location.getOffset(),location.getBaseReg());
+//        this.assemblySupport.genComment("store ("+location.getOffset()+")"+location.getBaseReg()+" to $v0");
+//        this.assemblySupport.genStoreWord("$v0",location.getOffset(),location.getBaseReg());
         return null;
     }
 
@@ -953,7 +959,9 @@ public class TextGeneratorVisitor extends Visitor {
      */
     private Location getUnaryLocation(UnaryExpr node){
         Location location = null;
+        System.out.println("in getUnaryLocation");
         String varName =((VarExpr) node.getExpr()).getName();
+        System.out.println(varName);
         if(((VarExpr) node.getExpr()).getRef() == null){
             this.assemblySupport.genComment("case where the reference object is null");
             location = (Location) currentSymbolTable.lookup(varName);
@@ -981,6 +989,7 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(VarExpr node) {
+        System.out.println("Visiting VarExpr "+node.getName()+" "+node.getExprType());
         this.assemblySupport.genComment("var expression");
         Location location;
         String varName = node.getName();
@@ -992,6 +1001,7 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genComment("accept the reference object and save its location $v0");
 
         if(node.getRef() == null){
+            System.out.println("In null");
             this.assemblySupport.genComment("case where the reference object is null");
             location = (Location) currentSymbolTable.lookup(varName);
             this.assemblySupport.genComment("load ("+ location.getOffset()+")"+ location.getBaseReg() +" to $v0 ");
@@ -1000,6 +1010,7 @@ public class TextGeneratorVisitor extends Visitor {
 
         else if ((node.getRef() instanceof VarExpr) &&
                 ((VarExpr) node.getRef()).getName().equals("this")) {
+            System.out.println("In ref is var and is this");
             this.assemblySupport.genComment("case where the reference object is /this./");
             location = (Location) currentSymbolTable.lookup(varName, currentClassFieldLevel);
             this.assemblySupport.genComment("load ("+ location.getOffset()+")"+ location.getBaseReg() +" to $v0 ");
@@ -1009,6 +1020,7 @@ public class TextGeneratorVisitor extends Visitor {
 
         else if ((node.getRef() instanceof VarExpr) &&
                 ((VarExpr) node.getRef()).getName().equals("super")) {
+            System.out.println("In ref is var and is super");
             this.assemblySupport.genComment("case where the reference object is /.super/");
             location = (Location) currentSymbolTable.lookup(varName,
                     currentClassFieldLevel - 1);
@@ -1017,10 +1029,13 @@ public class TextGeneratorVisitor extends Visitor {
 
         }
         else { // ref is not null, "this", or "super"
+            System.out.println("In else");
             node.getRef().accept(this);
             this.assemblySupport.genComment("case where the reference object is user defined class");
             String refTypeName = node.getRef().getExprType();
+            System.out.println(refTypeName);
             location = (Location) this.classSymbolTables.get(refTypeName).lookup(varName);
+            System.out.println("after look up");
             //check for null pointer
             String nullError = this.assemblySupport.getLabel();
             String afterError = this.assemblySupport.getLabel();
@@ -1030,14 +1045,19 @@ public class TextGeneratorVisitor extends Visitor {
             this.assemblySupport.genUncondBr(afterError);
             this.assemblySupport.genLabel(nullError);
             this.assemblySupport.genDirCall("_null_pointer_error");
+            this.assemblySupport.genSyscall(this.assemblySupport.SYSCALL_EXIT);
             this.assemblySupport.genLabel(afterError);
             this.assemblySupport.genComment("move $v0 to $a0");
             this.assemblySupport.genMove("$a0", "$v0");
+            if(location == null){
+                System.out.println("LOCATION IS NULL");
+            }
             this.assemblySupport.genComment("load ("+location.getOffset()+")$a0 to $v0");
             this.assemblySupport.genLoadWord("$v0",location.getOffset(),"$a0");
         }
         this.assemblySupport.genLoadWord("$a0",0,"$sp");
         this.assemblySupport.genAdd("$sp","$sp", 4);
+        System.out.println("at the end of var");
         return null;
     }
 
