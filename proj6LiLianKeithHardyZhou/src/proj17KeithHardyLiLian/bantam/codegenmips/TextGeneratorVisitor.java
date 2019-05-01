@@ -18,7 +18,7 @@ public class TextGeneratorVisitor extends Visitor {
     //location symbol table of the current class node
     private SymbolTable currentSymbolTable;
     //offset into an object when we init the field
-    private int fieldCount=3;
+    private HashMap<String, Integer> fieldCount=new HashMap<>();
     //hash map of all location symbol tables
     private HashMap<String, SymbolTable> classSymbolTables = new HashMap<>();
     //the offset to the frame pointer when creating new variable
@@ -63,6 +63,11 @@ public class TextGeneratorVisitor extends Visitor {
         this.classMap = classMap;
         this.dispatchTableMap = dispatchTableMap;
         this.idTable = idTable;
+        Iterator itr = classMap.keySet().iterator();
+        while(itr.hasNext()){
+            fieldCount.put((String)itr.next(),3);
+        }
+
     }
 
     /**
@@ -83,14 +88,16 @@ public class TextGeneratorVisitor extends Visitor {
      * @param stringNameMap the map of strings that documents the string constants
      */
     public void generateFieldInitialization(Class_ classNode, Map<String, String> stringNameMap){
-        classSymbolTables.put(classNode.getName(), new SymbolTable());
-        classSymbolTables.get(classNode.getName()).enterScope();
+        classSymbolTables.put(classNode.getName(), this.classMap.get(classNode.getName()).getVarSymbolTable());
         this.stringNameMap=stringNameMap;
         this.currentClass=classNode.getName();
         this.initOrGenMethods = "init";
-        fieldCount = 3;
 
         classNode.accept(this);
+//        Iterator itr = classSymbolTables.values().iterator();
+//        while(itr.hasNext()){
+//            ((SymbolTable) itr.next()).dump();
+//        }
     }
 
     /**
@@ -104,11 +111,11 @@ public class TextGeneratorVisitor extends Visitor {
         this.currentSymbolTable = classSymbolTables.get(this.currentClass);
 
         if(initOrGenMethods.equals("init")) {
-            this.currentSymbolTable.add("super", new Location("$a0", 0));
+            this.currentSymbolTable.set("super", new Location("$a0", 0));
 
             this.currentSymbolTable.enterScope();
 
-            this.currentSymbolTable.add("this", new Location("$a0", 0)); // template of this object
+            this.currentSymbolTable.set("this", new Location("$a0", 0)); // template of this object
         }
 
         currentClassFieldLevel = currentSymbolTable.getCurrScopeLevel();
@@ -144,14 +151,33 @@ public class TextGeneratorVisitor extends Visitor {
      */
     public Object visit(Field node){
 //        System.out.println("Visiting Field "+node.getName()+" "+node.getType());
+        System.out.println("On Class" + currentClass);
+        currentSymbolTable.dump();
         if(node.getInit() != null){
             node.getInit().accept(this);
-            this.assemblySupport.genComment("store the field "+4*fieldCount+" away from $a0 to $v0");
-            this.assemblySupport.genStoreWord("$v0", 4*fieldCount, "$a0");
+            this.assemblySupport.genComment("store the field "+4*fieldCount.get(currentClass)+" away from $a0 to $v0");
+            this.assemblySupport.genStoreWord("$v0", 4*fieldCount.get(currentClass), "$a0");
+            ClassTreeNode tempNode = classMap.get(currentClass);
+            Iterator itr = tempNode.getChildrenList();
+            while(itr.hasNext()){
+                tempNode = (ClassTreeNode) itr.next();
+                this.assemblySupport.genComment("store the field "+4*fieldCount.get(tempNode.getName())+" away from $a0 to $v0");
+                this.assemblySupport.genStoreWord("$v0", 4*fieldCount.get(tempNode.getName()), "$a0");
+            }
         }
-        Location fieldLocation= new Location("$a0", 4*fieldCount);
-        classSymbolTables.get(currentClass).add(node.getName(), fieldLocation);
-        fieldCount+=1;
+
+        Location fieldLocation= new Location("$a0", 4*fieldCount.get(currentClass));
+        classSymbolTables.get(currentClass).set(node.getName(), fieldLocation);
+        fieldCount.put(currentClass,fieldCount.get(currentClass) + 1);
+        ClassTreeNode tempNode = classMap.get(currentClass);
+        Iterator itr = tempNode.getChildrenList();
+        while(itr.hasNext()){
+            tempNode = (ClassTreeNode) itr.next();
+            fieldLocation= new Location("$a0", 4*fieldCount.get(tempNode.getName()));
+            classSymbolTables.get(tempNode.getName()).set(node.getName(), fieldLocation);
+            fieldCount.put(tempNode.getName(),fieldCount.get(tempNode.getName()) + 1);
+        }
+
         return null;
 
     }
@@ -1051,9 +1077,9 @@ public class TextGeneratorVisitor extends Visitor {
             node.getRef().accept(this);
             this.assemblySupport.genComment("case where the reference object is user defined class");
             String refTypeName = node.getRef().getExprType();
-//            System.out.println(refTypeName);
+            System.out.println(refTypeName);
             location = (Location) this.classSymbolTables.get(refTypeName).lookup(varName);
-//            System.out.println("after look up");
+            //System.out.println("after look up");
             //check for null pointer
             String nullError = this.assemblySupport.getLabel();
             String afterError = this.assemblySupport.getLabel();
@@ -1075,7 +1101,7 @@ public class TextGeneratorVisitor extends Visitor {
         }
         this.assemblySupport.genLoadWord("$a0",0,"$sp");
         this.assemblySupport.genAdd("$sp","$sp", 4);
-//        System.out.println("at the end of var");
+        System.out.println("at the end of var");
         return null;
     }
 
