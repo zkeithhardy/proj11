@@ -30,7 +30,9 @@ public class ClassNameVisitor extends Visitor {
         classNameMap.put("TextIO", "Class_" + 1);
         classNameMap.put("String", "Class_" + 2);
         classNameMap.put("Sys", "Class_" + 3);
-        numClassConsts = 4;
+        classNameMap.put("Integer","Class_" + 4);
+        classNameMap.put("Boolean","Class_" + 5);
+        numClassConsts = 6;
 
         ast.accept(this);
         return classNameMap;

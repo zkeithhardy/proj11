@@ -184,16 +184,17 @@ public class MipsCodeGenerator
                 classMap, dispatchTableMap,idTable);
 
         // create the inits for default classes
-        for(Map.Entry<String, String> entry: classNames.entrySet()){
-            this.assemblySupport.genLabel(entry.getKey() + "_init");
+        for(int i = 0; i < idTable.size();i++){
+            this.assemblySupport.genLabel(idTable.get(i).getName() + "_init");
             textGeneratorVisitor.generateMethodPrologue();
-            if(entry.getKey().equals("Object")||entry.getKey().equals("String")||entry.getKey().equals("TextIO")
-                    ||entry.getKey().equals("Sys")) {
-                if(entry.getKey().equals("String")){
+            System.out.println(idTable.get(i).getName());
+            if(idTable.get(i).getName().equals("Object")||idTable.get(i).getName().equals("String")||idTable.get(i).getName().equals("TextIO")
+                    ||idTable.get(i).getName().equals("Sys")) {
+                if(idTable.get(i).getName().equals("String") || idTable.get(i).getName().equals("Integer") || idTable.get(i).getName().equals("Boolean")){
                     this.assemblySupport.genLoadImm("$v0", 0);
                     this.assemblySupport.genStoreWord("$v0", 12, "$a0");
                 }
-                else if(entry.getKey().equals("TextIO")){
+                else if(idTable.get(i).getName().equals("TextIO")){
                     this.assemblySupport.genLoadImm("$v0", 0);
                     this.assemblySupport.genStoreWord("$v0", 12, "$a0");
                     this.assemblySupport.genLoadImm("$v0", 1);
@@ -201,7 +202,7 @@ public class MipsCodeGenerator
                 }
             }else{
                 //generate the fields
-                ClassTreeNode tempNode= classMap.get(entry.getKey());
+                ClassTreeNode tempNode= idTable.get(i);
                 LinkedList<ClassTreeNode> parents= new LinkedList<>();
                 while (tempNode.getParent()!=null){
                     tempNode=tempNode.getParent();
@@ -210,7 +211,7 @@ public class MipsCodeGenerator
                 for(ClassTreeNode tempParent: parents){
                     this.assemblySupport.genDirCall(tempParent.getASTNode().getName()+ "_init");
                 }
-                textGeneratorVisitor.generateFieldInitialization(classMap.get(entry.getKey()).getASTNode(),stringNameMap);
+                textGeneratorVisitor.generateFieldInitialization(idTable.get(i).getASTNode(),stringNameMap);
             }
             this.assemblySupport.genMove("$v0","$a0");
             textGeneratorVisitor.generateMethodEpilogue(0);

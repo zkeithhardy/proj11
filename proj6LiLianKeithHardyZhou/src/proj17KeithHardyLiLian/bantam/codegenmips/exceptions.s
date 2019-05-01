@@ -218,7 +218,7 @@ _String_const_7:
 	.byte	0
 	.align	2
 _String_const_8:
-	.word	1
+.word	1
 	.word	56
 	.word	String_dispatch_table
 	.word	37

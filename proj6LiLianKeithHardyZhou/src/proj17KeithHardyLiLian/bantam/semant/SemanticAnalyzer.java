@@ -346,14 +346,11 @@ public class SemanticAnalyzer
         astNode = new Class_(-1, "<built-in class>", "Integer", "Object",
                 (MemberList) (new MemberList(-1)).addElement(new Field(-1, "int",
                         "value", /*0 by default*/null))
-                        .addElement(new Method(-1, "int", "length",
-                                new FormalList(-1),
-                                (StmtList) (new StmtList(-1))
-                                        .addElement(new ReturnStmt(-1, new ConstIntExpr(-1, "0")))))
                         .addElement(new Method(-1, "boolean", "equals", (FormalList) (new FormalList(-1)).addElement(new Formal(-1, "Object", "int")), (StmtList) (new StmtList(-1)).addElement(new ReturnStmt(-1, new ConstBooleanExpr(-1, "false")))))
                         .addElement(new Method(-1, "String", "toString", new FormalList(-1), (StmtList) (new StmtList(-1)).addElement(new ReturnStmt(-1, new VarExpr(-1, null, "null")))))
-                        .addElement(new Method(-1, "int", "intValue", (FormalList) (new FormalList(-1)).addElement(new Formal(-1, "int", "beginIndex")).addElement(new Formal(-1, "int", "endIndex")), (StmtList) (new StmtList(-1)).addElement(new ReturnStmt(-1, new VarExpr(-1, null, "null")))))
-                        );
+                        .addElement(new Method(-1, "int", "intValue", (FormalList) (new FormalList(-1)), (StmtList) (new StmtList(-1)).addElement(new ReturnStmt(-1, new VarExpr(-1, new VarExpr(-1,null,"this"), "value")))))
+                        .addElement(new Method(-1, "void", "setValue", (FormalList) (new FormalList(-1)).addElement(new Formal(-1, "int", "newValue")), (StmtList) (new StmtList(-1)).addElement(new AssignExpr(-1,"this","value",new VarExpr(-1,null,"newValue"))).addElement(new ReturnStmt(-1,new VarExpr(-1,null,"null")))))
+        );
         // create class tree node for String, add it to the mapping
         classMap.put("Integer", new ClassTreeNode(astNode, /*built-in?*/true,
                 /*extendable?*/false, classMap));
@@ -362,13 +359,10 @@ public class SemanticAnalyzer
         astNode = new Class_(-1, "<built-in class>", "Boolean", "Object",
                 (MemberList) (new MemberList(-1)).addElement(new Field(-1, "boolean",
                         "value", /*false by default*/null))
-                        .addElement(new Method(-1, "boolean", "value",
-                                new FormalList(-1),
-                                (StmtList) (new StmtList(-1))
-                                        .addElement(new ReturnStmt(-1, new ConstIntExpr(-1, "0")))))
                         .addElement(new Method(-1, "boolean", "equals", (FormalList) (new FormalList(-1)).addElement(new Formal(-1, "Object", "boolean")), (StmtList) (new StmtList(-1)).addElement(new ReturnStmt(-1, new ConstBooleanExpr(-1, "false")))))
                         .addElement(new Method(-1, "String", "toString", new FormalList(-1), (StmtList) (new StmtList(-1)).addElement(new ReturnStmt(-1, new VarExpr(-1, null, "null")))))
-                        .addElement(new Method(-1, "String", "booleanValue", (FormalList) (new FormalList(-1)).addElement(new Formal(-1, "int", "beginIndex")).addElement(new Formal(-1, "int", "endIndex")), (StmtList) (new StmtList(-1)).addElement(new ReturnStmt(-1, new VarExpr(-1, null, "null")))))
+                        .addElement(new Method(-1, "boolean", "booleanValue", (FormalList) (new FormalList(-1)), (StmtList) (new StmtList(-1)).addElement(new ReturnStmt(-1, new VarExpr(-1, new VarExpr(-1,null,"this"), "value")))))
+                        .addElement(new Method(-1, "void", "setValue", (FormalList) (new FormalList(-1)).addElement(new Formal(-1, "boolean", "newValue")), (StmtList) (new StmtList(-1)).addElement(new AssignExpr(-1,"this","value",new VarExpr(-1,null,"newValue")))))
         );
         // create class tree node for String, add it to the mapping
         classMap.put("Boolean", new ClassTreeNode(astNode, /*built-in?*/true,

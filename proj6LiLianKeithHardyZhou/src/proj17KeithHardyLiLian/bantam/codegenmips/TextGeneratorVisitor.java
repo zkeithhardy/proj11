@@ -65,7 +65,9 @@ public class TextGeneratorVisitor extends Visitor {
         this.idTable = idTable;
         Iterator itr = classMap.keySet().iterator();
         while(itr.hasNext()){
-            fieldCount.put((String)itr.next(),3);
+            String name = (String) itr.next();
+            fieldCount.put(name,3);
+            classSymbolTables.put(name,classMap.get(name).getVarSymbolTable());
         }
 
     }
@@ -88,11 +90,13 @@ public class TextGeneratorVisitor extends Visitor {
      * @param stringNameMap the map of strings that documents the string constants
      */
     public void generateFieldInitialization(Class_ classNode, Map<String, String> stringNameMap){
-        classSymbolTables.put(classNode.getName(), this.classMap.get(classNode.getName()).getVarSymbolTable());
         this.stringNameMap=stringNameMap;
         this.currentClass=classNode.getName();
         this.initOrGenMethods = "init";
 
+//        for(int i = 0; i < idTable.size(); i++){
+//            idTable.get(i).getASTNode().accept(this);
+//        }
         classNode.accept(this);
 //        Iterator itr = classSymbolTables.values().iterator();
 //        while(itr.hasNext()){
@@ -109,16 +113,15 @@ public class TextGeneratorVisitor extends Visitor {
     public Object visit(Class_ node) {
         this.currentClass = node.getName();
         this.currentSymbolTable = classSymbolTables.get(this.currentClass);
-
+        currentClassFieldLevel = currentSymbolTable.getCurrScopeLevel();
+        System.out.println(currentClass + " " + currentClassFieldLevel);
         if(initOrGenMethods.equals("init")) {
-            this.currentSymbolTable.set("super", new Location("$a0", 0));
+            this.currentSymbolTable.set("super", new Location("$a0", 0),currentClassFieldLevel - 1);
 
-            this.currentSymbolTable.enterScope();
-
-            this.currentSymbolTable.set("this", new Location("$a0", 0)); // template of this object
+            this.currentSymbolTable.set("this", new Location("$a0", 0),currentClassFieldLevel -1); // template of this object
         }
 
-        currentClassFieldLevel = currentSymbolTable.getCurrScopeLevel();
+
         node.getMemberList().accept(this);
         return null;
     }
@@ -151,8 +154,7 @@ public class TextGeneratorVisitor extends Visitor {
      */
     public Object visit(Field node){
 //        System.out.println("Visiting Field "+node.getName()+" "+node.getType());
-        System.out.println("On Class" + currentClass);
-        currentSymbolTable.dump();
+        System.out.println("On Class " + currentClass);
         if(node.getInit() != null){
             node.getInit().accept(this);
             this.assemblySupport.genComment("store the field "+4*fieldCount.get(currentClass)+" away from $a0 to $v0");
@@ -165,7 +167,7 @@ public class TextGeneratorVisitor extends Visitor {
                 this.assemblySupport.genStoreWord("$v0", 4*fieldCount.get(tempNode.getName()), "$a0");
             }
         }
-
+        //System.out.println(node.getName() + " " + 4*fieldCount.get(currentClass));
         Location fieldLocation= new Location("$a0", 4*fieldCount.get(currentClass));
         classSymbolTables.get(currentClass).set(node.getName(), fieldLocation);
         fieldCount.put(currentClass,fieldCount.get(currentClass) + 1);
@@ -173,11 +175,14 @@ public class TextGeneratorVisitor extends Visitor {
         Iterator itr = tempNode.getChildrenList();
         while(itr.hasNext()){
             tempNode = (ClassTreeNode) itr.next();
+            //System.out.println(tempNode.getName());
             fieldLocation= new Location("$a0", 4*fieldCount.get(tempNode.getName()));
-            classSymbolTables.get(tempNode.getName()).set(node.getName(), fieldLocation);
+            classSymbolTables.get(tempNode.getName());
+            System.out.println(classSymbolTables.keySet().contains("B"));
+            classSymbolTables.get(tempNode.getName()).set(node.getName(), fieldLocation,currentClassFieldLevel-1);
             fieldCount.put(tempNode.getName(),fieldCount.get(tempNode.getName()) + 1);
         }
-
+        currentSymbolTable.dump();
         return null;
 
     }
