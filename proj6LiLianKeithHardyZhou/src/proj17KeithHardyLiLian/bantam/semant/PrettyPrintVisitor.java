@@ -3,6 +3,8 @@ package proj17KeithHardyLiLian.bantam.semant;
 import proj17KeithHardyLiLian.bantam.ast.*;
 import proj17KeithHardyLiLian.bantam.visitor.Visitor;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 
 public class PrettyPrintVisitor extends Visitor{
@@ -10,12 +12,13 @@ public class PrettyPrintVisitor extends Visitor{
     private String sourceCode;
     private int indentLevel;
     private boolean inConditionBraces;
+    private HashMap<Integer,String> commentMap;
 
-    //TODO: figure out comments
-    public String sourceCode(ASTNode node){
+    public String sourceCode(ASTNode node,HashMap<Integer,String> commentMap){
         this.sourceCode= "";
         this.indentLevel =0;
         this.inConditionBraces = false;
+        this.commentMap = commentMap;
         node.accept(this);
         return this.sourceCode;
     }
@@ -34,6 +37,7 @@ public class PrettyPrintVisitor extends Visitor{
      * @return result of the visit
      */
     public Object visit(Class_ node) {
+        this.checkForComment(node.getLineNum());
         this.indentLevel += 1;
         if (node.getParent().equals("") ){
             this.sourceCode= this.sourceCode + "class " +node.getName() + "{" + "\n";
@@ -58,7 +62,10 @@ public class PrettyPrintVisitor extends Visitor{
     public Object visit(Field node) {
         String type = node.getType();
         String identifier = node.getName();
-        this.sourceCode+= "\t"+ type + " " +identifier;
+        this.checkForComment(node.getLineNum());
+        this.sourceCode += "\n";
+        this.printScopeIndent();
+        this.sourceCode+= type + " " +identifier;
         if(node.getInit()!= null){
             this.sourceCode += " = ";
             node.getInit().accept(this);
@@ -76,6 +83,8 @@ public class PrettyPrintVisitor extends Visitor{
     public Object visit(Method node) {
         String returnType = node.getReturnType();
         String identifier = node.getName();
+        this.checkForComment(node.getLineNum());
+        this.sourceCode += "\n";
         printScopeIndent();
         this.sourceCode += returnType + " " + identifier ;
         node.getFormalList().accept(this);
@@ -127,6 +136,7 @@ public class PrettyPrintVisitor extends Visitor{
      */
     public Object visit(DeclStmt node) {
         String name = node.getName();
+        this.checkForComment(node.getLineNum());
         printScopeIndent();
         this.sourceCode += "var " + name + " = ";
         node.getInit().accept(this);
@@ -141,6 +151,7 @@ public class PrettyPrintVisitor extends Visitor{
      * @return result of the visit
      */
     public Object visit(ExprStmt node) {
+        this.checkForComment(node.getLineNum());
         this.printScopeIndent();
         node.getExpr().accept(this);
         this.sourceCode += ";\n";
@@ -154,6 +165,7 @@ public class PrettyPrintVisitor extends Visitor{
      * @return result of the visit
      */
     public Object visit(IfStmt node) {
+        this.checkForComment(node.getLineNum());
         printScopeIndent();
         this.sourceCode += "if( ";
         this.inConditionBraces = true;
@@ -165,6 +177,7 @@ public class PrettyPrintVisitor extends Visitor{
         this.indentLevel -= 1;
         this.printScopeIndent();
         this.sourceCode += "}\n";
+        this.checkForComment(node.getElseStmt().getLineNum());
         if (node.getElseStmt() != null) {
             this.printScopeIndent();
             this.sourceCode += "else {\n";
@@ -184,6 +197,7 @@ public class PrettyPrintVisitor extends Visitor{
      * @return result of the visit
      */
     public Object visit(WhileStmt node) {
+        this.checkForComment(node.getLineNum());
         this.printScopeIndent();
         this.sourceCode += "while( ";
         this.inConditionBraces = true;
@@ -205,6 +219,7 @@ public class PrettyPrintVisitor extends Visitor{
      * @return result of the visit
      */
     public Object visit(ForStmt node) {
+        this.checkForComment(node.getLineNum());
         this.printScopeIndent();
         this.sourceCode += "for( ";
         this.inConditionBraces = true;
@@ -236,6 +251,7 @@ public class PrettyPrintVisitor extends Visitor{
      * @return result of the visit
      */
     public Object visit(BreakStmt node) {
+        this.checkForComment(node.getLineNum());
         printScopeIndent();
         this.sourceCode += "break;\n";
         return null;
@@ -248,6 +264,7 @@ public class PrettyPrintVisitor extends Visitor{
      * @return result of the visit
      */
     public Object visit(BlockStmt node) {
+        this.checkForComment(node.getLineNum());
         node.getStmtList().accept(this);
         return null;
     }
@@ -259,6 +276,7 @@ public class PrettyPrintVisitor extends Visitor{
      * @return result of the visit
      */
     public Object visit(ReturnStmt node) {
+        this.checkForComment(node.getLineNum());
         printScopeIndent();
         this.sourceCode += "return";
         if (node.getExpr() != null) {
@@ -392,9 +410,9 @@ public class PrettyPrintVisitor extends Visitor{
 
 
     /**
-     * Visit a binary comparison equals expression node
+     * Visit a binary comparison equal to expression node
      *
-     * @param node the binary comparison equals expression node
+     * @param node the binary comparison equal to expression node
      * @return result of the visit
      */
     public Object visit(BinaryCompEqExpr node) {
@@ -405,12 +423,25 @@ public class PrettyPrintVisitor extends Visitor{
     }
 
     /**
-     * Visit a binary comparison not equals expression node
+     * Visit a binary comparison not equal to expression node
      *
-     * @param node the binary comparison not equals expression node
+     * @param node the binary comparison not equal to expression node
      * @return result of the visit
      */
     public Object visit(BinaryCompNeExpr node) {
+        node.getLeftExpr().accept(this);
+        this.sourceCode += " "+ node.getOpName()+ " ";
+        node.getRightExpr().accept(this);
+        return null;
+    }
+
+    /**
+     * Visit a binary comparison less than or equal to expression node
+     *
+     * @param node the binary comparison less to or equal to expression node
+     * @return result of the visit
+     */
+    public Object visit(BinaryCompLeqExpr node) {
         node.getLeftExpr().accept(this);
         this.sourceCode += " "+ node.getOpName()+ " ";
         node.getRightExpr().accept(this);
@@ -424,19 +455,6 @@ public class PrettyPrintVisitor extends Visitor{
      * @return result of the visit
      */
     public Object visit(BinaryCompLtExpr node) {
-        node.getLeftExpr().accept(this);
-        this.sourceCode += " "+ node.getOpName()+ " ";
-        node.getRightExpr().accept(this);
-        return null;
-    }
-
-    /**
-     * Visit a binary comparison less than or equal to expression node
-     *
-     * @param node the binary comparison less than or equal to expression node
-     * @return result of the visit
-     */
-    public Object visit(BinaryCompLeqExpr node) {
         node.getLeftExpr().accept(this);
         this.sourceCode += " "+ node.getOpName()+ " ";
         node.getRightExpr().accept(this);
@@ -472,68 +490,128 @@ public class PrettyPrintVisitor extends Visitor{
     /**
      * Visit a binary arithmetic plus expression node
      *
-     * @param node the binary arithmetic plus expression node
+     * @param node the binary arithmetic expression node
      * @return result of the visit
      */
     public Object visit(BinaryArithPlusExpr node) {
+        if(node.getLeftExpr() instanceof BinaryArithExpr){
+            this.sourceCode += "( ";
+        }
         node.getLeftExpr().accept(this);
+        if(node.getLeftExpr() instanceof BinaryArithExpr){
+            this.sourceCode += " )";
+        }
         this.sourceCode += " "+ node.getOpName()+ " ";
+        if(node.getRightExpr() instanceof BinaryArithExpr){
+            this.sourceCode += "( ";
+        }
         node.getRightExpr().accept(this);
+        if(node.getLeftExpr() instanceof BinaryArithExpr){
+            this.sourceCode += "( ";
+        }
         return null;
     }
 
     /**
-     * Visit a binary arithmetic minus expression node
+     * Visit a binary arithmetic plus expression node
      *
-     * @param node the binary arithmetic minus expression node
+     * @param node the binary arithmetic expression node
      * @return result of the visit
      */
     public Object visit(BinaryArithMinusExpr node) {
+        if(node.getLeftExpr() instanceof BinaryArithExpr){
+            this.sourceCode += "( ";
+        }
         node.getLeftExpr().accept(this);
+        if(node.getLeftExpr() instanceof BinaryArithExpr){
+            this.sourceCode += " )";
+        }
         this.sourceCode += " "+ node.getOpName()+ " ";
+        if(node.getRightExpr() instanceof BinaryArithExpr){
+            this.sourceCode += "( ";
+        }
         node.getRightExpr().accept(this);
+        if(node.getLeftExpr() instanceof BinaryArithExpr){
+            this.sourceCode += "( ";
+        }
         return null;
     }
 
     /**
-     * Visit a binary arithmetic times expression node
+     * Visit a binary arithmetic plus expression node
      *
-     * @param node the binary arithmetic times expression node
+     * @param node the binary arithmetic expression node
      * @return result of the visit
      */
     public Object visit(BinaryArithTimesExpr node) {
+        if(node.getLeftExpr() instanceof BinaryArithExpr){
+            this.sourceCode += "( ";
+        }
         node.getLeftExpr().accept(this);
+        if(node.getLeftExpr() instanceof BinaryArithExpr){
+            this.sourceCode += " )";
+        }
         this.sourceCode += " "+ node.getOpName()+ " ";
+        if(node.getRightExpr() instanceof BinaryArithExpr){
+            this.sourceCode += "( ";
+        }
         node.getRightExpr().accept(this);
+        if(node.getLeftExpr() instanceof BinaryArithExpr){
+            this.sourceCode += "( ";
+        }
         return null;
     }
 
     /**
-     * Visit a binary arithmetic divide expression node
+     * Visit a binary arithmetic plus expression node
      *
-     * @param node the binary arithmetic divide expression node
+     * @param node the binary arithmetic expression node
      * @return result of the visit
      */
     public Object visit(BinaryArithDivideExpr node) {
+        if(node.getLeftExpr() instanceof BinaryArithExpr){
+            this.sourceCode += "( ";
+        }
         node.getLeftExpr().accept(this);
+        if(node.getLeftExpr() instanceof BinaryArithExpr){
+            this.sourceCode += " )";
+        }
         this.sourceCode += " "+ node.getOpName()+ " ";
+        if(node.getRightExpr() instanceof BinaryArithExpr){
+            this.sourceCode += "( ";
+        }
         node.getRightExpr().accept(this);
+        if(node.getLeftExpr() instanceof BinaryArithExpr){
+            this.sourceCode += "( ";
+        }
         return null;
     }
 
+
     /**
-     * Visit a binary arithmetic modulus expression node
+     * Visit a binary arithmetic plus expression node
      *
-     * @param node the binary arithmetic modulus expression node
+     * @param node the binary arithmetic expression node
      * @return result of the visit
      */
     public Object visit(BinaryArithModulusExpr node) {
+        if(node.getLeftExpr() instanceof BinaryArithExpr){
+            this.sourceCode += "( ";
+        }
         node.getLeftExpr().accept(this);
+        if(node.getLeftExpr() instanceof BinaryArithExpr){
+            this.sourceCode += " )";
+        }
         this.sourceCode += " "+ node.getOpName()+ " ";
+        if(node.getRightExpr() instanceof BinaryArithExpr){
+            this.sourceCode += "( ";
+        }
         node.getRightExpr().accept(this);
+        if(node.getLeftExpr() instanceof BinaryArithExpr){
+            this.sourceCode += "( ";
+        }
         return null;
     }
-
 
     /**
      * Visit a binary logical AND expression node
@@ -695,4 +773,22 @@ public class PrettyPrintVisitor extends Visitor{
         return null;
     }
 
+
+    public void checkForComment(int linenum){
+        Iterator keyItr = this.commentMap.keySet().iterator();
+        ArrayList<Integer> usedComments = new ArrayList<>();
+        while(keyItr.hasNext()){
+            Integer commentLine = (Integer) keyItr.next();
+            if(commentLine < linenum){
+                this.sourceCode += "\n";
+                this.printScopeIndent();
+                this.sourceCode += this.commentMap.get(commentLine) + "\n";
+                usedComments.add(commentLine);
+            }
+        }
+        for(int i = 0; i < usedComments.size(); i++){
+            this.commentMap.remove(usedComments.get(i));
+        }
+
+    }
 }

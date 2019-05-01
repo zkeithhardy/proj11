@@ -50,6 +50,7 @@ public class EditController {
     private CodeTabPane codeTabPane;
     private Console console;
     private String sourceCode;
+    private HashMap<Integer,String> commentMap;
 
     /**
      * Constructor for the class. Initializes
@@ -586,7 +587,7 @@ public class EditController {
                 Program AST = curFutureTask.get();
                 if(AST != null){
                     PrettyPrintVisitor prettyPrintVisitor = new PrettyPrintVisitor();
-                    String sourceCode = prettyPrintVisitor.sourceCode(AST);
+                    String sourceCode = prettyPrintVisitor.sourceCode(AST,this.commentMap);
                     String pattern = Pattern.quote(System.getProperty("file.separator"));
                     String fileName = this.codeTabPane.getFileName().split(pattern)
                             [this.codeTabPane.getFileName().split(pattern).length-1];
@@ -832,6 +833,7 @@ public class EditController {
             Program AST = null;
             try{
                 AST = parser.parse(filename);
+                EditController.this.commentMap = parser.getCommentMap();
                 Platform.runLater(()->EditController.this.console.writeToConsole(
                         "Parsing Successful.\n", "Output"));
             }
