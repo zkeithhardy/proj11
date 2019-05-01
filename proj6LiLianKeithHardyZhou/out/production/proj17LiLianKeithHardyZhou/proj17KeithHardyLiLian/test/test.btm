@@ -1,16 +1,28 @@
 class Main {
 //    int x = 3;
 //    int y = 4;
-    B b;
+    A a = null;
+
+    int foo(int x) { return x; }
 
     void main() {
-	var a = !(3>2);
+	a = new A();
+//	var k = foo(a.x);
+	var io = new TextIO();
+	var ak = a.k;
+	io.putString(ak); //works
+	io.putString(a.k); //doesn't work
+
+
+
+
+//	var a = !(3>2);
 //	var r  = 4;
 //	var t = 5;
 //	var q = 6;
 //	//var z = (r*t)+(q%y);
-	var t = new B();
-	var k = t.y;
+//	var t = new B();
+//	var k = t.y;
 //	if (t instanceof A){
 //		q = 3;
 //	}
@@ -39,6 +51,7 @@ class Main {
 class A{
     int x = 4;
     int y = 2;
+    String k = "In A";
     int getX(){return this.x;}
 }
 

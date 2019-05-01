@@ -143,6 +143,7 @@ public class TextGeneratorVisitor extends Visitor {
      * @return
      */
     public Object visit(Field node){
+//        System.out.println("Visiting Field "+node.getName()+" "+node.getType());
         if(node.getInit() != null){
             node.getInit().accept(this);
             this.assemblySupport.genComment("store the field "+4*fieldCount+" away from $a0 to $v0");
@@ -265,6 +266,7 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(Formal node) {
+        System.out.println("In Formal "+node.getName()+" "+node.getType());
         this.currentSymbolTable.add(node.getName(),new Location("$fp",this.methodLocalVars * 4 +
                 12+ this.currentParameterOffset));
         this.currentParameterOffset -= 4;
@@ -424,13 +426,15 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(DispatchExpr node) {
+        System.out.println("Visiting DispatchExpr "+node.getMethodName()+" "+node.getLineNum());
         String type;
-        this.assemblySupport.genComment("subtract 4 from $sp");
-        this.assemblySupport.genSub("$sp","$sp",4);
-        this.assemblySupport.genComment("store $a0 to (0)$sp");
-        this.assemblySupport.genStoreWord("$a0",0,"$sp");
+//        this.assemblySupport.genComment("subtract 4 from $sp");
+//        this.assemblySupport.genSub("$sp","$sp",4);
+//        this.assemblySupport.genComment("store $a0 to (0)$sp");
+//        this.assemblySupport.genStoreWord("$a0",0,"$sp");
         if (node.getRefExpr() == null || ((node.getRefExpr() instanceof VarExpr) && //local var or field of "this"
                 ((VarExpr) node.getRefExpr()).getName().equals("this"))) {
+//            System.out.println("local var or field of this "+node.getRefExpr().getExprType());
             type = this.currentClass;
             this.assemblySupport.genComment("access dispatch_table: load "+type + "_dispatch_table to $v0");
             this.assemblySupport.genLoadAddr("$v0",type + "_dispatch_table");
@@ -463,10 +467,10 @@ public class TextGeneratorVisitor extends Visitor {
 
         this.assemblySupport.genComment("jump to $a1");
         this.assemblySupport.genInDirCall("$a1");
-        this.assemblySupport.genComment("load (0)$sp to $a0");
-        this.assemblySupport.genLoadWord("$a0",0,"$sp");
-        this.assemblySupport.genComment("add 4 to $sp");
-        this.assemblySupport.genAdd("$sp","$sp",4);
+        this.assemblySupport.genComment("load (0)$fp to $a0");
+        this.assemblySupport.genLoadWord("$a0",0,"$fp");
+//        this.assemblySupport.genComment("add 4 to $sp");
+//        this.assemblySupport.genAdd("$sp","$sp",4);
         return null;
     }
 
@@ -477,6 +481,7 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(ExprList node) {
+        System.out.println("Visiting ExprList "+node.getLineNum());
         for (Iterator it = node.iterator(); it.hasNext(); ){
             ((Expr) it.next()).accept(this);
             this.assemblySupport.genComment("save parameters on stack");
@@ -506,7 +511,7 @@ public class TextGeneratorVisitor extends Visitor {
 
         this.assemblySupport.genComment("jump to "+node.getType()+"_init");
         this.assemblySupport.genDirCall(node.getType()+"_init");
-
+        //restore $a0
         this.assemblySupport.genComment("load ("+4*methodLocalVars+")$fp to $a0");
         this.assemblySupport.genLoadWord("$a0", 4*(methodLocalVars), "$fp");
         return null;
@@ -924,13 +929,20 @@ public class TextGeneratorVisitor extends Visitor {
      */
     public Object visit(UnaryIncrExpr node) {
         this.assemblySupport.genComment("increment");
-        node.getExpr().accept(this);
         Location location = this.getUnaryLocation(node);
+        node.getExpr().accept(this);
 
         this.assemblySupport.genComment("add 1 to $v0");
         this.assemblySupport.genAdd("$v0","$v0",1);
+
         this.assemblySupport.genComment("store ("+location.getOffset()+")"+location.getBaseReg()+" to $v0");
         this.assemblySupport.genStoreWord("$v0",location.getOffset(),location.getBaseReg());
+
+        // ++i(pre): return i+1 in v0; i++(post): return i in v0 but increment i where it's stored
+        if(node.isPostfix()){
+            this.assemblySupport.genComment("sub 1 to $v0");
+            this.assemblySupport.genSub("$v0","$v0",1);
+        }
         return null;
     }
 
@@ -949,6 +961,12 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genSub("$v0","$v0",1);
         this.assemblySupport.genComment("store ("+location.getOffset()+")"+location.getBaseReg()+" to $v0");
         this.assemblySupport.genStoreWord("$v0",location.getOffset(),location.getBaseReg());
+
+        // --i(pre): return i-1 in v0; i--(post): return i in v0 but decrement i where it's stored
+        if(node.isPostfix()){
+            this.assemblySupport.genComment("add 1 to $v0");
+            this.assemblySupport.genAdd("$v0","$v0",1);
+        }
         return null;
     }
 
@@ -959,9 +977,7 @@ public class TextGeneratorVisitor extends Visitor {
      */
     private Location getUnaryLocation(UnaryExpr node){
         Location location = null;
-        System.out.println("in getUnaryLocation");
         String varName =((VarExpr) node.getExpr()).getName();
-        System.out.println(varName);
         if(((VarExpr) node.getExpr()).getRef() == null){
             this.assemblySupport.genComment("case where the reference object is null");
             location = (Location) currentSymbolTable.lookup(varName);
@@ -1004,8 +1020,10 @@ public class TextGeneratorVisitor extends Visitor {
             System.out.println("In null");
             this.assemblySupport.genComment("case where the reference object is null");
             location = (Location) currentSymbolTable.lookup(varName);
-            this.assemblySupport.genComment("load ("+ location.getOffset()+")"+ location.getBaseReg() +" to $v0 ");
-            this.assemblySupport.genLoadWord("$v0",location.getOffset(),location.getBaseReg());
+            if(location != null) {
+                this.assemblySupport.genComment("load (" + location.getOffset() + ")" + location.getBaseReg() + " to $v0 ");
+                this.assemblySupport.genLoadWord("$v0", location.getOffset(), location.getBaseReg());
+            }
         }
 
         else if ((node.getRef() instanceof VarExpr) &&
@@ -1033,9 +1051,9 @@ public class TextGeneratorVisitor extends Visitor {
             node.getRef().accept(this);
             this.assemblySupport.genComment("case where the reference object is user defined class");
             String refTypeName = node.getRef().getExprType();
-            System.out.println(refTypeName);
+//            System.out.println(refTypeName);
             location = (Location) this.classSymbolTables.get(refTypeName).lookup(varName);
-            System.out.println("after look up");
+//            System.out.println("after look up");
             //check for null pointer
             String nullError = this.assemblySupport.getLabel();
             String afterError = this.assemblySupport.getLabel();
@@ -1049,15 +1067,15 @@ public class TextGeneratorVisitor extends Visitor {
             this.assemblySupport.genLabel(afterError);
             this.assemblySupport.genComment("move $v0 to $a0");
             this.assemblySupport.genMove("$a0", "$v0");
-            if(location == null){
-                System.out.println("LOCATION IS NULL");
-            }
+//            if(location == null){
+//                System.out.println("LOCATION IS NULL");
+//            }
             this.assemblySupport.genComment("load ("+location.getOffset()+")$a0 to $v0");
             this.assemblySupport.genLoadWord("$v0",location.getOffset(),"$a0");
         }
         this.assemblySupport.genLoadWord("$a0",0,"$sp");
         this.assemblySupport.genAdd("$sp","$sp", 4);
-        System.out.println("at the end of var");
+//        System.out.println("at the end of var");
         return null;
     }
 
