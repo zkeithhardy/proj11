@@ -2,8 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6ba3b47e-03c3-466e-bdc1-e598e38494ef" name="Default Changelist" comment="more comments">
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj17LiLianKeithHardyZhou/Main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj17LiLianKeithHardyZhou/Main.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj17LiLianKeithHardyZhou/proj13KeithHardyLiLian/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj17LiLianKeithHardyZhou/proj15KeithHardyLiLian.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj17LiLianKeithHardyZhou/proj15KeithHardyLiLian/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj17LiLianKeithHardyZhou/proj15KeithHardyLiLian/.idea/proj6LiLianKeithHardyZhou.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj17LiLianKeithHardyZhou/proj15KeithHardyLiLian/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj17LiLianKeithHardyZhou/proj17KeithHardyLiLian/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj17LiLianKeithHardyZhou/proj17KeithHardyLiLian/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj17LiLianKeithHardyZhou/proj17KeithHardyLiLian/EditController$findReplace.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj17LiLianKeithHardyZhou/proj17KeithHardyLiLian/EditController$findReplace.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj17LiLianKeithHardyZhou/proj17KeithHardyLiLian/EditController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj17LiLianKeithHardyZhou/proj17KeithHardyLiLian/EditController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj17LiLianKeithHardyZhou/proj17KeithHardyLiLian/MasterController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj17LiLianKeithHardyZhou/proj17KeithHardyLiLian/MasterController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj17LiLianKeithHardyZhou/proj17KeithHardyLiLian/bantam/codegenmips/MipsCodeGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj17LiLianKeithHardyZhou/proj17KeithHardyLiLian/bantam/codegenmips/MipsCodeGenerator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj17LiLianKeithHardyZhou/proj17KeithHardyLiLian/bantam/parser/Parser$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj17LiLianKeithHardyZhou/proj17KeithHardyLiLian/bantam/parser/Parser$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj17LiLianKeithHardyZhou/proj17KeithHardyLiLian/bantam/parser/Parser.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj17LiLianKeithHardyZhou/proj17KeithHardyLiLian/bantam/parser/Parser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj17LiLianKeithHardyZhou/proj17KeithHardyLiLian/bantam/semant/PrettyPrintVisitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj17LiLianKeithHardyZhou/proj17KeithHardyLiLian/bantam/semant/PrettyPrintVisitor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj17LiLianKeithHardyZhou/proj17KeithHardyLiLian/resources/Main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj17LiLianKeithHardyZhou/proj17KeithHardyLiLian/resources/Main.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj17LiLianKeithHardyZhou/proj17KeithHardyLiLian/test/test.asm" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj17LiLianKeithHardyZhou/proj17KeithHardyLiLian/test/test.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/proj17LiLianKeithHardyZhou/proj17KeithHardyLiLian/test/test.btm" beforeDir="false" afterPath="$PROJECT_DIR$/../../out/production/proj17LiLianKeithHardyZhou/proj17KeithHardyLiLian/test/test.btm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bantam/semant/PrettyPrintVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/semant/PrettyPrintVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MasterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/MasterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bantam/builder/ASTNodeBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/bantam/builder/ASTNodeBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/test.btm" beforeDir="false" afterPath="$PROJECT_DIR$/test/test.btm" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/../../out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -12,64 +31,13 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FUSProjectUsageTrigger">
-    <session id="-170845527">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.open.time.19" value="1" />
-          <entry key="project.opened" value="1" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="java" value="2" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="JAVA" value="2" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="java" value="495" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="JAVA" value="495" />
-        </counts>
-      </usages-collector>
-    </session>
-  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/bantam/codegenmips/TextGeneratorVisitor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="448" column="43" lean-forward="true" selection-start-line="448" selection-start-column="43" selection-end-line="448" selection-end-column="43" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bantam/codegenmips/MipsSupport.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="16036">
-              <caret line="978" column="37" selection-start-line="978" selection-start-column="25" selection-end-line="978" selection-end-column="37" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bantam/semant/PrettyPrintVisitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="13129">
-              <caret line="691" selection-start-line="691" selection-end-line="691" />
+            <state relative-caret-position="378">
+              <caret line="165" column="7" lean-forward="true" selection-start-line="165" selection-start-column="7" selection-end-line="165" selection-end-column="7" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -78,153 +46,120 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bantam/semant/SemanticAnalyzer.java">
+        <entry file="file://$PROJECT_DIR$/bantam/parser/Parser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5282">
-              <caret line="312" column="67" selection-start-line="312" selection-start-column="67" selection-end-line="312" selection-end-column="67" />
+            <state relative-caret-position="14940">
+              <caret line="850" column="5" lean-forward="true" selection-start-line="850" selection-start-column="5" selection-end-line="850" selection-end-column="5" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bantam/semant/StringConstantsVisitor.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/bantam/builder/ASTNodeBuilder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
-              <caret line="15" selection-start-line="8" selection-end-line="15" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bantam/semant/ClassMapBuilderVisitor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/test.btm">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="589">
-              <caret line="31" column="47" selection-start-line="31" selection-start-column="47" selection-end-line="31" selection-end-column="47" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bantam/semant/TypeCheckerVisitor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
+            <state relative-caret-position="337">
+              <caret line="511" column="45" selection-start-line="511" selection-start-column="45" selection-end-line="511" selection-end-column="45" />
               <folding>
-                <element signature="docComment;class#TypeCheckerVisitor#0" />
-                <element signature="e#1000#1293#0" />
-                <element signature="e#1683#1964#0" />
-                <element signature="e#1683#2847#0" />
-                <element signature="e#2966#3202#0" />
-                <element signature="e#3209#3414#0" />
-                <element signature="e#3420#3533#0" />
-                <element signature="e#3420#3889#0" />
-                <element signature="e#3895#4008#0" />
-                <element signature="e#3895#5049#0" />
-                <element signature="e#4055#4136#0" />
-                <element signature="e#4895#4971#0" />
-                <element signature="e#5055#5170#0" />
-                <element signature="e#5055#6403#0" />
-                <element signature="e#6409#6524#0" />
-                <element signature="e#6409#6912#0" />
-                <element signature="e#6918#7063#0" />
-                <element signature="e#6918#8281#0" />
-                <element signature="e#8287#8415#0" />
-                <element signature="e#8287#9107#0" />
-                <element signature="e#9113#9246#0" />
-                <element signature="e#9113#9765#0" />
-                <element signature="e#9771#9900#0" />
-                <element signature="e#9771#10687#0" />
-                <element signature="e#10693#10826#0" />
-                <element signature="e#10693#11025#0" />
-                <element signature="e#11031#11164#0" />
-                <element signature="e#11031#11355#0" />
-                <element signature="e#11361#11496#0" />
-                <element signature="e#11361#12285#0" />
-                <element signature="e#12291#12439#0" />
-                <element signature="e#12291#14766#0" />
-                <element signature="e#13541#13593#0" />
-                <element signature="e#14772#14994#0" />
-                <element signature="e#14772#15240#0" />
-                <element signature="e#15246#15383#0" />
-                <element signature="e#15246#15705#0" />
-                <element signature="e#15711#15849#0" />
-                <element signature="e#15711#16217#0" />
-                <element signature="e#16223#16373#0" />
-                <element signature="e#16223#16822#0" />
-                <element signature="e#16828#16981#0" />
-                <element signature="e#16828#17723#0" />
-                <element signature="e#17729#17869#0" />
-                <element signature="e#17729#18596#0" />
-                <element signature="e#18602#18755#0" />
-                <element signature="e#18602#21418#0" />
-                <element signature="e#21424#21589#0" />
-                <element signature="e#21424#24247#0" />
-                <element signature="e#24253#24401#0" />
-                <element signature="e#24253#27143#0" />
-                <element signature="e#25658#25696#0" />
-                <element signature="e#27149#27379#0" />
-                <element signature="e#27385#27528#0" />
-                <element signature="e#27385#28595#0" />
-                <element signature="e#28601#28781#0" />
-                <element signature="e#28601#29285#0" />
-                <element signature="e#29291#29479#0" />
-                <element signature="e#29291#29840#0" />
-                <element signature="e#29846#30032#0" />
-                <element signature="e#29846#30368#0" />
-                <element signature="e#30374#30676#0" />
-                <element signature="e#30682#30892#0" />
-                <element signature="e#30682#31231#0" />
-                <element signature="e#31237#31429#0" />
-                <element signature="e#31237#31765#0" />
-                <element signature="e#31771#31985#0" />
-                <element signature="e#31771#32324#0" />
-                <element signature="e#32330#32506#0" />
-                <element signature="e#32330#32829#0" />
-                <element signature="e#32835#33013#0" />
-                <element signature="e#32835#33341#0" />
-                <element signature="e#33347#33525#0" />
-                <element signature="e#33347#33854#0" />
-                <element signature="e#33860#34040#0" />
-                <element signature="e#33860#34367#0" />
-                <element signature="e#34373#34555#0" />
-                <element signature="e#34373#34894#0" />
-                <element signature="e#34900#35068#0" />
-                <element signature="e#34900#35425#0" />
-                <element signature="e#35431#35597#0" />
-                <element signature="e#35431#35953#0" />
-                <element signature="e#35959#36119#0" />
-                <element signature="e#35959#36453#0" />
-                <element signature="e#36459#36609#0" />
-                <element signature="e#36459#37012#0" />
-                <element signature="e#37018#37180#0" />
-                <element signature="e#37018#37752#0" />
-                <element signature="e#37758#37920#0" />
-                <element signature="e#37758#38259#0" />
-                <element signature="e#38265#38422#0" />
-                <element signature="e#38265#38527#0" />
-                <element signature="e#38533#38697#0" />
-                <element signature="e#38533#38810#0" />
-                <element signature="e#38816#38978#0" />
-                <element signature="e#38816#39089#0" />
+                <element signature="e#5981#5982#0" expanded="true" />
+                <element signature="e#6036#6037#0" expanded="true" />
+                <element signature="e#6208#6209#0" expanded="true" />
+                <element signature="e#6254#6255#0" expanded="true" />
+                <element signature="e#6471#6472#0" expanded="true" />
+                <element signature="e#6526#6527#0" expanded="true" />
+                <element signature="e#7223#7224#0" expanded="true" />
+                <element signature="e#7269#7270#0" expanded="true" />
+                <element signature="e#7784#7785#0" expanded="true" />
+                <element signature="e#7842#7843#0" expanded="true" />
+                <element signature="e#8424#8425#0" expanded="true" />
+                <element signature="e#8480#8481#0" expanded="true" />
+                <element signature="e#8961#8962#0" expanded="true" />
+                <element signature="e#9006#9007#0" expanded="true" />
+                <element signature="e#9409#9410#0" expanded="true" />
+                <element signature="e#9460#9461#0" expanded="true" />
+                <element signature="e#9865#9866#0" expanded="true" />
+                <element signature="e#9916#9917#0" expanded="true" />
+                <element signature="e#10315#10316#0" expanded="true" />
+                <element signature="e#10362#10363#0" expanded="true" />
+                <element signature="e#11904#11905#0" expanded="true" />
+                <element signature="e#11951#11952#0" expanded="true" />
+                <element signature="e#12991#12992#0" expanded="true" />
+                <element signature="e#13041#13042#0" expanded="true" />
+                <element signature="e#13110#13111#0" expanded="true" />
+                <element signature="e#13165#13166#0" expanded="true" />
+                <element signature="e#13230#13231#0" expanded="true" />
+                <element signature="e#13282#13283#0" expanded="true" />
+                <element signature="e#13804#13805#0" expanded="true" />
+                <element signature="e#13849#13850#0" expanded="true" />
+                <element signature="e#14397#14398#0" expanded="true" />
+                <element signature="e#14454#14455#0" expanded="true" />
+                <element signature="e#14525#14526#0" expanded="true" />
+                <element signature="e#14582#14583#0" expanded="true" />
+                <element signature="e#14653#14654#0" expanded="true" />
+                <element signature="e#14708#14709#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bantam/visitor/Visitor.java">
+        <entry file="file://$PROJECT_DIR$/bantam/ast/ArrayExpr.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="12578">
-              <caret line="700" column="5" selection-start-line="42" selection-start-column="4" selection-end-line="700" selection-end-column="5" />
+            <state relative-caret-position="-78">
+              <caret line="41" column="13" selection-start-line="41" selection-start-column="13" selection-end-line="41" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bantam/ast/MemberList.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="234">
+              <caret line="37" column="13" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bantam/ast/ListNode.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="192">
+              <caret line="46" column="22" selection-start-line="46" selection-start-column="22" selection-end-line="46" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bantam/ast/Member.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="139">
+              <caret line="40" column="22" selection-start-line="40" selection-start-column="22" selection-end-line="40" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bantam/ast/Expr.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="226">
+              <caret line="56" column="7" lean-forward="true" selection-start-line="56" selection-start-column="7" selection-end-line="56" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bantam/ast/Formal.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="192">
+              <caret line="38" column="13" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bantam/lexer/Scanner.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1350">
+              <caret line="88" lean-forward="true" selection-start-line="88" selection-end-line="88" />
             </state>
           </provider>
         </entry>
@@ -240,7 +175,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>epil</find>
       <find>sle</find>
       <find>no such</find>
       <find>instanceof</find>
@@ -270,6 +204,7 @@
       <find>varexpr</find>
       <find>newexpr</find>
       <find>parent</find>
+      <find>comment</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -281,6 +216,7 @@
         <option value="$PROJECT_DIR$/test/test.btm" />
         <option value="$PROJECT_DIR$/bantam/semant/PrettyPrintVisitor.java" />
         <option value="$PROJECT_DIR$/bantam/codegenmips/TextGeneratorVisitor.java" />
+        <option value="$PROJECT_DIR$/bantam/builder/ASTNodeBuilder.java" />
       </list>
     </option>
   </component>
@@ -296,7 +232,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -341,7 +277,23 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="proj17KeithHardyLiLian" type="462c0819:PsiDirectoryNode" />
               <item name="bantam" type="462c0819:PsiDirectoryNode" />
-              <item name="codegenmips" type="462c0819:PsiDirectoryNode" />
+              <item name="builder" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="proj17KeithHardyLiLian" type="b2602c69:ProjectViewProjectNode" />
+              <item name="proj6LiLianKeithHardyZhou" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="proj17KeithHardyLiLian" type="462c0819:PsiDirectoryNode" />
+              <item name="bantam" type="462c0819:PsiDirectoryNode" />
+              <item name="lexer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="proj17KeithHardyLiLian" type="b2602c69:ProjectViewProjectNode" />
+              <item name="proj6LiLianKeithHardyZhou" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="proj17KeithHardyLiLian" type="462c0819:PsiDirectoryNode" />
+              <item name="bantam" type="462c0819:PsiDirectoryNode" />
+              <item name="parser" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="proj17KeithHardyLiLian" type="b2602c69:ProjectViewProjectNode" />
@@ -364,11 +316,11 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556503834690" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556676606031" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -529,10 +481,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2534413" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2557047" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -541,7 +493,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4979757" weight="0.46458924" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.6396761" visible="true" weight="0.14920071" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.6396761" visible="true" weight="0.14872521" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -589,41 +541,7 @@
       <window_info anchor="right" id="Maven Projects" order="7" />
     </layout-to-restore>
   </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
-  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/bantam/ast/Program.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="38" column="13" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bantam/ast/ASTNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="253" column="22" selection-start-line="253" selection-start-column="22" selection-end-line="253" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bantam/semant/ClassNameVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bantam/semant/NumFieldsVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1026">
-          <caret line="61" column="28" selection-start-line="61" selection-start-column="28" selection-end-line="61" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bantam/codegenmips/Minimum.asm">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="76">
@@ -642,13 +560,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="76">
           <caret line="9" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bantam/parser/Parser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="760">
-          <caret line="61" column="12" selection-start-line="61" selection-start-column="12" selection-end-line="61" selection-end-column="12" />
         </state>
       </provider>
     </entry>
@@ -698,13 +609,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1111">
           <caret line="84" column="35" selection-start-line="84" selection-start-column="34" selection-end-line="84" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bantam/ast/Expr.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="659">
-          <caret line="92" column="7" lean-forward="true" selection-start-line="92" selection-start-column="7" selection-end-line="92" selection-end-column="7" />
         </state>
       </provider>
     </entry>
@@ -817,55 +721,61 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/bantam/ast/Field.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
+        <state relative-caret-position="504">
           <caret line="52" column="23" selection-start-line="52" selection-start-column="19" selection-end-line="52" selection-end-column="23" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bantam/ast/Class_.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
+        <state relative-caret-position="450">
           <caret line="49" selection-start-line="49" selection-end-line="49" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bantam/semant/SemanticAnalyzer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5282">
+        <state relative-caret-position="5004">
           <caret line="312" column="67" selection-start-line="312" selection-start-column="67" selection-end-line="312" selection-end-column="67" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bantam/semant/StringConstantsVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
+        <state relative-caret-position="90">
           <caret line="15" selection-start-line="8" selection-end-line="15" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bantam/semant/ClassMapBuilderVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
+        <state relative-caret-position="180">
           <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/test.btm">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="589">
+        <state relative-caret-position="558">
           <caret line="31" column="47" selection-start-line="31" selection-start-column="47" selection-end-line="31" selection-end-column="47" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bantam/semant/TypeCheckerVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
+        <state relative-caret-position="126">
           <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
           <folding>
             <element signature="docComment;class#TypeCheckerVisitor#0" />
             <element signature="e#1000#1293#0" />
             <element signature="e#1683#1964#0" />
             <element signature="e#1683#2847#0" />
+            <element signature="e#2074#2110#1" />
+            <element signature="e#2161#2206#1" />
+            <element signature="e#2265#2310#1" />
+            <element signature="e#2363#2534#1" />
+            <element signature="e#2688#2819#1" />
+            <element signature="e#2724#2768#1" />
             <element signature="e#2966#3202#0" />
             <element signature="e#3209#3414#0" />
             <element signature="e#3420#3533#0" />
@@ -873,85 +783,188 @@
             <element signature="e#3895#4008#0" />
             <element signature="e#3895#5049#0" />
             <element signature="e#4055#4136#0" />
+            <element signature="e#4303#4460#1" />
+            <element signature="e#4531#4886#1" />
+            <element signature="e#4636#4876#1" />
             <element signature="e#4895#4971#0" />
             <element signature="e#5055#5170#0" />
             <element signature="e#5055#6403#0" />
+            <element signature="e#5323#5485#1" />
+            <element signature="e#5796#6306#1" />
+            <element signature="e#5885#6037#1" />
+            <element signature="e#6144#6296#1" />
             <element signature="e#6409#6524#0" />
             <element signature="e#6409#6912#0" />
+            <element signature="e#6614#6782#1" />
             <element signature="e#6918#7063#0" />
             <element signature="e#6918#8281#0" />
+            <element signature="e#7227#7467#1" />
+            <element signature="e#7481#7542#1" />
+            <element signature="e#7828#7940#1" />
+            <element signature="e#8074#8190#1" />
             <element signature="e#8287#8415#0" />
             <element signature="e#8287#9107#0" />
+            <element signature="e#8605#8772#1" />
+            <element signature="e#8935#9080#1" />
             <element signature="e#9113#9246#0" />
             <element signature="e#9113#9765#0" />
+            <element signature="e#9399#9557#1" />
             <element signature="e#9771#9900#0" />
             <element signature="e#9771#10687#0" />
+            <element signature="e#9981#10037#1" />
+            <element signature="e#10078#10378#1" />
+            <element signature="e#10198#10368#1" />
+            <element signature="e#10421#10479#1" />
             <element signature="e#10693#10826#0" />
             <element signature="e#10693#11025#0" />
+            <element signature="e#10904#10998#1" />
             <element signature="e#11031#11164#0" />
             <element signature="e#11031#11355#0" />
             <element signature="e#11361#11496#0" />
             <element signature="e#11361#12285#0" />
+            <element signature="e#11576#12007#1" />
+            <element signature="e#11708#11997#1" />
+            <element signature="e#12072#12258#1" />
             <element signature="e#12291#12439#0" />
             <element signature="e#12291#14766#0" />
+            <element signature="e#12614#13160#1" />
+            <element signature="e#12828#13150#1" />
+            <element signature="e#13364#13525#1" />
+            <element signature="e#13539#14661#1" />
             <element signature="e#13541#13593#0" />
+            <element signature="e#13884#14071#1" />
+            <element signature="e#14089#14651#1" />
+            <element signature="e#14152#14637#1" />
+            <element signature="e#14334#14619#1" />
             <element signature="e#14772#14994#0" />
             <element signature="e#14772#15240#0" />
             <element signature="e#15246#15383#0" />
             <element signature="e#15246#15705#0" />
+            <element signature="e#15511#15609#1" />
             <element signature="e#15711#15849#0" />
             <element signature="e#15711#16217#0" />
+            <element signature="e#15952#16119#1" />
+            <element signature="e#16133#16190#1" />
             <element signature="e#16223#16373#0" />
             <element signature="e#16223#16822#0" />
+            <element signature="e#16513#16601#1" />
+            <element signature="e#16652#16746#1" />
             <element signature="e#16828#16981#0" />
             <element signature="e#16828#17723#0" />
+            <element signature="e#17091#17195#1" />
+            <element signature="e#17302#17348#1" />
+            <element signature="e#17423#17470#1" />
+            <element signature="e#17484#17659#1" />
             <element signature="e#17729#17869#0" />
             <element signature="e#17729#18596#0" />
+            <element signature="e#17973#18067#1" />
+            <element signature="e#18174#18219#1" />
+            <element signature="e#18294#18340#1" />
+            <element signature="e#18354#18527#1" />
             <element signature="e#18602#18755#0" />
             <element signature="e#18602#21418#0" />
+            <element signature="e#18944#19053#1" />
+            <element signature="e#19095#19197#1" />
+            <element signature="e#19240#19366#1" />
+            <element signature="e#19410#19726#1" />
+            <element signature="e#19623#19716#1" />
+            <element signature="e#19740#20581#1" />
+            <element signature="e#19939#20087#1" />
+            <element signature="e#20205#20447#1" />
+            <element signature="e#20612#20800#1" />
+            <element signature="e#20942#21011#1" />
+            <element signature="e#21075#21356#1" />
             <element signature="e#21424#21589#0" />
             <element signature="e#21424#24247#0" />
+            <element signature="e#21781#21872#1" />
+            <element signature="e#22061#22170#1" />
+            <element signature="e#22212#22314#1" />
+            <element signature="e#22357#22483#1" />
+            <element signature="e#22497#23343#1" />
+            <element signature="e#22659#22834#1" />
+            <element signature="e#22952#23209#1" />
+            <element signature="e#23374#23566#1" />
+            <element signature="e#23609#23708#1" />
+            <element signature="e#23942#24150#1" />
             <element signature="e#24253#24401#0" />
             <element signature="e#24253#27143#0" />
+            <element signature="e#24614#24689#1" />
+            <element signature="e#24730#24839#1" />
+            <element signature="e#24963#25228#1" />
+            <element signature="e#25120#25218#1" />
+            <element signature="e#25353#25642#1" />
+            <element signature="e#25532#25632#1" />
+            <element signature="e#25656#26824#1" />
             <element signature="e#25658#25696#0" />
+            <element signature="e#25922#25970#1" />
+            <element signature="e#26020#26213#1" />
+            <element signature="e#26295#26469#1" />
+            <element signature="e#26487#26814#1" />
+            <element signature="e#26855#27081#1" />
             <element signature="e#27149#27379#0" />
+            <element signature="e#27262#27351#1" />
             <element signature="e#27385#27528#0" />
             <element signature="e#27385#28595#0" />
+            <element signature="e#27714#27806#1" />
+            <element signature="e#27940#28042#1" />
+            <element signature="e#28046#28131#1" />
+            <element signature="e#28159#28278#1" />
+            <element signature="e#28322#28469#1" />
+            <element signature="e#28483#28568#1" />
             <element signature="e#28601#28781#0" />
             <element signature="e#28601#29285#0" />
+            <element signature="e#28934#29016#1" />
+            <element signature="e#29096#29221#1" />
             <element signature="e#29291#29479#0" />
             <element signature="e#29291#29840#0" />
+            <element signature="e#29661#29776#1" />
             <element signature="e#29846#30032#0" />
             <element signature="e#29846#30368#0" />
+            <element signature="e#30200#30304#1" />
             <element signature="e#30374#30676#0" />
             <element signature="e#30682#30892#0" />
             <element signature="e#30682#31231#0" />
+            <element signature="e#31061#31167#1" />
             <element signature="e#31237#31429#0" />
             <element signature="e#31237#31765#0" />
+            <element signature="e#31597#31701#1" />
             <element signature="e#31771#31985#0" />
             <element signature="e#31771#32324#0" />
+            <element signature="e#32154#32260#1" />
             <element signature="e#32330#32506#0" />
             <element signature="e#32330#32829#0" />
+            <element signature="e#32677#32769#1" />
             <element signature="e#32835#33013#0" />
             <element signature="e#32835#33341#0" />
+            <element signature="e#33185#33281#1" />
             <element signature="e#33347#33525#0" />
             <element signature="e#33347#33854#0" />
+            <element signature="e#33697#33794#1" />
             <element signature="e#33860#34040#0" />
             <element signature="e#33860#34367#0" />
+            <element signature="e#34213#34307#1" />
             <element signature="e#34373#34555#0" />
             <element signature="e#34373#34894#0" />
+            <element signature="e#34729#34834#1" />
             <element signature="e#34900#35068#0" />
             <element signature="e#34900#35425#0" />
+            <element signature="e#35246#35361#1" />
             <element signature="e#35431#35597#0" />
             <element signature="e#35431#35953#0" />
+            <element signature="e#35774#35889#1" />
             <element signature="e#35959#36119#0" />
             <element signature="e#35959#36453#0" />
+            <element signature="e#36289#36393#1" />
             <element signature="e#36459#36609#0" />
             <element signature="e#36459#37012#0" />
+            <element signature="e#36781#36948#1" />
             <element signature="e#37018#37180#0" />
             <element signature="e#37018#37752#0" />
+            <element signature="e#37277#37459#1" />
+            <element signature="e#37584#37692#1" />
             <element signature="e#37758#37920#0" />
             <element signature="e#37758#38259#0" />
+            <element signature="e#38091#38199#1" />
             <element signature="e#38265#38422#0" />
             <element signature="e#38265#38527#0" />
             <element signature="e#38533#38697#0" />
@@ -964,18 +977,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/bantam/visitor/Visitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="12578">
+        <state relative-caret-position="11916">
           <caret line="700" column="5" selection-start-line="42" selection-start-column="4" selection-end-line="700" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bantam/semant/PrettyPrintVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="13129">
-          <caret line="691" selection-start-line="691" selection-end-line="691" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -999,6 +1002,158 @@
           <caret line="448" column="43" lean-forward="true" selection-start-line="448" selection-start-column="43" selection-end-line="448" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MasterController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1504">
+          <caret line="602" selection-start-line="602" selection-end-line="602" />
+          <folding>
+            <element signature="e#10602#10603#0" expanded="true" />
+            <element signature="e#10660#10661#0" expanded="true" />
+            <element signature="e#10780#10781#0" expanded="true" />
+            <element signature="e#10838#10839#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bantam/semant/NumLocalVarsVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bantam/ast/ExprStmt.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="39" column="13" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bantam/ast/Stmt.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="48" column="22" selection-start-line="48" selection-start-column="22" selection-end-line="48" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bantam/ast/ASTNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="427">
+          <caret line="276" lean-forward="true" selection-start-line="276" selection-end-line="276" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bantam/ast/ListNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="46" column="22" selection-start-line="46" selection-start-column="22" selection-end-line="46" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bantam/ast/Member.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="139">
+          <caret line="40" column="22" selection-start-line="40" selection-start-column="22" selection-end-line="40" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bantam/ast/Formal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="38" column="13" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bantam/ast/Expr.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="56" column="7" lean-forward="true" selection-start-line="56" selection-start-column="7" selection-end-line="56" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bantam/ast/MemberList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="37" column="13" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bantam/lexer/Scanner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1350">
+          <caret line="88" lean-forward="true" selection-start-line="88" selection-end-line="88" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bantam/semant/PrettyPrintVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="165" column="7" lean-forward="true" selection-start-line="165" selection-start-column="7" selection-end-line="165" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bantam/parser/Parser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="14940">
+          <caret line="850" column="5" lean-forward="true" selection-start-line="850" selection-start-column="5" selection-end-line="850" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bantam/ast/ArrayExpr.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-78">
+          <caret line="41" column="13" selection-start-line="41" selection-start-column="13" selection-end-line="41" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bantam/builder/ASTNodeBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="337">
+          <caret line="511" column="45" selection-start-line="511" selection-start-column="45" selection-end-line="511" selection-end-column="45" />
+          <folding>
+            <element signature="e#5981#5982#0" expanded="true" />
+            <element signature="e#6036#6037#0" expanded="true" />
+            <element signature="e#6208#6209#0" expanded="true" />
+            <element signature="e#6254#6255#0" expanded="true" />
+            <element signature="e#6471#6472#0" expanded="true" />
+            <element signature="e#6526#6527#0" expanded="true" />
+            <element signature="e#7223#7224#0" expanded="true" />
+            <element signature="e#7269#7270#0" expanded="true" />
+            <element signature="e#7784#7785#0" expanded="true" />
+            <element signature="e#7842#7843#0" expanded="true" />
+            <element signature="e#8424#8425#0" expanded="true" />
+            <element signature="e#8480#8481#0" expanded="true" />
+            <element signature="e#8961#8962#0" expanded="true" />
+            <element signature="e#9006#9007#0" expanded="true" />
+            <element signature="e#9409#9410#0" expanded="true" />
+            <element signature="e#9460#9461#0" expanded="true" />
+            <element signature="e#9865#9866#0" expanded="true" />
+            <element signature="e#9916#9917#0" expanded="true" />
+            <element signature="e#10315#10316#0" expanded="true" />
+            <element signature="e#10362#10363#0" expanded="true" />
+            <element signature="e#11904#11905#0" expanded="true" />
+            <element signature="e#11951#11952#0" expanded="true" />
+            <element signature="e#12991#12992#0" expanded="true" />
+            <element signature="e#13041#13042#0" expanded="true" />
+            <element signature="e#13110#13111#0" expanded="true" />
+            <element signature="e#13165#13166#0" expanded="true" />
+            <element signature="e#13230#13231#0" expanded="true" />
+            <element signature="e#13282#13283#0" expanded="true" />
+            <element signature="e#13804#13805#0" expanded="true" />
+            <element signature="e#13849#13850#0" expanded="true" />
+            <element signature="e#14397#14398#0" expanded="true" />
+            <element signature="e#14454#14455#0" expanded="true" />
+            <element signature="e#14525#14526#0" expanded="true" />
+            <element signature="e#14582#14583#0" expanded="true" />
+            <element signature="e#14653#14654#0" expanded="true" />
+            <element signature="e#14708#14709#0" expanded="true" />
           </folding>
         </state>
       </provider>

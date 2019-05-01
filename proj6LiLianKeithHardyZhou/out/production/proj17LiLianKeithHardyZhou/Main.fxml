@@ -74,6 +74,7 @@
                       text = "Find &amp; Replace" accelerator = "Shortcut+F"/>
             <MenuItem mnemonicParsing="false" onAction="#handleMatchBracketOrParen"
                       text="Match Bracket/Parenthesis" accelerator="Shortcut+M"/>
+            <MenuItem mnemonicParsing="false" onAction="#handleRebuildFile" text="Rebuild File from AST"/>
         </Menu>
         <Menu mnemonicParsing="false" text = "Navigation" fx:id="navigationMenu">
             <MenuItem mnemonicParsing="false" onAction="#handleFindClass" text = "Class"/>
