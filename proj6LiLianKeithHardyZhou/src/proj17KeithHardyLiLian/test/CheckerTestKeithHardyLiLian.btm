@@ -1,6 +1,19 @@
-class Main extends B{
+//hello
+/*goodbye*/
+class Main/* dfgfadsfadfa*/ extends B{
+
     boolean a = true;
+
+
+
+
     //illegal type declaration 
+
+    /*fdaafs*/
+
+
+
+
     int b = true;
     //use of undeclared type
     //incompatible type declaration

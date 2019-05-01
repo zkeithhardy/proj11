@@ -21,6 +21,7 @@ import proj17KeithHardyLiLian.bantam.util.ErrorHandler;
 import proj17KeithHardyLiLian.bantam.ast.*;
 import proj17KeithHardyLiLian.bantam.util.CompilationException;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -35,11 +36,16 @@ public class Parser
     private ErrorHandler errorHandler;
     private String filename;
     private ASTNodeBuilder astNodeBuilder;
+    private HashMap<Integer, String> commentMap;
 
     // constructor
     public Parser(ErrorHandler errorHandler) {
         this.errorHandler = errorHandler;
         this.astNodeBuilder = new ASTNodeBuilder();
+    }
+
+    public HashMap<Integer,String> getCommentMap(){
+        return this.commentMap;
     }
 
 
@@ -51,6 +57,7 @@ public class Parser
     public Program parse(String filename) {
         this.scanner=new Scanner(filename, this.errorHandler);
         this.filename=filename;
+        commentMap = new HashMap<>();
         return this.parseProgram();
     }
 
@@ -850,6 +857,7 @@ public class Parser
     private void updateCurrentToken(){
 	    this.currentToken = scanner.scan();
 	    while(this.currentToken.kind == COMMENT){
+	        this.commentMap.put(this.currentToken.position,this.currentToken.spelling);
 	        this.currentToken = scanner.scan();
         }
     }
