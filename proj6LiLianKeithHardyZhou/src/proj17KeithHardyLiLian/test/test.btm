@@ -67,7 +67,7 @@ class A{
 class B extends A{
     int x = 5;
     int z = 3;
-    int getX(){return this.x + super.getX();}
+    int getX(int b){return this.x + super.getX();}
     int setX(){
 	super.x = 8;
 	return super.x;
