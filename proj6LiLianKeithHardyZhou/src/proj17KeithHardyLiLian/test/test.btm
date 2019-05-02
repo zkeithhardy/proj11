@@ -9,7 +9,11 @@ class Main {
 	a = new A();
 	a.dale();
 	var b = new B();
-	var k = b.y;
+	var k = new Integer();
+	k.setValue(8);
+	var t = new Integer();
+	t.setValue(8);
+	var q = t.equals(k);
 //	var io = new TextIO();
 //	var ak = a.k;
 //	io.putString(ak); //works

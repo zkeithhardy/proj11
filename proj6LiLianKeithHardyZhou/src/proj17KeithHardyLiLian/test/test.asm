@@ -1,5 +1,5 @@
 #Authors: Zeb Keith-Hardy, Michael Li, Iris Lian
-#Date: 2019-05-01
+#Date: 2019-05-02
 #Compiled From Source: test.btm
 	.data
 	.globl	gc_flag
@@ -713,8 +713,8 @@ Main.main:
 	sub $sp $sp 4
 	# store $a0 to $sp
 	sw $a0 0($sp)
-	# subtract 8 from $sp and store the result to $fp
-	sub $fp $sp 8
+	# subtract 16 from $sp and store the result to $fp
+	sub $fp $sp 16
 	# move $fp to $sp
 	move $sp $fp
 	# End Prologue
@@ -731,8 +731,8 @@ Main.main:
 	move $a0 $v0
 	# jump to A_init
 	jal A_init
-	# load (8)$fp to $a0
-	lw $a0 8($fp)
+	# load (16)$fp to $a0
+	lw $a0 16($fp)
 	# case where the reference name is null
 	# move current location's base register with offset to v0
 	sw $v0 12($a0)
@@ -770,16 +770,22 @@ Main.main:
 	move $a0 $v0
 	# jump to B_init
 	jal B_init
-	# load (8)$fp to $a0
-	lw $a0 8($fp)
+	# load (16)$fp to $a0
+	lw $a0 16($fp)
 	# store $v0 to (0)$fp
 	sw $v0 0($fp)
-	# var expression
-	# subtract stack pointer with 4
-	sub $sp $sp 4
-	# save value in $a0 to stack pointer with 0 offset
-	sw $a0 0($sp)
-	# accept the reference object and save its location $v0
+	# load the address of Integer_template to $a0
+	la $a0 Integer_template
+	# jump to Object.clone
+	jal Object.clone
+	# move $v0 to $a0
+	move $a0 $v0
+	# jump to Integer_init
+	jal Integer_init
+	# load (16)$fp to $a0
+	lw $a0 16($fp)
+	# store $v0 to (4)$fp
+	sw $v0 4($fp)
 	# var expression
 	# subtract stack pointer with 4
 	sub $sp $sp 4
@@ -787,31 +793,115 @@ Main.main:
 	sw $a0 0($sp)
 	# accept the reference object and save its location $v0
 	# case where the reference object is null
-	# load (0)$fp to $v0 
-	lw $v0 0($fp)
+	# load (4)$fp to $v0 
+	lw $v0 4($fp)
 	lw $a0 0($sp)
 	add $sp $sp 4
-	# case where the reference object is user defined class
-	# check for null pointer errors
-	# if $v0 == 0, branch to nullError
-	beq $zero $v0 label0
-	b label1
-label0:
-	jal _null_pointer_error
-	li $v0 17
-	syscall
-label1:
 	# move $v0 to $a0
 	move $a0 $v0
-	# load (16)$a0 to $v0
-	lw $v0 16($a0)
+	# load (8)$v0 to $v0
+	lw $v0 8($v0)
+	# load method address
+	# load (16)$v0 to $a1
+	lw $a1 16($v0)
+	# constant int expression: load 8 to $v0
+	li $v0 8
+	# save parameters on stack
+	# subtract 4 from $sp
+	sub $sp $sp 4
+	# store $v0 to $sp
+	sw $v0 0($sp)
+	# jump to $a1
+	jalr $a1
+	# load (0)$fp to $a0
+	lw $a0 0($fp)
+	# load the address of Integer_template to $a0
+	la $a0 Integer_template
+	# jump to Object.clone
+	jal Object.clone
+	# move $v0 to $a0
+	move $a0 $v0
+	# jump to Integer_init
+	jal Integer_init
+	# load (16)$fp to $a0
+	lw $a0 16($fp)
+	# store $v0 to (8)$fp
+	sw $v0 8($fp)
+	# var expression
+	# subtract stack pointer with 4
+	sub $sp $sp 4
+	# save value in $a0 to stack pointer with 0 offset
+	sw $a0 0($sp)
+	# accept the reference object and save its location $v0
+	# case where the reference object is null
+	# load (8)$fp to $v0 
+	lw $v0 8($fp)
 	lw $a0 0($sp)
 	add $sp $sp 4
-	# store $v0 to (4)$fp
-	sw $v0 4($fp)
+	# move $v0 to $a0
+	move $a0 $v0
+	# load (8)$v0 to $v0
+	lw $v0 8($v0)
+	# load method address
+	# load (16)$v0 to $a1
+	lw $a1 16($v0)
+	# constant int expression: load 8 to $v0
+	li $v0 8
+	# save parameters on stack
+	# subtract 4 from $sp
+	sub $sp $sp 4
+	# store $v0 to $sp
+	sw $v0 0($sp)
+	# jump to $a1
+	jalr $a1
+	# load (0)$fp to $a0
+	lw $a0 0($fp)
+	# var expression
+	# subtract stack pointer with 4
+	sub $sp $sp 4
+	# save value in $a0 to stack pointer with 0 offset
+	sw $a0 0($sp)
+	# accept the reference object and save its location $v0
+	# case where the reference object is null
+	# load (8)$fp to $v0 
+	lw $v0 8($fp)
+	lw $a0 0($sp)
+	add $sp $sp 4
+	# move $v0 to $a0
+	move $a0 $v0
+	# load (8)$v0 to $v0
+	lw $v0 8($v0)
+	# load method address
+	# load (4)$v0 to $a1
+	lw $a1 4($v0)
+	# var expression
+	# subtract stack pointer with 4
+	sub $sp $sp 4
+	# save value in $a0 to stack pointer with 0 offset
+	sw $a0 0($sp)
+	# accept the reference object and save its location $v0
+	# case where the reference object is null
+	# load (4)$fp to $v0 
+	lw $v0 4($fp)
+	lw $a0 0($sp)
+	add $sp $sp 4
+	# save parameters on stack
+	# subtract 4 from $sp
+	sub $sp $sp 4
+	# store $v0 to $sp
+	sw $v0 0($sp)
+	# jump to $a1
+	jalr $a1
+	# load (0)$fp to $a0
+	lw $a0 0($fp)
+	# store $v0 to (12)$fp
+	sw $v0 12($fp)
+	move $a0 $v0
+	li $v0 1
+	syscall
 	# Start Epilogue
-	# add 8 to $fp and store the result to $sp
-	add $sp $fp 8
+	# add 16 to $fp and store the result to $sp
+	add $sp $fp 16
 	# load $sp to $a0
 	lw $a0 0($sp)
 	# add 4 to $sp
@@ -914,7 +1004,7 @@ A.dale:
 	lw $a0 0($sp)
 	# add stack pointer with 4
 	add $sp $sp 4
-label2:
+label0:
 	# gen left side of expression
 	# var expression
 	# subtract stack pointer with 4
@@ -935,8 +1025,8 @@ label2:
 	# compare left and right sides of expression
 	slt $v0 $v1 $v0
 	sub $v0 $zero $v0
-	# branch to label3 if $v0 is equal to 0
-	beq $zero $v0 label3
+	# branch to label1 if $v0 is equal to 0
+	beq $zero $v0 label1
 	# constant int expression: load 11 to $v0
 	li $v0 11
 	# store $v0 to (4)$fp
@@ -960,9 +1050,9 @@ label2:
 	sw $v0 0($fp)
 	# sub 1 to $v0
 	sub $v0 $v0 1
-	# unconditional branch to label2
-	b label2
-label3:
+	# unconditional branch to label0
+	b label0
+label1:
 	# Start Epilogue
 	# add 8 to $fp and store the result to $sp
 	add $sp $fp 8

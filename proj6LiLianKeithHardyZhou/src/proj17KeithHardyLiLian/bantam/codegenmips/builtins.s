@@ -15,6 +15,30 @@
 
 
 Integer.equals:
+        sub $sp $sp 12
+        sw $t0 0($sp)
+        sw $t1 4($sp)
+        sw $t2 8($sp)   #prologue
+
+        lw $t0 12($sp)  #check if objects are of same type
+        lw $t1 0($t0)
+        lw $t2 0($a0)
+        bne $t1 $t2 false_i
+
+        lw $t0 12($t0)  #check if values are of same type
+        lw $t1 12($a0)
+        seq $v0 $t0 $t1
+        sub $v0 $zero $v0
+        b return_i_equals
+
+        false_i:
+        li $v0 0
+
+        return_i_equals:        #epilogue
+        lw $t0 0($sp)
+        lw $t1 4($sp)
+        lw $t2 8($sp)
+        add $sp $sp 12
         jr $ra
 
 
@@ -34,10 +58,29 @@ Integer.setValue:
 
 
 Boolean.equals:
-        lw $t0 0(sp)
-        lw $t0 12($t0)
+        sub $sp $sp 12
+        sw $t0 0($sp)
+        sw $t1 4($sp)
+        sw $t2 8($sp)   #prologue
+
+        lw $t0 12($sp)  #check if objects are of same type
+        lw $t1 0($t0)
+        lw $t2 0($a0)
+        bne $t1 $t2 false_b
+
+        lw $t0 12($t0)  #check if values are of same type
         lw $t1 12($a0)
         seq $v0 $t0 $t1
+        b return_b_equals
+
+        false_b:
+        li $v0 0
+
+        return_b_equals:        #epilogue
+        lw $t0 0($sp)
+        lw $t1 4($sp)
+        lw $t2 8($sp)
+        add $sp $sp 12
         jr $ra
 
 Boolean.toString:
