@@ -8,22 +8,21 @@ import java.util.HashMap;
 import java.util.Iterator;
 
 public class PrettyPrintVisitor extends Visitor{
-
-    private String sourceCode;
     //pretty printed source code
-    private int indentLevel;
+    private String sourceCode;
     //level of indentation
-    private boolean inConditionBraces;
+    private int indentLevel;
     //boolean that indicates if the node is in condition braces
+    private boolean inConditionBraces;
+    //map of comment string with their line number
     private HashMap<Integer,String> commentMap;
-    //map of comment string with their line number 
 
     /**
      * pretty print the original code from the ASTroot node and
      * return the resulted code as a long string
      * @param node the root node
      * @param commentMap map of comments passed from the scanner
-     * @return
+     * @return source code
      */
     public String sourceCode(ASTNode node,HashMap<Integer,String> commentMap){
         this.sourceCode= "";
@@ -773,7 +772,6 @@ public class PrettyPrintVisitor extends Visitor{
      */
     public Object visit(ConstBooleanExpr node) {
         this.sourceCode += node.getConstant() ;
-
         return null;
     }
 

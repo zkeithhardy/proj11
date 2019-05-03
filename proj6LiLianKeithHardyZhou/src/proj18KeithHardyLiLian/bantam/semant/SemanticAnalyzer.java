@@ -348,7 +348,7 @@ public class SemanticAnalyzer
                         "value", /*0 by default*/null))
                         .addElement(new Method(-1, "boolean", "equals", (FormalList) (new FormalList(-1)).addElement(new Formal(-1, "Object", "int")), (StmtList) (new StmtList(-1)).addElement(new ReturnStmt(-1, new ConstBooleanExpr(-1, "false")))))
                         .addElement(new Method(-1, "String", "toString", new FormalList(-1), (StmtList) (new StmtList(-1)).addElement(new ReturnStmt(-1, new VarExpr(-1, null, "null")))))
-                        .addElement(new Method(-1, "int", "intValue", (FormalList) (new FormalList(-1)), (StmtList) (new StmtList(-1)).addElement(new ReturnStmt(-1, new VarExpr(-1, new VarExpr(-1,null,"this"), "value")))))
+                        .addElement(new Method(-1, "int", "intValue", new FormalList(-1), (StmtList) (new StmtList(-1)).addElement(new ReturnStmt(-1, new VarExpr(-1, new VarExpr(-1,null,"this"), "value")))))
                         .addElement(new Method(-1, "void", "setValue", (FormalList) (new FormalList(-1)).addElement(new Formal(-1, "int", "newValue")), (StmtList) (new StmtList(-1)).addElement(new AssignExpr(-1,"this","value",new VarExpr(-1,null,"newValue"))).addElement(new ReturnStmt(-1,new VarExpr(-1,null,"null")))))
         );
         // create class tree node for String, add it to the mapping
@@ -361,7 +361,7 @@ public class SemanticAnalyzer
                         "value", /*false by default*/null))
                         .addElement(new Method(-1, "boolean", "equals", (FormalList) (new FormalList(-1)).addElement(new Formal(-1, "Object", "boolean")), (StmtList) (new StmtList(-1)).addElement(new ReturnStmt(-1, new ConstBooleanExpr(-1, "false")))))
                         .addElement(new Method(-1, "String", "toString", new FormalList(-1), (StmtList) (new StmtList(-1)).addElement(new ReturnStmt(-1, new VarExpr(-1, null, "null")))))
-                        .addElement(new Method(-1, "boolean", "booleanValue", (FormalList) (new FormalList(-1)), (StmtList) (new StmtList(-1)).addElement(new ReturnStmt(-1, new VarExpr(-1, new VarExpr(-1,null,"this"), "value")))))
+                        .addElement(new Method(-1, "boolean", "booleanValue", new FormalList(-1), (StmtList) (new StmtList(-1)).addElement(new ReturnStmt(-1, new VarExpr(-1, new VarExpr(-1,null,"this"), "value")))))
                         .addElement(new Method(-1, "void", "setValue", (FormalList) (new FormalList(-1)).addElement(new Formal(-1, "boolean", "newValue")), (StmtList) (new StmtList(-1)).addElement(new AssignExpr(-1,"this","value",new VarExpr(-1,null,"newValue")))))
         );
         // create class tree node for String, add it to the mapping
