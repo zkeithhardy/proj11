@@ -507,7 +507,7 @@ public class PrettyPrintVisitor extends Visitor{
         }
         node.getRightExpr().accept(this);
         if(node.getLeftExpr() instanceof BinaryArithExpr){
-            this.sourceCode += "( ";
+            this.sourceCode += " )";
         }
         return null;
     }
@@ -532,7 +532,7 @@ public class PrettyPrintVisitor extends Visitor{
         }
         node.getRightExpr().accept(this);
         if(node.getLeftExpr() instanceof BinaryArithExpr){
-            this.sourceCode += "( ";
+            this.sourceCode += " )";
         }
         return null;
     }
@@ -557,7 +557,7 @@ public class PrettyPrintVisitor extends Visitor{
         }
         node.getRightExpr().accept(this);
         if(node.getLeftExpr() instanceof BinaryArithExpr){
-            this.sourceCode += "( ";
+            this.sourceCode += " )";
         }
         return null;
     }
@@ -582,7 +582,7 @@ public class PrettyPrintVisitor extends Visitor{
         }
         node.getRightExpr().accept(this);
         if(node.getLeftExpr() instanceof BinaryArithExpr){
-            this.sourceCode += "( ";
+            this.sourceCode += " )";
         }
         return null;
     }
@@ -608,7 +608,7 @@ public class PrettyPrintVisitor extends Visitor{
         }
         node.getRightExpr().accept(this);
         if(node.getLeftExpr() instanceof BinaryArithExpr){
-            this.sourceCode += "( ";
+            this.sourceCode += ") ";
         }
         return null;
     }
@@ -730,6 +730,7 @@ public class PrettyPrintVisitor extends Visitor{
             node.getRef().accept(this);
             this.sourceCode += ".";
         }
+        System.out.println(node.getName());
         if (node.getName()!=null){
             this.sourceCode += node.getName();
         }

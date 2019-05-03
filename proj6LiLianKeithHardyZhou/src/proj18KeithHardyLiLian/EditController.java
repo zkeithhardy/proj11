@@ -591,10 +591,7 @@ public class EditController {
                     String fileName = this.codeTabPane.getFileName().split(pattern)
                             [this.codeTabPane.getFileName().split(pattern).length-1];
                     Platform.runLater(() ->
-                            //FOR LATER WHEN IT WORKS, JUST OVERWRITE THE FILE.
-                            //this.codeTabPane.createNewTab(fileName,
-                            //        sourceCode,true, this.codeTabPane.getCurrentFile()));
-                            this.codeTabPane.createNewTab(fileName,sourceCode,false,null));
+                            this.codeTabPane.createTabWithContent(sourceCode));
                 }
             }catch(InterruptedException| ExecutionException e){
                 Platform.runLater(()-> this.console.writeToConsole("Parsing failed \n", "Error"));
