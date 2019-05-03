@@ -15,7 +15,7 @@ public class ASTNodeBuilder {
      * @param name name of the array assign expr
      * @param index index in we are interested
      * @param expr the expression of assignment
-     * @return
+     * @return ArrayAssignExpr
      */
     public ArrayAssignExpr buildArrayAssignExpr(int position, String refName, String name, Expr index, Expr expr){
         return new ArrayAssignExpr(position, refName, name, index, expr);
