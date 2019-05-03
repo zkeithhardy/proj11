@@ -211,7 +211,6 @@ public class ToolbarController {
         command.add("a");
         command.add(this.codeTabPane.getFileName());
         command.add("bantam/codegenmips/exceptions.s");
-        command.add("bantam/codegenMips/builtins.s");
         ProcessBuilder processBuilder = new ProcessBuilder(command);
         //ProcessBuilder processBuilder = new ProcessBuilder("java","-jar", "include/Mars4_5.jar",
         //        "a", this.codeTabPane.getFileName(), "bantam/codegenmips/exceptions.s");
@@ -260,7 +259,6 @@ public class ToolbarController {
         command.add("include/Mars4_5.jar");
         command.add(this.codeTabPane.getFileName());
         command.add("bantam/codegenmips/exceptions.s");
-        command.add("bantam/codegenMips/builtins.s");
         ProcessBuilder processBuilder = new ProcessBuilder(command);
         AssembleOrRunTask runTask = new AssembleOrRunTask(this.console,processBuilder);
         this.curFutureTask = new FutureTask<Boolean>(runTask);

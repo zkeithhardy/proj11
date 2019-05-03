@@ -393,6 +393,22 @@ _String_const_29:
 	.ascii	"@"
 	.byte	0
 	.align	2
+_String_const_30:
+	.word 1
+	.word 24
+	.word String_dispatch_table
+	.word 4
+	.ascii "true"
+	.byte 0
+	.align 2
+_String_const_31:
+	.word 1
+	.word 24
+	.word String_dispatch_table
+	.word 5
+	.ascii "false"
+	.byte 0
+	.align 2
 
 	# next random value.  initially seeded with the current time.
 _random:
@@ -560,6 +576,14 @@ _ret:
 	.globl TextIO.getInt
 	.globl TextIO.putString
 	.globl TextIO.putInt
+	.globl Integer.equals
+	.globl Integer.toString
+	.globl Integer.intValue
+	.globl Integer.setValue
+	.globl Boolean.equals
+	.globl Boolean.toString
+	.globl Boolean.booleanValue
+	.globl Boolean.setValue
 
 	# three error routines must be used by error code as well
 	# these start with `_' to distinguish them from subroutines in
@@ -2903,6 +2927,120 @@ _label88:
 	li $a0 0
 	li $v0 17
 	syscall
+
+
+
+	Integer.equals:
+	sub $sp $sp 12
+	sw $t0 0($sp)
+	sw $t1 4($sp)
+	sw $t2 8($sp)   #prologue
+
+	lw $t0 12($sp)  #check if objects are of same type
+	lw $t1 0($t0)
+	lw $t2 0($a0)
+	bne $t1 $t2 false_i
+
+	lw $t0 12($t0)  #check if values are of same type
+	lw $t1 12($a0)
+	seq $v0 $t0 $t1
+	sub $v0 $zero $v0
+	b return_i_equals
+
+	false_i:
+	li $v0 0
+
+	return_i_equals:        #epilogue
+	lw $t0 0($sp)
+	lw $t1 4($sp)
+	lw $t2 8($sp)
+	add $sp $sp 12
+	jr $ra
+
+
+	Integer.toString:
+	sub $sp $sp 16		#epilogue
+	sw $a0 12($sp)
+	sw $s1 8($sp)
+	sw $s0 4($sp)
+	sw $ra 0($sp)
+	lw $s0 12($a0)
+	move $a0 $s0
+	jal _i2a
+
+	#prologue
+	lw $a0 12($sp)
+	lw $s1 8($sp)
+	lw $s0 4($sp)
+	lw $ra 0($sp)
+	add $sp $sp 16
+	jr $ra
+
+
+	Integer.intValue: #loads value into $v0 and returns
+	lw $v0 12($a0)
+	jr $ra
+
+
+	Integer.setValue:
+	lw $t0 0($sp)
+	sw $t0 12($a0)
+	jr $ra
+
+
+	Boolean.equals:
+	sub $sp $sp 12
+	sw $t0 0($sp)
+	sw $t1 4($sp)
+	sw $t2 8($sp)   #prologue
+
+	lw $t0 12($sp)  #check if objects are of same type
+	lw $t1 0($t0)
+	lw $t2 0($a0)
+	bne $t1 $t2 false_b
+
+	lw $t0 12($t0)  #check if values are of same type
+	lw $t1 12($a0)
+	seq $v0 $t0 $t1
+	b return_b_equals
+
+	false_b:
+	li $v0 0
+
+	return_b_equals:        #epilogue
+	lw $t0 0($sp)
+	lw $t1 4($sp)
+	lw $t2 8($sp)
+	add $sp $sp 12
+	jr $ra
+
+	Boolean.toString:
+	sub $sp $sp 12				#prologue
+	sw $s1 8($sp)
+	sw $s0 4($sp)
+	sw $ra 0($sp)
+	lw $s0 12($a0)
+	beqz $s0 toString_false 	#value of boolean is false
+	la $v0 _String_const_30    #string containing true
+	b toString_return
+	toString_false:
+	la $v0 _String_const_31 	#string containing false
+	toString_return: 			#epilogue
+	lw $s1 8($sp)
+	lw $s0 4($sp)
+	lw $ra 0($sp)
+	add $sp $sp 12
+	jr $ra
+
+
+	Boolean.booleanValue: #load value into $v0 and return
+	lw $v0 12($a0)
+	jr $ra
+
+	Boolean.setValue:  #sets value field to the value on the top of the stack
+	lw $t0 0($sp)
+	sw $t0 12($a0)
+	jr $ra
 
 
 	
