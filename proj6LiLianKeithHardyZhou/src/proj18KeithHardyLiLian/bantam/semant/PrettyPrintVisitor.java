@@ -167,6 +167,7 @@ public class PrettyPrintVisitor extends Visitor{
     public Object visit(ExprStmt node) {
         this.checkForComment(node.getLineNum());
         this.printScopeIndent();
+        System.out.println(node.getLineNum());
         node.getExpr().accept(this);
         this.sourceCode += ";\n";
         return null;
@@ -783,7 +784,7 @@ public class PrettyPrintVisitor extends Visitor{
      * @return result of the visit
      */
     public Object visit(ConstStringExpr node) {
-        this.sourceCode += node.getConstant();
+        this.sourceCode += "\"" + node.getConstant() + "\"";
         return null;
     }
 
