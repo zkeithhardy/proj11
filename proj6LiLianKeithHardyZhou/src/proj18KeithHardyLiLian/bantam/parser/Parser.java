@@ -675,7 +675,6 @@ public class Parser
 	private Expr parsePrimary() {
 	    int position = this.currentToken.position;
 	    Expr tempExpr = null;
-        String identifier;
         switch (this.currentToken.kind) {
             case LPAREN: // (<Expression>)
                 updateCurrentToken();
@@ -724,7 +723,7 @@ public class Parser
             updateCurrentToken();
             Expr varExprSuffix = this.parseExpression();
             this.checkToken(RBRACKET, "When parsing varExpr, \"]\" expected");
-            tempExpr= astNodeBuilder.buildArrayExpr(this.currentToken.position,prefix,null,varExprSuffix);//new ArrayExpr(this.currentToken.position, prefix, identifier, varExprSuffix);
+            tempExpr= astNodeBuilder.buildArrayExpr(this.currentToken.position,prefix,identifier,varExprSuffix);//new ArrayExpr(this.currentToken.position, prefix, identifier, varExprSuffix);
         }
         else if(this.currentToken.kind==LPAREN) {
             updateCurrentToken();

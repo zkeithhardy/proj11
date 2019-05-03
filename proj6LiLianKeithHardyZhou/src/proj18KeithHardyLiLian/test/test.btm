@@ -6,9 +6,6 @@ class Main {
     int foo(int x) { return x; }
 
     void main() {
-	a = new A();
-	a.dale();
-	var b = new B();
 	var k = new Boolean();
 	var aaa = new Integer();
 	aaa.setValue(5);
@@ -20,6 +17,10 @@ class Main {
 	var q = t.toString();
 	var x = k.toString();
 	var io = new TextIO();
+
+	var b = new Integer();
+	b.setValue(11);
+	var c = b.toString();
 	
 	io.putString(x);
 	io.putString("\n");

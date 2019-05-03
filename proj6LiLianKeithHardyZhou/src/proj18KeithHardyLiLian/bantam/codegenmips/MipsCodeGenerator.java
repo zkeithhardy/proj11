@@ -187,7 +187,6 @@ public class MipsCodeGenerator
         for(int i = 0; i < idTable.size();i++){
             this.assemblySupport.genLabel(idTable.get(i).getName() + "_init");
             textGeneratorVisitor.generateMethodPrologue();
-            System.out.println(idTable.get(i).getName());
             if(idTable.get(i).getName().equals("Object")||idTable.get(i).getName().equals("String")||idTable.get(i).getName().equals("TextIO")
                     ||idTable.get(i).getName().equals("Sys")) {
                 if(idTable.get(i).getName().equals("String") || idTable.get(i).getName().equals("Integer") || idTable.get(i).getName().equals("Boolean")){
