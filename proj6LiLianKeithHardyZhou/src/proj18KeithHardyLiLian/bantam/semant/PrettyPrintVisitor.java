@@ -10,10 +10,21 @@ import java.util.Iterator;
 public class PrettyPrintVisitor extends Visitor{
 
     private String sourceCode;
+    //pretty printed source code
     private int indentLevel;
+    //level of indentation
     private boolean inConditionBraces;
+    //boolean that indicates if the node is in condition braces
     private HashMap<Integer,String> commentMap;
+    //map of comment string with their line number 
 
+    /**
+     * pretty print the original code from the ASTroot node and
+     * return the resulted code as a long string
+     * @param node the root node
+     * @param commentMap map of comments passed from the scanner
+     * @return
+     */
     public String sourceCode(ASTNode node,HashMap<Integer,String> commentMap){
         this.sourceCode= "";
         this.indentLevel =0;
@@ -23,6 +34,10 @@ public class PrettyPrintVisitor extends Visitor{
         return this.sourceCode;
     }
 
+    /**
+     * print the indent level, if the node is in condition braces,
+     * we shall not print the scope indent
+     */
     private void printScopeIndent(){
         if (!this.inConditionBraces) {
             for (int i = 0; i < indentLevel; i++) {
@@ -773,7 +788,10 @@ public class PrettyPrintVisitor extends Visitor{
         return null;
     }
 
-
+    /**
+     * Iterate over the commentMap and insert comments in a pretty printed version
+     * @param linenum the line of code we are interested in
+     */
     public void checkForComment(int linenum){
         Iterator keyItr = this.commentMap.keySet().iterator();
         ArrayList<Integer> usedComments = new ArrayList<>();
