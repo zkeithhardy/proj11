@@ -9,14 +9,17 @@ class Main {
 	a = new A();
 	a.dale();
 	var b = new B();
-	var k = new Integer();
-	k.setValue(8);
-	var t = new Integer();
-	t.setValue(8);
-	var q = t.equals(k);
-//	var io = new TextIO();
+	var k = new Boolean();
+	k.setValue(true);
+	var t = new Boolean();
+	t.setValue(false);
+	var q = t.toString();
+	var x = k.toString();
+	var io = new TextIO();
+	
 //	var ak = a.k;
-//	io.putString(ak); //works
+	io.putString(x);
+	io.putString(q); //works
 //	io.putString(a.k); //doesn't work
 
 
