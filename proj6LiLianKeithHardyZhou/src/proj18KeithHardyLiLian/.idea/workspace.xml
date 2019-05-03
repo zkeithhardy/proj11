@@ -289,8 +289,8 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="proj17" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="proj17KeithHardyLiLian.Main" />
+    <configuration name="proj18" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="proj18KeithHardyLiLian.Main" />
       <module name="proj17LiLianKeithHardyZhou" />
       <method v="2">
         <option name="Make" enabled="true" />
