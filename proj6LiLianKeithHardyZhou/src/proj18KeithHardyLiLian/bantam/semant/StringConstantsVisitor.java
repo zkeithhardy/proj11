@@ -32,6 +32,10 @@ public class StringConstantsVisitor extends Visitor {
     public Map<String, String> getStringConstants(Program ast) {
         numStringConsts = 0;
         stringConstMap = new HashMap<>();
+        // put the filename in
+        Class_ oneClassInFile = (Class_)ast.getClassList().get(0);
+        stringConstMap.put(oneClassInFile.getFilename(), "StringConst_0");
+        numStringConsts++;
         ast.accept(this);
         return stringConstMap;
     }
