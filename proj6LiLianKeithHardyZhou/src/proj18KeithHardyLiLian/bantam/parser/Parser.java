@@ -638,6 +638,8 @@ public class Parser
         }else if(this.currentToken.kind == LBRACKET){
             updateCurrentToken();
             Expr expr = this.parseExpression();
+            if(expr == null)
+                this.registerError("When parsing NewArray, index required", "Missing Token");
             this.checkToken(RBRACKET,"When parsing New, \"]\" expected");
             return astNodeBuilder.buildNewArrayExpr(this.currentToken.position,id,expr);//new NewArrayExpr(this.currentToken.position,id,expr);
         }else{

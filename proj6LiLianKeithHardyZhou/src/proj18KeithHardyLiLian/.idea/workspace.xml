@@ -55,23 +55,23 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="346" />
+          <entry key="java" value="524" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="346" />
+          <entry key="JAVA" value="524" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="asm" value="1" />
-          <entry key="java" value="14" />
+          <entry key="java" value="18" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="14" />
+          <entry key="JAVA" value="18" />
           <entry key="PLAIN_TEXT" value="1" />
         </counts>
       </usages-collector>
@@ -94,8 +94,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bantam/semant/PrettyPrintVisitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
-              <caret line="195" column="66" selection-start-line="195" selection-start-column="66" selection-end-line="195" selection-end-column="66" />
+            <state relative-caret-position="516">
+              <caret line="214" column="66" selection-start-line="214" selection-start-column="66" selection-end-line="214" selection-end-column="66" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -115,8 +115,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bantam/codegenmips/MipsCodeGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="262">
-              <caret line="148" column="80" lean-forward="true" selection-start-line="148" selection-start-column="80" selection-end-line="148" selection-end-column="80" />
+            <state relative-caret-position="-561">
+              <caret line="229" column="20" selection-start-line="229" selection-start-column="13" selection-end-line="229" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -124,29 +124,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bantam/semant/StringConstantsVisitor.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="209">
-              <caret line="40" column="8" selection-start-line="40" selection-start-column="8" selection-end-line="40" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bantam/ast/Class_.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
-              <caret line="49" selection-start-line="49" selection-end-line="49" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bantam/codegenmips/Minimum.asm">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="855">
-              <caret line="45" column="13" selection-start-line="45" selection-start-column="13" selection-end-line="45" selection-end-column="13" />
+              <caret line="40" selection-start-line="40" selection-end-line="40" />
             </state>
           </provider>
         </entry>
@@ -154,8 +136,123 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bantam/semant/SemanticAnalyzer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6346">
-              <caret line="368" column="49" selection-start-line="368" selection-start-column="49" selection-end-line="368" selection-end-column="49" />
+            <state relative-caret-position="308">
+              <caret line="379" column="5" lean-forward="true" selection-start-line="379" selection-start-column="5" selection-end-line="379" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bantam/semant/ClassNameVisitor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="185">
+              <caret line="32" column="49" lean-forward="true" selection-start-line="32" selection-start-column="49" selection-end-line="32" selection-end-column="49" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/bantam/semant/TypeCheckerVisitor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="109">
+              <caret line="494" column="36" lean-forward="true" selection-start-line="494" selection-start-column="36" selection-end-line="494" selection-end-column="36" />
+              <folding>
+                <element signature="docComment;class#TypeCheckerVisitor#0" />
+                <element signature="e#1000#1293#0" />
+                <element signature="e#1683#1964#0" />
+                <element signature="e#1683#2847#0" />
+                <element signature="e#2966#3202#0" />
+                <element signature="e#3209#3414#0" />
+                <element signature="e#3420#3533#0" />
+                <element signature="e#3420#3889#0" />
+                <element signature="e#3895#4008#0" />
+                <element signature="e#3895#5049#0" />
+                <element signature="e#4055#4136#0" />
+                <element signature="e#4895#4971#0" />
+                <element signature="e#5055#5170#0" />
+                <element signature="e#5055#6403#0" />
+                <element signature="e#6409#6524#0" />
+                <element signature="e#6409#6912#0" />
+                <element signature="e#6918#7063#0" />
+                <element signature="e#6918#8281#0" />
+                <element signature="e#8287#8415#0" />
+                <element signature="e#8287#9107#0" />
+                <element signature="e#9113#9246#0" />
+                <element signature="e#9113#9765#0" />
+                <element signature="e#9771#9900#0" />
+                <element signature="e#9771#10687#0" />
+                <element signature="e#10693#10826#0" />
+                <element signature="e#10693#11025#0" />
+                <element signature="e#11031#11164#0" />
+                <element signature="e#11031#11355#0" />
+                <element signature="e#11361#11496#0" />
+                <element signature="e#11361#12285#0" />
+                <element signature="e#12291#12439#0" />
+                <element signature="e#12291#14766#0" />
+                <element signature="e#13541#13593#0" />
+                <element signature="e#14772#14994#0" />
+                <element signature="e#14772#15240#0" />
+                <element signature="e#15246#15383#0" />
+                <element signature="e#15246#15705#0" />
+                <element signature="e#15711#15849#0" />
+                <element signature="e#15711#16217#0" />
+                <element signature="e#16223#16373#0" />
+                <element signature="e#16828#16981#0" />
+                <element signature="e#16828#17723#0" />
+                <element signature="e#17729#17869#0" />
+                <element signature="e#18602#18755#0" />
+                <element signature="e#18602#21418#0" />
+                <element signature="e#21424#21589#0" />
+                <element signature="e#21424#24247#0" />
+                <element signature="e#24253#24401#0" />
+                <element signature="e#24253#27143#0" />
+                <element signature="e#25658#25696#0" />
+                <element signature="e#27149#27379#0" />
+                <element signature="e#27385#27528#0" />
+                <element signature="e#28601#28781#0" />
+                <element signature="e#28601#29285#0" />
+                <element signature="e#29291#29479#0" />
+                <element signature="e#29291#29840#0" />
+                <element signature="e#29846#30032#0" />
+                <element signature="e#29846#30368#0" />
+                <element signature="e#30374#30676#0" />
+                <element signature="e#30682#30892#0" />
+                <element signature="e#30682#31231#0" />
+                <element signature="e#31237#31429#0" />
+                <element signature="e#31237#31765#0" />
+                <element signature="e#31771#31985#0" />
+                <element signature="e#31771#32324#0" />
+                <element signature="e#32330#32506#0" />
+                <element signature="e#32330#32829#0" />
+                <element signature="e#32835#33013#0" />
+                <element signature="e#32835#33341#0" />
+                <element signature="e#33347#33525#0" />
+                <element signature="e#33347#33854#0" />
+                <element signature="e#33860#34040#0" />
+                <element signature="e#33860#34367#0" />
+                <element signature="e#34373#34555#0" />
+                <element signature="e#34373#34894#0" />
+                <element signature="e#34900#35068#0" />
+                <element signature="e#34900#35425#0" />
+                <element signature="e#35431#35597#0" />
+                <element signature="e#35431#35953#0" />
+                <element signature="e#35959#36119#0" />
+                <element signature="e#35959#36453#0" />
+                <element signature="e#36459#36609#0" />
+                <element signature="e#36459#37012#0" />
+                <element signature="e#37018#37180#0" />
+                <element signature="e#37758#37920#0" />
+                <element signature="e#37758#38259#0" />
+                <element signature="e#38265#38422#0" />
+                <element signature="e#38265#38527#0" />
+                <element signature="e#38533#38697#0" />
+                <element signature="e#38533#38810#0" />
+                <element signature="e#38816#38978#0" />
+                <element signature="e#38816#39089#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -163,17 +260,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bantam/lexer/Scanner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4427">
+            <state relative-caret-position="363">
               <caret line="246" column="28" selection-start-line="246" selection-start-column="22" selection-end-line="246" selection-end-column="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bantam/parser/Parser.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2831">
-              <caret line="172" selection-start-line="172" selection-end-line="172" />
             </state>
           </provider>
         </entry>
@@ -189,29 +277,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>field</find>
-      <find>method</find>
-      <find>formal</find>
-      <find>system.ou</find>
-      <find>dispatch</find>
-      <find>unaryincr</find>
-      <find>actual</find>
-      <find>exprlist</find>
-      <find>formallist</find>
-      <find>syscall</find>
-      <find>varexpr</find>
-      <find>newexpr</find>
-      <find>case where the referen</find>
-      <find>case where the reference object is null</find>
-      <find>epilo</find>
-      <find>putString</find>
-      <find>dispatchexpr</find>
-      <find>null_po</find>
-      <find>error_handl</find>
-      <find>divide_ze</find>
-      <find>a1</find>
-      <find>gensys</find>
-      <find>getlabel</find>
       <find>labelnum</find>
       <find>mipssup</find>
       <find>stringname</find>
@@ -219,6 +284,29 @@
       <find>genasci</find>
       <find>error</find>
       <find>compiled</find>
+      <find>array</find>
+      <find>c</find>
+      <find>inheritance</find>
+      <find>inherit</find>
+      <find>arrayex</find>
+      <find>newar</find>
+      <find>parseand</find>
+      <find>parseOperator</find>
+      <find>parseexpre</find>
+      <find>parseexpression</find>
+      <find>parseOrExpr</find>
+      <find>parseAndExpr</find>
+      <find>parseEqualityExpr</find>
+      <find>parseRelationalExpr</find>
+      <find>parseAddExpr</find>
+      <find>parseMultExpr</find>
+      <find>parseNewCastOrUnary</find>
+      <find>parseUnaryPrefix</find>
+      <find>parseUnaryPostfix</find>
+      <find>parsePrimary</find>
+      <find>newarray</find>
+      <find>getclassname</find>
+      <find>caste</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -228,12 +316,15 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/test/test.btm" />
-        <option value="$PROJECT_DIR$/bantam/semant/SemanticAnalyzer.java" />
         <option value="$PROJECT_DIR$/bantam/codegenmips/TextGeneratorVisitor.java" />
         <option value="$PROJECT_DIR$/bantam/semant/PrettyPrintVisitor.java" />
         <option value="$PROJECT_DIR$/bantam/codegenmips/MipsCodeGenerator.java" />
         <option value="$PROJECT_DIR$/bantam/codegenmips/MipsSupport.java" />
         <option value="$PROJECT_DIR$/bantam/semant/StringConstantsVisitor.java" />
+        <option value="$PROJECT_DIR$/bantam/semant/SemanticAnalyzer.java" />
+        <option value="$PROJECT_DIR$/bantam/semant/ClassNameVisitor.java" />
+        <option value="$PROJECT_DIR$/bantam/parser/Parser.java" />
+        <option value="$PROJECT_DIR$/bantam/semant/TypeCheckerVisitor.java" />
       </list>
     </option>
   </component>
@@ -305,6 +396,14 @@
               <item name="proj18KeithHardyLiLian" type="462c0819:PsiDirectoryNode" />
               <item name="bantam" type="462c0819:PsiDirectoryNode" />
               <item name="codegenmips" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="proj17KeithHardyLiLian" type="b2602c69:ProjectViewProjectNode" />
+              <item name="proj6LiLianKeithHardyZhou" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="proj18KeithHardyLiLian" type="462c0819:PsiDirectoryNode" />
+              <item name="bantam" type="462c0819:PsiDirectoryNode" />
+              <item name="parser" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="proj17KeithHardyLiLian" type="b2602c69:ProjectViewProjectNode" />
@@ -509,7 +608,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4979757" weight="0.1740675" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.6396761" visible="true" weight="0.19715808" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.6396761" visible="true" weight="0.1793961" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -561,13 +660,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/bantam/semant/ClassNameVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bantam/semant/NumFieldsVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1026">
@@ -744,110 +836,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bantam/semant/TypeCheckerVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="986" column="44" lean-forward="true" selection-start-line="986" selection-start-column="44" selection-end-line="986" selection-end-column="44" />
-          <folding>
-            <element signature="docComment;class#TypeCheckerVisitor#0" />
-            <element signature="e#1000#1293#0" />
-            <element signature="e#1683#1964#0" />
-            <element signature="e#1683#2847#0" />
-            <element signature="e#2966#3202#0" />
-            <element signature="e#3209#3414#0" />
-            <element signature="e#3420#3533#0" />
-            <element signature="e#3420#3889#0" />
-            <element signature="e#3895#4008#0" />
-            <element signature="e#3895#5049#0" />
-            <element signature="e#4055#4136#0" />
-            <element signature="e#4895#4971#0" />
-            <element signature="e#5055#5170#0" />
-            <element signature="e#5055#6403#0" />
-            <element signature="e#6409#6524#0" />
-            <element signature="e#6409#6912#0" />
-            <element signature="e#6918#7063#0" />
-            <element signature="e#6918#8281#0" />
-            <element signature="e#8287#8415#0" />
-            <element signature="e#8287#9107#0" />
-            <element signature="e#9113#9246#0" />
-            <element signature="e#9113#9765#0" />
-            <element signature="e#9771#9900#0" />
-            <element signature="e#9771#10687#0" />
-            <element signature="e#10693#10826#0" />
-            <element signature="e#10693#11025#0" />
-            <element signature="e#11031#11164#0" />
-            <element signature="e#11031#11355#0" />
-            <element signature="e#11361#11496#0" />
-            <element signature="e#11361#12285#0" />
-            <element signature="e#12291#12439#0" />
-            <element signature="e#12291#14766#0" />
-            <element signature="e#13541#13593#0" />
-            <element signature="e#14772#14994#0" />
-            <element signature="e#14772#15240#0" />
-            <element signature="e#15246#15383#0" />
-            <element signature="e#15246#15705#0" />
-            <element signature="e#15711#15849#0" />
-            <element signature="e#15711#16217#0" />
-            <element signature="e#16223#16373#0" />
-            <element signature="e#16223#16822#0" />
-            <element signature="e#16828#16981#0" />
-            <element signature="e#16828#17723#0" />
-            <element signature="e#17729#17869#0" />
-            <element signature="e#17729#18596#0" />
-            <element signature="e#18602#18755#0" />
-            <element signature="e#18602#21418#0" />
-            <element signature="e#21424#21589#0" />
-            <element signature="e#21424#24247#0" />
-            <element signature="e#24253#24401#0" />
-            <element signature="e#24253#27143#0" />
-            <element signature="e#25658#25696#0" />
-            <element signature="e#27149#27379#0" />
-            <element signature="e#27385#27528#0" />
-            <element signature="e#27385#28595#0" />
-            <element signature="e#28601#28781#0" />
-            <element signature="e#28601#29285#0" />
-            <element signature="e#29291#29479#0" />
-            <element signature="e#29291#29840#0" />
-            <element signature="e#29846#30032#0" />
-            <element signature="e#29846#30368#0" />
-            <element signature="e#30374#30676#0" />
-            <element signature="e#30682#30892#0" />
-            <element signature="e#30682#31231#0" />
-            <element signature="e#31237#31429#0" />
-            <element signature="e#31237#31765#0" />
-            <element signature="e#31771#31985#0" />
-            <element signature="e#31771#32324#0" />
-            <element signature="e#32330#32506#0" />
-            <element signature="e#32330#32829#0" />
-            <element signature="e#32835#33013#0" />
-            <element signature="e#32835#33341#0" />
-            <element signature="e#33347#33525#0" />
-            <element signature="e#33347#33854#0" />
-            <element signature="e#33860#34040#0" />
-            <element signature="e#33860#34367#0" />
-            <element signature="e#34373#34555#0" />
-            <element signature="e#34373#34894#0" />
-            <element signature="e#34900#35068#0" />
-            <element signature="e#34900#35425#0" />
-            <element signature="e#35431#35597#0" />
-            <element signature="e#35431#35953#0" />
-            <element signature="e#35959#36119#0" />
-            <element signature="e#35959#36453#0" />
-            <element signature="e#36459#36609#0" />
-            <element signature="e#36459#37012#0" />
-            <element signature="e#37018#37180#0" />
-            <element signature="e#37758#37920#0" />
-            <element signature="e#37758#38259#0" />
-            <element signature="e#38265#38422#0" />
-            <element signature="e#38265#38527#0" />
-            <element signature="e#38533#38697#0" />
-            <element signature="e#38533#38810#0" />
-            <element signature="e#38816#38978#0" />
-            <element signature="e#38816#39089#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bantam/visitor/Visitor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="111">
@@ -942,27 +930,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bantam/semant/SemanticAnalyzer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6346">
-          <caret line="368" column="49" selection-start-line="368" selection-start-column="49" selection-end-line="368" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bantam/lexer/Scanner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4427">
-          <caret line="246" column="28" selection-start-line="246" selection-start-column="22" selection-end-line="246" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bantam/parser/Parser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2831">
-          <caret line="172" selection-start-line="172" selection-end-line="172" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bantam/codegenmips/TextGeneratorVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="431">
@@ -975,8 +942,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/bantam/semant/PrettyPrintVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="195" column="66" selection-start-line="195" selection-start-column="66" selection-end-line="195" selection-end-column="66" />
+        <state relative-caret-position="516">
+          <caret line="214" column="66" selection-start-line="214" selection-start-column="66" selection-end-line="214" selection-end-column="66" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -990,20 +957,152 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bantam/codegenmips/MipsCodeGenerator.java">
+    <entry file="file://$PROJECT_DIR$/bantam/lexer/Scanner.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="148" column="80" lean-forward="true" selection-start-line="148" selection-start-column="80" selection-end-line="148" selection-end-column="80" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="363">
+          <caret line="246" column="28" selection-start-line="246" selection-start-column="22" selection-end-line="246" selection-end-column="28" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bantam/semant/StringConstantsVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
-          <caret line="40" column="8" selection-start-line="40" selection-start-column="8" selection-end-line="40" selection-end-column="8" />
+          <caret line="40" selection-start-line="40" selection-end-line="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bantam/codegenmips/MipsCodeGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-561">
+          <caret line="229" column="20" selection-start-line="229" selection-start-column="13" selection-end-line="229" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bantam/semant/SemanticAnalyzer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="379" column="5" lean-forward="true" selection-start-line="379" selection-start-column="5" selection-end-line="379" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bantam/parser/Parser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="596" column="70" lean-forward="true" selection-start-line="596" selection-start-column="70" selection-end-line="596" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bantam/semant/ClassNameVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="32" column="49" lean-forward="true" selection-start-line="32" selection-start-column="49" selection-end-line="32" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bantam/semant/TypeCheckerVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="109">
+          <caret line="494" column="36" lean-forward="true" selection-start-line="494" selection-start-column="36" selection-end-line="494" selection-end-column="36" />
+          <folding>
+            <element signature="docComment;class#TypeCheckerVisitor#0" />
+            <element signature="e#1000#1293#0" />
+            <element signature="e#1683#1964#0" />
+            <element signature="e#1683#2847#0" />
+            <element signature="e#2966#3202#0" />
+            <element signature="e#3209#3414#0" />
+            <element signature="e#3420#3533#0" />
+            <element signature="e#3420#3889#0" />
+            <element signature="e#3895#4008#0" />
+            <element signature="e#3895#5049#0" />
+            <element signature="e#4055#4136#0" />
+            <element signature="e#4895#4971#0" />
+            <element signature="e#5055#5170#0" />
+            <element signature="e#5055#6403#0" />
+            <element signature="e#6409#6524#0" />
+            <element signature="e#6409#6912#0" />
+            <element signature="e#6918#7063#0" />
+            <element signature="e#6918#8281#0" />
+            <element signature="e#8287#8415#0" />
+            <element signature="e#8287#9107#0" />
+            <element signature="e#9113#9246#0" />
+            <element signature="e#9113#9765#0" />
+            <element signature="e#9771#9900#0" />
+            <element signature="e#9771#10687#0" />
+            <element signature="e#10693#10826#0" />
+            <element signature="e#10693#11025#0" />
+            <element signature="e#11031#11164#0" />
+            <element signature="e#11031#11355#0" />
+            <element signature="e#11361#11496#0" />
+            <element signature="e#11361#12285#0" />
+            <element signature="e#12291#12439#0" />
+            <element signature="e#12291#14766#0" />
+            <element signature="e#13541#13593#0" />
+            <element signature="e#14772#14994#0" />
+            <element signature="e#14772#15240#0" />
+            <element signature="e#15246#15383#0" />
+            <element signature="e#15246#15705#0" />
+            <element signature="e#15711#15849#0" />
+            <element signature="e#15711#16217#0" />
+            <element signature="e#16223#16373#0" />
+            <element signature="e#16828#16981#0" />
+            <element signature="e#16828#17723#0" />
+            <element signature="e#17729#17869#0" />
+            <element signature="e#18602#18755#0" />
+            <element signature="e#18602#21418#0" />
+            <element signature="e#21424#21589#0" />
+            <element signature="e#21424#24247#0" />
+            <element signature="e#24253#24401#0" />
+            <element signature="e#24253#27143#0" />
+            <element signature="e#25658#25696#0" />
+            <element signature="e#27149#27379#0" />
+            <element signature="e#27385#27528#0" />
+            <element signature="e#28601#28781#0" />
+            <element signature="e#28601#29285#0" />
+            <element signature="e#29291#29479#0" />
+            <element signature="e#29291#29840#0" />
+            <element signature="e#29846#30032#0" />
+            <element signature="e#29846#30368#0" />
+            <element signature="e#30374#30676#0" />
+            <element signature="e#30682#30892#0" />
+            <element signature="e#30682#31231#0" />
+            <element signature="e#31237#31429#0" />
+            <element signature="e#31237#31765#0" />
+            <element signature="e#31771#31985#0" />
+            <element signature="e#31771#32324#0" />
+            <element signature="e#32330#32506#0" />
+            <element signature="e#32330#32829#0" />
+            <element signature="e#32835#33013#0" />
+            <element signature="e#32835#33341#0" />
+            <element signature="e#33347#33525#0" />
+            <element signature="e#33347#33854#0" />
+            <element signature="e#33860#34040#0" />
+            <element signature="e#33860#34367#0" />
+            <element signature="e#34373#34555#0" />
+            <element signature="e#34373#34894#0" />
+            <element signature="e#34900#35068#0" />
+            <element signature="e#34900#35425#0" />
+            <element signature="e#35431#35597#0" />
+            <element signature="e#35431#35953#0" />
+            <element signature="e#35959#36119#0" />
+            <element signature="e#35959#36453#0" />
+            <element signature="e#36459#36609#0" />
+            <element signature="e#36459#37012#0" />
+            <element signature="e#37018#37180#0" />
+            <element signature="e#37758#37920#0" />
+            <element signature="e#37758#38259#0" />
+            <element signature="e#38265#38422#0" />
+            <element signature="e#38265#38527#0" />
+            <element signature="e#38533#38697#0" />
+            <element signature="e#38533#38810#0" />
+            <element signature="e#38816#38978#0" />
+            <element signature="e#38816#39089#0" />
+          </folding>
         </state>
       </provider>
     </entry>

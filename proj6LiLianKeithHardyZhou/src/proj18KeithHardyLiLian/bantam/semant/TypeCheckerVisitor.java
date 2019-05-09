@@ -13,6 +13,7 @@ import proj18KeithHardyLiLian.bantam.util.Error;
 import proj18KeithHardyLiLian.bantam.util.SymbolTable;
 import proj18KeithHardyLiLian.bantam.visitor.Visitor;
 
+import java.sql.SQLSyntaxErrorException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
@@ -488,7 +489,8 @@ public class TypeCheckerVisitor extends Visitor
      * @return the type of the expression
      */
     public Object visit(CastExpr node) {
-        if (currentClass.lookupClass(node.getType()) == null) {
+        if (currentClass.lookupClass(node.getType()) == null
+                && currentClass.lookupClass(node.getType().substring(0, (node.getType().length())-2))==null) {
             registerError(node,"The type " + node.getType() + " does not exist.");
         }
         node.getExpr().accept(this);
