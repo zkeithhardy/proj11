@@ -1,5 +1,5 @@
 #Authors: Zeb Keith-Hardy, Michael Li, Iris Lian
-#Date: 2019-05-05
+#Date: 2019-05-08
 #Compiled From Source: test.btm
 	.data
 	.globl	gc_flag
@@ -90,21 +90,10 @@ StringConst_1:
 	.align	2
 StringConst_0:
 	.word	1		# String Identifier
-	.word	116		# Size of Object in Bytes
+	.word	28		# Size of Object in Bytes
 	.word	String_dispatch_table
-	.word	99
-	.ascii	"C:"
-	.ascii	"sers"
-	.ascii	"risLian"
-	.ascii	"esktop"
-	.ascii	"roj11"
-	.ascii	"roj6LiLianKeithHardyZhou"
-	.ascii	"rc"
-	.ascii	"roj18KeithHardyLiLian"
-	.byte	0x9
-	.ascii	"est"
-	.byte	0x9
-	.ascii	"est.btm"
+	.word	8
+	.ascii	"test.btm"
 	.byte	0
 	.align	2
 

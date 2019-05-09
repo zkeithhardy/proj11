@@ -192,8 +192,8 @@ public class PrettyPrintVisitor extends Visitor{
         this.indentLevel -= 1;
         this.printScopeIndent();
         this.sourceCode += "}\n";
-        this.checkForComment(node.getElseStmt().getLineNum());
         if (node.getElseStmt() != null) {
+            this.checkForComment(node.getElseStmt().getLineNum());
             this.printScopeIndent();
             this.sourceCode += "else {\n";
             this.indentLevel += 1;
