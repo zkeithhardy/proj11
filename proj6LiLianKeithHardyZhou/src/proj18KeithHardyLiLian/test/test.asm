@@ -1,5 +1,5 @@
 #Authors: Zeb Keith-Hardy, Michael Li, Iris Lian
-#Date: 2019-05-03
+#Date: 2019-05-08
 #Compiled From Source: test.btm
 	.data
 	.globl	gc_flag
@@ -80,12 +80,20 @@ Class_6:
 	.ascii	"Main"
 	.byte	0
 	.align	2
-StringConst_0:
+StringConst_1:
 	.word	1		# String Identifier
 	.word	24		# Size of Object in Bytes
 	.word	String_dispatch_table
 	.word	4
 	.ascii	"In A"
+	.byte	0
+	.align	2
+StringConst_0:
+	.word	1		# String Identifier
+	.word	28		# Size of Object in Bytes
+	.word	String_dispatch_table
+	.word	8
+	.ascii	"test.btm"
 	.byte	0
 	.align	2
 
@@ -404,8 +412,8 @@ A_init:
 	sw $v0 16($a0)
 	# store the field 16 away from $a0 to $v0
 	sw $v0 16($a0)
-	# constant string expression: load StringConst_0 to $v0
-	la $v0 StringConst_0
+	# constant string expression: load StringConst_1 to $v0
+	la $v0 StringConst_1
 	# store the field 20 away from $a0 to $v0
 	sw $v0 20($a0)
 	# store the field 20 away from $a0 to $v0
@@ -713,337 +721,40 @@ Main.main:
 	sub $sp $sp 4
 	# store $a0 to $sp
 	sw $a0 0($sp)
-	# subtract 28 from $sp and store the result to $fp
-	sub $fp $sp 28
+	# subtract 4 from $sp and store the result to $fp
+	sub $fp $sp 4
 	# move $fp to $sp
 	move $sp $fp
 	# End Prologue
-	# load the address of Boolean_template to $a0
-	la $a0 Boolean_template
-	# jump to Object.clone
-	jal Object.clone
-	# move $v0 to $a0
-	move $a0 $v0
-	# jump to Boolean_init
-	jal Boolean_init
-	# load (28)$fp to $a0
-	lw $a0 28($fp)
+	# gen left side of expression
+	# constant int expression: load 1 to $v0
+	li $v0 1
+	# store left expression on stack
+	sub $sp $sp 4
+	sw $v0 0($sp)
+	# gen right side of expression
+	# constant int expression: load 0 to $v0
+	li $v0 0
+	# load left expression on stack
+	lw $v1 0($sp)
+	# increment sp by 4
+	add $sp $sp 4
+	# check for divide by zero error
+	beq $zero $v0 label0
+	# divide left and right sides of expression
+	div $v0 $v1 $v0
+	# branch to afterError
+	b label1
+label0:
+	li $a1 9
+	la $a2 StringConst_0
+	jal _divide_zero_error
+label1:
 	# store $v0 to (0)$fp
 	sw $v0 0($fp)
-	# var expression
-	# subtract stack pointer with 4
-	sub $sp $sp 4
-	# save value in $a0 to stack pointer with 0 offset
-	sw $a0 0($sp)
-	# accept the reference object and save its location $v0
-	# case where the reference object is null
-	# load (0)$fp to $v0 
-	lw $v0 0($fp)
-	lw $a0 0($sp)
-	add $sp $sp 4
-	# move $v0 to $a0
-	move $a0 $v0
-	# load (8)$v0 to $v0
-	lw $v0 8($v0)
-	# load method address
-	# load (16)$v0 to $a1
-	lw $a1 16($v0)
-	# constant boolean expression
-	# load -1 to $v0 (true)
-	li $v0 -1
-	# save parameters on stack
-	# subtract 4 from $sp
-	sub $sp $sp 4
-	# store $v0 to $sp
-	sw $v0 0($sp)
-	# jump to $a1
-	jalr $a1
-	# load (0)$fp to $a0
-	lw $a0 0($fp)
-	# load the address of Boolean_template to $a0
-	la $a0 Boolean_template
-	# jump to Object.clone
-	jal Object.clone
-	# move $v0 to $a0
-	move $a0 $v0
-	# jump to Boolean_init
-	jal Boolean_init
-	# load (28)$fp to $a0
-	lw $a0 28($fp)
-	# store $v0 to (4)$fp
-	sw $v0 4($fp)
-	# var expression
-	# subtract stack pointer with 4
-	sub $sp $sp 4
-	# save value in $a0 to stack pointer with 0 offset
-	sw $a0 0($sp)
-	# accept the reference object and save its location $v0
-	# case where the reference object is null
-	# load (4)$fp to $v0 
-	lw $v0 4($fp)
-	lw $a0 0($sp)
-	add $sp $sp 4
-	# move $v0 to $a0
-	move $a0 $v0
-	# load (8)$v0 to $v0
-	lw $v0 8($v0)
-	# load method address
-	# load (16)$v0 to $a1
-	lw $a1 16($v0)
-	# constant boolean expression
-	# load 0 to $v0 (false)
-	li $v0 0
-	# save parameters on stack
-	# subtract 4 from $sp
-	sub $sp $sp 4
-	# store $v0 to $sp
-	sw $v0 0($sp)
-	# jump to $a1
-	jalr $a1
-	# load (0)$fp to $a0
-	lw $a0 0($fp)
-	# var expression
-	# subtract stack pointer with 4
-	sub $sp $sp 4
-	# save value in $a0 to stack pointer with 0 offset
-	sw $a0 0($sp)
-	# accept the reference object and save its location $v0
-	# case where the reference object is null
-	# load (4)$fp to $v0 
-	lw $v0 4($fp)
-	lw $a0 0($sp)
-	add $sp $sp 4
-	# move $v0 to $a0
-	move $a0 $v0
-	# load (8)$v0 to $v0
-	lw $v0 8($v0)
-	# load method address
-	# load (8)$v0 to $a1
-	lw $a1 8($v0)
-	# jump to $a1
-	jalr $a1
-	# load (0)$fp to $a0
-	lw $a0 0($fp)
-	# store $v0 to (8)$fp
-	sw $v0 8($fp)
-	# var expression
-	# subtract stack pointer with 4
-	sub $sp $sp 4
-	# save value in $a0 to stack pointer with 0 offset
-	sw $a0 0($sp)
-	# accept the reference object and save its location $v0
-	# case where the reference object is null
-	# load (0)$fp to $v0 
-	lw $v0 0($fp)
-	lw $a0 0($sp)
-	add $sp $sp 4
-	# move $v0 to $a0
-	move $a0 $v0
-	# load (8)$v0 to $v0
-	lw $v0 8($v0)
-	# load method address
-	# load (8)$v0 to $a1
-	lw $a1 8($v0)
-	# jump to $a1
-	jalr $a1
-	# load (0)$fp to $a0
-	lw $a0 0($fp)
-	# store $v0 to (12)$fp
-	sw $v0 12($fp)
-	# load the address of TextIO_template to $a0
-	la $a0 TextIO_template
-	# jump to Object.clone
-	jal Object.clone
-	# move $v0 to $a0
-	move $a0 $v0
-	# jump to TextIO_init
-	jal TextIO_init
-	# load (28)$fp to $a0
-	lw $a0 28($fp)
-	# store $v0 to (16)$fp
-	sw $v0 16($fp)
-	# load the address of Integer_template to $a0
-	la $a0 Integer_template
-	# jump to Object.clone
-	jal Object.clone
-	# move $v0 to $a0
-	move $a0 $v0
-	# jump to Integer_init
-	jal Integer_init
-	# load (28)$fp to $a0
-	lw $a0 28($fp)
-	# store $v0 to (20)$fp
-	sw $v0 20($fp)
-	# var expression
-	# subtract stack pointer with 4
-	sub $sp $sp 4
-	# save value in $a0 to stack pointer with 0 offset
-	sw $a0 0($sp)
-	# accept the reference object and save its location $v0
-	# case where the reference object is null
-	# load (20)$fp to $v0 
-	lw $v0 20($fp)
-	lw $a0 0($sp)
-	add $sp $sp 4
-	# move $v0 to $a0
-	move $a0 $v0
-	# load (8)$v0 to $v0
-	lw $v0 8($v0)
-	# load method address
-	# load (16)$v0 to $a1
-	lw $a1 16($v0)
-	# constant int expression: load 11 to $v0
-	li $v0 11
-	# save parameters on stack
-	# subtract 4 from $sp
-	sub $sp $sp 4
-	# store $v0 to $sp
-	sw $v0 0($sp)
-	# jump to $a1
-	jalr $a1
-	# load (0)$fp to $a0
-	lw $a0 0($fp)
-	# var expression
-	# subtract stack pointer with 4
-	sub $sp $sp 4
-	# save value in $a0 to stack pointer with 0 offset
-	sw $a0 0($sp)
-	# accept the reference object and save its location $v0
-	# case where the reference object is null
-	# load (20)$fp to $v0 
-	lw $v0 20($fp)
-	lw $a0 0($sp)
-	add $sp $sp 4
-	# move $v0 to $a0
-	move $a0 $v0
-	# load (8)$v0 to $v0
-	lw $v0 8($v0)
-	# load method address
-	# load (8)$v0 to $a1
-	lw $a1 8($v0)
-	# jump to $a1
-	jalr $a1
-	# load (0)$fp to $a0
-	lw $a0 0($fp)
-	# store $v0 to (24)$fp
-	sw $v0 24($fp)
-	# var expression
-	# subtract stack pointer with 4
-	sub $sp $sp 4
-	# save value in $a0 to stack pointer with 0 offset
-	sw $a0 0($sp)
-	# accept the reference object and save its location $v0
-	# case where the reference object is null
-	# load (16)$fp to $v0 
-	lw $v0 16($fp)
-	lw $a0 0($sp)
-	add $sp $sp 4
-	# move $v0 to $a0
-	move $a0 $v0
-	# load (8)$v0 to $v0
-	lw $v0 8($v0)
-	# load method address
-	# load (40)$v0 to $a1
-	lw $a1 40($v0)
-	# var expression
-	# subtract stack pointer with 4
-	sub $sp $sp 4
-	# save value in $a0 to stack pointer with 0 offset
-	sw $a0 0($sp)
-	# accept the reference object and save its location $v0
-	# case where the reference object is null
-	# load (12)$fp to $v0 
-	lw $v0 12($fp)
-	lw $a0 0($sp)
-	add $sp $sp 4
-	# save parameters on stack
-	# subtract 4 from $sp
-	sub $sp $sp 4
-	# store $v0 to $sp
-	sw $v0 0($sp)
-	# jump to $a1
-	jalr $a1
-	# load (0)$fp to $a0
-	lw $a0 0($fp)
-	# var expression
-	# subtract stack pointer with 4
-	sub $sp $sp 4
-	# save value in $a0 to stack pointer with 0 offset
-	sw $a0 0($sp)
-	# accept the reference object and save its location $v0
-	# case where the reference object is null
-	# load (16)$fp to $v0 
-	lw $v0 16($fp)
-	lw $a0 0($sp)
-	add $sp $sp 4
-	# move $v0 to $a0
-	move $a0 $v0
-	# load (8)$v0 to $v0
-	lw $v0 8($v0)
-	# load method address
-	# load (40)$v0 to $a1
-	lw $a1 40($v0)
-	# var expression
-	# subtract stack pointer with 4
-	sub $sp $sp 4
-	# save value in $a0 to stack pointer with 0 offset
-	sw $a0 0($sp)
-	# accept the reference object and save its location $v0
-	# case where the reference object is null
-	# load (8)$fp to $v0 
-	lw $v0 8($fp)
-	lw $a0 0($sp)
-	add $sp $sp 4
-	# save parameters on stack
-	# subtract 4 from $sp
-	sub $sp $sp 4
-	# store $v0 to $sp
-	sw $v0 0($sp)
-	# jump to $a1
-	jalr $a1
-	# load (0)$fp to $a0
-	lw $a0 0($fp)
-	# var expression
-	# subtract stack pointer with 4
-	sub $sp $sp 4
-	# save value in $a0 to stack pointer with 0 offset
-	sw $a0 0($sp)
-	# accept the reference object and save its location $v0
-	# case where the reference object is null
-	# load (16)$fp to $v0 
-	lw $v0 16($fp)
-	lw $a0 0($sp)
-	add $sp $sp 4
-	# move $v0 to $a0
-	move $a0 $v0
-	# load (8)$v0 to $v0
-	lw $v0 8($v0)
-	# load method address
-	# load (40)$v0 to $a1
-	lw $a1 40($v0)
-	# var expression
-	# subtract stack pointer with 4
-	sub $sp $sp 4
-	# save value in $a0 to stack pointer with 0 offset
-	sw $a0 0($sp)
-	# accept the reference object and save its location $v0
-	# case where the reference object is null
-	# load (24)$fp to $v0 
-	lw $v0 24($fp)
-	lw $a0 0($sp)
-	add $sp $sp 4
-	# save parameters on stack
-	# subtract 4 from $sp
-	sub $sp $sp 4
-	# store $v0 to $sp
-	sw $v0 0($sp)
-	# jump to $a1
-	jalr $a1
-	# load (0)$fp to $a0
-	lw $a0 0($fp)
 	# Start Epilogue
-	# add 28 to $fp and store the result to $sp
-	add $sp $fp 28
+	# add 4 to $fp and store the result to $sp
+	add $sp $fp 4
 	# load $sp to $a0
 	lw $a0 0($sp)
 	# add 4 to $sp
@@ -1146,7 +857,7 @@ A.dale:
 	lw $a0 0($sp)
 	# add stack pointer with 4
 	add $sp $sp 4
-label0:
+label2:
 	# gen left side of expression
 	# var expression
 	# subtract stack pointer with 4
@@ -1167,8 +878,8 @@ label0:
 	# compare left and right sides of expression
 	slt $v0 $v1 $v0
 	sub $v0 $zero $v0
-	# branch to label1 if $v0 is equal to 0
-	beq $zero $v0 label1
+	# branch to label3 if $v0 is equal to 0
+	beq $zero $v0 label3
 	# constant int expression: load 11 to $v0
 	li $v0 11
 	# store $v0 to (4)$fp
@@ -1192,9 +903,9 @@ label0:
 	sw $v0 0($fp)
 	# sub 1 to $v0
 	sub $v0 $v0 1
-	# unconditional branch to label0
-	b label0
-label1:
+	# unconditional branch to label2
+	b label2
+label3:
 	# Start Epilogue
 	# add 8 to $fp and store the result to $sp
 	add $sp $fp 8

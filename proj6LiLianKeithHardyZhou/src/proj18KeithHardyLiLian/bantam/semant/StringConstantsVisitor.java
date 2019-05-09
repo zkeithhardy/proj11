@@ -13,6 +13,7 @@ import proj18KeithHardyLiLian.bantam.visitor.Visitor;
 
 import java.util.Map;
 import java.util.HashMap;
+import java.util.regex.Pattern;
 
 
 /**
@@ -32,6 +33,13 @@ public class StringConstantsVisitor extends Visitor {
     public Map<String, String> getStringConstants(Program ast) {
         numStringConsts = 0;
         stringConstMap = new HashMap<>();
+        // put the filename in
+        Class_ oneClassInFile = (Class_)ast.getClassList().get(0);
+        String pattern = Pattern.quote(System.getProperty("file.separator"));
+        String[] filename = oneClassInFile.getFilename().split(pattern);
+        stringConstMap.put(filename[filename.length-1], "StringConst_0");
+
+        numStringConsts++;
         ast.accept(this);
         return stringConstMap;
     }

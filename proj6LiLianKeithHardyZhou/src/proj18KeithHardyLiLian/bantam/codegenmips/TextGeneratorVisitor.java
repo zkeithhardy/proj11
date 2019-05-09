@@ -601,8 +601,9 @@ public class TextGeneratorVisitor extends Visitor {
             //false, handle error
             this.assemblySupport.genComment("case where the expression is not a proper subtype of target class, handle error");
             this.assemblySupport.genLabel(ifZero);
+            this.assemblySupport.genLoadImm("$a1", node.getLineNum());
+            this.assemblySupport.genLoadAddr("$a2", "StringConst_0");
             this.assemblySupport.genDirCall("_class_cast_error");
-            this.assemblySupport.genSyscall(this.assemblySupport.SYSCALL_EXIT);
             //true, bypass handle error
             this.assemblySupport.genComment("case where the expression is a proper subtype of target class");
             this.assemblySupport.genLabel(ifNotZero);
@@ -802,7 +803,7 @@ public class TextGeneratorVisitor extends Visitor {
     public Object visit(BinaryArithDivideExpr node) {
         this.genBinaryArithMips(node);
 
-        this.handleDivZeroErrAndExecute("div");
+        this.handleDivZeroErrAndExecute("div", node.getLineNum());
         return null;
     }
 
@@ -815,7 +816,7 @@ public class TextGeneratorVisitor extends Visitor {
     public Object visit(BinaryArithModulusExpr node) {
         this.genBinaryArithMips(node);
 
-        this.handleDivZeroErrAndExecute("mod");
+        this.handleDivZeroErrAndExecute("mod", node.getLineNum());
         return null;
     }
 
@@ -823,7 +824,7 @@ public class TextGeneratorVisitor extends Visitor {
      * helper function to handle _divide_zero_error based on the input string
      * @param execution the type of execution
      */
-    private void handleDivZeroErrAndExecute(String execution){
+    private void handleDivZeroErrAndExecute(String execution, int lineNum){
         String zeroError = this.assemblySupport.getLabel();
         String afterError = this.assemblySupport.getLabel();
         this.assemblySupport.genComment("check for divide by zero error");
@@ -839,8 +840,9 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genComment("branch to afterError");
         this.assemblySupport.genUncondBr(afterError);
         this.assemblySupport.genLabel(zeroError);
+        this.assemblySupport.genLoadImm("$a1", lineNum);
+        this.assemblySupport.genLoadAddr("$a2", "StringConst_0");
         this.assemblySupport.genDirCall("_divide_zero_error");
-        this.assemblySupport.genSyscall(this.assemblySupport.SYSCALL_EXIT);
         this.assemblySupport.genLabel(afterError);
     }
 
@@ -1068,8 +1070,9 @@ public class TextGeneratorVisitor extends Visitor {
             this.assemblySupport.genCondBeq("$zero", "$v0", nullError);
             this.assemblySupport.genUncondBr(afterError);
             this.assemblySupport.genLabel(nullError);
+            this.assemblySupport.genLoadImm("$a1", node.getLineNum());
+            this.assemblySupport.genLoadAddr("$a2", "StringConst_0");
             this.assemblySupport.genDirCall("_null_pointer_error");
-            this.assemblySupport.genSyscall(this.assemblySupport.SYSCALL_EXIT);
             this.assemblySupport.genLabel(afterError);
             this.assemblySupport.genComment("move $v0 to $a0");
             this.assemblySupport.genMove("$a0", "$v0");
