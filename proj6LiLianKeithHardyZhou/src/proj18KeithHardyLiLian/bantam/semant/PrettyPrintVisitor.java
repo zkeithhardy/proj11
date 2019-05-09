@@ -9,7 +9,7 @@ import java.util.Iterator;
 
 public class PrettyPrintVisitor extends Visitor{
     //pretty printed source code
-    private String sourceCode;
+    private StringBuilder sourceCode;
     //level of indentation
     private int indentLevel;
     //boolean that indicates if the node is in condition braces
@@ -25,12 +25,13 @@ public class PrettyPrintVisitor extends Visitor{
      * @return source code
      */
     public String sourceCode(ASTNode node,HashMap<Integer,String> commentMap){
-        this.sourceCode= "";
+        this.sourceCode = new StringBuilder();
         this.indentLevel =0;
         this.inConditionBraces = false;
         this.commentMap = commentMap;
         node.accept(this);
-        return this.sourceCode;
+        return this.sourceCode.toString();
+
     }
 
     /**
@@ -40,7 +41,7 @@ public class PrettyPrintVisitor extends Visitor{
     private void printScopeIndent(){
         if (!this.inConditionBraces) {
             for (int i = 0; i < indentLevel; i++) {
-                this.sourceCode += "\t";
+                this.sourceCode.append("\t");
             }
         }
     }
@@ -54,15 +55,22 @@ public class PrettyPrintVisitor extends Visitor{
         this.checkForComment(node.getLineNum());
         this.indentLevel += 1;
         if (node.getParent().equals("") ){
-            this.sourceCode= this.sourceCode + "class " +node.getName() + "{" + "\n";
+            this.sourceCode.append("class ");
+            this.sourceCode.append(node.getName());
+            this.sourceCode.append("{\n");
         }
-        else
-            this.sourceCode= this.sourceCode + "class " +node.getName() + " extends "+ node.getParent()+ "{" + "\n";
+        else{
+            this.sourceCode.append("class ");
+            this.sourceCode.append(node.getName());
+            this.sourceCode.append(" extends ");
+            this.sourceCode.append(node.getParent());
+            this.sourceCode.append("{\n");
+        }
 
         node.getMemberList().accept(this);
         this.indentLevel -= 1;
         this.printScopeIndent();
-        this.sourceCode += "}\n";
+        this.sourceCode.append("}\n");
 
         return null;
     }
@@ -77,14 +85,16 @@ public class PrettyPrintVisitor extends Visitor{
         String type = node.getType();
         String identifier = node.getName();
         this.checkForComment(node.getLineNum());
-        this.sourceCode += "\n";
+        this.sourceCode.append("\n");
         this.printScopeIndent();
-        this.sourceCode+= type + " " +identifier;
+        this.sourceCode.append(type);
+        this.sourceCode.append(" ");
+        this.sourceCode.append(identifier);
         if(node.getInit()!= null){
-            this.sourceCode += " = ";
+            this.sourceCode.append(" = ");
             node.getInit().accept(this);
         }
-        this.sourceCode+= ";\n";
+        this.sourceCode.append(";\n");
         return null;
     }
 
@@ -98,16 +108,18 @@ public class PrettyPrintVisitor extends Visitor{
         String returnType = node.getReturnType();
         String identifier = node.getName();
         this.checkForComment(node.getLineNum());
-        this.sourceCode += "\n";
+        this.sourceCode.append("\n");
         printScopeIndent();
-        this.sourceCode += returnType + " " + identifier ;
+        this.sourceCode.append(returnType);
+        this.sourceCode.append(" ");
+        this.sourceCode.append(identifier);
         node.getFormalList().accept(this);
-        this.sourceCode += "{\n";
+        this.sourceCode.append("{\n");
         this.indentLevel += 1;
         node.getStmtList().accept(this);
         this.indentLevel -= 1;
         this.printScopeIndent();
-        this.sourceCode += "}\n";
+        this.sourceCode.append("}\n");
 
         return null;
     }
@@ -119,7 +131,9 @@ public class PrettyPrintVisitor extends Visitor{
      * @return result of the visit
      */
     public Object visit(Formal node) {
-        this.sourceCode += node.getType() + " " + node.getName();
+        this.sourceCode.append(node.getType());
+        this.sourceCode.append(" ");
+        this.sourceCode.append(node.getName());
         return null;
     }
 
@@ -131,14 +145,17 @@ public class PrettyPrintVisitor extends Visitor{
      * @return result of the visit
      */
     public Object visit(FormalList node) {
-        this.sourceCode += "(";
+        this.sourceCode.append("(");
         for (Iterator it = node.iterator(); it.hasNext(); ) {
             ((Formal) it.next()).accept(this);
-            this.sourceCode += ", ";
+            this.sourceCode.append(", ");
         }
-        if(this.sourceCode.endsWith(", "))
-            this.sourceCode = this.sourceCode.substring(0,this.sourceCode.length()-2);
-        this.sourceCode += ")";
+        if(this.sourceCode.toString().endsWith(", ")) {
+            String s = this.sourceCode.toString().substring(0, this.sourceCode.toString().length() - 2);
+            this.sourceCode.delete(0,this.sourceCode.toString().length());
+            this.sourceCode.append(s);
+        }
+        this.sourceCode.append(")");
         return null;
     }
 
@@ -152,9 +169,11 @@ public class PrettyPrintVisitor extends Visitor{
         String name = node.getName();
         this.checkForComment(node.getLineNum());
         printScopeIndent();
-        this.sourceCode += "var " + name + " = ";
+        this.sourceCode.append("var ");
+        this.sourceCode.append(name);
+        this.sourceCode.append(" = ");
         node.getInit().accept(this);
-        this.sourceCode += ";\n";
+        this.sourceCode.append(";\n");
         return null;
     }
 
@@ -169,7 +188,7 @@ public class PrettyPrintVisitor extends Visitor{
         this.printScopeIndent();
         System.out.println(node.getLineNum());
         node.getExpr().accept(this);
-        this.sourceCode += ";\n";
+        this.sourceCode.append(";\n");
         return null;
     }
 
@@ -182,25 +201,25 @@ public class PrettyPrintVisitor extends Visitor{
     public Object visit(IfStmt node) {
         this.checkForComment(node.getLineNum());
         printScopeIndent();
-        this.sourceCode += "if( ";
+        this.sourceCode.append("if( ");
         this.inConditionBraces = true;
         node.getPredExpr().accept(this);
         this.inConditionBraces = false;
-        this.sourceCode += " ){\n";
+        this.sourceCode.append(" ){\n");
         this.indentLevel += 1;
         node.getThenStmt().accept(this);
         this.indentLevel -= 1;
         this.printScopeIndent();
-        this.sourceCode += "}\n";
-        this.checkForComment(node.getElseStmt().getLineNum());
+        this.sourceCode.append("}\n");
         if (node.getElseStmt() != null) {
+            this.checkForComment(node.getElseStmt().getLineNum());
             this.printScopeIndent();
-            this.sourceCode += "else {\n";
+            this.sourceCode.append("else {\n");
             this.indentLevel += 1;
             node.getElseStmt().accept(this);
             this.indentLevel -= 1;
             this.printScopeIndent();
-            this.sourceCode += "}\n";
+            this.sourceCode.append("}\n");
         }
         return null;
     }
@@ -214,16 +233,16 @@ public class PrettyPrintVisitor extends Visitor{
     public Object visit(WhileStmt node) {
         this.checkForComment(node.getLineNum());
         this.printScopeIndent();
-        this.sourceCode += "while( ";
+        this.sourceCode.append("while( ");
         this.inConditionBraces = true;
         node.getPredExpr().accept(this);
         this.inConditionBraces = false;
-        this.sourceCode += " ){\n";
+        this.sourceCode.append(" ){\n");
         this.indentLevel += 1;
         node.getBodyStmt().accept(this);
         this.indentLevel -= 1;
         this.printScopeIndent();
-        this.sourceCode += "}\n";
+        this.sourceCode.append("}\n");
         return null;
     }
 
@@ -236,26 +255,26 @@ public class PrettyPrintVisitor extends Visitor{
     public Object visit(ForStmt node) {
         this.checkForComment(node.getLineNum());
         this.printScopeIndent();
-        this.sourceCode += "for( ";
+        this.sourceCode.append("for( ");
         this.inConditionBraces = true;
         if (node.getInitExpr() != null) {
             node.getInitExpr().accept(this);
         }
-        this.sourceCode += "; ";
+        this.sourceCode.append("; ");
         if (node.getPredExpr() != null) {
             node.getPredExpr().accept(this);
         }
-        this.sourceCode += "; ";
+        this.sourceCode.append("; ");
         if (node.getUpdateExpr() != null) {
             node.getUpdateExpr().accept(this);
         }
         this.inConditionBraces = false;
-        this.sourceCode += " ){\n";
+        this.sourceCode.append(" ){\n");
         this.indentLevel += 1;
         node.getBodyStmt().accept(this);
         this.indentLevel -= 1;
         this.printScopeIndent();
-        this.sourceCode += "}\n";
+        this.sourceCode.append("}\n");
         return null;
     }
 
@@ -268,7 +287,7 @@ public class PrettyPrintVisitor extends Visitor{
     public Object visit(BreakStmt node) {
         this.checkForComment(node.getLineNum());
         printScopeIndent();
-        this.sourceCode += "break;\n";
+        this.sourceCode.append("break;\n");
         return null;
     }
 
@@ -293,12 +312,12 @@ public class PrettyPrintVisitor extends Visitor{
     public Object visit(ReturnStmt node) {
         this.checkForComment(node.getLineNum());
         printScopeIndent();
-        this.sourceCode += "return";
+        this.sourceCode.append("return");
         if (node.getExpr() != null) {
-            this.sourceCode += " ";
+            this.sourceCode.append(" ");
             node.getExpr().accept(this);
         }
-        this.sourceCode += ";\n";
+        this.sourceCode.append(";\n");
         return null;
     }
 
@@ -311,10 +330,13 @@ public class PrettyPrintVisitor extends Visitor{
     public Object visit(ExprList node) {
         for (Iterator it = node.iterator(); it.hasNext(); ){
             ((Expr) it.next()).accept(this);
-            this.sourceCode += ", ";
+            this.sourceCode.append(", ");
         }
-        if(this.sourceCode.endsWith(", "))
-            this.sourceCode = this.sourceCode.substring(0,this.sourceCode.length()-2);
+        if(this.sourceCode.toString().endsWith(", ")) {
+            String s = this.sourceCode.substring(0, this.sourceCode.length() - 2);
+            this.sourceCode.delete(0,this.sourceCode.length());
+            this.sourceCode.append(s);
+        }
         return null;
     }
 
@@ -329,16 +351,17 @@ public class PrettyPrintVisitor extends Visitor{
         if(node.getRefExpr() != null){
             if(!((node.getRefExpr() instanceof VarExpr) || (node.getRefExpr() instanceof DispatchExpr)
                     || (node.getRefExpr() instanceof ArrayExpr)))
-                this.sourceCode += "( ";
+                this.sourceCode.append("( ");
             node.getRefExpr().accept(this);
             if(!((node.getRefExpr() instanceof VarExpr) || (node.getRefExpr() instanceof DispatchExpr)
                     || (node.getRefExpr() instanceof ArrayExpr)))
-                this.sourceCode += " )";
-            this.sourceCode += ".";
+                this.sourceCode.append(" )");
+            this.sourceCode.append(".");
         }
-        this.sourceCode += node.getMethodName() + "(";
+        this.sourceCode.append(node.getMethodName());
+        this.sourceCode.append("(");
         node.getActualList().accept(this);
-        this.sourceCode += ")";
+        this.sourceCode.append(")");
         return null;
     }
 
@@ -349,7 +372,9 @@ public class PrettyPrintVisitor extends Visitor{
      * @return result of the visit
      */
     public Object visit(NewExpr node) {
-        this.sourceCode += "new " + node.getType() +"()";
+        this.sourceCode.append("new ");
+        this.sourceCode.append(node.getType());
+        this.sourceCode.append("()");
         return null;
     }
 
@@ -360,9 +385,11 @@ public class PrettyPrintVisitor extends Visitor{
      * @return result of the visit
      */
     public Object visit(NewArrayExpr node) {
-        this.sourceCode += "new " + node.getType() + "[";
+        this.sourceCode.append("new ");
+        this.sourceCode.append(node.getType());
+        this.sourceCode.append("[");
         node.getSize().accept(this);
-        this.sourceCode += "]";
+        this.sourceCode.append("]");
         return null;
     }
 
@@ -374,7 +401,8 @@ public class PrettyPrintVisitor extends Visitor{
      */
     public Object visit(InstanceofExpr node) {
         node.getExpr().accept(this);
-        this.sourceCode += " instanceof " + node.getType()+";\n";
+        this.sourceCode.append(" instanceof ");
+        this.sourceCode.append(node.getType());
         return null;
     }
 
@@ -385,9 +413,11 @@ public class PrettyPrintVisitor extends Visitor{
      * @return result of the visit
      */
     public Object visit(CastExpr node) {
-        this.sourceCode += "cast("+ node.getType() + ",";
+        this.sourceCode.append("cast(");
+        this.sourceCode.append(node.getType());
+        this.sourceCode.append(",");
         node.getExpr().accept(this);
-        this.sourceCode += ")";
+        this.sourceCode.append(")");
         return null;
     }
 
@@ -399,9 +429,11 @@ public class PrettyPrintVisitor extends Visitor{
      */
     public Object visit(AssignExpr node) {
         if(node.getRefName()!=null){
-            this.sourceCode += node.getRefName() + ".";
+            this.sourceCode.append(node.getRefName());
+            this.sourceCode.append(".");
         }
-        this.sourceCode += node.getName() + " = ";
+        this.sourceCode.append(node.getName());
+        this.sourceCode.append(" = ");
         node.getExpr().accept(this);
         return null;
     }
@@ -414,11 +446,13 @@ public class PrettyPrintVisitor extends Visitor{
      */
     public Object visit(ArrayAssignExpr node) {
         if(node.getRefName()!=null){
-            this.sourceCode += node.getRefName() + ".";
+            this.sourceCode.append(node.getRefName());
+            this.sourceCode.append(".");
         }
-        this.sourceCode += node.getName() + "[";
+        this.sourceCode.append(node.getName());
+        this.sourceCode.append("[");
         node.getIndex().accept(this);
-        this.sourceCode += "] = ";
+        this.sourceCode.append("] = ");
         node.getExpr().accept(this);
         return null;
     }
@@ -432,7 +466,9 @@ public class PrettyPrintVisitor extends Visitor{
      */
     public Object visit(BinaryCompEqExpr node) {
         node.getLeftExpr().accept(this);
-        this.sourceCode += " "+ node.getOpName()+ " ";
+        this.sourceCode.append(" ");
+        this.sourceCode.append(node.getOpName());
+        this.sourceCode.append(" ");
         node.getRightExpr().accept(this);
         return null;
     }
@@ -445,7 +481,9 @@ public class PrettyPrintVisitor extends Visitor{
      */
     public Object visit(BinaryCompNeExpr node) {
         node.getLeftExpr().accept(this);
-        this.sourceCode += " "+ node.getOpName()+ " ";
+        this.sourceCode.append(" ");
+        this.sourceCode.append(node.getOpName());
+        this.sourceCode.append(" ");
         node.getRightExpr().accept(this);
         return null;
     }
@@ -458,7 +496,9 @@ public class PrettyPrintVisitor extends Visitor{
      */
     public Object visit(BinaryCompLeqExpr node) {
         node.getLeftExpr().accept(this);
-        this.sourceCode += " "+ node.getOpName()+ " ";
+        this.sourceCode.append(" ");
+        this.sourceCode.append(node.getOpName());
+        this.sourceCode.append(" ");
         node.getRightExpr().accept(this);
         return null;
     }
@@ -471,7 +511,9 @@ public class PrettyPrintVisitor extends Visitor{
      */
     public Object visit(BinaryCompLtExpr node) {
         node.getLeftExpr().accept(this);
-        this.sourceCode += " "+ node.getOpName()+ " ";
+        this.sourceCode.append(" ");
+        this.sourceCode.append(node.getOpName());
+        this.sourceCode.append(" ");
         node.getRightExpr().accept(this);
         return null;
     }
@@ -484,7 +526,9 @@ public class PrettyPrintVisitor extends Visitor{
      */
     public Object visit(BinaryCompGtExpr node) {
         node.getLeftExpr().accept(this);
-        this.sourceCode += " "+ node.getOpName()+ " ";
+        this.sourceCode.append(" ");
+        this.sourceCode.append(node.getOpName());
+        this.sourceCode.append(" ");
         node.getRightExpr().accept(this);
         return null;
     }
@@ -497,7 +541,9 @@ public class PrettyPrintVisitor extends Visitor{
      */
     public Object visit(BinaryCompGeqExpr node) {
         node.getLeftExpr().accept(this);
-        this.sourceCode += " "+ node.getOpName()+ " ";
+        this.sourceCode.append(" ");
+        this.sourceCode.append(node.getOpName());
+        this.sourceCode.append(" ");
         node.getRightExpr().accept(this);
         return null;
     }
@@ -510,19 +556,21 @@ public class PrettyPrintVisitor extends Visitor{
      */
     public Object visit(BinaryArithPlusExpr node) {
         if(node.getLeftExpr() instanceof BinaryArithExpr){
-            this.sourceCode += "( ";
+            this.sourceCode.append("( ");
         }
         node.getLeftExpr().accept(this);
         if(node.getLeftExpr() instanceof BinaryArithExpr){
-            this.sourceCode += " )";
+            this.sourceCode.append(" )");
         }
-        this.sourceCode += " "+ node.getOpName()+ " ";
+        this.sourceCode.append(" ");
+        this.sourceCode.append(node.getOpName());
+        this.sourceCode.append(" ");
         if(node.getRightExpr() instanceof BinaryArithExpr){
-            this.sourceCode += "( ";
+            this.sourceCode.append("( ");
         }
         node.getRightExpr().accept(this);
         if(node.getLeftExpr() instanceof BinaryArithExpr){
-            this.sourceCode += " )";
+            this.sourceCode.append(" )");
         }
         return null;
     }
@@ -535,19 +583,21 @@ public class PrettyPrintVisitor extends Visitor{
      */
     public Object visit(BinaryArithMinusExpr node) {
         if(node.getLeftExpr() instanceof BinaryArithExpr){
-            this.sourceCode += "( ";
+            this.sourceCode.append("( ");
         }
         node.getLeftExpr().accept(this);
         if(node.getLeftExpr() instanceof BinaryArithExpr){
-            this.sourceCode += " )";
+            this.sourceCode.append(" )");
         }
-        this.sourceCode += " "+ node.getOpName()+ " ";
+        this.sourceCode.append(" ");
+        this.sourceCode.append(node.getOpName());
+        this.sourceCode.append(" ");
         if(node.getRightExpr() instanceof BinaryArithExpr){
-            this.sourceCode += "( ";
+            this.sourceCode.append("( ");
         }
         node.getRightExpr().accept(this);
         if(node.getLeftExpr() instanceof BinaryArithExpr){
-            this.sourceCode += " )";
+            this.sourceCode.append(" )");
         }
         return null;
     }
@@ -560,19 +610,21 @@ public class PrettyPrintVisitor extends Visitor{
      */
     public Object visit(BinaryArithTimesExpr node) {
         if(node.getLeftExpr() instanceof BinaryArithExpr){
-            this.sourceCode += "( ";
+            this.sourceCode.append("( ");
         }
         node.getLeftExpr().accept(this);
         if(node.getLeftExpr() instanceof BinaryArithExpr){
-            this.sourceCode += " )";
+            this.sourceCode.append(" )");
         }
-        this.sourceCode += " "+ node.getOpName()+ " ";
+        this.sourceCode.append(" ");
+        this.sourceCode.append(node.getOpName());
+        this.sourceCode.append(" ");
         if(node.getRightExpr() instanceof BinaryArithExpr){
-            this.sourceCode += "( ";
+            this.sourceCode.append("( ");
         }
         node.getRightExpr().accept(this);
         if(node.getLeftExpr() instanceof BinaryArithExpr){
-            this.sourceCode += " )";
+            this.sourceCode.append(" )");
         }
         return null;
     }
@@ -585,19 +637,21 @@ public class PrettyPrintVisitor extends Visitor{
      */
     public Object visit(BinaryArithDivideExpr node) {
         if(node.getLeftExpr() instanceof BinaryArithExpr){
-            this.sourceCode += "( ";
+            this.sourceCode.append("( ");
         }
         node.getLeftExpr().accept(this);
         if(node.getLeftExpr() instanceof BinaryArithExpr){
-            this.sourceCode += " )";
+            this.sourceCode.append(" )");
         }
-        this.sourceCode += " "+ node.getOpName()+ " ";
+        this.sourceCode.append(" ");
+        this.sourceCode.append(node.getOpName());
+        this.sourceCode.append(" ");
         if(node.getRightExpr() instanceof BinaryArithExpr){
-            this.sourceCode += "( ";
+            this.sourceCode.append("( ");
         }
         node.getRightExpr().accept(this);
         if(node.getLeftExpr() instanceof BinaryArithExpr){
-            this.sourceCode += " )";
+            this.sourceCode.append(" )");
         }
         return null;
     }
@@ -611,19 +665,21 @@ public class PrettyPrintVisitor extends Visitor{
      */
     public Object visit(BinaryArithModulusExpr node) {
         if(node.getLeftExpr() instanceof BinaryArithExpr){
-            this.sourceCode += "( ";
+            this.sourceCode.append("( ");
         }
         node.getLeftExpr().accept(this);
         if(node.getLeftExpr() instanceof BinaryArithExpr){
-            this.sourceCode += " )";
+            this.sourceCode.append(" )");
         }
-        this.sourceCode += " "+ node.getOpName()+ " ";
+        this.sourceCode.append(" ");
+        this.sourceCode.append(node.getOpName());
+        this.sourceCode.append(" ");
         if(node.getRightExpr() instanceof BinaryArithExpr){
-            this.sourceCode += "( ";
+            this.sourceCode.append("( ");
         }
         node.getRightExpr().accept(this);
         if(node.getLeftExpr() instanceof BinaryArithExpr){
-            this.sourceCode += ") ";
+            this.sourceCode.append(" )");
         }
         return null;
     }
@@ -636,7 +692,9 @@ public class PrettyPrintVisitor extends Visitor{
      */
     public Object visit(BinaryLogicAndExpr node) {
         node.getLeftExpr().accept(this);
-        this.sourceCode += " "+ node.getOpName()+ " ";
+        this.sourceCode.append(" ");
+        this.sourceCode.append(node.getOpName());
+        this.sourceCode.append(" ");
         node.getRightExpr().accept(this);
         return null;
     }
@@ -649,7 +707,9 @@ public class PrettyPrintVisitor extends Visitor{
      */
     public Object visit(BinaryLogicOrExpr node) {
         node.getLeftExpr().accept(this);
-        this.sourceCode += " "+ node.getOpName()+ " ";
+        this.sourceCode.append(" ");
+        this.sourceCode.append(node.getOpName());
+        this.sourceCode.append(" ");
         node.getRightExpr().accept(this);
         return null;
     }
@@ -662,7 +722,7 @@ public class PrettyPrintVisitor extends Visitor{
      * @return result of the visit
      */
     public Object visit(UnaryNegExpr node) {
-        this.sourceCode += node.getOpName();
+        this.sourceCode.append(node.getOpName());
         node.getExpr().accept(this);
         return null;
     }
@@ -674,7 +734,7 @@ public class PrettyPrintVisitor extends Visitor{
      * @return result of the visit
      */
     public Object visit(UnaryNotExpr node) {
-        this.sourceCode += node.getOpName();
+        this.sourceCode.append(node.getOpName());
         node.getExpr().accept(this);
         return null;
     }
@@ -687,11 +747,11 @@ public class PrettyPrintVisitor extends Visitor{
      */
     public Object visit(UnaryIncrExpr node) {
         if(!node.isPostfix()){
-            this.sourceCode += node.getOpName();
+            this.sourceCode.append(node.getOpName());
         }
         node.getExpr().accept(this);
         if(node.isPostfix()){
-            this.sourceCode += node.getOpName();
+            this.sourceCode.append(node.getOpName());
         }
         return null;
     }
@@ -704,11 +764,11 @@ public class PrettyPrintVisitor extends Visitor{
      */
     public Object visit(UnaryDecrExpr node) {
         if(!node.isPostfix()){
-            this.sourceCode += node.getOpName();
+            this.sourceCode.append(node.getOpName());
         }
         node.getExpr().accept(this);
         if(node.isPostfix()){
-            this.sourceCode += node.getOpName();
+            this.sourceCode.append(node.getOpName());
         }
         return null;
     }
@@ -723,14 +783,14 @@ public class PrettyPrintVisitor extends Visitor{
         if (node.getRef() != null) {
             if(!((node.getRef() instanceof VarExpr) || (node.getRef() instanceof DispatchExpr)
                     || (node.getRef() instanceof ArrayExpr)))
-                this.sourceCode += "( ";
+                this.sourceCode.append("( ");
             node.getRef().accept(this);
             if(!((node.getRef() instanceof VarExpr) || (node.getRef() instanceof DispatchExpr)
                     || (node.getRef() instanceof ArrayExpr)))
-                this.sourceCode += " )";
-            this.sourceCode += ".";
+                this.sourceCode.append(" )");
+            this.sourceCode.append(".");
         }
-        this.sourceCode += node.getName();
+        this.sourceCode.append(node.getName());
         return null;
     }
 
@@ -743,15 +803,15 @@ public class PrettyPrintVisitor extends Visitor{
     public Object visit(ArrayExpr node) {
         if (node.getRef() != null) {
             node.getRef().accept(this);
-            this.sourceCode += ".";
+            this.sourceCode.append(".");
         }
         System.out.println(node.getName());
         if (node.getName()!=null){
-            this.sourceCode += node.getName();
+            this.sourceCode.append(node.getName());
         }
-        this.sourceCode += "[";
+        this.sourceCode.append("[");
         node.getIndex().accept(this);
-        this.sourceCode += "]";
+        this.sourceCode.append("]");
         return null;
     }
 
@@ -762,7 +822,7 @@ public class PrettyPrintVisitor extends Visitor{
      * @return result of the visit
      */
     public Object visit(ConstIntExpr node) {
-        this.sourceCode += node.getIntConstant() ;
+        this.sourceCode.append(node.getIntConstant()) ;
         return null;
     }
 
@@ -773,7 +833,7 @@ public class PrettyPrintVisitor extends Visitor{
      * @return result of the visit
      */
     public Object visit(ConstBooleanExpr node) {
-        this.sourceCode += node.getConstant() ;
+        this.sourceCode.append(node.getConstant()) ;
         return null;
     }
 
@@ -784,7 +844,9 @@ public class PrettyPrintVisitor extends Visitor{
      * @return result of the visit
      */
     public Object visit(ConstStringExpr node) {
-        this.sourceCode += "\"" + node.getConstant() + "\"";
+        this.sourceCode.append("\"");
+        this.sourceCode.append(node.getConstant());
+        this.sourceCode.append("\"");
         return null;
     }
 
@@ -798,9 +860,10 @@ public class PrettyPrintVisitor extends Visitor{
         while(keyItr.hasNext()){
             Integer commentLine = (Integer) keyItr.next();
             if(commentLine < linenum){
-                this.sourceCode += "\n";
+                this.sourceCode.append("\n");
                 this.printScopeIndent();
-                this.sourceCode += this.commentMap.get(commentLine) + "\n";
+                this.sourceCode.append(this.commentMap.get(commentLine));
+                this.sourceCode.append("\n");
                 usedComments.add(commentLine);
             }
         }
