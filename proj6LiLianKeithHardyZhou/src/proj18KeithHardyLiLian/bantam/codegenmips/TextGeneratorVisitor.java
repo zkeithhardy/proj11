@@ -42,7 +42,7 @@ public class TextGeneratorVisitor extends Visitor {
     //keep track of number of parameters that is used in moving stack pointer
     private int currentParameterOffset = 0;
     //pre-order traversing of the ast
-    private ArrayList<ClassTreeNode> idTable;
+    private ArrayList<String> idTable;
 
 
 
@@ -57,7 +57,7 @@ public class TextGeneratorVisitor extends Visitor {
      *                pre-order sorting
      */
     public TextGeneratorVisitor(PrintStream out, MipsSupport assemblySupport, Hashtable<String,ClassTreeNode> classMap,
-                                HashMap<String, ArrayList<String>> dispatchTableMap, ArrayList<ClassTreeNode> idTable){
+                                HashMap<String, ArrayList<String>> dispatchTableMap, ArrayList<String> idTable){
         this.out = out;
         this.assemblySupport = assemblySupport;
         this.classMap = classMap;
@@ -551,7 +551,7 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genComment("load i into $v0");
         this.assemblySupport.genLoadWord("$v0", 0, "$v0"); // i is in v0 now
 
-        int j = this.idTable.indexOf(this.classMap.get(node.getType())); // id in the table
+        int j = this.idTable.indexOf(this.classMap.get(node.getType()).getName()); // id in the table
         int k = this.classMap.get(node.getType()).getNumDescendants();
 
         this.assemblySupport.genComment("load j into $t0 and j+k into $t1");
@@ -589,9 +589,10 @@ public class TextGeneratorVisitor extends Visitor {
             //load the expression and target type ids to the t0 and t1 so that the _class_cast_error can
             //catch the correct type names
             this.assemblySupport.genComment("load the class id of the object to $t0");
-            this.assemblySupport.genLoadImm("$t0", idTable.indexOf(classMap.get(node.getExpr().getExprType())));
+            this.assemblySupport.genLoadImm("$t0", idTable.indexOf(
+                    classMap.get(node.getExpr().getExprType()).getName()));
             this.assemblySupport.genComment("load the class id of the type to $t1");
-            this.assemblySupport.genLoadImm("$t1", idTable.indexOf(classMap.get(objectType)));
+            this.assemblySupport.genLoadImm("$t1", idTable.indexOf(classMap.get(objectType).getName()));
 
             String ifZero= this.assemblySupport.getLabel();
             String ifNotZero = this.assemblySupport.getLabel();

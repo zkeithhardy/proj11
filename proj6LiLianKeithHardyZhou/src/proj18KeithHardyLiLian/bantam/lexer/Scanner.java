@@ -326,7 +326,11 @@ public class Scanner
                 Map.entry("++",Token.Kind.UNARYINCR),
                 Map.entry("--",Token.Kind.UNARYDECR),
                 Map.entry("&&",Token.Kind.BINARYLOGIC),
-                Map.entry("||",Token.Kind.BINARYLOGIC)
+                Map.entry("||",Token.Kind.BINARYLOGIC),
+                Map.entry("+=",Token.Kind.ASSIGN),
+                Map.entry("-=",Token.Kind.ASSIGN),
+                Map.entry("*=",Token.Kind.ASSIGN),
+                Map.entry("/=",Token.Kind.ASSIGN)
         );
     }
     public static void main(String[] argv){

@@ -118,6 +118,7 @@ break;
 	//incorrect number of arguments in function foo
 	//undeclared method fooo
         foo(d).fooo(x);
+	this.x += 5;
         return 6;
     }
 

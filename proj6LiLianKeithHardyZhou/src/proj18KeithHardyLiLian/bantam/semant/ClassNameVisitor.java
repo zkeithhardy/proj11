@@ -53,6 +53,8 @@ public class ClassNameVisitor extends Visitor {
     @Override
     public Object visit(Class_ node) {
         classNameMap.put(node.getName(), "Class_" + numClassConsts);
+        numClassConsts++;
+        classNameMap.put(node.getName() + "[]", "Class_" + numClassConsts);
         //It's a terminal node, so there shouldn't be a need to call super.visit()
         numClassConsts += 1;
         return null;
