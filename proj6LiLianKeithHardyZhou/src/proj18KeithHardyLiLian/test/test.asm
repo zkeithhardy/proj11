@@ -16,7 +16,7 @@ Class_4:
 	.ascii	"Integer"
 	.byte	0
 	.align	2
-Class_7:
+Class_8:
 	.word	1		# String Identifier
 	.word	20		# Size of Object in Bytes
 	.word	String_dispatch_table
@@ -24,7 +24,7 @@ Class_7:
 	.ascii	"A"
 	.byte	0
 	.align	2
-Class_8:
+Class_9:
 	.word	1		# String Identifier
 	.word	20		# Size of Object in Bytes
 	.word	String_dispatch_table
@@ -72,12 +72,20 @@ Class_1:
 	.ascii	"TextIO"
 	.byte	0
 	.align	2
-Class_6:
+Class_7:
 	.word	1		# String Identifier
 	.word	24		# Size of Object in Bytes
 	.word	String_dispatch_table
 	.word	4
 	.ascii	"Main"
+	.byte	0
+	.align	2
+Class_6:
+	.word	1		# String Identifier
+	.word	28		# Size of Object in Bytes
+	.word	String_dispatch_table
+	.word	8
+	.ascii	"Object[]"
 	.byte	0
 	.align	2
 StringConst_1:
@@ -101,11 +109,12 @@ StringConst_0:
 class_name_table:
 	.word	Class_0
 	.word	Class_1
-	.word	Class_4
-	.word	Class_7
 	.word	Class_8
+	.word	Class_9
+	.word	Class_4
 	.word	Class_5
 	.word	Class_6
+	.word	Class_7
 	.word	Class_2
 	.word	Class_3
 
@@ -119,15 +128,16 @@ class_name_table:
 	.globl	Boolean_template
 	.globl	TextIO_template
 	.globl	Main_template
+	.globl	Object[]_template
 
 Integer_template:
-	.word	2		# Class ID
+	.word	4		# Class ID
 	.word	16		# Size of Object in Bytes
 	.word	Integer_dispatch_table
 	.word	0
 
 A_template:
-	.word	3		# Class ID
+	.word	2		# Class ID
 	.word	24		# Size of Object in Bytes
 	.word	A_dispatch_table
 	.word	0
@@ -135,7 +145,7 @@ A_template:
 	.word	0
 
 B_template:
-	.word	4		# Class ID
+	.word	3		# Class ID
 	.word	32		# Size of Object in Bytes
 	.word	B_dispatch_table
 	.word	0
@@ -150,13 +160,13 @@ Object_template:
 	.word	Object_dispatch_table
 
 String_template:
-	.word	7		# Class ID
+	.word	8		# Class ID
 	.word	16		# Size of Object in Bytes
 	.word	String_dispatch_table
 	.word	0
 
 Sys_template:
-	.word	8		# Class ID
+	.word	9		# Class ID
 	.word	12		# Size of Object in Bytes
 	.word	Sys_dispatch_table
 
@@ -174,9 +184,15 @@ TextIO_template:
 	.word	0
 
 Main_template:
-	.word	6		# Class ID
+	.word	7		# Class ID
 	.word	16		# Size of Object in Bytes
 	.word	Main_dispatch_table
+	.word	0
+
+Object[]_template:
+	.word	6		# Class ID
+	.word	16		# Size of Object in Bytes
+	.word	Object[]_dispatch_table
 	.word	0
 
 	# Dispatch Tables:
@@ -189,6 +205,7 @@ Main_template:
 	.globl	Boolean_dispatch_table
 	.globl	TextIO_dispatch_table
 	.globl	Main_dispatch_table
+	.globl	Object[]_dispatch_table
 Integer_dispatch_table:
 	.word	Object.clone
 	.word	Integer.equals
@@ -251,6 +268,10 @@ Main_dispatch_table:
 	.word	Object.toString
 	.word	Main.foo
 	.word	Main.main
+Object[]_dispatch_table:
+	.word	Object[].clone
+	.word	Object.equals
+	.word	Object.toString
 
 	.text
 	.globl	main
@@ -320,46 +341,6 @@ TextIO_init:
 	sw $v0 12($a0)
 	li $v0 1
 	sw $v0 16($a0)
-	move $v0 $a0
-	# Start Epilogue
-	# add 0 to $fp and store the result to $sp
-	add $sp $fp 0
-	# load $sp to $a0
-	lw $a0 0($sp)
-	# add 4 to $sp
-	add $sp $sp 4
-	# load $sp to $fp
-	lw $fp 0($sp)
-	# add 4 to $sp
-	add $sp $sp 4
-	# load $sp to $ra
-	lw $ra 0($sp)
-	# add 4 to $sp
-	add $sp $sp 4
-	# add 0 to $sp and store the result to $sp
-	add $sp $sp 0
-	jr $ra
-	# End Epilogue
-Integer_init:
-	# Start Prologue
-	# subtract 4 from $sp
-	sub $sp $sp 4
-	# store $ra to $sp
-	sw $ra 0($sp)
-	# subtract 4 from $sp
-	sub $sp $sp 4
-	# store $fp to $sp
-	sw $fp 0($sp)
-	# subtract 4 from $sp
-	sub $sp $sp 4
-	# store $a0 to $sp
-	sw $a0 0($sp)
-	# subtract 0 from $sp and store the result to $fp
-	sub $fp $sp 0
-	# move $fp to $sp
-	move $sp $fp
-	# End Prologue
-	jal Object_init
 	move $v0 $a0
 	# Start Epilogue
 	# add 0 to $fp and store the result to $sp
@@ -487,7 +468,87 @@ B_init:
 	add $sp $sp 0
 	jr $ra
 	# End Epilogue
+Integer_init:
+	# Start Prologue
+	# subtract 4 from $sp
+	sub $sp $sp 4
+	# store $ra to $sp
+	sw $ra 0($sp)
+	# subtract 4 from $sp
+	sub $sp $sp 4
+	# store $fp to $sp
+	sw $fp 0($sp)
+	# subtract 4 from $sp
+	sub $sp $sp 4
+	# store $a0 to $sp
+	sw $a0 0($sp)
+	# subtract 0 from $sp and store the result to $fp
+	sub $fp $sp 0
+	# move $fp to $sp
+	move $sp $fp
+	# End Prologue
+	jal Object_init
+	move $v0 $a0
+	# Start Epilogue
+	# add 0 to $fp and store the result to $sp
+	add $sp $fp 0
+	# load $sp to $a0
+	lw $a0 0($sp)
+	# add 4 to $sp
+	add $sp $sp 4
+	# load $sp to $fp
+	lw $fp 0($sp)
+	# add 4 to $sp
+	add $sp $sp 4
+	# load $sp to $ra
+	lw $ra 0($sp)
+	# add 4 to $sp
+	add $sp $sp 4
+	# add 0 to $sp and store the result to $sp
+	add $sp $sp 0
+	jr $ra
+	# End Epilogue
 Boolean_init:
+	# Start Prologue
+	# subtract 4 from $sp
+	sub $sp $sp 4
+	# store $ra to $sp
+	sw $ra 0($sp)
+	# subtract 4 from $sp
+	sub $sp $sp 4
+	# store $fp to $sp
+	sw $fp 0($sp)
+	# subtract 4 from $sp
+	sub $sp $sp 4
+	# store $a0 to $sp
+	sw $a0 0($sp)
+	# subtract 0 from $sp and store the result to $fp
+	sub $fp $sp 0
+	# move $fp to $sp
+	move $sp $fp
+	# End Prologue
+	jal Object_init
+	move $v0 $a0
+	# Start Epilogue
+	# add 0 to $fp and store the result to $sp
+	add $sp $fp 0
+	# load $sp to $a0
+	lw $a0 0($sp)
+	# add 4 to $sp
+	add $sp $sp 4
+	# load $sp to $fp
+	lw $fp 0($sp)
+	# add 4 to $sp
+	add $sp $sp 4
+	# load $sp to $ra
+	lw $ra 0($sp)
+	# add 4 to $sp
+	add $sp $sp 4
+	# add 0 to $sp and store the result to $sp
+	add $sp $sp 0
+	jr $ra
+	# End Epilogue
+Object[]_init:
 	# Start Prologue
 	# subtract 4 from $sp
 	sub $sp $sp 4
@@ -547,15 +608,8 @@ Main_init:
 	move $sp $fp
 	# End Prologue
 	jal Object_init
-	# var expression
-	# subtract stack pointer with 4
-	sub $sp $sp 4
-	# save value in $a0 to stack pointer with 0 offset
-	sw $a0 0($sp)
-	# accept the reference object and save its location $v0
-	# case where the reference object is null
-	lw $a0 0($sp)
-	add $sp $sp 4
+	# constant int expression: load 3 to $v0
+	li $v0 3
 	# store the field 12 away from $a0 to $v0
 	sw $v0 12($a0)
 	move $v0 $a0
@@ -721,8 +775,8 @@ Main.main:
 	sub $sp $sp 4
 	# store $a0 to $sp
 	sw $a0 0($sp)
-	# subtract 4 from $sp and store the result to $fp
-	sub $fp $sp 4
+	# subtract 8 from $sp and store the result to $fp
+	sub $fp $sp 8
 	# move $fp to $sp
 	move $sp $fp
 	# End Prologue
@@ -752,9 +806,37 @@ label0:
 label1:
 	# store $v0 to (0)$fp
 	sw $v0 0($fp)
+	# constant int expression: load 3 to $v0
+	li $v0 3
+	# store $v0 to (4)$fp
+	sw $v0 4($fp)
+	# assign expr
+	# subtract 4 from the the stack pointer
+	sub $sp $sp 4
+	# save $a0 to stack pointer with offset of 0
+	sw $a0 0($sp)
+	# handle Cast Expression
+	# var expression
+	# subtract stack pointer with 4
+	sub $sp $sp 4
+	# save value in $a0 to stack pointer with 0 offset
+	sw $a0 0($sp)
+	# accept the reference object and save its location $v0
+	# case where the reference object is null
+	# load (4)$fp to $v0 
+	lw $v0 4($fp)
+	lw $a0 0($sp)
+	add $sp $sp 4
+	# case where the reference name is null
+	# move current location's base register with offset to v0
+	sw $v0 12($a0)
+	# save stack pointer result to $a0
+	lw $a0 0($sp)
+	# add stack pointer with 4
+	add $sp $sp 4
 	# Start Epilogue
-	# add 4 to $fp and store the result to $sp
-	add $sp $fp 4
+	# add 8 to $fp and store the result to $sp
+	add $sp $fp 8
 	# load $sp to $a0
 	lw $a0 0($sp)
 	# add 4 to $sp
