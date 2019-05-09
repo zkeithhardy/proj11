@@ -385,9 +385,32 @@ public class Parser
                     refName = ((VarExpr) ((VarExpr) left).getRef()).getName();
                 }
                 String name = ((VarExpr) left).getName();
-                updateCurrentToken();
+                Expr right;
+                switch(this.currentToken.spelling){
+                    case("+="):
+                        updateCurrentToken();
+                        right = new BinaryArithPlusExpr(position,left,this.parseExpression());
+                        break;
+                    case("-="):
+                        updateCurrentToken();
+                        right = new BinaryArithMinusExpr(position,left,this.parseExpression());
+                        break;
+                    case("*="):
+                        updateCurrentToken();
+                        right = new BinaryArithTimesExpr(position,left,this.parseExpression());
+                        break;
+                    case("/="):
+                        updateCurrentToken();
+                        right = new BinaryArithDivideExpr(position,left,this.parseExpression());
+                        break;
 
-                return astNodeBuilder.buildAssignExpr(position,refName,name,this.parseExpression());//new AssignExpr(position,refName,name,this.parseExpression());
+                    default:
+                        updateCurrentToken();
+                        right = this.parseExpression();
+                }
+
+
+                return astNodeBuilder.buildAssignExpr(position,refName,name,right);//new AssignExpr(position,refName,name,this.parseExpression());
             }
             else if(left instanceof ArrayExpr){
                 String refName = null;
@@ -396,8 +419,30 @@ public class Parser
                 }
                 String name = ((ArrayExpr) left).getName();
                 Expr index = ((ArrayExpr) left).getIndex();
-                updateCurrentToken();
-                return astNodeBuilder.buildArrayAssignExpr(position,refName,name,index,this.parseExpression());//new ArrayAssignExpr(position,refName,name,index, this.parseExpression());
+                Expr right;
+                switch(this.currentToken.spelling){
+                    case("+="):
+                        updateCurrentToken();
+                        right = new BinaryArithPlusExpr(position,left,this.parseExpression());
+                        break;
+                    case("-="):
+                        updateCurrentToken();
+                        right = new BinaryArithMinusExpr(position,left,this.parseExpression());
+                        break;
+                    case("*="):
+                        updateCurrentToken();
+                        right = new BinaryArithTimesExpr(position,left,this.parseExpression());
+                        break;
+                    case("/="):
+                        updateCurrentToken();
+                        right = new BinaryArithDivideExpr(position,left,this.parseExpression());
+                        break;
+
+                    default:
+                        updateCurrentToken();
+                        right = this.parseExpression();
+                }
+                return astNodeBuilder.buildArrayAssignExpr(position,refName,name,index,right);//new ArrayAssignExpr(position,refName,name,index, this.parseExpression());
             }
             else{
                 this.registerError("When parsing Expr, Variable name Expected",
