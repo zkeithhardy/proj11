@@ -4,10 +4,6 @@
     <list default="true" id="8c7a2aeb-d440-4298-8971-4b09cf8ec87c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/bantam/codegenmips/MipsCodeGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/bantam/codegenmips/MipsCodeGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/bantam/codegenmips/TextGeneratorVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/bantam/codegenmips/TextGeneratorVisitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/bantam/lexer/Scanner.java" beforeDir="false" afterPath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/bantam/lexer/Scanner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/bantam/semant/ClassNameVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/bantam/semant/ClassNameVisitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/test/CheckerTestKeithHardyLiLian.btm" beforeDir="false" afterPath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/test/CheckerTestKeithHardyLiLian.btm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/test/test.asm" beforeDir="false" afterPath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/test/test.asm" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,16 +17,16 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="fxml" value="105" />
-          <entry key="java" value="19134" />
+          <entry key="java" value="19435" />
           <entry key="s" value="1783" />
-          <entry key="txt" value="817" />
+          <entry key="txt" value="832" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="DTD" value="1783" />
-          <entry key="JAVA" value="19134" />
-          <entry key="PLAIN_TEXT" value="817" />
+          <entry key="JAVA" value="19435" />
+          <entry key="PLAIN_TEXT" value="832" />
           <entry key="XML" value="105" />
         </counts>
       </usages-collector>
@@ -49,14 +45,14 @@
         <counts>
           <entry key="asm" value="1" />
           <entry key="fxml" value="1" />
-          <entry key="java" value="57" />
+          <entry key="java" value="58" />
           <entry key="s" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="DTD" value="1" />
-          <entry key="JAVA" value="57" />
+          <entry key="JAVA" value="58" />
           <entry key="PLAIN_TEXT" value="4" />
           <entry key="XML" value="1" />
         </counts>
@@ -77,7 +73,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/bantam/semant/ClassNameVisitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
+            <state relative-caret-position="351">
               <caret line="56" column="75" selection-start-line="56" selection-start-column="75" selection-end-line="56" selection-end-column="75" />
             </state>
           </provider>
@@ -86,8 +82,17 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/bantam/codegenmips/MipsCodeGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
-              <caret line="190" column="25" selection-start-line="190" selection-start-column="25" selection-end-line="190" selection-end-column="25" />
+            <state relative-caret-position="340">
+              <caret line="189" column="62" selection-start-line="189" selection-start-column="62" selection-end-line="189" selection-end-column="62" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/bantam/lexer/SourceFile.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="149">
+              <caret line="26" column="6" selection-start-line="26" selection-start-column="6" selection-end-line="26" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -100,15 +105,6 @@
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/bantam/semant/TypeCheckerVisitor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="8058">
-              <caret line="485" column="19" selection-start-line="485" selection-start-column="19" selection-end-line="485" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -134,7 +130,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/bantam/lexer/Scanner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5372">
+            <state relative-caret-position="171">
               <caret line="329" column="48" selection-start-line="329" selection-start-column="48" selection-end-line="329" selection-end-column="48" />
             </state>
           </provider>
@@ -299,6 +295,15 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="proj18KeithHardyLiLian" type="462c0819:PsiDirectoryNode" />
               <item name="bantam" type="462c0819:PsiDirectoryNode" />
+              <item name="lexer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="proj16" type="b2602c69:ProjectViewProjectNode" />
+              <item name="proj16" type="462c0819:PsiDirectoryNode" />
+              <item name="proj6LiLianKeithHardyZhou" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="proj18KeithHardyLiLian" type="462c0819:PsiDirectoryNode" />
+              <item name="bantam" type="462c0819:PsiDirectoryNode" />
               <item name="parser" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -344,7 +349,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557445927347" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557446953818" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/include/richtextfx-fat-0.9.1.jar!/" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -799,14 +804,21 @@
       <option name="project" value="LOCAL" />
       <updated>1557444326337</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="added to arrays">
+      <created>1557446069748</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1557446069748</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2295302" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.2295302" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -835,7 +847,7 @@
       <window_info anchor="right" id="Maven Projects" order="8" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2295302" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2295302" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -844,7 +856,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32765958" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32765958" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32765958" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -868,7 +880,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fixed bugs" />
     <MESSAGE value="minor changes" />
     <MESSAGE value="small changes to new expr" />
     <MESSAGE value="fixed varExpr" />
@@ -893,14 +904,14 @@
     <MESSAGE value="fixed bugs in pretty printer" />
     <MESSAGE value="added operators" />
     <MESSAGE value="small work" />
-    <option name="LAST_COMMIT_MESSAGE" value="small work" />
+    <MESSAGE value="added to arrays" />
+    <option name="LAST_COMMIT_MESSAGE" value="added to arrays" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/bantam/ast/Expr.java" />
     <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/bantam/ast/Field.java" />
     <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/bantam/ast/VarExpr.java" />
     <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj16KeithHardyLiLian/test/test.asm" />
@@ -1077,13 +1088,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/bantam/lexer/Scanner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5372">
-          <caret line="329" column="48" selection-start-line="329" selection-start-column="48" selection-end-line="329" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/bantam/parser/Parser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="12002">
@@ -1098,13 +1102,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/bantam/semant/ClassNameVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="56" column="75" selection-start-line="56" selection-start-column="75" selection-end-line="56" selection-end-column="75" />
         </state>
       </provider>
     </entry>
@@ -1125,10 +1122,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/bantam/lexer/Scanner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="329" column="48" selection-start-line="329" selection-start-column="48" selection-end-line="329" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/bantam/lexer/SourceFile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="26" column="6" selection-start-line="26" selection-start-column="6" selection-end-line="26" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/bantam/semant/ClassNameVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="56" column="75" selection-start-line="56" selection-start-column="75" selection-end-line="56" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/bantam/codegenmips/MipsCodeGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="190" column="25" selection-start-line="190" selection-start-column="25" selection-end-line="190" selection-end-column="25" />
+        <state relative-caret-position="340">
+          <caret line="189" column="62" selection-start-line="189" selection-start-column="62" selection-end-line="189" selection-end-column="62" />
         </state>
       </provider>
     </entry>

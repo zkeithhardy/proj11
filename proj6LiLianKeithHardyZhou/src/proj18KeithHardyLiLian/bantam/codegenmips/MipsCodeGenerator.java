@@ -320,11 +320,17 @@ public class MipsCodeGenerator
         this.assemblySupport.genComment("Object Templates:");
 
         for(Map.Entry<String,String> entry: classNames.entrySet()){
+            if(entry.getKey().endsWith("[]") && !entry.getKey().equals("Object[]")){
+                continue;
+            }
             this.assemblySupport.genGlobal(entry.getKey() + "_template");
         }
         this.out.println();
 
         for(Map.Entry<String,String> entry: classNames.entrySet()){
+            if(entry.getKey().endsWith("[]") && !entry.getKey().equals("Object[]")){
+                continue;
+            }
             this.out.println(entry.getKey()+"_template:");
             this.assemblySupport.genWord(Integer.toString(this.idTable.indexOf(this.classMap.get(entry.getKey())))+"\t\t# Class ID");
 
@@ -351,10 +357,16 @@ public class MipsCodeGenerator
         this.assemblySupport.genComment("Dispatch Tables:");
 
         for(Map.Entry<String,String> entry: classNames.entrySet()){
+            if(entry.getKey().endsWith("[]") && !entry.getKey().equals("Object[]")){
+                continue;
+            }
             this.assemblySupport.genGlobal(entry.getKey() + "_dispatch_table");
         }
 
         for(Map.Entry<String,String> entry: classNames.entrySet()){
+            if(entry.getKey().endsWith("[]") && !entry.getKey().equals("Object[]")){
+                continue;
+            }
             this.out.println(entry.getKey()+"_dispatch_table:");
             ClassTreeNode tempNode = classMap.get(entry.getKey());
             LinkedHashMap<String,String> methodNames =
