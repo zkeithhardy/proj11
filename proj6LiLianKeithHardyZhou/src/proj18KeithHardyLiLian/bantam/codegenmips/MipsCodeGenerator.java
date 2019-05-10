@@ -193,7 +193,7 @@ public class MipsCodeGenerator
             this.assemblySupport.genLabel(idTable.get(i) + "_init");
             textGeneratorVisitor.generateMethodPrologue();
             if(idTable.get(i).equals("Object")||idTable.get(i).equals("String")||idTable.get(i).equals("TextIO")
-                    ||idTable.get(i).equals("Sys")) {
+                    ||idTable.get(i).equals("Sys") || idTable.get(i).equals("Object[]")) {
                 if(idTable.get(i).equals("String") || idTable.get(i).equals("Integer") || idTable.get(i).equals("Boolean")){
                     this.assemblySupport.genLoadImm("$v0", 0);
                     this.assemblySupport.genStoreWord("$v0", 12, "$a0");
@@ -203,6 +203,12 @@ public class MipsCodeGenerator
                     this.assemblySupport.genStoreWord("$v0", 12, "$a0");
                     this.assemblySupport.genLoadImm("$v0", 1);
                     this.assemblySupport.genStoreWord("$v0", 16, "$a0");
+                }else if(idTable.get(i).equals("Object[]")){
+                    this.assemblySupport.genLoadImm("$v0",0);
+                    this.assemblySupport.genStoreWord("$v0",12,"$a0");
+                    this.assemblySupport.genLoadWord("$v1",12, "$sp");
+                    this.assemblySupport.genLoadImm("$t0",16);
+                    //TODO: fix loop here so that you can create array
                 }
             }else{
                 //generate the fields
@@ -332,7 +338,7 @@ public class MipsCodeGenerator
                 continue;
             }
             this.out.println(entry.getKey()+"_template:");
-            this.assemblySupport.genWord(Integer.toString(this.idTable.indexOf(this.classMap.get(entry.getKey())))+"\t\t# Class ID");
+            this.assemblySupport.genWord(Integer.toString(this.idTable.indexOf(entry.getKey()))+"\t\t# Class ID");
 
             SymbolTable fields = this.classMap.get(entry.getKey()).getVarSymbolTable();
 
@@ -340,7 +346,11 @@ public class MipsCodeGenerator
             //this and super which we do not need to count here.
             int size = fields.getSize() - 2*fields.getCurrScopeLevel();
             this.assemblySupport.genWord(Integer.toString(12 + size*4)+"\t\t# Size of Object in Bytes");
-            this.assemblySupport.genWord(entry.getKey()+"_dispatch_table");
+            if(entry.getKey().equals("Object[]")){
+                this.assemblySupport.genWord("Object_dispatch_table");
+            }else{
+                this.assemblySupport.genWord(entry.getKey()+"_dispatch_table");
+            }
 
             for(int j = 0; j< size; j++){
                 this.assemblySupport.genWord("0");
@@ -357,7 +367,7 @@ public class MipsCodeGenerator
         this.assemblySupport.genComment("Dispatch Tables:");
 
         for(Map.Entry<String,String> entry: classNames.entrySet()){
-            if(entry.getKey().endsWith("[]") && !entry.getKey().equals("Object[]")){
+            if(entry.getKey().endsWith("[]")){
                 continue;
             }
             this.assemblySupport.genGlobal(entry.getKey() + "_dispatch_table");
