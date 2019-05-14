@@ -369,13 +369,13 @@ public class SemanticAnalyzer
                 /*extendable?*/false, classMap));
 
         // create AST node for object[]
-        astNode = new Class_(-1, "<built-in class>", "Object[]", "Object",
+        astNode = new Class_(-1, "<built-in class>", "Array", "Object",
                 (MemberList) (new MemberList(-1)).addElement(new Field(-1, "int",
                         "length", /*0 by default*/null)).addElement(new Method(-1, "Object",
                         "clone", new FormalList(-1), (StmtList) (new StmtList(-1)).addElement(new ReturnStmt(-1,
                                 new VarExpr(-1, null, "null"))))));
         // create class tree node for String, add it to the mapping
-        classMap.put("Object[]", new ClassTreeNode(astNode, /*built-in?*/true,
+        classMap.put("Array", new ClassTreeNode(astNode, /*built-in?*/true,
                 /*extendable?*/true, classMap));
     }
 

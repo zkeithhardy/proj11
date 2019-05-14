@@ -32,7 +32,7 @@ public class ClassNameVisitor extends Visitor {
         classNameMap.put("Sys", "Class_" + 3);
         classNameMap.put("Integer","Class_" + 4);
         classNameMap.put("Boolean","Class_" + 5);
-        classNameMap.put("Object[]","Class_" + 6);
+        classNameMap.put("Array","Class_" + 6);
         classNameMap.put("String[]","Class_" + 7);
         classNameMap.put("Integer[]","Class_" + 8);
         classNameMap.put("Boolean[]","Class_" + 9);

@@ -104,6 +104,14 @@ Class_4:
 	.ascii	"Integer"
 	.byte	0
 	.align	2
+Class_6:
+	.word	1		# String Identifier
+	.word	24		# Size of Object in Bytes
+	.word	String_dispatch_table
+	.word	5
+	.ascii	"Array"
+	.byte	0
+	.align	2
 Class_13:
 	.word	1		# String Identifier
 	.word	24		# Size of Object in Bytes
@@ -142,14 +150,6 @@ Class_12:
 	.word	String_dispatch_table
 	.word	4
 	.ascii	"Main"
-	.byte	0
-	.align	2
-Class_6:
-	.word	1		# String Identifier
-	.word	28		# Size of Object in Bytes
-	.word	String_dispatch_table
-	.word	8
-	.ascii	"Object[]"
 	.byte	0
 	.align	2
 StringConst_1:
@@ -195,10 +195,10 @@ class_name_table:
 	.globl	Sys_template
 	.globl	TextIO_template
 	.globl	Integer_template
+	.globl	Array_template
 	.globl	Object_template
 	.globl	Boolean_template
 	.globl	Main_template
-	.globl	Object[]_template
 
 A_template:
 	.word	2		# Class ID
@@ -242,6 +242,12 @@ Integer_template:
 	.word	Integer_dispatch_table
 	.word	0
 
+Array_template:
+	.word	6		# Class ID
+	.word	16		# Size of Object in Bytes
+	.word	Object_dispatch_table
+	.word	0
+
 Object_template:
 	.word	0		# Class ID
 	.word	12		# Size of Object in Bytes
@@ -257,12 +263,6 @@ Main_template:
 	.word	13		# Class ID
 	.word	16		# Size of Object in Bytes
 	.word	Main_dispatch_table
-	.word	0
-
-Object[]_template:
-	.word	6		# Class ID
-	.word	16		# Size of Object in Bytes
-	.word	Object_dispatch_table
 	.word	0
 
 	# Dispatch Tables:
@@ -337,10 +337,6 @@ Main_dispatch_table:
 	.word	Object.toString
 	.word	Main.foo
 	.word	Main.main
-Object[]_dispatch_table:
-	.word	Object[].clone
-	.word	Object.equals
-	.word	Object.toString
 
 	.text
 	.globl	main
@@ -617,7 +613,7 @@ Boolean_init:
 	add $sp $sp 0
 	jr $ra
 	# End Epilogue
-Object[]_init:
+Array_init:
 	# Start Prologue
 	# subtract 4 from $sp
 	sub $sp $sp 4

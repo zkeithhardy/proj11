@@ -151,7 +151,7 @@ public class MipsCodeGenerator
         //create id table from inheritance tree
         this.addChildren(this.classMap.get("Object"));
 
-        this.addArrayChildren(this.classMap.get("Object[]"));
+        this.addArrayChildren(this.classMap.get("Array"));
 
         // Step 1-2
         //start data section
@@ -187,13 +187,13 @@ public class MipsCodeGenerator
 
         // create the inits for default classes
         for(int i = 0; i < idTable.size();i++){
-            if(idTable.get(i).endsWith("[]") && !idTable.get(i).equals("Object[]")){
+            if(idTable.get(i).endsWith("[]") ){
                 continue;
             }
             this.assemblySupport.genLabel(idTable.get(i) + "_init");
             textGeneratorVisitor.generateMethodPrologue();
             if(idTable.get(i).equals("Object")||idTable.get(i).equals("String")||idTable.get(i).equals("TextIO")
-                    ||idTable.get(i).equals("Sys") || idTable.get(i).equals("Object[]")) {
+                    ||idTable.get(i).equals("Sys") || idTable.get(i).equals("Array")) {
                 if(idTable.get(i).equals("String") || idTable.get(i).equals("Integer") || idTable.get(i).equals("Boolean")){
                     this.assemblySupport.genLoadImm("$v0", 0);
                     this.assemblySupport.genStoreWord("$v0", 12, "$a0");
@@ -203,7 +203,7 @@ public class MipsCodeGenerator
                     this.assemblySupport.genStoreWord("$v0", 12, "$a0");
                     this.assemblySupport.genLoadImm("$v0", 1);
                     this.assemblySupport.genStoreWord("$v0", 16, "$a0");
-                }else if(idTable.get(i).equals("Object[]")){
+                }else if(idTable.get(i).equals("Array")){
 //                    this.assemblySupport.genLoadImm("$v0",0);
 //                    this.assemblySupport.genStoreWord("$v0",12,"$a0");
 //                    this.assemblySupport.genLoadWord("$v1",12, "$sp");
@@ -265,7 +265,7 @@ public class MipsCodeGenerator
         int index = idTable.indexOf(root.getName()) + 1;
         ArrayList<String> temp = (ArrayList<String>) idTable.clone();
         for(String id : temp){
-            if(id.equals("Object") || id.equals("Object[]") || id.equals("TextIO") || id.equals("Sys")){
+            if(id.equals("Object") || id.equals("Array") || id.equals("TextIO") || id.equals("Sys")){
                 continue;
             }
             idTable.add(index, id + "[]");
@@ -341,7 +341,7 @@ public class MipsCodeGenerator
         this.assemblySupport.genComment("Object Templates:");
 
         for(Map.Entry<String,String> entry: classNames.entrySet()){
-            if(entry.getKey().endsWith("[]") && !entry.getKey().equals("Object[]")){
+            if(entry.getKey().endsWith("[]")){
                 continue;
             }
             this.assemblySupport.genGlobal(entry.getKey() + "_template");
@@ -349,7 +349,7 @@ public class MipsCodeGenerator
         this.out.println();
 
         for(Map.Entry<String,String> entry: classNames.entrySet()){
-            if(entry.getKey().endsWith("[]") && !entry.getKey().equals("Object[]")){
+            if(entry.getKey().endsWith("[]")){
                 continue;
             }
             this.out.println(entry.getKey()+"_template:");
@@ -361,7 +361,7 @@ public class MipsCodeGenerator
             //this and super which we do not need to count here.
             int size = fields.getSize() - 2*fields.getCurrScopeLevel();
             this.assemblySupport.genWord(Integer.toString(12 + size*4)+"\t\t# Size of Object in Bytes");
-            if(entry.getKey().equals("Object[]")){
+            if(entry.getKey().equals("Array")){
                 this.assemblySupport.genWord("Object_dispatch_table");
             }else{
                 this.assemblySupport.genWord(entry.getKey()+"_dispatch_table");
@@ -382,14 +382,14 @@ public class MipsCodeGenerator
         this.assemblySupport.genComment("Dispatch Tables:");
 
         for(Map.Entry<String,String> entry: classNames.entrySet()){
-            if(entry.getKey().endsWith("[]")){
+            if(entry.getKey().endsWith("[]")|| entry.getKey().equals("Array")){
                 continue;
             }
             this.assemblySupport.genGlobal(entry.getKey() + "_dispatch_table");
         }
 
         for(Map.Entry<String,String> entry: classNames.entrySet()){
-            if(entry.getKey().endsWith("[]") && !entry.getKey().equals("Object[]")){
+            if(entry.getKey().endsWith("[]") || entry.getKey().equals("Array")){
                 continue;
             }
             this.out.println(entry.getKey()+"_dispatch_table:");
