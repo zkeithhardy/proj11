@@ -175,7 +175,7 @@ public class TextGeneratorVisitor extends Visitor {
             tempNode = (ClassTreeNode) itr.next();
 
             fieldLocation= new Location("$a0", 4*fieldCount.get(tempNode.getName()));
-            classSymbolTables.get(tempNode.getName());
+//            classSymbolTables.get(tempNode.getName());
             classSymbolTables.get(tempNode.getName()).set(node.getName(), fieldLocation,currentClassFieldLevel-1);
             fieldCount.put(tempNode.getName(),fieldCount.get(tempNode.getName()) + 1);
         }

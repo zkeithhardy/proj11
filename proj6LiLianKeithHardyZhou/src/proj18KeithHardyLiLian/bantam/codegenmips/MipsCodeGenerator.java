@@ -204,11 +204,26 @@ public class MipsCodeGenerator
                     this.assemblySupport.genLoadImm("$v0", 1);
                     this.assemblySupport.genStoreWord("$v0", 16, "$a0");
                 }else if(idTable.get(i).equals("Object[]")){
-                    this.assemblySupport.genLoadImm("$v0",0);
-                    this.assemblySupport.genStoreWord("$v0",12,"$a0");
-                    this.assemblySupport.genLoadWord("$v1",12, "$sp");
-                    this.assemblySupport.genLoadImm("$t0",16);
+//                    this.assemblySupport.genLoadImm("$v0",0);
+//                    this.assemblySupport.genStoreWord("$v0",12,"$a0");
+//                    this.assemblySupport.genLoadWord("$v1",12, "$sp");
+//                    this.assemblySupport.genLoadImm("$t0",16);
                     //TODO: fix loop here so that you can create array
+                    this.assemblySupport.genLoadWord("$v1",12, "$sp"); // the length
+                    this.assemblySupport.genLoadImm("$t0", 16); // the starting offset
+                    this.assemblySupport.genLoadImm("$t1", 0); // counter
+                    this.assemblySupport.genMove("$a3", "$a0"); // a copy of a0
+                    String loop = this.assemblySupport.getLabel();
+                    String endLoop = this.assemblySupport.getLabel();
+                    this.assemblySupport.genLabel(loop);
+                    this.assemblySupport.genCondBeq("$t1", "$v1", endLoop); // branch when equal
+                    this.assemblySupport.genLoadImm("$v0", 0); // the thing to be stored
+                    this.assemblySupport.genAdd("$a3", "$a0", "$t0"); // increment the address by offset
+                    this.assemblySupport.genStoreWord("$v0", 0, "$a3"); // store word
+                    this.assemblySupport.genAdd("$t0", "$t0", 4); // increment the offset
+                    this.assemblySupport.genAdd("$t1", "$t1", 1); // increment the counter
+                    this.assemblySupport.genUncondBr(loop);
+                    this.assemblySupport.genLabel(endLoop);
                 }
             }else{
                 //generate the fields
