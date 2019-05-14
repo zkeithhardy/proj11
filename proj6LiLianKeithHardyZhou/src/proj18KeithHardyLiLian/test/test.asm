@@ -1,5 +1,5 @@
 #Authors: Zeb Keith-Hardy, Michael Li, Iris Lian
-#Date: 2019-05-13
+#Date: 2019-05-14
 #Compiled From Source: test.btm
 	.data
 	.globl	gc_flag
@@ -857,6 +857,19 @@ Main.main:
 	# move $fp to $sp
 	move $sp $fp
 	# End Prologue
+	# constant int expression: load 3 to $v0
+	li $v0 3
+	# move $v0 to $a0
+	move $a0 $v0
+	# load (8)$v0 to $v0
+	lw $v0 8($v0)
+	# load method address
+	# load (16)$v0 to $a1
+	lw $a1 16($v0)
+	# jump to $a1
+	jalr $a1
+	# load (0)$fp to $a0
+	lw $a0 0($fp)
 	# Start Epilogue
 	# add 0 to $fp and store the result to $sp
 	add $sp $fp 0

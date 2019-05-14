@@ -272,7 +272,6 @@ Main_template:
 	.globl	Sys_dispatch_table
 	.globl	TextIO_dispatch_table
 	.globl	Integer_dispatch_table
-
 	.globl	Object_dispatch_table
 	.globl	Boolean_dispatch_table
 	.globl	Main_dispatch_table
@@ -322,7 +321,6 @@ Integer_dispatch_table:
 	.word	Integer.toString
 	.word	Integer.intValue
 	.word	Integer.setValue
-
 Object_dispatch_table:
 	.word	Object.clone
 	.word	Object.equals
