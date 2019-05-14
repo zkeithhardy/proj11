@@ -1,5 +1,5 @@
 #Authors: Zeb Keith-Hardy, Michael Li, Iris Lian
-#Date: 2019-05-09
+#Date: 2019-05-13
 #Compiled From Source: test.btm
 	.data
 	.globl	gc_flag
@@ -156,6 +156,14 @@ StringConst_1:
 	.word	1		# String Identifier
 	.word	24		# Size of Object in Bytes
 	.word	String_dispatch_table
+	.word	5
+	.ascii	"hiiii"
+	.byte	0
+	.align	2
+StringConst_2:
+	.word	1		# String Identifier
+	.word	24		# Size of Object in Bytes
+	.word	String_dispatch_table
 	.word	4
 	.ascii	"In A"
 	.byte	0
@@ -191,25 +199,17 @@ class_name_table:
 	# Object Templates:
 	.globl	A_template
 	.globl	B_template
-	.globl	A[]_template
-	.globl	B[]_template
-	.globl	Boolean[]_template
-	.globl	int[]_template
 	.globl	String_template
-	.globl	String[]_template
 	.globl	Sys_template
-	.globl	Integer[]_template
 	.globl	TextIO_template
 	.globl	Integer_template
-	.globl	Main[]_template
 	.globl	Object_template
-	.globl	boolean[]_template
 	.globl	Boolean_template
 	.globl	Main_template
 	.globl	Object[]_template
 
 A_template:
-	.word	-1		# Class ID
+	.word	2		# Class ID
 	.word	24		# Size of Object in Bytes
 	.word	A_dispatch_table
 	.word	0
@@ -217,7 +217,7 @@ A_template:
 	.word	0
 
 B_template:
-	.word	-1		# Class ID
+	.word	3		# Class ID
 	.word	32		# Size of Object in Bytes
 	.word	B_dispatch_table
 	.word	0
@@ -227,65 +227,61 @@ B_template:
 	.word	0
 
 String_template:
-	.word	-1		# Class ID
+	.word	14		# Class ID
 	.word	16		# Size of Object in Bytes
 	.word	String_dispatch_table
 	.word	0
 
 Sys_template:
-	.word	-1		# Class ID
+	.word	15		# Class ID
 	.word	12		# Size of Object in Bytes
 	.word	Sys_dispatch_table
 
 TextIO_template:
-	.word	-1		# Class ID
+	.word	1		# Class ID
 	.word	20		# Size of Object in Bytes
 	.word	TextIO_dispatch_table
 	.word	0
 	.word	0
 
 Integer_template:
-	.word	-1		# Class ID
+	.word	4		# Class ID
 	.word	16		# Size of Object in Bytes
 	.word	Integer_dispatch_table
 	.word	0
 
 Object_template:
-	.word	-1		# Class ID
+	.word	0		# Class ID
 	.word	12		# Size of Object in Bytes
 	.word	Object_dispatch_table
 
 Boolean_template:
-	.word	-1		# Class ID
+	.word	5		# Class ID
 	.word	16		# Size of Object in Bytes
 	.word	Boolean_dispatch_table
 	.word	0
 
 Main_template:
-	.word	-1		# Class ID
-	.word	16		# Size of Object in Bytes
+	.word	13		# Class ID
+	.word	12		# Size of Object in Bytes
 	.word	Main_dispatch_table
+
+Object[]_template:
+	.word	6		# Class ID
+	.word	16		# Size of Object in Bytes
+	.word	Object_dispatch_table
 	.word	0
 
 	# Dispatch Tables:
 	.globl	A_dispatch_table
 	.globl	B_dispatch_table
-	.globl	A[]_dispatch_table
-	.globl	B[]_dispatch_table
-	.globl	Boolean[]_dispatch_table
-	.globl	int[]_dispatch_table
 	.globl	String_dispatch_table
-	.globl	String[]_dispatch_table
 	.globl	Sys_dispatch_table
-	.globl	Integer[]_dispatch_table
 	.globl	TextIO_dispatch_table
 	.globl	Integer_dispatch_table
-	.globl	Main[]_dispatch_table
 	.globl	Object_dispatch_table
-	.globl	boolean[]_dispatch_table
 	.globl	Boolean_dispatch_table
 	.globl	Main_dispatch_table
-	.globl	Object[]_dispatch_table
 A_dispatch_table:
 	.word	Object.clone
 	.word	Object.equals
@@ -348,6 +344,10 @@ Main_dispatch_table:
 	.word	Object.toString
 	.word	Main.foo
 	.word	Main.main
+Object[]_dispatch_table:
+	.word	Object[].clone
+	.word	Object.equals
+	.word	Object.toString
 
 	.text
 	.globl	main
@@ -469,8 +469,8 @@ A_init:
 	sw $v0 16($a0)
 	# store the field 16 away from $a0 to $v0
 	sw $v0 16($a0)
-	# constant string expression: load StringConst_1 to $v0
-	la $v0 StringConst_1
+	# constant string expression: load StringConst_2 to $v0
+	la $v0 StringConst_2
 	# store the field 20 away from $a0 to $v0
 	sw $v0 20($a0)
 	# store the field 20 away from $a0 to $v0
@@ -624,6 +624,49 @@ Boolean_init:
 	add $sp $sp 0
 	jr $ra
 	# End Epilogue
+Object[]_init:
+	# Start Prologue
+	# subtract 4 from $sp
+	sub $sp $sp 4
+	# store $ra to $sp
+	sw $ra 0($sp)
+	# subtract 4 from $sp
+	sub $sp $sp 4
+	# store $fp to $sp
+	sw $fp 0($sp)
+	# subtract 4 from $sp
+	sub $sp $sp 4
+	# store $a0 to $sp
+	sw $a0 0($sp)
+	# subtract 0 from $sp and store the result to $fp
+	sub $fp $sp 0
+	# move $fp to $sp
+	move $sp $fp
+	# End Prologue
+	li $v0 0
+	sw $v0 12($a0)
+	lw $v1 12($sp)
+	li $t0 16
+	move $v0 $a0
+	# Start Epilogue
+	# add 0 to $fp and store the result to $sp
+	add $sp $fp 0
+	# load $sp to $a0
+	lw $a0 0($sp)
+	# add 4 to $sp
+	add $sp $sp 4
+	# load $sp to $fp
+	lw $fp 0($sp)
+	# add 4 to $sp
+	add $sp $sp 4
+	# load $sp to $ra
+	lw $ra 0($sp)
+	# add 4 to $sp
+	add $sp $sp 4
+	# add 0 to $sp and store the result to $sp
+	add $sp $sp 0
+	jr $ra
+	# End Epilogue
 Main_init:
 	# Start Prologue
 	# subtract 4 from $sp
@@ -644,10 +687,6 @@ Main_init:
 	move $sp $fp
 	# End Prologue
 	jal Object_init
-	# constant int expression: load 3 to $v0
-	li $v0 3
-	# store the field 12 away from $a0 to $v0
-	sw $v0 12($a0)
 	move $v0 $a0
 	# Start Epilogue
 	# add 0 to $fp and store the result to $sp
@@ -811,68 +850,40 @@ Main.main:
 	sub $sp $sp 4
 	# store $a0 to $sp
 	sw $a0 0($sp)
-	# subtract 8 from $sp and store the result to $fp
-	sub $fp $sp 8
+	# subtract 4 from $sp and store the result to $fp
+	sub $fp $sp 4
 	# move $fp to $sp
 	move $sp $fp
 	# End Prologue
-	# gen left side of expression
-	# constant int expression: load 1 to $v0
-	li $v0 1
-	# store left expression on stack
-	sub $sp $sp 4
-	sw $v0 0($sp)
-	# gen right side of expression
-	# constant int expression: load 0 to $v0
-	li $v0 0
-	# load left expression on stack
-	lw $v1 0($sp)
-	# increment sp by 4
-	add $sp $sp 4
-	# check for divide by zero error
-	beq $zero $v0 label0
-	# divide left and right sides of expression
-	div $v0 $v1 $v0
-	# branch to afterError
-	b label1
-label0:
-	li $a1 9
-	la $a2 StringConst_0
-	jal _divide_zero_error
-label1:
+	# load the address of String_template to $a0
+	la $a0 String_template
+	# jump to Object.clone
+	jal Object.clone
+	# move $v0 to $a0
+	move $a0 $v0
+	# jump to String_init
+	jal String_init
+	# load (4)$fp to $a0
+	lw $a0 4($fp)
 	# store $v0 to (0)$fp
 	sw $v0 0($fp)
-	# constant int expression: load 3 to $v0
-	li $v0 3
-	# store $v0 to (4)$fp
-	sw $v0 4($fp)
 	# assign expr
 	# subtract 4 from the the stack pointer
 	sub $sp $sp 4
 	# save $a0 to stack pointer with offset of 0
 	sw $a0 0($sp)
-	# handle Cast Expression
-	# var expression
-	# subtract stack pointer with 4
-	sub $sp $sp 4
-	# save value in $a0 to stack pointer with 0 offset
-	sw $a0 0($sp)
-	# accept the reference object and save its location $v0
-	# case where the reference object is null
-	# load (4)$fp to $v0 
-	lw $v0 4($fp)
-	lw $a0 0($sp)
-	add $sp $sp 4
+	# constant string expression: load StringConst_1 to $v0
+	la $v0 StringConst_1
 	# case where the reference name is null
 	# move current location's base register with offset to v0
-	sw $v0 12($a0)
+	sw $v0 0($fp)
 	# save stack pointer result to $a0
 	lw $a0 0($sp)
 	# add stack pointer with 4
 	add $sp $sp 4
 	# Start Epilogue
-	# add 8 to $fp and store the result to $sp
-	add $sp $fp 8
+	# add 4 to $fp and store the result to $sp
+	add $sp $fp 4
 	# load $sp to $a0
 	lw $a0 0($sp)
 	# add 4 to $sp
@@ -975,7 +986,7 @@ A.dale:
 	lw $a0 0($sp)
 	# add stack pointer with 4
 	add $sp $sp 4
-label2:
+label0:
 	# gen left side of expression
 	# var expression
 	# subtract stack pointer with 4
@@ -996,8 +1007,8 @@ label2:
 	# compare left and right sides of expression
 	slt $v0 $v1 $v0
 	sub $v0 $zero $v0
-	# branch to label3 if $v0 is equal to 0
-	beq $zero $v0 label3
+	# branch to label1 if $v0 is equal to 0
+	beq $zero $v0 label1
 	# constant int expression: load 11 to $v0
 	li $v0 11
 	# store $v0 to (4)$fp
@@ -1021,9 +1032,9 @@ label2:
 	sw $v0 0($fp)
 	# sub 1 to $v0
 	sub $v0 $v0 1
-	# unconditional branch to label2
-	b label2
-label3:
+	# unconditional branch to label0
+	b label0
+label1:
 	# Start Epilogue
 	# add 8 to $fp and store the result to $sp
 	add $sp $fp 8
