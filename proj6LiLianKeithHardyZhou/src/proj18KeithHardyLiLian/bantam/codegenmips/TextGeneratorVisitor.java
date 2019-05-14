@@ -540,6 +540,44 @@ public class TextGeneratorVisitor extends Visitor {
     }
 
     /**
+     * visit a new Array Expression
+     * @param node the new array expression node
+     * @return null
+     */
+    public Object visit(NewArrayExpr node){
+        // load the address of the template to $a0
+        this.assemblySupport.genComment("load the address of Array_template to $a0");
+        this.assemblySupport.genLoadAddr("$a0", "Array_template");
+        //load size value into $v0
+        node.getSize().accept(this);
+        this.assemblySupport.genSub("$sp","$sp",4);
+        this.assemblySupport.genStoreWord("$v0",0,"$sp");
+
+        // get the address of the clone method, save it to $v0
+        this.assemblySupport.genComment("jump to Object.clone");
+        this.assemblySupport.genDirCall("Object.clone");
+        this.assemblySupport.genComment("move $v0 to $a0");
+        this.assemblySupport.genMove("$a0","$v0");
+        this.assemblySupport.genLoadImm("$v0",this.idTable.indexOf(node.getType()));
+        this.assemblySupport.genStoreWord("$v0",0,"$a0");
+
+        this.assemblySupport.genComment("jump to array_init");
+        this.assemblySupport.genDirCall("array_init");
+
+        this.assemblySupport.genMove("$a0","$v0");
+        //restore $a0
+        this.assemblySupport.genAdd("$sp","$sp",4);
+        this.assemblySupport.genComment("load ("+4*methodLocalVars+")$fp to $a0");
+        this.assemblySupport.genLoadWord("$a0", 4*(methodLocalVars), "$fp");
+
+
+
+
+
+        return null;
+    }
+
+    /**
      * Visit an instanceof expression node
      *
      * @param node the instanceof expression node
