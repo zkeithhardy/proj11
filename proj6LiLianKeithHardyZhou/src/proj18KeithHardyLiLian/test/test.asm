@@ -1,5 +1,5 @@
 #Authors: Zeb Keith-Hardy, Michael Li, Iris Lian
-#Date: 2019-05-13
+#Date: 2019-05-14
 #Compiled From Source: test.btm
 	.data
 	.globl	gc_flag
@@ -552,7 +552,8 @@ Integer_init:
 	# move $fp to $sp
 	move $sp $fp
 	# End Prologue
-	jal Object_init
+	li $v0 0
+	sw $v0 12($a0)
 	move $v0 $a0
 	# Start Epilogue
 	# add 0 to $fp and store the result to $sp
@@ -592,7 +593,8 @@ Boolean_init:
 	# move $fp to $sp
 	move $sp $fp
 	# End Prologue
-	jal Object_init
+	li $v0 0
+	sw $v0 12($a0)
 	move $v0 $a0
 	# Start Epilogue
 	# add 0 to $fp and store the result to $sp
@@ -633,6 +635,7 @@ Array_init:
 	move $sp $fp
 	# End Prologue
 	lw $v1 12($sp)
+	sw $v1 12($a0)
 	li $t0 16
 	li $t1 0
 	move $a3 $a0
@@ -645,6 +648,9 @@ label0:
 	add $t1 $t1 1
 	b label0
 label1:
+	mul $v1 $v1 4
+	add $v1 $v1 16
+	sw $v1 4($a0)
 	move $v0 $a0
 	# Start Epilogue
 	# add 0 to $fp and store the result to $sp
@@ -852,326 +858,26 @@ Main.main:
 	sub $sp $sp 4
 	# store $a0 to $sp
 	sw $a0 0($sp)
-	# subtract 0 from $sp and store the result to $fp
-	sub $fp $sp 0
+	# subtract 4 from $sp and store the result to $fp
+	sub $fp $sp 4
 	# move $fp to $sp
 	move $sp $fp
 	# End Prologue
-	# Start Epilogue
-	# add 0 to $fp and store the result to $sp
-	add $sp $fp 0
-	# load $sp to $a0
-	lw $a0 0($sp)
-	# add 4 to $sp
-	add $sp $sp 4
-	# load $sp to $fp
-	lw $fp 0($sp)
-	# add 4 to $sp
-	add $sp $sp 4
-	# load $sp to $ra
-	lw $ra 0($sp)
-	# add 4 to $sp
-	add $sp $sp 4
-	# add 0 to $sp and store the result to $sp
-	add $sp $sp 0
-	jr $ra
-	# End Epilogue
-A.getX:
-	# Start Prologue
-	# subtract 4 from $sp
+	# array expression
+	# subtract stack pointer with 4
 	sub $sp $sp 4
-	# store $ra to $sp
-	sw $ra 0($sp)
-	# subtract 4 from $sp
-	sub $sp $sp 4
-	# store $fp to $sp
-	sw $fp 0($sp)
-	# subtract 4 from $sp
-	sub $sp $sp 4
-	# store $a0 to $sp
+	# save value in $a0 to stack pointer with 0 offset
 	sw $a0 0($sp)
-	# subtract 0 from $sp and store the result to $fp
-	sub $fp $sp 0
-	# move $fp to $sp
-	move $sp $fp
-	# End Prologue
+	# accept the reference object and save its location $v0
 	# var expression
 	# subtract stack pointer with 4
 	sub $sp $sp 4
 	# save value in $a0 to stack pointer with 0 offset
 	sw $a0 0($sp)
 	# accept the reference object and save its location $v0
-	# case where the reference object is /this./
+	# case where the reference object is null
 	# load (12)$a0 to $v0 
 	lw $v0 12($a0)
 	lw $a0 0($sp)
 	add $sp $sp 4
-	# Start Epilogue
-	# add 0 to $fp and store the result to $sp
-	add $sp $fp 0
-	# load $sp to $a0
-	lw $a0 0($sp)
-	# add 4 to $sp
-	add $sp $sp 4
-	# load $sp to $fp
-	lw $fp 0($sp)
-	# add 4 to $sp
-	add $sp $sp 4
-	# load $sp to $ra
-	lw $ra 0($sp)
-	# add 4 to $sp
-	add $sp $sp 4
-	# add 0 to $sp and store the result to $sp
-	add $sp $sp 0
-	jr $ra
-	# End Epilogue
-A.dale:
-	# Start Prologue
-	# subtract 4 from $sp
-	sub $sp $sp 4
-	# store $ra to $sp
-	sw $ra 0($sp)
-	# subtract 4 from $sp
-	sub $sp $sp 4
-	# store $fp to $sp
-	sw $fp 0($sp)
-	# subtract 4 from $sp
-	sub $sp $sp 4
-	# store $a0 to $sp
-	sw $a0 0($sp)
-	# subtract 8 from $sp and store the result to $fp
-	sub $fp $sp 8
-	# move $fp to $sp
-	move $sp $fp
-	# End Prologue
-	# constant int expression: load 0 to $v0
-	li $v0 0
-	# store $v0 to (0)$fp
-	sw $v0 0($fp)
-	# assign expr
-	# subtract 4 from the the stack pointer
-	sub $sp $sp 4
-	# save $a0 to stack pointer with offset of 0
-	sw $a0 0($sp)
-	# constant int expression: load 0 to $v0
-	li $v0 0
-	# case where the reference name is null
-	# move current location's base register with offset to v0
-	sw $v0 0($fp)
-	# save stack pointer result to $a0
-	lw $a0 0($sp)
-	# add stack pointer with 4
-	add $sp $sp 4
-label2:
-	# gen left side of expression
-	# var expression
-	# subtract stack pointer with 4
-	sub $sp $sp 4
-	# save value in $a0 to stack pointer with 0 offset
-	sw $a0 0($sp)
-	# accept the reference object and save its location $v0
-	# case where the reference object is null
-	# load (0)$fp to $v0 
-	lw $v0 0($fp)
-	lw $a0 0($sp)
-	add $sp $sp 4
-	# move v0 to v1
-	move $v1 $v0
-	# gen right side of expression
-	# constant int expression: load 2 to $v0
-	li $v0 2
-	# compare left and right sides of expression
-	slt $v0 $v1 $v0
-	sub $v0 $zero $v0
-	# branch to label3 if $v0 is equal to 0
-	beq $zero $v0 label3
-	# constant int expression: load 11 to $v0
-	li $v0 11
-	# store $v0 to (4)$fp
-	sw $v0 4($fp)
-	# increment
-	# case where the reference object is null
-	# var expression
-	# subtract stack pointer with 4
-	sub $sp $sp 4
-	# save value in $a0 to stack pointer with 0 offset
-	sw $a0 0($sp)
-	# accept the reference object and save its location $v0
-	# case where the reference object is null
-	# load (0)$fp to $v0 
-	lw $v0 0($fp)
-	lw $a0 0($sp)
-	add $sp $sp 4
-	# add 1 to $v0
-	add $v0 $v0 1
-	# store (0)$fp to $v0
-	sw $v0 0($fp)
-	# sub 1 to $v0
-	sub $v0 $v0 1
-	# unconditional branch to label2
-	b label2
-label3:
-	# Start Epilogue
-	# add 8 to $fp and store the result to $sp
-	add $sp $fp 8
-	# load $sp to $a0
-	lw $a0 0($sp)
-	# add 4 to $sp
-	add $sp $sp 4
-	# load $sp to $fp
-	lw $fp 0($sp)
-	# add 4 to $sp
-	add $sp $sp 4
-	# load $sp to $ra
-	lw $ra 0($sp)
-	# add 4 to $sp
-	add $sp $sp 4
-	# add 0 to $sp and store the result to $sp
-	add $sp $sp 0
-	jr $ra
-	# End Epilogue
-B.getX:
-	# Start Prologue
-	# subtract 4 from $sp
-	sub $sp $sp 4
-	# store $ra to $sp
-	sw $ra 0($sp)
-	# subtract 4 from $sp
-	sub $sp $sp 4
-	# store $fp to $sp
-	sw $fp 0($sp)
-	# subtract 4 from $sp
-	sub $sp $sp 4
-	# store $a0 to $sp
-	sw $a0 0($sp)
-	# subtract 0 from $sp and store the result to $fp
-	sub $fp $sp 0
-	# move $fp to $sp
-	move $sp $fp
-	# End Prologue
-	# gen left side of expression
-	# var expression
-	# subtract stack pointer with 4
-	sub $sp $sp 4
-	# save value in $a0 to stack pointer with 0 offset
-	sw $a0 0($sp)
-	# accept the reference object and save its location $v0
-	# case where the reference object is /this./
-	# load (24)$a0 to $v0 
-	lw $v0 24($a0)
-	lw $a0 0($sp)
-	add $sp $sp 4
-	# store left expression on stack
-	sub $sp $sp 4
-	sw $v0 0($sp)
-	# gen right side of expression
-	# access dispatch_table
-	# load the address of A_template to $a0
-	la $a0 A_template
-	# jump to Object.clone
-	jal Object.clone
-	# move $v0 to $a0
-	move $a0 $v0
-	# jump to A_init
-	jal A_init
-	# load (0)$fp to $a0
-	lw $a0 0($fp)
-	# move $v0 to $a0
-	move $a0 $v0
-	# load A_dispatch_table to $v0
-	la $v0 A_dispatch_table
-	# load method address
-	# load (12)$v0 to $a1
-	lw $a1 12($v0)
-	# jump to $a1
-	jalr $a1
-	# load (0)$fp to $a0
-	lw $a0 0($fp)
-	# load left expression on stack
-	lw $v1 0($sp)
-	# increment sp by 4
-	add $sp $sp 4
-	# add left and right sides of expression
-	add $v0 $v0 $v1
-	# Start Epilogue
-	# add 0 to $fp and store the result to $sp
-	add $sp $fp 0
-	# load $sp to $a0
-	lw $a0 0($sp)
-	# add 4 to $sp
-	add $sp $sp 4
-	# load $sp to $fp
-	lw $fp 0($sp)
-	# add 4 to $sp
-	add $sp $sp 4
-	# load $sp to $ra
-	lw $ra 0($sp)
-	# add 4 to $sp
-	add $sp $sp 4
-	# add 4 to $sp and store the result to $sp
-	add $sp $sp 4
-	jr $ra
-	# End Epilogue
-B.setX:
-	# Start Prologue
-	# subtract 4 from $sp
-	sub $sp $sp 4
-	# store $ra to $sp
-	sw $ra 0($sp)
-	# subtract 4 from $sp
-	sub $sp $sp 4
-	# store $fp to $sp
-	sw $fp 0($sp)
-	# subtract 4 from $sp
-	sub $sp $sp 4
-	# store $a0 to $sp
-	sw $a0 0($sp)
-	# subtract 0 from $sp and store the result to $fp
-	sub $fp $sp 0
-	# move $fp to $sp
-	move $sp $fp
-	# End Prologue
-	# assign expr
-	# subtract 4 from the the stack pointer
-	sub $sp $sp 4
-	# save $a0 to stack pointer with offset of 0
-	sw $a0 0($sp)
-	# constant int expression: load 8 to $v0
-	li $v0 8
-	# case where the reference name is /super/
-	# move current location's base register with offset to v0
-	sw $v0 24($a0)
-	# save stack pointer result to $a0
-	lw $a0 0($sp)
-	# add stack pointer with 4
-	add $sp $sp 4
-	# var expression
-	# subtract stack pointer with 4
-	sub $sp $sp 4
-	# save value in $a0 to stack pointer with 0 offset
-	sw $a0 0($sp)
-	# accept the reference object and save its location $v0
-	# case where the reference object is /.super/
-	# load (24)$a0 to $v0 
-	lw $v0 24($a0)
-	lw $a0 0($sp)
-	add $sp $sp 4
-	# Start Epilogue
-	# add 0 to $fp and store the result to $sp
-	add $sp $fp 0
-	# load $sp to $a0
-	lw $a0 0($sp)
-	# add 4 to $sp
-	add $sp $sp 4
-	# load $sp to $fp
-	lw $fp 0($sp)
-	# add 4 to $sp
-	add $sp $sp 4
-	# load $sp to $ra
-	lw $ra 0($sp)
-	# add 4 to $sp
-	add $sp $sp 4
-	# add 0 to $sp and store the result to $sp
-	add $sp $sp 0
-	jr $ra
-	# End Epilogue
+	# case where the reference object is user defined class

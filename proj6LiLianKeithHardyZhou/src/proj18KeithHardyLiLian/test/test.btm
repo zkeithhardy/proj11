@@ -6,6 +6,8 @@ class Main {
     int foo(int x) { return x; }
 
     void main() {
+	var c = new A[4];
+	var b = a.c[1];
 //	var k = 1/0;
 //	var bs = new B[3];
 //	a = cast(A[], bs);

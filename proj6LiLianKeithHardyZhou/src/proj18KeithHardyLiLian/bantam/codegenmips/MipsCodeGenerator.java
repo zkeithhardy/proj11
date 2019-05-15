@@ -193,7 +193,8 @@ public class MipsCodeGenerator
             this.assemblySupport.genLabel(idTable.get(i) + "_init");
             textGeneratorVisitor.generateMethodPrologue();
             if(idTable.get(i).equals("Object")||idTable.get(i).equals("String")||idTable.get(i).equals("TextIO")
-                    ||idTable.get(i).equals("Sys") || idTable.get(i).equals("Array")) {
+                    ||idTable.get(i).equals("Sys") || idTable.get(i).equals("Array")
+                    || idTable.get(i).equals("Integer") || idTable.get(i).equals("Boolean")) {
                 if(idTable.get(i).equals("String") || idTable.get(i).equals("Integer") || idTable.get(i).equals("Boolean")){
                     this.assemblySupport.genLoadImm("$v0", 0);
                     this.assemblySupport.genStoreWord("$v0", 12, "$a0");
@@ -204,12 +205,8 @@ public class MipsCodeGenerator
                     this.assemblySupport.genLoadImm("$v0", 1);
                     this.assemblySupport.genStoreWord("$v0", 16, "$a0");
                 }else if(idTable.get(i).equals("Array")){
-//                    this.assemblySupport.genLoadImm("$v0",0);
-//                    this.assemblySupport.genStoreWord("$v0",12,"$a0");
-//                    this.assemblySupport.genLoadWord("$v1",12, "$sp");
-//                    this.assemblySupport.genLoadImm("$t0",16);
-                    //TODO: fix loop here so that you can create array
                     this.assemblySupport.genLoadWord("$v1",12, "$sp"); // the length
+                    this.assemblySupport.genStoreWord("$v1", 12, "$a0"); // put the length in the template
                     this.assemblySupport.genLoadImm("$t0", 16); // the starting offset
                     this.assemblySupport.genLoadImm("$t1", 0); // counter
                     this.assemblySupport.genMove("$a3", "$a0"); // a copy of a0
@@ -224,6 +221,9 @@ public class MipsCodeGenerator
                     this.assemblySupport.genAdd("$t1", "$t1", 1); // increment the counter
                     this.assemblySupport.genUncondBr(loop);
                     this.assemblySupport.genLabel(endLoop);
+                    this.assemblySupport.genMul("$v1", "$v1", 4); // calculate the size
+                    this.assemblySupport.genAdd("$v1", "$v1", 16);
+                    this.assemblySupport.genStoreWord("$v1", 4, "$a0"); // store the size
                 }
             }else{
                 //generate the fields
