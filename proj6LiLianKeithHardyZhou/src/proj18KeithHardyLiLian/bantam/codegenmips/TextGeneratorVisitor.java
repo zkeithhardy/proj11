@@ -540,6 +540,44 @@ public class TextGeneratorVisitor extends Visitor {
     }
 
     /**
+     * visit a new Array Expression
+     * @param node the new array expression node
+     * @return null
+     */
+    public Object visit(NewArrayExpr node){
+        // load the address of the template to $a0
+        this.assemblySupport.genComment("load the address of Array_template to $a0");
+        this.assemblySupport.genLoadAddr("$a0", "Array_template");
+        //load size value into $v0
+        node.getSize().accept(this);
+        this.assemblySupport.genSub("$sp","$sp",4);
+        this.assemblySupport.genStoreWord("$v0",0,"$sp");
+
+        // get the address of the clone method, save it to $v0
+        this.assemblySupport.genComment("jump to Object.clone");
+        this.assemblySupport.genDirCall("Object.clone");
+        this.assemblySupport.genComment("move $v0 to $a0");
+        this.assemblySupport.genMove("$a0","$v0");
+        this.assemblySupport.genLoadImm("$v0",this.idTable.indexOf(node.getType()));
+        this.assemblySupport.genStoreWord("$v0",0,"$a0");
+
+        this.assemblySupport.genComment("jump to array_init");
+        this.assemblySupport.genDirCall("array_init");
+
+        this.assemblySupport.genMove("$a0","$v0");
+        //restore $a0
+        this.assemblySupport.genAdd("$sp","$sp",4);
+        this.assemblySupport.genComment("load ("+4*methodLocalVars+")$fp to $a0");
+        this.assemblySupport.genLoadWord("$a0", 4*(methodLocalVars), "$fp");
+
+
+
+
+
+        return null;
+    }
+
+    /**
      * Visit an instanceof expression node
      *
      * @param node the instanceof expression node
@@ -656,6 +694,67 @@ public class TextGeneratorVisitor extends Visitor {
         return null;
     }
 
+    public Object visit(ArrayAssignExpr node){
+        Location location;
+        String varName = node.getName();
+        String refName = node.getRefName();
+
+        this.assemblySupport.genComment("Array Assign Expr");
+        this.assemblySupport.genComment("subtract 4 from the the stack pointer");
+        this.assemblySupport.genSub("$sp","$sp",4);
+        this.assemblySupport.genComment("save $a0 to stack pointer with offset of 0");
+        this.assemblySupport.genStoreWord("$a0",0,"$sp");
+
+        if(refName == null){
+            this.assemblySupport.genComment("case where the reference name is null");
+            this.assemblySupport.genComment("visit the index expression, this will load the expression to v0");
+            node.getIndex().accept(this);
+            this.assemblySupport.genComment("calculate the desired offset to the array's location");
+            this.assemblySupport.genMul("$v0", "$v0", 4);
+            this.assemblySupport.genAdd("$v0", "$v0", 16);
+
+            location = (Location)currentSymbolTable.lookup(varName);
+            this.assemblySupport.genLoadWord("$v1", location.getOffset(), location.getBaseReg());
+            this.assemblySupport.genAdd("$v1", "$v0", "$v1");
+            node.getExpr().accept(this);
+            this.assemblySupport.genStoreWord("$v0", 0,"$v1" );
+        }
+        else if(refName.equals("this")){
+            this.assemblySupport.genComment("case where the reference name is /this/");
+            this.assemblySupport.genComment("visit the index expression, this will load the expression to v0");
+            node.getIndex().accept(this);
+            this.assemblySupport.genComment("calculate the desired offset to the array's location");
+            this.assemblySupport.genMul("$v0", "$v0", 4);
+            this.assemblySupport.genAdd("$v0", "$v0", 16);
+
+            location = (Location) currentSymbolTable.lookup(varName, currentClassFieldLevel);
+            this.assemblySupport.genComment("move current location's base register with offset to v0");
+            this.assemblySupport.genLoadWord("$v1", location.getOffset(), location.getBaseReg());
+            this.assemblySupport.genAdd("$v1", "$v0", "$v1");
+            node.getExpr().accept(this);
+            this.assemblySupport.genStoreWord("$v0", 0,"$v1" );
+        }
+        else if (refName.equals("super")){
+            this.assemblySupport.genComment("case where the reference name is /this/");
+            this.assemblySupport.genComment("visit the index expression, this will load the expression to v0");
+            node.getIndex().accept(this);
+            this.assemblySupport.genComment("calculate the desired offset to the array's location");
+            this.assemblySupport.genMul("$v0", "$v0", 4);
+            this.assemblySupport.genAdd("$v0", "$v0", 16);
+
+            location = (Location) currentSymbolTable.lookup(varName, currentClassFieldLevel-1);
+            this.assemblySupport.genComment("move current location's base register with offset to v0");
+            this.assemblySupport.genLoadWord("$v1", location.getOffset(), location.getBaseReg());
+            this.assemblySupport.genAdd("$v1", "$v0", "$v1");
+            node.getExpr().accept(this);
+            this.assemblySupport.genStoreWord("$v0", 0,"$v1" );
+        }
+        this.assemblySupport.genComment("save stack pointer result to $a0");
+        this.assemblySupport.genLoadWord("$a0",0,"$sp");
+        this.assemblySupport.genComment("add stack pointer with 4");
+        this.assemblySupport.genAdd("$sp","$sp", 4);
+        return null;
+    }
     /**
      * Visit a binary comparison equals expression node
      *

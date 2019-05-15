@@ -32,7 +32,7 @@ class Main {
 //	io.putString("\n");
 //	io.putString(q);
 //	io.putString(w);
-
+	a[3].dale();
 
 
 
