@@ -726,14 +726,15 @@ public class TextGeneratorVisitor extends Visitor {
             this.assemblySupport.genComment("case where the reference name is null");
             this.assemblySupport.genComment("visit the index expression, this will load the expression to v0");
             node.getIndex().accept(this);
+            location = (Location)currentSymbolTable.lookup(varName);
+            this.assemblySupport.genComment("get the array's address then add it to the offset ");
+            this.assemblySupport.genLoadWord("$v1", location.getOffset(), location.getBaseReg());
             this.checkArrayIndexError(node.getLineNum());
             this.assemblySupport.genComment("calculate the desired offset to the array's location");
             this.assemblySupport.genMul("$v0", "$v0", 4);
             this.assemblySupport.genAdd("$v0", "$v0", 16);
 
-            location = (Location)currentSymbolTable.lookup(varName);
-            this.assemblySupport.genComment("get the array's address then add it to the offset ");
-            this.assemblySupport.genLoadWord("$v1", location.getOffset(), location.getBaseReg());
+
 
 
 
@@ -743,14 +744,15 @@ public class TextGeneratorVisitor extends Visitor {
             this.assemblySupport.genComment("case where the reference name is /this/");
             this.assemblySupport.genComment("visit the index expression, this will load the expression to v0");
             node.getIndex().accept(this);
+            location = (Location) currentSymbolTable.lookup(varName, currentClassFieldLevel);
+            this.assemblySupport.genComment("move current location's base register with offset to v0");
+            this.assemblySupport.genLoadWord("$v1", location.getOffset(), location.getBaseReg());
             this.checkArrayIndexError(node.getLineNum());
             this.assemblySupport.genComment("calculate the desired offset to the array's location");
             this.assemblySupport.genMul("$v0", "$v0", 4);
             this.assemblySupport.genAdd("$v0", "$v0", 16);
 
-            location = (Location) currentSymbolTable.lookup(varName, currentClassFieldLevel);
-            this.assemblySupport.genComment("move current location's base register with offset to v0");
-            this.assemblySupport.genLoadWord("$v1", location.getOffset(), location.getBaseReg());
+
 
 
 
@@ -760,16 +762,13 @@ public class TextGeneratorVisitor extends Visitor {
             this.assemblySupport.genComment("case where the reference name is /this/");
             this.assemblySupport.genComment("visit the index expression, this will load the expression to v0");
             node.getIndex().accept(this);
+            location = (Location) currentSymbolTable.lookup(varName, currentClassFieldLevel-1);
+            this.assemblySupport.genComment("move current location's base register with offset to v0");
+            this.assemblySupport.genLoadWord("$v1", location.getOffset(), location.getBaseReg());
             this.checkArrayIndexError(node.getLineNum());
             this.assemblySupport.genComment("calculate the desired offset to the array's location");
             this.assemblySupport.genMul("$v0", "$v0", 4);
             this.assemblySupport.genAdd("$v0", "$v0", 16);
-
-            location = (Location) currentSymbolTable.lookup(varName, currentClassFieldLevel-1);
-            this.assemblySupport.genComment("move current location's base register with offset to v0");
-            this.assemblySupport.genLoadWord("$v1", location.getOffset(), location.getBaseReg());
-
-
 
             this.assemblySupport.genAdd("$v1", "$v0", "$v1");
         }

@@ -14,7 +14,8 @@ class Main {
 	//var io = new TextIO();
 	var bs = new int[5];
 	//var t = new Integer();
-	bs[5] = 5;
+	bs[5] = 0;
+	//bs[4] = 5;
 	//t.setValue(q);
 	//bs[1] = t;
 	//var q = bs[1];
@@ -103,7 +104,7 @@ class A{
 class B extends A{
 //    int x = 5;
 //    int z = 3;
-	int[] x = new int[4];
+	//int[] x = new int[4];
 //    int getX(int b){return this.x + super.getX();}
 //    int setX(){
 //	super.x = 8;
@@ -113,8 +114,8 @@ class B extends A{
 	//var q = new Integer();
 	//q.setValue(4);
 	//super.a[0] = q;
-	this.x[0] = 4;
-	return this.x[0];
+	//this.x[0] = 4;
+	return 5;
     }
 
 }
