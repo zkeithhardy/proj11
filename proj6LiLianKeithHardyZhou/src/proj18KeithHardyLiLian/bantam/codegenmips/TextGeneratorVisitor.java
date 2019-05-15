@@ -576,7 +576,6 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genDirCall("Object.clone");
         this.assemblySupport.genComment("move $v0 to $a0");
         this.assemblySupport.genMove("$a0","$v0");
-        System.out.println(node.getType());
         this.assemblySupport.genLoadImm("$v0",this.idTable.indexOf(node.getType() + "[]"));
         this.assemblySupport.genStoreWord("$v0",0,"$a0");
 
