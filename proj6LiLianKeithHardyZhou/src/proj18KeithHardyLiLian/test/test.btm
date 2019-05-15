@@ -1,15 +1,20 @@
 class Main {
 //    int x = 3;
 //    int y = 4;
-    A[] a = new A[3];
+    int[] a = new int[3];
 
     int foo(int x) { return x; }
 
     void main() {
-	var c = new A[4];
-	var b = a.c[1];
+//	var c = new A[4];
+//	var b = a.c[1];
 //	var k = 1/0;
-//	var bs = new B[3];
+	//a[1] = 
+	var bs = new int[3];
+	bs[0] = 4;
+	var q = bs[0];
+	this.a[1] = bs[0];
+	//q = this.a[1];
 //	a = cast(A[], bs);
 	
 //	var k = new Boolean();
@@ -32,7 +37,7 @@ class Main {
 //	io.putString("\n");
 //	io.putString(q);
 //	io.putString(w);
-	a[3].dale();
+	//a[3].dale();
 
 
 

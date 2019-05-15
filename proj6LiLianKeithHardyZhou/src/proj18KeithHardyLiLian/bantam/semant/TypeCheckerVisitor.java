@@ -593,6 +593,7 @@ public class TypeCheckerVisitor extends Visitor
         }
         else if (refName.equals("this")) {
             varType = (String) currentSymbolTable.lookup(varName, currentClassFieldLevel);
+            System.out.println("passing");
         }
         else if (refName.equals("super")) {
             varType = (String) currentSymbolTable.lookup(varName,

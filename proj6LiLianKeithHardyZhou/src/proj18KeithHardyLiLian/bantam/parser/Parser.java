@@ -442,6 +442,7 @@ public class Parser
                         updateCurrentToken();
                         right = this.parseExpression();
                 }
+                System.out.println(refName + " " + name);
                 return astNodeBuilder.buildArrayAssignExpr(position,refName,name,index,right);//new ArrayAssignExpr(position,refName,name,index, this.parseExpression());
             }
             else{
