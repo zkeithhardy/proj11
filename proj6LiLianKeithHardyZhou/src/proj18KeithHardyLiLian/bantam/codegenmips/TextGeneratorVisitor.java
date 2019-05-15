@@ -713,6 +713,7 @@ public class TextGeneratorVisitor extends Visitor {
             this.assemblySupport.genAdd("$v0", "$v0", 16);
 
             location = (Location)currentSymbolTable.lookup(varName);
+            this.assemblySupport.genComment("get the array's address then add it to the offset ");
             this.assemblySupport.genLoadWord("$v1", location.getOffset(), location.getBaseReg());
             this.assemblySupport.genAdd("$v1", "$v0", "$v1");
         }
