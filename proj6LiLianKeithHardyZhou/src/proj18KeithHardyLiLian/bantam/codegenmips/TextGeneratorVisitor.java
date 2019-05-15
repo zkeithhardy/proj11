@@ -157,13 +157,13 @@ public class TextGeneratorVisitor extends Visitor {
             node.getInit().accept(this);
             this.assemblySupport.genComment("store the field "+4*fieldCount.get(currentClass)+" away from $a0 to $v0");
             this.assemblySupport.genStoreWord("$v0", 4*fieldCount.get(currentClass), "$a0");
-            ClassTreeNode tempNode = classMap.get(currentClass);
-            Iterator itr = tempNode.getChildrenList();
-            while(itr.hasNext()){
-                tempNode = (ClassTreeNode) itr.next();
-                this.assemblySupport.genComment("store the field "+4*fieldCount.get(tempNode.getName())+" away from $a0 to $v0");
-                this.assemblySupport.genStoreWord("$v0", 4*fieldCount.get(tempNode.getName()), "$a0");
-            }
+//            ClassTreeNode tempNode = classMap.get(currentClass);
+//            Iterator itr = tempNode.getChildrenList();
+//            while(itr.hasNext()){
+//                tempNode = (ClassTreeNode) itr.next();
+//                this.assemblySupport.genComment("store the field "+4*fieldCount.get(tempNode.getName())+" away from $a0 to $v0");
+//                this.assemblySupport.genStoreWord("$v0", 4*fieldCount.get(tempNode.getName()), "$a0");
+//            }
         }
 
         Location fieldLocation= new Location("$a0", 4*fieldCount.get(currentClass));
@@ -485,12 +485,17 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genComment("load method address");
         this.assemblySupport.genComment("load ("+idx*4+")$v0 to $a1");
         this.assemblySupport.genLoadWord("$a1",idx*4, "$v0");
+
+        this.assemblySupport.genSub("$sp","$sp",4);
+        this.assemblySupport.genStoreWord("$a1",0,"$sp");
         node.getActualList().accept(this);
+        this.assemblySupport.genLoadWord("$a1",4*node.getActualList().getSize(),"$sp");
 
         this.assemblySupport.genComment("jump to $a1");
         this.assemblySupport.genInDirCall("$a1");
         this.assemblySupport.genComment("load (0)$fp to $a0");
         this.assemblySupport.genLoadWord("$a0",0,"$fp");
+        this.assemblySupport.genAdd("$sp", "$sp", 4);
 //        this.assemblySupport.genComment("add 4 to $sp");
 //        this.assemblySupport.genAdd("$sp","$sp",4);
         return null;
@@ -563,7 +568,6 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genComment("jump to Array_init");
         this.assemblySupport.genDirCall("Array_init");
 
-        this.assemblySupport.genMove("$a0","$v0");
         //restore $a0
         this.assemblySupport.genAdd("$sp","$sp",4);
         this.assemblySupport.genComment("load ("+4*methodLocalVars+")$fp to $a0");
