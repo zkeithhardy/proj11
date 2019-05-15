@@ -1,7 +1,8 @@
 class Main {
 //    int x = 3;
 //    int y = 4;
-    int[] a = new int[3];
+    //int[] a = new int[3];
+	//B b = new B();
 
     int foo(int x) { return x; }
 
@@ -10,11 +11,18 @@ class Main {
 //	var b = a.c[1];
 //	var k = 1/0;
 	//a[1] = 
-	var bs = new B();
 	//var io = new TextIO();
-	var q = bs.getA();
+	var bs = new int[5];
+	//var t = new Integer();
+	bs[5] = 5;
+	//t.setValue(q);
+	//bs[1] = t;
+	//var q = bs[1];
+	//s.getA();
+	
+	//var q = bs.getX(bs.getA());
 	//var t = q.toString();
-	//io.putString(t);
+	//io.putString(t.toString());
 	
 	//var q = bs[0];
 	//this.a[1] = bs[0];
@@ -78,10 +86,10 @@ class Main {
 //}
 
 class A{
-    int x = 4;
-    int y = 2;
-    String k = "In A";
-    Integer[] a = new Integer[4];
+//    int x = 4;
+//    int y = 2;
+//    String k = "In A";
+//    Integer[] a = new Integer[4];
 //    int getX(){return this.x;}
 //    void dale(){
 //	var i = 0;
@@ -95,6 +103,7 @@ class A{
 class B extends A{
 //    int x = 5;
 //    int z = 3;
+	int[] x = new int[4];
 //    int getX(int b){return this.x + super.getX();}
 //    int setX(){
 //	super.x = 8;
@@ -104,8 +113,8 @@ class B extends A{
 	//var q = new Integer();
 	//q.setValue(4);
 	//super.a[0] = q;
-	return 5;
+	this.x[0] = 4;
+	return this.x[0];
     }
-    //SubMain newSubMain(){return new SubMain();}
 
 }

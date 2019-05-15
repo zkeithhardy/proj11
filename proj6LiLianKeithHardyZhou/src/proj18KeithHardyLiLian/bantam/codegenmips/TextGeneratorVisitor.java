@@ -554,6 +554,20 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genLoadAddr("$a0", "Array_template");
         //load size value into $v0
         node.getSize().accept(this);
+        String afterError = this.assemblySupport.getLabel();
+        String error = this.assemblySupport.getLabel();
+        this.assemblySupport.genCondBleq("$v0","$zero",error);
+        this.assemblySupport.genLoadImm("$t1",1500);
+        this.assemblySupport.genCondBgeq("$v0","$t1",error);
+
+        this.assemblySupport.genUncondBr(afterError);
+        this.assemblySupport.genLabel(error);
+        this.assemblySupport.genMove("$t0","$v0");
+        this.assemblySupport.genLoadImm("$a1",node.getLineNum());
+        this.assemblySupport.genLoadAddr("$a2", "StringConst_0");
+        this.assemblySupport.genDirCall("_array_size_error");
+
+        this.assemblySupport.genLabel(afterError);
         this.assemblySupport.genSub("$sp","$sp",4);
         this.assemblySupport.genStoreWord("$v0",0,"$sp");
 
@@ -562,7 +576,8 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genDirCall("Object.clone");
         this.assemblySupport.genComment("move $v0 to $a0");
         this.assemblySupport.genMove("$a0","$v0");
-        this.assemblySupport.genLoadImm("$v0",this.idTable.indexOf(node.getType()));
+        System.out.println(node.getType());
+        this.assemblySupport.genLoadImm("$v0",this.idTable.indexOf(node.getType() + "[]"));
         this.assemblySupport.genStoreWord("$v0",0,"$a0");
 
         this.assemblySupport.genComment("jump to Array_init");
@@ -712,6 +727,7 @@ public class TextGeneratorVisitor extends Visitor {
             this.assemblySupport.genComment("case where the reference name is null");
             this.assemblySupport.genComment("visit the index expression, this will load the expression to v0");
             node.getIndex().accept(this);
+            this.checkArrayIndexError(node.getLineNum());
             this.assemblySupport.genComment("calculate the desired offset to the array's location");
             this.assemblySupport.genMul("$v0", "$v0", 4);
             this.assemblySupport.genAdd("$v0", "$v0", 16);
@@ -719,12 +735,16 @@ public class TextGeneratorVisitor extends Visitor {
             location = (Location)currentSymbolTable.lookup(varName);
             this.assemblySupport.genComment("get the array's address then add it to the offset ");
             this.assemblySupport.genLoadWord("$v1", location.getOffset(), location.getBaseReg());
+
+
+
             this.assemblySupport.genAdd("$v1", "$v0", "$v1");
         }
         else if(refName.equals("this")){
             this.assemblySupport.genComment("case where the reference name is /this/");
             this.assemblySupport.genComment("visit the index expression, this will load the expression to v0");
             node.getIndex().accept(this);
+            this.checkArrayIndexError(node.getLineNum());
             this.assemblySupport.genComment("calculate the desired offset to the array's location");
             this.assemblySupport.genMul("$v0", "$v0", 4);
             this.assemblySupport.genAdd("$v0", "$v0", 16);
@@ -732,12 +752,16 @@ public class TextGeneratorVisitor extends Visitor {
             location = (Location) currentSymbolTable.lookup(varName, currentClassFieldLevel);
             this.assemblySupport.genComment("move current location's base register with offset to v0");
             this.assemblySupport.genLoadWord("$v1", location.getOffset(), location.getBaseReg());
+
+
+
             this.assemblySupport.genAdd("$v1", "$v0", "$v1");
         }
         else if (refName.equals("super")){
             this.assemblySupport.genComment("case where the reference name is /this/");
             this.assemblySupport.genComment("visit the index expression, this will load the expression to v0");
             node.getIndex().accept(this);
+            this.checkArrayIndexError(node.getLineNum());
             this.assemblySupport.genComment("calculate the desired offset to the array's location");
             this.assemblySupport.genMul("$v0", "$v0", 4);
             this.assemblySupport.genAdd("$v0", "$v0", 16);
@@ -745,6 +769,9 @@ public class TextGeneratorVisitor extends Visitor {
             location = (Location) currentSymbolTable.lookup(varName, currentClassFieldLevel-1);
             this.assemblySupport.genComment("move current location's base register with offset to v0");
             this.assemblySupport.genLoadWord("$v1", location.getOffset(), location.getBaseReg());
+
+
+
             this.assemblySupport.genAdd("$v1", "$v0", "$v1");
         }
         this.assemblySupport.genComment("subtract 4 from the the stack pointer");
@@ -764,6 +791,24 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genAdd("$sp","$sp", 4);
         return null;
     }
+
+    private void checkArrayIndexError(int linenum){
+        this.assemblySupport.genLoadWord("$t1",12,"$v1");
+        String afterError = this.assemblySupport.getLabel();
+        String error = this.assemblySupport.getLabel();
+        this.assemblySupport.genCondBlt("$v0","$zero",error);
+        this.assemblySupport.genCondBgeq("$v0","$t1",error);
+        this.assemblySupport.genUncondBr(afterError);
+        this.assemblySupport.genLabel(error);
+        this.assemblySupport.genMove("$t0","$v0");
+        this.assemblySupport.genLoadImm("$a1",linenum);
+        this.assemblySupport.genLoadAddr("$a2", "StringConst_0");
+        this.assemblySupport.genDirCall("_array_index_error");
+        this.assemblySupport.genLabel(afterError);
+
+    }
+
+
     /**
      * Visit a binary comparison equals expression node
      *
@@ -1253,7 +1298,7 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genComment("subtract stack pointer with 4");
         this.assemblySupport.genSub("$sp","$sp",4);
         this.assemblySupport.genComment("save value in $a0 to stack pointer with 0 offset");
-        this.assemblySupport.genStoreWord("$a0",0,"$sp");
+        this.assemblySupport.genStoreWord("$v0",0,"$sp");
 
         this.assemblySupport.genComment("accept the reference object and save its location $v0");
 
@@ -1308,8 +1353,10 @@ public class TextGeneratorVisitor extends Visitor {
             this.assemblySupport.genComment("load ("+location.getOffset()+")$a0 to $v1");
             this.assemblySupport.genLoadWord("$v1",location.getOffset(),"$a0");
         }
-        this.assemblySupport.genLoadWord("$a0",0,"$sp");
+        this.assemblySupport.genLoadWord("$v0",0,"$sp");
         this.assemblySupport.genAdd("$sp","$sp", 4);
+
+        this.checkArrayIndexError(node.getLineNum());
 
         this.assemblySupport.genMul("$v0", "$v0", 4);
         this.assemblySupport.genAdd("$v0", "$v0", 16);
