@@ -10,10 +10,14 @@ class Main {
 //	var b = a.c[1];
 //	var k = 1/0;
 	//a[1] = 
-	var bs = new int[3];
-	bs[0] = 4;
-	var q = bs[0];
-	this.a[1] = bs[0];
+	var bs = new B();
+	//var io = new TextIO();
+	var q = bs.getA();
+	//var t = q.toString();
+	//io.putString(t);
+	
+	//var q = bs[0];
+	//this.a[1] = bs[0];
 	//q = this.a[1];
 //	a = cast(A[], bs);
 	
@@ -77,23 +81,30 @@ class A{
     int x = 4;
     int y = 2;
     String k = "In A";
-    int getX(){return this.x;}
-    void dale(){
-	var i = 0;
-	for(i = 0; i<2; i++){
-	    var b = 11;
-	}
-    }
+    Integer[] a = new Integer[4];
+//    int getX(){return this.x;}
+//    void dale(){
+//	var i = 0;
+//	for(i = 0; i<2; i++){
+//	    var b = 11;
+//	}
+//    }
 }
 
 
 class B extends A{
-    int x = 5;
-    int z = 3;
-    int getX(int b){return this.x + super.getX();}
-    int setX(){
-	super.x = 8;
-	return super.x;
+//    int x = 5;
+//    int z = 3;
+//    int getX(int b){return this.x + super.getX();}
+//    int setX(){
+//	super.x = 8;
+//	return super.x;
+//    }
+    int getA(){
+	//var q = new Integer();
+	//q.setValue(4);
+	//super.a[0] = q;
+	return 5;
     }
     //SubMain newSubMain(){return new SubMain();}
 

@@ -415,7 +415,7 @@ public class Parser
             else if(left instanceof ArrayExpr){
                 String refName = null;
                 if(((ArrayExpr) left).getRef() != null) {
-                    refName = ((ArrayExpr) ((ArrayExpr) left).getRef()).getName();
+                    refName = ((VarExpr) ((ArrayExpr) left).getRef()).getName();
                 }
                 String name = ((ArrayExpr) left).getName();
                 Expr index = ((ArrayExpr) left).getIndex();
@@ -442,7 +442,6 @@ public class Parser
                         updateCurrentToken();
                         right = this.parseExpression();
                 }
-                System.out.println(refName + " " + name);
                 return astNodeBuilder.buildArrayAssignExpr(position,refName,name,index,right);//new ArrayAssignExpr(position,refName,name,index, this.parseExpression());
             }
             else{
