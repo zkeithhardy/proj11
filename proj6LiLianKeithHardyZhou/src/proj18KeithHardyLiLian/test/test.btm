@@ -13,8 +13,9 @@ class Main {
 	//a[1] = 
 	//var io = new TextIO();
 	var bs = new int[5];
+	var b = new Integer();
 	//var t = new Integer();
-	bs[5] = 0;
+	bs[5] = b;
 	//bs[4] = 5;
 	//t.setValue(q);
 	//bs[1] = t;

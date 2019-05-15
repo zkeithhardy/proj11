@@ -730,15 +730,7 @@ public class TextGeneratorVisitor extends Visitor {
             this.assemblySupport.genComment("get the array's address then add it to the offset ");
             this.assemblySupport.genLoadWord("$v1", location.getOffset(), location.getBaseReg());
             this.checkArrayIndexError(node.getLineNum());
-            this.assemblySupport.genComment("calculate the desired offset to the array's location");
-            this.assemblySupport.genMul("$v0", "$v0", 4);
-            this.assemblySupport.genAdd("$v0", "$v0", 16);
 
-
-
-
-
-            this.assemblySupport.genAdd("$v1", "$v0", "$v1");
         }
         else if(refName.equals("this")){
             this.assemblySupport.genComment("case where the reference name is /this/");
@@ -748,15 +740,6 @@ public class TextGeneratorVisitor extends Visitor {
             this.assemblySupport.genComment("move current location's base register with offset to v0");
             this.assemblySupport.genLoadWord("$v1", location.getOffset(), location.getBaseReg());
             this.checkArrayIndexError(node.getLineNum());
-            this.assemblySupport.genComment("calculate the desired offset to the array's location");
-            this.assemblySupport.genMul("$v0", "$v0", 4);
-            this.assemblySupport.genAdd("$v0", "$v0", 16);
-
-
-
-
-
-            this.assemblySupport.genAdd("$v1", "$v0", "$v1");
         }
         else if (refName.equals("super")){
             this.assemblySupport.genComment("case where the reference name is /this/");
@@ -766,21 +749,76 @@ public class TextGeneratorVisitor extends Visitor {
             this.assemblySupport.genComment("move current location's base register with offset to v0");
             this.assemblySupport.genLoadWord("$v1", location.getOffset(), location.getBaseReg());
             this.checkArrayIndexError(node.getLineNum());
-            this.assemblySupport.genComment("calculate the desired offset to the array's location");
-            this.assemblySupport.genMul("$v0", "$v0", 4);
-            this.assemblySupport.genAdd("$v0", "$v0", 16);
 
-            this.assemblySupport.genAdd("$v1", "$v0", "$v1");
         }
+
         this.assemblySupport.genComment("subtract 4 from the the stack pointer");
         this.assemblySupport.genSub("$sp","$sp",4);
         this.assemblySupport.genComment("save $v1 to stack pointer with offset of 0");
         this.assemblySupport.genStoreWord("$v1",0,"$sp");
+        this.assemblySupport.genComment("subtract 4 from the the stack pointer");
+        this.assemblySupport.genSub("$sp","$sp",4);
+        this.assemblySupport.genComment("save $v1 to stack pointer with offset of 0");
+        this.assemblySupport.genStoreWord("$v0",0,"$sp"); //store size of array
         node.getExpr().accept(this);
+
+        this.assemblySupport.genComment("save stack pointer result to $v1");
+        this.assemblySupport.genLoadWord("$t2",0,"$sp"); //size of array loaded into $t2 now
+        this.assemblySupport.genComment("add stack pointer with 4");
+        this.assemblySupport.genAdd("$sp","$sp", 4);
         this.assemblySupport.genComment("save stack pointer result to $v1");
         this.assemblySupport.genLoadWord("$v1",0,"$sp");
         this.assemblySupport.genComment("add stack pointer with 4");
         this.assemblySupport.genAdd("$sp","$sp", 4);
+
+        String error = this.assemblySupport.getLabel();
+        String afterError = this.assemblySupport.getLabel();
+        if(!(node.getExprType().equals("int") || node.getExprType().equals("boolean"))){
+            this.assemblySupport.genLoadWord("$t1",0,"$v1");
+            String classname = this.classMap.get(node.getExprType()).getName() + "[]";
+            int j = this.idTable.indexOf(classname); // id in the table
+
+            int k = this.classMap.get(node.getExprType()).getNumDescendants();
+
+            this.assemblySupport.genComment("load j into $t0 and j+k into $t1");
+            this.assemblySupport.genLoadImm("$t0", j);
+            this.assemblySupport.genLoadImm("$t1", j+k);
+            this.assemblySupport.genComment("load type of expression in $v0 into $t3");
+            this.assemblySupport.genLoadWord("$t3",0,"$v0");
+
+            this.assemblySupport.genComment("compare j<=i and i<=j+k, if both true, return true");
+            this.out.println("\tsle $t0 $t0 $t3"); // j <= i
+            this.out.println("\tsle $t3 $t3 $t1"); // i <= j+k
+
+            this.assemblySupport.genComment("$t0 AND $t3, store in $t3");
+            this.assemblySupport.genAnd("$t3", "$t0", "$t3");
+            this.assemblySupport.genCondBne("$t3","$zero",afterError);
+
+            this.assemblySupport.genLoadWord("$t0",0,"$v1");
+            this.assemblySupport.genLoadWord("$t1",0,"$v0");
+            this.assemblySupport.genLoadImm("$a1",node.getLineNum());
+            this.assemblySupport.genLoadAddr("$a2", "StringConst_0");
+            this.assemblySupport.genDirCall("_array_store_error");
+            this.assemblySupport.genLabel(afterError);
+        }else{
+            String arrayType = node.getExprType() + "[]";
+            String exprType = node.getExpr().getExprType() + "[]";
+            int j = this.idTable.indexOf(arrayType);
+            int k = this.idTable.indexOf(exprType);
+            this.assemblySupport.genLoadImm("$t0",j);
+            this.assemblySupport.genLoadImm("$t1",k);
+            this.assemblySupport.genCondBeq("$t1","$t2",afterError);
+            this.assemblySupport.genLoadImm("$a1",node.getLineNum());
+            this.assemblySupport.genLoadAddr("$a2", "StringConst_0");
+            this.assemblySupport.genDirCall("_array_store_error");
+            this.assemblySupport.genLabel(afterError);
+        }
+
+        this.assemblySupport.genComment("calculate the desired offset to the array's location");
+        this.assemblySupport.genMul("$t2", "$t2", 4);
+        this.assemblySupport.genAdd("$t2", "$t2", 16);
+        this.assemblySupport.genAdd("$v1", "$t2", "$v1");
+
         this.assemblySupport.genStoreWord("$v0", 0,"$v1" );
 
         this.assemblySupport.genComment("save stack pointer result to $a0");
