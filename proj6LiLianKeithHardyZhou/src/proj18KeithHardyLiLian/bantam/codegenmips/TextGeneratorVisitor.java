@@ -141,7 +141,7 @@ public class TextGeneratorVisitor extends Visitor {
     }
 
     /**
-     *
+     * Visiting the field node
      * @param node the field node
      * @return
      */
