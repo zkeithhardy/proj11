@@ -221,9 +221,7 @@ public class MipsCodeGenerator
                     this.assemblySupport.genAdd("$t1", "$t1", 1); // increment the counter
                     this.assemblySupport.genUncondBr(loop);
                     this.assemblySupport.genLabel(endLoop);
-                    this.assemblySupport.genMul("$v1", "$v1", 4); // calculate the size
-                    this.assemblySupport.genAdd("$v1", "$v1", 16);
-                    this.assemblySupport.genStoreWord("$v1", 4, "$a0"); // store the size
+                    this.assemblySupport.genStoreWord("$t0", 4, "$a0"); // store the size
                 }
             }else{
                 //generate the fields
@@ -265,7 +263,12 @@ public class MipsCodeGenerator
         int index = idTable.indexOf(root.getName()) + 1;
         ArrayList<String> temp = (ArrayList<String>) idTable.clone();
         for(String id : temp){
-            if(id.equals("Object") || id.equals("Array") || id.equals("TextIO") || id.equals("Sys")){
+            if(id.equals("Object") || id.equals("TextIO") || id.equals("Sys")){
+                continue;
+            }
+            if(id.equals("Array")){
+                idTable.add(index++,"int[]");
+                idTable.add(index++,"boolean[]");
                 continue;
             }
             idTable.add(index, id + "[]");

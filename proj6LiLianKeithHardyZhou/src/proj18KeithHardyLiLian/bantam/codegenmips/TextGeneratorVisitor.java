@@ -488,16 +488,19 @@ public class TextGeneratorVisitor extends Visitor {
 
         this.assemblySupport.genSub("$sp","$sp",4);
         this.assemblySupport.genStoreWord("$a1",0,"$sp");
+        this.assemblySupport.genSub("$sp","$sp",4);
+        this.assemblySupport.genStoreWord("$a0",0,"$sp");
         node.getActualList().accept(this);
-        this.assemblySupport.genLoadWord("$a1",4*node.getActualList().getSize(),"$sp");
+        this.assemblySupport.genLoadWord("$a0",4*node.getActualList().getSize(),"$sp");
+        //this.assemblySupport.genAdd("$sp","$sp",4*node.getActualList().getSize()+4);
+        this.assemblySupport.genLoadWord("$a1",4*node.getActualList().getSize()+4,"$sp");
+        //this.assemblySupport.genAdd("$sp","$sp",4);
 
         this.assemblySupport.genComment("jump to $a1");
         this.assemblySupport.genInDirCall("$a1");
-        this.assemblySupport.genComment("load (0)$fp to $a0");
-        this.assemblySupport.genLoadWord("$a0",0,"$fp");
-        this.assemblySupport.genAdd("$sp", "$sp", 4);
-//        this.assemblySupport.genComment("add 4 to $sp");
-//        this.assemblySupport.genAdd("$sp","$sp",4);
+        this.assemblySupport.genAdd("$sp","$sp",4*node.getActualList().getSize()+8);
+        this.assemblySupport.genComment("load (0)$sp to $a0");
+        this.assemblySupport.genLoadWord("$a0",4*methodLocalVars,"$fp");
         return null;
     }
 
@@ -570,6 +573,10 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genLabel(afterError);
         this.assemblySupport.genSub("$sp","$sp",4);
         this.assemblySupport.genStoreWord("$v0",0,"$sp");
+        this.assemblySupport.genComment("save size of array in correct space");
+        this.assemblySupport.genMul("$v1","$v0",4);
+        this.assemblySupport.genAdd("$v1","$v1",16);
+        this.assemblySupport.genStoreWord("$v1",4,"$a0");
 
         // get the address of the clone method, save it to $v0
         this.assemblySupport.genComment("jump to Object.clone");
@@ -775,7 +782,7 @@ public class TextGeneratorVisitor extends Visitor {
         String afterError = this.assemblySupport.getLabel();
         if(!(node.getExprType().equals("int") || node.getExprType().equals("boolean"))){
             this.assemblySupport.genLoadWord("$t1",0,"$v1");
-            String classname = this.classMap.get(node.getExprType()).getName() + "[]";
+            String classname = this.classMap.get(node.getExprType()).getName();
             int j = this.idTable.indexOf(classname); // id in the table
 
             int k = this.classMap.get(node.getExprType()).getNumDescendants();
@@ -805,9 +812,11 @@ public class TextGeneratorVisitor extends Visitor {
             String exprType = node.getExpr().getExprType() + "[]";
             int j = this.idTable.indexOf(arrayType);
             int k = this.idTable.indexOf(exprType);
+            System.out.println(j + " " + k );
+            System.out.println(idTable);
             this.assemblySupport.genLoadImm("$t0",j);
             this.assemblySupport.genLoadImm("$t1",k);
-            this.assemblySupport.genCondBeq("$t1","$t2",afterError);
+            this.assemblySupport.genCondBeq("$t0","$t1",afterError);
             this.assemblySupport.genLoadImm("$a1",node.getLineNum());
             this.assemblySupport.genLoadAddr("$a2", "StringConst_0");
             this.assemblySupport.genDirCall("_array_store_error");
