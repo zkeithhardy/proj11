@@ -43,7 +43,6 @@ public class MainMainVisitor extends Visitor {
         if(hasMainClassAndMethod){
             return null;
         }
-
         if(node.getName().equals("Main")){
             ClassTreeNode tempClassTreeNode=this.classMap.get(node.getName());
             SymbolTable curMethodSymTbl= tempClassTreeNode.getMethodSymbolTable();
