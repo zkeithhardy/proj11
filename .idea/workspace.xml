@@ -4,7 +4,6 @@
     <list default="true" id="8c7a2aeb-d440-4298-8971-4b09cf8ec87c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/bantam/codegenmips/TextGeneratorVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/bantam/codegenmips/TextGeneratorVisitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/bantam/semant/TypeCheckerVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/bantam/semant/TypeCheckerVisitor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/test/test.btm" beforeDir="false" afterPath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/test/test.btm" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,7 +20,7 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="fxml" value="105" />
-          <entry key="java" value="23710" />
+          <entry key="java" value="23841" />
           <entry key="s" value="1783" />
           <entry key="txt" value="907" />
         </counts>
@@ -29,7 +28,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="DTD" value="1783" />
-          <entry key="JAVA" value="23710" />
+          <entry key="JAVA" value="23841" />
           <entry key="PLAIN_TEXT" value="907" />
           <entry key="XML" value="105" />
         </counts>
@@ -79,7 +78,7 @@
         <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/bantam/codegenmips/TextGeneratorVisitor.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="199">
-              <caret line="842" column="49" selection-start-line="842" selection-start-column="49" selection-end-line="842" selection-end-column="49" />
+              <caret line="792" column="59" selection-start-line="792" selection-start-column="59" selection-end-line="792" selection-end-column="59" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -346,7 +345,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557971313255" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558042264157" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/include/richtextfx-fat-0.9.1.jar!/" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -501,13 +500,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1550448692222</updated>
-    </task>
-    <task id="LOCAL-00005" summary="fixed bugs">
-      <created>1555636546152</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1555636546152</updated>
     </task>
     <task id="LOCAL-00006" summary="minor changes">
       <created>1555637755344</created>
@@ -845,7 +837,14 @@
       <option name="project" value="LOCAL" />
       <updated>1558037510552</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="array store error added">
+      <created>1558041042240</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1558041042240</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1166,7 +1165,7 @@
     <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/bantam/codegenmips/TextGeneratorVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="199">
-          <caret line="842" column="49" selection-start-line="842" selection-start-column="49" selection-end-line="842" selection-end-column="49" />
+          <caret line="792" column="59" selection-start-line="792" selection-start-column="59" selection-end-line="792" selection-end-column="59" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

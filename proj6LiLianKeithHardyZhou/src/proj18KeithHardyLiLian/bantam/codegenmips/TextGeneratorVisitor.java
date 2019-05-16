@@ -782,14 +782,15 @@ public class TextGeneratorVisitor extends Visitor {
         String afterError = this.assemblySupport.getLabel();
         if(!(node.getExprType().equals("int") || node.getExprType().equals("boolean"))){
             this.assemblySupport.genLoadWord("$t1",0,"$v1");
-            String classname = this.classMap.get(node.getExprType()).getName();
-            int j = this.idTable.indexOf(classname); // id in the table
+//            String classname = this.classMap.get(node.getExprType()).getName()+ "[]";
+//            int j = this.idTable.indexOf(classname); // id in the table
 
             int k = this.classMap.get(node.getExprType()).getNumDescendants();
 
             this.assemblySupport.genComment("load j into $t0 and j+k into $t1");
-            this.assemblySupport.genLoadImm("$t0", j);
-            this.assemblySupport.genLoadImm("$t1", j+k);
+            this.assemblySupport.genLoadWord("$t0", 0, "$v1");
+            this.assemblySupport.genLoadImm("$t1", k);
+            this.assemblySupport.genAdd("$t1","$t1","$t0");
             this.assemblySupport.genComment("load type of expression in $v0 into $t3");
             this.assemblySupport.genLoadWord("$t3",0,"$v0");
 
@@ -840,6 +841,7 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genCondBne("$v1","$zero",afterNull);
         this.assemblySupport.genLoadImm("$a1",linenum);
         this.assemblySupport.genLoadAddr("$a2", "StringConst_0");
+        this.assemblySupport.genDirCall("_null_pointer_error");
         this.assemblySupport.genLabel(afterNull);
         this.assemblySupport.genLoadWord("$t1",12,"$v1");
         String afterError = this.assemblySupport.getLabel();
