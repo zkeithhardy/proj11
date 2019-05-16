@@ -11,14 +11,14 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/include/richtextfx-fat-0.9.1.jar!/" />
-          <root url="jar://$MODULE_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/include/Mars4_5.jar!/" />
+          <root url="jar://$MODULE_DIR$/proj6LiLianKeithHardyZhou/src/proj19KeithHardyLiLian/include/richtextfx-fat-0.9.1.jar!/" />
+          <root url="jar://$MODULE_DIR$/proj6LiLianKeithHardyZhou/src/proj19KeithHardyLiLian/include/Mars4_5.jar!/" />
         </CLASSES>
         <JAVADOC>
-          <root url="jar://$MODULE_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/include/Mars4_5.jar!/docs" />
+          <root url="jar://$MODULE_DIR$/proj6LiLianKeithHardyZhou/src/proj19KeithHardyLiLian/include/Mars4_5.jar!/docs" />
         </JAVADOC>
         <SOURCES>
-          <root url="jar://$MODULE_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/include/Mars4_5.jar!/" />
+          <root url="jar://$MODULE_DIR$/proj6LiLianKeithHardyZhou/src/proj19KeithHardyLiLian/include/Mars4_5.jar!/" />
         </SOURCES>
       </library>
     </orderEntry>
