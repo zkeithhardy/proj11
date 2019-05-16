@@ -578,10 +578,6 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genComment("load ("+4*methodLocalVars+")$fp to $a0");
         this.assemblySupport.genLoadWord("$a0", 4*(methodLocalVars), "$fp");
 
-
-
-
-
         return null;
     }
 
@@ -723,30 +719,24 @@ public class TextGeneratorVisitor extends Visitor {
             this.assemblySupport.genComment("visit the index expression, this will load the expression to v0");
             node.getIndex().accept(this);
             location = (Location)currentSymbolTable.lookup(varName);
-            this.assemblySupport.genComment("get the array's address then add it to the offset ");
-            this.assemblySupport.genLoadWord("$v1", location.getOffset(), location.getBaseReg());
-            this.checkArrayIndexError(node.getLineNum());
-
         }
         else if(refName.equals("this")){
             this.assemblySupport.genComment("case where the reference name is /this/");
             this.assemblySupport.genComment("visit the index expression, this will load the expression to v0");
             node.getIndex().accept(this);
             location = (Location) currentSymbolTable.lookup(varName, currentClassFieldLevel);
-            this.assemblySupport.genComment("move current location's base register with offset to v0");
-            this.assemblySupport.genLoadWord("$v1", location.getOffset(), location.getBaseReg());
-            this.checkArrayIndexError(node.getLineNum());
         }
-        else if (refName.equals("super")){
+        else{
             this.assemblySupport.genComment("case where the reference name is /this/");
             this.assemblySupport.genComment("visit the index expression, this will load the expression to v0");
             node.getIndex().accept(this);
             location = (Location) currentSymbolTable.lookup(varName, currentClassFieldLevel-1);
-            this.assemblySupport.genComment("move current location's base register with offset to v0");
-            this.assemblySupport.genLoadWord("$v1", location.getOffset(), location.getBaseReg());
-            this.checkArrayIndexError(node.getLineNum());
 
         }
+
+        this.assemblySupport.genComment("get the array's address then add it to the offset ");
+        this.assemblySupport.genLoadWord("$v1", location.getOffset(), location.getBaseReg());
+        this.checkArrayIndexError(node.getLineNum());
 
         this.assemblySupport.genComment("subtract 4 from the the stack pointer");
         this.assemblySupport.genSub("$sp","$sp",4);
@@ -767,12 +757,9 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genComment("add stack pointer with 4");
         this.assemblySupport.genAdd("$sp","$sp", 4);
 
-        String error = this.assemblySupport.getLabel();
         String afterError = this.assemblySupport.getLabel();
         if(!(node.getExprType().equals("int") || node.getExprType().equals("boolean"))){
             this.assemblySupport.genLoadWord("$t1",0,"$v1");
-//            String classname = this.classMap.get(node.getExprType()).getName()+ "[]";
-//            int j = this.idTable.indexOf(classname); // id in the table
 
             int k = this.classMap.get(node.getExprType()).getNumDescendants();
 
