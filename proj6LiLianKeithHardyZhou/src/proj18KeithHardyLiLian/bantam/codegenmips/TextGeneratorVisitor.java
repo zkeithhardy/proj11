@@ -1224,8 +1224,17 @@ public class TextGeneratorVisitor extends Visitor {
      */
     public Object visit(VarExpr node) {
         this.assemblySupport.genComment("var expression");
+
+        this.genVarExprOrArrayExpr(node, node.getName(), node.getRef(), "VarExpr");
+
+        this.assemblySupport.genLoadWord("$a0",0,"$sp");
+        this.assemblySupport.genAdd("$sp","$sp", 4);
+
+        return null;
+    }
+
+    private void genVarExprOrArrayExpr(ASTNode node, String varName, Expr ref, String nodeType){
         Location location;
-        String varName = node.getName();
         this.assemblySupport.genComment("subtract stack pointer with 4");
         this.assemblySupport.genSub("$sp","$sp",4);
         this.assemblySupport.genComment("save value in $a0 to stack pointer with 0 offset");
@@ -1233,7 +1242,7 @@ public class TextGeneratorVisitor extends Visitor {
 
         this.assemblySupport.genComment("accept the reference object and save its location $v0");
 
-        if(node.getRef() == null){
+        if(ref == null){
             this.assemblySupport.genComment("case where the reference object is null");
             location = (Location) currentSymbolTable.lookup(varName);
             if(location != null) {
@@ -1242,8 +1251,8 @@ public class TextGeneratorVisitor extends Visitor {
             }
         }
 
-        else if ((node.getRef() instanceof VarExpr) &&
-                ((VarExpr) node.getRef()).getName().equals("this")) {
+        else if ((ref instanceof VarExpr) &&
+                ((VarExpr) ref).getName().equals("this")) {
             this.assemblySupport.genComment("case where the reference object is /this./");
             location = (Location) currentSymbolTable.lookup(varName, currentClassFieldLevel);
             this.assemblySupport.genComment("load ("+ location.getOffset()+")"+ location.getBaseReg() +" to $v0 ");
@@ -1251,8 +1260,8 @@ public class TextGeneratorVisitor extends Visitor {
 
         }
 
-        else if ((node.getRef() instanceof VarExpr) &&
-                ((VarExpr) node.getRef()).getName().equals("super")) {
+        else if ((ref instanceof VarExpr) &&
+                ((VarExpr) ref).getName().equals("super")) {
             this.assemblySupport.genComment("case where the reference object is /.super/");
             location = (Location) currentSymbolTable.lookup(varName,
                     currentClassFieldLevel - 1);
@@ -1261,33 +1270,40 @@ public class TextGeneratorVisitor extends Visitor {
 
         }
         else { // ref is not null, "this", or "super"
-            node.getRef().accept(this);
+            ref.accept(this);
             this.assemblySupport.genComment("case where the reference object is user defined class");
-            String refTypeName = node.getRef().getExprType();
+            String refTypeName = ref.getExprType();
             location = (Location) this.classSymbolTables.get(refTypeName).lookup(varName);
 
-            //check for null pointer
-            String nullError = this.assemblySupport.getLabel();
-            String afterError = this.assemblySupport.getLabel();
-            this.assemblySupport.genComment("check for null pointer errors");
-            this.assemblySupport.genComment("if $v0 == 0, branch to nullError");
-            this.assemblySupport.genCondBeq("$zero", "$v0", nullError);
-            this.assemblySupport.genUncondBr(afterError);
-            this.assemblySupport.genLabel(nullError);
-            this.assemblySupport.genLoadImm("$a1", node.getLineNum());
-            this.assemblySupport.genLoadAddr("$a2", "StringConst_0");
-            this.assemblySupport.genDirCall("_null_pointer_error");
-            this.assemblySupport.genLabel(afterError);
-            this.assemblySupport.genComment("move $v0 to $a0");
-            this.assemblySupport.genMove("$a0", "$v0");
+            this.checkForNullPointer(node, location, nodeType);
 
-            this.assemblySupport.genComment("load ("+location.getOffset()+")$a0 to $v0");
-            this.assemblySupport.genLoadWord("$v0",location.getOffset(),"$a0");
         }
-        this.assemblySupport.genLoadWord("$a0",0,"$sp");
-        this.assemblySupport.genAdd("$sp","$sp", 4);
+    }
 
-        return null;
+    private void checkForNullPointer(ASTNode node, Location location, String nodeType){
+        String register = "";
+        if(nodeType.equals("VarExpr")){
+            register = "$v0";
+        }
+        else if(nodeType.equals("ArrayExpr")){
+            register = "$v1";
+        }
+        String nullError = this.assemblySupport.getLabel();
+        String afterError = this.assemblySupport.getLabel();
+        this.assemblySupport.genComment("check for null pointer errors");
+        this.assemblySupport.genComment("if "+register+" == 0, branch to nullError");
+        this.assemblySupport.genCondBeq("$zero", register, nullError);
+        this.assemblySupport.genUncondBr(afterError);
+        this.assemblySupport.genLabel(nullError);
+        this.assemblySupport.genLoadImm("$a1", node.getLineNum());
+        this.assemblySupport.genLoadAddr("$a2", "StringConst_0");
+        this.assemblySupport.genDirCall("_null_pointer_error");
+        this.assemblySupport.genLabel(afterError);
+        this.assemblySupport.genComment("move "+register+" to $a0");
+        this.assemblySupport.genMove("$a0", register);
+
+        this.assemblySupport.genComment("load ("+location.getOffset()+")$a0 to "+register);
+        this.assemblySupport.genLoadWord(register,location.getOffset(),"$a0");
     }
 
     /**
@@ -1343,66 +1359,8 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genComment("array expression");
         node.getIndex().accept(this); // store the index in $v0
 
-        Location location;
-        String varName = node.getName();
-        this.assemblySupport.genComment("subtract stack pointer with 4");
-        this.assemblySupport.genSub("$sp","$sp",4);
-        this.assemblySupport.genComment("save value in $a0 to stack pointer with 0 offset");
-        this.assemblySupport.genStoreWord("$v0",0,"$sp");
+        this.genVarExprOrArrayExpr(node, node.getName(), node.getRef(), "ArrayExpr");
 
-        this.assemblySupport.genComment("accept the reference object and save its location $v0");
-
-        if(node.getRef() == null){
-            this.assemblySupport.genComment("case where the reference object is null");
-            location = (Location) currentSymbolTable.lookup(varName);
-            if(location != null) {
-                this.assemblySupport.genComment("load (" + location.getOffset() + ")" + location.getBaseReg() + " to $v1 ");
-                this.assemblySupport.genLoadWord("$v1", location.getOffset(), location.getBaseReg());
-            }
-        }
-
-        else if ((node.getRef() instanceof VarExpr) &&
-                ((VarExpr) node.getRef()).getName().equals("this")) {
-            this.assemblySupport.genComment("case where the reference object is /this./");
-            location = (Location) currentSymbolTable.lookup(varName, currentClassFieldLevel);
-            this.assemblySupport.genComment("load ("+ location.getOffset()+")"+ location.getBaseReg() +" to $v1 ");
-            this.assemblySupport.genLoadWord("$v1", location.getOffset(),location.getBaseReg());
-
-        }
-
-        else if ((node.getRef() instanceof VarExpr) &&
-                ((VarExpr) node.getRef()).getName().equals("super")) {
-            this.assemblySupport.genComment("case where the reference object is /.super/");
-            location = (Location) currentSymbolTable.lookup(varName,
-                    currentClassFieldLevel - 1);
-            this.assemblySupport.genComment("load ("+ location.getOffset()+")"+ location.getBaseReg() +" to $v1 ");
-            this.assemblySupport.genLoadWord("$v1", location.getOffset(),location.getBaseReg());
-
-        }
-        else { // ref is not null, "this", or "super"
-            node.getRef().accept(this);
-            this.assemblySupport.genComment("case where the reference object is user defined class");
-            String refTypeName = node.getRef().getExprType();
-            location = (Location) this.classSymbolTables.get(refTypeName).lookup(varName);
-
-            //check for null pointer
-            String nullError = this.assemblySupport.getLabel();
-            String afterError = this.assemblySupport.getLabel();
-            this.assemblySupport.genComment("check for null pointer errors");
-            this.assemblySupport.genComment("if $v1 == 0, branch to nullError");
-            this.assemblySupport.genCondBeq("$zero", "$v1", nullError);
-            this.assemblySupport.genUncondBr(afterError);
-            this.assemblySupport.genLabel(nullError);
-            this.assemblySupport.genLoadImm("$a1", node.getLineNum());
-            this.assemblySupport.genLoadAddr("$a2", "StringConst_0");
-            this.assemblySupport.genDirCall("_null_pointer_error");
-            this.assemblySupport.genLabel(afterError);
-            this.assemblySupport.genComment("move $v1 to $a0");
-            this.assemblySupport.genMove("$a0", "$v1");
-
-            this.assemblySupport.genComment("load ("+location.getOffset()+")$a0 to $v1");
-            this.assemblySupport.genLoadWord("$v1",location.getOffset(),"$a0");
-        }
         this.assemblySupport.genLoadWord("$v0",0,"$sp");
         this.assemblySupport.genAdd("$sp","$sp", 4);
 

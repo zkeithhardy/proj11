@@ -1,13 +1,44 @@
 class Main {
-//    int x = 3;
+    int x = 3;
 //    int y = 4;
-    A[] a = new A[3];
+    //int[] a = new int[3];
+	A[] a = new B[2];
 
     int foo(int x) { return x; }
 
     void main() {
+//	var c = new A[4];
+//	var b = a.c[1];
 //	var k = 1/0;
-//	var bs = new B[3];
+	//a[1] = 
+	//var io = new TextIO();
+	//var bs = new A[10];
+	//var b = new B();
+	a[0] = new C();
+	//var b = new Integer();
+	//var t = new Integer();
+	//b.setValue(5);
+	//bs[0] = b;
+	//var q = new B[5];
+	//q[0] = bs[0];
+	//var t = q[0].getA();
+	//io.putString(t.toString());
+	//bs[4] = x;
+	//var t = bs[4];
+	
+	//bs[4] = 5;
+	//t.setValue(q);
+	//bs[1] = t;
+	//var q = bs[1];
+	//s.getA();
+	
+	//var q = bs.getX(bs.getA());
+	//var t = q.toString();
+	//io.putString(t.toString());
+	
+	//var q = bs[0];
+	//this.a[1] = bs[0];
+	//q = this.a[1];
 //	a = cast(A[], bs);
 	
 //	var k = new Boolean();
@@ -30,7 +61,7 @@ class Main {
 //	io.putString("\n");
 //	io.putString(q);
 //	io.putString(w);
-
+	//a[3].dale();
 
 
 
@@ -67,27 +98,39 @@ class Main {
 //}
 
 class A{
-    int x = 4;
-    int y = 2;
-    String k = "In A";
-    int getX(){return this.x;}
-    void dale(){
-	var i = 0;
-	for(i = 0; i<2; i++){
-	    var b = 11;
-	}
-    }
+//    int x = 4;
+//    int y = 2;
+//    String k = "In A";
+    Integer[] a = new Integer[4];
+//    int getX(){return this.x;}
+//    void dale(){
+//	var i = 0;
+//	for(i = 0; i<2; i++){
+//	    var b = 11;
+//	}
+//    }
 }
 
 
 class B extends A{
-    int x = 5;
-    int z = 3;
-    int getX(int b){return this.x + super.getX();}
-    int setX(){
-	super.x = 8;
-	return super.x;
+//    int x = 5;
+//    int z = 3;
+	//int[] x = new int[4];
+//    int getX(int b){return this.x + super.getX();}
+//    int setX(){
+//	super.x = 8;
+//	return super.x;
+//    }
+    Integer getA(){
+	var q = new Integer();
+	q.setValue(4);
+	super.a[0] = q;
+	//this.x[0] = 4;
+	return super.a[0];
     }
-    //SubMain newSubMain(){return new SubMain();}
+
+}
+
+class C extends A{
 
 }
