@@ -259,6 +259,10 @@ public class MipsCodeGenerator
 
     }
 
+    /**
+     * Add elements in the idTable if the class tree node is an array type. Also
+     * Add build-in types like int[] boolean[]
+     */
     private void addArrayChildren(ClassTreeNode root){
         int index = idTable.indexOf(root.getName()) + 1;
         ArrayList<String> temp = (ArrayList<String>) idTable.clone();

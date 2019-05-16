@@ -79,16 +79,30 @@ public class TypeCheckerVisitor extends Visitor
         return false;
     }
 
+    /**
+     * helper method to check if the string is a primitive type
+     * @param t2
+     * @return
+     */
     private boolean isPrimitiveType(String t2) {
         return t2.equals("int") || t2.equals("boolean");
     }
 
+    /**
+     * helper method to test if the type has been declared
+     * @param type
+     * @return
+     */
     private boolean typeHasBeenDeclared(String type) {
         return isPrimitiveType(type) || currentClass.lookupClass(type) != null
                 || type.endsWith("[]") && typeHasBeenDeclared(type.substring(0, type.length() - 2));
     }
 
-
+    /**
+     * helper method to register certain error
+     * @param node
+     * @param message
+     */
     private void registerError(ASTNode node, String message) {
         errorHandler.register(Error.Kind.SEMANT_ERROR,
                 currentClass.getASTNode().getFilename(), node.getLineNum(), message);
