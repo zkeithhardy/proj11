@@ -1252,7 +1252,9 @@ public class TextGeneratorVisitor extends Visitor {
 
         this.genVarExprOrArrayExpr(node, node.getName(), node.getRef(), "VarExpr");
 
+        this.assemblySupport.genComment("load $a0 from 0($sp)");
         this.assemblySupport.genLoadWord("$a0",0,"$sp");
+        this.assemblySupport.genComment("increment stack pointer");
         this.assemblySupport.genAdd("$sp","$sp", 4);
 
         return null;
@@ -1333,7 +1335,9 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genCondBeq("$zero", register, nullError);
         this.assemblySupport.genUncondBr(afterError);
         this.assemblySupport.genLabel(nullError);
+        this.assemblySupport.genComment("load line number into $a1");
         this.assemblySupport.genLoadImm("$a1", node.getLineNum());
+        this.assemblySupport.genComment("load filename into $a2");
         this.assemblySupport.genLoadAddr("$a2", "StringConst_0");
         this.assemblySupport.genDirCall("_null_pointer_error");
         this.assemblySupport.genLabel(afterError);
@@ -1400,14 +1404,20 @@ public class TextGeneratorVisitor extends Visitor {
 
         this.genVarExprOrArrayExpr(node, node.getName(), node.getRef(), "ArrayExpr");
 
+        this.assemblySupport.genComment("load $v0 from 0($sp)");
         this.assemblySupport.genLoadWord("$v0",0,"$sp");
+        this.assemblySupport.genComment("increment stack pointer");
         this.assemblySupport.genAdd("$sp","$sp", 4);
 
         this.checkArrayIndexError(node.getLineNum());
 
+        this.assemblySupport.genComment("convert size to bytes");
         this.assemblySupport.genMul("$v0", "$v0", 4);
+        this.assemblySupport.genComment("offset size by 16");
         this.assemblySupport.genAdd("$v0", "$v0", 16);
+        this.assemblySupport.genComment("offset array address by index value");
         this.assemblySupport.genAdd("$v0", "$v0", "$v1");
+        this.assemblySupport.genComment("load $v0 from 0($v0)");
         this.assemblySupport.genLoadWord("$v0", 0, "$v0");
 
         return null;
