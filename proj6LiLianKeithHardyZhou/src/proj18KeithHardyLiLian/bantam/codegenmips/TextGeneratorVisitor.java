@@ -812,8 +812,6 @@ public class TextGeneratorVisitor extends Visitor {
             String exprType = node.getExpr().getExprType() + "[]";
             int j = this.idTable.indexOf(arrayType);
             int k = this.idTable.indexOf(exprType);
-            System.out.println(j + " " + k );
-            System.out.println(idTable);
             this.assemblySupport.genLoadImm("$t0",j);
             this.assemblySupport.genLoadImm("$t1",k);
             this.assemblySupport.genCondBeq("$t0","$t1",afterError);
@@ -838,6 +836,11 @@ public class TextGeneratorVisitor extends Visitor {
     }
 
     private void checkArrayIndexError(int linenum){
+        String afterNull = this.assemblySupport.getLabel();
+        this.assemblySupport.genCondBne("$v1","$zero",afterNull);
+        this.assemblySupport.genLoadImm("$a1",linenum);
+        this.assemblySupport.genLoadAddr("$a2", "StringConst_0");
+        this.assemblySupport.genLabel(afterNull);
         this.assemblySupport.genLoadWord("$t1",12,"$v1");
         String afterError = this.assemblySupport.getLabel();
         String error = this.assemblySupport.getLabel();

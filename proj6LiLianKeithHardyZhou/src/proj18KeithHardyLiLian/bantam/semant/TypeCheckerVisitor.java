@@ -490,7 +490,7 @@ public class TypeCheckerVisitor extends Visitor
      */
     public Object visit(CastExpr node) {
         if (currentClass.lookupClass(node.getType()) == null
-                && currentClass.lookupClass(node.getType().substring(0, (node.getType().length())-2))==null) {
+                || currentClass.lookupClass(node.getType().substring(0, (node.getType().length())-2))==null) {
             registerError(node,"The type " + node.getType() + " does not exist.");
         }
         node.getExpr().accept(this);
@@ -625,7 +625,7 @@ public class TypeCheckerVisitor extends Visitor
         //finally, check that the var's type is comp with the expr field's type.
         node.getExpr().accept(this);
         if (!isSubtype(node.getExpr().getExprType(), varType.substring(0,
-                varType.length() - 2))) {
+                varType.length()-2))) {
             registerError(node,"The type of the expr is " + node.getExpr().getExprType() +
                     " which is not compatible with the " + varName + " variable's base type " + varType);
         }

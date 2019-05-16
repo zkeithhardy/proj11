@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="8c7a2aeb-d440-4298-8971-4b09cf8ec87c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/bantam/codegenmips/MipsCodeGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/bantam/codegenmips/MipsCodeGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/bantam/codegenmips/TextGeneratorVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/bantam/codegenmips/TextGeneratorVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/bantam/semant/TypeCheckerVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/bantam/semant/TypeCheckerVisitor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/test/test.btm" beforeDir="false" afterPath="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/test/test.btm" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,7 +21,7 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="fxml" value="105" />
-          <entry key="java" value="23545" />
+          <entry key="java" value="23710" />
           <entry key="s" value="1783" />
           <entry key="txt" value="907" />
         </counts>
@@ -29,7 +29,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="DTD" value="1783" />
-          <entry key="JAVA" value="23545" />
+          <entry key="JAVA" value="23710" />
           <entry key="PLAIN_TEXT" value="907" />
           <entry key="XML" value="105" />
         </counts>
@@ -69,17 +69,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/bantam/codegenmips/MipsCodeGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4029">
+            <state relative-caret-position="216">
               <caret line="274" column="21" selection-start-line="274" selection-start-column="21" selection-end-line="274" selection-end-column="21" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/bantam/codegenmips/TextGeneratorVisitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="403">
-              <caret line="578" column="57" selection-start-line="578" selection-start-column="57" selection-end-line="578" selection-end-column="57" />
+            <state relative-caret-position="199">
+              <caret line="842" column="49" selection-start-line="842" selection-start-column="49" selection-end-line="842" selection-end-column="49" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -108,13 +108,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/bantam/semant/TypeCheckerVisitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="9571">
-              <caret line="579" column="32" selection-start-line="579" selection-start-column="24" selection-end-line="579" selection-end-column="32" />
+            <state relative-caret-position="-634">
+              <caret line="584" column="9" lean-forward="true" selection-start-line="584" selection-start-column="9" selection-end-line="584" selection-end-column="9" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/bantam/ast/Expr.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="17">
@@ -126,8 +126,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/bantam/codegenmips/exceptions.s">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1887">
-              <caret line="111" column="37" selection-start-line="111" selection-start-column="32" selection-end-line="111" selection-end-column="37" />
+            <state relative-caret-position="131">
+              <caret line="1734" column="14" selection-start-line="1734" selection-end-line="1734" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -155,10 +155,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>binaryar</find>
-      <find>system.out.pr</find>
-      <find>system.out.</find>
-      <find>arrayAssi</find>
       <find>system.</find>
       <find>dump</find>
       <find>assign</find>
@@ -183,8 +179,12 @@
       <find>newArray</find>
       <find>newEx</find>
       <find>dispatche</find>
-      <find>array</find>
       <find>idtable</find>
+      <find>.length</find>
+      <find>castex</find>
+      <find>array</find>
+      <find>_null_pointer_error</find>
+      <find>_error_handler</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -217,8 +217,8 @@
         <option value="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/bantam/lexer/Scanner.java" />
         <option value="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/bantam/semant/ClassNameVisitor.java" />
         <option value="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/bantam/parser/Parser.java" />
-        <option value="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/bantam/semant/TypeCheckerVisitor.java" />
         <option value="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/bantam/codegenmips/MipsCodeGenerator.java" />
+        <option value="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/bantam/semant/TypeCheckerVisitor.java" />
         <option value="$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/bantam/codegenmips/TextGeneratorVisitor.java" />
       </list>
     </option>
@@ -352,6 +352,117 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
+  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
+    <UpdatedFiles>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Updated from server" />
+        <option name="myStatusName" value="Changed on server" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="CHANGED_ON_SERVER" />
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated" />
+          <option name="myStatusName" value="Changed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UPDATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/Main.java</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Created" />
+          <option name="myStatusName" value="Created" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CREATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/.idea/workspace.xml</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Deleted" />
+          <option name="myStatusName" value="Deleted" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="true" />
+          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Restored" />
+          <option name="myStatusName" value="Will be restored" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="RESTORED" />
+        </FILE-GROUP>
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Modified" />
+        <option name="myStatusName" value="Modified" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MODIFIED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Skipped" />
+        <option name="myStatusName" value="Skipped" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SKIPPED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with conflicts" />
+        <option name="myStatusName" value="Will be merged with conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_CONFLICTS" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with tree conflicts" />
+        <option name="myStatusName" value="Merged with tree conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with property conflicts" />
+        <option name="myStatusName" value="Will be merged with property conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged" />
+        <option name="myStatusName" value="Will be merged" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Not in repository" />
+        <option name="myStatusName" value="Not in repository" />
+        <option name="mySupportsDeletion" value="true" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="UNKNOWN" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally added" />
+        <option name="myStatusName" value="Locally added" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_ADDED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally removed" />
+        <option name="myStatusName" value="Locally removed" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_REMOVED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Switched" />
+        <option name="myStatusName" value="Switched" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SWITCHED" />
+      </FILE-GROUP>
+    </UpdatedFiles>
+  </component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -390,13 +501,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1550448692222</updated>
-    </task>
-    <task id="LOCAL-00004" summary="work on unary expressions, dispatch, assign, var">
-      <created>1555633627889</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1555633627889</updated>
     </task>
     <task id="LOCAL-00005" summary="fixed bugs">
       <created>1555636546152</created>
@@ -734,7 +838,14 @@
       <option name="project" value="LOCAL" />
       <updated>1557962817549</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="array store error added">
+      <created>1558037510552</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1558037510552</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -769,35 +880,6 @@
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Maven Projects" order="8" />
     </layout>
-    <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2295302" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Image Layers" order="2" />
-      <window_info id="Designer" order="3" />
-      <window_info id="UI Designer" order="4" />
-      <window_info id="Capture Tool" order="5" />
-      <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32765958" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32765958" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="9" weight="0.17021276" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.32765958" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.24966443" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="right" id="Maven" order="6" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
-      <window_info anchor="right" id="Maven Projects" order="8" />
-    </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -1029,13 +1111,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/bantam/codegenmips/MipsCodeGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4029">
-          <caret line="274" column="21" selection-start-line="274" selection-start-column="21" selection-end-line="274" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/bantam/semant/ClassNameVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="629">
@@ -1050,20 +1125,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/bantam/semant/TypeCheckerVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9571">
-          <caret line="579" column="32" selection-start-line="579" selection-start-column="24" selection-end-line="579" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/bantam/codegenmips/exceptions.s">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1887">
-          <caret line="111" column="37" selection-start-line="111" selection-start-column="32" selection-end-line="111" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/EditController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="9520">
@@ -1074,20 +1135,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/bantam/codegenmips/TextGeneratorVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="403">
-          <caret line="578" column="57" selection-start-line="578" selection-start-column="57" selection-end-line="578" selection-end-column="57" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/bantam/ast/Expr.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="53" column="22" selection-start-line="53" selection-start-column="22" selection-end-line="53" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/bantam/codegenmips/MipsCodeGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="274" column="21" selection-start-line="274" selection-start-column="21" selection-end-line="274" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/bantam/semant/TypeCheckerVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-634">
+          <caret line="584" column="9" lean-forward="true" selection-start-line="584" selection-start-column="9" selection-end-line="584" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/bantam/codegenmips/exceptions.s">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="131">
+          <caret line="1734" column="14" selection-start-line="1734" selection-end-line="1734" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/proj6LiLianKeithHardyZhou/src/proj18KeithHardyLiLian/bantam/codegenmips/TextGeneratorVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="842" column="49" selection-start-line="842" selection-start-column="49" selection-end-line="842" selection-end-column="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

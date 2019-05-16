@@ -2,7 +2,7 @@ class Main {
     int x = 3;
 //    int y = 4;
     //int[] a = new int[3];
-	//B b = new B();
+	B[] a;
 
     int foo(int x) { return x; }
 
@@ -12,14 +12,17 @@ class Main {
 //	var k = 1/0;
 	//a[1] = 
 	var io = new TextIO();
-	//var bs = new Integer[10];
+	var bs = new B[10];
+	var b = new B();
+	a[0] = b;
 	//var b = new Integer();
 	//var t = new Integer();
 	//b.setValue(5);
 	//bs[0] = b;
-	var q = new B();
-	var t = q.getA();
-	io.putString(t.toString());
+	//var q = new B[5];
+	//q[0] = bs[0];
+	//var t = q[0].getA();
+	//io.putString(t.toString());
 	//bs[4] = x;
 	//var t = bs[4];
 	
