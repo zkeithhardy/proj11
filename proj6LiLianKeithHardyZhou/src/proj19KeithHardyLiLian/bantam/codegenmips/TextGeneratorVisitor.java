@@ -759,13 +759,17 @@ public class TextGeneratorVisitor extends Visitor {
 
         String afterError = this.assemblySupport.getLabel();
         if(!(node.getExprType().equals("int") || node.getExprType().equals("boolean"))){
+            this.assemblySupport.genComment("load $t1 from 0($v1)");
             this.assemblySupport.genLoadWord("$t1",0,"$v1");
 
             int k = this.classMap.get(node.getExprType()).getNumDescendants();
 
-            this.assemblySupport.genComment("load j into $t0 and j+k into $t1");
+            this.assemblySupport.genComment("load " + k + " into $t1 and j+k into $t1");
+            this.assemblySupport.genComment("load array id into $t0");
             this.assemblySupport.genLoadWord("$t0", 0, "$v1");
+            this.assemblySupport.genComment("load " + k + " into $t1");
             this.assemblySupport.genLoadImm("$t1", k);
+            this.assemblySupport.genComment("add $t0 and $t1, store in $t1");
             this.assemblySupport.genAdd("$t1","$t1","$t0");
             this.assemblySupport.genComment("load type of expression in $v0 into $t3");
             this.assemblySupport.genLoadWord("$t3",0,"$v0");
@@ -776,12 +780,18 @@ public class TextGeneratorVisitor extends Visitor {
 
             this.assemblySupport.genComment("$t0 AND $t3, store in $t3");
             this.assemblySupport.genAnd("$t3", "$t0", "$t3");
+            this.assemblySupport.genComment("check if $t3 is zero, if not branch past error");
             this.assemblySupport.genCondBne("$t3","$zero",afterError);
 
+            this.assemblySupport.genComment("load $t0 from 0($v1)");
             this.assemblySupport.genLoadWord("$t0",0,"$v1");
+            this.assemblySupport.genComment("load $t1 from 0($v0)");
             this.assemblySupport.genLoadWord("$t1",0,"$v0");
+            this.assemblySupport.genComment("load line number into $a1");
             this.assemblySupport.genLoadImm("$a1",node.getLineNum());
+            this.assemblySupport.genComment("load filename into $a2");
             this.assemblySupport.genLoadAddr("$a2", "StringConst_0");
+            this.assemblySupport.genComment("jump and link to array store error");
             this.assemblySupport.genDirCall("_array_store_error");
             this.assemblySupport.genLabel(afterError);
         }else{
@@ -789,20 +799,29 @@ public class TextGeneratorVisitor extends Visitor {
             String exprType = node.getExpr().getExprType() + "[]";
             int j = this.idTable.indexOf(arrayType);
             int k = this.idTable.indexOf(exprType);
+            this.assemblySupport.genComment("load " + j + " into $t0");
             this.assemblySupport.genLoadImm("$t0",j);
+            this.assemblySupport.genComment("load " + k + " into $t1");
             this.assemblySupport.genLoadImm("$t1",k);
+            this.assemblySupport.genComment("if $t0 = $t1, skip error");
             this.assemblySupport.genCondBeq("$t0","$t1",afterError);
+            this.assemblySupport.genComment("load line number into $a1");
             this.assemblySupport.genLoadImm("$a1",node.getLineNum());
+            this.assemblySupport.genComment("load filename into $a2");
             this.assemblySupport.genLoadAddr("$a2", "StringConst_0");
+            this.assemblySupport.genComment("jump and link to array store error");
             this.assemblySupport.genDirCall("_array_store_error");
             this.assemblySupport.genLabel(afterError);
         }
 
         this.assemblySupport.genComment("calculate the desired offset to the array's location");
         this.assemblySupport.genMul("$t2", "$t2", 4);
+        this.assemblySupport.genComment("add 16 to size of array stored in $t2");
         this.assemblySupport.genAdd("$t2", "$t2", 16);
+        this.assemblySupport.genComment("get offset into array from size index");
         this.assemblySupport.genAdd("$v1", "$t2", "$v1");
 
+        this.assemblySupport.genComment("load value into $v0");
         this.assemblySupport.genStoreWord("$v0", 0,"$v1" );
 
         this.assemblySupport.genComment("save stack pointer result to $a0");
@@ -818,20 +837,29 @@ public class TextGeneratorVisitor extends Visitor {
      */
     private void checkArrayIndexError(int linenum){
         String afterNull = this.assemblySupport.getLabel();
+        this.assemblySupport.genComment("if $v1 is 0, skip error");
         this.assemblySupport.genCondBne("$v1","$zero",afterNull);
+        this.assemblySupport.genComment("load line number into $a1");
         this.assemblySupport.genLoadImm("$a1",linenum);
+        this.assemblySupport.genComment("load filename into $a2");
         this.assemblySupport.genLoadAddr("$a2", "StringConst_0");
         this.assemblySupport.genDirCall("_null_pointer_error");
         this.assemblySupport.genLabel(afterNull);
+        this.assemblySupport.genComment("load size field 12($v1) into $t1");
         this.assemblySupport.genLoadWord("$t1",12,"$v1");
         String afterError = this.assemblySupport.getLabel();
         String error = this.assemblySupport.getLabel();
+        this.assemblySupport.genComment("if $v0 is less than 0, go to error");
         this.assemblySupport.genCondBlt("$v0","$zero",error);
+        this.assemblySupport.genComment("if $v0 is greater than or equal to $t1, go to error");
         this.assemblySupport.genCondBgeq("$v0","$t1",error);
         this.assemblySupport.genUncondBr(afterError);
         this.assemblySupport.genLabel(error);
+        this.assemblySupport.genComment("move $v0 to $t0");
         this.assemblySupport.genMove("$t0","$v0");
+        this.assemblySupport.genComment("load line number into $a1");
         this.assemblySupport.genLoadImm("$a1",linenum);
+        this.assemblySupport.genComment("load filename into $a2");
         this.assemblySupport.genLoadAddr("$a2", "StringConst_0");
         this.assemblySupport.genDirCall("_array_index_error");
         this.assemblySupport.genLabel(afterError);
