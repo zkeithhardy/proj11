@@ -114,6 +114,7 @@ public class TextGeneratorVisitor extends Visitor {
             this.currentSymbolTable.set("this", new Location("$a0", 0),currentClassFieldLevel -1); // template of this object
         }
 
+
         node.getMemberList().accept(this);
         return null;
     }
@@ -142,7 +143,7 @@ public class TextGeneratorVisitor extends Visitor {
     /**
      * Visiting the field node
      * @param node the field node
-     * @return null
+     * @return
      */
     public Object visit(Field node){
         if(node.getInit() != null){
@@ -436,6 +437,7 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(DispatchExpr node) {
+
         String type;
 
         if (node.getRefExpr() == null || ((node.getRefExpr() instanceof VarExpr) && //local var or field of "this"
@@ -540,36 +542,23 @@ public class TextGeneratorVisitor extends Visitor {
         node.getSize().accept(this);
         String afterError = this.assemblySupport.getLabel();
         String error = this.assemblySupport.getLabel();
-        this.assemblySupport.genComment("If $v0 <= 0 jump to "+error);
         this.assemblySupport.genCondBleq("$v0","$zero",error);
-        this.assemblySupport.genComment("load 1500 to $t1");
         this.assemblySupport.genLoadImm("$t1",1500);
-        this.assemblySupport.genComment("If $v0 >= $t1 jump to "+error);
         this.assemblySupport.genCondBgeq("$v0","$t1",error);
 
-        this.assemblySupport.genComment("jump to "+afterError);
         this.assemblySupport.genUncondBr(afterError);
         this.assemblySupport.genLabel(error);
-        this.assemblySupport.genComment("move $v0 to $t0");
         this.assemblySupport.genMove("$t0","$v0");
-        this.assemblySupport.genComment("load "+node.getLineNum()+" to $a1");
         this.assemblySupport.genLoadImm("$a1",node.getLineNum());
-        this.assemblySupport.genComment("load the filename to $a2");
         this.assemblySupport.genLoadAddr("$a2", "StringConst_0");
-        this.assemblySupport.genComment("call _array_size_error");
         this.assemblySupport.genDirCall("_array_size_error");
 
         this.assemblySupport.genLabel(afterError);
-        this.assemblySupport.genComment("subtract 4 from $sp");
         this.assemblySupport.genSub("$sp","$sp",4);
-        this.assemblySupport.genComment("store $v0 to $sp");
         this.assemblySupport.genStoreWord("$v0",0,"$sp");
         this.assemblySupport.genComment("save size of array in correct space");
-        this.assemblySupport.genComment("$v1 = $v0 * 4");
         this.assemblySupport.genMul("$v1","$v0",4);
-        this.assemblySupport.genComment("$v1 = $v1 + 16");
         this.assemblySupport.genAdd("$v1","$v1",16);
-        this.assemblySupport.genComment("store $v1 to (4)$a0");
         this.assemblySupport.genStoreWord("$v1",4,"$a0");
 
         // get the address of the clone method, save it to $v0
@@ -577,17 +566,13 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genDirCall("Object.clone");
         this.assemblySupport.genComment("move $v0 to $a0");
         this.assemblySupport.genMove("$a0","$v0");
-        this.assemblySupport.genComment("load "+this.idTable.indexOf(node.getType() + "[]")+" to $v0");
         this.assemblySupport.genLoadImm("$v0",this.idTable.indexOf(node.getType() + "[]"));
-        this.assemblySupport.genComment("store $v0 to (0)$a0");
         this.assemblySupport.genStoreWord("$v0",0,"$a0");
 
         this.assemblySupport.genComment("jump to Array_init");
         this.assemblySupport.genDirCall("Array_init");
 
         //restore $a0
-        this.assemblySupport.genComment("restore $a0");
-        this.assemblySupport.genComment("subtract 4 from $sp");
         this.assemblySupport.genAdd("$sp","$sp",4);
         this.assemblySupport.genComment("load ("+4*methodLocalVars+")$fp to $a0");
         this.assemblySupport.genLoadWord("$a0", 4*(methodLocalVars), "$fp");
@@ -658,11 +643,8 @@ public class TextGeneratorVisitor extends Visitor {
             //false, handle error
             this.assemblySupport.genComment("case where the expression is not a proper subtype of target class, handle error");
             this.assemblySupport.genLabel(ifZero);
-            this.assemblySupport.genComment("load "+node.getLineNum()+" to $a1");
             this.assemblySupport.genLoadImm("$a1", node.getLineNum());
-            this.assemblySupport.genComment("load filename to $a2");
             this.assemblySupport.genLoadAddr("$a2", "StringConst_0");
-            this.assemblySupport.genComment("jump to _class_cast_error");
             this.assemblySupport.genDirCall("_class_cast_error");
             //true, bypass handle error
             this.assemblySupport.genComment("case where the expression is a proper subtype of target class");
@@ -718,7 +700,7 @@ public class TextGeneratorVisitor extends Visitor {
     /**
      * visit the array assign expression
      * @param node the array assignment expression node
-     * @return null
+     * @return
      */
     public Object visit(ArrayAssignExpr node){
         Location location;
@@ -850,7 +832,7 @@ public class TextGeneratorVisitor extends Visitor {
 
     /**
      * checker for the array index and call array index error when found one
-     * @param linenum the line number
+     * @param linenum
      */
     private void checkArrayIndexError(int linenum){
         String afterNull = this.assemblySupport.getLabel();
@@ -1393,7 +1375,6 @@ public class TextGeneratorVisitor extends Visitor {
     }
 
     /**
-     * Visit an array expression node
      *
      * @param node the array expression node
      * @return null
