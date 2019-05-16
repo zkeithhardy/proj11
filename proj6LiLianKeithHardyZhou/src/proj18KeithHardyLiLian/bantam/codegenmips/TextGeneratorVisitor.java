@@ -93,15 +93,8 @@ public class TextGeneratorVisitor extends Visitor {
         this.stringNameMap=stringNameMap;
         this.currentClass=classNode.getName();
         this.initOrGenMethods = "init";
-
-//        for(int i = 0; i < idTable.size(); i++){
-//            idTable.get(i).getASTNode().accept(this);
-//        }
         classNode.accept(this);
-//        Iterator itr = classSymbolTables.values().iterator();
-//        while(itr.hasNext()){
-//            ((SymbolTable) itr.next()).dump();
-//        }
+
     }
 
     /**
@@ -157,13 +150,6 @@ public class TextGeneratorVisitor extends Visitor {
             node.getInit().accept(this);
             this.assemblySupport.genComment("store the field "+4*fieldCount.get(currentClass)+" away from $a0 to $v0");
             this.assemblySupport.genStoreWord("$v0", 4*fieldCount.get(currentClass), "$a0");
-//            ClassTreeNode tempNode = classMap.get(currentClass);
-//            Iterator itr = tempNode.getChildrenList();
-//            while(itr.hasNext()){
-//                tempNode = (ClassTreeNode) itr.next();
-//                this.assemblySupport.genComment("store the field "+4*fieldCount.get(tempNode.getName())+" away from $a0 to $v0");
-//                this.assemblySupport.genStoreWord("$v0", 4*fieldCount.get(tempNode.getName()), "$a0");
-//            }
         }
 
         Location fieldLocation= new Location("$a0", 4*fieldCount.get(currentClass));
@@ -492,9 +478,7 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genStoreWord("$a0",0,"$sp");
         node.getActualList().accept(this);
         this.assemblySupport.genLoadWord("$a0",4*node.getActualList().getSize(),"$sp");
-        //this.assemblySupport.genAdd("$sp","$sp",4*node.getActualList().getSize()+4);
         this.assemblySupport.genLoadWord("$a1",4*node.getActualList().getSize()+4,"$sp");
-        //this.assemblySupport.genAdd("$sp","$sp",4);
 
         this.assemblySupport.genComment("jump to $a1");
         this.assemblySupport.genInDirCall("$a1");
@@ -718,6 +702,11 @@ public class TextGeneratorVisitor extends Visitor {
         return null;
     }
 
+    /**
+     * visit the array assign expression
+     * @param node the array assignment expression node
+     * @return
+     */
     public Object visit(ArrayAssignExpr node){
         Location location;
         String varName = node.getName();
@@ -836,6 +825,10 @@ public class TextGeneratorVisitor extends Visitor {
         return null;
     }
 
+    /**
+     * checker for the array index and call array index error when found one
+     * @param linenum
+     */
     private void checkArrayIndexError(int linenum){
         String afterNull = this.assemblySupport.getLabel();
         this.assemblySupport.genCondBne("$v1","$zero",afterNull);
