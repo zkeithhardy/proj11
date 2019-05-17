@@ -1,0 +1,93 @@
+class Main {
+//    int x = 3;
+//    int y = 4;
+    A[] a = new A[3];
+
+    int foo(int x) { return x; }
+
+    void main() {
+	var k = 1/0;
+	var bs = new B[3];
+//	a = cast(A[], bs);
+	
+//	var k = new Boolean();
+//	var aaa = new Integer();
+//	aaa.setValue(5);
+//	var w = aaa.toString();
+//
+//	k.setValue(true);
+//	var t = new Boolean();
+//	t.setValue(false);
+//	var q = t.toString();
+//	var x = k.toString();
+//	var io = new TextIO();
+//
+//	var b = new Integer();
+//	b.setValue(11);
+//	var c = b.toString();
+//	
+//	io.putString(x);
+//	io.putString("\n");
+//	io.putString(q);
+//	io.putString(w);
+
+
+
+
+//	var a = !(3>2);
+//	var r  = 4;
+//	var t = 5;
+//	var q = 6;
+//	//var z = (r*t)+(q%y);
+//	var t = new B();
+//	var k = t.y;
+//	if (t instanceof A){
+//		q = 3;
+//	}
+//	y = q;
+//	var y = 3+4*5+6;
+	//cast(B, y);
+	//var q =y.getX();
+//	var t = y.setX();
+	//var z = y.x;
+	//var q = y.getX();
+	//var z  = y.foo(this.x);
+	//var q = y.newSubMain().z;
+	//var z = y.x;
+    }
+}
+//class SubMain extends Main {
+//    int z = 400;
+//
+//    SubMain newSubMain(){return new SubMain();}
+//    //int foo(int x) { return x; }
+//    //boolean equals(Object o) { return false; }
+//
+//    
+//}
+
+class A{
+    int x = 4;
+    int y = 2;
+    String k = "In A";
+    int getX(){return this.x;}
+    void dale(){
+	var i = 0;
+	for(i = 0; i<2; i++){
+	    var b = 11;
+	}
+    }
+}
+
+
+class B extends A{
+    int x = 5;
+    int z = 3;
+    int getX(int b){return this.x + super.getX();}
+    int setX(){
+	super.x = 8;
+	return super.x;
+    }
+    //SubMain newSubMain(){return new SubMain();}
+
+}
