@@ -661,7 +661,7 @@ public class TextGeneratorVisitor extends Visitor {
      * @return result of the visit
      */
     public Object visit(AssignExpr node) {
-        Location location;
+        Location location = null;
         String varName = node.getName();
         String refName = node.getRefName();
         this.assemblySupport.genComment("assign expr");
@@ -673,23 +673,18 @@ public class TextGeneratorVisitor extends Visitor {
 
         if (refName == null) { //local var or field
             this.assemblySupport.genComment("case where the reference name is null");
-            this.assemblySupport.genComment("move current location's base register with offset to v0");
             location = (Location) currentSymbolTable.lookup(varName);
-            this.assemblySupport.genStoreWord("$v0", location.getOffset(),location.getBaseReg());
         }
         else if (refName.equals("this")) { //when calling local method with reference of "this."
             this.assemblySupport.genComment("case where the reference name is /this/");
             location = (Location) currentSymbolTable.lookup(varName, currentClassFieldLevel);
-            this.assemblySupport.genComment("move current location's base register with offset to v0");
-            this.assemblySupport.genStoreWord("$v0", location.getOffset(),location.getBaseReg());
         }
         else if (refName.equals("super")) { //when referring parent method or field
             this.assemblySupport.genComment("case where the reference name is /super/");
-            location = (Location) currentSymbolTable.lookup(varName,
-                    currentClassFieldLevel - 1);
-            this.assemblySupport.genComment("move current location's base register with offset to v0");
-            this.assemblySupport.genStoreWord("$v0", location.getOffset(),location.getBaseReg());
+            location = (Location) currentSymbolTable.lookup(varName, currentClassFieldLevel - 1);
         }
+        this.assemblySupport.genComment("move current location's base register with offset to v0");
+        this.assemblySupport.genStoreWord("$v0", location.getOffset(),location.getBaseReg());
         this.assemblySupport.genComment("save stack pointer result to $a0");
         this.assemblySupport.genLoadWord("$a0",0,"$sp");
         this.assemblySupport.genComment("add stack pointer with 4");
@@ -700,10 +695,10 @@ public class TextGeneratorVisitor extends Visitor {
     /**
      * visit the array assign expression
      * @param node the array assignment expression node
-     * @return
+     * @return null
      */
     public Object visit(ArrayAssignExpr node){
-        Location location;
+        Location location = null;
         String varName = node.getName();
         String refName = node.getRefName();
 
@@ -715,26 +710,20 @@ public class TextGeneratorVisitor extends Visitor {
 
         if(refName == null){
             this.assemblySupport.genComment("case where the reference name is null");
-            this.assemblySupport.genComment("visit the index expression, this will load the expression to v0");
-            node.getIndex().accept(this);
             location = (Location)currentSymbolTable.lookup(varName);
         }
         else if(refName.equals("this")){
             this.assemblySupport.genComment("case where the reference name is /this/");
-            this.assemblySupport.genComment("visit the index expression, this will load the expression to v0");
-            node.getIndex().accept(this);
             location = (Location) currentSymbolTable.lookup(varName, currentClassFieldLevel);
         }
-        else{
-            this.assemblySupport.genComment("case where the reference name is /this/");
-            this.assemblySupport.genComment("visit the index expression, this will load the expression to v0");
-            node.getIndex().accept(this);
+        else if (refName.equals("super")) { //when referring parent method or field
+            this.assemblySupport.genComment("case where the reference name is /super/");
             location = (Location) currentSymbolTable.lookup(varName, currentClassFieldLevel-1);
-
         }
-
-        this.assemblySupport.genComment("get the array's address then add it to the offset ");
+        node.getIndex().accept(this);
+        this.assemblySupport.genComment("move current location's base register with offset to v1");
         this.assemblySupport.genLoadWord("$v1", location.getOffset(), location.getBaseReg());
+
         this.checkArrayIndexError(node.getLineNum());
 
         this.assemblySupport.genComment("subtract 4 from the the stack pointer");
@@ -743,7 +732,7 @@ public class TextGeneratorVisitor extends Visitor {
         this.assemblySupport.genStoreWord("$v1",0,"$sp");
         this.assemblySupport.genComment("subtract 4 from the the stack pointer");
         this.assemblySupport.genSub("$sp","$sp",4);
-        this.assemblySupport.genComment("save $v1 to stack pointer with offset of 0");
+        this.assemblySupport.genComment("save $v0 to stack pointer with offset of 0");
         this.assemblySupport.genStoreWord("$v0",0,"$sp"); //store size of array
         node.getExpr().accept(this);
 
@@ -832,7 +821,8 @@ public class TextGeneratorVisitor extends Visitor {
 
     /**
      * checker for the array index and call array index error when found one
-     * @param linenum
+     *
+     * @param linenum the line number
      */
     private void checkArrayIndexError(int linenum){
         String afterNull = this.assemblySupport.getLabel();
@@ -1286,12 +1276,10 @@ public class TextGeneratorVisitor extends Visitor {
 
         }
         else { // ref is not null, "this", or "super"
-            System.out.println("in text gen visitor ref is"+ref.getExprType());
             ref.accept(this);
             this.assemblySupport.genComment("case where the reference object is user defined class");
             String refTypeName = ref.getExprType();
             location = (Location) this.classSymbolTables.get(refTypeName).lookup(varName);
-            System.out.println("afterrrr");
 
             this.checkForNullPointer(node, location, nodeType);
 
@@ -1377,6 +1365,7 @@ public class TextGeneratorVisitor extends Visitor {
     }
 
     /**
+     * Visit an ArrayExpr node
      *
      * @param node the array expression node
      * @return null
