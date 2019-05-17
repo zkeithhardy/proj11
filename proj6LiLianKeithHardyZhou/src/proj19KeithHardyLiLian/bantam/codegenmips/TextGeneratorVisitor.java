@@ -1274,10 +1274,12 @@ public class TextGeneratorVisitor extends Visitor {
 
         }
         else { // ref is not null, "this", or "super"
+            System.out.println("in text gen visitor ref is"+ref.getExprType());
             ref.accept(this);
             this.assemblySupport.genComment("case where the reference object is user defined class");
             String refTypeName = ref.getExprType();
             location = (Location) this.classSymbolTables.get(refTypeName).lookup(varName);
+            System.out.println("afterrrr");
 
             this.checkForNullPointer(node, location, nodeType);
 

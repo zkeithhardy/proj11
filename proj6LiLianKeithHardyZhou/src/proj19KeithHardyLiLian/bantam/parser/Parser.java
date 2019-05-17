@@ -720,7 +720,6 @@ public class Parser
      */
 
 	private Expr parsePrimary() {
-	    int position = this.currentToken.position;
 	    Expr tempExpr = null;
         switch (this.currentToken.kind) {
             case LPAREN: // (<Expression>)

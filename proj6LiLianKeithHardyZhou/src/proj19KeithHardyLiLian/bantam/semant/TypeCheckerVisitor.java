@@ -737,10 +737,13 @@ public class TypeCheckerVisitor extends Visitor
         if (node.getRef() != null) {
             node.getRef().accept(this);
             refType = node.getRef().getExprType();
-            refType = (String) this.currentClass.getClassMap().get(refType).getVarSymbolTable().lookup(node.getName());
+            if(this.currentClass.getClassMap().get(refType) != null && node.getName() != null) {
+                refType = (String) this.currentClass.getClassMap().get(refType).getVarSymbolTable().lookup(node.getName());
+            }
         }else{
             refType = (String) currentSymbolTable.lookup(node.getName());
         }
+
         if(refType == null){
             registerError(node,"Array was not defined in the scope");
             node.setExprType("null");
@@ -750,6 +753,9 @@ public class TypeCheckerVisitor extends Visitor
             node.setExprType(refType); // to continue analysis
         }
         else {
+            if(node.getName() != null)
+                registerError(node,"The only field of an array" +
+                        " is \"length\"");
             node.setExprType(refType.substring(0, refType.length() - 2));
         }
         return null;
